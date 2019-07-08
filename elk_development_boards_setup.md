@@ -1,8 +1,16 @@
-# Deploying and testing plugins on ELK development boards
+# ELK development boards setup
 
 This document contains basic information on how to connect to ELK development boards and configure
 them to run audio plugins. See also the relevant datasheet for your ELK development board, e.g.
 Rocket UpCore shield, for information on the hardware layout of the board.
+
+## Installing an image to eMMC
+
+If your boards came with the system already flashed to eMMC, you can skip this point. The
+information here are written for the Rocket/UpCore development kit, for other systems there might be
+few differences depending on how boot & interal storage are handled.
+
+  1. Flash the installation image to a USB pendrive.
 
 ## Connecting over serial cable
 
