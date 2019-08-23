@@ -85,7 +85,7 @@ possible corruptions when powering off the device.
 
 ## Testing a plugin using SUSHI
 
-Follow the instructions in `building_plugins_for_elk.md` to cross-compile a plugin for your target
+Follow the instructions in [Building Plugins for ELK](05_building_plugins_for_elk.md) to cross-compile a plugin for your target
 boards. The development images include the toolchain, as well, so it's possible to build the plugin
 locally on the board if you prefer so.
 

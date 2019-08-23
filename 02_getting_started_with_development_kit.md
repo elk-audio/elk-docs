@@ -8,18 +8,18 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 Log in as mind user to the Virtual Machine.
 
-Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK or RASPA on your computer.
+Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer.
 
 #### Starting SUSHI with the MDA jx10 vst synthesizer
 
-To run SUSHI using JACK, and a configuration file provided by us for running the MDA JX10 vst2 synthesizer: 
+To run SUSHI using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
-1. Navigate to the `/workspaces/sushi/build/debugWithTests` folder in a console window.
+1. Navigate to the `/workspaces/sushi/build/release` folder in a console window.
 
 2. Type the following command:
 
 ```bash
-$ ./sushi -j --connect-ports -c ../../misc/config_files/config_play_LV2_jx10.json
+$ ./sushi -j --connect-ports -c ../../misc/config_files/config_play_VsT3.json
 ```
 
 You should see the following status message:
@@ -37,15 +37,9 @@ Note that its outputs are already connected.
 
 That is because the `--connect-ports` command-line option used, attempts to connect the SUSHI outputs. If after running they are not connected, you need to make these connections yourself, or you will not be able to hear sound.
 
-To invoke SUSHI with the the RASPA low-latency front-end instead, replace the `-j`  switch with `-r`:
-
-```bash
-$ sushi -r -c /path/to/your/config.json
-```
-
 #### Connecting MIDI to SUSHI
 
-Now, although SUSHI is successfully running and hosting the MDA jx10 vst2 synthesizer plugin, you will need to connect it to a MIDI device to hear sound. For this, connect them with the `aconnect` tool:
+Now, although SUSHI is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to connect it to a MIDI device to hear sound. For this, connect them with the `aconnect` tool:
 
 1. Start a new terminal window than the one where SUSHI is running.
 2. Type `'aconnect -l'` to list all available MIDI devices and ports for connections:
