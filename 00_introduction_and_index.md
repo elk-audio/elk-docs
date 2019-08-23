@@ -20,6 +20,10 @@ When configuring SUSHI to run with a new set of plugins, a configuration file ne
 
 To connect external physical controls to plugin parameters, you also need to create a configuration file for our SENSEI software.
 
+4. [SUSHI Internal Plugins](08_sushi_internal_plugins.md)
+
+SUSHI comes with a bunch of internal plugins, mostly developed for internal testing purposes but some of them can find their way as utility tools in a more complex setup.
+
 4. [SENSEI Configuration Format.](04_sensei_configuration_format.md)
 
 This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK:
