@@ -68,7 +68,7 @@ Full source code (MIT licensed) is included in `work/twine` with Doxygen documen
 
 SENSEI is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).
 
-The hardware configuration of the hardware pins can be declared in a JSON configuration file. See `sensei_configuration_format.md` for more details about the format and the available hardware sensor & output types.
+The hardware configuration of the hardware pins can be declared in a JSON configuration file. See [SENSEI Configuration Format](04_sensei_configuration_format.md) for more details about the format and the available hardware sensor & output types.
 
 On the UpCore based ELK development board, SENSEI needs SUSHI to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7 or Raspberry Pi based systems.
 
