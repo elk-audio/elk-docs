@@ -1,4 +1,4 @@
-# ELK Developer Manual
+# ELK Overview
 
 This document is a quick start guide written primarily for audio plugin developers that want to get up to speed in porting and testing a VST plugin on ELK evaluation boards.
 
@@ -76,45 +76,26 @@ SENSEI uses a logging system similar to SUSHI for reporting run-time messages.
 
 ## Linux System configuration
 
-As most modern Linux distributions, ELK adopts SystemD for its init system and other general tasks. By default, on the
-UpCore-based ELK development board, only the services to initialize the audio drivers and the update system are started.
-There are services definitions for both SUSHI and SENSEI that can be enabled with `systemctl enable sushi` or started
-temporarily with `systemctl start sushi` as any normal SystemD service.
+As most modern Linux distributions, ELK adopts SystemD for its init system and other general tasks. By default, on the UpCore-based ELK development board, only the services to initialize the audio drivers and the update system are started.
+There are services definitions for both SUSHI and SENSEI that can be enabled with `systemctl enable sushi` or started temporarily with `systemctl start sushi` as any normal SystemD service.
 
-These example services start the applications with a trivial default configuration. To change the file used at startup,
-it is needed to modify the SystemD startup script in `/lib/systemd/system`, where it is also possible to add other
-relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables
-that can be read by plugins instatiated by SUSHI.
+These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in `/lib/systemd/system`, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by SUSHI.
 
-## Filesystem organization and Software Update system
+## Filesystem organisation and Software Update system
 
-ELK uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, using a redundant
-partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or
-incomplete updates due to e.g. power failures.
+ELK uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, using a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.
 
 Therefore, it is important to remember to *never put any files that you want to keep permanent on the mounted root partition!*. There is a separate partition mounted under `/udata` for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolink links to the `udata` partition from there.
 
-Developer images mount all partitions as read-write, but on production images the root filesystem is mounted as
-read-only to prevent corruptions and prevent NAND wearing.
+Developer images mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.
 
-ELK updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The
-update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate
-partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the
-internal WiFi connection.
+ELK updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.
 
 ## BLE-gRPC bridge
 
-In order to communicate with e.g. a mobile device, ELK includes a daemon that wraps transparently and with minimal
-overhead the gRPC endpoints of SUSHI and SENSEI over Bluetooth Low-Energy GATT characteristics. It is based on recent
-versions (5.43 and later) of the standard BlueZ stack for Linux plus some direct communication with Bluetooth
-controllers using the HCI interface to optimize the connection parameters for both Android and iPhone mobile devices.
+In order to communicate with e.g. a mobile device, ELK includes a daemon that wraps transparently and with minimal overhead the gRPC endpoints of SUSHI and SENSEI over Bluetooth Low-Energy GATT characteristics. It is based on recent versions (5.43 and later) of the standard BlueZ stack for Linux plus some direct communication with Bluetooth controllers using the HCI interface to optimize the connection parameters for both Android and iPhone mobile devices.
 
-There is also a file transfer service to overcome BLE limitations on packet size and that can be used to transfer larger
-data than a normal API call, although it is practically limited by the low-bandwidth of BLE (10-20 Kbyte/s for Bluetooth
-4.0).
+There is also a file transfer service to overcome BLE limitations on packet size and that can be used to transfer larger data than a normal API call, although it is practically limited by the low-bandwidth of BLE (10-20 Kbyte/s for Bluetooth 4.0).
 
-In case you would need to use such system to communicate directly with your plugins, at the moment we offer to custom
-adaptations of this daemon to our customers. An open API is planned to be released in late 2019 to allow developers to independently hook
-their gRPC services.
-
+In case you would need to use such system to communicate directly with your plugins, at the moment we offer to custom adaptations of this daemon to our customers. An open API is planned to be released in late 2019 to allow developers to independently hook their gRPC services.
 

@@ -2,7 +2,7 @@
 
 SUSHI is a headless Linux host that supports VST 2.x and 3.x plugins using unmodified versions of Steinberg's APIs, so there is no need to do custom porting of your code if it runs on a normal Linux system without dependencies on graphics libraries such as X11.
 
-Depending on your current codebase, though, you might need some changes to meet the above mentioned requirements and you will need to recompile your plugin using ELK's provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.
+Depending on your current codebase, though, you might need some changes to meet the above  mentioned requirements and you will need to recompile your plugin using ELK's provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.
 
 As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, like the one included in the shipped ELK SDK VM image, with a Linux VST host such as Carla, MrsWatson or SUSHI itself.
 

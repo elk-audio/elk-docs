@@ -6,11 +6,13 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 ### Running a plugin within the SUSHI host
 
-Log in as mind user to the Virtual Machine.
+You could run SUSHI natively on your own Debian Linux computer, or through a Virtual Machine Disk Image we provide.
 
-Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer.
+For instructions on running and logging in to the Image, read the [MIND Development Kit Image](documents/mind_devkit_image.md) section. Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer. This will vary depending on what your host Virtual Machine and Operating system is.
 
 #### Starting SUSHI with the MDA jx10 vst synthesizer
+
+First we assume you run SUSHI either natively on Linux, or in the Virtual Machine provided.
 
 To run SUSHI using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
@@ -36,6 +38,12 @@ Copyright 2016-2018 MIND Music Labs, Stockholm
 Note that its outputs are already connected.
 
 That is because the `--connect-ports` command-line option used, attempts to connect the SUSHI outputs. If after running they are not connected, you need to make these connections yourself, or you will not be able to hear sound.
+
+If you were to instead run SUSHI on the Development Kit Board, you should instead use the following command, this time using the `-r` switch for selecting the RASPA low-latency frontend instad of JACK:
+
+```bash
+$ sushi -r -c /path/to/your/config.json
+```
 
 #### Connecting MIDI to SUSHI
 

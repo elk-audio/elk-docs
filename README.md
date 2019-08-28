@@ -4,6 +4,8 @@ This collection of documents is our introduction and manual for the ELK Developm
 
 The Development Kit consists of a software prototyping component, and the Raspberry ELK board, which will here be documented in that order.
 
+You will be able to run the software component natively on Debian Linux, on the Virtual Machine disk image we will share with you, as well as on the Raspberry ELK board. Mostly you interact with all three in a very similar way, but if there are differences we will explicitly point them out.
+
 ## 1. Documentation
 
 First comes an overview of all the components involved (ELK Linux, SUSHI, SENSEI, TWINE, etc):
