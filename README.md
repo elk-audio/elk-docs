@@ -14,6 +14,10 @@ First comes an overview of all the components involved (ELK Linux, SUSHI, SENSEI
 
 Then, a step-by-step tutorial after which you will be able to run, hear and control our SUSHI headless-DAW, hosting a synthesizer VST plugin:
 
+2. [ELK Examples Overview](documents/elk_examples_overview.md)
+
+A summary of the examples available to showcase ELK functionality, and a description of each.
+
 2. [Getting Started With ELK Development Kit](documents/getting_started_with_development_kit.md)
 
 When configuring SUSHI to run with a new set of plugins, a configuration file needs to be created. This is documented in:

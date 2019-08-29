@@ -85,7 +85,7 @@ client 128: 'Sushi' [type=user,pid=20167]
 
 Tip: If you do not have a physical keyboard available, you can use the ***Virtual MIDI Piano Keyboard*** software (VMPK).
 
-#### Controlling the MDA jx10 plugin over Open Sound Control
+#### Controlling the MDA JX 10 VST 3 plugin over Open Sound Control
 
 If you do not know what Open Sound Control (OSC) is, it is helpful - but not mandatory - [if you first read the article on the MIND Music Labs Tech blog, dedicated to the topic](https://www.mindmusiclabs.com/controlling-plug-ins-in-elk-part-1-open-sound-control/).
 
