@@ -14,6 +14,14 @@ For instructions on running and logging in to the Image, read the [MIND Developm
 
 First we assume you run SUSHI either natively on Linux, or in the Virtual Machine provided.
 
+The example used, requires that you have three files, which we will have provided to you as a separate download:
+
+1. config_play_VsT3.json - the SUSHI configuration file.
+2. MDA_JX10_VST3_Open_Stage_Control_GUI.json - the Open Stage Control GUI.
+3. mda-vst3.vst3.tar.xz - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
+
+First unpack the tar-file with the plugin to your local drive, and edit the config_play_VsT3.json to refer to that path.
+
 To run SUSHI using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
 1. Navigate to the `/workspaces/sushi/build/release` folder in a console window.
