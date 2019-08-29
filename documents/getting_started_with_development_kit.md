@@ -16,11 +16,11 @@ First we assume you run SUSHI either natively on Linux, or in the Virtual Machin
 
 The example used, requires that you have three files, which we will have provided to you as a separate download:
 
-1. config_play_VsT3.json - the SUSHI configuration file.
-2. MDA_JX10_VST3_Open_Stage_Control_GUI.json - the Open Stage Control GUI.
+1. config_play_vst3.json - the SUSHI configuration file.
+2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
 3. mda-vst3.vst3.tar.xz - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
 
-First unpack the tar-file with the plugin to your local drive, and edit the config_play_VsT3.json to refer to that path.
+First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
 
 To run SUSHI using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
@@ -29,7 +29,7 @@ To run SUSHI using JACK, and a configuration file provided by us for running the
 2. Type the following command:
 
 ```bash
-$ ./sushi -j --connect-ports -c ../../misc/config_files/config_play_VsT3.json
+$ ./sushi -j --connect-ports -c ../../misc/config_files/config_play_vst3.json
 ```
 
 You should see the following status message:
@@ -95,7 +95,7 @@ If you do not know what Open Sound Control (OSC) is, it is helpful - but not man
 
    ![OpenStageControl_LaunchScreen](illustrations/OpenStageControl_LaunchScreen.png)
 
-   3. Click Start, and subsequently 'Browse...', to navigate to the path where the "JX10 ELK Controller.json" is available.
+   3. Click Start, and subsequently 'Browse...', to navigate to the path where "mda_jx10_vst3_open_stage_control_gui.json" is available.
    4. You will now see the below GUI for controlling the jx10 synthesizer:
 
 ![OpenStageControl_with_jx10](illustrations/OpenStageControl_with_jx10.png)
@@ -105,3 +105,4 @@ If you do not know what Open Sound Control (OSC) is, it is helpful - but not man
 For example, dragging the Knob 'Resonance', will send the floating point value to the OSC address  '/parameter/Synth/VCF_Reso'. 'Synth' is here the name given the plugin in the SUSHI configuration file. 
 
 Note: If you choose to change that name, the Open Stage Control  template is easily updated by  enabling editing, clicking on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, setting the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/Synth".
+
