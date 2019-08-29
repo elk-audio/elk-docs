@@ -35,3 +35,15 @@ The reason is, those are in VST 2 received and handled as MIDI values, from your
 
 The instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
 
+## LV2VST Wrapper, with MDA JX 10 LV2 Example
+
+This example contains the following files:
+
+1. config_play_lv2vst.json - the SUSHI configuration file.
+2. mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.
+3. lv2vst_plugin.tar.xz - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
+4. mod-mda-JX10.lv2.tar.xz - the LV2 MDA JX 10 plugin.
+
+Again, the instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this example.
+
+The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.
