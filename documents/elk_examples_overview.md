@@ -49,3 +49,15 @@ This example contains the following files:
 Again, the instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this example.
 
 The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.
+
+## ELK multi FX Example
+
+This example contains the following files:
+
+1. elk_multi_fx.json - the SUSHI configuration file.
+2. elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.
+3. elk_multi_fx_main_app - a python script that acts as a middleman, a 'glue' app, between Sushi and the Open stage control GUI.
+
+This is more complex example that demonstrates how it's possible to add a simple 'glue' app between Sushi and an external hardware controller or software GUI to enable 2-way communication between the controller and Sushi as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimick those of a hardware control surface set up with Sensei.
+
+The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.
