@@ -1,5 +1,7 @@
 # ELK Examples Overview
 
+For the main example of costing and controlling a plugin, we have chosen to use the same instrument, the [MDA JX 10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
+
 ## MDA JX 10 VST 3 Example
 
 This example contains the following files:
