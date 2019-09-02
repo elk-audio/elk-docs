@@ -21,16 +21,16 @@ The example used, requires that you have three files, which we will have provide
 3. mda-vst3.vst3.tar.xz - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the TouchOSC app.
 
-First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
+First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
 
 To run Sushi using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
-1. Navigate to the `/workspaces/sushi/build/release` folder in a console window.
+1. Navigate to the `/folder/where/you/have/installed/Sushi` in a console window.
 
 2. Type the following command:
 
 ```bash
-$ ./sushi -j --connect-ports -c ../../misc/config_files/config_play_vst3.json
+$ ./sushi -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 ```
 
 You should see the following status message:
