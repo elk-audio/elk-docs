@@ -19,6 +19,7 @@ The example used, requires that you have three files, which we will have provide
 1. config_play_vst3.json - the SUSHI configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
 3. mda-vst3.vst3.tar.xz - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
+4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the TouchOSC app.
 
 First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
 
@@ -85,7 +86,7 @@ client 128: 'Sushi' [type=user,pid=20167]
 
 Tip: If you do not have a physical keyboard available, you can use the ***Virtual MIDI Piano Keyboard*** software (VMPK).
 
-#### Controlling the MDA JX 10 VST 3 plugin over Open Sound Control
+#### Controlling the MDA JX 10 VST 3 plugin over OSC, with Open Stage Control
 
 If you do not know what Open Sound Control (OSC) is, it is helpful - but not mandatory - [if you first read the article on the MIND Music Labs Tech blog, dedicated to the topic](https://www.mindmusiclabs.com/controlling-plug-ins-in-elk-part-1-open-sound-control/).
 
@@ -98,7 +99,7 @@ If you do not know what Open Sound Control (OSC) is, it is helpful - but not man
    3. Click Start, and subsequently 'Browse...', to navigate to the path where "mda_jx10_vst3_open_stage_control_gui.json" is available.
    4. You will now see the below GUI for controlling the jx10 synthesizer:
 
-![OpenStageControl_with_jx10](illustrations/OpenStageControl_with_jx10.png)
+![OpenStageControl_with_jx10](illustrations/OpenStageControl_with_jx10.png)``
 
 5. Assuming all is correctly configured, the controls on the screen will send OSC messages to to the jx10 synth via SUSHI, altering its parameters.
 
@@ -106,3 +107,10 @@ For example, dragging the Knob 'Resonance', will send the floating point value t
 
 Note: If you choose to change that name, the Open Stage Control  template is easily updated by  enabling editing, clicking on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, setting the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/Synth".
 
+#### Controlling the MDA JX 10 VST 3 plugin over OSC, with TouchOSC
+
+If you would prefer to control your plugin from an iPad/Android tablet, we have also created an example GUI using the [TouchOSC software](https://hexler.net/touchosc) - the file named `mda-vst3-touchosc-gui.touchosc`.
+
+To use it, please refer to the TouchOSC manual - the only customisation needed is setting the IP-address that your computer running SUSHI is using, in your TouchOSC app's settings.
+
+![touch_osc_jx10_gui](illustrations/touch_osc_jx10_gui.png)

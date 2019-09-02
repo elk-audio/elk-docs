@@ -9,6 +9,7 @@ This example contains the following files:
 1. config_play_vst3.json - the SUSHI configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
 3. mda-vst3.vst3.tar.xz - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
+4. mda-vst3-touchosc-gui.touchosc - a [TouchOSC](https://hexler.net/products/touchosc) GUI controller, mirroring the controls in the Open Stage Control GUI.
 
 First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
 
