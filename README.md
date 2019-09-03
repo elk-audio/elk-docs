@@ -22,7 +22,7 @@ Sensei comes with a bunch of internal plugins, mostly developed for internal tes
 To connect external physical controls to plugin parameters, you also need to create a configuration file for our Sensei software.    
 7. [Building Plugins for ELK](documents/building_plugins_for_elk.md):  
 This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK.
-8. [MIND Development Kit Image](documents/mind_devkit_image.md)  
+8. [MIND Development Kit Image](documents/mind_devkit_image.md):  
 With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.
 9. [ELK Development Board Setup](documents/elk_development_board_setup.md):  
 To run your plugins on the Development Kit Raspberry ELK board, you need to setup your board, and transfer your plugin and configurations to it.    
