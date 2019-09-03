@@ -8,7 +8,7 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 You could run Sushi natively on your own Debian Linux computer, or through a Virtual Machine Disk Image we provide.
 
-For instructions on running and logging in to the Image, read the [MIND Development Kit Image](documents/mind_devkit_image.md) section. Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer. This will vary depending on what your host Virtual Machine and Operating system is.
+For instructions on running and logging in to the Image, read the [MIND Development Kit Image](mind_devkit_image.md) section. Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer. This will vary depending on what your host Virtual Machine and Operating system is.
 
 #### Starting Sushi with the MDA jx10 vst synthesizer
 
