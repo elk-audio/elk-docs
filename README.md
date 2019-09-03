@@ -9,24 +9,41 @@ You will be able to run the software component natively on Debian Linux, on the 
 ## 1. Documentation
 
 1. [ELK Overview](documents/elk_overview.md):  
-An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+    An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+	​  
+	
 2. [ELK Examples Overview](documents/elk_examples_overview.md):  
-A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin.  
+    A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin.  
+	​  
+	
 3. [Getting Started With ELK Development Kit](documents/getting_started_with_development_kit.md):  
-A summary of the examples available to showcase ELK functionality, and a description of each.
+    A summary of the examples available to showcase ELK functionality, and a description of each.  
+	​  
+	
 4. [Sushi Configuration Format](documents/sushi_configuration_format.md):  
-When configuring Sushi to run with a new set of plugins, a configuration file needs to be created.
+    When configuring Sushi to run with a new set of plugins, a configuration file needs to be created.  
+	​  
+	
 5. [Sushi Internal Plugins](documents/sushi_internal_plugins.md):  
-Sensei comes with a bunch of internal plugins, mostly developed for internal testing purposes but some of them can find their way as utility tools in a more complex setup.        
+    Sensei comes with a bunch of internal plugins, mostly developed for internal testing purposes but some of them can find their way as utility tools in a more complex setup.  
+	​  
+	
 6. [Sensei Configuration Format](documents/sensei_configuration_format.md):  
-To connect external physical controls to plugin parameters, you also need to create a configuration file for our Sensei software.    
+    To connect external physical controls to plugin parameters, you also need to create a configuration file for our Sensei software.  
+	​  
+	
 7. [Building Plugins for ELK](documents/building_plugins_for_elk.md):  
-This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK.
+    This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK.  
+	​  
+	
 8. [MIND Development Kit Image](documents/mind_devkit_image.md):  
-With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.
+    With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.  
+    ​  
+	
 9. [ELK Development Board Setup](documents/elk_development_board_setup.md):  
-To run your plugins on the Development Kit Raspberry ELK board, you need to setup your board, and transfer your plugin and configurations to it.    
-
+    To run your plugins on the Development Kit Raspberry ELK board, you need to setup your board, and transfer your plugin and configurations to it.  
+	​  
+	
 ## 2. Tech Articles
 
 On the MIND Music Labs website, there are a number of Tech articles that cover important topics directly relevant for learning to work with our Development Kit:
