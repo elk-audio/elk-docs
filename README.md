@@ -71,6 +71,8 @@ The Development Kit ships with a number of example plugins and configurations, w
 3. MDA jx10 LV2 plugin example
 4. ELK Multi FX Example
 
+The examples can all be downloaded from our [private elk-examples bitbucket repository](https://bitbucket.org/mindswteam/elk-examples/src/master/), with the binary files they depend on available in [that repository's Downloads section](https://bitbucket.org/mindswteam/elk-examples/downloads/).
+
 ## 4. ELK Online Forum
 
 Finally, for any questions or discussion on the ELK Development Kit, please refer to the [ELK Online Forum](https://forum.elkmusicos.com). Currently forum participation is invitation only - please get in touch with us at MIND if you do not yet have an account!

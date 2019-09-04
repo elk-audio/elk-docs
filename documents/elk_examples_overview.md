@@ -1,14 +1,16 @@
 # ELK Examples Overview
 
-For the main example of costing and controlling a plugin, we have chosen to use the same instrument, the [MDA JX 10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
+All example files can all be downloaded from our [private elk-examples bitbucket repository](https://bitbucket.org/mindswteam/elk-examples/src/master/), with the binary files they depend on available in [that repository's Downloads section](https://bitbucket.org/mindswteam/elk-examples/downloads/).
+
+For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the [MDA JX 10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
 
 ## MDA JX 10 VST 3 Example
 
-This example contains the following files:
+This example requires the following files:
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. mda-vst3.vst3.tar.xz - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
+3. [mda-vst3.vst3.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/mda-vst3.vst3.tar.xz) - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
 4. mda-vst3-touchosc-gui.touchosc - a [TouchOSC](https://hexler.net/products/touchosc) GUI controller, mirroring the controls in the Open Stage Control GUI.
 
 First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
@@ -21,11 +23,11 @@ This is the example referred to also in our [Getting Started Guide](getting_star
 
 Control of plugin parameters is to certain extent different between VST 2 and 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.
 
-This example contains the following files:
+This example requires the following files:
 
 1. config_play_vst2.json - the Sushi configuration file.
 2. mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.
-3. mda-vst2-plugins.tar.gz - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.
+3. [mda-vst2-plugins.tar.gz](https://bitbucket.org/mindswteam/elk-examples/downloads/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.
 
 The configuration file for this example differs to the one for the VST 3 version of the same plugin in one crucial way: besides routing MIDI messages directly to the plugin, it also:
 
@@ -40,12 +42,12 @@ The instructions for the VST 3 example in the [Getting Started Guide](getting_st
 
 ## LV2VST Wrapper, with MDA JX 10 LV2 Example
 
-This example contains the following files:
+This example requires the following files:
 
 1. config_play_lv2vst.json - the Sushi configuration file.
 2. mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.
-3. lv2vst_plugin.tar.xz - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
-4. mod-mda-JX10.lv2.tar.xz - the LV2 MDA JX 10 plugin.
+3. [lv2vst_plugin.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/lv2vst_plugin.tar.xz) - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
+4. [mod-mda-JX10.lv2.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/mod-mda-JX10.lv2.tar.xz) - the LV2 MDA JX 10 plugin.
 
 Again, the instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this example.
 
@@ -53,11 +55,12 @@ The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.t
 
 ## ELK Multi FX Example
 
-This example contains the following files:
+This example requires the following files:
 
 1. elk_multi_fx.json - the Sushi configuration file.
 2. elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.
 3. elk_multi_fx_main_app - a python script that acts as a middleman, a 'glue' app, between Sushi and the Open stage control GUI.
+4. [mda-vst2-plugins.tar.gz](https://bitbucket.org/mindswteam/elk-examples/downloads/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing the effects the example invokes.
 
 This is a more complex example, demonstrating a simple 'glue' app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.
 

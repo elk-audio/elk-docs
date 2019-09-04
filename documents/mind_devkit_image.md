@@ -13,16 +13,18 @@ The other software components provided in the Virtual Machine are covered by the
 
 We recommend using [VirtualBox](https://www.virtualbox.org/wiki/Downloads), and have not tested using the provided disk image on other Virtual Machine software hosts.
 
+Download the [Virtual Disk Image we provide](https://drive.google.com/open?id=12Tosw9DMljj20BPMYO2VVAfPygOf1VLH).
+
 Start VirtualBox, and there:
 
-1. Create a new image with type=“Linux” and version=”Ubuntu 64bit”
+1. Create a new image with type=“Linux” and version=”Ubuntu 64bit”.
 
-2. Select “Use an existing virtual hard disk file” and point to the downloaded .vmdk file
-3. Select the number of CPUs in Settings/System and eventually video memory under Settings/Display, suitable for the performance you want versus what your computer is capable of
-4. (optional) Setup a shared folder on your local hard drive
-5. Launch the VM image, password for user minddev is: xcompile
+2. Select “Use an existing virtual hard disk file” and point to the downloaded .vmdk file.
+3. Select the number of CPUs in Settings/System and eventually video memory under Settings/Display, suitable for the performance you want versus what your computer is capable of.
+4. (optional) Setup a shared folder on your local hard drive.
+5. Launch the VM image, password for user minddev is: xcompile.
 6. Open a terminal, by clicking on the quick-launch icon on the bottom-left corner or by typing Alt+F2
-followed by “lxterminal”
+followed by “lxterminal”.
 
 # Login details
 
@@ -38,29 +40,29 @@ Get them from Steinberg and place them inside `/home/minddev/SDKs/`
 
 Most of the relevant ELK-related components are placed in the home directory of `minddev` user (`~` in the following):
 
-  * `~/audio`   : useful audio test tones to test FX plugins, 48KHz stereo 24bit .wav
-  * `~/bin`     : ELK-related binaries and helper scripts
-  * `~/doc`     : ELK documentation files, in Markdown and .pdf format
-  * `~/plugins` : prebuilt binaries for MDA example plugins
-  * `~/work`    : developer tools and libraries
+  * `~/audio`   : useful audio test tones to test FX plugins, 48KHz stereo 24bit .wav.
+  * `~/bin`     : ELK-related binaries and helper scripts.
+  * `~/doc`     : ELK documentation files, in Markdown and .pdf format.
+  * `~/plugins` : prebuilt binaries for MDA example plugins.
+  * `~/work`    : developer tools and libraries.
 
 # Included tools
 
 These are all installed in `/home/minddev/work` :
 
-  * `vst2-cmake` : CMake project for (cross) compiling VsT2 plugins. See README.md in that directory
+  * `vst2-cmake` : CMake project for (cross) compiling VsT2 plugins. See README.md in that directory.
   * `vst3-template` : CMake project for VST3 plugins, with examples for RT/non-RT communication.
   * `JUCE` : JUCE framework (redistributed in GPL form), with Projucer built for this machine (installed in ~/bin), patches to allow the creation of headless Linux VST plugins that can be hosted by Sushi running on ELK dev boards.
-  * `juce-examples` : custom examples of Linux headless plugins to be tested in Sushi (including a 4 in / 6 outs plugin)
-  * `MrsWatson` : offline VsT2 host for testing purposes, redistributed under BSD license
-  * `sushi` : MIND's audio host compiled for this virtual machine, can be used to test plugins before running them  on the board, either offline or in real-time with JACK/ALSA. See README.md in the directory
+  * `juce-examples` : custom examples of Linux headless plugins to be tested in Sushi (including a 4 in / 6 outs plugin).
+  * `MrsWatson` : offline VsT2 host for testing purposes, redistributed under BSD license.
+  * `sushi` : MIND's audio host compiled for this virtual machine, can be used to test plugins before running them  on the board, either offline or in real-time with JACK/ALSA. See README.md in the directory.
   * `twine` : library for easily accessing Xenomai subsystems from audio plugins. Full source code included.
 
 Other significant tools installed system-wide:
 
   * JACK audio toolkit : start the JACK server using Cadence (already configured), or the `start_jack` script.
-    Only audio output is supported by VirtualBox, and latency is very high
-  * Catia : JACK graphical patchbay to connect JACK applications (including sushi)
-  * Carla : JACK VST host that can be used to test plugins (including GUI)
-  * Audacity : load .wav files here and connect it to Sushi to simulate physical input signals
+    Only audio output is supported by VirtualBox, and latency is very high.
+  * Catia : JACK graphical patchbay to connect JACK applications (including sushi).
+  * Carla : JACK VST host that can be used to test plugins (including GUI).
+  * Audacity : load .wav files here and connect it to Sushi to simulate physical input signals.
 

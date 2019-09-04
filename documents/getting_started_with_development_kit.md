@@ -6,31 +6,35 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 ### Running a plugin within the Sushi host
 
-You could run Sushi natively on your own Debian Linux computer, or through a Virtual Machine Disk Image we provide.
+You could run Sushi natively on your own Debian Linux computer, or through [this Virtual Machine Disk Image we provide](https://drive.google.com/open?id=12Tosw9DMljj20BPMYO2VVAfPygOf1VLH).
+
+Either way, you need to download the Sushi AppImage from the [Downloads section of the elk-examples repository](https://bitbucket.org/mindswteam/elk-examples/downloads/). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
 
 For instructions on running and logging in to the Image, read the [MIND Development Kit Image](mind_devkit_image.md) section. Ensure that you have audio playback configured correctly for the virtual machine to play audio over JACK on your computer. This will vary depending on what your host Virtual Machine and Operating system is.
+
+If you are running natively, you need to have Jack audio configured on your computer, which is beyond the scope of this tutorial - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elkmusicos.com) and we'll do our best to get you going! In this example we also show using [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer too.
 
 #### Starting Sushi with the MDA jx10 vst synthesizer
 
 First we assume you run Sushi either natively on Linux, or in the Virtual Machine provided.
 
-The example used, requires that you have three files, which we will have provided to you as a separate download:
+The example used, requires that you have these files from our [elk-examples repository](https://bitbucket.org/mindswteam/elk-examples/src/master/):
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. mda-vst3.vst3.tar.xz - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
+3. [mda-vst3.vst3.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/mda-vst3.vst3.tar.xz) - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the TouchOSC app.
 
 First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
 
 To run Sushi using JACK, and a configuration file provided by us for running the MDA JX10 vst3 synthesizer: 
 
-1. Navigate to the `/folder/where/you/have/installed/Sushi` in a console window.
+1. Navigate to `/the/folder/where/you/have/placed/sushi` in a console window.
 
 2. Type the following command:
 
 ```bash
-$ ./sushi -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
+$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 ```
 
 You should see the following status message:
@@ -48,7 +52,7 @@ Note that its outputs are already connected.
 
 That is because the `--connect-ports` command-line option used, attempts to connect the Sushi outputs. If after running they are not connected, you need to make these connections yourself, or you will not be able to hear sound.
 
-If you were to instead run Sushi on the Development Kit Board, you should instead use the following command, this time using the `-r` switch for selecting the RASPA low-latency frontend instad of JACK:
+If you were to instead run Sushi on the Development Kit Board, you should instead use the following command, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of JACK:
 
 ```bash
 $ sushi -r -c /path/to/your/config.json
@@ -88,7 +92,7 @@ Tip: If you do not have a physical keyboard available, you can use the ***Virtua
 
 #### Controlling the MDA JX 10 VST 3 plugin over OSC, with Open Stage Control
 
-If you do not know what Open Sound Control (OSC) is, it is helpful - but not mandatory - [if you first read the article on the MIND Music Labs Tech blog, dedicated to the topic](https://www.mindmusiclabs.com/controlling-plug-ins-in-elk-part-1-open-sound-control/).
+If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the MIND Music Labs Tech blog, dedicated to the topic](https://www.mindmusiclabs.com/controlling-plug-ins-in-elk-part-1-open-sound-control/).
 
 1. Download and install the free [Open Stage Control](https://openstagecontrol.ammd.net/) application to your computer.
 
