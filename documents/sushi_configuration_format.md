@@ -19,8 +19,8 @@ A json list of track objects with the following members:
 
 * **“name”** - Name of the track, must be unique.
 * **“mode”** - The channel mode of the track, valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.
-* **“input busses”** - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
-* **“output busses”** - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
+* **“input_busses”** - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
+* **“output_busses”** - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
 * **“inputs”** - Audio inputs to the track. A list objects with the following members:
     * **“engine_bus”** - The id of the engine bus to route from, where bus is a stereo pair where bus 0 represents channels 0 and 1, bus 1 channels 2 and 3…
     * **“track_bus”** - The id of the track bus to route audio to.
