@@ -59,6 +59,7 @@ Midi connections to and from tracks and plugins.
     * **“parameter_name”** - Name of the parameter on the above plugin.
     * **“min_range”** - Minimum normalized range of the mapping (in [0, 1]), what a value a cc value of 0 corresponds to.
     * **“max_range”** - Maximum normalized range of the mapping (in [0, 1]), corresponds to a cc value of 127.
+    * **“mode”** - Mode for controller, one of "absolute" (default) or "relative"
 * **“program\_change_connections”** - Route midi program change messages to a particular plugin. A list of routing objects with the following members:
     * **“port”** - Integer id of the midi port to use as input.
     * **“channel”** - Only route midi data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
