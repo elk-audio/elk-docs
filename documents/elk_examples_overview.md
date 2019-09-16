@@ -34,7 +34,7 @@ The configuration file for this example differs to the one for the VST 3 version
 1. Maps MIDI CC values to control synth parameters.
 2. Connects MIDI Program Change messages to the plugin
 
-You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, that the VST 3 version lacks.
+You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.
 
 The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.
 
