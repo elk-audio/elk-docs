@@ -34,8 +34,10 @@ To run Sushi using JACK, and a configuration file provided by us for running the
 2. Type the following command:
 
 ```bash
-$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
+$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /absolute/path/to/example/config/files/config_play_vst3.json
 ```
+
+Note that with the current version of Sushi the path is expected to be absolute, a relative one will not work.
 
 You should see the following status message:
 
@@ -55,7 +57,7 @@ That is because the `--connect-ports` command-line option used, attempts to conn
 If you were to instead run Sushi on the Development Kit Board, you should instead use the following command, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of JACK:
 
 ```bash
-$ sushi -r -c /path/to/your/config.json
+$ sushi -r -c /absolute/path/to/your/config.json
 ```
 
 #### Connecting MIDI to Sushi
