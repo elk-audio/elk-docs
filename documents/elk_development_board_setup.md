@@ -7,7 +7,15 @@ them to run audio plugins. See also the relevant datasheet for your ELK developm
 
 If your boards came with the system already flashed to eMMC, you can skip this point. The information here are written for the Rocket/UpCore development kit, for other systems there might be few differences depending on how boot & interal storage are handled.
 
-  1. Flash the installation image to a USB pendrive.
+  1. Extract the provided link to installation image using 7-Zip or a compatible application
+  2. Flash the image to a USB pendrive of at least 8GB using [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/) or similar applications like dd for Linux / macOS
+  3. Unmount the USB pendrive from your computer and plug it into one of the available USB ports on the UpCore. Note: if the pendrive is not recognized using the principale USB 3.0 port on the module, try to use one of the two extra USB 2.0 ports available on the extension cable.
+  4. Connect the UpCore to either HDMI monitor + USB keyboard or with a serial terminal following the instructions in the next paragraph.
+  5. Power on the board and immediately press the "ESC" key to enter the BIOS menu
+  6. Navigate to the Boot submenu and choose the USB pendrive as "Boot Option n.1"
+  7. Save the configuration and exit the BIOS menu
+  8. Now you should see a grub menu with a single entry "boot0" available; the flashing procedure to eMMC is fully automated and once it is done (typically around 5 minutes), you will see some messages on the serial prompt regarding the GPT partitions
+  9. Power off the board, remove the USB pendrive and reboot
 
 ## Connecting over serial cable
 
