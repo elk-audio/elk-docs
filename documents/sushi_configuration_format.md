@@ -49,7 +49,7 @@ Midi connections to and from tracks and plugins.
     * **“raw_midi”** - If set to true, sushi will pass the raw midi events directly to the track without conversion or processing. If enabled, plugins will need to handle things like program change on their own. Default off. only valid for plugin formats that accepts raw midi data as input like Vst 2.
 * **“track\_out\_connections”** - A list of routing objects for passing midi from a track to an external midi port.
     * **“port”** - The integer id of the midi port to output data to.
-    * **“channel”** - Only route midi data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
+    * **“channel”** - Only route midi data with this particular channel. Valid options are integers between 0-15; if you need multiple channels, you can have multiple entries for each channel.
     * **“track”** - Name of the track to route midi from.
 * **“cc_mappings”** - Map control change messages to parameters on plugins and tracks. A list of routing objects with the following members:
     * **“port”** - Integer id of the midi port to use as input.
