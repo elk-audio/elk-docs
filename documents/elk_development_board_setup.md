@@ -107,6 +107,14 @@ $ watch -n 0.5 cat /proc/xenomai/sched/stat
 
 For a more fine-grained analysis, you can use SUSHI's gRPC API to query timing statistics of each track and plugin, or you can run SUSHI with the `--timing-statistics` flag to get the results on a file.
 
+## Running SUSHI at a different buffer size
+
+Audio buffer-size is a compile-time option in SUSHI, since on embedded systems there's rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimizations.
+
+However, Elk distributions are shipped with SUSHI compiled at different buffer sizes, usually [16, 32, 64, 128]. The main command `sushi` is a wrapper around them that, when passed the option `-b N` as the first argument, select which one to run [default=64].
+
+In case you want to use a different buffer size, you will also need to change the audio driver parameter `audio_buffer_size` in the script placed by default in `/usr/bin/load-drivers` and reboot the board (or restart the audio driver by removing and reinserting the module `audio_rtdm`).
+
 ## Setting the board for automatic startup
 
 If you wish to have the board starting SUSHI automatically at startup, the suggested way is to use the systemD services that we provide.
