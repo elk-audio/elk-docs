@@ -1,4 +1,4 @@
-# Getting Started With ELK Development Kit
+# Getting Started With ELK Development Kit Software
 
 ## Overview
 
