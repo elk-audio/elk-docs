@@ -17,8 +17,8 @@ You will be able to run the software component natively on Debian Linux, on the 
 3. [Getting Started With ELK Development Kit Software](documents/getting_started_with_development_kit_software.md):  
     A summary of the examples available to showcase ELK functionality, and a description of each.  
 	​  
-4. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md): 
-   Step-By-Step guide for getting the Elk Pi Shield working with a Raspberry Pi 3.  
+4. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
+    Step-By-Step guide for getting the Elk Pi Shield working with a Raspberry Pi 3.  
     ​ 
 5. [Sushi Configuration Format](documents/sushi_configuration_format.md):  
     When configuring Sushi to run with a new set of plugins, a configuration file needs to be created.  
