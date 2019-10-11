@@ -14,11 +14,11 @@ You will be able to run the software component natively on Debian Linux, on the 
 2. [ELK Examples Overview](documents/elk_examples_overview.md):  
     A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin.  
 	​  
-3. [Getting Started With ELK Development Kit Software](documents/getting_started_with_development_kit_software.md):  
+3. [Getting Started With the ELK Development Kit Software](documents/getting_started_with_development_kit_software.md):  
     A summary of the examples available to showcase ELK functionality, and a description of each.  
 	​  
 4. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
-    Step-By-Step guide for getting the Elk Pi Shield working with a Raspberry Pi 3.  
+    Step-By-Step guide for getting the ELK Pi Shield working with a Raspberry Pi 3.  
     ​ 
 5. [Sushi Configuration Format](documents/sushi_configuration_format.md):  
     When configuring Sushi to run with a new set of plugins, a configuration file needs to be created.  
@@ -35,9 +35,8 @@ You will be able to run the software component natively on Debian Linux, on the 
 9. [MIND Development Kit Image](documents/mind_devkit_image.md):  
     With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.  
     ​  
-10. [ELK Development Board Setup](documents/elk_development_board_setup.md):  
-    To run your plugins on the Development Kit Raspberry ELK board, you need to setup your board, and transfer your plugin and configurations to it.  
-    ​  
+10. [Developing with the ELK Development Board](documents/elk_development_board_setup.md):  
+    To run your plugins on the Development Kit Raspberry ELK board, you need to be able to connect to your board, and transfer your plugin and configurations to it.
 
 ## 2. Tech Articles
 

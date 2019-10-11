@@ -1,7 +1,9 @@
-# ELK development boards setup
+# Developign with the ELK development boards 
 
 This document contains basic information on how to connect to ELK development boards and configure
 them to run audio plugins. See also the relevant datasheet for your ELK development board, e.g. Rocket UpCore shield, for information on the hardware layout of the board.
+
+If you have an Elk Pi Development Kit board, you can start with the specific step-by-step guide [Getting Started With ELK Pi Development Kit Hardware](getting_started_with_development_kit_elk_pi_hardware.md), and return here for the more advanced topics beyond initial setup.
 
 ## Installing an image to eMMC
 
@@ -121,7 +123,7 @@ If you wish to have the board starting SUSHI automatically at startup, the sugge
 
   1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
 and, in case, additional environment variables or SUSHI command line flags.
-    2. If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemd service defined in `/lib/systemd/system/midi-connections.service`
+        2. If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemd service defined in `/lib/systemd/system/midi-connections.service`
   3. Enable both SUSHI and the MIDI connection service typing (as root):
 
 ```bash

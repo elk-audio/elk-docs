@@ -30,34 +30,37 @@ We did not pre-flash the cards, because with the Development Kit still being in 
 
 4. If you are using Linux, use  [balenaEtcher](https://www.balena.io/etcher/), or follow the below bzcat instructions:
 
-   1. Find out under what name your SD card is listed on your computer. It can be /devsda, or /sdb /sdc /sdd, or /mmcblk0.
+   1. Find out under what name your SD card is listed on your computer. It can be `/devsda`, or `/sdb` ,`/sdc`,  `/sdd`, or `/mmcblk0`.
 
    2. To flash onto the SD card run :
-      *bzcat elk-sika-image-dev-raspberrypi3.wic.bz2 | sudo dd of=/dev/<name listed on your system\> bs=4M status=progress && sync*
-
-      The process can take a few minutes, so this is a good time to stretch your legs!
       
-      If for any reason the process fails, just reduce the *bs=4M* speed to 1M for example, and it should work great.
+   ```bash
+      $ bzcat elk-sika-image-dev-raspberrypi3.wic.bz2 | sudo dd of=/dev/<name listed on your system\> bs=4M status=progress && sync
+   ```
+   
+   3. The process can take a few minutes, so this is a good time to stretch your legs!
+
+      If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
 
 5. If you are using OS X:
 
    1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), or use the above bzcat instructions for Linux.
 
-## 3. Power it up and log on...
+## 3. Power it up, log on...
 
 1. Put the SD card in the corresponding slot on the Raspberry Pi.
 2. You can:
-   1. Connect over SSH, in which case you need to connect an Ethernet cable from the LAN port on your PC to the LAN port on the RPI. 
-   2. Or, connect an HDMI screen, and a USB keyboard, directly to the Raspberry Pi's USB slots!
+   1. Connect over SSH, in which case you need to connect an Ethernet cable from the LAN port on your PC to the LAN port on the Raspberry Pi.
+   2. Or, connect a monitor over HDMI, and a USB keyboard, directly to the Raspberry Pi's USB slots!
 3. Connect the power supply Micro-USB cable to the Raspberry Pi.
 4. If you connected the Pi directly to your computer's Ethernet port, set up a shared internet connection for that port - for example [following these instructions in the case of Linux](https://www.cesariogarcia.com/?p=611).
-5. Assuming Linux, to see the IP address of the Raspberry Pi run "arp -a" . Then connect over SSH to the IP you find. On Windows, you can use Putty for SSH.
-6. Once you have a terminal window, just log in, username mind, password elk.
+5. Assuming Linux, to see the IP address of the Raspberry Pi run `$ arp -a`. Then connect over SSH to the IP you find. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
+6. Once you have a terminal window, just log in: username `mind`, password `elk`.
 7. You are ready to start making sound!
 
 ## 4. And run Sushi!
 
-You will find several configurations and plugins ready to test on the image, under the folders "config_files" and "plugins" in the mind accounts user folder.
+You will find several configurations and plugins ready to test on the image, under the folders `/config_files` and `/plugins` in the mind accounts user folder.
 
 Unlike the VM, Sushi doesn't use JACK for audio on the Raspberry Pi, so you should instead run Sushi using the `-r` switch for selecting our RASPA low-latency front-end:
 
@@ -84,7 +87,7 @@ Since this is a development board, you will need to start Sushi manually every t
 
 ## 5. Powering Down
 
-When developing for the board, the SD card is mounted for both and reading and writing, so do not just pull the power cord on the Rasberry Pi when you want to turn it off, or you risk corrupting the file-system!
+When developing for the board, the SD card is mounted for both and reading and writing, so do not just pull the power cord on the Rasberry Pi when you want to turn it off, or you risk corrupting the file-system, meaning possible loss of data, and re-flashing the card!
 
 Instead, type the following commands:
 
@@ -99,4 +102,6 @@ raspberrypi3:~$ su
 
 This guide serves only to get you up and running with the Elk Pi board.
 
-You can do much more, such as connect it to WiFi, copy new plugins to it, as well as compile your own plugins for it. For all this, please refer to subsequent sections in the documentation!
+You can do much more, such as connect it to WiFi, copy new plugins to it, as well as compile your own plugins for it. 
+
+Before working with your own development on the board, be sure to also read subsequent sections of this documentation - especially the final section, [developing with the ELK Development Board](elk_development_board_setup.md).
