@@ -12,11 +12,11 @@ The VM ships with a cross-compiling toolchain based on gcc (clang available on r
 
 You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:
 ```
-unset LD_LIBRARY_PATH
-source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
+$ unset LD_LIBRARY_PATH
+$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
 ```
 
-and then proceed to build your plugin using e.g. make or CMake depending on your configuration.
+and then proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
 
 The unset command is needed only in the VM configuration because `LD_LIBRARY_PATH` is changed there for practical testing of VM builds. In case it is more convenient in your case, you can just remove the relevant line in `/home/minddev/.zshrc`.
 
@@ -58,23 +58,36 @@ Here are the instructions to build a JUCE plugin with the cross-compiling toolch
      * For every module, make sure to use the option "use global search path"
      * Save the project to export a new Makefile
 
-  3. Due to a bug in recent Projucer releases, you need to manually modify the exported Makefile and put the correct path to the VST SDK
-     into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release)
+  3. Due to a bug in recent Projucer releases 5.4.1, you need to manually modify the exported Makefile and put the correct path to the VST SDK
+     into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
 
   4. For a build to test on the VM, just run make normally and follow the next points on how to test with the integrated sushi host
 
   5. To cross-compile for ELK UpCore boards, import the cross-compiling toolchain:
 
-    ```
-    unset LD_LIBRARY_PATH
-    source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
+    ```bash
+    $ unset LD_LIBRARY_PATH
+    $ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
     ```
     
     and then build your plugin using:
     
+    ```bash
+    $ AR=x86_64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=silvermont -mtune=silvermont"
     ```
-    AR=x86_64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=silvermont -mtune=silvermont"
+  
+  6. The equivalent for the Raspberry Pi 3 would be instead:
+    ```bash
+    $ unset LD_LIBRARY_PATH
+    $ source /opt/elk-sika64-sdk/environment-setup-aarch64-elk-linux
+    $ AR=aarch64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=armv8-a -mtune=cortex-a72"
     ```
+    
+  7. By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
+  ```bash
+  $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types"
+  ```
+
 
 ## Running compiled plugins with SUSHI on the VM
 
