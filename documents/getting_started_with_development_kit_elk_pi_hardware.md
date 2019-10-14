@@ -20,31 +20,42 @@ The SD card you received with the board is currently empty - you will have to fl
 
 We did not pre-flash the cards, because with the Development Kit still being in beta, the image is subject to frequent changes.
 
-1. **DOWNLOAD THE LATEST IMAGE FROM THE FOLLOWING LINK (64-BIT IMAGE FOLDER LINK PENDING)**. It will have a filename such as: *elk-sika-image-dev-raspberrypi3.wic.bz2*, and be about 6-7 GB in size.
+1. **DOWNLOAD THE LATEST IMAGE FROM THE FOLLOWING LINK**. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
 
 2. Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter, which we did not provide in the box.
 
 3. If you are using Windows:
 
-   1. Download and install [balenaEtcher](https://www.balena.io/etcher/), or the [Win32 Disk Imager](https://www.raspberrypi.org/downloads/).
+   1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility
+
+   2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32 Disk Imager](https://www.raspberrypi.org/downloads/).
+   
+   3. Flash the extracted `.wic` file to the SD card
 
 4. If you are using Linux, use  [balenaEtcher](https://www.balena.io/etcher/), or follow the below bzcat instructions:
 
-   1. Find out under what name your SD card is listed on your computer. It can be `/devsda`, or `/sdb` ,`/sdc`,  `/sdd`, or `/mmcblk0`.
-
-   2. To flash onto the SD card run :
-      
+   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc` or following letters. We will refer to it as `/dev/sdX` in the following.
+   
+   2. Unmount the SD card if it was already mounted:
    ```bash
-      $ bzcat elk-sika-image-dev-raspberrypi3.wic.bz2 | sudo dd of=/dev/<name listed on your system\> bs=4M status=progress && sync
+     $ sudo unmount /dev/sdX*
    ```
    
-   3. The process can take a few minutes, so this is a good time to stretch your legs!
+   3. To uncompress and flash onto the SD card run :
+      
+   ```bash
+      $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync
+   ```
+   
+   **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you can risk wiping out another disk on your machine**
+   
+   4. The process can take a few minutes, so this is a good time to stretch your legs!
 
       If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
 
-5. If you are using OS X:
+5. If you are using macOS:
 
-   1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), or use the above bzcat instructions for Linux.
+   1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/) using Unarchiver to extract the `.bz2` file first.
 
 ## 3. Power it up, log on...
 
@@ -60,12 +71,12 @@ We did not pre-flash the cards, because with the Development Kit still being in 
 
 ## 4. And run Sushi!
 
-You will find several configurations and plugins ready to test on the image, under the folders `/config_files` and `/plugins` in the mind accounts user folder.
+You will find several configurations and plugins ready to test on the image, under the folders `~/config_files` and `~/plugins` in the mind accounts user folder.
 
 Unlike the VM, Sushi doesn't use JACK for audio on the Raspberry Pi, so you should instead run Sushi using the `-r` switch for selecting our RASPA low-latency front-end:
 
 ```bash
-raspberrypi3:~$ sushi -r -c /home/mind/config_files/mda-vst2-configs/config_mda_synth.json 
+raspberrypi3:~$ sushi -r -c ~/config_files/mda-vst2-configs/config_mda_synth.json 
 ```
 
 Remember, you will always need to specify the full path to the config file you want to use, not relative.
@@ -81,7 +92,7 @@ raspberrypi3:~$ aconnect X Y
 # As an alternative to port numbers, it is possible to use the names reported by aconnect -l
 ```
 
-If you connect a USB MIDI keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX synthesizer running on the board!
+If you connect a USB MIDI keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!
 
 Since this is a development board, you will need to start Sushi manually every time you want to play - but we will later show you how the device can be made to load it automatically on power-on, so that you can just power it on and play!
 
