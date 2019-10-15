@@ -1,4 +1,4 @@
-# Additional Development Kit Configuration
+# Additional Development Kit Topics
 
 Learn to connect to your board over serial cable of WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.
 
@@ -49,11 +49,27 @@ $ ip a
 Then, you can just ssh to the board from your host computer or transferring files using scp / sftp.
 Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run sushi and other userspace applications.
 
+## Partition layout
+
+The internal eMMC storage on the board is divided into four partitions:
+
+- `boot`    : Boot partition with secondary bootloader and Kernel image
+- `rootfs1` : First copy of root filesystem
+- `rootfs2` : Second copy of root filesystem
+- `udata`   : User data partition
+
+The reason for two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted and it will change the bootloader configuration to boot from it if the update is run successfully. 
+
+For this reason, it is recommended that you put any file using for temporary development in the user
+data partition, which will remain untouched after running a software update. It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimize NAND wearing and possible corruptions when powering off the device.
+
 ## Running another plugin using SUSHI
 
 Follow the instructions in [Building Plugins for ELK](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain, as well, so it's possible to build the plugin locally on the board if you prefer so.
 
 After you have the plugin binary, copy it on the board (preferably somewhere in /udata) and create a SUSHI JSON config for it following one of the examples or looking at the provided JSON Schema for more advanced configuration.
+
+## Monitoring SUSHI performance
 
 Given Sushi is running, to get a rough view of CPU performance, `top`, `htop` and similar Linux tools will only show you the amount of CPU used in non-RT tasks. To see CPU usage of Real Time tasks, use:
 
@@ -65,7 +81,7 @@ For a more fine-grained analysis, you can use SUSHI's gRPC API to query timing s
 
 ## Running SUSHI at a different buffer size
 
-Audio buffer-size is a compile-time option in SUSHI, since on embedded systems there's rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimizations.
+Audio buffer-size is a compile-time option in SUSHI, since on embedded systems there's rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimisations.
 
 However, Elk distributions are shipped with SUSHI compiled at different buffer sizes, usually [16, 32, 64, 128]. The main command `sushi` is a wrapper around them that, when passed the option `-b N` as the first argument, select which one to run [default=64].
 

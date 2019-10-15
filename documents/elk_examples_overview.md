@@ -4,6 +4,10 @@ All example files can all be downloaded from our [private elk-examples bitbucket
 
 For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the [MDA JX 10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
 
+Note that the linked files below, are all built for running natively on Linux, on the provided Virtual Machine image, or the UpCode board - all of which are for an Intel architecture.
+
+Plugin binaries built to run natively on the Rasberry Pi, will be provided in separate links.
+
 ## MDA JX 10 VST 3 Example
 
 This example requires the following files:

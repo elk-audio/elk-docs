@@ -30,9 +30,9 @@ We did not pre-flash the cards, because with the Development Kit still being in 
 
    1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility
 
-   2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32 Disk Imager](https://www.raspberrypi.org/downloads/).
+   2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32DiskImager](https://www.raspberrypi.org/downloads/).
    
-   3. Flash the extracted `.wic` file to the SD card
+   3. Flash the extracted `.wic` file to the SD card.
 
 4. If you are using Linux, use  [balenaEtcher](https://www.balena.io/etcher/), or follow the below bzcat instructions:
 
@@ -51,17 +51,17 @@ We did not pre-flash the cards, because with the Development Kit still being in 
    
    **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you can risk wiping out another disk on your machine**
    
-   4. The process can take a few minutes, so this is a good time to stretch your legs!
+   4. The process can take a few minutes, so this is a good time to stretch your legs.
 
       If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
 
 5. If you are using macOS:
 
-   1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/) using Unarchiver to extract the `.bz2` file first.
+   1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the `.bz2` file first.
 
 ## 3. Power up, and next steps
 
 1. Put the SD card in the corresponding slot on the Raspberry Pi.
-2. Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux!
+2. Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.
 
-From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Getting First Sound From Development Kit Hardware](get_first_sound_from_devkit_board.md).
+From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [start running Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
