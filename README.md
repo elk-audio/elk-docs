@@ -2,41 +2,61 @@
 
 This collection of documents is our introduction and manual for the ELK Development Kit.
 
-The Development Kit consists of a software prototyping component, and the Raspberry ELK board, which will here be documented in that order.
+The Development Kit consists of a software prototyping component, and the ELK Add-On board for the Rasberry Pi/UpCore, which will here be documented in that order.
 
-You will be able to run the software component natively on Debian Linux, on the Virtual Machine disk image we will share with you, as well as on the Raspberry ELK board. Mostly you interact with all three in a very similar way, but if there are differences we will explicitly point them out.
+You will be able to run the software component natively on Debian Linux, on the Virtual Machine disk image we will share with you, as well as on the ELK board. Mostly you interact with all three in a very similar way, but if there are differences we will explicitly point them out.
 
 ## 1. Documentation
 
-1. [ELK Overview](documents/elk_overview.md):  
-    An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+[ELK Overview](documents/elk_overview.md):  
+An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+
+### 1.1 Getting Started
+
+2. [Getting Started With the ELK Development Kit Software - Run your first plugin (Linux Native / Virtual Machine)](documents/getting_started_with_development_kit_software.md):  
+     A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin, on Linux - natively, or on an a Virtual Machine.  
 	​  
-2. [ELK Examples Overview](documents/elk_examples_overview.md):  
-    A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin.  
-	​  
-3. [Getting Started With the ELK Development Kit Software](documents/getting_started_with_development_kit_software.md):  
-    A summary of the examples available to showcase ELK functionality, and a description of each.  
-	​  
-4. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
+	
+3. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
     Step-By-Step guide for getting the ELK Pi Shield working with a Raspberry Pi 3.  
-    ​ 
-5. [Sushi Configuration Format](documents/sushi_configuration_format.md):  
+	​  
+	
+4. [Getting Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
+    Step-By-Step guide for getting the UpCore Shield working with a Rocket/UpCore board.  
+	​  
+	
+5. [Getting First Sound From Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
+    Step-By-Step guide for connecting to the board, running Sushi, connecting MIDI and playing sound.   
+
+### 1.2 ELK Reference Manual
+
+6. [Additional Development Kit Board Topics:](documents/devkit_further_topics.md)  
+    Learn to connect to your board over serial cable of WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.  
+	​  
+	
+2. [ELK Examples Overview](documents/elk_examples_overview.md):  
+    A summary of the examples available to showcase ELK functionality, and a description of each.  
+    ​  
+
+3. [Sushi Configuration Format](documents/sushi_configuration_format.md):  
     When configuring Sushi to run with a new set of plugins, a configuration file needs to be created.  
     ​  
-6. [Sushi Internal Plugins](documents/sushi_internal_plugins.md):  
+
+4. [Sushi Internal Plugins](documents/sushi_internal_plugins.md):  
     Sensei comes with a bunch of internal plugins, mostly developed for internal testing purposes but some of them can find their way as utility tools in a more complex setup.  
     ​  
-7. [Sensei Configuration Format](documents/sensei_configuration_format.md):  
+
+5. [Sensei Configuration Format](documents/sensei_configuration_format.md):  
     To connect external physical controls to plugin parameters, you also need to create a configuration file for our Sensei software.  
     ​  
-8. [Building Plugins for ELK](documents/building_plugins_for_elk.md):  
-    This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK.  
-    ​  
-9. [MIND Development Kit Image](documents/mind_devkit_image.md):  
-    With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.  
-    ​  
-10. [Developing with the ELK Development Board](documents/elk_development_board_setup.md):  
-    To run your plugins on the Development Kit Raspberry ELK board, you need to be able to connect to your board, and transfer your plugin and configurations to it.
+
+6. [Building Plugins for ELK](documents/building_plugins_for_elk.md):  
+     This document is a short guide to help you through the needed steps to adapt and compile your plugins to run on ELK.  
+     ​  
+
+7. [MIND Development Kit Virtual Machine Image](documents/mind_devkit_image.md):  
+     With the Development Kit, we also provide a Linux Image, which you can use to get started with building and running your plugins.  
+     ​
 
 ## 2. Tech Articles
 

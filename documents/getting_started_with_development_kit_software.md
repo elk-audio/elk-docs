@@ -1,4 +1,4 @@
-# Getting Started With ELK Development Kit Software
+# Getting Started With ELK Development Kit Software: Run your first plugin in ELK
 
 ## Overview
 
