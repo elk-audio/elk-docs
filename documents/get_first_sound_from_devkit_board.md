@@ -6,14 +6,17 @@ The following steps are general for all our development kit boards, covering the
 
 ## 1. Power it up, log on...
 
-1. You can:
-   1. Connect a monitor over HDMI, and a keyboard directly to the USB slot.
-   2. Connect over SSH.
-2. If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example [following these instructions in the case of Linux](https://www.cesariogarcia.com/?p=611).
-3. Assuming Linux, to see the IP address of the board run `$ arp -a`. Then connect over SSH to the IP you find. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
-4. Once you have a terminal window, just log in: username `mind`, password `elk`.
+For getting access to the board terminal you have several options:
 
-(While you can keep using your board this way, you may also want to connect to it with a serial cable, or set up a WiFi connection, so that you can use SSH over those in the future. For instructions please refer to [Additional Development Kit Board Topics](devkit_further_topics.md)).
+  1. Connect a monitor over HDMI, and a keyboard directly to the USB slot.
+  2. Connect over SSH.
+  3. Connect through the serial tty using a UART-to-USB converter with a FTDI chip. Follow the instructions on the Sika Hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.
+
+For setting up SSH connections follow these tips:
+
+  1. If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example [following these instructions in the case of Linux](https://www.cesariogarcia.com/?p=611).
+  2. Assuming Linux, to see the IP address of the board run `$ arp -a`. Then connect over SSH to the IP you find. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
+  3. Once you have a terminal window, just log in: username `mind`, password `elk`.
 
 ## 2. And run Sushi
 
@@ -42,16 +45,9 @@ $ aconnect X Y
 
 ## 3. Powering Down
 
-When developing for the board, the SD card is mounted for both and reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system, meaning possible loss of data, and re-flashing the card.
+In development releases of Elk, the storage is mounted for both and reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.
 
-Instead, type the following commands:
-
-```bash
-# get su access
-$ su
-# tell Linux to shut down:
-\h:\w$ shutdown now
-```
+Instead, type `sudo poweroff` to safely shutdown the system.
 
 ## 4. Further steps
 
