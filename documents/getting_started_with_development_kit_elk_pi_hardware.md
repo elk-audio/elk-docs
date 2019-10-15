@@ -22,11 +22,11 @@ The SD card you received with the board is currently empty - you will have to fl
 
 We did not pre-flash the cards, because with the Development Kit still being in beta, the image is subject to frequent changes.
 
-1. **DOWNLOAD THE LATEST IMAGE FROM THE FOLLOWING LINK**. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
+1. Download the compressed image from the provided link. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
 
 2. Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter, which we did not provide in the box.
 
-3. If you are using Windows:
+### Windows:
 
    1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility
 
@@ -34,30 +34,31 @@ We did not pre-flash the cards, because with the Development Kit still being in 
    
    3. Flash the extracted `.wic` file to the SD card.
 
-4. If you are using Linux, use  [balenaEtcher](https://www.balena.io/etcher/), or follow the below bzcat instructions:
+### Linux
+At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain `dd` with these instructions:
 
    1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc` or following letters. We will refer to it as `/dev/sdX` in the following.
    
    2. Unmount the SD card if it was already mounted:
+   
    ```bash
      $ sudo unmount /dev/sdX*
    ```
    
-   3. To uncompress and flash onto the SD card run :
+   3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you can risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run :
       
    ```bash
       $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync
    ```
    
-   **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you can risk wiping out another disk on your machine**
    
    4. The process can take a few minutes, so this is a good time to stretch your legs.
 
       If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
 
-5. If you are using macOS:
+### macOS:
 
-   1. Also there you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the `.bz2` file first.
+   Also here you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the `.bz2` file first.
 
 ## 3. Power up, and next steps
 
