@@ -13,19 +13,19 @@ An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc
 
 ### 1.1 Getting Started
 
-2. [Getting Started With the ELK Development Kit Software - Run your first plugin (Linux Native / Virtual Machine)](documents/getting_started_with_development_kit_software.md):  
-     A step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin, on Linux - natively, or on an a Virtual Machine.  
+2. [Get Started With the ELK Development Kit Software - Run your first plugin (Linux Native / Virtual Machine)](documents/getting_started_with_development_kit_software.md):  
+     Step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin, on Linux - natively, or on a Virtual Machine.  
 	​  
 	
-3. [Getting Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
+3. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
     Step-By-Step guide for getting the ELK Pi Shield working with a Raspberry Pi 3.  
 	​  
 	
-4. [Getting Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
+4. [Get Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
     Step-By-Step guide for getting the UpCore Shield working with a Rocket/UpCore board.  
 	​  
 	
-5. [Getting First Sound From Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
+5. [Get First Sound From Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
     Step-By-Step guide for connecting to the board, running Sushi, connecting MIDI and playing sound.   
 
 ### 1.2 ELK Reference Manual
