@@ -15,21 +15,24 @@ You will be able to run the software component natively on Debian Linux, on the 
 
 These guides detail the minimum set of steps needed to get you up and running. There is however much more functionality in Elk, detailed in the subsequent reference manual.
 
-2. [Get Started With the ELK Development Kit Software - Run your first plugin (Linux Native / Virtual Machine)](documents/getting_started_with_development_kit_software.md):  
+1. [Get Started With the ELK Development Kit Software - Run your first plugin (Linux Native / Virtual Machine)](documents/getting_started_with_development_kit_software.md):  
      Step-by-step tutorial after which you will be able to run, hear and control our Sushi's headless-DAW, hosting a synthesizer VST3 plugin, on Linux - natively, or on a Virtual Machine.  
 	​  
-3. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
+2. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
     Step-By-Step guide for getting the ELK Pi Shield working with a Raspberry Pi 3.  
 	​  
-4. [Get Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
+3. [Get Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
     Step-By-Step guide for getting the UpCore Shield working with a Rocket/UpCore board.  
 	​  
-5. [Start running Elk on Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
+4. [Start running Elk on Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
     Get your first sound - Step-By-Step guide for connecting to the board, running Sushi, connecting MIDI and playing sound.   
+	​  
+5. [Build your first JUCE plugin for Elk](documents/getting_started_with_cross_compilation.md):  
+    Step-By-Step guide for building our example JUCE plugin for the Elk Pi.   
 
 ### 1.2 ELK Reference Manual
 
-6. [Additional Development Kit Board Topics:](documents/devkit_further_topics.md)  
+1. [Additional Development Kit Board Topics:](documents/devkit_further_topics.md)  
     Learn to connect to your board over serial cable of WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.  
 	​  
 	
