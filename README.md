@@ -8,8 +8,8 @@ You will be able to run the software component natively on Debian Linux, on the 
 
 ## 1. Documentation
 
-[ELK Overview](documents/elk_overview.md):  
-An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+1. [ELK Overview](documents/elk_overview.md):  
+   An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
 
 ### 1.1 Getting Started
 

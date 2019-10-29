@@ -1,4 +1,4 @@
-# ELK Examples Overview
+# Elk Examples Overview
 
 All example files can all be downloaded from our [private elk-examples bitbucket repository](https://bitbucket.org/mindswteam/elk-examples/src/master/), with the binary files they depend on available in [that repository's Downloads section](https://bitbucket.org/mindswteam/elk-examples/downloads/).
 
@@ -21,7 +21,7 @@ First unpack the tar-file with the plugin to your local drive, and edit the conf
 
 It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.
 
-This is the example referred to also in our [Getting Started Guide](getting_started_with_development_kit.md).
+This is the example referred to also in our guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)".
 
 ## MDA JX 10 VST 2 Example
 
@@ -42,7 +42,7 @@ You will also notice that the OSC GUI for the VST 2 version lacks controls for P
 
 The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.
 
-The instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
+The instructions for the VST 3 example in the guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)" translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
 
 ## LV2VST Wrapper, with MDA JX 10 LV2 Example
 
@@ -53,11 +53,11 @@ This example requires the following files:
 3. [lv2vst_plugin.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/lv2vst_plugin.tar.xz) - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
 4. [mod-mda-JX10.lv2.tar.xz](https://bitbucket.org/mindswteam/elk-examples/downloads/mod-mda-JX10.lv2.tar.xz) - the LV2 MDA JX 10 plugin.
 
-Again, the instructions for the VST 3 example in the [Getting Started Guide](getting_started_with_development_kit.md), translate straightforwardly also for this example.
+Again, the instructions for the VST 3 example in the guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)" , translate straightforwardly also for this example.
 
 The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.
 
-## ELK Multi FX Example
+## Elk Multi FX Example
 
 This example requires the following files:
 
@@ -69,3 +69,19 @@ This example requires the following files:
 This is a more complex example, demonstrating a simple 'glue' app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.
 
 The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.
+
+## Elk JUCE Plugin Example
+
+This example is a short plugin written in JUCE, whose purpose is to easily demonstrate the cross-compilation of a JUCE plugin for Elk, and how the plugin GUI can be separated into a separate process, so that when the plugin is running within Sushi, the GUI can still be invoked from a separate computer to control the plugin remotely over OSC.
+
+As such, it consists of both code and binary components.
+
+1. elk_juce_example_synth - this is a minimal JUCE plugin, which can play back a sample sound reacting to MIDI note input, and also has the JUCE internal Reverb effect embedded, with two parameters exposed, Room Size and Damping.
+2. elk_juce_example_synth_gui - this is a standalone application, which references the same GUI code as the plugin above, but only uses it to transmit OSC messages.
+3. elk_juce_example_common - this is the common JUCE code, shared between the above two projects.
+4. elk_juce_plugin.json.
+
+For your convenience, the two programs are available to download from the elk-examples downloads section in binary builds, the GUI for Linux, and the plugin already built with the JUCE Elk fork, for the Elk Pi.
+
+This is the example referenced in our" Getting Started with Cross-Compilation" guide.
+

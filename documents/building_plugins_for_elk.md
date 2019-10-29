@@ -65,24 +65,23 @@ Here are the instructions to build a JUCE plugin with the cross-compiling toolch
 
   5. To cross-compile for ELK UpCore boards, import the cross-compiling toolchain:
 
-    ```bash
-    $ unset LD_LIBRARY_PATH
-    $ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
-    ```
-    
-    and then build your plugin using:
-    
-    ```bash
-    $ AR=x86_64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=silvermont -mtune=silvermont"
-    ```
-  
+```bash
+$ unset LD_LIBRARY_PATH
+$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
+
+and then build your plugin using:
+
+$ AR=x86_64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=silvermont -mtune=silvermont"
+```
+
   6. The equivalent for the Raspberry Pi 3 would be instead:
-    ```bash
-    $ unset LD_LIBRARY_PATH
-    $ source /opt/elk-sika64-sdk/environment-setup-aarch64-elk-linux
-    $ AR=aarch64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=armv8-a -mtune=cortex-a72"
-    ```
-    
+
+```bash
+$ unset LD_LIBRARY_PATH
+$ source /opt/elk-sika64-sdk/environment-setup-aarch64-elk-linux
+$ AR=aarch64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=armv8-a -mtune=cortex-a72"
+```
+
   7. By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
   ```bash
   $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types"
