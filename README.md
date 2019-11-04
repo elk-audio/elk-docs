@@ -18,15 +18,15 @@ These guides detail the minimum set of steps needed to get you up and running. T
 1. [Get Started With the ELK Development Kit Software - Run your first plugin on a Linux machine](documents/getting_started_with_development_kit_software.md):  
      Step-by-step tutorial after which you will be able to run, hear and control our DAW hosting a VST3 synthesizer plugin on Linux.  
 	​  
-2. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
-    Step-By-Step guide for getting the Elk Pi Shield working with a Raspberry Pi 3.  
-	​  
+2. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):
+    Step-By-Step guide for getting the Elk Pi Hat working with a Raspberry Pi 3.
+
 3. [Get Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
-    Step-By-Step guide for getting the UpCore Shield working with a Rocket/UpCore board.  
-	​  
+    Step-By-Step guide for getting the UpCore Hat working with a Rocket/UpCore board.
+
 4. [Start running Elk on Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
-    Get your first sound - Step-By-Step guide for connecting audio to and from the shield, running Sushi, connecting MIDI and playing sound.   
-	​  
+    Get your first sound - Step-By-Step guide for connecting audio to and from the hat, running Sushi, connecting MIDI and playing sound.
+
 5. [Build your first JUCE plugin for Elk](documents/getting_started_with_cross_compilation.md):  
     Step-By-Step guide for building our example JUCE plugin for the Elk Pi.   
 
@@ -58,7 +58,7 @@ These guides detail the minimum set of steps needed to get you up and running. T
 
 ## 2. Tech Articles
 
-On the MIND Music Labs website, there are a number of Tech articles that cover important topics directly relevant for learning to work with our Development Kit:
+On the Elk website, there are a number of Tech articles that cover important topics directly relevant for learning to work with our Development Kit:
 
 1. [How ELK Works: A look Under the Hood of a Device Powered By ELK](https://www.elk.audio/a-look-under-the-hood-of-a-device-powered-by-elk/)
 2. [ELK Development Boards Overview](https://www.elk.audio/development-board-overview/)

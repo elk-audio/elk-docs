@@ -90,7 +90,7 @@ Tip: If you do not have a physical keyboard available, you can use the ***Virtua
 
 #### Controlling the MDA JX 10 VST 3 plugin over OSC, with Open Stage Control
 
-If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the MIND Music Labs Tech blog, dedicated to the topic](https://www.elk.audio/controlling-plug-ins-in-elk-part-1-open-sound-control/).
+If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the Elk Tech blog, dedicated to the topic](https://www.elk.audio/controlling-plug-ins-in-elk-part-1-open-sound-control/).
 
 1. Download and install the free [Open Stage Control](https://openstagecontrol.ammd.net/) application to your computer.
 
