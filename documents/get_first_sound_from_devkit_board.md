@@ -2,7 +2,7 @@
 
 This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.
 
-The following steps are general for all our development kit boards, covering the software, and how you get your first sound to play from the board.
+The following steps are the same for all our development kit boards, covering the software, and how you get your first sound to play from the board.
 
 ## 1. Power it up, log on...
 
@@ -10,7 +10,7 @@ For getting access to the board terminal you have several options:
 
   1. Connect a monitor over HDMI, and a keyboard directly to the USB slot.
   2. Connect over SSH.
-  3. Connect through the serial tty using a UART-to-USB converter with a FTDI chip. Follow the instructions on the Sika Hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.
+  3. Connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.
 
 For setting up SSH connections follow these tips:
 
@@ -22,13 +22,13 @@ For setting up SSH connections follow these tips:
 
 1. You will find several configurations and plugins ready to test on the image, under the folders `~/config_files` and `~/plugins` in the user folder.
 
-   Unlike the VM, Sushi doesn't use JACK for audio on the Raspberry Pi, so you should instead run Sushi using the `-r` switch for selecting our RASPA low-latency front-end:
+   Unlike when running on a regular Linux machine, Sushi doesn't use JACK for audio on the Raspberry Pi, so you should run Sushi using the `-r` switch for selecting our RASPA low-latency front-end:
 
 ```bash
 $ sushi -r -c ~/config_files/mda-vst2-configs/config_mda_synth.json 
 ```
 
-2. To connect USB MIDI devices, just plug them and connect them with the `aconnect` tool:
+2. To connect USB Midi devices, just plug them and connect them with the `aconnect` tool:
 
 ```bash
 # List available port for connections
@@ -39,9 +39,9 @@ $ aconnect X Y
 # As an alternative to port numbers, it is possible to use the names reported by aconnect -l
 ```
 
-3. If you connect a USB MIDI keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!
+3. If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!
 
-(Since this is a development board, you will need to start Sushi manually - but in [Additional Development Kit Board Topics](devkit_further_topics.md) we show how the device can be made to load a configuration automatically on power-on).
+(Since this is a development board, you will need to start Sushi manually - but in [Additional Development Kit Board Topics](devkit_further_topics.md) we show how the device can be configured to load a setup automatically on power-on).
 
 ## 3. Powering Down
 

@@ -1,6 +1,6 @@
 # Getting Started With ELK Pi Development Kit  Hardware
 
-This document contains basic information on how to set up ELK Pi development boards. See also the relevant datasheet for your ELK Pi shield, for information on the hardware layout of the board.
+This document contains basic information on how to set up Elk Pi development boards. See also the relevant datasheet for your Elk Pi Hat, for information on the hardware layout of the board.
 
 # 1. Assembly
 
@@ -8,7 +8,7 @@ This document contains basic information on how to set up ELK Pi development boa
 
 ![Figure 1](illustrations/elk_pi_assembly_step_1.png)
 
-2. Plug the Sika on top of the Raspberry Pi (*Figure 2*).
+2. Plug the Hat on top of the Raspberry Pi (*Figure 2*).
 
    ![img](illustrations/elk_pi_assembly_step_2.png)
 
@@ -18,13 +18,11 @@ This document contains basic information on how to set up ELK Pi development boa
 
 ## 2. Flashing the Elk operating system image to the SD card
 
-The SD card you received with the board is currently empty - you will have to flash it with an image provided by us, to get the board running Elk.
-
-We did not pre-flash the cards, because with the Development Kit still being in beta, the image is subject to frequent changes.
+To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required
 
 1. Download the compressed image from the provided link. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
 
-2. Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter, which we did not provide in the box.
+2. Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.
 
 ### Windows:
 
@@ -37,7 +35,7 @@ We did not pre-flash the cards, because with the Development Kit still being in 
 ### Linux
 At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain `dd` with these instructions:
 
-   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc` or following letters. We will refer to it as `/dev/sdX` in the following.
+   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc`, or following letters, or sometimes `/dev/mmcblk0`. We will refer to it as `/dev/sdX` in the following.
    
    2. Unmount the SD card if it was already mounted:
    
@@ -45,7 +43,7 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
      $ sudo unmount /dev/sdX*
    ```
    
-   3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you can risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run :
+   3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run :
       
    ```bash
       $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync

@@ -2,20 +2,20 @@
 
 ## Overview
 
-We take you through the steps to cross-compile our example JUCE plugin for Elk Pi.
+Here we take you through the steps needed to cross-compile our example JUCE plugin for Elk Pi.
 
-As you may recall, plugins built for the Elk Pi platform need to be headless, i.e. without a GUI. For this purpose we have an Elk fork of JUCE, using which GUI dependencies are removed, so that a plugin can be cross-compiled without modifications to the plugin codebase itself.
+As you may recall, plugins built for the Elk Pi platform need to be headless, i.e. without a GUI. For this purpose we have an Elk fork of JUCE, in which GUI dependencies are removed, so that a plugin can be cross-compiled without modifications to the plugin codebase itself.
 
 Our JUCE example plugin consists of several components. For this guide, you need only:
 
 1. **elk_juce_example_synth** - the plugin, which can play back a sample sound reacting to MIDI note input, and also has the JUCE internal Reverb effect embedded, with two parameters exposed, Room Size and Damping. The folder includes the code for the **Elk JUCE fork**, so that you can build without downloading it separately, and without building and running Projucer.
 2. **elk_juce_plugin.json** - a Sushi configuration file, ready to use with the Elk Pi board.
 
-To follow this guide you need to have access to the Steinberg VST2 2.4 SDK, which may be a problem if you do not already have it, since Steinberg no longer provides such licenses. This limitation is because JUCE at the time of writing still doesn't support exporting to VST3 for Linux. For this reason, the built binaries are also available to download from the elk-examples downloads section, for the Elk Pi, so that you can at least test all other steps of this guide, besides the actual compilation.
+To follow this guide you also need to have access to the Steinberg VST2 2.4 SDK, which may be a problem if you do not already have it, since Steinberg no longer provides licenses for building VST2.4 plugins. This limitation is because JUCE at the time of writing still doesn't support exporting to VST3 for Linux. For this reason, the built binaries are also available to download from the elk-examples downloads section, for the Elk Pi, so that you can at least test all other steps of this guide, besides the actual compilation.
 
 ## Cross-Compilation:
 
-Clone the [elk-examples bitbucket repository](https://bitbucket.org/mindswteam/elk-examples/src/master/) to your computer.
+Clone the [elk-examples bitbucket repository](https://github.com/elk-audio/elk-examples/src/master/) to your computer.
 
 Under the folder `elk-examples/elk_juce_remote_plugin_example`, you will find the above items 1 and 2.
 
