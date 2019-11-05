@@ -57,11 +57,11 @@ These guides detail the minimum set of steps needed to get you up and running. T
 
 On the Elk website, there are a number of Tech articles that cover important topics directly relevant for learning to work with our Development Kit:
 
-1. [How ELK Works: A look Under the Hood of a Device Powered By ELK](https://www.elk.audio/a-look-under-the-hood-of-a-device-powered-by-elk/)
-2. [ELK Development Boards Overview](https://www.elk.audio/development-board-overview/)
-3. [Discover Sushi: The DAW Inside ELK](https://www.elk.audio/daw-like-sushi/)
-4. [Controlling Plug-Ins in ELK, Part1: Open Sound Control](https://www.elk.audio/controlling-plug-ins-in-elk-part-1-open-sound-control/)
-5. [Controlling Plug-Ins in ELK, Part2: Google Remote Procedure Call](https://www.elk.audio/controlling-plug-ins-in-elk-part-2-google-remote-procedure-call-grpc/)
+1. [How ELK Works: A look Under the Hood of a Device Powered By ELK](https://elk.audio/how-elk-works/)
+2. [ELK Development Boards Overview](https://elk.audio/elk-development-boards-overview-3/)
+3. [Discover Sushi: The DAW Inside ELK](https://elk.audio/daw-like-sushi/)
+4. [Controlling Plug-Ins in ELK, Part1: Open Sound Control](https://elk.audio/controlling-plug-ins-in-elk-part-i/)
+5. [Controlling Plug-Ins in ELK, Part2: Google Remote Procedure Call](https://elk.audio/controlling-plug-ins-in-elk-part-ii/)
 
 We also present technical articles more broadly relevant for audio development:
 
@@ -80,7 +80,7 @@ The Development Kit ships with a number of example plugins and configurations, w
 3. MDA jx10 LV2 plugin example
 4. ELK Multi FX Example
 
-The examples can all be downloaded from our [private elk-examples bitbucket repository](https://github.com/elk-audio/elk-examples/src/master/).
+The examples can all be downloaded from our [Github elk-examples repository](https://github.com/elk-audio/elk-examples/).
 
 ## 4. ELK Online Forum
 
