@@ -10,7 +10,7 @@ At its base, Elk is a custom embedded Linux distribution built using tools from 
 
 The core components of the Elk distribution on the target board are:
 
-  + **Elk Linux Kernel**, based on _Linux 4.14.x_ LTS series and the Xenomai I-Pipe patch
+  + **Elk Linux Kernel**, based on _Linux 4.19.x_ LTS series and the Xenomai I-Pipe patch
 
   + **Low-latency audio driver** based on such kernel
 
