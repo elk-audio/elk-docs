@@ -63,14 +63,6 @@ On the Elk website, there are a number of Tech articles that cover important top
 4. [Controlling Plug-Ins in ELK, Part1: Open Sound Control](https://elk.audio/controlling-plug-ins-in-elk-part-i/)
 5. [Controlling Plug-Ins in ELK, Part2: Google Remote Procedure Call](https://elk.audio/controlling-plug-ins-in-elk-part-ii/)
 
-We also present technical articles more broadly relevant for audio development:
-
-1. [Audio Latency Demystified, Part 1](https://www.elk.audio/audio-latency-demystified-part-1/)
-2. [Audio Latency Demystified, Part 2: Real-Time Linux Approaches](https://www.elk.audio/audio-latency-demystified-part-2-4-real-time-linux-approaches/)
-3. [Using CMake for Compiling XMOS Code](https://www.elk.audio/using-cmake-for-compiling-xmos-code/)
-4. [std::algorithm for Audio, Part 1](https://www.elk.audio/stdalgorithm-for-audio/)
-5. [std::algorithm for Audio, Part 2](https://www.elk.audio/stdalgorithm-for-audio-part-ii/)
-
 ## 3. Examples
 
 The Development Kit ships with a number of example plugins and configurations, which you should use to better learn what is possible with ELK:
