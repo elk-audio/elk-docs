@@ -63,4 +63,4 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
 1. Put the SD card in the corresponding slot on the Raspberry Pi.
 2. Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.
 
-From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [run Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
+From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Run Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).

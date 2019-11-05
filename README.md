@@ -18,7 +18,7 @@ These guides detail the minimum set of steps needed to get you up and running. T
 1. [Elk Development Kit Software - Run your first plugin on a Linux machine](documents/getting_started_with_development_kit_software.md):  
      Step-by-step tutorial after which you will be able to run, hear and control our DAW hosting a VST3 synthesizer plugin on Linux.  
 	​  
-2. [Elk Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):
+2. [Elk Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):  
     Step-By-Step guide for getting the Elk Pi board working with a Raspberry Pi 3.  
 	​  
 3. [UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
