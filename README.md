@@ -28,7 +28,7 @@ These guides detail the minimum set of steps needed to get you up and running. T
     Get your first sound - Step-By-Step guide for connecting audio to and from the board, running Sushi, connecting MIDI and playing sound.  
 	​ 
 
-### 1.2 ELK Reference Manual
+### 1.2 Elk Reference Manual
 
 1. [Additional Development Kit Board Topics:](documents/devkit_further_topics.md)  
     Learn to connect to your board over serial cable or WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.  
