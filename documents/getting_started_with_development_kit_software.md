@@ -6,7 +6,7 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 ### Running a plugin within the Sushi host
 
-You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
+You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/elk-examples/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
 
 To output some sound, you need to have Jack audio configured on your computer, which is beyond the scope of this tutorial - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! In this example we also show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer too.
 
