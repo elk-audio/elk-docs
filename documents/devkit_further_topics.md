@@ -13,7 +13,7 @@ For example, on a host Linux / macOS machine:
 $ picocom /dev/ttyXXX -b 115200 -l
 ```
 
-With a serial connection you can login and have full shell access to the board but files need to be transfered of the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
+With a serial connection you can login and have full shell access to the board but files need to be transferred of the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 
 ## Set up WiFi connection
 
@@ -61,13 +61,13 @@ The internal eMMC storage on the board is divided into four partitions:
 The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted and it will change the bootloader configuration to boot from it if the update is run successfully. 
 
 For this reason, it is recommended that you put any file using for temporary development in the user
-data partition, which will remain untouched after running a software update. It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimize NAND wearing and possible corruptions when powering off the device.
+data partition, which will remain untouched after running a software update. It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.
 
 ## Running another plugin using Sushi
 
-Follow the instructions in [Building Plugins for ELK](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it's possible to build the plugin locally on the board if you prefer.
+Follow the instructions in [Building Plugins for Elk](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it's possible to build the plugin locally on the board if you prefer.
 
-After you have the plugin binary, copy it to the board (preferably somewhere in /udata) and create a Sushi configuation file for it following one of our examples or looking at the provided JSON Schema for more advanced configuration.
+After you have the plugin binary, copy it to the board (preferably somewhere in /udata) and create a Sushi configuration file for it following one of our examples or looking at the provided JSON Schema for more advanced configuration.
 
 ## Monitoring Sushi performance
 
@@ -87,7 +87,7 @@ However, Elk distributions are shipped with Sushi compiled at different buffer s
 
 In case you want to use a different buffer size, you will also need to change the audio driver parameter `audio_buffer_size` in the script placed by default in `/usr/bin/load-drivers` and reboot the board (or restart the audio driver by removing and reinserting the module `audio_rtdm`).
 
-## Setting the board for automatic startup
+## Setting the board up for automatic startup
 
 If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.
 

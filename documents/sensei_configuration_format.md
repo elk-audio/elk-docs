@@ -55,7 +55,7 @@ Backends represent an interface for outputing data on the host or to a network. 
   * "base_path" - The Prefix added to osc messages. Only valid if type = "osc".
   * "base_raw_input_path" - The prefix added to osc messages with unprocessed values. Only valid if type = "osc".
 
-# Hw Frontend
+# Hardware Frontend
 
 The Hardware frontend is the type and method of connecting to the controller handling the physical sensors. Currently 2 controllers are supported. A Teensy 3.2 over a serial connection and Xmos controller connected through Raspalib.
 
@@ -73,7 +73,7 @@ Sensors are a list of connected hardware sensor or indicators like knobs, button
   * "sensor_type" - An abstract type that describes the behaviour of the sensor. Valid 
   * "digital_input" - An input with only 2 possible values, true or false, useful for button or switches.
   * "range_input" - An input with multiple discrete values, i.e. a multi position switch 
-  * "analog_input" - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the osc backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.
+  * "analog_input" - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the OSC backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.
   * "continuous_input" - Input from a sensor that comes "pre-processed" in floating point format. I.e. IMU:s or similar complex devices.
   * "digital_output" - An output that can be set low or high, for controlling diodes or similar.
   * "range_output" - An output that can accept a range of discrete values.
@@ -86,9 +86,9 @@ Sensors are a list of connected hardware sensor or indicators like knobs, button
 
 # Sensor Hardware
 
-The hardware specific config. This will be handled differently depending on what hw frontend is used, and not all hardware frontend have support for all options.
+The hardware specific config. This will be handled differently depending on what hardware frontend is used, and not all hardware frontend have support for all options.
 
-  * "hardware_type" -  The physical type of sensor used. This will be handled differently depending on the hw frontend used. Recognised values are:"analog_input_pin, "digital_input_pin", "digital_output_pin", "ribbon", "button", "encoder", "n_way_switch", "stepped_output", "multiplexer", "imu_pitch", "imu_roll", imu_yaw".
+  * "hardware_type" -  The physical type of sensor used. This will be handled differently depending on the hardware frontend used. Recognised values are:"analog_input_pin, "digital_input_pin", "digital_output_pin", "ribbon", "button", "encoder", "n_way_switch", "stepped_output", "multiplexer", "imu_pitch", "imu_roll", imu_yaw".
   * "pins" - A list of the physical pins the sensor is connected to. The number of pins depend on the sensor hardware type.
   * "adc_resolution" - For analog inputs, this represents the resolution of the analog to digital converter.
   * "delta_ticks" -  The update speed of the output represented as a fraction of the main tick rate of the controller.

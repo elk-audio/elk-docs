@@ -1,4 +1,4 @@
-# Run ELK on Development Kit Hardware
+# Run Elk on Development Kit Hardware
 
 This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.
 
@@ -51,6 +51,6 @@ Instead, type `sudo poweroff` to safely shutdown the system.
 
 ## 4. Further steps
 
-Congratulations, you have now learned all the necessary first steps for working with the ELK development kit hardware and software!
+Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!
 
 There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our [Additional Development Kit Board Topics](devkit_further_topics.md).

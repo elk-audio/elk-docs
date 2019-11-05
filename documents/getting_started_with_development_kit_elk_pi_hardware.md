@@ -1,6 +1,6 @@
-# Getting Started With ELK Pi Development Kit  Hardware
+# Getting Started With Elk Pi Development Kit  Hardware
 
-This document contains basic information on how to set up Elk Pi development boards. See also the relevant datasheet for your Elk Pi Hat, for information on the hardware layout of the board.
+This document contains basic information on how to set up Elk Pi development boards. See also the relevant datasheet for your Elk Pi Board, for information on the hardware layout of the board.
 
 # 1. Assembly
 
@@ -38,18 +38,18 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
    1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc`, or following letters, or sometimes `/dev/mmcblk0`. We will refer to it as `/dev/sdX` in the following.
    
    2. Unmount the SD card if it was already mounted:
-   
+
    ```bash
      $ sudo unmount /dev/sdX*
    ```
-   
+
    3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run :
       
    ```bash
       $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync
    ```
-   
-   
+
+
    4. The process can take a few minutes, so this is a good time to stretch your legs.
 
       If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
@@ -63,4 +63,4 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
 1. Put the SD card in the corresponding slot on the Raspberry Pi.
 2. Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.
 
-From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [start running Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
+From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [run Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).

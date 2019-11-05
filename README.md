@@ -1,31 +1,32 @@
-# ELK Development Kit
+# Elk Development Kit
 
-This collection of documents is our introduction and manual for the ELK Development Kit.
+This collection of documents is our introduction and manual for the Elk Development Kit.
 
-The Development Kit consists of a software prototyping component, and the ELK Add-On board for the Raspberry Pi/UpCore, which will be documented here in that order.
+The Development Kit consists of a software prototyping component, and the Elk Add-On board for the Raspberry Pi/UpCore, which will be documented here in that order.
 
-You will be able to run the software component natively on a Debian Linux, on a virtual machine, as well as on the ELK development board. Mostly you interact with all three in a very similar way, but when there are differences we will explicitly point them out.
+You will be able to run the software component natively on a Debian Linux, on a virtual machine, as well as on the Elk development board. Mostly you interact with all three in a very similar way, but when there are differences we will explicitly point them out.
 
 ## 1. Documentation
 
-1. [ELK Overview](documents/elk_overview.md):  
-   An overview of all the components involved (ELK Linux, Sushi, Sensei, Twine, etc).  
+1. [Elk Overview](documents/elk_overview.md):  
+   An overview of all the components involved (Elk Audio OS, Sushi, Sensei, Twine, etc).  
 
 ### 1.1 Getting Started
 
 These guides detail the minimum set of steps needed to get you up and running. There is however much more functionality in Elk, detailed in the subsequent reference manual.
 
-1. [Get Started With the ELK Development Kit Software - Run your first plugin on a Linux machine](documents/getting_started_with_development_kit_software.md):  
+1. [Elk Development Kit Software - Run your first plugin on a Linux machine](documents/getting_started_with_development_kit_software.md):  
      Step-by-step tutorial after which you will be able to run, hear and control our DAW hosting a VST3 synthesizer plugin on Linux.  
 	​  
-2. [Get Started With ELK Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):
-    Step-By-Step guide for getting the Elk Pi Hat working with a Raspberry Pi 3.
-
-3. [Get Started With UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
-    Step-By-Step guide for getting the UpCore Hat working with a Rocket/UpCore board.
-
-4. [Start running Elk on Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
-    Get your first sound - Step-By-Step guide for connecting audio to and from the hat, running Sushi, connecting MIDI and playing sound.
+2. [Elk Pi Development Kit Hardware](documents/getting_started_with_development_kit_elk_pi_hardware.md):
+    Step-By-Step guide for getting the Elk Pi board working with a Raspberry Pi 3.  
+	​  
+3. [UpCore Development Kit Hardware](documents/getting_started_with_development_kit_upcore_hardware.md):  
+    Step-By-Step guide for getting the UpCore board working with a Rocket/UpCore board.  
+	​  
+4. [Run Elk on Development Kit Hardware (common for all boards)](documents/get_first_sound_from_devkit_board.md):  
+    Get your first sound - Step-By-Step guide for connecting audio to and from the board, running Sushi, connecting MIDI and playing sound.  
+	​ 
 
 ### 1.2 ELK Reference Manual
 
@@ -33,7 +34,7 @@ These guides detail the minimum set of steps needed to get you up and running. T
     Learn to connect to your board over serial cable or WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.  
 	​  
 	
-2. [ELK Examples Overview](documents/elk_examples_overview.md):  
+2. [Elk Examples Overview](documents/elk_examples_overview.md):  
     A summary of the available examples which showcase Elk functionality, and a description of each.  
     ​  
 
@@ -49,31 +50,31 @@ These guides detail the minimum set of steps needed to get you up and running. T
     To connect external physical controls to plugin parameters, you also need to write a configuration file for our Sensei software.  
     ​  
 
-6. [Building Plugins for ELK](documents/building_plugins_for_elk.md):  
-     This document is a short guide to help you through the needed steps to adapt and compile plugins to run on ELK.  
+6. [Building Plugins for Elk](documents/building_plugins_for_elk.md):  
+     This document is a short guide to help you through the needed steps to adapt and compile plugins to run on Elk.  
      ​
 
 ## 2. Tech Articles
 
 On the Elk website, there are a number of Tech articles that cover important topics directly relevant for learning to work with our Development Kit:
 
-1. [How ELK Works: A look Under the Hood of a Device Powered By ELK](https://elk.audio/how-elk-works/)
-2. [ELK Development Boards Overview](https://elk.audio/elk-development-boards-overview-3/)
-3. [Discover Sushi: The DAW Inside ELK](https://elk.audio/daw-like-sushi/)
-4. [Controlling Plug-Ins in ELK, Part1: Open Sound Control](https://elk.audio/controlling-plug-ins-in-elk-part-i/)
-5. [Controlling Plug-Ins in ELK, Part2: Google Remote Procedure Call](https://elk.audio/controlling-plug-ins-in-elk-part-ii/)
+1. [How Elk Works: A look Under the Hood of a Device Powered By Elk](https://elk.audio/how-elk-works/)
+2. [Elk Development Boards Overview](https://elk.audio/elk-development-boards-overview-3/)
+3. [Discover Sushi: The DAW Inside Elk](https://elk.audio/daw-like-sushi/)
+4. [Controlling Plug-Ins in Elk, Part1: Open Sound Control](https://elk.audio/controlling-plug-ins-in-elk-part-i/)
+5. [Controlling Plug-Ins in Elk, Part2: Google Remote Procedure Call](https://elk.audio/controlling-plug-ins-in-elk-part-ii/)
 
 ## 3. Examples
 
-The Development Kit ships with a number of example plugins and configurations, which you should use to better learn what is possible with ELK:
+The Development Kit ships with a number of example plugins and configurations, which you should use to better learn what is possible with Elk:
 
 1. MDA jx10 VST2 plugin example
 2. MDA jx10 VST3 plugin example
 3. MDA jx10 LV2 plugin example
-4. ELK Multi FX Example
+4. Elk Multi FX Example
 
-The examples can all be downloaded from our [Github elk-examples repository](https://github.com/elk-audio/elk-examples/).
+The examples can all be downloaded from our [GitHub elk-examples repository](https://github.com/elk-audio/elk-examples/).
 
-## 4. ELK Online Forum
+## 4. Elk Online Forum
 
-Finally, for any questions or discussion on the ELK Development Kit, please refer to the [ELK Online Forum](https://forum.elk.audio).
+Finally, for any questions or discussion on the Elk Development Kit, please refer to the [Elk Online Forum](https://forum.elk.audio).

@@ -1,10 +1,10 @@
 # Elk Examples Overview
 
-All example files can all be downloaded from our [private elk-examples bitbucket repository](https://github.com/elk-audio/elk-examples/src/master/), with the binary files they depend on available in [that repository's Downloads section](https://github.com/elk-audio/elk-examples/downloads/).
+All example files can all be downloaded from our [elk-examples repository](https://github.com/elk-audio/elk-examples/), with the binary files they depend on available in the [Releases section](https://github.com/elk-audio/elk-examples/releases).
 
 For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the [MDA JX 10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
 
-Note that the linked files below, are all built for running natively on Linux or the UpCode board - all of which are for an Intel architecture.
+Note that the linked files below, are all built for running natively on Linux or the UpCore board. All are for an Intel architecture, and will also run on Linux natively on an Intel computer.
 
 Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.
 
@@ -14,14 +14,14 @@ This example requires the following files:
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/downloads/mda-vst3.vst3.tar.xz) - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
+3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz) - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
 4. mda-vst3-touchosc-gui.touchosc - a [TouchOSC](https://hexler.net/products/touchosc) GUI controller, mirroring the controls in the Open Stage Control GUI.
 
 First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.
 
 It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.
 
-This is the example referred to also in our guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)".
+This is the example referred to also in our guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)".
 
 ## MDA JX 10 VST 2 Example
 
@@ -31,7 +31,7 @@ This example requires the following files:
 
 1. config_play_vst2.json - the Sushi configuration file.
 2. mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst2-plugins.tar.gz](https://github.com/elk-audio/elk-examples/downloads/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.
+3. [mda-vst2-plugins.tar.gz](https://github.com/elk-audio/elk-examples/releases/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.
 
 The configuration file for this example differs to the one for the VST 3 version of the same plugin in one crucial way: besides routing MIDI messages directly to the plugin, it also:
 
@@ -42,7 +42,7 @@ You will also notice that the OSC GUI for the VST 2 version lacks controls for P
 
 The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.
 
-The instructions for the VST 3 example in the guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)" translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
+The instructions for the VST 3 example in the guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)" translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
 
 ## LV2VST Wrapper, with MDA JX 10 LV2 Example
 
@@ -50,10 +50,10 @@ This example requires the following files:
 
 1. config_play_lv2vst.json - the Sushi configuration file.
 2. mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [lv2vst_plugin.tar.xz](https://github.com/elk-audio/elk-examples/downloads/lv2vst_plugin.tar.xz) - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
-4. [mod-mda-JX10.lv2.tar.xz](https://github.com/elk-audio/elk-examples/downloads/mod-mda-JX10.lv2.tar.xz) - the LV2 MDA JX 10 plugin.
+3. [lv2vst_plugin.tar.xz](https://github.com/elk-audio/elk-examples/releases/lv2vst_plugin.tar.xz) - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
+4. [mod-mda-JX10.lv2.tar.xz](https://github.com/elk-audio/elk-examples/releases/mod-mda-JX10.lv2.tar.xz) - the LV2 MDA JX 10 plugin.
 
-Again, the instructions for the VST 3 example in the guide "[Get Started With the ELK Development Kit Software](getting_started_with_development_kit_software.md)" , translate straightforwardly also for this example.
+Again, the instructions for the VST 3 example in the guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)" , translate straightforwardly also for this example.
 
 The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.
 
@@ -64,24 +64,8 @@ This example requires the following files:
 1. elk_multi_fx.json - the Sushi configuration file.
 2. elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.
 3. elk_multi_fx_main_app - a python script that acts as a middleman, a 'glue' app, between Sushi and the Open stage control GUI.
-4. [mda-vst2-plugins.tar.gz](https://github.com/elk-audio/elk-examples/downloads/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing the effects the example invokes.
+4. [mda-vst2-plugins.tar.gz](https://github.com/elk-audio/elk-examples/releases/mda-vst2-plugins.tar.gz) - a build of the MDA VST 2 plugins, containing the effects the example invokes.
 
 This is a more complex example, demonstrating a simple 'glue' app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.
 
 The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.
-
-## Elk JUCE Plugin Example
-
-This example is a short plugin written in JUCE, whose purpose is to easily demonstrate the cross-compilation of a JUCE plugin for Elk, and how the plugin GUI can be separated into a separate process, so that when the plugin is running within Sushi, the GUI can still be invoked from a separate computer to control the plugin remotely over OSC.
-
-As such, it consists of both code and binary components.
-
-1. elk_juce_example_synth - this is a minimal JUCE plugin, which can play back a sample sound reacting to MIDI note input, and also has the JUCE internal Reverb effect embedded, with two parameters exposed, Room Size and Damping.
-2. elk_juce_example_synth_gui - this is a standalone application, which references the same GUI code as the plugin above, but only uses it to transmit OSC messages.
-3. elk_juce_example_common - this is the common JUCE code, shared between the above two projects.
-4. elk_juce_plugin.json.
-
-For your convenience, the two programs are available to download from the elk-examples downloads section in binary builds, the GUI for Linux, and the plugin already built with the JUCE Elk fork, for the Elk Pi.
-
-This is the example referenced in our" Getting Started with Cross-Compilation" guide.
-

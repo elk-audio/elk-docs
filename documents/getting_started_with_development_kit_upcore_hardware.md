@@ -1,8 +1,8 @@
-# Getting Started with the ELK UpCore Development Kit Hardware
+# Getting Started with the Elk UpCore Development Kit Hardware
 
-This document contains basic information on how to set up ELK UpCore development boards. See also the relevant datasheet for your ELK Rocket UpCore shield, for information on the hardware layout of the board.
+This document contains basic information on how to set up Elk UpCore development boards. See also the relevant datasheet for your Elk Rocket UpCore board, for information on the hardware layout of the board.
 
-If you have an Elk Pi Development Kit board, refer instead to the dedicated step-by-step guide [Getting Started With ELK Pi Development Kit Hardware](getting_started_with_development_kit_elk_pi_hardware.md).
+If you have an Elk Pi Development Kit board, refer instead to the dedicated step-by-step guide [Getting Started With Elk Pi Development Kit Hardware](getting_started_with_development_kit_elk_pi_hardware.md).
 
 ## 1. Installing an image to eMMC
 
@@ -22,5 +22,5 @@ If your boards came with the system already flashed to eMMC, you can skip this p
 
 1. Connect the provided power supply cable to the Elk UpCore Board - it will boot into Linux.
 
-From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [start running Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
+From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Run Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
 

@@ -1,4 +1,4 @@
-# Getting Started With ELK Development Kit Software: Run your first plugin in ELK
+# Getting Started With Elk Development Kit Software: Run your first plugin on Elk
 
 ## Overview
 
@@ -6,7 +6,7 @@ Here you will quickly see which the first steps are, to run a plugin from within
 
 ### Running a plugin within the Sushi host
 
-You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Downloads section of the elk-examples repository](https://github.com/elk-audio). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
+You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
 
 To output some sound, you need to have Jack audio configured on your computer, which is beyond the scope of this tutorial - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! In this example we also show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer too.
 
@@ -14,11 +14,11 @@ To output some sound, you need to have Jack audio configured on your computer, w
 
 First we assume you are able to run Sushi and connect to jack audio. 
 
-The example used, requires that you have these files from our [elk-examples repository](https://github.com/elk-audio/elk-examples/src/master/):
+The example used, requires that you have these files from our [elk-examples repository](https://github.com/elk-audio/elk-examples/):
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio//elk-examples/downloads/mda-vst3.vst3.tar.xz) - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
+3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz) - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the TouchOSC app.
 
 First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
@@ -45,7 +45,7 @@ Copyright 2016-2019 Elk, Stockholm
 3. Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:
 
 ![CATIA with SUSHI](illustrations/CATIA_with_SUSHI.png)
-
+​  
 Note that its outputs are already connected.
 
 That is because the `--connect-ports` command-line option used, attempts to connect the Sushi outputs. If they are not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.
@@ -90,18 +90,20 @@ Tip: If you do not have a physical keyboard available, you can use the ***Virtua
 
 #### Controlling the MDA JX 10 VST 3 plugin over OSC, with Open Stage Control
 
-If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the Elk Tech blog, dedicated to the topic](https://www.elk.audio/controlling-plug-ins-in-elk-part-1-open-sound-control/).
+If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the Elk Tech blog, dedicated to the topic](https://elk.audio/controlling-plug-ins-in-elk-part-i/).
 
 1. Download and install the free [Open Stage Control](https://openstagecontrol.ammd.net/) application to your computer.
 
 2. Upon starting it, you will see the screen below. Here, all you need to do, is enter the IP and Port number, as is displayed under 'send' below. If you run the software on the same computer as you run Sushi, the IP should remain 127.0.0.1, and if you have not changed the Sushi default configuration, Sushi's Port should remain 24024.
 
    ![OpenStageControl_LaunchScreen](illustrations/OpenStageControl_LaunchScreen.png)
-
+​  
+   
    3. Click Start, and subsequently 'Browse...', to navigate to the path where "mda_jx10_vst3_open_stage_control_gui.json" is available.
    4. You will now see the GUI below for controlling the jx10 synthesizer:
 
-![OpenStageControl_with_jx10](illustrations/OpenStageControl_with_jx10.png)``
+![OpenStageControl_with_jx10](illustrations/OpenStageControl_with_jx10.png) 
+​  
 
 5. Assuming everything is correctly configured, the controls on the screen will send OSC messages to to the jx10 synth via Sushi, altering its parameters.
 
