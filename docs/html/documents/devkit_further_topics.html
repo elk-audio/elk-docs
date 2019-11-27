@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Additional Topics &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples Overview" href="elk_examples_overview.html" />
+    <link rel="prev" title="Run Elk on Boards" href="get_first_sound_from_devkit_board.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="elk_examples_overview.html" title="Examples Overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="get_first_sound_from_devkit_board.html" title="Run Elk on Boards"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="additional-topics">
+<h1>Additional Topics<a class="headerlink" href="#additional-topics" title="Permalink to this headline">¶</a></h1>
+<p>Learn to connect to your board over serial cable of WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.</p>
+<div class="section" id="connecting-over-serial-cable">
+<h2>Connecting Over Serial Cable<a class="headerlink" href="#connecting-over-serial-cable" title="Permalink to this headline">¶</a></h2>
+<p>Attach a serial cable from your PC to the board, using a TTL-USB adapter and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).</p>
+<p>For example, on a host Linux / macOS machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
+$ picocom /dev/ttyXXX -b <span class="m">115200</span> -l
+</pre></div>
+</div>
+<p>With a serial connection you can login and have full shell access to the board but files need to be transferred of the network or using a USB storage device. It might be useful to use <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (installed in the development images) as a terminal multiplexer when working in this way.</p>
+</div>
+<div class="section" id="set-up-wifi-connection">
+<h2>Set Up WiFi Connection<a class="headerlink" href="#set-up-wifi-connection" title="Permalink to this headline">¶</a></h2>
+<p>Log-in to the board as root (empty password in the dev image) using a serial cable or a HDMI monitor</p>
+<ul class="simple">
+<li>USB keyboard.</li>
+</ul>
+<p>On development images, you need to run the following command at the very first boot or anytime you
+perform an update with a .swu file to flash a new development root filesystem:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rfkill unblock all
+</pre></div>
+</div>
+<p>The easiest way to setup WiFi access is through <code class="docutils literal notranslate"><span class="pre">connman</span></code>, which is enabled by default in dev
+images:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ connmanctl
+<span class="c1"># Now you should see a connmanctl shell where to type these extra commands:</span>
+$ connmanctl&gt; agent on
+$ connmanctl&gt; scan wifi
+$ connmanctl&gt; services
+<span class="c1"># The last command should have showed you a list of WiFi network available with their SSID and a</span>
+<span class="c1"># long code starting with wifi_</span>
+$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete. </span>
+$ connmanctl&gt; Ctrl+D
+
+<span class="c1"># This will show you the IP address assigned to the board by DHCP</span>
+$ ip a
+</pre></div>
+</div>
+<p>Then, you can just ssh to the board from your host computer or transferring files using scp / sftp.
+Besides root access, you can login as <code class="docutils literal notranslate"><span class="pre">mind</span></code> user (password: <code class="docutils literal notranslate"><span class="pre">elk</span></code>) which is the preferred one to run sushi and other userspace applications.</p>
+</div>
+<div class="section" id="partition-layout">
+<h2>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">¶</a></h2>
+<p>The internal eMMC storage on the board is divided into four partitions:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">boot</span></code>    : Boot partition with secondary bootloader and Kernel image</li>
+<li><code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> : First copy of root filesystem</li>
+<li><code class="docutils literal notranslate"><span class="pre">rootfs2</span></code> : Second copy of root filesystem</li>
+<li><code class="docutils literal notranslate"><span class="pre">udata</span></code>   : User data partition</li>
+</ul>
+<p>The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in <code class="docutils literal notranslate"><span class="pre">/</span></code>). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted and it will change the bootloader configuration to boot from it if the update is run successfully.</p>
+<p>For this reason, it is recommended that you put any file using for temporary development in the user
+data partition, which will remain untouched after running a software update. It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.</p>
+</div>
+<div class="section" id="running-another-plugin-using-sushi">
+<h2>Running Another Plugin Using Sushi<a class="headerlink" href="#running-another-plugin-using-sushi" title="Permalink to this headline">¶</a></h2>
+<p>Follow the instructions in <a class="reference internal" href="building_plugins_for_elk.html"><span class="doc">Building Plugins for Elk</span></a> to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it’s possible to build the plugin locally on the board if you prefer.</p>
+<p>After you have the plugin binary, copy it to the board (preferably somewhere in /udata) and create a Sushi configuration file for it following one of our examples or looking at the provided JSON Schema for more advanced configuration.</p>
+</div>
+<div class="section" id="monitoring-sushi-performance">
+<h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
+<p>Given Sushi is running, to get a rough view of CPU performance, <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">htop</span></code> and similar Linux tools will only show you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 cat /proc/xenomai/sched/stat
+</pre></div>
+</div>
+<p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the <code class="docutils literal notranslate"><span class="pre">--timing-statistics</span></code> flag to get the results on a file.</p>
+</div>
+<div class="section" id="running-sushi-at-a-different-buffer-size">
+<h2>Running Sushi at a Different Buffer Size<a class="headerlink" href="#running-sushi-at-a-different-buffer-size" title="Permalink to this headline">¶</a></h2>
+<p>Audio buffer-size is a compile-time option in Sushi, since on embedded systems there’s rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimisations.</p>
+<p>However, Elk distributions are shipped with Sushi compiled at different buffer sizes, usually [16, 32, 64, 128]. The main command <code class="docutils literal notranslate"><span class="pre">sushi</span></code> is a wrapper around them that, when passed the option <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">N</span></code> as the first argument, select which one to run [default=64].</p>
+<p>In case you want to use a different buffer size, you will also need to change the audio driver parameter <code class="docutils literal notranslate"><span class="pre">audio_buffer_size</span></code> in the script placed by default in <code class="docutils literal notranslate"><span class="pre">/usr/bin/load-drivers</span></code> and reboot the board (or restart the audio driver by removing and reinserting the module <code class="docutils literal notranslate"><span class="pre">audio_rtdm</span></code>).</p>
+</div>
+<div class="section" id="setting-the-board-up-for-automatic-startup">
+<h2>Setting the Board Up for Automatic Startup<a class="headerlink" href="#setting-the-board-up-for-automatic-startup" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.</p>
+<ol class="simple">
+<li>Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
+and, in case, additional environment variables or Sushi command line flags.
+2. If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemd service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code></li>
+<li>Enable both Sushi and the MIDI connection service typing (as root):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
+$ systemctl <span class="nb">enable</span> midi-connections
+</pre></div>
+</div>
+<p>Sushi will still output its log file in /tmp. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root) to check that as well.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Additional Topics</a><ul>
+<li><a class="reference internal" href="#connecting-over-serial-cable">Connecting Over Serial Cable</a></li>
+<li><a class="reference internal" href="#set-up-wifi-connection">Set Up WiFi Connection</a></li>
+<li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
+<li><a class="reference internal" href="#running-another-plugin-using-sushi">Running Another Plugin Using Sushi</a></li>
+<li><a class="reference internal" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
+<li><a class="reference internal" href="#running-sushi-at-a-different-buffer-size">Running Sushi at a Different Buffer Size</a></li>
+<li><a class="reference internal" href="#setting-the-board-up-for-automatic-startup">Setting the Board Up for Automatic Startup</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="get_first_sound_from_devkit_board.html"
+                        title="previous chapter">Run Elk on Boards</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elk_examples_overview.html"
+                        title="next chapter">Examples Overview</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/devkit_further_topics.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="elk_examples_overview.html" title="Examples Overview"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="get_first_sound_from_devkit_board.html" title="Run Elk on Boards"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

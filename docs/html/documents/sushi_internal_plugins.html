@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sushi Internal Plugins &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sensei Configuration" href="sensei_configuration_format.html" />
+    <link rel="prev" title="Sushi Configuration" href="sushi_configuration_format.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sensei_configuration_format.html" title="Sensei Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sushi-internal-plugins">
+<h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
+<p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
+<p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
+<div class="section" id="audio-in-audio-out-plugins">
+<h2>Audio In / Audio Out plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="passthrough">
+<h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">¶</a></h3>
+<p>Simply a bypass.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.passthrough”</li>
+<li><strong>Parameters</strong> : none</li>
+</ul>
+</div>
+<div class="section" id="gain">
+<h3>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">¶</a></h3>
+<p>Simple gain plugin. Note that the input controls are not smoothed, so it is not suitable to be used in a real-time context where the gain is adjusted by the user.
+For those use cases, prefer using the internal gain parameter of the tracks.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.gain”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“gain” : gain in dB. Range: [-120, 120], Default: 0.0</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="equalizer">
+<h3>Equalizer<a class="headerlink" href="#equalizer" title="Permalink to this headline">¶</a></h3>
+<p>Parametric peak equalizer (single band). The implementation is based on the warped bilinear transform following RBJ Audio Cookbook’s formulas.
+Parameters are smoothed and can be modulated at run-time.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.equalizer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“frequency” : center frequency in Hertz. Range: [20, 20’000], Default: 1000.0</li>
+<li>“gain” : output gain in dB. Range: [-24, 24], Default: 0.0</li>
+<li>“q” : Q factor of the filter. Range: [0, 10], Default: 1.0</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="midi-in-audio-out-plugins">
+<h2>Midi In / Audio Out plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sample-player">
+<h3>Sample player<a class="headerlink" href="#sample-player" title="Permalink to this headline">¶</a></h3>
+<p>Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.sampleplayer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“volume” : static gain for the sample, in dB. Range: [-120, 36], Default: 0.0</li>
+<li>“attack” : envelope attack time, in seconds. Range: [0, 10], Default: 0.0</li>
+<li>“decay” : envelope decay time, in seconds. Range: [0, 10], Default: 0.0</li>
+<li>“sustain” : envelope sustain level. Range: [0, 1], Default: 1.0</li>
+<li>“release” : envelope release time, in seconds. Range: [0, 10], Default: 0.0</li>
+</ul>
+</li>
+<li><strong>Properties</strong>:<ul>
+<li>“sample_file” : path to .wav file to load</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="midi-in-midi-out-plugins">
+<h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arpeggiator">
+<h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
+<p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using SUSHI’s tempo configuration.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.arpeggiator”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“range” : octave range, as integer. Range: [1, 5], Default: 2</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="transposer">
+<h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">¶</a></h3>
+<p>Transposes incoming MIDI Note ON &amp; OFF events by a fixed amount of semitones.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.transposer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“transpose” : transpose amount in semitones. Range: [-24, 24], Default: 0</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="audio-in-parameter-out-plugins">
+<h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="peak-meter">
+<h3>Peak meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">¶</a></h3>
+<p>Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.peakmeter”</li>
+<li>Parameters (output only) :<ul>
+<li>“left” : detected level on the left track in dB. Range: [-120, 0]</li>
+<li>“right” : detected level on the right track in dB. Range: [-120, 0]</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sushi Internal Plugins</a><ul>
+<li><a class="reference internal" href="#audio-in-audio-out-plugins">Audio In / Audio Out plugins</a><ul>
+<li><a class="reference internal" href="#passthrough">Passthrough</a></li>
+<li><a class="reference internal" href="#gain">Gain</a></li>
+<li><a class="reference internal" href="#equalizer">Equalizer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#midi-in-audio-out-plugins">Midi In / Audio Out plugins</a><ul>
+<li><a class="reference internal" href="#sample-player">Sample player</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
+<li><a class="reference internal" href="#arpeggiator">Arpeggiator</a></li>
+<li><a class="reference internal" href="#transposer">Transposer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
+<li><a class="reference internal" href="#peak-meter">Peak meter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_configuration_format.html"
+                        title="previous chapter">Sushi Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sensei_configuration_format.html"
+                        title="next chapter">Sensei Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_internal_plugins.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sensei_configuration_format.html" title="Sensei Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

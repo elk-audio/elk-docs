@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Examples Overview &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sushi Configuration" href="sushi_configuration_format.html" />
+    <link rel="prev" title="Additional Topics" href="devkit_further_topics.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="devkit_further_topics.html" title="Additional Topics"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="examples-overview">
+<h1>Examples Overview<a class="headerlink" href="#examples-overview" title="Permalink to this headline">¶</a></h1>
+<p>All Elk example files can all be downloaded from our <a class="reference external" href="https://github.com/elk-audio/elk-examples/">elk-examples repository</a>, with the binary files they depend on available in the <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases">Releases section</a>.</p>
+<p>For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the <a class="reference external" href="https://sourceforge.net/projects/mda-vst/">MDA JX10 synthesizer</a>, using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.</p>
+<p>Note that the linked files below, are all built for running natively on Linux or the UpCore board. All are for an Intel architecture, and will also run on Linux natively on an Intel computer.</p>
+<p>Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.</p>
+<div class="section" id="mda-jx10-vst3-example">
+<h2>MDA JX10 VST3 Example<a class="headerlink" href="#mda-jx10-vst3-example" title="Permalink to this headline">¶</a></h2>
+<p>This example requires the following files:</p>
+<ol class="simple">
+<li>config_play_vst3.json - the Sushi configuration file.</li>
+<li>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.</li>
+<li>mda-vst3-touchosc-gui.touchosc - a <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC</a> GUI controller, mirroring the controls in the Open Stage Control GUI.</li>
+</ol>
+<p>First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.</p>
+<p>It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.</p>
+<p>This is the example referred to also in our guide “<a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Get Started With the Elk Development Kit Software</span></a>”.</p>
+</div>
+<div class="section" id="mda-jx10-vst2-example">
+<h2>MDA JX10 VST2 Example<a class="headerlink" href="#mda-jx10-vst2-example" title="Permalink to this headline">¶</a></h2>
+<p>Control of plugin parameters is to certain extent different between VST 2 and 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
+<p>This example requires the following files:</p>
+<ol class="simple">
+<li>config_play_vst2.json - the Sushi configuration file.</li>
+<li>mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.</li>
+</ol>
+<p>The configuration file for this example differs to the one for the VST 3 version of the same plugin in one crucial way: besides routing MIDI messages directly to the plugin, it also:</p>
+<ol class="simple">
+<li>Maps MIDI CC values to control synth parameters.</li>
+<li>Connects MIDI Program Change messages to the plugin</li>
+</ol>
+<p>You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
+<p>The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.</p>
+<p>The instructions for the VST 3 example in the guide “<a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Get Started With the Elk Development Kit Software</span></a>” translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.</p>
+</div>
+<div class="section" id="lv2vst-wrapper-with-mda-jx10-lv2-example">
+<h2>LV2VST Wrapper, with MDA JX10 LV2 Example<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2-example" title="Permalink to this headline">¶</a></h2>
+<p>This example requires the following files:</p>
+<ol class="simple">
+<li>config_play_lv2vst.json - the Sushi configuration file.</li>
+<li>mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the lv2vst plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin.</li>
+</ol>
+<p>Again, the instructions for the VST 3 example in the guide “<a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Get Started With the Elk Development Kit Software</span></a>” , translate straightforwardly also for this example.</p>
+<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.</p>
+</div>
+<div class="section" id="elk-multi-fx-example">
+<h2>Elk Multi FX Example<a class="headerlink" href="#elk-multi-fx-example" title="Permalink to this headline">¶</a></h2>
+<p>This example requires the following files:</p>
+<ol class="simple">
+<li>elk_multi_fx.json - the Sushi configuration file.</li>
+<li>elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li>elk_multi_fx_main_app - a python script that acts as a middleman, a ‘glue’ app, between Sushi and the Open stage control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing the effects the example invokes.</li>
+</ol>
+<p>This is a more complex example, demonstrating a simple ‘glue’ app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.</p>
+<p>The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples Overview</a><ul>
+<li><a class="reference internal" href="#mda-jx10-vst3-example">MDA JX10 VST3 Example</a></li>
+<li><a class="reference internal" href="#mda-jx10-vst2-example">MDA JX10 VST2 Example</a></li>
+<li><a class="reference internal" href="#lv2vst-wrapper-with-mda-jx10-lv2-example">LV2VST Wrapper, with MDA JX10 LV2 Example</a></li>
+<li><a class="reference internal" href="#elk-multi-fx-example">Elk Multi FX Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="devkit_further_topics.html"
+                        title="previous chapter">Additional Topics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sushi_configuration_format.html"
+                        title="next chapter">Sushi Configuration</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/elk_examples_overview.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="devkit_further_topics.html" title="Additional Topics"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sensei Configuration &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build VST Plugins for Elk" href="building_plugins_for_elk.html" />
+    <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="building_plugins_for_elk.html" title="Build VST Plugins for Elk"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sensei-configuration">
+<h1>Sensei Configuration<a class="headerlink" href="#sensei-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Following is a reference for the Sensei .json configuration file.</p>
+<div class="section" id="example-configuration">
+<h2>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;backends&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;raw_input_enabled&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;osc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span> <span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span> <span class="p">:</span> <span class="mi">23023</span><span class="p">,</span>
+            <span class="s2">&quot;base_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/sensei/sensors&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;base_raw_input_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/sensei/raw_input&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+
+    <span class="s2">&quot;hw_frontend&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;raspa_xmos&quot;</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;sensors&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;test_pin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;adc_resolution&quot;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span><span class="p">],</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input_pin&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+                    <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;adc_resolution&quot;</span> <span class="p">:</span> <span class="mi">8</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="backends">
+<h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
+<p>Backends represent an interface for outputing data on the host or to a network. Currently 2 backend types are implemented, Open Sound Control (osc) and stdout.</p>
+<ul class="simple">
+<li>“id” - Identification number of this backend.</li>
+<li>“enabled” - Whether this backend will output data or not.</li>
+<li>“raw input enabled” - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be outputed</li>
+<li>“type” - The type of backend, currently “osc” is the only recognised value, else will default to stdout.</li>
+<li>“host” - The address to output osc messages to, accepted values are “localhost” or an ip address. Only valid if type = “osc”.</li>
+<li>“port” - The port used on the above host. Only valid if type = “osc”.</li>
+<li>“base_path” - The Prefix added to osc messages. Only valid if type = “osc”.</li>
+<li>“base_raw_input_path” - The prefix added to osc messages with unprocessed values. Only valid if type = “osc”.</li>
+</ul>
+</div>
+<div class="section" id="hardware-frontend">
+<h2>Hardware Frontend<a class="headerlink" href="#hardware-frontend" title="Permalink to this headline">¶</a></h2>
+<p>The Hardware frontend is the type and method of connecting to the controller handling the physical sensors. Currently 2 controllers are supported. A Teensy 3.2 over a serial connection and Xmos controller connected through Raspalib.</p>
+<ul class="simple">
+<li>“type” - The type used, recognised values are “raspa_xmos” and “serial_teensy”.</li>
+<li>“port” - The serial device to connect to. Only valid if type = “serial_teensy”.</li>
+</ul>
+</div>
+<div class="section" id="sensor">
+<h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this headline">¶</a></h2>
+<p>Sensors are a list of connected hardware sensor or indicators like knobs, buttons, leds, pressure sensors as well as more advanced devices like IMU:s</p>
+<ul class="simple">
+<li>“id” - The identification number of this sensor.</li>
+<li>“enabled” - If true, values from this sensor will be sent to the output backend(s).</li>
+<li>“name” - Name of this sensor, will be used if the output backend supports it.</li>
+<li>“inverted” - If set to true, output values from this sensor will be inverted. For a digital sensor this means true will be outputted as false and for analog sensors</li>
+<li>“sensor_type” - An abstract type that describes the behaviour of the sensor. Valid</li>
+<li>“digital_input” - An input with only 2 possible values, true or false, useful for button or switches.</li>
+<li>“range_input” - An input with multiple discrete values, i.e. a multi position switch</li>
+<li>“analog_input” - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the OSC backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.</li>
+<li>“continuous_input” - Input from a sensor that comes “pre-processed” in floating point format. I.e. IMU:s or similar complex devices.</li>
+<li>“digital_output” - An output that can be set low or high, for controlling diodes or similar.</li>
+<li>“range_output” - An output that can accept a range of discrete values.</li>
+<li>“no_output” - A “helper” sensor that doesn’t output anything on it own. For instance for setting up multiplexers</li>
+<li>“mode” - The transmission mode of the sensor. Currently supported values are:</li>
+<li>“continuous” - Values will be sent periodically according to the set tick rate.</li>
+<li>“on_value_changed” - Values will be outputted only if a value is different from the previous value.</li>
+<li>“range” - The output range of the sensor and can be used to clip the high and low end of an analog or continuous sensor. The values represent the mappings of 0 and 1 respectively of the un-mapped output of the sensor. In the case of an analog input with 8 bits of resolution this is 0 and 255 respectively</li>
+<li>“timestamp” - If true, all outputs from this sensor will be outputted with a timestamp. If using the OSC backend, then the signature of the output address will have an extra “t” tag at the end, containing the timestamp.</li>
+</ul>
+</div>
+<div class="section" id="sensor-hardware">
+<h2>Sensor Hardware<a class="headerlink" href="#sensor-hardware" title="Permalink to this headline">¶</a></h2>
+<p>The hardware specific config. This will be handled differently depending on what hardware frontend is used, and not all hardware frontend have support for all options.</p>
+<ul class="simple">
+<li>“hardware_type” -  The physical type of sensor used. This will be handled differently depending on the hardware frontend used. Recognised values are:”analog_input_pin, “digital_input_pin”, “digital_output_pin”, “ribbon”, “button”, “encoder”, “n_way_switch”, “stepped_output”, “multiplexer”, “imu_pitch”, “imu_roll”, imu_yaw”.</li>
+<li>“pins” - A list of the physical pins the sensor is connected to. The number of pins depend on the sensor hardware type.</li>
+<li>“adc_resolution” - For analog inputs, this represents the resolution of the analog to digital converter.</li>
+<li>“delta_ticks” -  The update speed of the output represented as a fraction of the main tick rate of the controller.</li>
+<li>“multiplexed” - If the sensor is connected through a multiplexer, then this member should be present with the fields below:</li>
+<li>“multiplexer_id” - The sensor id of the multiplexer the sensor is connected to.</li>
+<li>“multiplexer_pin” - The pin on the multiplexer to set this sensor active.</li>
+<li>“polarity” - Sets the polarity of the sensor on a hw level. Reconised values are “active_high” and “active_low”.</li>
+<li>“lowpass_cutoff” -  The cutof frequency in Hz of the filter filtering analog inputs.</li>
+<li>“lowpass_order” - The steepnes of the above lowpass filter.</li>
+<li>“slider_threshold” - Sets the touch on/off threshold. Only applicable if “hardware_type” is “ribbon”.</li>
+<li>“fast_mode” - If true, the sensor will bypass any filtering or debouncing in order to send a value as soon as possible. Could result in double triggers and/or less accuracy.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sensei Configuration</a><ul>
+<li><a class="reference internal" href="#example-configuration">Example Configuration</a></li>
+<li><a class="reference internal" href="#backends">Backends</a></li>
+<li><a class="reference internal" href="#hardware-frontend">Hardware Frontend</a></li>
+<li><a class="reference internal" href="#sensor">Sensor</a></li>
+<li><a class="reference internal" href="#sensor-hardware">Sensor Hardware</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_internal_plugins.html"
+                        title="previous chapter">Sushi Internal Plugins</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="building_plugins_for_elk.html"
+                        title="next chapter">Build VST Plugins for Elk</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sensei_configuration_format.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="building_plugins_for_elk.html" title="Build VST Plugins for Elk"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
