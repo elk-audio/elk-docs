@@ -1,6 +1,12 @@
-# Elk Development Kit Manual
+# Elk Development Kit Documentation
 
-All manual chapters are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/). 
+This repository contains the source files, and generated HTML output, for the Elk Development Kit Documentation.
+
+You can browse the documentation by opening the `./docs/index.html` file in your browser.
+
+The documentation is also available online here: https://elk-audio.github.io/elk-docs/
+
+All sections are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/). 
 
 This is accepted as a standard by [Sphinx](http://www.sphinx-doc.org) and [ReadtheDocs](https://readthedocs.com/).
 
