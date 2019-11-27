@@ -1,18 +1,16 @@
 # Elk Development Kit Documentation
 
+To read the documentation, follow this link: https://elk-audio.github.io/elk-docs/
+
 This repository contains the source files, and generated HTML output, for the Elk Development Kit Documentation.
 
-You can browse the documentation by opening the `./docs/index.html` file in your browser.
+If you have cloned/downloaded this repository you can browse the documentation by opening the `./docs/index.html` file in your browser.
 
-The documentation is also available online here: https://elk-audio.github.io/elk-docs/
+All sections are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/), the accepted standard by [Sphinx](http://www.sphinx-doc.org) and [ReadtheDocs](https://readthedocs.com/). The only exception is the index, which uses ReStructuredText - the main format for Sphinx - so that indexes can be generated.
 
-All sections are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/). 
+## Building HTML From Source Files
 
-This is accepted as a standard by [Sphinx](http://www.sphinx-doc.org) and [ReadtheDocs](https://readthedocs.com/).
-
-The only exception is the index, which uses ReStructuredText - the main format for Sphinx - so that indexes can be generated.
-
-## Building
+If you have made any changes to an .MD documentation file, you also need to take the below steps to make the changes available through the web link.
 
 Install [Sphinx](http://www.sphinx-doc.org/en/stable/):
 

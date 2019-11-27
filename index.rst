@@ -14,7 +14,7 @@ the Elk Add-On board for the Raspberry Pi/UpCore, which will be
 documented here in that order.
 
 You will be able to run the software component natively on a Debian
-Linux, on a Virtual Vachine, as well as on the Elk development board.
+Linux, on a Virtual Machine, as well as on the Elk development board.
 Mostly you interact with all three in a very similar way, but when there
 are differences we will explicitly point them out.
 
