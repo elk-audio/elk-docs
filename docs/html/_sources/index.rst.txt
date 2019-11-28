@@ -49,6 +49,13 @@ Elk Online Forum
 For any questions or discussion on the Elk Development Kit,
 please refer to the `Elk Online Forum <https://forum.elk.audio>`__.
 
+Elk Pi Datasheet
+----------------
+
+The detailed hardware specifications for our Elk Pi Hat ar available in 
+`this PDF <../../Elk_Pi_Datasheet.pdf>`__.
+
+
 Tech Articles
 --------------
 
