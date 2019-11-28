@@ -21,7 +21,7 @@ First unpack the tar-file with the plugin to your local drive, and edit the conf
 
 It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.
 
-This is the example referred to also in our guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)".
+This is the example referred to also in our guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md).
 
 ## MDA JX10 VST2 Example
 
@@ -42,7 +42,7 @@ You will also notice that the OSC GUI for the VST 2 version lacks controls for P
 
 The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.
 
-The instructions for the VST 3 example in the guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)" translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
+The instructions for the VST 3 example in the guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md) translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.
 
 ## LV2VST Wrapper, with MDA JX10 LV2 Example
 
@@ -53,7 +53,7 @@ This example requires the following files:
 3. [lv2vst_plugin.tar.xz](https://github.com/elk-audio/elk-examples/releases/lv2vst_plugin.tar.xz) - the lv2vst plugin, and it's corresponding .whitelist file, referring it to which LV2 plugin it should load.
 4. [mod-mda-JX10.lv2.tar.xz](https://github.com/elk-audio/elk-examples/releases/mod-mda-JX10.lv2.tar.xz) - the LV2 MDA JX 10 plugin.
 
-Again, the instructions for the VST 3 example in the guide "[Get Started With the Elk Development Kit Software](getting_started_with_development_kit_software.md)" , translate straightforwardly also for this example.
+Again, the instructions for the VST 3 example in the guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md), translate straightforwardly also for this example.
 
 The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.
 

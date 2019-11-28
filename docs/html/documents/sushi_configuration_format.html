@@ -48,7 +48,7 @@
 <p>Following is a reference for the Sushi .json configuration file.</p>
 <div class="section" id="main-host-configuration">
 <h2>Main Host Configuration<a class="headerlink" href="#main-host-configuration" title="Permalink to this headline">¶</a></h2>
-<p>“host_config”</p>
+<p><strong>“host_config”</strong></p>
 <ul class="simple">
 <li><strong>“samplerate”</strong> - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.</li>
 <li><strong>“tempo”</strong> - The default tempo in beats per minute.</li>
@@ -68,7 +68,7 @@
 </div>
 <div class="section" id="tracks">
 <h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h2>
-<p>“tracks” : a json list of track objects with the following members:</p>
+<p><strong>“tracks”</strong> : a json list of track objects with the following members:</p>
 <ul class="simple">
 <li><strong>“name”</strong> - Name of the track, must be unique.</li>
 <li><strong>“mode”</strong> - The channel mode of the track, valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.</li>
@@ -101,7 +101,7 @@
 </div>
 <div class="section" id="midi">
 <h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">¶</a></h2>
-<p>“midi” - MIDI connections to and from tracks and plugins.</p>
+<p><strong>“midi”</strong> - MIDI connections to and from tracks and plugins.</p>
 <ul class="simple">
 <li><strong>“track_connections”</strong> - A list of routing objects that route midi keyboard data to a track. Midi keyboard data is routed to the first plugin on the track, that plugin then either consumes the midi data or passes it on to the next plugin on the track.<ul>
 <li><strong>“port”</strong> - The integer id of the midi port to use as input.</li>
@@ -137,7 +137,7 @@
 </div>
 <div class="section" id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
-<p>“events” - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.</p>
+<p><strong>“events”</strong> - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.</p>
 <ul class="simple">
 <li><strong>“type”</strong> - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.</li>
 <li><strong>“time”</strong> - Time, in seconds from the start of Sushi, when event should be executed.</li>

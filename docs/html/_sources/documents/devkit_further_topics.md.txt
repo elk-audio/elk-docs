@@ -65,7 +65,7 @@ data partition, which will remain untouched after running a software update. It 
 
 ## Running Another Plugin Using Sushi
 
-Follow the instructions in [Building Plugins for Elk](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it's possible to build the plugin locally on the board if you prefer.
+Follow the instructions in [Build Plugins for Elk](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it's possible to build the plugin locally on the board if you prefer.
 
 After you have the plugin binary, copy it to the board (preferably somewhere in /udata) and create a Sushi configuration file for it following one of our examples or looking at the provided JSON Schema for more advanced configuration.
 

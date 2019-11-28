@@ -72,7 +72,7 @@
 <li><strong>Offline</strong>, for processing audio and scripted event files (e.g. for automatic testing)</li>
 <li><strong>Dummy</strong>, without any connection to audio I/O, useful to debug some real-time safety issues on normal Linux machines</li>
 </ul>
-<p>See Sushi’s integrated usage help (by running <em><strong>‘sushi -h’</strong></em> or <em><strong>‘sushi –help’</strong></em>) for command line options to choose one of the backends.</p>
+<p>See Sushi’s integrated usage help (by running <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">--help</span></code>) for command line options to choose one of the backends.</p>
 <p>Sushi can be controlled statically with JSON configuration files and, at run-time, via an API available over the network. At the moment, an API based on OSC is available and a preliminary version of a more complex one using Google’s gRPC that offers full control and bidirectional communication to a remote client.
 With the run-time RPC API it is possible to perform common tasks such as control of plugins automation parameters, track and mixing controls, adding/removing plugin to tracks, query the engine for track level meters or CPU usage by plugin, etc. The documentation inside Sushi folder shipped on the VM has more details, including full gRPC API definition in protobuf format.</p>
 <p>Other relevant features are:</p>
@@ -87,14 +87,14 @@ With the run-time RPC API it is possible to perform common tasks such as control
 <li>Multicore rendering of parallel tracks</li>
 </ul>
 <p>Sushi’s JSON format is fully specified in a JSON schema (also included in the VM image) but it is probably easier to just look at the provided examples for a quick start that covers most common configurations, including some multitrack/multichannel examples.</p>
-<p>On start, Sushi creates a log file in /tmp/sushi.log where it logs all relevant run-time information. Logging
-level and log destination can be specified with the command line flag <em><strong>‘-l’</strong></em> or <em><strong>‘–log-level’</strong></em> and <em><strong>‘-l’</strong></em> or <em><strong>‘-L’</strong></em> <em><strong>‘-log-file=filename’</strong></em> respectively.</p>
+<p>On start, Sushi creates a log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code> where it logs all relevant run-time information. Logging
+level and log destination can be specified with the command line flag <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--log-level</span></code> and <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">-L</span></code> <code class="docutils literal notranslate"><span class="pre">-log-file=filename</span></code> respectively.</p>
 </div>
 <div class="section" id="twine">
 <h2>Twine<a class="headerlink" href="#twine" title="Permalink to this headline">¶</a></h2>
 <p>Twine is a C++ library that exposes some features of the underlying Xenomai system to plugin developers, particularly accurate and real-time safe timers and multithreaded worker pools.
 The library has a fallback implementation for POSIX systems (tested on standard Linux distros and macOS), which makes it convenient for inclusion in an existing codebase.
-Full source code (MIT licensed) is included in <em><strong>‘work/twine’</strong></em> with Doxygen documentation, unit test and example code.</p>
+Full source code (MIT licensed) is included in <code class="docutils literal notranslate"><span class="pre">work/twine</span></code> with Doxygen documentation, unit test and example code.</p>
 </div>
 <div class="section" id="sensei">
 <h2>Sensei<a class="headerlink" href="#sensei" title="Permalink to this headline">¶</a></h2>
@@ -106,15 +106,15 @@ Full source code (MIT licensed) is included in <em><strong>‘work/twine’</str
 <div class="section" id="linux-system-configuration">
 <h2>Linux System Configuration<a class="headerlink" href="#linux-system-configuration" title="Permalink to this headline">¶</a></h2>
 <p>As most modern Linux distributions, Elk adopts SystemD for its init system and other general tasks. By default, on the UpCore-based Elk development board, only the services to initialize the audio drivers and the update system are started.
-There are services definitions for both Sushi and Sensei that can be enabled with <em><strong>‘systemctl enable sushi’</strong></em> or started temporarily with <em><strong>‘systemctl start sushi’</strong></em> as any normal SystemD service.</p>
-<p>These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in <em><strong>‘/lib/systemd/system’</strong></em>, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by Sushi.</p>
+There are services definitions for both Sushi and Sensei that can be enabled with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">sushi</span></code> or started temporarily with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
+<p>These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system</span></code>, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by Sushi.</p>
 </div>
-<div class="section" id="filesystem-organisation-and-software-update-system">
-<h2>Filesystem Organisation and Software Update System<a class="headerlink" href="#filesystem-organisation-and-software-update-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filesystem-organization-and-software-update-system">
+<h2>Filesystem Organization and Software Update System<a class="headerlink" href="#filesystem-organization-and-software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, using a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
-<p>Therefore, it is important to remember to <em>never put any files that you want to keep permanent on the mounted root partition!</em>. There is a separate partition mounted under <em><strong>‘/udata’</strong></em> for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolink links to the <em><strong>‘udata’</strong></em> partition from there.</p>
+<p>Therefore, it is important to remember to <em>never put any files that you want to keep permanent on the mounted root partition!</em>. There is a separate partition mounted under <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">udata</span></code> partition from there.</p>
 <p>Developer images mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
-<p>Elk updates are shipped in form of <em><strong>‘.swu’</strong></em> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.</p>
+<p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.</p>
 </div>
 <div class="section" id="ble-grpc-bridge">
 <h2>BLE-gRPC Bridge<a class="headerlink" href="#ble-grpc-bridge" title="Permalink to this headline">¶</a></h2>
@@ -138,7 +138,7 @@ There are services definitions for both Sushi and Sensei that can be enabled wit
 <li><a class="reference internal" href="#twine">Twine</a></li>
 <li><a class="reference internal" href="#sensei">Sensei</a></li>
 <li><a class="reference internal" href="#linux-system-configuration">Linux System Configuration</a></li>
-<li><a class="reference internal" href="#filesystem-organisation-and-software-update-system">Filesystem Organisation and Software Update System</a></li>
+<li><a class="reference internal" href="#filesystem-organization-and-software-update-system">Filesystem Organization and Software Update System</a></li>
 <li><a class="reference internal" href="#ble-grpc-bridge">BLE-gRPC Bridge</a></li>
 </ul>
 </li>

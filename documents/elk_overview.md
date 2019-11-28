@@ -37,7 +37,7 @@ Sushi is a headless plugin host for Elk. It interfaces to the relevant system IO
   + **Offline**, for processing audio and scripted event files (e.g. for automatic testing)
   + **Dummy**, without any connection to audio I/O, useful to debug some real-time safety issues on normal Linux machines
 
-See Sushi's integrated usage help (by running ***'sushi -h'*** or ***'sushi --help'***) for command line options to choose one of the backends.
+See Sushi's integrated usage help (by running `sushi -h` or `sushi --help`) for command line options to choose one of the backends.
 
 Sushi can be controlled statically with JSON configuration files and, at run-time, via an API available over the network. At the moment, an API based on OSC is available and a preliminary version of a more complex one using Google's gRPC that offers full control and bidirectional communication to a remote client.
 With the run-time RPC API it is possible to perform common tasks such as control of plugins automation parameters, track and mixing controls, adding/removing plugin to tracks, query the engine for track level meters or CPU usage by plugin, etc. The documentation inside Sushi folder shipped on the VM has more details, including full gRPC API definition in protobuf format.
@@ -55,14 +55,14 @@ Other relevant features are:
 
 Sushi's JSON format is fully specified in a JSON schema (also included in the VM image) but it is probably easier to just look at the provided examples for a quick start that covers most common configurations, including some multitrack/multichannel examples.
 
-On start, Sushi creates a log file in /tmp/sushi.log where it logs all relevant run-time information. Logging
-level and log destination can be specified with the command line flag ***'-l'*** or ***'--log-level'*** and ***'-l'*** or ***'-L'*** ***'-log-file=filename'*** respectively. 
+On start, Sushi creates a log file in `/tmp/sushi.log` where it logs all relevant run-time information. Logging
+level and log destination can be specified with the command line flag `-l` or `--log-level` and `-l` or `-L` `-log-file=filename` respectively. 
 
 ## Twine
 
 Twine is a C++ library that exposes some features of the underlying Xenomai system to plugin developers, particularly accurate and real-time safe timers and multithreaded worker pools.
 The library has a fallback implementation for POSIX systems (tested on standard Linux distros and macOS), which makes it convenient for inclusion in an existing codebase.
-Full source code (MIT licensed) is included in ***'work/twine'*** with Doxygen documentation, unit test and example code.
+Full source code (MIT licensed) is included in `work/twine` with Doxygen documentation, unit test and example code.
 
 ## Sensei
 
@@ -77,19 +77,19 @@ Sensei uses a logging system similar to Sushi for reporting run-time messages.
 ## Linux System Configuration
 
 As most modern Linux distributions, Elk adopts SystemD for its init system and other general tasks. By default, on the UpCore-based Elk development board, only the services to initialize the audio drivers and the update system are started.
-There are services definitions for both Sushi and Sensei that can be enabled with ***'systemctl enable sushi'*** or started temporarily with ***'systemctl start sushi'*** as any normal SystemD service.
+There are services definitions for both Sushi and Sensei that can be enabled with `systemctl enable sushi` or started temporarily with `systemctl start sushi` as any normal SystemD service.
 
-These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in ***'/lib/systemd/system'***, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by Sushi.
+These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in `/lib/systemd/system`, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by Sushi.
 
-## Filesystem Organisation and Software Update System
+## Filesystem Organization and Software Update System
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, using a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.
 
-Therefore, it is important to remember to *never put any files that you want to keep permanent on the mounted root partition!*. There is a separate partition mounted under ***'/udata'*** for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolink links to the ***'udata'*** partition from there.
+Therefore, it is important to remember to *never put any files that you want to keep permanent on the mounted root partition!*. There is a separate partition mounted under `/udata` for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `udata` partition from there.
 
 Developer images mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.
 
-Elk updates are shipped in form of ***'.swu'*** files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.
+Elk updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.
 
 ## BLE-gRPC Bridge
 

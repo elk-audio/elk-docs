@@ -3,7 +3,7 @@
 Following is a reference for the Sushi .json configuration file.
 
 ## Main Host Configuration
-“host_config”
+**“host_config”**
 
 * **“samplerate”** - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.
 * **“tempo”** - The default tempo in beats per minute.
@@ -17,7 +17,7 @@ Following is a reference for the Sushi .json configuration file.
     * **“outputs”** - clip detection enabled on the audio outputs.
 
 ## Tracks
-“tracks” : a json list of track objects with the following members:
+**“tracks”** : a json list of track objects with the following members:
 
 * **“name”** - Name of the track, must be unique.
 * **“mode”** - The channel mode of the track, valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.
@@ -42,7 +42,7 @@ Following is a reference for the Sushi .json configuration file.
     * **“uid”** - For internal plugin this has the format “sushi.testing.plugin_name”. For Vst 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for Vst 2 plugins.
 
 ## MIDI
-“midi” - MIDI connections to and from tracks and plugins.
+**“midi”** - MIDI connections to and from tracks and plugins.
 
 * **“track_connections”** - A list of routing objects that route midi keyboard data to a track. Midi keyboard data is routed to the first plugin on the track, that plugin then either consumes the midi data or passes it on to the next plugin on the track.
     * **“port”** - The integer id of the midi port to use as input.
@@ -68,7 +68,7 @@ Following is a reference for the Sushi .json configuration file.
     * **“plugin”** - Name of the plugin to route program changes to.
 
 ## Events
-“events” - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.
+**“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.
 
 * **“type”** - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.
 * **“time”** - Time, in seconds from the start of Sushi, when event should be executed.

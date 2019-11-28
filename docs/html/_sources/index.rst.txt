@@ -92,8 +92,8 @@ with Elk:
 
    Elk Multi FX Example
 
-The examples can all be downloaded from our `GitHub elk-examples
-repository <https://github.com/elk-audio/elk-examples/>`__.
+All Elk example files can all be downloaded from our `GitHub elk-examples
+repository <https://github.com/elk-audio/elk-examples/>`__, with the binary files they depend on available in the `Releases section <https://github.com/elk-audio/elk-examples/releases/>`__.
 
 
 Search Page

@@ -92,63 +92,63 @@
 <h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
 <p>Backends represent an interface for outputing data on the host or to a network. Currently 2 backend types are implemented, Open Sound Control (osc) and stdout.</p>
 <ul class="simple">
-<li>“id” - Identification number of this backend.</li>
-<li>“enabled” - Whether this backend will output data or not.</li>
-<li>“raw input enabled” - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be outputed</li>
-<li>“type” - The type of backend, currently “osc” is the only recognised value, else will default to stdout.</li>
-<li>“host” - The address to output osc messages to, accepted values are “localhost” or an ip address. Only valid if type = “osc”.</li>
-<li>“port” - The port used on the above host. Only valid if type = “osc”.</li>
-<li>“base_path” - The Prefix added to osc messages. Only valid if type = “osc”.</li>
-<li>“base_raw_input_path” - The prefix added to osc messages with unprocessed values. Only valid if type = “osc”.</li>
+<li><strong>“id”</strong> - Identification number of this backend.</li>
+<li><strong>“enabled”</strong> - Whether this backend will output data or not.</li>
+<li><strong>“raw input enabled”</strong> - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be output.</li>
+<li><strong>“type”</strong> - The type of backend, currently “osc” is the only recognised value, else will default to stdout.</li>
+<li><strong>“host”</strong> - The address to output osc messages to, accepted values are “localhost” or an ip address. Only valid if type = “osc”.</li>
+<li><strong>“port”</strong> - The port used on the above host. Only valid if type = “osc”.</li>
+<li><strong>“base_path”</strong> - The Prefix added to osc messages. Only valid if type = “osc”.</li>
+<li><strong>“base_raw_input_path”</strong> - The prefix added to osc messages with unprocessed values. Only valid if type = “osc”.</li>
 </ul>
 </div>
 <div class="section" id="hardware-frontend">
 <h2>Hardware Frontend<a class="headerlink" href="#hardware-frontend" title="Permalink to this headline">¶</a></h2>
 <p>The Hardware frontend is the type and method of connecting to the controller handling the physical sensors. Currently 2 controllers are supported. A Teensy 3.2 over a serial connection and Xmos controller connected through Raspalib.</p>
 <ul class="simple">
-<li>“type” - The type used, recognised values are “raspa_xmos” and “serial_teensy”.</li>
-<li>“port” - The serial device to connect to. Only valid if type = “serial_teensy”.</li>
+<li><strong>“type”</strong> - The type used, recognised values are “raspa_xmos” and “serial_teensy”.</li>
+<li><strong>“port”</strong> - The serial device to connect to. Only valid if type = “serial_teensy”.</li>
 </ul>
 </div>
 <div class="section" id="sensor">
 <h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this headline">¶</a></h2>
 <p>Sensors are a list of connected hardware sensor or indicators like knobs, buttons, leds, pressure sensors as well as more advanced devices like IMU:s</p>
 <ul class="simple">
-<li>“id” - The identification number of this sensor.</li>
-<li>“enabled” - If true, values from this sensor will be sent to the output backend(s).</li>
-<li>“name” - Name of this sensor, will be used if the output backend supports it.</li>
-<li>“inverted” - If set to true, output values from this sensor will be inverted. For a digital sensor this means true will be outputted as false and for analog sensors</li>
-<li>“sensor_type” - An abstract type that describes the behaviour of the sensor. Valid</li>
-<li>“digital_input” - An input with only 2 possible values, true or false, useful for button or switches.</li>
-<li>“range_input” - An input with multiple discrete values, i.e. a multi position switch</li>
-<li>“analog_input” - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the OSC backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.</li>
-<li>“continuous_input” - Input from a sensor that comes “pre-processed” in floating point format. I.e. IMU:s or similar complex devices.</li>
-<li>“digital_output” - An output that can be set low or high, for controlling diodes or similar.</li>
-<li>“range_output” - An output that can accept a range of discrete values.</li>
-<li>“no_output” - A “helper” sensor that doesn’t output anything on it own. For instance for setting up multiplexers</li>
-<li>“mode” - The transmission mode of the sensor. Currently supported values are:</li>
-<li>“continuous” - Values will be sent periodically according to the set tick rate.</li>
-<li>“on_value_changed” - Values will be outputted only if a value is different from the previous value.</li>
-<li>“range” - The output range of the sensor and can be used to clip the high and low end of an analog or continuous sensor. The values represent the mappings of 0 and 1 respectively of the un-mapped output of the sensor. In the case of an analog input with 8 bits of resolution this is 0 and 255 respectively</li>
-<li>“timestamp” - If true, all outputs from this sensor will be outputted with a timestamp. If using the OSC backend, then the signature of the output address will have an extra “t” tag at the end, containing the timestamp.</li>
+<li><strong>“id”</strong> - The identification number of this sensor.</li>
+<li><strong>“enabled”</strong> - If true, values from this sensor will be sent to the output backend(s).</li>
+<li><strong>“name”</strong> - Name of this sensor, will be used if the output backend supports it.</li>
+<li><strong>“inverted”</strong> - If set to true, output values from this sensor will be inverted. For a digital sensor this means true will be outputted as false and for analog sensors.</li>
+<li><strong>“sensor_type”</strong> - An abstract type that describes the behaviour of the sensor. Valid.</li>
+<li><strong>“digital_input”</strong> - An input with only 2 possible values, true or false, useful for button or switches.</li>
+<li><strong>“range_input”</strong> - An input with multiple discrete values, i.e. a multi position switch.</li>
+<li><strong>“analog_input”</strong> - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the OSC backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.</li>
+<li><strong>“continuous_input”</strong> - Input from a sensor that comes “pre-processed” in floating point format. I.e. IMU:s or similar complex devices.</li>
+<li><strong>“digital_output”</strong> - An output that can be set low or high, for controlling diodes or similar.</li>
+<li><strong>“range_output”</strong> - An output that can accept a range of discrete values.</li>
+<li><strong>“no_output”</strong> - A “helper” sensor that doesn’t output anything on it own. For instance for setting up multiplexers.</li>
+<li><strong>“mode”</strong> - The transmission mode of the sensor. Currently supported values are:</li>
+<li><strong>“continuous”</strong> - Values will be sent periodically according to the set tick rate.</li>
+<li><strong>“on_value_changed”</strong> - Values will be outputted only if a value is different from the previous value.</li>
+<li><strong>“range”</strong> - The output range of the sensor and can be used to clip the high and low end of an analog or continuous sensor. The values represent the mappings of 0 and 1 respectively of the un-mapped output of the sensor. In the case of an analog input with 8 bits of resolution this is 0 and 255 respectively.</li>
+<li><strong>“timestamp”</strong> - If true, all outputs from this sensor will be outputted with a timestamp. If using the OSC backend, then the signature of the output address will have an extra “t” tag at the end, containing the timestamp.</li>
 </ul>
 </div>
 <div class="section" id="sensor-hardware">
 <h2>Sensor Hardware<a class="headerlink" href="#sensor-hardware" title="Permalink to this headline">¶</a></h2>
 <p>The hardware specific config. This will be handled differently depending on what hardware frontend is used, and not all hardware frontend have support for all options.</p>
 <ul class="simple">
-<li>“hardware_type” -  The physical type of sensor used. This will be handled differently depending on the hardware frontend used. Recognised values are:”analog_input_pin, “digital_input_pin”, “digital_output_pin”, “ribbon”, “button”, “encoder”, “n_way_switch”, “stepped_output”, “multiplexer”, “imu_pitch”, “imu_roll”, imu_yaw”.</li>
-<li>“pins” - A list of the physical pins the sensor is connected to. The number of pins depend on the sensor hardware type.</li>
-<li>“adc_resolution” - For analog inputs, this represents the resolution of the analog to digital converter.</li>
-<li>“delta_ticks” -  The update speed of the output represented as a fraction of the main tick rate of the controller.</li>
-<li>“multiplexed” - If the sensor is connected through a multiplexer, then this member should be present with the fields below:</li>
-<li>“multiplexer_id” - The sensor id of the multiplexer the sensor is connected to.</li>
-<li>“multiplexer_pin” - The pin on the multiplexer to set this sensor active.</li>
-<li>“polarity” - Sets the polarity of the sensor on a hw level. Reconised values are “active_high” and “active_low”.</li>
-<li>“lowpass_cutoff” -  The cutof frequency in Hz of the filter filtering analog inputs.</li>
-<li>“lowpass_order” - The steepnes of the above lowpass filter.</li>
-<li>“slider_threshold” - Sets the touch on/off threshold. Only applicable if “hardware_type” is “ribbon”.</li>
-<li>“fast_mode” - If true, the sensor will bypass any filtering or debouncing in order to send a value as soon as possible. Could result in double triggers and/or less accuracy.</li>
+<li><strong>“hardware_type”</strong> -  The physical type of sensor used. This will be handled differently depending on the hardware frontend used. Recognised values are:”analog_input_pin, “digital_input_pin”, “digital_output_pin”, “ribbon”, “button”, “encoder”, “n_way_switch”, “stepped_output”, “multiplexer”, “imu_pitch”, “imu_roll”, imu_yaw”.</li>
+<li><strong>“pins”</strong> - A list of the physical pins the sensor is connected to. The number of pins depend on the sensor hardware type.</li>
+<li><strong>“adc_resolution”</strong> - For analog inputs, this represents the resolution of the analog to digital converter.</li>
+<li><strong>“delta_ticks”</strong> -  The update speed of the output represented as a fraction of the main tick rate of the controller.</li>
+<li><strong>“multiplexed”</strong> - If the sensor is connected through a multiplexer, then this member should be present with the fields below:</li>
+<li><strong>“multiplexer_id”</strong> - The sensor id of the multiplexer the sensor is connected to.</li>
+<li><strong>“multiplexer_pin”</strong> - The pin on the multiplexer to set this sensor active.</li>
+<li><strong>“polarity”</strong> - Sets the polarity of the sensor on a hw level. Reconised values are “active_high” and “active_low”.</li>
+<li><strong>“lowpass_cutoff”</strong> -  The cutof frequency in Hz of the filter filtering analog inputs.</li>
+<li><strong>“lowpass_order”</strong> - The steepnes of the above lowpass filter.</li>
+<li><strong>“slider_threshold”</strong> - Sets the touch on/off threshold. Only applicable if “hardware_type” is “ribbon”.</li>
+<li><strong>“fast_mode”</strong> - If true, the sensor will bypass any filtering or debouncing in order to send a value as soon as possible. Could result in double triggers and/or less accuracy.</li>
 </ul>
 </div>
 </div>
