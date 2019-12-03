@@ -53,7 +53,7 @@ Elk Pi Datasheet
 ----------------
 
 The detailed hardware specifications for our Elk Pi Hat ar available in 
-`this PDF <../../Elk_Pi_Datasheet.pdf>`__.
+`this PDF <https://github.com/elk-audio/elk-docs/blob/master/Elk_Pi_Datasheet.pdf>`__.
 
 
 Tech Articles

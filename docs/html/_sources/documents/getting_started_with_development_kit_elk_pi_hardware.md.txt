@@ -2,7 +2,7 @@
 
 Get Started with the Elk Pi Hardware.
 
-This document contains basic information on how to set up Elk Pi development boards. See also the relevant [datasheet for your Elk Pi Board](../../../Elk_Pi_Datasheet.pdf), for information on the hardware layout of the board.
+This document contains basic information on how to set up Elk Pi development boards. See also the relevant [datasheet for your Elk Pi Board](https://github.com/elk-audio/elk-docs/blob/master/Elk_Pi_Datasheet.pdf), for information on the hardware layout of the board.
 
 ## 1. Assembly
 
