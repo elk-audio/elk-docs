@@ -145,3 +145,4 @@ From a terminal in an Elk board, you need to:
 When a mode switch occurs, you should now have control over the gdb shell, and be able to analyze the backtrace, local variables, etc. to find its cause.
 
 As a separate tool that you can use in a virtual machine or your Linux development environment, Sushi also has a _dummy_ frontend that spawns a separate thread to mock the real-time process and never does any real-time calls. You can therefore use tools like `strace` or similar to spot OS calls on that thread. This is useful, for example, to spot timer related calls which can cause Xenomai lockups and are otherwise impossible to localize using the JACK frontend since the JACK audio server use the same calls on its own.
+
