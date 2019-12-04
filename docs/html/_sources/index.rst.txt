@@ -52,8 +52,10 @@ please refer to the `Elk Online Forum <https://forum.elk.audio>`__.
 Elk Pi Datasheet
 ----------------
 
-The detailed hardware specifications for our Elk Pi Hat ar available in 
-`this PDF <https://github.com/elk-audio/elk-docs/blob/master/Elk_Pi_Datasheet.pdf>`__.
+.. toctree::
+   :maxdepth: 2
+
+   documents/elk_pi_datasheet.rst
 
 
 Tech Articles
