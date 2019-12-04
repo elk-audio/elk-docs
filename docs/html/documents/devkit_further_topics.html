@@ -118,17 +118,19 @@ data partition, which will remain untouched after running a software update. It 
 <div class="section" id="setting-the-board-up-for-automatic-startup">
 <h2>Setting the Board Up for Automatic Startup<a class="headerlink" href="#setting-the-board-up-for-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.</p>
-<ol class="simple">
-<li>Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
-and, in case, additional environment variables or Sushi command line flags.
-2. If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemd service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code></li>
-<li>Enable both Sushi and the MIDI connection service typing (as root):</li>
+<ol>
+<li><p class="first">Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
+and, in case, additional environment variables or Sushi command line flags.</p>
+<p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemd service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code></p>
+</li>
+<li><p class="first">Enable both Sushi and the MIDI connection service typing (as root):</p>
+</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
 $ systemctl <span class="nb">enable</span> midi-connections
 </pre></div>
 </div>
-<p>Sushi will still output its log file in <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root).</p>
+<p>Sushi will still output its log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code>. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root).</p>
 </div>
 </div>
 

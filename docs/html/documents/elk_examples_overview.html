@@ -58,13 +58,13 @@
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.</li>
 <li>mda-vst3-touchosc-gui.touchosc - a <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC</a> GUI controller, mirroring the controls in the Open Stage Control GUI.</li>
 </ol>
-<p>First unpack the tar-file with the plugin to your local drive, and edit the config_play_vst3.json to refer to that path.</p>
+<p>First unpack the tar-file with the plugin to your local drive, and edit the <code class="docutils literal notranslate"><span class="pre">config_play_vst3.json</span></code> to refer to that path.</p>
 <p>It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.</p>
 <p>This is the example referred to also in our guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>.</p>
 </div>
 <div class="section" id="mda-jx10-vst2-example">
 <h2>MDA JX10 VST2 Example<a class="headerlink" href="#mda-jx10-vst2-example" title="Permalink to this headline">¶</a></h2>
-<p>Control of plugin parameters is to certain extent different between VST 2 and 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
+<p>Control of plugin parameters is to certain extent different between VST 2 and VST 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li>config_play_vst2.json - the Sushi configuration file.</li>
@@ -74,11 +74,11 @@
 <p>The configuration file for this example differs to the one for the VST 3 version of the same plugin in one crucial way: besides routing MIDI messages directly to the plugin, it also:</p>
 <ol class="simple">
 <li>Maps MIDI CC values to control synth parameters.</li>
-<li>Connects MIDI Program Change messages to the plugin</li>
+<li>Connects MIDI Program Change messages to the plugin.</li>
 </ol>
 <p>You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
 <p>The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.</p>
-<p>The instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a> translate straightforwardly also for this VST 2 example - just read VST2 where in the text and paths, VST3 is specified.</p>
+<p>The instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a> translate straightforwardly also for this VST 2 example - just read VST 2 where in the text and paths, VST 3 is specified.</p>
 </div>
 <div class="section" id="lv2vst-wrapper-with-mda-jx10-lv2-example">
 <h2>LV2VST Wrapper, with MDA JX10 LV2 Example<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2-example" title="Permalink to this headline">¶</a></h2>
@@ -86,11 +86,11 @@
 <ol class="simple">
 <li>config_play_lv2vst.json - the Sushi configuration file.</li>
 <li>mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.</li>
-<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the lv2vst plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the LV2VST plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</li>
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin.</li>
 </ol>
 <p>Again, the instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>, translate straightforwardly also for this example.</p>
-<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to /usr/lib/lv2/mod-mda-JX10.lv2. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.</p>
+<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to <code class="docutils literal notranslate"><span class="pre">/usr/lib/lv2/mod-mda-JX10.lv2</span></code>. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.</p>
 </div>
 <div class="section" id="elk-multi-fx-example">
 <h2>Elk Multi FX Example<a class="headerlink" href="#elk-multi-fx-example" title="Permalink to this headline">¶</a></h2>

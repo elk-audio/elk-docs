@@ -91,7 +91,8 @@ If you wish to have the board starting Sushi automatically at startup, the sugge
 
 1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
-   2. If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemd service defined in `/lib/systemd/system/midi-connections.service`
+   
+   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemd service defined in `/lib/systemd/system/midi-connections.service`
 2. Enable both Sushi and the MIDI connection service typing (as root):
 
 ```bash
@@ -99,4 +100,5 @@ $ systemctl enable sushi
 $ systemctl enable midi-connections
 ```
 
-Sushi will still output its log file in `/tmp`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
+Sushi will still output its log file in `/tmp/sushi.log`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
+

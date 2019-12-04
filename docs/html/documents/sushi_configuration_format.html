@@ -55,12 +55,12 @@
 <li><strong>“playing_mode”</strong> - The default mode to start Sushi in. Affects sequencers and tempo synced plugins. Valid values are “playing” and “stopped”.</li>
 <li><strong>“tempo_sync”</strong> - The mode of synchronising tempo. Valid modes are “internal” where Sushi is the master, “midi” for syncing to midi tempo, and “ableton_link” for synchronising with Ableton Link.</li>
 <li><strong>“time_signature”</strong> - Time signature to use in Sushi.<ul>
-<li><strong>“numerator”</strong> - time signature numerator.</li>
-<li><strong>“denominator”</strong> - time signature denominator.</li>
+<li><strong>“numerator”</strong> - Time signature numerator.</li>
+<li><strong>“denominator”</strong> - Time signature denominator.</li>
 </ul>
 </li>
-<li><strong>“audio_clip_detection”</strong> - sets whether audio inputs and/or outputs detects sample values outside of the range of the analog audio circuits.<ul>
-<li><strong>“inputs”</strong> - clip detection enabled on the audio inputs.</li>
+<li><strong>“audio_clip_detection”</strong> - Sets whether audio inputs and/or outputs detect sample values outside of the range of the analog audio circuits.<ul>
+<li><strong>“inputs”</strong> - Clip detection enabled on the audio inputs.</li>
 <li><strong>“outputs”</strong> - clip detection enabled on the audio outputs.</li>
 </ul>
 </li>
@@ -68,14 +68,14 @@
 </div>
 <div class="section" id="tracks">
 <h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h2>
-<p><strong>“tracks”</strong> : a json list of track objects with the following members:</p>
+<p><strong>“tracks”</strong> : A json list of track objects with the following members:</p>
 <ul class="simple">
 <li><strong>“name”</strong> - Name of the track, must be unique.</li>
-<li><strong>“mode”</strong> - The channel mode of the track, valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.</li>
+<li><strong>“mode”</strong> - The channel mode of the track. Valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.</li>
 <li><strong>“input_busses”</strong> - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</li>
 <li><strong>“output_busses”</strong> - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</li>
 <li><strong>“inputs”</strong> - Audio inputs to the track. A list objects with the following members:<ul>
-<li><strong>“engine_bus”</strong> - The id of the engine bus to route from, where bus is a stereo pair where bus 0 represents channels 0 and 1, bus 1 channels 2 and 3…</li>
+<li><strong>“engine_bus”</strong> - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.</li>
 <li><strong>“track_bus”</strong> - The id of the track bus to route audio to.</li>
 <li>Alternatively:</li>
 <li><strong>“engine_channel”</strong> - The id of the engine input channel to route audio from.</li>
@@ -83,18 +83,18 @@
 </ul>
 </li>
 <li><strong>“outputs”</strong> - Audio outputs from the track. A list objects with the following members:<ul>
-<li><strong>“engine_bus”</strong> - The id of the engine bus to route to, where bus is a stereo pair where bus 0 represents channels 0 and 1, bus 1 channels 2 and 3…</li>
+<li><strong>“engine_bus”</strong> - The id of the engine bus to route to, where bus is a stereo pair where bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.</li>
 <li><strong>“track_bus”</strong> - The id of the track bus to route audio from.</li>
 <li>Alternatively:</li>
 <li><strong>“engine_channel”</strong> - The id of the engine output channel to route audio to.</li>
 <li><strong>“track_channel”</strong> - The id of the track channel to route audio from.</li>
 </ul>
 </li>
-<li><strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, Vst2.4 plugins, Vst3.6 plugins or LV2 plugins (under development).<ul>
-<li><strong>“name”</strong> - The name of the plugin, must be unique.</li>
+<li><strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3.6 plugins or LV2 plugins (currently using the LV2VST wrapper).<ul>
+<li><strong>“name”</strong> - The name of the plugin - must be unique.</li>
 <li><strong>“type”</strong> - The plugin format, valid values are: “internal”, “vst2x”, “vst3x”.</li>
-<li><strong>“path”</strong> - The path to an external plugin. For Vst 2, this is the path to the dynamic library, for Vst 3 it is the path to the plugin directory. Not valid for internal plugins.</li>
-<li><strong>“uid”</strong> - For internal plugin this has the format “sushi.testing.plugin_name”. For Vst 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for Vst 2 plugins.</li>
+<li><strong>“path”</strong> - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins.</li>
+<li><strong>“uid”</strong> - For internal plugin this has the format “sushi.testing.plugin_name”. For VST 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for VST 2 plugins.</li>
 </ul>
 </li>
 </ul>
@@ -103,33 +103,33 @@
 <h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">¶</a></h2>
 <p><strong>“midi”</strong> - MIDI connections to and from tracks and plugins.</p>
 <ul class="simple">
-<li><strong>“track_connections”</strong> - A list of routing objects that route midi keyboard data to a track. Midi keyboard data is routed to the first plugin on the track, that plugin then either consumes the midi data or passes it on to the next plugin on the track.<ul>
+<li><strong>“track_connections”</strong> - A list of routing objects that route midi keyboard data to a track. MIDI keyboard data is routed to the first plugin on the track, that plugin then either consumes the MIDI data or passes it on to the next plugin on the track.<ul>
 <li><strong>“port”</strong> - The integer id of the midi port to use as input.</li>
-<li><strong>“channel”</strong> - Only route midi data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
-<li><strong>“track”</strong> - Name of the track to route midi to.</li>
-<li><strong>“raw_midi”</strong> - If set to true, sushi will pass the raw midi events directly to the track without conversion or processing. If enabled, plugins will need to handle things like program change on their own. Default off. only valid for plugin formats that accepts raw midi data as input like Vst 2.</li>
+<li><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
+<li><strong>“track”</strong> - Name of the track to route MIDI to.</li>
+<li><strong>“raw_midi”</strong> - If set to true, Sushi will pass the raw MIDI events directly to the track without conversion or processing. If enabled, plugins will need to handle things like program change on their own. Default off. only valid for plugin formats which accept raw MIDI data input, such as VST 2.</li>
 </ul>
 </li>
-<li><strong>“track_out_connections”</strong> - A list of routing objects for passing midi from a track to an external midi port.<ul>
-<li><strong>“port”</strong> - The integer id of the midi port to output data to.</li>
-<li><strong>“channel”</strong> - Only route midi data with this particular channel. Valid options are integers between 0-15; if you need multiple channels, you can have multiple entries for each channel.</li>
-<li><strong>“track”</strong> - Name of the track to route midi from.</li>
+<li><strong>“track_out_connections”</strong> - A list of routing objects for passing MIDI from a track to an external MIDI port.<ul>
+<li><strong>“port”</strong> - The integer id of the MIDI port to output data to.</li>
+<li><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers between 0-15; if you need multiple channels, you can have multiple entries for each channel.</li>
+<li><strong>“track”</strong> - Name of the track to route MIDI from.</li>
 </ul>
 </li>
 <li><strong>“cc_mappings”</strong> - Map control change messages to parameters on plugins and tracks. A list of routing objects with the following members:<ul>
-<li><strong>“port”</strong> - Integer id of the midi port to use as input.</li>
-<li><strong>“channel”</strong> - Only route midi data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
+<li><strong>“port”</strong> - Integer id of the MIDI port to use as input.</li>
+<li><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
 <li><strong>“plugin_name”</strong> - Name of the plugin.</li>
-<li><strong>“cc_number”</strong> - Index of incoming Control Change message to map</li>
+<li><strong>“cc_number”</strong> - Index of incoming Control Change message to map.</li>
 <li><strong>“parameter_name”</strong> - Name of the parameter on the above plugin.</li>
-<li><strong>“min_range”</strong> - Minimum normalized range of the mapping (in [0, 1]), what a value a cc value of 0 corresponds to.</li>
-<li><strong>“max_range”</strong> - Maximum normalized range of the mapping (in [0, 1]), corresponds to a cc value of 127.</li>
-<li><strong>“mode”</strong> - Mode for controller, one of “absolute” (default) or “relative”</li>
+<li><strong>“min_range”</strong> - Minimum normalized range of the mapping (in [0, 1]), what a value a CC value of 0 corresponds to.</li>
+<li><strong>“max_range”</strong> - Maximum normalized range of the mapping (in [0, 1]), corresponds to a CC value of 127.</li>
+<li><strong>“mode”</strong> - Mode for controller, one of “absolute” (default) or “relative”.</li>
 </ul>
 </li>
-<li><strong>“program_change_connections”</strong> - Route midi program change messages to a particular plugin. A list of routing objects with the following members:<ul>
-<li><strong>“port”</strong> - Integer id of the midi port to use as input.</li>
-<li><strong>“channel”</strong> - Only route midi data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
+<li><strong>“program_change_connections”</strong> - Route MIDI program change messages to a particular plugin. A list of routing objects with the following members:<ul>
+<li><strong>“port”</strong> - Integer id of the MIDI port to use as input.</li>
+<li><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
 <li><strong>“plugin”</strong> - Name of the plugin to route program changes to.</li>
 </ul>
 </li>
@@ -141,7 +141,7 @@
 <ul class="simple">
 <li><strong>“type”</strong> - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.</li>
 <li><strong>“time”</strong> - Time, in seconds from the start of Sushi, when event should be executed.</li>
-<li><strong>“data”</strong> - type specific data containing some of the following:<ul>
+<li><strong>“data”</strong> - Type specific data containing some of the following:<ul>
 <li><strong>“plugin_name”</strong> - Name of the plugin or track to send the event to.</li>
 <li><strong>“parameter_name”</strong> - If “type” = “parameter_change”, the name of the parameter to set.</li>
 <li><strong>“property_name”</strong> - If “type” = “property_change”, the name of the string property to set.</li>
