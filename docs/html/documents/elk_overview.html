@@ -45,82 +45,97 @@
             
   <div class="section" id="elk-overview">
 <h1>Elk Overview<a class="headerlink" href="#elk-overview" title="Permalink to this headline">¶</a></h1>
-<p>This document is a quick start guide written primarily for audio plugin developers that want to get up to speed in porting and testing a VST plugin on Elk development boards.</p>
-<p>It explains what the core components included in an Elk Linux distribution are, their configuration and the developer tools available. The focus is mostly on real-time safety issues of audio plugins and on how to spot and solve them in order to guarantee smooth execution of the RT audio path.</p>
+<p>This document is a quick start guide written primarily for audio plugin developers that want to get up to speed in porting and testing VST plugins on Elk development boards.</p>
+<p>It explains what the core components included in an Elk Linux distribution are, their configuration and the developer tools available. The focus is mostly on real-time safety issues of audio plugins, and on how to spot and solve them in order to guarantee smooth execution of the RT audio path.</p>
 <div class="section" id="elk-linux-distribution">
 <h2>Elk Linux Distribution<a class="headerlink" href="#elk-linux-distribution" title="Permalink to this headline">¶</a></h2>
-<p>At its base, Elk is a custom embedded Linux distribution built using tools from the <a class="reference external" href="https://www.yoctoproject.org/">Yocto project</a> and based on a minimal configuration of the <a class="reference external" href="https://www.yoctoproject.org/software-item/poky/">Poky reference distribution</a>. This document assumes the version targeted for Elk’s evaluation boards based on <a class="reference external" href="https://www.aaeon.com/en/p/iot-gateway-maker-boards-up-core">AAEON UpCore module</a> running on an Intel Cherry Trail Atom X5-Z8350.</p>
+<p>At its base, Elk is a custom embedded Linux distribution built using tools from the <a class="reference external" href="https://www.yoctoproject.org/">Yocto project</a>, and based on a minimal configuration of the <a class="reference external" href="https://www.yoctoproject.org/software-item/poky/">Poky reference distribution</a>.</p>
 <p>The core components of the Elk distribution on the target board are:</p>
 <ul class="simple">
-<li><strong>Elk Linux Kernel</strong>, based on <em>Linux 4.19.x</em> LTS series and the Xenomai I-Pipe patch</li>
-<li><strong>Low-latency audio driver</strong> based on such kernel</li>
-<li><strong>Sushi</strong>, a headless plugin host that interfaces with the low-latency driver and Linux MIDI subsystem</li>
-<li><strong>TWINE</strong>, a shared library that can be used by plugin developers to easily access features of the underlying RTOS such as high-level parallel task management, accurate timing information, etc.</li>
+<li><strong>Elk Linux Kernel</strong>, based on <em>Linux 4.19.x</em> LTS series and the Xenomai I-Pipe patch.</li>
+<li><strong>Low-latency audio driver</strong> based on such kernel.</li>
+<li><strong>Sushi</strong>, a headless plugin host that interfaces with the low-latency driver and Linux MIDI subsystem.</li>
+<li><strong>TWINE</strong>, a shared library that can be used by plugin developers to easily access features of the underlying RTOS, such as high-level parallel task management, accurate timing information, etc.</li>
 <li><strong>Sensei</strong>, a hardware abstraction layer for physical controls attached to GPIOs such as buttons, knobs, LEDs, etc.</li>
-<li><strong>ble-grpc-bridge</strong>, an adapter that exposes gRPC endpoints as Bluetooth Low-Energy GATT characteristics</li>
-<li><strong>systemd base configuration</strong> for all the services needed, with two modalities (development and production)</li>
+<li><strong>ble-grpc-bridge</strong>, an adapter that exposes gRPC endpoints as Bluetooth Low-Energy GATT characteristics.</li>
+<li><strong>systemd base configuration</strong> for all the services needed, with two modalities (development and production).</li>
 <li><strong>update system</strong> based on swupdate for robust, poweroff safe system updates</li>
 </ul>
-<p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python 2.7 installation, hostapd and dhcpd for WiFi hotspot configuration and several others. Other tools are included in the development-only image, like gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can be usually easily add to the image on request.</p>
+<p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python 2.7 installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can usually be easily added to the image on request.</p>
 </div>
 <div class="section" id="sushi">
 <h2>Sushi<a class="headerlink" href="#sushi" title="Permalink to this headline">¶</a></h2>
-<p>Sushi is a headless plugin host for Elk. It interfaces to the relevant system IOs (audio &amp; MIDI) and run parallel processing tracks, each one with its plugin chain processed in series. It supports multiple audio backends:</p>
+<p>Sushi is a headless plugin host for Elk. It interfaces to the relevant system IOs (audio &amp; MIDI) and runs parallel processing tracks, each one with its plugin chain processed in series. It supports multiple audio backends:</p>
 <ul class="simple">
-<li><strong>RASPA</strong>, a userspace library for accessing the low-latency driver on target boards (statically linked into Sushi and currently not available separately)</li>
-<li><strong>JACK Audio Toolkit</strong>, for running real-time code on normal Linux machines</li>
-<li><strong>Offline</strong>, for processing audio and scripted event files (e.g. for automatic testing)</li>
-<li><strong>Dummy</strong>, without any connection to audio I/O, useful to debug some real-time safety issues on normal Linux machines</li>
+<li><strong>RASPA</strong>, a userspace library for accessing the low-latency driver on target boards (statically linked into Sushi and currently not available separately).</li>
+<li><strong>JACK Audio Toolkit</strong>, for running real-time code on normal Linux machines.</li>
+<li><strong>Offline</strong>, for processing audio and scripted event files (e.g. for automatic testing).</li>
+<li><strong>Dummy</strong>, without any connection to audio I/O, useful to debug some real-time safety issues on normal Linux machines.</li>
 </ul>
-<p>See Sushi’s integrated usage help (by running <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">--help</span></code>) for command line options to choose one of the backends.</p>
-<p>Sushi can be controlled statically with JSON configuration files and, at run-time, via an API available over the network. At the moment, an API based on OSC is available and a preliminary version of a more complex one using Google’s gRPC that offers full control and bidirectional communication to a remote client.
-With the run-time RPC API it is possible to perform common tasks such as control of plugins automation parameters, track and mixing controls, adding/removing plugin to tracks, query the engine for track level meters or CPU usage by plugin, etc. The documentation inside Sushi folder shipped on the VM has more details, including full gRPC API definition in protobuf format.</p>
+<p>See Sushi’s integrated usage help (by running <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">--help</span></code>), for command line options to choose one of the backends.</p>
 <p>Other relevant features are:</p>
 <ul class="simple">
-<li>Steinberg’s VST 2.x, VST3.x and Propellerhead’s Rack Extension hosting (plus an internal plugin format), which all are abstracted in a generic “Processor” interface</li>
-<li>Multichannel plugin hosting, with any number of input and output channels</li>
-<li>Bus routing between audio tracks and physical audio inputs/outputs</li>
-<li>Track controls: gain, pan, bypass, mute</li>
-<li>ALSA MIDI support with powerful mapping to the hosted plugins</li>
-<li>Sample accurate timestamping of incoming events</li>
-<li>MIDI tempo sync from MIDI clock or Ableton Link</li>
-<li>Multicore rendering of parallel tracks</li>
+<li>Hosting of plugins in Steinberg’s VST 2.x, VST 3.x formats,  LV2 (using the LV2VST wrapper), plus an internal plugin format, which all are abstracted in a generic “Processor” interface.</li>
+<li>Reason Studio’s Rack Extensions are also supported, but due to Reason Studio’s licensing restrictions this support is only available under closed-source commercial licenses of Sushi. Please get in touch for more information.</li>
+<li>Multichannel plugin hosting, with any number of input and output channels.</li>
+<li>Bus routing between audio tracks and physical audio inputs/outputs.</li>
+<li>Track controls: gain, pan, bypass, mute.</li>
+<li>ALSA MIDI support with powerful mapping to the hosted plugins.</li>
+<li>Sample accurate timestamping of incoming events.</li>
+<li>Tempo sync from MIDI clock or Ableton Link.</li>
+<li>Multicore rendering of parallel tracks.</li>
 </ul>
-<p>Sushi’s JSON format is fully specified in a JSON schema (also included in the VM image) but it is probably easier to just look at the provided examples for a quick start that covers most common configurations, including some multitrack/multichannel examples.</p>
+<div class="section" id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
 <p>On start, Sushi creates a log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code> where it logs all relevant run-time information. Logging
 level and log destination can be specified with the command line flag <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--log-level</span></code> and <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">-L</span></code> <code class="docutils literal notranslate"><span class="pre">-log-file=filename</span></code> respectively.</p>
 </div>
+<div class="section" id="configuration-and-control">
+<h3>Configuration and Control<a class="headerlink" href="#configuration-and-control" title="Permalink to this headline">¶</a></h3>
+<p>Sushi can be controlled statically with JSON configuration files and, at run-time, via an API available over the network. At the moment, an API based on <a class="reference external" href="http://opensoundcontrol.org/">Open Sound Control</a> (OSC) is available, as well as a more complex API using Google’s gRPC, which offers full control and bidirectional communication to a remote client.</p>
+<p>With the run-time RPC API it is possible to perform common tasks such as control of plugins’ automation parameters, track and mixing controls, adding/removing plugin to tracks, querying the engine for track level meters or CPU usage by plugin, etc.</p>
+<p>The OSC namespace for Sushi and the hosted plugins’ parameters, is described in the sushi.log file which Sushi populates at each execution.</p>
+<p>Sushi’s JSON format is fully specified in a JSON schema, but it is probably easier to learn by studying the provided examples, which cover most common configurations, including multitrack/multichannel configurations.</p>
+<p>See our documentation on the <a class="reference internal" href="sushi_configuration_format.html"><span class="doc">Sushi Configuration Format</span></a> for more details.</p>
+</div>
+</div>
 <div class="section" id="twine">
 <h2>Twine<a class="headerlink" href="#twine" title="Permalink to this headline">¶</a></h2>
-<p>Twine is a C++ library that exposes some features of the underlying Xenomai system to plugin developers, particularly accurate and real-time safe timers and multithreaded worker pools.
-The library has a fallback implementation for POSIX systems (tested on standard Linux distros and macOS), which makes it convenient for inclusion in an existing codebase.
-Full source code (MIT licensed) is included in <code class="docutils literal notranslate"><span class="pre">work/twine</span></code> with Doxygen documentation, unit test and example code.</p>
+<p>Twine is a C++ library that exposes some features of the underlying Xenomai system to plugin developers, particularly accurate and real-time safe timers, and multithreaded worker pools.</p>
+<p>The library has a fallback implementation for POSIX systems (tested on standard Linux distros and macOS), which makes it convenient for inclusion in an existing codebase.</p>
+<p>Full source code (MIT licensed) is included in <code class="docutils literal notranslate"><span class="pre">work/twine</span></code> with Doxygen documentation, unit tests and example code.</p>
 </div>
 <div class="section" id="sensei">
 <h2>Sensei<a class="headerlink" href="#sensei" title="Permalink to this headline">¶</a></h2>
 <p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).</p>
 <p>The hardware configuration of the hardware pins can be declared in a JSON configuration file. See <a class="reference internal" href="sensei_configuration_format.html"><span class="doc">Sensei Configuration Format</span></a> for more details about the format and the available hardware sensor &amp; output types.</p>
-<p>On the UpCore based Elk development board, Sensei needs Sushi to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7 or Raspberry Pi based systems.</p>
-<p>Sensei uses a logging system similar to Sushi for reporting run-time messages.</p>
+<p>On the UpCore based Elk development board, Sensei needs Sushi to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7/8 or Raspberry Pi based systems.</p>
+<p>Sensei generates a .log file similar to Sushi for reporting run-time messages.</p>
 </div>
-<div class="section" id="linux-system-configuration">
-<h2>Linux System Configuration<a class="headerlink" href="#linux-system-configuration" title="Permalink to this headline">¶</a></h2>
-<p>As most modern Linux distributions, Elk adopts SystemD for its init system and other general tasks. By default, on the UpCore-based Elk development board, only the services to initialize the audio drivers and the update system are started.
-There are services definitions for both Sushi and Sensei that can be enabled with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">sushi</span></code> or started temporarily with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
-<p>These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system</span></code>, where it is also possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instatiated by Sushi.</p>
+<div class="section" id="linux-startup-service-configuration">
+<h2>Linux Startup Service Configuration<a class="headerlink" href="#linux-startup-service-configuration" title="Permalink to this headline">¶</a></h2>
+<p>As most modern Linux distributions, Elk adopts SystemD for its init system and other general tasks. By default, on the UpCore-based Elk development board, only the services to initialize the audio drivers and the update system are started.</p>
+<p>There are services definitions for both Sushi and Sensei that can be enabled with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">sushi</span></code> or started temporarily with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
+<p>These example services start the applications with a trivial default configuration. To change the file used at startup, it is needed to modify the SystemD startup script in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system</span></code>.</p>
+<p>There it is possible to add other relevant changes depending on the particular setup, e.g. setting the working directory or passing environment variables that can be read by plugins instantiated by Sushi.</p>
 </div>
-<div class="section" id="filesystem-organization-and-software-update-system">
-<h2>Filesystem Organization and Software Update System<a class="headerlink" href="#filesystem-organization-and-software-update-system" title="Permalink to this headline">¶</a></h2>
-<p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, using a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
-<p>Therefore, it is important to remember to <em>never put any files that you want to keep permanent on the mounted root partition!</em>. There is a separate partition mounted under <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for files that you want to preserve between system updates. If your plugin or other process for some reason needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">udata</span></code> partition from there.</p>
-<p>Developer images mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
-<p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deploy of such files over-the-air using e.g. the internal WiFi connection.</p>
+<div class="section" id="filesystem-organization">
+<h2>Filesystem Organization<a class="headerlink" href="#filesystem-organization" title="Permalink to this headline">¶</a></h2>
+<p>Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
+<p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep permanent on the mounted root partition!</strong></em> There is a separate partition mounted under <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for files that you want to preserve between system updates.</p>
+<p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">udata</span></code> partition from there.</p>
+<p>Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
+</div>
+<div class="section" id="software-update-system">
+<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
+<p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
+<p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.</p>
 </div>
 <div class="section" id="ble-grpc-bridge">
 <h2>BLE-gRPC Bridge<a class="headerlink" href="#ble-grpc-bridge" title="Permalink to this headline">¶</a></h2>
-<p>In order to communicate with e.g. a mobile device, Elk includes a daemon that wraps the gRPC endpoints of Sushi and Sensei transparently and with minimal overhead over Bluetooth Low-Energy GATT characteristics. It is based on recent versions (5.43 and later) of the standard BlueZ stack for Linux plus some direct communication with Bluetooth controllers using the HCI interface to optimize the connection parameters for both Android and iPhone mobile devices.</p>
+<p>In order to communicate with e.g. a mobile device, Elk includes a daemon that wraps the gRPC endpoints of Sushi and Sensei transparently and with minimal overhead over Bluetooth Low-Energy GATT characteristics. It is based on recent versions (5.43 and later) of the standard BlueZ stack for Linux, plus some direct communication with Bluetooth controllers using the HCI interface to optimize the connection parameters for both Android and iPhone mobile devices.</p>
 <p>There is also a file transfer service to overcome BLE limitations on packet size and that can be used to transfer larger data than a normal API call, although it is practically limited by the low-bandwidth of BLE (10-20 Kbyte/s for Bluetooth 4.0).</p>
-<p>In case you would need to use such system to communicate directly with your plugins, at the moment we offer to custom adaptations of this daemon to our customers. An open API is planned to be released in late 2019 to allow developers to independently hook their gRPC services.</p>
+<p>In case you would need to use such system to communicate directly with your plugins, at the moment we offer custom adaptations of this daemon to our customers. An open API is planned to be released, for allowing developers to independently hook their gRPC services.</p>
 </div>
 </div>
 
@@ -134,11 +149,16 @@ There are services definitions for both Sushi and Sensei that can be enabled wit
   <ul>
 <li><a class="reference internal" href="#">Elk Overview</a><ul>
 <li><a class="reference internal" href="#elk-linux-distribution">Elk Linux Distribution</a></li>
-<li><a class="reference internal" href="#sushi">Sushi</a></li>
+<li><a class="reference internal" href="#sushi">Sushi</a><ul>
+<li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#configuration-and-control">Configuration and Control</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#twine">Twine</a></li>
 <li><a class="reference internal" href="#sensei">Sensei</a></li>
-<li><a class="reference internal" href="#linux-system-configuration">Linux System Configuration</a></li>
-<li><a class="reference internal" href="#filesystem-organization-and-software-update-system">Filesystem Organization and Software Update System</a></li>
+<li><a class="reference internal" href="#linux-startup-service-configuration">Linux Startup Service Configuration</a></li>
+<li><a class="reference internal" href="#filesystem-organization">Filesystem Organization</a></li>
+<li><a class="reference internal" href="#software-update-system">Software Update System</a></li>
 <li><a class="reference internal" href="#ble-grpc-bridge">BLE-gRPC Bridge</a></li>
 </ul>
 </li>
