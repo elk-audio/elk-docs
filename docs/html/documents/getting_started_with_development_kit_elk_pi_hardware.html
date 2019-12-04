@@ -64,7 +64,7 @@
 </div>
 <div class="section" id="flashing-the-elk-operating-system-image-to-the-sd-card">
 <h2>2. Flashing the Elk operating system image to the SD card<a class="headerlink" href="#flashing-the-elk-operating-system-image-to-the-sd-card" title="Permalink to this headline">¶</a></h2>
-<p>To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required</p>
+<p>To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required.</p>
 <ol class="simple">
 <li>Download the compressed image from the provided link. It will have a filename such as: <em>elk-sika-image-dev-raspberrypi3-64.wic.bz2</em>.</li>
 <li>Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.</li>
@@ -72,7 +72,7 @@
 <div class="section" id="windows">
 <h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Extract the <code class="docutils literal notranslate"><span class="pre">.wic</span></code> file from the <code class="docutils literal notranslate"><span class="pre">.bz2</span></code> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility</li>
+<li>Extract the <code class="docutils literal notranslate"><span class="pre">.wic</span></code> file from the <code class="docutils literal notranslate"><span class="pre">.bz2</span></code> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
 <li>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</li>
 <li>Flash the extracted <code class="docutils literal notranslate"><span class="pre">.wic</span></code> file to the SD card.</li>
 </ol>
@@ -81,14 +81,14 @@
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <code class="docutils literal notranslate"><span class="pre">dd</span></code> with these instructions:</p>
 <ol class="simple">
-<li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal notranslate"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is<code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code> ,<code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code>, or following letters, or sometimes <code class="docutils literal notranslate"><span class="pre">/dev/mmcblk0</span></code>. We will refer to it as <code class="docutils literal notranslate"><span class="pre">/dev/sdX</span></code> in the following.</li>
+<li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal notranslate"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code>, or subsequent letters, or sometimes <code class="docutils literal notranslate"><span class="pre">/dev/mmcblk0</span></code>. We will from now on refer to it as <code class="docutils literal notranslate"><span class="pre">/dev/sdX</span></code>.</li>
 <li>Unmount the SD card if it was already mounted:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo unmount /dev/sdX*
 </pre></div>
 </div>
 <ol class="simple">
-<li><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run :</li>
+<li><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress <span class="o">&amp;&amp;</span> sync
 </pre></div>

@@ -20,7 +20,7 @@ This document contains basic information on how to set up Elk Pi development boa
 
 ## 2. Flashing the Elk operating system image to the SD card
 
-To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required
+To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required.
 
 1. Download the compressed image from the provided link. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
 
@@ -28,7 +28,7 @@ To get the system running, you need to flash an Elk operating system image onto 
 
 ### Windows:
 
-   1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility
+   1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility.
 
    2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32DiskImager](https://www.raspberrypi.org/downloads/).
    
@@ -37,7 +37,7 @@ To get the system running, you need to flash an Elk operating system image onto 
 ### Linux
 At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain `dd` with these instructions:
 
-   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is`/dev/sdb` ,`/dev/sdc`, or following letters, or sometimes `/dev/mmcblk0`. We will refer to it as `/dev/sdX` in the following.
+   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is `/dev/sdb`, `/dev/sdc`, or subsequent letters, or sometimes `/dev/mmcblk0`. We will from now on refer to it as `/dev/sdX`.
    
    2. Unmount the SD card if it was already mounted:
 
@@ -45,7 +45,7 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
      $ sudo unmount /dev/sdX*
    ```
 
-   3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run :
+   3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run:
       
    ```bash
       $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync

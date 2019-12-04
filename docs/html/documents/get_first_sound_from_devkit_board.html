@@ -90,8 +90,9 @@ $ aconnect X Y
 </div>
 <div class="section" id="powering-down">
 <h2>3. Powering Down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
-<p>In development releases of Elk, the storage is mounted for both and reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
+<p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
 <p>Instead, type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">poweroff</span></code> to safely shutdown the system.</p>
+<p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed in the <a class="reference internal" href="elk_overview.html"><span class="doc">Elk Overview</span></a>.</p>
 </div>
 <div class="section" id="further-steps">
 <h2>4. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>

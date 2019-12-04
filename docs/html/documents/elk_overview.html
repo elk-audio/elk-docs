@@ -125,6 +125,7 @@ level and log destination can be specified with the command line flag <code clas
 <p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep permanent on the mounted root partition!</strong></em> There is a separate partition mounted under <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for files that you want to preserve between system updates.</p>
 <p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">udata</span></code> partition from there.</p>
 <p>Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
+<p>Further details on partition layout are available under <a class="reference internal" href="devkit_further_topics.html"><span class="doc">Additional Topics</span></a>.</p>
 </div>
 <div class="section" id="software-update-system">
 <h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>

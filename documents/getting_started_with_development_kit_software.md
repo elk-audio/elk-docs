@@ -1,24 +1,22 @@
 # Development Kit Software
-Get started with running your first plugin on a desktop computer.
-
-Here you will quickly see which the first steps are, to run a plugin from within Elk's Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.
+In this guide you will quickly see which the first steps are, to run a plugin from within Elk's Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.
 
 ## Running a plugin within the Sushi host
 
 You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/elk-examples/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
 
-To output some sound, you need to have Jack audio configured on your computer, which is beyond the scope of this tutorial - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! In this example we also show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer too.
+To output sound, you need to have Jack audio configured on your computer, which is beyond the scope of this guide - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! We here show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer in their place.
 
 ## Starting Sushi with the MDA JX10 VST synthesizer
 
-First we assume you are able to run Sushi and connect to jack audio. 
+First we assume you are able to run Sushi and connect to Jack audio.
 
 The example used, requires that you have these files from our [elk-examples repository](https://github.com/elk-audio/elk-examples/):
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz) - a build of the MDA plugins, containing also the JX10 Synthesizer binary.
-4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the TouchOSC app.
+3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
+4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the [TouchOSC app](https://hexler.net/products/touchosc).
 
 First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
 
@@ -29,10 +27,8 @@ To run Sushi using Jack, with the configuration file provided for running the MD
 2. Type the following command:
 
 ```bash
-$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /absolute/path/to/example/config/files/config_play_vst3.json
+$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /relative/path/to/example/config/files/config_play_vst3.json
 ```
-
-Note that with the current version of Sushi the path is expected to be absolute, a relative one will not work.
 
 You should see the following status message:
 
@@ -49,18 +45,18 @@ Note that its outputs are already connected.
 
 That is because the `--connect-ports` command-line option used, attempts to connect the Sushi outputs. If they are not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.
 
-If you were to instead run Sushi on the Development Kit Board, you should use the following command instead, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of Jack:
+If you were to instead run Sushi on the Development Kit Board, you should use the following command, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of Jack:
 
 ```bash
-$ sushi -r -c /absolute/path/to/your/config.json
+$ sushi -r -c /relative/path/to/your/config.json
 ```
 
 ## Connecting MIDI to Sushi
 
-Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to connect it to a Midi device to be able to play sound. For this, connect them with the `aconnect` tool:
+Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to connect it to a MIDI device to be able to play sound. For this, connect them with the `aconnect` tool:
 
 1. Start a new terminal window than the one where Sushi is running.
-2. Type `'aconnect -l'` to list all available Midi devices and ports for connections:
+2. Type `'aconnect -l'` to list all available MIDI devices and ports for connections:
 
 ```bash
 client 0: 'System' [type=kernel]
@@ -117,3 +113,5 @@ If you would prefer to control your plugin from an iPad/Android tablet, we have 
 To use it, please refer to the TouchOSC manual - the only customisation needed is setting the IP-address that your computer running Sushi is using, in your TouchOSC app's settings.
 
 ![touch_osc_jx10_gui](illustrations/touch_osc_jx10_gui.png)
+
+Which OSC messages your particular configuration responds to, is by sushi populated at each execution, in the `sushi.log` file, as detailed in our [Elk Overview's section on Logging](elk_overview.md).

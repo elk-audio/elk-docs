@@ -106,6 +106,8 @@ If your plugin or other process needs to store data e.g. in the user home direct
 
 Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.
 
+Further details on partition layout are available under [Additional Topics](devkit_further_topics.md).
+
 ## Software Update System
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.

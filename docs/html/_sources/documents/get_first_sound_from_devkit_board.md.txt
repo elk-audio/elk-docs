@@ -45,12 +45,15 @@ $ aconnect X Y
 
 ## 3. Powering Down
 
-In development releases of Elk, the storage is mounted for both and reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.
+In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.
 
 Instead, type `sudo poweroff` to safely shutdown the system.
+
+Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed in the [Elk Overview](elk_overview.md).
 
 ## 4. Further steps
 
 Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!
 
 There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our [Additional Development Kit Board Topics](devkit_further_topics.md).
+

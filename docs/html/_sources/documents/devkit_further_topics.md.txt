@@ -1,10 +1,10 @@
 # Additional Topics
 
-Learn to connect to your board over serial cable of WiFi, monitoring the plugin performance, tweaking buffer sizes and setting up the board for automatic startup.
+Learn to connect to your board over serial cable of WiFi, monitor the plugin performance, tweak buffer sizes, and set up the board for automatic startup.
 
 ## Connecting Over Serial Cable
 
-Attach a serial cable from your PC to the board, using a TTL-USB adapter and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).
+Attach a serial cable from your PC to the board, using a TTL-USB adapter, and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).
 
 For example, on a host Linux / macOS machine:
 
@@ -13,13 +13,11 @@ For example, on a host Linux / macOS machine:
 $ picocom /dev/ttyXXX -b 115200 -l
 ```
 
-With a serial connection you can login and have full shell access to the board but files need to be transferred of the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
+With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 
 ## Set Up WiFi Connection
 
-Log-in to the board as root (empty password in the dev image) using a serial cable or a HDMI monitor
-
-- USB keyboard.
+Log-in to the board as root (empty password in the dev image) using a serial cable or an HDMI monitor and USB keyboard.
 
 On development images, you need to run the following command at the very first boot or anytime you
 perform an update with a .swu file to flash a new development root filesystem:
@@ -46,8 +44,8 @@ $ connmanctl> Ctrl+D
 $ ip a
 ```
 
-Then, you can just ssh to the board from your host computer or transferring files using scp / sftp.
-Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run sushi and other userspace applications.
+Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
+Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
 
 ## Partition Layout
 
@@ -101,4 +99,4 @@ $ systemctl enable sushi
 $ systemctl enable midi-connections
 ```
 
-Sushi will still output its log file in /tmp. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root) to check that as well.
+Sushi will still output its log file in `/tmp`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
