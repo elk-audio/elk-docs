@@ -84,6 +84,14 @@ Also use  `/udata` for the storage of settings & user patches.
 
 If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `/udata` partition from there.
 
+### Image Types: Development and Release
+
+Very different configurations are needed on images for development, versus images deployed on released instruments.
+
+The development image contains the gcc toolchain, gdb & gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.
+
+The deployment/release image on the other hand is very streamlined, to minimize boot time and optimize stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for `/udata`if needed.
+
 ## Monitoring Sushi Performance
 
 Given Sushi is running, to get a rough view of CPU performance, `top`, `htop` and similar Linux tools will only show you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:

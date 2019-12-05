@@ -114,6 +114,12 @@ Besides root access, you can login as <code class="docutils literal notranslate"
 <p>Also use  <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for the storage of settings &amp; user patches.</p>
 <p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition from there.</p>
 </div>
+<div class="section" id="image-types-development-and-release">
+<h3>Image Types: Development and Release<a class="headerlink" href="#image-types-development-and-release" title="Permalink to this headline">¶</a></h3>
+<p>Very different configurations are needed on images for development, versus images deployed on released instruments.</p>
+<p>The development image contains the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.</p>
+<p>The deployment/release image on the other hand is very streamlined, to minimize boot time and optimize stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for <code class="docutils literal notranslate"><span class="pre">/udata</span></code>if needed.</p>
+</div>
 </div>
 <div class="section" id="monitoring-sushi-performance">
 <h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
@@ -161,6 +167,7 @@ $ systemctl <span class="nb">enable</span> midi-connections
 <li><a class="reference internal" href="#software-update-system">Software Update System</a></li>
 <li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
 <li><a class="reference internal" href="#user-data-separation">User Data Separation</a></li>
+<li><a class="reference internal" href="#image-types-development-and-release">Image Types: Development and Release</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
