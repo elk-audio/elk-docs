@@ -1,6 +1,3 @@
-Elk Pi Datasheet
-================
-
 |image0|
 
 **Author:** Elk
@@ -90,33 +87,7 @@ Assembly content and accessories
 .. [1]
    Not needed for developing
 
-Assembly Instructions
----------------------
-
-Peel off the blue protective film from the bottom of the heat sink
-   and apply it on top of the Raspberry Pi CPU (Figure 1).
-
-*Figure 1:*
-
-|image1|
-
-Screw the four f-m spacers into the f-f spacers on the Raspberry Pi (Figure 2).
-
-*Figure 2:*
-
-|image2|
-
-Plug the Elk Pi on top of the Raspberry Pi (Figure 3).
-
-*Figure 3:*
-
-|image3|
-
-Add the four screws if you want extra stability (Figure 4).
-
-*Figure 4:*
-
-|image4|
+For assembling the board, follow the steps in our guide for `getting started with Elk Pi Hardware. <getting_started_with_development_kit_elk_pi_hardware.html>`__
 
 Raspberry Pi guidelines
 -----------------------

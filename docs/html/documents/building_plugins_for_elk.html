@@ -19,7 +19,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Elk Pi Datasheet" href="elk_pi_datasheet.html" />
+    <link rel="next" title="Examples Overview" href="elk_examples_overview.html" />
     <link rel="prev" title="Sensei Configuration" href="sensei_configuration_format.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,7 +29,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="elk_pi_datasheet.html" title="Elk Pi Datasheet"
+          <a href="elk_examples_overview.html" title="Examples Overview"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Configuration"
@@ -52,12 +52,11 @@
 <h2>Cross-Compiling Toolchain<a class="headerlink" href="#cross-compiling-toolchain" title="Permalink to this headline">¶</a></h2>
 <p>For each targeted platform, we release a cross-compiling toolchain based on gcc (clang available on request) that replaces all the commands of the standard toolchain, including make, CMake, system libraries, etc.</p>
 <p>You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset LD_LIBRARY_PATH
-$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
 </pre></div>
 </div>
 <p>Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.</p>
-<p>The unset command is needed only in the VM configuration because <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> is changed there for practical testing of VM builds. In case it is more convenient in your case, you can just remove the relevant line in <code class="docutils literal notranslate"><span class="pre">/home/minddev/.zshrc</span></code>.</p>
+<p>If you had previously changed your  <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>, you would need to first issue the <code class="docutils literal notranslate"><span class="pre">#$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code> command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in <code class="docutils literal notranslate"><span class="pre">/home/minddev/.zshrc</span></code>.</p>
 </div>
 <div class="section" id="vst-2-x-plugins-using-steinberg-sdk">
 <h2>VST 2.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-2-x-plugins-using-steinberg-sdk" title="Permalink to this headline">¶</a></h2>
@@ -199,8 +198,8 @@ $ <span class="nv">AR</span><span class="o">=</span>aarch64-elk-linux-gcc-ar mak
   <p class="topless"><a href="sensei_configuration_format.html"
                         title="previous chapter">Sensei Configuration</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="elk_pi_datasheet.html"
-                        title="next chapter">Elk Pi Datasheet</a></p>
+  <p class="topless"><a href="elk_examples_overview.html"
+                        title="next chapter">Examples Overview</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -231,7 +230,7 @@ $ <span class="nv">AR</span><span class="o">=</span>aarch64-elk-linux-gcc-ar mak
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="elk_pi_datasheet.html" title="Elk Pi Datasheet"
+          <a href="elk_examples_overview.html" title="Examples Overview"
              >next</a> |</li>
         <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Configuration"

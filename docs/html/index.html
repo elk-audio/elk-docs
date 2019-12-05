@@ -19,7 +19,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Elk Overview" href="documents/elk_overview.html" /> 
+    <link rel="next" title="Powered by Elk" href="documents/how_elk_works.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,7 +28,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="documents/elk_overview.html" title="Elk Overview"
+          <a href="documents/how_elk_works.html" title="Powered by Elk"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
@@ -51,16 +51,15 @@ Linux, on a Virtual Machine, as well as on the Elk development board.
 Mostly you interact with all three in a very similar way, but when there
 are differences we will explicitly point them out.</p>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Elk Introduction and Overview:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_overview.html">Elk Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#elk-linux-distribution">Elk Linux Distribution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#sushi">Sushi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#twine">Twine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#sensei">Sensei</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#linux-startup-service-configuration">Linux Startup Service Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#filesystem-organization">Filesystem Organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#software-update-system">Software Update System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_overview.html#ble-grpc-bridge">BLE-gRPC Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents/how_elk_works.html">Powered by Elk</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#hardware-components">Hardware Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#standard-linux-components">Standard Linux Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#elk-core-components">Elk Core Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#gluing-things-together">Gluing Things Together</a></li>
 </ul>
 </li>
 </ul>
@@ -82,8 +81,8 @@ are differences we will explicitly point them out.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html">Elk UpCore Hardware</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#installing-an-image-to-emmc">1. Installing an image to eMMC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#power-up-and-next-steps">3. Power up, and next steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#installing-an-image-to-emmc">Installing an image to eMMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#power-up-and-next-steps">Power up, and next steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/get_first_sound_from_devkit_board.html">Run Elk on Boards</a><ul>
@@ -98,15 +97,6 @@ are differences we will explicitly point them out.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Elk Reference Manual:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/how_elk_works.html">How Elk works</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#hardware-components">Hardware Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#standard-linux-components">Standard Linux Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#elk-core-components">Elk Core Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#gluing-things-together">Gluing Things Together</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="documents/sushi_overview.html">Sushi: The DAW Inside Elk</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#main-features">Main features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#architecture">Architecture</a></li>
@@ -115,23 +105,9 @@ are differences we will explicitly point them out.</p>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#configuration-and-routing">Configuration and Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#plugin-format-support">Plugin Format Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#threading">Threading</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/devkit_further_topics.html">Additional Topics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#connecting-over-serial-cable">Connecting Over Serial Cable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#set-up-wifi-connection">Set Up WiFi Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#partition-layout">Partition Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#running-another-plugin-using-sushi">Running Another Plugin Using Sushi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#running-sushi-at-a-different-buffer-size">Running Sushi at a Different Buffer Size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#setting-the-board-up-for-automatic-startup">Setting the Board Up for Automatic Startup</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview.html">Examples Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#mda-jx10-vst3-example">MDA JX10 VST3 Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#mda-jx10-vst2-example">MDA JX10 VST2 Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#lv2vst-wrapper-with-mda-jx10-lv2-example">LV2VST Wrapper, with MDA JX10 LV2 Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#elk-multi-fx-example">Elk Multi FX Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#twine">Twine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#running-sushi-at-a-different-buffer-size">Running Sushi at a Different Buffer Size</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/sushi_configuration_format.html">Sushi Configuration</a><ul>
@@ -142,10 +118,41 @@ are differences we will explicitly point them out.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/sushi_internal_plugins.html">Sushi Internal Plugins</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-audio-out-plugins">Audio In / Audio Out plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-audio-out-plugins">Midi In / Audio Out plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-audio-out-plugins">Audio In / Audio Out plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#passthrough">Passthrough</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#gain">Gain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#equalizer">Equalizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-audio-out-plugins">Midi In / Audio Out plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#sample-player">Sample player</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#arpeggiator">Arpeggiator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#transposer">Transposer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#peak-meter">Peak meter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documents/devkit_further_topics.html">Working with Elk</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#connecting-to-elk-board">Connecting to Elk Board</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/devkit_further_topics.html#over-serial-cable">Over Serial Cable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/devkit_further_topics.html#wifi-connection">WiFi Connection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#filesystem">Filesystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documents/devkit_further_topics.html#software-update-system">Software Update System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/devkit_further_topics.html#partition-layout">Partition Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents/devkit_further_topics.html#user-data-separation">User Data Separation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/devkit_further_topics.html#configuring-automatic-startup">Configuring Automatic Startup</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/sensei_configuration_format.html">Sensei Configuration</a><ul>
@@ -166,6 +173,13 @@ are differences we will explicitly point them out.</p>
 <li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#analyzing-and-resolving-xenomai-mode-switches">Analyzing and Resolving Xenomai Mode Switches</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview.html">Examples Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#mda-jx10-vst3-example">MDA JX10 VST3 Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#mda-jx10-vst2-example">MDA JX10 VST2 Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#lv2vst-wrapper-with-mda-jx10-lv2-example">LV2VST Wrapper, with MDA JX10 LV2 Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#elk-multi-fx-example">Elk Multi FX Example</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="elk-online-forum">
@@ -177,11 +191,9 @@ please refer to the <a class="reference external" href="https://forum.elk.audio"
 <h2>Elk Pi Datasheet<a class="headerlink" href="#elk-pi-datasheet" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html">Elk Pi Datasheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#overview">Overview</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#features">Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#assembly-content-and-accessories">Assembly content and accessories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#assembly-instructions">Assembly Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#raspberry-pi-guidelines">Raspberry Pi guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#connectors-and-pinout">Connectors and pinout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#status-leds">Status LEDs</a></li>
@@ -224,16 +236,12 @@ please refer to the <a class="reference external" href="https://forum.elk.audio"
 important topics directly relevant for learning to work with our
 Development Kit:</p>
 <blockquote>
-<div><p><a class="reference external" href="https://elk.audio/how-elk-works/">How Elk Works: A look Under the Hood of a Device Powered By
-Elk</a></p>
-<p><a class="reference external" href="https://elk.audio/elk-development-boards-overview-3/">Elk Development Boards
-Overview</a></p>
-<p><a class="reference external" href="https://elk.audio/daw-like-sushi/">Discover Sushi: The DAW Inside
-Elk</a></p>
-<p><a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">Controlling Plug-Ins in Elk, Part1: Open Sound
+<div><p><a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">Controlling Plug-Ins in Elk, Part1: Open Sound
 Control</a></p>
 <p><a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-ii/">Controlling Plug-Ins in Elk, Part2: Google Remote Procedure
 Call</a></p>
+<p><a class="reference external" href="https://elk.audio/elk-development-boards-overview-3/">Elk Development Boards
+Overview</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="examples">
@@ -277,8 +285,8 @@ repository</a>, with the binary files they depend on available in the <a class="
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="documents/elk_overview.html"
-                        title="next chapter">Elk Overview</a></p>
+  <p class="topless"><a href="documents/how_elk_works.html"
+                        title="next chapter">Powered by Elk</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -309,7 +317,7 @@ repository</a>, with the binary files they depend on available in the <a class="
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="documents/elk_overview.html" title="Elk Overview"
+          <a href="documents/how_elk_works.html" title="Powered by Elk"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">Elk DevKit  documentation</a> &#187;</li> 
       </ul>

@@ -1,8 +1,10 @@
-# Additional Topics
+# Working with Elk
 
 Learn to connect to your board over serial cable of WiFi, monitor the plugin performance, tweak buffer sizes, and set up the board for automatic startup.
 
-## Connecting Over Serial Cable
+## Connecting to Elk Board
+
+### Over Serial Cable
 
 Attach a serial cable from your PC to the board, using a TTL-USB adapter, and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).
 
@@ -15,7 +17,7 @@ $ picocom /dev/ttyXXX -b 115200 -l
 
 With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 
-## Set Up WiFi Connection
+### WiFi Connection
 
 Log-in to the board as root (empty password in the dev image) using a serial cable or an HDMI monitor and USB keyboard.
 
@@ -47,7 +49,19 @@ $ ip a
 Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
 Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
 
-## Partition Layout
+## Filesystem
+
+### Software Update System
+
+Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
+
+Elk updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.
+
+### Partition Layout
+
+Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.
+
+Therefore, it is important to remember to ***never put any files that you want to keep on the mounted root partition!*** There is a separate partition mounted under `/udata` for files that you want to preserve between system updates.
 
 The internal eMMC storage on the board is divided into four partitions:
 
@@ -56,16 +70,19 @@ The internal eMMC storage on the board is divided into four partitions:
 - `rootfs2` : Second copy of root filesystem
 - `udata`   : User data partition
 
-The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted and it will change the bootloader configuration to boot from it if the update is run successfully. 
+The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.
 
-For this reason, it is recommended that you put any file using for temporary development in the user
-data partition, which will remain untouched after running a software update. It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.
+It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.
 
-## Running Another Plugin Using Sushi
+Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.
 
-Follow the instructions in [Build Plugins for Elk](building_plugins_for_elk.md) to cross-compile a plugin for your target boards. The development images include the toolchain as well, so it's possible to build the plugin locally on the board if you prefer.
+### User Data Separation
 
-After you have the plugin binary, copy it to the board (preferably somewhere in /udata) and create a Sushi configuration file for it following one of our examples or looking at the provided JSON Schema for more advanced configuration.
+Files in the user data partition under `/udata`, remain untouched after running a software update, so keep any temporary files used for development there. 
+
+Also use  `/udata` for the storage of settings & user patches.
+
+If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `/udata` partition from there.
 
 ## Monitoring Sushi Performance
 
@@ -77,22 +94,14 @@ $ watch -n 0.5 cat /proc/xenomai/sched/stat
 
 For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the `--timing-statistics` flag to get the results on a file.
 
-## Running Sushi at a Different Buffer Size
-
-Audio buffer-size is a compile-time option in Sushi, since on embedded systems there's rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimisations.
-
-However, Elk distributions are shipped with Sushi compiled at different buffer sizes, usually [16, 32, 64, 128]. The main command `sushi` is a wrapper around them that, when passed the option `-b N` as the first argument, select which one to run [default=64].
-
-In case you want to use a different buffer size, you will also need to change the audio driver parameter `audio_buffer_size` in the script placed by default in `/usr/bin/load-drivers` and reboot the board (or restart the audio driver by removing and reinserting the module `audio_rtdm`).
-
-## Setting the Board Up for Automatic Startup
+## Configuring Automatic Startup
 
 If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.
 
 1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
    
-   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemd service defined in `/lib/systemd/system/midi-connections.service`
+   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemD service defined in `/lib/systemd/system/midi-connections.service`
 2. Enable both Sushi and the MIDI connection service typing (as root):
 
 ```bash
@@ -102,3 +111,4 @@ $ systemctl enable midi-connections
 
 Sushi will still output its log file in `/tmp/sushi.log`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
 
+They can also be started temporarily with `systemctl start sushi` as any normal SystemD service.

@@ -2,13 +2,11 @@
 
 The Elk Music Operating System consists of many different parts. In this post I will focus on what we call **Sushi**, the DAW that is at the core of audio and midi processing in the Elk MusicOS. I hope you find it interesting!
 
-![img](./illustrations/sushi_architecture.png)
-
 ## Main features
 
 Sushi is a track-based, headless Digital Audio Workstation. It works as a plugin host, supporting multiple plugin standards, features advanced audio and midi routing, simple scripting setup and is written to ensure high performance and stability under low latency conditions. It can be controlled through MIDI, OSC, or a gRPC interface.
 
-##### In a nutshell:
+**In a nutshell:**
 
 - Headless host with full control over MIDI, OSC and gRPC interfaces.
 - Hosts VST 2.4, VST 3.6 and Rack Extensions plugins.
@@ -40,20 +38,65 @@ For some applications, like the upcoming [Smart Multiamp](http://www.dvmark.it/n
 
 ## Audio Frontends
 
-Sushi was built to work in perfect sync with Raspa, our proprietary low-latency audio framework. But Sushi also has built-in support for [Jack](http://jackaudio.org/), as well as an offline mode where audio is read from and written to file. The latter can be used for testing in an environment that lacks audio codecs and for evaluating systems in a very early stage. It has also proven to be very useful in debugging.
+Sushi supports multiple audio frontends:
+
+  + **RASPA**: Sushi was built to work in perfect sync with Raspa, our proprietary low-latency audio framework.
+  + **[JACK Audio Toolkit](http://jackaudio.org/)**: for running real-time code on normal Linux machines.
+  + **Offline**: for processing audio and scripted event files (e.g. for automatic testing).
+  + **Dummy**: without any connection to audio I/O, useful to debug some real-time safety issues on normal Linux machines.
 
 **The ability to run Sushi with Jack, the most common audio framework on Linux, makes it possible to run on almost any Linux system**. While it doesn’t give the same ultra low latency as running it with Raspa on an Elk system. It does make it incredibly easy to test and develop plugins and setups for Elk on a standard Linux machine. In fact, **almost all of the development of Sushi has been done on standard Linux machines**.
 
 When running with Raspa, Sushi is limited to the number of inputs and outputs supported by the physical hardware. While when running with Jack, Sushi exposes 8 input ports and 8 output ports that can then be freely routed to physical outputs or inputs, or other Jack software.
 
+The Offline frontend can be used for testing in an environment that lacks audio codecs and for evaluating systems in a very early stage. It has also proven to be very useful in debugging.
+
+See Sushi's integrated usage help (by running `sushi -h` or `sushi --help`), for command line options to choose one of the frontends.
+
 ## Configuration and Routing
 
 Most of the initial setup of Sushi is done through a [JSON](https://en.wikipedia.org/wiki/JSON) configuration file. In this it’s possible to specify the number of tracks to use, their channel setup (mono, stereo, multichannel), the plugins on the track, audio input and output routing, MIDI routing, which plugin parameters map to Control Change messages, and so on. See below for a very simple example for how to set up a synth plugin with MIDI-mapped parameters.
 
+![img](./illustrations/sushi_architecture.png)
+
+At run-time, Sushi can be controlled via an API available over the network. At the moment, an API based on [Open Sound Control](http://opensoundcontrol.org/) (OSC) is available, as well as a more complex API using Google's gRPC, which offers full control and bidirectional communication to a remote client.
+
+With the run-time RPC API it is possible to perform common tasks such as control of plugins' automation parameters, track and mixing controls, adding/removing plugin to tracks, querying the engine for track level meters or CPU usage by plugin, etc.
+
+The OSC namespace for Sushi and the hosted plugins' parameters, is described in the sushi.log file which Sushi populates at each execution.
+
+Sushi's JSON format is fully specified in a JSON schema, but it is probably easier to learn by studying the provided examples, which cover most common configurations, including multitrack/multichannel configurations.
+
+See our documentation on the [Sushi Configuration Format](sushi_configuration_format.md) for more details.
+
 ## Plugin Format Support
 
-Sushi supports and can load **plugins built in Steinberg’s VST 2.4 and [VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html) formats as well as [Rack Extensions](https://www.propellerheads.com/developers) from Reason Labs**. In order to load plugins in Sushi, they need to be compiled for the system intended. Note that it is not possible to take an existing Windows, macOS, or even native Linux plugin binary and load it in Elk. That will not work. Though if the plugins are well written from the start, porting them to Elk should be a rather straightforward process of recompiling the plugins using our SDK.
+  + Sushi can host plugins in Steinberg's **VST 2.4** and **[VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html)** formats,  **LV2** (using the LV2VST wrapper), plus an Internal plugin format, which all are abstracted in a generic "Processor" interface. 
+  + **Reason Studio's [Rack Extensions](https://www.propellerheads.com/developers)** are also supported, but due to Reason Studio's licensing restrictions this support is only available under closed-source commercial licenses of Sushi. Please get in touch for more information.
+
+In order to load plugins in Sushi, they need to be compiled for the system intended. Note that it is not possible to take an existing Windows, macOS, or even native Linux plugin binary and load it in Elk. That will not work. Though if the plugins are well written from the start, porting them to Elk should be a rather straightforward process of recompiling the plugins using our SDK.
 
 ## Threading
 
 Sushi can run its audio processing single threaded but also has **built in multithreading support** to spread the audio processing over multiple cores, depending on the type of system it is running on. For developers that wish to utilise multithreading within a plugin, we have developed a small threading utility library that works with Elk and Sushi, called Twine. This library also includes a few utility functions and wrappers for certain system calls like timers to abstract away some of the limitations of the dual kernel setup.
+
+## Twine
+
+Twine is a C++ library that exposes some features of the underlying Xenomai system to plugin developers, particularly accurate and real-time safe timers, and multithreaded worker pools.
+
+The library has a fallback implementation for POSIX systems (tested on standard Linux distros and macOS), which makes it convenient for inclusion in an existing codebase.
+
+Full source code is included in `work/twine` with Doxygen documentation, unit tests and example code.
+
+## Logging
+
+On start, Sushi creates a log file in `/tmp/sushi.log` where it logs all relevant run-time information. Logging
+level and log destination can be specified with the command line flag `-l` or `--log-level` and `-l` or `-L` `-log-file=filename` respectively. 
+
+## Running Sushi at a Different Buffer Size
+
+Audio buffer-size is a compile-time option in Sushi, since on embedded systems there's rarely the need from the user to adjust the buffer size and in this way, the compiler has more room for optimisations.
+
+However, Elk distributions are shipped with Sushi compiled at different buffer sizes, usually [16, 32, 64, 128]. The main command `sushi` is a wrapper around them that, when passed the option `-b N` as the first argument, select which one to run [default=64].
+
+In case you want to use a different buffer size, you will also need to change the audio driver parameter `audio_buffer_size` in the script placed by default in `/usr/bin/load-drivers` and reboot the board (or restart the audio driver by removing and reinserting the module `audio_rtdm`).

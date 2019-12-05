@@ -114,4 +114,4 @@ To use it, please refer to the TouchOSC manual - the only customisation needed i
 
 ![touch_osc_jx10_gui](illustrations/touch_osc_jx10_gui.png)
 
-Which OSC messages your particular configuration responds to, is by sushi populated at each execution, in the `sushi.log` file, as detailed in our [Elk Overview's section on Logging](elk_overview.md).
+Which OSC messages your particular configuration responds to, is by sushi populated at each execution, in the `sushi.log` file, as detailed in our [detailed documentation for Sushi](sushi_overview.md).

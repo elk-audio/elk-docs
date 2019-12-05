@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Build VST Plugins for Elk" href="building_plugins_for_elk.html" />
-    <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" /> 
+    <link rel="prev" title="Working with Elk" href="devkit_further_topics.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -32,7 +32,7 @@
           <a href="building_plugins_for_elk.html" title="Build VST Plugins for Elk"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+          <a href="devkit_further_topics.html" title="Working with Elk"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
@@ -45,6 +45,10 @@
             
   <div class="section" id="sensei-configuration">
 <h1>Sensei Configuration<a class="headerlink" href="#sensei-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).</p>
+<p>The hardware configuration of the hardware pins can be declared in a JSON configuration file.</p>
+<p>On the UpCore based Elk development board, Sensei needs Sushi to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7/8 or Raspberry Pi based systems.</p>
+<p>Sensei generates a .log file similar to Sushi for reporting run-time messages.</p>
 <p>Following is a reference for the Sensei .json configuration file.</p>
 <div class="section" id="example-configuration">
 <h2>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h2>
@@ -172,8 +176,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="sushi_internal_plugins.html"
-                        title="previous chapter">Sushi Internal Plugins</a></p>
+  <p class="topless"><a href="devkit_further_topics.html"
+                        title="previous chapter">Working with Elk</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="building_plugins_for_elk.html"
                         title="next chapter">Build VST Plugins for Elk</a></p>
@@ -210,7 +214,7 @@
           <a href="building_plugins_for_elk.html" title="Build VST Plugins for Elk"
              >next</a> |</li>
         <li class="right" >
-          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+          <a href="devkit_further_topics.html" title="Working with Elk"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>

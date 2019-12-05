@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>How Elk works &#8212; Elk DevKit  documentation</title>
+    <title>Powered by Elk &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
@@ -19,8 +19,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" />
-    <link rel="prev" title="Run Elk on Boards" href="get_first_sound_from_devkit_board.html" /> 
+    <link rel="next" title="Development Kit Software" href="getting_started_with_development_kit_software.html" />
+    <link rel="prev" title="Elk Development Kit Documentation" href="../index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -29,10 +29,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
+          <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="get_first_sound_from_devkit_board.html" title="Run Elk on Boards"
+          <a href="../index.html" title="Elk Development Kit Documentation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
@@ -43,8 +43,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="how-elk-works">
-<h1>How Elk works<a class="headerlink" href="#how-elk-works" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="powered-by-elk">
+<h1>Powered by Elk<a class="headerlink" href="#powered-by-elk" title="Permalink to this headline">¶</a></h1>
 <p>This section provides a look under the hood of a device Powered by Elk.</p>
 <p>This post is the first in a series that will give you a quick and informal overview of Elk MusicOS and its components for the more tech-savvy of you who want to dive into the details.</p>
 <p>Elk is an <strong>embedded Linux distribution</strong>, <em>highly</em> <em>optimized for low-latency audio</em> and that comes with <em>several components to streamline the development of professional audio and music devices</em>. The supported hardware are either one of our <strong>Elk development boards</strong> (which we will cover in the <a class="reference external" href="https://www.mindmusiclabs.com/development-board-overview/">next blog post</a>) or custom hardware designed for products powered by Elk, such as the <a class="reference external" href="http://www.dvmark.it/media/upload_area/2019/01/20/dvm_news2019_web.pdf">DV Mark Smart Multiamp</a>.</p>
@@ -100,16 +100,17 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <li><strong>systemd</strong> : as most modern Linux distros, Elk adopts <a class="reference external" href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> for its init system and many other system components in userspace. The core Elk processes have been designed to take advantage of systemd’s parallelism to minimize device boot time</li>
 <li><strong>Libraries / applications</strong> : we leveraged the power of many famous userspace libraries and applications for writing Elk core services and for providing a good set of tools for developers writing product-specific components. Relevant examples are the <a class="reference external" href="https://www.alsa-project.org/main/index.php/Main_Page">ALSA project’s userspace libraries</a> (for MIDI) or the <a class="reference external" href="http://www.bluez.org/">BlueZ</a> stack (for Bluetooth connectivity).  The full list would be very long here and it includes many pieces of software which are not specific to Linux.</li>
 </ul>
+<p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python 2.7 installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can usually be easily added to the image on request.</p>
 </div>
 <div class="section" id="elk-core-components">
 <h2>Elk Core Components<a class="headerlink" href="#elk-core-components" title="Permalink to this headline">¶</a></h2>
 <p>The list here includes all the custom software written specifically for Elk. There are some variations between Elk boards for some parts (for example, each SOC family usually requires a dedicated driver for the specific peripherals used for audio IO) but the interface towards product-specific components will still be the same.</p>
 <ul class="simple">
-<li><strong>Audio and Sensors Drivers</strong> : these interface directly with hardware components (codecs, MCUs, etc.) included in the custom boards for Elk. They are designed with the goal of achieving the lowest possible latency so very often we are not using standard Linux infrastructures directly  (like ALSA for the audio driver).</li>
-<li><strong>Update Manager</strong> : this module/component takes care of deploying software updates to Elk devices, making the process easy and robust for the final user. The system is guaranteed to always boot in a working condition even in presence of power failures during the update.</li>
-<li><strong>BLE-gRPC bridge</strong> : as explained in the next section, gRPC is our main choice for connecting Elk blocks to each other and to external devices over WiFi or Ethernet. This component makes it possible to route the same protocols towards mobile devices connected over Bluetooth Low-Energy, which is not a standard TCP/IP connection.</li>
-<li><strong>Sensei</strong> : this is a daemon that makes it very easy to handle several kinds of sensors and GPIOs (buttons, LEDs, etc.) on the physical device. The hardware connections can be declared flexibly using a JSON configuration file, without the need for custom software for each device. SENSEI then takes care of creating software events that can be accessed by the product-specific applications. You can think of it as a sort of “<em>physical widgets</em>” framework.</li>
-<li><strong>Sushi</strong> : this is the <em>core audio engine</em> behind any device running Elk. It is a multitrack &amp; multichannel live plugin host, with advanced audio &amp; MIDI routing capabilities, Ableton Link integration and much more. In other words, a small DAW included in Elk that you can configure to run VST or Rack Extension plugins.</li>
+<li><strong>Audio and Sensors Drivers</strong>: these interface directly with hardware components (codecs, MCUs, etc.) included in the custom boards for Elk. They are designed with the goal of achieving the lowest possible latency so very often we are not using standard Linux infrastructures directly  (like ALSA for the audio driver).</li>
+<li><strong>Update Manager</strong>: this module/component takes care of deploying software updates to Elk devices, making the process easy and robust for the final user. The system is guaranteed to always boot in a working condition even in presence of power failures during the update.</li>
+<li><strong>Sensei</strong>: this is a daemon that makes it very easy to handle several kinds of sensors and GPIOs (buttons, LEDs, etc.) on the physical device. The hardware connections can be declared flexibly using a JSON configuration file, without the need for custom software for each device. SENSEI then takes care of creating software events that can be accessed by the product-specific applications. You can think of it as a sort of “<em>physical widgets</em>” framework.</li>
+<li><strong>Sushi</strong>: this is the <em>core audio engine</em> behind any device running Elk. It is a multitrack &amp; multichannel live plugin host, with advanced audio &amp; MIDI routing capabilities, Ableton Link integration and much more. In other words, a small DAW included in Elk that you can configure to run VST or Rack Extension plugins.</li>
+<li><strong>TWINE</strong>: a shared library that can be used by plugin developers to easily access features of the underlying RTOS, such as high-level parallel task management, accurate timing information, etc.</li>
 </ul>
 <p>As with all the other Elk core components, SUSHI is a command line process that is fully configurable with its remote API (more on this on the next section), so it doesn’t ship with any GUI. SUSHI has been developed with the strict requirements of real-time programming in mind in all cases, especially when a <em>Xenomai Cobalt Kernel</em> is employed. The integration with the lower-level drivers &amp; subsystems happens with dedicated libraries: <strong>RASPA</strong> for interfacing with the custom audio driver, and <strong>TWINE</strong> to offer a high-level API into common real-time functions such as managing <em>multiple real-time threads</em> for <strong>multicore processing</strong> and <em>accurate timers</em>. TWINE can also be used by third-party’s plugins.</p>
 </div>
@@ -140,7 +141,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">How Elk works</a><ul>
+<li><a class="reference internal" href="#">Powered by Elk</a><ul>
 <li><a class="reference internal" href="#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
 <li><a class="reference internal" href="#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
 <li><a class="reference internal" href="#hardware-components">Hardware Components</a></li>
@@ -152,11 +153,11 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="get_first_sound_from_devkit_board.html"
-                        title="previous chapter">Run Elk on Boards</a></p>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Elk Development Kit Documentation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="sushi_overview.html"
-                        title="next chapter">Sushi: The DAW Inside Elk</a></p>
+  <p class="topless"><a href="getting_started_with_development_kit_software.html"
+                        title="next chapter">Development Kit Software</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -187,10 +188,10 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
+          <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"
              >next</a> |</li>
         <li class="right" >
-          <a href="get_first_sound_from_devkit_board.html" title="Run Elk on Boards"
+          <a href="../index.html" title="Elk Development Kit Documentation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>

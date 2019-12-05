@@ -20,8 +20,9 @@ are differences we will explicitly point them out.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Elk Introduction and Overview:
 
-   documents/elk_overview.md 
+   documents/how_elk_works.md
 
 .. toctree::
    :maxdepth: 2
@@ -33,17 +34,16 @@ are differences we will explicitly point them out.
    documents/get_first_sound_from_devkit_board.md
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Elk Reference Manual:
 
-   documents/how_elk_works.md
    documents/sushi_overview.md
-   documents/devkit_further_topics.md
-   documents/elk_examples_overview.md
    documents/sushi_configuration_format.md
    documents/sushi_internal_plugins.md
+   documents/devkit_further_topics.md
    documents/sensei_configuration_format.md
    documents/building_plugins_for_elk.md
+   documents/elk_examples_overview.md
 
 Elk Online Forum
 ----------------
@@ -67,20 +67,14 @@ On the Elk website, there are a number of Tech articles that cover
 important topics directly relevant for learning to work with our
 Development Kit:
 
-   `How Elk Works: A look Under the Hood of a Device Powered By
-   Elk <https://elk.audio/how-elk-works/>`__
-
-   `Elk Development Boards
-   Overview <https://elk.audio/elk-development-boards-overview-3/>`__
-
-   `Discover Sushi: The DAW Inside
-   Elk <https://elk.audio/daw-like-sushi/>`__
-
    `Controlling Plug-Ins in Elk, Part1: Open Sound
    Control <https://elk.audio/controlling-plug-ins-in-elk-part-i/>`__
 
    `Controlling Plug-Ins in Elk, Part2: Google Remote Procedure
    Call <https://elk.audio/controlling-plug-ins-in-elk-part-ii/>`__
+
+   `Elk Development Boards
+   Overview <https://elk.audio/elk-development-boards-overview-3/>`__
 
 Examples
 --------

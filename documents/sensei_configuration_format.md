@@ -1,5 +1,13 @@
 # Sensei Configuration
 
+Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).
+
+The hardware configuration of the hardware pins can be declared in a JSON configuration file.
+
+On the UpCore based Elk development board, Sensei needs Sushi to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7/8 or Raspberry Pi based systems.
+
+Sensei generates a .log file similar to Sushi for reporting run-time messages.
+
 Following is a reference for the Sensei .json configuration file.
 
 ## Example Configuration

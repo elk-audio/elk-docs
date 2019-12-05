@@ -12,13 +12,12 @@ For each targeted platform, we release a cross-compiling toolchain based on gcc 
 
 You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:
 ```
-$ unset LD_LIBRARY_PATH
 $ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
 ```
 
 Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
 
-The unset command is needed only in the VM configuration because `LD_LIBRARY_PATH` is changed there for practical testing of VM builds. In case it is more convenient in your case, you can just remove the relevant line in `/home/minddev/.zshrc`.
+If you had previously changed your  `LD_LIBRARY_PATH`, you would need to first issue the `#$ unset LD_LIBRARY_PATH` command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in `/home/minddev/.zshrc`.
 
 ## VST 2.x Plugins Using Steinberg SDK
 
@@ -58,7 +57,7 @@ Here are the instructions to build a JUCE plugin with the cross-compiling toolch
      * Disable the option for JUCE Browser under the module `juce_gui_extra`.
      * For every module, make sure to use the option "use global search path".
 * Save the project to export a new Makefile.
-     
+  
   3. If you use recent Projucer releases 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
      
   4. For a build to test natively on Linux, just run make normally, and follow the next points on how to test with the integrated Sushi host.
