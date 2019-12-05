@@ -42,7 +42,7 @@ JUCE actively supports Linux as a build target, so if you don't use any other th
   * Currently (release 5.4.x), JUCE only generates VST 2.4 plugins for Linux.
   * JUCE plugins have a dependency on the X11 libraries.
 
-To overcome the second problem, we created a [JUCE fork](https://github.com/stez-mind/JUCE) that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin's editor functions. As a consequence, you don't need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.
+To overcome the second problem, we created a [JUCE fork](https://github.com/elk-audio/JUCE) that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin's editor functions. As a consequence, you don't need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.
 
 Here are the instructions to build a JUCE plugin with the cross-compiling toolchain:
 

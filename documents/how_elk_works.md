@@ -14,7 +14,9 @@ The last ingredients needed for the product recipe are **audio processing plugin
 
 Rather than dryly go into deep details of the Elk’s software architecture and components, it’s might be easier to describe how they would actually be used in an example product.
 
-So, using a hypothetical *Powered by Elk* device, which we’ll refer to as *“The Box”*, to illustrate what a device like this could do and what its software architecture would like. **DISCLAIMER**: *Again, this is not a real product nor anything that is under development*, so don’t look around for where you can buy it or get more information about it. It’s true however that it will be easily possible to make a product like this with Elk and indeed we will be showing some proof-of-concept prototypes, as well as the first real powered by Elk product, the DV Mark Smart Multiamp, at our NAMM 2019 booth.
+So, using a hypothetical *Powered by Elk* device, which we’ll refer to as *“The Box”*, to illustrate what a device like this could do and what its software architecture would like. 
+
+**DISCLAIMER**: *Again, this is not a real product nor anything that is under development*, so don’t look around for where you can buy it or get more information about it. It’s true however that it will be easily possible to make a product like this with Elk and indeed we will be showing some proof-of-concept prototypes, as well as the first real powered by Elk product, the DV Mark Smart Multiamp, at our NAMM 2019 booth.
 
 Enough with words, here’s a quick sketch for *The Box*:
 
@@ -76,7 +78,6 @@ The list here includes all the custom software written specifically for Elk. The
 - **Update Manager**: this module/component takes care of deploying software updates to Elk devices, making the process easy and robust for the final user. The system is guaranteed to always boot in a working condition even in presence of power failures during the update.
 - **Sensei**: this is a daemon that makes it very easy to handle several kinds of sensors and GPIOs (buttons, LEDs, etc.) on the physical device. The hardware connections can be declared flexibly using a JSON configuration file, without the need for custom software for each device. SENSEI then takes care of creating software events that can be accessed by the product-specific applications. You can think of it as a sort of “*physical widgets*” framework.
 - **Sushi**: this is the *core audio engine* behind any device running Elk. It is a multitrack & multichannel live plugin host, with advanced audio & MIDI routing capabilities, Ableton Link integration and much more. In other words, a small DAW included in Elk that you can configure to run VST or Rack Extension plugins.
-- **TWINE**: a shared library that can be used by plugin developers to easily access features of the underlying RTOS, such as high-level parallel task management, accurate timing information, etc.
 
 As with all the other Elk core components, SUSHI is a command line process that is fully configurable with its remote API (more on this on the next section), so it doesn’t ship with any GUI. SUSHI has been developed with the strict requirements of real-time programming in mind in all cases, especially when a *Xenomai Cobalt Kernel* is employed. The integration with the lower-level drivers & subsystems happens with dedicated libraries: **RASPA** for interfacing with the custom audio driver, and **TWINE** to offer a high-level API into common real-time functions such as managing *multiple real-time threads* for **multicore processing** and *accurate timers*. TWINE can also be used by third-party’s plugins.
 

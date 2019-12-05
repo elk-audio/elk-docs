@@ -83,13 +83,13 @@
 </ol>
 </div>
 <div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <code class="docutils literal notranslate"><span class="pre">dd</span></code> with these instructions:</p>
 <ol class="simple">
 <li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal notranslate"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code>, or subsequent letters, or sometimes <code class="docutils literal notranslate"><span class="pre">/dev/mmcblk0</span></code>. We will from now on refer to it as <code class="docutils literal notranslate"><span class="pre">/dev/sdX</span></code>.</li>
 <li>Unmount the SD card if it was already mounted:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo unmount /dev/sdX*
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
 </pre></div>
 </div>
 <ol class="simple">
@@ -131,7 +131,7 @@
 <li><a class="reference internal" href="#assembly">1. Assembly</a></li>
 <li><a class="reference internal" href="#flashing-the-elk-operating-system-image-to-the-sd-card">2. Flashing the Elk operating system image to the SD card</a><ul>
 <li><a class="reference internal" href="#windows">Windows:</a></li>
-<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#linux">Linux:</a></li>
 <li><a class="reference internal" href="#macos">macOS:</a></li>
 </ul>
 </li>

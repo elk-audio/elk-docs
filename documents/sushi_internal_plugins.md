@@ -4,7 +4,7 @@ These are simple integrated plugins that can be instantiated in a JSON config us
 
 They have been developed mostly for internal testing purpose but you could find a use for them in some situations.
 
-## Audio In / Audio Out plugins
+## Audio In / Audio Out Plugins
 
 ### Passthrough
 
@@ -33,9 +33,9 @@ Parameters are smoothed and can be modulated at run-time.
     + "gain" : output gain in dB. Range: [-24, 24], Default: 0.0
     + "q" : Q factor of the filter. Range: [0, 10], Default: 1.0
 
-## Midi In / Audio Out plugins
+## Midi In / Audio Out Plugins
 
-### Sample player
+### Sample Player
 
 Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.
 
@@ -70,7 +70,7 @@ Transposes incoming MIDI Note ON & OFF events by a fixed amount of semitones.
 
 ## Audio In / Parameter Out plugins
 
-### Peak meter
+### Peak Meter
 
 Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.
 

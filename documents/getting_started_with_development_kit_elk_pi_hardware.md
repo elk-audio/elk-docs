@@ -40,7 +40,7 @@ To get the system running, you need to flash an Elk operating system image onto 
    
    3. Flash the extracted `.wic` file to the SD card.
 
-### Linux
+### Linux:
 At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain `dd` with these instructions:
 
    1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is `/dev/sdb`, `/dev/sdc`, or subsequent letters, or sometimes `/dev/mmcblk0`. We will from now on refer to it as `/dev/sdX`.
@@ -48,7 +48,7 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
    2. Unmount the SD card if it was already mounted:
 
    ```bash
-     $ sudo unmount /dev/sdX*
+     $ sudo umount /dev/sdX*
    ```
 
    3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run:

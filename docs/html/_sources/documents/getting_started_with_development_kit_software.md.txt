@@ -3,7 +3,7 @@ In this guide you will quickly see which the first steps are, to run a plugin fr
 
 ## Running a plugin within the Sushi host
 
-You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage , available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/elk-examples/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
+You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage, available from the [Releases section of the elk-examples repository](https://github.com/elk-audio/elk-examples/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
 
 To output sound, you need to have Jack audio configured on your computer, which is beyond the scope of this guide - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! We here show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer in their place.
 
@@ -15,7 +15,7 @@ The example used, requires that you have these files from our [elk-examples repo
 
 1. config_play_vst3.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
+3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the [TouchOSC app](https://hexler.net/products/touchosc).
 
 First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
@@ -27,7 +27,7 @@ To run Sushi using Jack, with the configuration file provided for running the MD
 2. Type the following command:
 
 ```bash
-$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /relative/path/to/example/config/files/config_play_vst3.json
+$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 ```
 
 You should see the following status message:
