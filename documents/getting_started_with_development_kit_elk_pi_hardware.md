@@ -14,15 +14,15 @@ This document contains basic information on how to set up Elk Pi development boa
 
 2. Mount the four f-m spacers into the f-f spacers on the Raspberry Pi:
 
-![Figure 2](illustrations/elk_pi_assembly_step_1.png)
+   ![Figure 2](illustrations/elk_pi_assembly_step_1.png)
 
 3. Plug the Hat on top of the Raspberry Pi:
 
-![Figure 3](illustrations/datasheet_images/image17.jpg)
+   ![Figure 3](illustrations/datasheet_images/image17.jpg)
 
 4. Add the four screws if you want extra stability:
 
-![Figure 4](illustrations/datasheet_images/image26.jpg)
+   ![Figure 4](illustrations/datasheet_images/image26.jpg)
 
 ## 2. Flashing the Elk operating system image to the SD card
 
