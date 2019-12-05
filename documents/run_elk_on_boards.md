@@ -41,7 +41,7 @@ $ aconnect X Y
 
 3. If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!
 
-(Since this is a development board, you will need to start Sushi manually - but under [Working with Elk](devkit_further_topics.md) we show how the device can be configured to load a setup automatically on power-on).
+(Since this is a development board, you will need to start Sushi manually - but under [Working with Elk](working_with_elk_board.md). we show how the device can be configured to load a setup automatically on power-on).
 
 ## 3. Powering Down
 
@@ -49,11 +49,11 @@ In development releases of Elk, the storage is mounted for both reading and writ
 
 Instead, type `sudo poweroff` to safely shutdown the system.
 
-Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed  under [Working with Elk](devkit_further_topics.md).
+Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under [Working with Elk](working_with_elk_board.md).
 
 ## 4. Further steps
 
 Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!
 
-There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our [Additional Development Kit Board Topics](devkit_further_topics.md).
+There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our documentation on [Working with your Elk Board](working_with_elk_board.md).
 

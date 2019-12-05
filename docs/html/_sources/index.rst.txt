@@ -31,7 +31,7 @@ are differences we will explicitly point them out.
    documents/getting_started_with_development_kit_software.md
    documents/getting_started_with_development_kit_elk_pi_hardware.md
    documents/getting_started_with_development_kit_upcore_hardware.md
-   documents/get_first_sound_from_devkit_board.md
+   documents/run_elk_on_boards.md
 
 .. toctree::
    :maxdepth: 3
@@ -40,7 +40,7 @@ are differences we will explicitly point them out.
    documents/sushi_overview.md
    documents/sushi_configuration_format.md
    documents/sushi_internal_plugins.md
-   documents/devkit_further_topics.md
+   documents/working_with_elk_board.md
    documents/sensei_configuration_format.md
    documents/building_plugins_for_elk.md
    documents/elk_examples_overview.md

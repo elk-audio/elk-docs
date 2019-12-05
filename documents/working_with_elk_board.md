@@ -1,4 +1,4 @@
-# Working with Elk
+# Working with Elk Board
 
 Learn to connect to your board over serial cable of WiFi, monitor the plugin performance, tweak buffer sizes, and set up the board for automatic startup.
 

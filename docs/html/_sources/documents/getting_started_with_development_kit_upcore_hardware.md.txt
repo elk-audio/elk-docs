@@ -6,7 +6,7 @@ This document contains basic information on how to set up Elk UpCore development
 
 If you have an Elk Pi Development Kit board, refer instead to the dedicated step-by-step guide [Start With Elk Pi Development Kit Hardware](getting_started_with_development_kit_elk_pi_hardware.md).
 
-## Installing an image to eMMC
+## 1. Installing an image to eMMC
 
 If your boards came with the system already flashed to eMMC, you can skip this point. The information here is written for the Rocket/UpCore development kit, for other systems there might be few differences depending on how boot & internal storage are handled.
 
@@ -20,9 +20,9 @@ If your boards came with the system already flashed to eMMC, you can skip this p
   8. Now you should see a grub menu with a single entry "boot0" available; the flashing procedure to eMMC is fully automated and once it is done (typically around 5 minutes), you will see some messages on the serial prompt regarding the GPT partitions.
   9. Power off the board, remove the USB pendrive and reboot.
 
-## Power up, and next steps
+## 2. Power up, and next steps
 
 1. Connect the provided power supply cable to the Elk UpCore Board - it will boot into Linux.
 
-From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Run Elk on Development Kit Hardware (common for all boards)](get_first_sound_from_devkit_board.md).
+From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Run Elk on Boards](run_elk_on_boards.md).
 
