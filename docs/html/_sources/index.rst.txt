@@ -36,6 +36,8 @@ are differences we will explicitly point them out.
    :maxdepth: 2
    :caption: Elk Reference Manual:
 
+   documents/how_elk_works.md
+   documents/sushi_overview.md
    documents/devkit_further_topics.md
    documents/elk_examples_overview.md
    documents/sushi_configuration_format.md

@@ -1,0 +1,172 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sushi: The DAW Inside Elk &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Additional Topics" href="devkit_further_topics.html" />
+    <link rel="prev" title="How Elk works" href="how_elk_works.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="devkit_further_topics.html" title="Additional Topics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="how_elk_works.html" title="How Elk works"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sushi-the-daw-inside-elk">
+<h1>Sushi: The DAW Inside Elk<a class="headerlink" href="#sushi-the-daw-inside-elk" title="Permalink to this headline">¶</a></h1>
+<p>The Elk Music Operating System consists of many different parts. In this post I will focus on what we call <strong>Sushi</strong>, the DAW that is at the core of audio and midi processing in the Elk MusicOS. I hope you find it interesting!</p>
+<p><img alt="img" src="../_images/sushi_architecture.png" /></p>
+<div class="section" id="main-features">
+<h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
+<p>Sushi is a track-based, headless Digital Audio Workstation. It works as a plugin host, supporting multiple plugin standards, features advanced audio and midi routing, simple scripting setup and is written to ensure high performance and stability under low latency conditions. It can be controlled through MIDI, OSC, or a gRPC interface.</p>
+<div class="section" id="in-a-nutshell">
+<h3>In a nutshell:<a class="headerlink" href="#in-a-nutshell" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Headless host with full control over MIDI, OSC and gRPC interfaces.</li>
+<li>Hosts VST 2.4, VST 3.6 and Rack Extensions plugins.</li>
+<li>Highly optimised for low latency performance.</li>
+<li>Multithreaded audio processing support.</li>
+<li>Ableton Link support</li>
+<li>Audio connections through Raspa, Jack, and file I/O</li>
+<li>Simple scripting configuration.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<p>Sushi shares the same basic architecture with most common DAWs like Cubase or Ableton Live, having an unlimited number of parallel channels. Each track supporting mono, stereo or up to 64 audio channels and as many plugins as the CPU can handle. Pure MIDI tracks are also supported, for instance outputting MIDI from an arpeggiator or step sequencer to an external device.</p>
+<p>There is also a multibus track mode with which a multichannel track can have multiple stereo outputs, <strong>each with their own individual gain and panning controls</strong>, which in turn can be routed to any audio output. Useful for multi bus plugins. Sushi also features aux sends and corresponding return tracks for effects processing.</p>
+</div>
+<div class="section" id="control">
+<h2>Control<a class="headerlink" href="#control" title="Permalink to this headline">¶</a></h2>
+<p>Sushi supports a number of protocols and technologies for controlling and synching with external sources and devices: MIDI, OSC, Ableton Link, gRPC.</p>
+<p>MIDI input and output is supported through <a class="reference external" href="https://www.alsa-project.org/">ALSA</a>. This enables integration with any class compliant midi device, like USB MIDI keyboards or controllers. <strong>A flexible routing system allows you to route MIDI based on channels to any track</strong>. MIDI can be freely routed to tracks and MIDI Program Change and Control Change messages can be mapped to plugins and parameters respectively. MIDI data can also be processed or generated by plugins like sequencers.</p>
+<p>Sushi also supports <a class="reference external" href="http://opensoundcontrol.org/introduction-osc">Open Sound Control – OSC</a>. And can both send OSC updates and receive notes and parameter changes through OSC.</p>
+<p>Another cool feature is <strong>tempo sync over Ableton Link</strong>, which enables you to seamlessly tempo sync Sushi with other devices over wifi. This works with computers running <a class="reference external" href="https://www.ableton.com/">Ableton Live</a> or any Link enabled mobile app like <a class="reference external" href="https://itunes.apple.com/se/app/reason-compact-make-music/id1253419004">Reason Compact</a> or <a class="reference external" href="https://www.korg.com/uk/products/software/korg_gadget/">Korg Gadget</a>.</p>
+<p>As Sushi is a headless host, and intended for use in an embedded device, it does not feature a graphical user interface. <strong>In its place is a gRPC interface that can be used for controlling all aspects of Sushi and hosted plugins</strong>. gRPC has bindings for most common programming languages, this gives total freedom to customise the behaviour and write a complete GUI for Sushi in more or less any GUI framework of choice and account for multiple use cases.</p>
+<p>For some applications, like the upcoming <a class="reference external" href="http://www.dvmark.it/news-detail/namm-2019-new-products/">Smart Multiamp</a> from <a class="reference external" href="http://www.dvmark.it/">DV Mark</a>, user interactions will come from both front panel knobs and a handheld device, i.e. a smartphone or tablet. In that case, an app can use the gRPC interface to control Sushi. Other Elk devices could feature a built-in screen. In that case the GUI will run on the same CPU as Sushi, though in a different process. But as mentioned before, the GUI can be built in Python or any other programming language of choice. <strong>The dual kernel architecture of Elk will guarantee that the graphics rendering will never interfere with the audio dsp processing.</strong></p>
+</div>
+<div class="section" id="audio-frontends">
+<h2>Audio Frontends<a class="headerlink" href="#audio-frontends" title="Permalink to this headline">¶</a></h2>
+<p>Sushi was built to work in perfect sync with Raspa, our proprietary low-latency audio framework. But Sushi also has built-in support for <a class="reference external" href="http://jackaudio.org/">Jack</a>, as well as an offline mode where audio is read from and written to file. The latter can be used for testing in an environment that lacks audio codecs and for evaluating systems in a very early stage. It has also proven to be very useful in debugging.</p>
+<p><strong>The ability to run Sushi with Jack, the most common audio framework on Linux, makes it possible to run on almost any Linux system</strong>. While it doesn’t give the same ultra low latency as running it with Raspa on an Elk system. It does make it incredibly easy to test and develop plugins and setups for Elk on a standard Linux machine. In fact, <strong>almost all of the development of Sushi has been done on standard Linux machines</strong>.</p>
+<p>When running with Raspa, Sushi is limited to the number of inputs and outputs supported by the physical hardware. While when running with Jack, Sushi exposes 8 input ports and 8 output ports that can then be freely routed to physical outputs or inputs, or other Jack software.</p>
+</div>
+<div class="section" id="configuration-and-routing">
+<h2>Configuration and Routing<a class="headerlink" href="#configuration-and-routing" title="Permalink to this headline">¶</a></h2>
+<p>Most of the initial setup of Sushi is done through a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> configuration file. In this it’s possible to specify the number of tracks to use, their channel setup (mono, stereo, multichannel), the plugins on the track, audio input and output routing, MIDI routing, which plugin parameters map to Control Change messages, and so on. See below for a very simple example for how to set up a synth plugin with MIDI-mapped parameters.</p>
+</div>
+<div class="section" id="plugin-format-support">
+<h2>Plugin Format Support<a class="headerlink" href="#plugin-format-support" title="Permalink to this headline">¶</a></h2>
+<p>Sushi supports and can load <strong>plugins built in Steinberg’s VST 2.4 and <a class="reference external" href="https://www.steinberg.net/en/company/technologies/vst3.html">VST 3.6</a> formats as well as <a class="reference external" href="https://www.propellerheads.com/developers">Rack Extensions</a> from Reason Labs</strong>. In order to load plugins in Sushi, they need to be compiled for the system intended. Note that it is not possible to take an existing Windows, macOS, or even native Linux plugin binary and load it in Elk. That will not work. Though if the plugins are well written from the start, porting them to Elk should be a rather straightforward process of recompiling the plugins using our SDK.</p>
+</div>
+<div class="section" id="threading">
+<h2>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h2>
+<p>Sushi can run its audio processing single threaded but also has <strong>built in multithreading support</strong> to spread the audio processing over multiple cores, depending on the type of system it is running on. For developers that wish to utilise multithreading within a plugin, we have developed a small threading utility library that works with Elk and Sushi, called Twine. This library also includes a few utility functions and wrappers for certain system calls like timers to abstract away some of the limitations of the dual kernel setup.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sushi: The DAW Inside Elk</a><ul>
+<li><a class="reference internal" href="#main-features">Main features</a><ul>
+<li><a class="reference internal" href="#in-a-nutshell">In a nutshell:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#architecture">Architecture</a></li>
+<li><a class="reference internal" href="#control">Control</a></li>
+<li><a class="reference internal" href="#audio-frontends">Audio Frontends</a></li>
+<li><a class="reference internal" href="#configuration-and-routing">Configuration and Routing</a></li>
+<li><a class="reference internal" href="#plugin-format-support">Plugin Format Support</a></li>
+<li><a class="reference internal" href="#threading">Threading</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="how_elk_works.html"
+                        title="previous chapter">How Elk works</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="devkit_further_topics.html"
+                        title="next chapter">Additional Topics</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_overview.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="devkit_further_topics.html" title="Additional Topics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="how_elk_works.html" title="How Elk works"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
