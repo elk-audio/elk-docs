@@ -26,7 +26,7 @@ This document contains basic information on how to set up Elk Pi development boa
 
 ## 2. Flashing the Elk operating system image to the SD card
 
-To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. A minimum 8GB card is required.
+To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. The minimum required SD card size is 8GB.
 
 1. Download the compressed image from the provided link. It will have a filename such as: *elk-sika-image-dev-raspberrypi3-64.wic.bz2*.
 

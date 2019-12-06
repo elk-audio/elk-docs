@@ -47,34 +47,31 @@
 <h1>Run Elk on Boards<a class="headerlink" href="#run-elk-on-boards" title="Permalink to this headline">¶</a></h1>
 <p>This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.</p>
 <p>The following steps are the same for all our development kit boards, covering the software, and how you get your first sound to play from the board.</p>
-<div class="section" id="power-it-up-log-on">
-<h2>1. Power it up, log on…<a class="headerlink" href="#power-it-up-log-on" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="power-it-up-connect">
+<h2>1. Power it up, connect…<a class="headerlink" href="#power-it-up-connect" title="Permalink to this headline">¶</a></h2>
 <p>For getting access to the board terminal you have several options:</p>
 <ol class="simple">
 <li>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</li>
-<li>Connect over SSH.</li>
-<li>Connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</li>
+<li>Connect over SSH using Ethernet.</li>
+<li>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="working_with_elk_board.html"><span class="doc">read more here</span></a>.</li>
 </ol>
 <p>For setting up SSH connections follow these tips:</p>
 <ol class="simple">
-<li>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</li>
-<li>Assuming Linux, to see the IP address of the board run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">arp</span> <span class="pre">-a</span></code>. Then connect over SSH to the IP you find. On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</li>
-<li>Once you have a terminal window, just log in: username <code class="docutils literal notranslate"><span class="pre">mind</span></code>, password <code class="docutils literal notranslate"><span class="pre">elk</span></code>.</li>
+<li>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.
+2. Assuming Linux/macOS, you can connect to your board with the command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">mind&#64;elk-pi.local</span></code>.
+1. If this fails, or if you want to connect to more than one board at the same time, you will need the IP address of your board(s). to see the IP address(es) run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">arp</span> <span class="pre">-a</span></code> - then connect over SSH to the IP you find.
+2. On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.
+3. Once you have a terminal window, just log in: username <code class="docutils literal notranslate"><span class="pre">mind</span></code>, password <code class="docutils literal notranslate"><span class="pre">elk</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="and-run-sushi">
 <h2>2. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p class="first">You will find several configurations and plugins ready to test on the image, under the folders <code class="docutils literal notranslate"><span class="pre">~/config_files</span></code> and <code class="docutils literal notranslate"><span class="pre">~/plugins</span></code> in the user folder.</p>
+<p>You will find several configurations and plugins ready to test on the image, under the folders <code class="docutils literal notranslate"><span class="pre">~/config_files</span></code> and <code class="docutils literal notranslate"><span class="pre">~/plugins</span></code> in the user folder.</p>
 <p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should run Sushi using the <code class="docutils literal notranslate"><span class="pre">-r</span></code> switch for selecting our RASPA low-latency front-end:</p>
-</li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r -c ~/config_files/mda-vst2-configs/config_mda_synth.json 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r -c ~/config_files/mda-vst2-configs/config_mda_synth.json
 </pre></div>
 </div>
-<ol class="simple">
-<li>To connect USB Midi devices, just plug them and connect them with the <code class="docutils literal notranslate"><span class="pre">aconnect</span></code> tool:</li>
-</ol>
+<p>To connect USB Midi devices, just plug them and connect them with the <code class="docutils literal notranslate"><span class="pre">aconnect</span></code> tool:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
 $ aconnect -l
 <span class="c1"># Take note of the port number X for your MIDI controller (e.g. 16) and the one Y assigned to Sushi</span>
@@ -83,10 +80,8 @@ $ aconnect X Y
 <span class="c1"># As an alternative to port numbers, it is possible to use the names reported by aconnect -l</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li>If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!</li>
-</ol>
-<p>(Since this is a development board, you will need to start Sushi manually - but under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>. we show how the device can be configured to load a setup automatically on power-on).</p>
+<p>If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!</p>
+<p>Since this is a development board, you will need to start Sushi manually - but under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>. we show how the device can be configured to load a setup automatically on power-on.</p>
 </div>
 <div class="section" id="powering-down">
 <h2>3. Powering Down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
@@ -110,7 +105,7 @@ $ aconnect X Y
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Run Elk on Boards</a><ul>
-<li><a class="reference internal" href="#power-it-up-log-on">1. Power it up, log on…</a></li>
+<li><a class="reference internal" href="#power-it-up-connect">1. Power it up, connect…</a></li>
 <li><a class="reference internal" href="#and-run-sushi">2. And run Sushi</a></li>
 <li><a class="reference internal" href="#powering-down">3. Powering Down</a></li>
 <li><a class="reference internal" href="#further-steps">4. Further steps</a></li>

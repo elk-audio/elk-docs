@@ -1,61 +1,14 @@
 # Working with Elk Board
 
-Learn to connect to your board over serial cable of WiFi, monitor the plugin performance, tweak buffer sizes, and set up the board for automatic startup.
+There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.
 
-## Connecting to Elk Board
-
-### Over Serial Cable
-
-Attach a serial cable from your PC to the board, using a TTL-USB adapter, and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).
-
-For example, on a host Linux / macOS machine:
-
-```bash
-# the TTL converter usually shows up under /dev/ with a name starting with tty
-$ picocom /dev/ttyXXX -b 115200 -l
-```
-
-With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
-
-### WiFi Connection
-
-Log-in to the board as root (empty password in the dev image) using a serial cable or an HDMI monitor and USB keyboard.
-
-On development images, you need to run the following command at the very first boot or anytime you
-perform an update with a .swu file to flash a new development root filesystem:
-
-```bash
-$ rfkill unblock all
-```
-
-The easiest way to setup WiFi access is through `connman`, which is enabled by default in dev
-images:
-
-```bash
-$ connmanctl
-# Now you should see a connmanctl shell where to type these extra commands:
-$ connmanctl> agent on
-$ connmanctl> scan wifi
-$ connmanctl> services
-# The last command should have showed you a list of WiFi network available with their SSID and a
-# long code starting with wifi_
-$ connmanctl> connect wifi_xxx # choose the code for the desired network. You can tab-complete. 
-$ connmanctl> Ctrl+D
-
-# This will show you the IP address assigned to the board by DHCP
-$ ip a
-```
-
-Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
-Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
-
-## Filesystem
-
-### Software Update System
+## Software Update System
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
 
 Elk updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.
+
+## Filesystem
 
 ### Partition Layout
 
@@ -84,13 +37,121 @@ Also use  `/udata` for the storage of settings & user patches.
 
 If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `/udata` partition from there.
 
-### Image Types: Development and Release
+***Important! When you first use an image, you will not be the owner of the `/udata` partition, and need to take over ownership to gain write access.***
 
-Very different configurations are needed on images for development, versus images deployed on released instruments.
+Simply type `sudo chown -R mind:mind /udata`, and you will have write access.
+
+## Elk Images
+
+Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:
+
+### Development Image
 
 The development image contains the gcc toolchain, gdb & gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.
 
-The deployment/release image on the other hand is very streamlined, to minimize boot time and optimize stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for `/udata`if needed.
+### Release Image
+
+The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for `/udata`if needed.
+
+## Elk System Utilities
+
+For important, common tasks with Elk, we provide the `elk_system_utils` script, which has commands for performing these common tasks straightforwardly.
+
+### Enabling/Disabling Write Access to Root Partition
+
+The default state on a newly flashed image is that the root partition is read-only. With `elk_system_utils` you can change this, temporarily or permanently:
+
+#### Temporarily Change Write Access
+
+Type `$ sudo elk_system_utils --remount-as-rw` to mount your current rootfs partition as read-write.
+
+The command `$ sudo elk_system_utils --remount-as-ro`  to set read-only status.
+
+Neither of these changes persist across boot cycles.
+
+#### Permanently Change Write Access
+
+Use `$ sudo elk_system_utils --ro-rootfs enable` to enable read-only access to current rootfs partition.
+
+`$ sudo elk_system_utils --ro-rootfs disable`, permanently gives read-write access.
+
+You need to perform a power cycle for either change to take effect.
+
+### Manually Controlling Default/Fallback Root Partition
+
+As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions, `rootfs1` and `rootfs2`. It maintains a counter internally, for the number of failed boot attempts. Once that counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.
+
+You can manually trigger this swap with the command `$ sudo elk_system_utils --default-rootfs 1` to set `rootfs1` as the default partition - or parameter 2 for `rootfs2`. The other partition is then automatically assigned as fallback.
+
+To reset the boot count environment variable to 0, enter the command  `$ elk_system_utils --reset-boot-count`. This may be useful if you have for example yourself frequently disconnected power before booting completes.
+
+### Set USB Speed
+
+Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers.
+
+We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost:
+
+```bash
+$ sudo elk_system_utils --usb-speed 1
+```
+
+There is an important caveat though: ***with the speed reduced using the above command, transfer speeds will be slow, and many common USB devices, such as QUERTY keyboards, will no longer work***.
+
+For a musical instrument that may not be a problem, but during development, you may want to switch back and forth between low and high speeds - setting the speed back to high is achieved as follows:
+
+```bash
+$ sudo elk_system_utils --usb-speed 2
+```
+
+## Connecting to Your Board
+
+### Over WiFi
+
+Log-in to the board as root (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
+
+Temporarily give yourself write access to the partition for these changes to be stored:
+
+```bash
+$ sudo elk_system_utils --remount-as-rw
+```
+
+Otherwise, you will need to complete the steps below every time you power on the board.
+
+The easiest way to setup WiFi access is through `connman`, which is enabled by default in dev
+images:
+
+```bash
+$ sudo connmanctl
+# Now you should see a connmanctl shell where to type these extra commands:
+$ connmanctl> agent on
+$ connmanctl> scan wifi
+$ connmanctl> services
+# The last command should have showed you a list of WiFi network available with their SSID and a
+# long code starting with wifi_
+$ connmanctl> connect wifi_xxx # choose the code for the desired network. You can tab-complete. 
+$ connmanctl> Ctrl+D
+
+# This will show you the IP address assigned to the board by DHCP
+$ ip a
+```
+
+Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
+Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
+
+Now finish with the command `$ sudo elk_system_utils --remount-as-ro`  to set filesystem status back to read-only.
+
+### Over a Serial Connection
+
+You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.
+
+For example, on a host Linux / macOS machine:
+
+```bash
+# the TTL converter usually shows up under /dev/ with a name starting with tty
+$ picocom /dev/ttyXXX -b 115200 -l
+```
+
+With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 
 ## Monitoring Sushi Performance
 
@@ -104,19 +165,20 @@ For a more fine-grained analysis, you can use Sushi's gRPC api to query timing s
 
 ## Configuring Automatic Startup
 
-If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.
+If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.
 
 1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
    
-   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemD service defined in `/lib/systemd/system/midi-connections.service`
-2. Enable both Sushi and the MIDI connection service typing (as root):
+   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemD service defined in `/lib/systemd/system/midi-connections.service`.
+2. Enable both Sushi, Sensei and the MIDI connection service typing (as root):
 
 ```bash
 $ systemctl enable sushi
 $ systemctl enable midi-connections
+$ systemctl enable sensei
 ```
 
 Sushi will still output its log file in `/tmp/sushi.log`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
 
-They can also be started temporarily with `systemctl start sushi` as any normal SystemD service.
+They can also be started temporarily with `$ systemctl start sushi` as any normal SystemD service.

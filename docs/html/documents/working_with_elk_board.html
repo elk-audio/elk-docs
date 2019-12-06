@@ -45,54 +45,14 @@
             
   <div class="section" id="working-with-elk-board">
 <h1>Working with Elk Board<a class="headerlink" href="#working-with-elk-board" title="Permalink to this headline">¶</a></h1>
-<p>Learn to connect to your board over serial cable of WiFi, monitor the plugin performance, tweak buffer sizes, and set up the board for automatic startup.</p>
-<div class="section" id="connecting-to-elk-board">
-<h2>Connecting to Elk Board<a class="headerlink" href="#connecting-to-elk-board" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="over-serial-cable">
-<h3>Over Serial Cable<a class="headerlink" href="#over-serial-cable" title="Permalink to this headline">¶</a></h3>
-<p>Attach a serial cable from your PC to the board, using a TTL-USB adapter, and connect to the board using a terminal emulator of your choice. We recommend PuTTY under Windows and picocom for Linux or macOS (available with Homebrew).</p>
-<p>For example, on a host Linux / macOS machine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
-$ picocom /dev/ttyXXX -b <span class="m">115200</span> -l
-</pre></div>
-</div>
-<p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (installed in the development images) as a terminal multiplexer when working in this way.</p>
-</div>
-<div class="section" id="wifi-connection">
-<h3>WiFi Connection<a class="headerlink" href="#wifi-connection" title="Permalink to this headline">¶</a></h3>
-<p>Log-in to the board as root (empty password in the dev image) using a serial cable or an HDMI monitor and USB keyboard.</p>
-<p>On development images, you need to run the following command at the very first boot or anytime you
-perform an update with a .swu file to flash a new development root filesystem:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rfkill unblock all
-</pre></div>
-</div>
-<p>The easiest way to setup WiFi access is through <code class="docutils literal notranslate"><span class="pre">connman</span></code>, which is enabled by default in dev
-images:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ connmanctl
-<span class="c1"># Now you should see a connmanctl shell where to type these extra commands:</span>
-$ connmanctl&gt; agent on
-$ connmanctl&gt; scan wifi
-$ connmanctl&gt; services
-<span class="c1"># The last command should have showed you a list of WiFi network available with their SSID and a</span>
-<span class="c1"># long code starting with wifi_</span>
-$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete. </span>
-$ connmanctl&gt; Ctrl+D
-
-<span class="c1"># This will show you the IP address assigned to the board by DHCP</span>
-$ ip a
-</pre></div>
-</div>
-<p>Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
-Besides root access, you can login as <code class="docutils literal notranslate"><span class="pre">mind</span></code> user (password: <code class="docutils literal notranslate"><span class="pre">elk</span></code>) which is the preferred one to run Sushi and other userspace applications.</p>
-</div>
-</div>
-<div class="section" id="filesystem">
-<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
+<p>There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.</p>
 <div class="section" id="software-update-system">
-<h3>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h3>
+<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
 <p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.</p>
 </div>
+<div class="section" id="filesystem">
+<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="partition-layout">
 <h3>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">¶</a></h3>
 <p>Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
@@ -113,12 +73,100 @@ Besides root access, you can login as <code class="docutils literal notranslate"
 <p>Files in the user data partition under <code class="docutils literal notranslate"><span class="pre">/udata</span></code>, remain untouched after running a software update, so keep any temporary files used for development there.</p>
 <p>Also use  <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for the storage of settings &amp; user patches.</p>
 <p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition from there.</p>
+<p><em><strong>Important! When you first use an image, you will not be the owner of the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition, and need to take over ownership to gain write access.</strong></em></p>
+<p>Simply type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">mind:mind</span> <span class="pre">/udata</span></code>, and you will have write access.</p>
 </div>
-<div class="section" id="image-types-development-and-release">
-<h3>Image Types: Development and Release<a class="headerlink" href="#image-types-development-and-release" title="Permalink to this headline">¶</a></h3>
-<p>Very different configurations are needed on images for development, versus images deployed on released instruments.</p>
+</div>
+<div class="section" id="elk-images">
+<h2>Elk Images<a class="headerlink" href="#elk-images" title="Permalink to this headline">¶</a></h2>
+<p>Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:</p>
+<div class="section" id="development-image">
+<h3>Development Image<a class="headerlink" href="#development-image" title="Permalink to this headline">¶</a></h3>
 <p>The development image contains the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.</p>
-<p>The deployment/release image on the other hand is very streamlined, to minimize boot time and optimize stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for <code class="docutils literal notranslate"><span class="pre">/udata</span></code>if needed.</p>
+</div>
+<div class="section" id="release-image">
+<h3>Release Image<a class="headerlink" href="#release-image" title="Permalink to this headline">¶</a></h3>
+<p>The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for <code class="docutils literal notranslate"><span class="pre">/udata</span></code>if needed.</p>
+</div>
+</div>
+<div class="section" id="elk-system-utilities">
+<h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">¶</a></h2>
+<p>For important, common tasks with Elk, we provide the <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> script, which has commands for performing these common tasks straightforwardly.</p>
+<div class="section" id="enabling-disabling-write-access-to-root-partition">
+<h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">¶</a></h3>
+<p>The default state on a newly flashed image is that the root partition is read-only. With <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> you can change this, temporarily or permanently:</p>
+<div class="section" id="temporarily-change-write-access">
+<h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">¶</a></h4>
+<p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-rw</span></code> to mount your current rootfs partition as read-write.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-ro</span></code>  to set read-only status.</p>
+<p>Neither of these changes persist across boot cycles.</p>
+</div>
+<div class="section" id="permanently-change-write-access">
+<h4>Permanently Change Write Access<a class="headerlink" href="#permanently-change-write-access" title="Permalink to this headline">¶</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--ro-rootfs</span> <span class="pre">enable</span></code> to enable read-only access to current rootfs partition.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--ro-rootfs</span> <span class="pre">disable</span></code>, permanently gives read-write access.</p>
+<p>You need to perform a power cycle for either change to take effect.</p>
+</div>
+</div>
+<div class="section" id="manually-controlling-default-fallback-root-partition">
+<h3>Manually Controlling Default/Fallback Root Partition<a class="headerlink" href="#manually-controlling-default-fallback-root-partition" title="Permalink to this headline">¶</a></h3>
+<p>As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions, <code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> and <code class="docutils literal notranslate"><span class="pre">rootfs2</span></code>. It maintains a counter internally, for the number of failed boot attempts. Once that counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.</p>
+<p>You can manually trigger this swap with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--default-rootfs</span> <span class="pre">1</span></code> to set <code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> as the default partition - or parameter 2 for <code class="docutils literal notranslate"><span class="pre">rootfs2</span></code>. The other partition is then automatically assigned as fallback.</p>
+<p>To reset the boot count environment variable to 0, enter the command  <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">elk_system_utils</span> <span class="pre">--reset-boot-count</span></code>. This may be useful if you have for example yourself frequently disconnected power before booting completes.</p>
+</div>
+<div class="section" id="set-usb-speed">
+<h3>Set USB Speed<a class="headerlink" href="#set-usb-speed" title="Permalink to this headline">¶</a></h3>
+<p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers.</p>
+<p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
+</pre></div>
+</div>
+<p>There is an important caveat though: <em><strong>with the speed reduced using the above command, transfer speeds will be slow, and many common USB devices, such as QUERTY keyboards, will no longer work</strong></em>.</p>
+<p>For a musical instrument that may not be a problem, but during development, you may want to switch back and forth between low and high speeds - setting the speed back to high is achieved as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="connecting-to-your-board">
+<h2>Connecting to Your Board<a class="headerlink" href="#connecting-to-your-board" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="over-wifi">
+<h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">¶</a></h3>
+<p>Log-in to the board as root (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
+<p>Temporarily give yourself write access to the partition for these changes to be stored:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
+</pre></div>
+</div>
+<p>Otherwise, you will need to complete the steps below every time you power on the board.</p>
+<p>The easiest way to setup WiFi access is through <code class="docutils literal notranslate"><span class="pre">connman</span></code>, which is enabled by default in dev
+images:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo connmanctl
+<span class="c1"># Now you should see a connmanctl shell where to type these extra commands:</span>
+$ connmanctl&gt; agent on
+$ connmanctl&gt; scan wifi
+$ connmanctl&gt; services
+<span class="c1"># The last command should have showed you a list of WiFi network available with their SSID and a</span>
+<span class="c1"># long code starting with wifi_</span>
+$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete. </span>
+$ connmanctl&gt; Ctrl+D
+
+<span class="c1"># This will show you the IP address assigned to the board by DHCP</span>
+$ ip a
+</pre></div>
+</div>
+<p>Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
+Besides root access, you can login as <code class="docutils literal notranslate"><span class="pre">mind</span></code> user (password: <code class="docutils literal notranslate"><span class="pre">elk</span></code>) which is the preferred one to run Sushi and other userspace applications.</p>
+<p>Now finish with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-ro</span></code>  to set filesystem status back to read-only.</p>
+</div>
+<div class="section" id="over-a-serial-connection">
+<h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
+<p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
+<p>For example, on a host Linux / macOS machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
+$ picocom /dev/ttyXXX -b <span class="m">115200</span> -l
+</pre></div>
+</div>
+<p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (installed in the development images) as a terminal multiplexer when working in this way.</p>
 </div>
 </div>
 <div class="section" id="monitoring-sushi-performance">
@@ -131,21 +179,22 @@ Besides root access, you can login as <code class="docutils literal notranslate"
 </div>
 <div class="section" id="configuring-automatic-startup">
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
-<p>If you wish to have the board starting Sushi automatically at startup, the suggested way is to use the systemD services that we provide.</p>
+<p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
 <li><p class="first">Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
 and, in case, additional environment variables or Sushi command line flags.</p>
-<p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemD service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code></p>
+<p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemD service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code>.</p>
 </li>
-<li><p class="first">Enable both Sushi and the MIDI connection service typing (as root):</p>
+<li><p class="first">Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p>
 </li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
 $ systemctl <span class="nb">enable</span> midi-connections
+$ systemctl <span class="nb">enable</span> sensei
 </pre></div>
 </div>
 <p>Sushi will still output its log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code>. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root).</p>
-<p>They can also be started temporarily with <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
+<p>They can also be started temporarily with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
 </div>
 </div>
 
@@ -158,16 +207,30 @@ $ systemctl <span class="nb">enable</span> midi-connections
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Working with Elk Board</a><ul>
-<li><a class="reference internal" href="#connecting-to-elk-board">Connecting to Elk Board</a><ul>
-<li><a class="reference internal" href="#over-serial-cable">Over Serial Cable</a></li>
-<li><a class="reference internal" href="#wifi-connection">WiFi Connection</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
 <li><a class="reference internal" href="#software-update-system">Software Update System</a></li>
+<li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
 <li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
 <li><a class="reference internal" href="#user-data-separation">User Data Separation</a></li>
-<li><a class="reference internal" href="#image-types-development-and-release">Image Types: Development and Release</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elk-images">Elk Images</a><ul>
+<li><a class="reference internal" href="#development-image">Development Image</a></li>
+<li><a class="reference internal" href="#release-image">Release Image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elk-system-utilities">Elk System Utilities</a><ul>
+<li><a class="reference internal" href="#enabling-disabling-write-access-to-root-partition">Enabling/Disabling Write Access to Root Partition</a><ul>
+<li><a class="reference internal" href="#temporarily-change-write-access">Temporarily Change Write Access</a></li>
+<li><a class="reference internal" href="#permanently-change-write-access">Permanently Change Write Access</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manually-controlling-default-fallback-root-partition">Manually Controlling Default/Fallback Root Partition</a></li>
+<li><a class="reference internal" href="#set-usb-speed">Set USB Speed</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-to-your-board">Connecting to Your Board</a><ul>
+<li><a class="reference internal" href="#over-wifi">Over WiFi</a></li>
+<li><a class="reference internal" href="#over-a-serial-connection">Over a Serial Connection</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
