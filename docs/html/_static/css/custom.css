@@ -4,3 +4,8 @@ code {
     font-size: 0.95em;
 }
 
+
+dt:target, span.highlighted {
+    background-color: #FF5CBE;
+}
+

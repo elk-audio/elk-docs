@@ -107,7 +107,7 @@ $ sudo elk_system_utils --usb-speed 2
 
 ### Over WiFi
 
-Log-in to the board as root (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
+Log-in to the board as ***root*** (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
 
 Temporarily give yourself write access to the partition for these changes to be stored:
 
