@@ -14,11 +14,12 @@ For getting access to the board terminal you have several options:
 
 For setting up SSH connections follow these tips:
 
-  1. If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example [following these instructions in the case of Linux](https://www.cesariogarcia.com/?p=611).
-    2. Assuming Linux/macOS, you can connect to your board with the command `ssh mind@elk-pi.local`. 
-           1. If this fails, or if you want to connect to more than one board at the same time, you will need the IP address of your board(s). to see the IP address(es) run `$ arp -a` - then connect over SSH to the IP you find.
-           2. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
-    3. Once you have a terminal window, just log in: username `mind`, password `elk`.
+1. If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example [following these instructions in the case of Linux](https://www.cesariogarcia.com/?p=611).
+
+2. Assuming Linux/macOS, you can connect to your board with the command `ssh mind@elk-pi.local`. 
+   1. If this fails, or if you want to connect to more than one board at the same time, you will need the IP address of your board(s). to see the IP address(es) run `$ arp -a` - then connect over SSH to the IP you find.
+3. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
+4. Once you have a terminal window, just log in: username `mind`, password `elk`.
 
 ## 2. And run Sushi
 
