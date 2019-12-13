@@ -278,7 +278,7 @@ input channels and 8 output channels at 24 bit, at 48kHz. Since the
 Raspberry Pi SOC natively supports only 2 channels, a CPLD is introduced
 between the Codec and the Raspberry Pi to achieve multi-channel support.
 
-**Important Note:** Input channel 1 (RING) and 2 (TIP) shall be
+**Important Note for "More cowbell" boards [2]_:** Input channel 1 (RING) and 2 (TIP) shall be
 accessed through the input stereo Jack J13. If you desire, instead, to
 use the pins to connect audio to channel 1 and 2 (pin 11 and pin 12 on
 J4), you will need to remove the ground protection introduced from J13
@@ -291,6 +291,20 @@ provide the signal. To do this, you have two options:
 
 If you use the pins as your input source for channel 1 and/or 2 and
 neither of the two options is applied, the channel/s will be muted.
+
+**Important Note for "People are strange" boards [2]_:** In this version of the board is to configure the input channels 1 and 2 to receive the signal either from the on board mini jack input (J13) or the pins 11 and 12 on J4. This is done through the solder jumpers SJ1 and SJ2 that you can find on the back side of the board below J13.
+
+*Figure 9:*
+|sodler_junctions|
+
+-  To configure the inputs from the pins 11,12 on J4, break the small copper connection between the two pads on SJ1 (Audio input 1) and SJ2 (Audio input 2). You can use a precision knife or a small cutter blade. 
+
+-  To configure the inputs from the Stereo input jack J13, keep the two pads of the solder joints connected
+
+If you want to come back to the jack configuration after you cut the two traces you can use a soldering iron to create a small solder blob to restore the connection.
+
+.. [2]
+   To understand which version of the board you have, just read the quote on the back of the board.
 
 Eurorack Compatibility
 ----------------------
@@ -333,9 +347,9 @@ fashion of the CV/Audio mode switch explained earlier. Note that in this
 case, differently from theCV/Audio switch mechanism, if the header is
 left open (without dual jumper plugged) the preamp is activated. Also in
 this case a bad connection is established when the dual jumper is not
-properly oriented, refer to Figure 9 for good connections examples.
+properly oriented, refer to Figure 10 for good connections examples.
 
-*Figure 9:*
+*Figure 10:*
 
 +-----------------------------------------+-----------------------------------------+-----------------------------------------+
 | |image12|                               | |image13|                               | |image11|                               |
@@ -478,7 +492,7 @@ the buffer size. CV inputs that exceed the input range are clipped.
 +---------------------------+----------------------------------------------------+
 | Input impedance           | 122 kΩ                                             |
 +---------------------------+----------------------------------------------------+
-| Input polarity            | Inverting [2]_                                     |
+| Input polarity            | Inverting [3]_                                     |
 +---------------------------+----------------------------------------------------+
 | CV Sampling frequency :   | 48 kHz/buffer size (depends on SW configuration)   |
 +---------------------------+----------------------------------------------------+
@@ -489,7 +503,7 @@ the buffer size. CV inputs that exceed the input range are clipped.
 | Output polarity:          | Non Inverting                                      |
 +---------------------------+----------------------------------------------------+
 
-.. [2]
+.. [3]
    Electrically it is an Inverting input, but the signal is corrected in SW
    to be non inverting.
 
@@ -510,7 +524,7 @@ clock IOs, depending on the software configuration.
 +-----------------------------+--------------------------+
 | Input Sampling frequency    | Depends on buffer size   |
 +-----------------------------+--------------------------+
-| Input polarity              | Inverting [3]_           |
+| Input polarity              | Inverting [4]_           |
 +-----------------------------+--------------------------+
 | Output “High” voltage       | 5V                       |
 +-----------------------------+--------------------------+
@@ -521,7 +535,7 @@ clock IOs, depending on the software configuration.
 | Output polarity             | Non inverting            |
 +-----------------------------+--------------------------+
 
-.. [3]
+.. [4]
    Electrically it is an Inverting input, but the signal is corrected in SW
    to be non inverting.
 
@@ -529,21 +543,21 @@ UART interface
 ==============
 
 The UART interface can be accessed using the pins 32, 34, 36, 38, 39 of
-J4 (Figure 10), that are labeled as “MIDI” since they are the same pins
+J4 (Figure 11), that are labeled as “MIDI” since they are the same pins
 that can be used to connect the MIDI 5 Poles DIN connectors. For this
 reason the UART cannot be used if the dedicated pins are connected to
 the MIDI DIN connectors.
 
-*Figure 10:*
+*Figure 11:*
 
 |image15|
 
-As you can see from Figure 10, to use the UART you must short (with a
+As you can see from Figure 11, to use the UART you must short (with a
 female to female jumper) pin [36] and pin [32]. Pin [38] will be UART TX
 and pin [34] will be UART RX. Figure 11 illustrates how to connect the
 Elk Pi to your computer with a TTL to USB connector (FTDI).
 
-*Figure 11:*
+*Figure 12:*
 
 |image100|
 
@@ -553,7 +567,7 @@ MIDI DIN I/O
 Elk Pi has Optocoupled MIDI IN and MIDI OUT built in, so it is possible
 to interface it with 5 pins DIN connectors. You might want to do this
 when you will build your own User interface to plug on top of the Elk
-Pi. The MIDI signal can be found on the connector J9 (refer to Figure 11
+Pi. The MIDI signal can be found on the connector J9 (refer to Figure 12
 and Figure 5). On the following table you can see some guidelines on how
 to make the connections:
 
@@ -613,3 +627,4 @@ Board dimensions
 .. |image100| image:: ./illustrations/datasheet_images/image100.jpg
 .. |image101| image:: ./illustrations/datasheet_images/image101.png
 .. |image102| image:: ./illustrations/datasheet_images/image102.jpg
+.. |sodler_junctions| image:: ./illustrations/datasheet_images/solder_junctions.jpg
