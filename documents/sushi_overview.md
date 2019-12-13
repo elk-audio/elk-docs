@@ -63,7 +63,7 @@ At run-time, Sushi can be controlled via an API available over the network. At t
 
 With the run-time RPC API it is possible to perform common tasks such as control of plugins' automation parameters, track and mixing controls, adding/removing plugin to tracks, querying the engine for track level meters or CPU usage by plugin, etc.
 
-The OSC namespace for Sushi and the hosted plugins' parameters, is described in the sushi.log file which Sushi populates at each execution.
+The name, label, id and OSC paths for the hosted plugins' parameters, is dumped to stdout in JSON format when running Sushi with the flag `--dump-plugins`.
 
 Sushi's JSON format is fully specified in a JSON schema, but it is probably easier to learn by studying the provided examples, which cover most common configurations, including multitrack/multichannel configurations.
 
