@@ -42,7 +42,7 @@
   <p><img alt="image0" src="../_images/image27.jpg" /></p>
 <p><strong>Author:</strong> Elk</p>
 <p><strong>Contact:</strong> <a class="reference external" href="mailto:tech&#37;&#52;&#48;elk&#46;audio">tech<span>&#64;</span>elk<span>&#46;</span>audio</a></p>
-<p><strong>Revision:</strong> G</p>
+<p><strong>Revision:</strong> H</p>
 <p><strong>Last modification:</strong> 2019-12-02</p>
 <p><em>DISCLAIMER</em></p>
 <p><strong>Copyright © 2019 Modern Ancient Instruments Networked AB. Modern
@@ -350,7 +350,7 @@ PCM3168</a>, supports 6
 input channels and 8 output channels at 24 bit, at 48kHz. Since the
 Raspberry Pi SOC natively supports only 2 channels, a CPLD is introduced
 between the Codec and the Raspberry Pi to achieve multi-channel support.</p>
-<p><strong>Important Note:</strong> Input channel 1 (RING) and 2 (TIP) shall be
+<p><strong>Important Note for “More cowbell” boards</strong> <a class="footnote-reference" href="#id5" id="id3">[2]</a>: Input channel 1 (RING) and 2 (TIP) shall be
 accessed through the input stereo Jack J13. If you desire, instead, to
 use the pins to connect audio to channel 1 and 2 (pin 11 and pin 12 on
 J4), you will need to remove the ground protection introduced from J13
@@ -362,6 +362,20 @@ provide the signal. To do this, you have two options:</p>
 </ol>
 <p>If you use the pins as your input source for channel 1 and/or 2 and
 neither of the two options is applied, the channel/s will be muted.</p>
+<p><strong>Important Note for “People are strange” boards</strong> <a class="footnote-reference" href="#id5" id="id4">[2]</a>: In this version of the board is to configure the input channels 1 and 2 to receive the signal either from the on board mini jack input (J13) or the pins 11 and 12 on J4. This is done through the solder jumpers SJ1 and SJ2 that you can find on the back side of the board below J13.</p>
+<p><em>Figure 9:</em></p>
+<p><img alt="sodler_junctions" src="../_images/solder_junctions.jpg" /></p>
+<ul class="simple">
+<li>To configure the inputs from the pins 11,12 on J4, break the small copper connection between the two pads on SJ1 (Audio input 1) and SJ2 (Audio input 2). You can use a precision knife or a small cutter blade.</li>
+<li>To configure the inputs from the Stereo input jack J13, keep the two pads of the solder joints connected</li>
+</ul>
+<p>If you want to come back to the jack configuration after you cut the two traces you can use a soldering iron to create a small solder blob to restore the connection.</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> To understand which version of the board you have, just read the quote on the back of the board.</td></tr>
+</tbody>
+</table>
 <div class="section" id="eurorack-compatibility">
 <h2>Eurorack Compatibility<a class="headerlink" href="#eurorack-compatibility" title="Permalink to this headline">¶</a></h2>
 <p>The Elk pi board is designed to be interfaceable with the Eurorack world
@@ -399,8 +413,8 @@ fashion of the CV/Audio mode switch explained earlier. Note that in this
 case, differently from theCV/Audio switch mechanism, if the header is
 left open (without dual jumper plugged) the preamp is activated. Also in
 this case a bad connection is established when the dual jumper is not
-properly oriented, refer to Figure 9 for good connections examples.</p>
-<p><em>Figure 9:</em></p>
+properly oriented, refer to Figure 10 for good connections examples.</p>
+<p><em>Figure 10:</em></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -569,7 +583,7 @@ the buffer size. CV inputs that exceed the input range are clipped.</p>
 <td>122 kΩ</td>
 </tr>
 <tr class="row-odd"><td>Input polarity</td>
-<td>Inverting <a class="footnote-reference" href="#id4" id="id3">[2]</a></td>
+<td>Inverting <a class="footnote-reference" href="#id7" id="id6">[3]</a></td>
 </tr>
 <tr class="row-even"><td>CV Sampling frequency :</td>
 <td>48 kHz/buffer size (depends on SW configuration)</td>
@@ -585,10 +599,10 @@ the buffer size. CV inputs that exceed the input range are clipped.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Electrically it is an Inverting input, but the signal is corrected in SW
+<tr><td class="label"><a class="fn-backref" href="#id6">[3]</a></td><td>Electrically it is an Inverting input, but the signal is corrected in SW
 to be non inverting.</td></tr>
 </tbody>
 </table>
@@ -617,7 +631,7 @@ clock IOs, depending on the software configuration.</p>
 <td>Depends on buffer size</td>
 </tr>
 <tr class="row-even"><td>Input polarity</td>
-<td>Inverting <a class="footnote-reference" href="#id6" id="id5">[3]</a></td>
+<td>Inverting <a class="footnote-reference" href="#id9" id="id8">[4]</a></td>
 </tr>
 <tr class="row-odd"><td>Output “High” voltage</td>
 <td>5V</td>
@@ -633,10 +647,10 @@ clock IOs, depending on the software configuration.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Electrically it is an Inverting input, but the signal is corrected in SW
+<tr><td class="label"><a class="fn-backref" href="#id8">[4]</a></td><td>Electrically it is an Inverting input, but the signal is corrected in SW
 to be non inverting.</td></tr>
 </tbody>
 </table>
@@ -645,17 +659,17 @@ to be non inverting.</td></tr>
 <div class="section" id="uart-interface">
 <h1>UART interface<a class="headerlink" href="#uart-interface" title="Permalink to this headline">¶</a></h1>
 <p>The UART interface can be accessed using the pins 32, 34, 36, 38, 39 of
-J4 (Figure 10), that are labeled as “MIDI” since they are the same pins
+J4 (Figure 11), that are labeled as “MIDI” since they are the same pins
 that can be used to connect the MIDI 5 Poles DIN connectors. For this
 reason the UART cannot be used if the dedicated pins are connected to
 the MIDI DIN connectors.</p>
-<p><em>Figure 10:</em></p>
+<p><em>Figure 11:</em></p>
 <p><img alt="image15" src="../_images/image6.jpg" /></p>
-<p>As you can see from Figure 10, to use the UART you must short (with a
+<p>As you can see from Figure 11, to use the UART you must short (with a
 female to female jumper) pin [36] and pin [32]. Pin [38] will be UART TX
 and pin [34] will be UART RX. Figure 11 illustrates how to connect the
 Elk Pi to your computer with a TTL to USB connector (FTDI).</p>
-<p><em>Figure 11:</em></p>
+<p><em>Figure 12:</em></p>
 <p><img alt="image100" src="../_images/image100.jpg" /></p>
 </div>
 <div class="section" id="midi-din-i-o">
@@ -663,7 +677,7 @@ Elk Pi to your computer with a TTL to USB connector (FTDI).</p>
 <p>Elk Pi has Optocoupled MIDI IN and MIDI OUT built in, so it is possible
 to interface it with 5 pins DIN connectors. You might want to do this
 when you will build your own User interface to plug on top of the Elk
-Pi. The MIDI signal can be found on the connector J9 (refer to Figure 11
+Pi. The MIDI signal can be found on the connector J9 (refer to Figure 12
 and Figure 5). On the following table you can see some guidelines on how
 to make the connections:</p>
 <table border="1" class="docutils">

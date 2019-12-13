@@ -4,7 +4,7 @@
 
 **Contact:** tech@elk.audio
 
-**Revision:** G
+**Revision:** H
 
 **Last modification:** 2019-12-02
 
@@ -278,7 +278,7 @@ input channels and 8 output channels at 24 bit, at 48kHz. Since the
 Raspberry Pi SOC natively supports only 2 channels, a CPLD is introduced
 between the Codec and the Raspberry Pi to achieve multi-channel support.
 
-**Important Note for "More cowbell" boards [2]_:** Input channel 1 (RING) and 2 (TIP) shall be
+**Important Note for "More cowbell" boards** [2]_: Input channel 1 (RING) and 2 (TIP) shall be
 accessed through the input stereo Jack J13. If you desire, instead, to
 use the pins to connect audio to channel 1 and 2 (pin 11 and pin 12 on
 J4), you will need to remove the ground protection introduced from J13
@@ -292,9 +292,10 @@ provide the signal. To do this, you have two options:
 If you use the pins as your input source for channel 1 and/or 2 and
 neither of the two options is applied, the channel/s will be muted.
 
-**Important Note for "People are strange" boards [2]_:** In this version of the board is to configure the input channels 1 and 2 to receive the signal either from the on board mini jack input (J13) or the pins 11 and 12 on J4. This is done through the solder jumpers SJ1 and SJ2 that you can find on the back side of the board below J13.
+**Important Note for "People are strange" boards** [2]_: In this version of the board is to configure the input channels 1 and 2 to receive the signal either from the on board mini jack input (J13) or the pins 11 and 12 on J4. This is done through the solder jumpers SJ1 and SJ2 that you can find on the back side of the board below J13.
 
 *Figure 9:*
+
 |sodler_junctions|
 
 -  To configure the inputs from the pins 11,12 on J4, break the small copper connection between the two pads on SJ1 (Audio input 1) and SJ2 (Audio input 2). You can use a precision knife or a small cutter blade. 
