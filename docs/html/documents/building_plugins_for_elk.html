@@ -111,14 +111,14 @@ $ <span class="nv">AR</span><span class="o">=</span>x86_64-elk-linux-gcc-ar make
 <li>The equivalent for Elk Pi would instead be:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">unset</span> LD_LIBRARY_PATH
-$ <span class="nb">source</span> /opt/elk-sika64-sdk/environment-setup-aarch64-elk-linux
-$ <span class="nv">AR</span><span class="o">=</span>aarch64-elk-linux-gcc-ar make -j<span class="sb">`</span>nproc<span class="sb">`</span> <span class="nv">CONFIG</span><span class="o">=</span>Release <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1&quot;</span> <span class="nv">TARGET_ARCH</span><span class="o">=</span><span class="s2">&quot;-march=armv8-a -mtune=cortex-a72&quot;</span>
+$ <span class="nb">source</span> /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
+$ <span class="nv">AR</span><span class="o">=</span>arm-elk-linux-gnueabi-ar make -j<span class="sb">`</span>nproc<span class="sb">`</span> <span class="nv">CONFIG</span><span class="o">=</span>Release <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1&quot;</span> <span class="nv">TARGET_ARCH</span><span class="o">=</span><span class="s2">&quot;-mcpu=cortex-a53 -mtune=cortex-a53 -mfpu=neon-vfpv4 -mfloat-abi=hard&quot;</span>
 </pre></div>
 </div>
 <ol class="simple">
 <li>By default, the toolchain only sets “-O2” and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops -mvectorize-with-neon-quad&quot;</span>
 </pre></div>
 </div>
 </div>
