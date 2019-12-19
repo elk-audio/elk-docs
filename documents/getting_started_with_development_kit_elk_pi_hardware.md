@@ -4,17 +4,17 @@ Get Started with the Elk Pi Hardware.
 
 This document contains basic information on how to set up Elk Pi development boards.
 
+Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate and screws.
+
 ## 1. Assembly
 
-1. Peel off the blue protective film from the bottom of the heat sink
-
-   and apply it on top of the Raspberry Pi CPU:
+1. While we do not provide a heat sink for your RPi, we do recommend that you use one. Attach that first, by peeling off the blue protective film from the bottom of the heat sink and apply it on top of the Raspberry Pi CPU:
 
    ![Figure 1](illustrations/datasheet_images/image25.jpg)
 
-2. Mount the four f-m spacers into the f-f spacers on the Raspberry Pi:
+2. Mount the four short f-m spacers into the f-f spacers on the Raspberry Pi:
 
-   ![Figure 2](illustrations/elk_pi_assembly_step_1.png)
+   ![Figure 2](illustrations/datasheet_images/image14.jpg)
 
 3. Plug the Hat on top of the Raspberry Pi:
 
@@ -23,6 +23,10 @@ This document contains basic information on how to set up Elk Pi development boa
 4. Add the four screws if you want extra stability:
 
    ![Figure 4](illustrations/datasheet_images/image26.jpg)
+   
+5. Finally, if you want you can add the optional bottom plate, using the included long spacers and screws. The final assembly then appears as follows:
+
+   ![Figure 4](illustrations/elk_pi_completed_assembly.jpg)
 
 ## 2. Flashing the Elk operating system image to the SD card
 
