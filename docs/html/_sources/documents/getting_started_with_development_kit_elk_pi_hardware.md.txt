@@ -8,7 +8,9 @@ Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate
 
 ## 1. Assembly
 
-1. While we do not provide a heat sink for your RPi, we do recommend that you use one. Attach that first, by peeling off the blue protective film from the bottom of the heat sink and apply it on top of the Raspberry Pi CPU:
+We have created a brief time-lapse video of the assembly process [you may want to refer to](https://www.youtube.com/watch?v=euB_fGGumZg&feature=youtu.be), illustrating the steps below.
+
+1. While we do not provide a heat sink for your RPi, we do recommend that you use one, at the very least for the CPU. Attach heat sink(s) first, by peeling off the blue protective film from the bottom  and applying it on top of the Raspberry Pi CPU, along with eventual additional heat sinks for network and Bluetooth chips.
 
    ![Figure 1](illustrations/datasheet_images/image25.jpg)
 
@@ -23,7 +25,7 @@ Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate
 4. Add the four screws if you want extra stability:
 
    ![Figure 4](illustrations/datasheet_images/image26.jpg)
-   
+
 5. Finally, if you want you can add the optional bottom plate, using the included long spacers and screws. The final assembly then appears as follows:
 
    ![Figure 4](illustrations/elk_pi_completed_assembly.jpg)
