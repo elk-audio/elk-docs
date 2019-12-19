@@ -14,7 +14,7 @@ We have created a brief time-lapse video of the assembly process [you may want t
 
    ![Figure 1](illustrations/datasheet_images/image25.jpg)
 
-2. Mount the four short f-m spacers into the f-f spacers on the Raspberry Pi:
+2. Mount the four short spacers onto the Raspberry Pi using the included screws:
 
    ![Figure 2](illustrations/datasheet_images/image14.jpg)
 
@@ -22,7 +22,7 @@ We have created a brief time-lapse video of the assembly process [you may want t
 
    ![Figure 3](illustrations/datasheet_images/image17.jpg)
 
-4. Add the four screws if you want extra stability:
+4. Add another four of the included screws to the holes illustrated below, if you want extra stability:
 
    ![Figure 4](illustrations/datasheet_images/image26.jpg)
 
