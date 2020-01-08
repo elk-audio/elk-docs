@@ -6,7 +6,19 @@ There are several specific ways of working that you need to be aware of when dev
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
 
-Elk updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.
+### Updating over WiFi
+- Make sure your board is connected to the same WLAN to which your PC or laptop is connected (Check the section _Connecting to Your Board_).
+- On your browser, go to ***http://\<your Elk Pi board ip address\>:8080***
+- You should see an Elk Audio OS update page, just drag and drop the update file (`.swu`) or click in the middle to upload the file and the update starts immediately.
+- When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board's terminal (e.g. sudo poweroff).
+- Turn on the board, you should see the Elk Pi updated and the rootfs partition is switched.
+
+### Updating with an USB drive
+- Elk updates are shipped in form of `.swu` files that can be put on a FAT32 formatted USB pendrive and inserted at any time.
+- The update starts automatically and the red and green LEDs present on the ElkPi hat blink together.
+- Once the SWupdate is completed successfully, only the Green LED is turned On.
+- If the SWupdate failed for some reason then only the Red LED is turned On.
+- In a failed swupdate scenario, turn off the board and try again.
 
 ## Filesystem
 
@@ -148,8 +160,9 @@ For example, on a host Linux / macOS machine:
 
 ```bash
 # the TTL converter usually shows up under /dev/ with a name starting with tty
-$ picocom /dev/ttyXXX -b 115200 -l
+$ picocom /dev/ttyXXX -b 57600 -l
 ```
+Note: For ElkPi image version 0.6.0 and below use 115200 as baudrate.
 
 With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 

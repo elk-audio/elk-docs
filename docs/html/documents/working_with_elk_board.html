@@ -49,7 +49,26 @@
 <div class="section" id="software-update-system">
 <h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
-<p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn’t interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.</p>
+<div class="section" id="updating-over-wifi">
+<h3>Updating over WiFi<a class="headerlink" href="#updating-over-wifi" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Make sure your board is connected to the same WLAN to which your PC or laptop is connected (Check the section <em>Connecting to Your Board</em>).</li>
+<li>On your browser, go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
+<li>You should see an Elk Audio OS update page, just drag and drop the update file (<code class="docutils literal notranslate"><span class="pre">.swu</span></code>) or click in the middle to upload the file and the update starts immediately.</li>
+<li>When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board’s terminal (e.g. sudo poweroff).</li>
+<li>Turn on the board, you should see the Elk Pi updated and the rootfs partition is switched.</li>
+</ul>
+</div>
+<div class="section" id="updating-with-an-usb-drive">
+<h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 formatted USB pendrive and inserted at any time.</li>
+<li>The update starts automatically and the red and green LEDs present on the ElkPi hat blink together.</li>
+<li>Once the SWupdate is completed successfully, only the Green LED is turned On.</li>
+<li>If the SWupdate failed for some reason then only the Red LED is turned On.</li>
+<li>In a failed swupdate scenario, turn off the board and try again.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="filesystem">
 <h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
@@ -163,9 +182,10 @@ Besides root access, you can login as <code class="docutils literal notranslate"
 <p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
 <p>For example, on a host Linux / macOS machine:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
-$ picocom /dev/ttyXXX -b <span class="m">115200</span> -l
+$ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 </pre></div>
 </div>
+<p>Note: For ElkPi image version 0.6.0 and below use 115200 as baudrate.</p>
 <p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (installed in the development images) as a terminal multiplexer when working in this way.</p>
 </div>
 </div>
@@ -207,7 +227,11 @@ $ systemctl <span class="nb">enable</span> sensei
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Working with Elk Board</a><ul>
-<li><a class="reference internal" href="#software-update-system">Software Update System</a></li>
+<li><a class="reference internal" href="#software-update-system">Software Update System</a><ul>
+<li><a class="reference internal" href="#updating-over-wifi">Updating over WiFi</a></li>
+<li><a class="reference internal" href="#updating-with-an-usb-drive">Updating with an USB drive</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
 <li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
 <li><a class="reference internal" href="#user-data-separation">User Data Separation</a></li>
