@@ -2,12 +2,6 @@
 
 There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.
 
-## Software Update System
-
-Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
-
-Elk updates are shipped in form of `.swu` files that can be put on a FAT32 USB pendrive and inserted at any time. The update starts automatically and doesn't interrupt any of the other tasks since it will write its contents to a separate partition. It is possible to configure a network server to allow deployment of such files over-the-air using e.g. the internal WiFi connection.
-
 ## Filesystem
 
 ### Partition Layout
@@ -18,10 +12,10 @@ Therefore, it is important to remember to ***never put any files that you want t
 
 The internal eMMC storage on the board is divided into four partitions:
 
-- `boot`    : Boot partition with secondary bootloader and Kernel image
-- `rootfs1` : First copy of root filesystem
-- `rootfs2` : Second copy of root filesystem
-- `udata`   : User data partition
+  * `boot`    : Boot partition with secondary bootloader and Kernel image
+  * `rootfs1` : First copy of root filesystem
+  * `rootfs2` : Second copy of root filesystem
+  * `udata`   : User data partition
 
 The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.
 
@@ -148,8 +142,9 @@ For example, on a host Linux / macOS machine:
 
 ```bash
 # the TTL converter usually shows up under /dev/ with a name starting with tty
-$ picocom /dev/ttyXXX -b 115200 -l
+$ picocom /dev/ttyXXX -b 57600 -l
 ```
+Note: For ElkPi image version 0.6.0 and below use 115200 as baudrate.
 
 With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
 
@@ -162,6 +157,27 @@ $ watch -n 0.5 cat /proc/xenomai/sched/stat
 ```
 
 For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the `--timing-statistics` flag to get the results on a file.
+
+## Software Update System
+
+Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
+
+### Updating over Network (WiFi / Ethernet)
+
+  1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relative section](#connecting-to-your-board).
+  2. Open a web browser and go to ***http://\<your Elk Pi board ip address\>:8080***
+  3. You should see an Elk Audio OS update page. Just drag and drop the update file (`.swu`) or click in the middle to upload the file to start the update.
+  4. When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board's terminal (e.g. sudo poweroff).
+  5. Turn on the board, you should see the updated version on the splash logo and the rootfs partition will be switched.
+
+### Updating with an USB drive
+
+  1. Elk updates are shipped in form of `.swu` files that can be put on a FAT32 formatted USB pendrive and inserted at any time.
+  2. The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.
+  3. Once the SWupdate is completed successfully, only the Green LED will be turned on.
+  4. If the SWupdate failed for any reason, then only the Red LED will be turned on.
+  5. In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the [meta-elkpi](https://github.com/elk-audio/meta-elkpi) Github repository or ask on the forum.
+
 
 ## Configuring Automatic Startup
 
