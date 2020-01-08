@@ -6,6 +6,8 @@ Following is a reference for the Sushi .json configuration file.
 **“host_config”**
 
 * **“samplerate”** - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.
+* **"cv_inputs"** - The number of control voltage inputs to use.
+* **"cv_outputs"** - The number of control voltage outputs to use.
 * **“tempo”** - The default tempo in beats per minute.
 * **“playing_mode”** - The default mode to start Sushi in. Affects sequencers and tempo synced plugins. Valid values are “playing” and “stopped”.
 * **“tempo_sync”** - The mode of synchronising tempo. Valid modes are “internal” where Sushi is the master, “midi” for syncing to midi tempo, and “ableton_link” for synchronising with Ableton Link.
@@ -66,6 +68,30 @@ Following is a reference for the Sushi .json configuration file.
     * **“port”** - Integer id of the MIDI port to use as input.
     * **“channel”** - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
     * **“plugin”** - Name of the plugin to route program changes to.
+
+## Control voltage and Gate connections
+**"cv\_control"** - Control Voltage (CV) and Gate connections to and from tracks and plugins.
+
+* **"cv\_inputs"** - Connect a CV input to parameter changes. Values from the selected CV input will be converted to parameter changes on the selected parameter. A list of routing objects with the following members:
+    * **"cv"** - The id of the CV input to connect from.
+    * **"processor"** - The name of the track or plugin to connect to.
+    * **"parameter"** - The name of the parameter to connect the CV input to.
+* **"cv\_outputs"** - Connect parameters to CV outputs Parameter changes from the plugin will appear as values on the selected CV output. A list of routing objects with the following members:
+    * **"cv"** - The id of the CV input to send values to.
+    * **"processor"** - The name of the track or plugin to connect from.
+    * **"parameter"** - The name of the parameter to connect from.
+* **"gate\_inputs"** - Connect gate inputs to plugins. A list of routing objects with the following members:
+    * **"mode"** - The mode to use for the selected gate input, currently "note_event" is the only supported mode. In this mode gate events will be converted to note events and passed on to the plugin with the selected channel and note number (note on for positive gate and note off for negative).
+    * **"processor"** - The name of the plugin or track to connect to.
+    * **"gate"** - The id of the Gate input.
+    * **"note\_no"** - The note number to use for gate events from this gate input (0-127)
+    * **"channel"** - The note number to use for gate events from this gate input (0-15)
+* **"gate\_outputs"** - Connect gate inputs to plugins. A list of routing objects with the following members:
+    * **"mode"** - The mode to use for the selected gate output, currently "note_event" is the only supported mode. In this mode note events sent from the plugin with the selected note numbers and channel will be converted to gate events (note on to positive gate and note on) and sent to the selected Gate output.
+    * **"processor"** - The name of the plugin to connect from.
+    * **"gate"** - The id of the Gate output.
+    * **"note\_no"** - The note number to use for gate events from this gate output (0-127)
+    * **"channel"** - The note number to use for gate events from this gate output (0-15)
 
 ## Events
 **“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.

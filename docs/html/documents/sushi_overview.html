@@ -94,7 +94,7 @@
 <p><img alt="img" src="../_images/sushi_architecture.png" /></p>
 <p>At run-time, Sushi can be controlled via an API available over the network. At the moment, an API based on <a class="reference external" href="http://opensoundcontrol.org/">Open Sound Control</a> (OSC) is available, as well as a more complex API using Google’s gRPC, which offers full control and bidirectional communication to a remote client.</p>
 <p>With the run-time RPC API it is possible to perform common tasks such as control of plugins’ automation parameters, track and mixing controls, adding/removing plugin to tracks, querying the engine for track level meters or CPU usage by plugin, etc.</p>
-<p>The OSC namespace for Sushi and the hosted plugins’ parameters, is described in the sushi.log file which Sushi populates at each execution.</p>
+<p>The name, label, id and OSC paths for the hosted plugins’ parameters, is dumped to stdout in JSON format when running Sushi with the flag <code class="docutils literal notranslate"><span class="pre">--dump-plugins</span></code>. This flag starts sushi with the dummy frontend and exits immediately after dumping the parameters.</p>
 <p>Sushi’s JSON format is fully specified in a JSON schema, but it is probably easier to learn by studying the provided examples, which cover most common configurations, including multitrack/multichannel configurations.</p>
 <p>See our documentation on the <a class="reference internal" href="sushi_configuration_format.html"><span class="doc">Sushi Configuration Format</span></a> for more details.</p>
 </div>

@@ -46,30 +46,6 @@
   <div class="section" id="working-with-elk-board">
 <h1>Working with Elk Board<a class="headerlink" href="#working-with-elk-board" title="Permalink to this headline">¶</a></h1>
 <p>There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.</p>
-<div class="section" id="software-update-system">
-<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
-<p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
-<div class="section" id="updating-over-wifi">
-<h3>Updating over WiFi<a class="headerlink" href="#updating-over-wifi" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Make sure your board is connected to the same WLAN to which your PC or laptop is connected (Check the section <em>Connecting to Your Board</em>).</li>
-<li>On your browser, go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
-<li>You should see an Elk Audio OS update page, just drag and drop the update file (<code class="docutils literal notranslate"><span class="pre">.swu</span></code>) or click in the middle to upload the file and the update starts immediately.</li>
-<li>When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board’s terminal (e.g. sudo poweroff).</li>
-<li>Turn on the board, you should see the Elk Pi updated and the rootfs partition is switched.</li>
-</ul>
-</div>
-<div class="section" id="updating-with-an-usb-drive">
-<h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 formatted USB pendrive and inserted at any time.</li>
-<li>The update starts automatically and the red and green LEDs present on the ElkPi hat blink together.</li>
-<li>Once the SWupdate is completed successfully, only the Green LED is turned On.</li>
-<li>If the SWupdate failed for some reason then only the Red LED is turned On.</li>
-<li>In a failed swupdate scenario, turn off the board and try again.</li>
-</ul>
-</div>
-</div>
 <div class="section" id="filesystem">
 <h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="partition-layout">
@@ -197,6 +173,30 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 </div>
 <p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the <code class="docutils literal notranslate"><span class="pre">--timing-statistics</span></code> flag to get the results on a file.</p>
 </div>
+<div class="section" id="software-update-system">
+<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
+<p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
+<div class="section" id="updating-over-network-wifi-ethernet">
+<h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relative section</a>.</li>
+<li>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
+<li>You should see an Elk Audio OS update page. Just drag and drop the update file (<code class="docutils literal notranslate"><span class="pre">.swu</span></code>) or click in the middle to upload the file to start the update.</li>
+<li>When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board’s terminal (e.g. sudo poweroff).</li>
+<li>Turn on the board, you should see the updated version on the splash logo and the rootfs partition will be switched.</li>
+</ol>
+</div>
+<div class="section" id="updating-with-an-usb-drive">
+<h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 formatted USB pendrive and inserted at any time.</li>
+<li>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</li>
+<li>Once the SWupdate is completed successfully, only the Green LED will be turned on.</li>
+<li>If the SWupdate failed for any reason, then only the Red LED will be turned on.</li>
+<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> Github repository or ask on the forum.</li>
+</ol>
+</div>
+</div>
 <div class="section" id="configuring-automatic-startup">
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
@@ -227,11 +227,6 @@ $ systemctl <span class="nb">enable</span> sensei
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Working with Elk Board</a><ul>
-<li><a class="reference internal" href="#software-update-system">Software Update System</a><ul>
-<li><a class="reference internal" href="#updating-over-wifi">Updating over WiFi</a></li>
-<li><a class="reference internal" href="#updating-with-an-usb-drive">Updating with an USB drive</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
 <li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
 <li><a class="reference internal" href="#user-data-separation">User Data Separation</a></li>
@@ -258,6 +253,11 @@ $ systemctl <span class="nb">enable</span> sensei
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
+<li><a class="reference internal" href="#software-update-system">Software Update System</a><ul>
+<li><a class="reference internal" href="#updating-over-network-wifi-ethernet">Updating over Network (WiFi / Ethernet)</a></li>
+<li><a class="reference internal" href="#updating-with-an-usb-drive">Updating with an USB drive</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#configuring-automatic-startup">Configuring Automatic Startup</a></li>
 </ul>
 </li>
