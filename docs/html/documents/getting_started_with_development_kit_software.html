@@ -46,6 +46,7 @@
   <div class="section" id="development-kit-software">
 <h1>Development Kit Software<a class="headerlink" href="#development-kit-software" title="Permalink to this headline">¶</a></h1>
 <p>In this guide you will quickly see which the first steps are, to run a plugin from within Elk’s Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.</p>
+<p>Please note that all the below instructions and example files, are written for the context of running on a Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments differ.</p>
 <div class="section" id="running-a-plugin-within-the-sushi-host">
 <h2>Running a plugin within the Sushi host<a class="headerlink" href="#running-a-plugin-within-the-sushi-host" title="Permalink to this headline">¶</a></h2>
 <p>You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage, available from the <a class="reference external" href="https://github.com/elk-audio/sushi/releases">Releases section of our Sushi repository</a>. Read <a class="reference external" href="https://itsfoss.com/use-appimage-linux/">these brief instructions if you are unfamiliar with running software in Linux AppImages</a>.</p>
@@ -54,15 +55,15 @@
 <div class="section" id="starting-sushi-with-the-mda-jx10-vst-synthesizer">
 <h2>Starting Sushi with the MDA JX10 VST synthesizer<a class="headerlink" href="#starting-sushi-with-the-mda-jx10-vst-synthesizer" title="Permalink to this headline">¶</a></h2>
 <p>First we assume you are able to run Sushi and connect to Jack audio.</p>
-<p>The example used, requires that you have these files from our <a class="reference external" href="https://github.com/elk-audio/elk-examples/">elk-examples repository</a>:</p>
+<p>The example used, requires that you have these files from the  our <a class="reference external" href="https://github.com/elk-audio/elk-examples/tree/master/mda_jx10_vst3">elk-examples repository</a>:</p>
 <ol class="simple">
 <li>config_play_vst3.json - the Sushi configuration file.</li>
 <li>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</li>
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.</li>
 <li>(optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC app</a>.</li>
 </ol>
-<p>First unpack the tar-file with the plugin to your local drive. Place the content in the default path expected: <code class="docutils literal notranslate"><span class="pre">/usr/lib/VST3/mda-vst3.vst3</span></code>. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.</p>
-<p>To run Sushi using Jack, with the configuration file provided for running the MDA JX10 vst3 synthesizer:</p>
+<p>First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default path expected: <code class="docutils literal notranslate"><span class="pre">/usr/lib/VST3/mda-vst3.vst3</span></code>. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.</p>
+<p>To run Sushi using Jack, with the configuration file provided for running the MDA JX10 VST3 synthesizer:</p>
 <ol class="simple">
 <li>Navigate to <code class="docutils literal notranslate"><span class="pre">/the/folder/where/you/have/placed/sushi</span></code> in a console window.</li>
 <li>Type the following command:</li>
