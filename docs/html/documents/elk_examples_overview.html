@@ -49,6 +49,7 @@
 <p>For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the <a class="reference external" href="https://sourceforge.net/projects/mda-vst/">MDA JX10 synthesizer</a>, using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.</p>
 <p>Note that the linked files below, are all built for running natively on Linux or the UpCore board. All are for an Intel architecture, and will also run on Linux natively on an Intel computer.</p>
 <p>Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.</p>
+<p><strong>Note:</strong> In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the “JX-10 ELK CONTROLLER”-title, and then, in the ‘osc’-section of the editor, set the ‘address’ field to “/parameter/your_synth_name”, instead of the current “/parameter/jx10”.</p>
 <div class="section" id="mda-jx10-vst3-example">
 <h2>MDA JX10 VST3 Example<a class="headerlink" href="#mda-jx10-vst3-example" title="Permalink to this headline">¶</a></h2>
 <p>This example requires the following files:</p>
@@ -79,6 +80,7 @@
 <p>You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
 <p>The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.</p>
 <p>The instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a> translate straightforwardly also for this VST 2 example - just read VST 2 where in the text and paths, VST 3 is specified.</p>
+<p><strong>IMPORTANT NOTE:</strong> The MDA JX10 VST 2 plugin will not work on the Raspberry Pi Elk, purely due to a bug in the plugin. We nonetheless leave this example, to best illustrate the differences between using VST 2 and VST 3.  Also, the MDA JX10 VST 2 will run fine on desktop Linux, as the bug does not affect that platform.</p>
 </div>
 <div class="section" id="lv2vst-wrapper-with-mda-jx10-lv2-example">
 <h2>LV2VST Wrapper, with MDA JX10 LV2 Example<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2-example" title="Permalink to this headline">¶</a></h2>

@@ -1,7 +1,7 @@
 # Development Kit Software
 In this guide you will quickly see which the first steps are, to run a plugin from within Elk's Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.
 
-Please note that all the below instructions and example files, are written for the context of running on a Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments differ.
+**IMPORTANT:** All the below instructions and example files, are written for the context of running on a Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments will differ. Refer instead to our [instructions for running on the boards](run_elk_on_boards.md).
 
 ## Running a plugin within the Sushi host
 
@@ -104,9 +104,11 @@ If you do not know what Open Sound Control (OSC) is, it is helpful (but not mand
 
 5. Assuming everything is correctly configured, the controls on the screen will send OSC messages to to the jx10 synth via Sushi, altering its parameters.
 
-For example, dragging the knob 'Resonance', will send the point value of the knob to the OSC address  '/parameter/Synth/VCF_Reso'. 'Synth' is here the name given the plugin in the Sushi configuration file. 
+For example, dragging the knob 'Resonance', will send the point value of the knob to the OSC address  '/parameter/jx10/VCF_Reso'. 
 
-Note: If you choose to change that name, the Open Stage Control template is easily updated by enabling editing, clicking on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, setting the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/Synth".
+'jx10' is here the name given the plugin in the Sushi configuration file. 
+
+**Note:** If you choose to change that name ('jx10'), the Open Stage Control template is easily updated by enabling editing, clicking on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, setting the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/jx10".
 
 ### Control MDA JX10 VST3 plugin with TouchOSC
 

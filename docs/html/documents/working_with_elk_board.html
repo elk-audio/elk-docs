@@ -179,11 +179,11 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <div class="section" id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relative section</a>.</li>
+<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</li>
 <li>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
 <li>You should see an Elk Audio OS update page. Just drag and drop the update file (<code class="docutils literal notranslate"><span class="pre">.swu</span></code>) or click in the middle to upload the file to start the update.</li>
-<li>When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board’s terminal (e.g. sudo poweroff).</li>
-<li>Turn on the board, you should see the updated version on the splash logo and the rootfs partition will be switched.</li>
+<li>When the update is completed successfully, the page prompts a message that the board is restarting, but you need to power off the board manually from the board’s terminal (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">poweroff</span></code>).</li>
+<li>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</li>
 </ol>
 </div>
 <div class="section" id="updating-with-an-usb-drive">
@@ -193,7 +193,7 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <li>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</li>
 <li>Once the SWupdate is completed successfully, only the Green LED will be turned on.</li>
 <li>If the SWupdate failed for any reason, then only the Red LED will be turned on.</li>
-<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> Github repository or ask on the forum.</li>
+<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</li>
 </ol>
 </div>
 </div>

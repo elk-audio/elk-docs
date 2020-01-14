@@ -8,6 +8,8 @@ Note that the linked files below, are all built for running natively on Linux or
 
 Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.
 
+**Note:** In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, set the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/jx10".
+
 ## MDA JX10 VST3 Example
 
 This example requires the following files:
@@ -43,6 +45,8 @@ You will also notice that the OSC GUI for the VST 2 version lacks controls for P
 The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.
 
 The instructions for the VST 3 example in the guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md) translate straightforwardly also for this VST 2 example - just read VST 2 where in the text and paths, VST 3 is specified.
+
+**IMPORTANT NOTE:** The MDA JX10 VST 2 plugin will not work on the Raspberry Pi Elk, purely due to a bug in the plugin. We nonetheless leave this example, to best illustrate the differences between using VST 2 and VST 3.  Also, the MDA JX10 VST 2 will run fine on desktop Linux, as the bug does not affect that platform.
 
 ## LV2VST Wrapper, with MDA JX10 LV2 Example
 

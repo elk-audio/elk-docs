@@ -164,11 +164,11 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 
 ### Updating over Network (WiFi / Ethernet)
 
-  1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relative section](#connecting-to-your-board).
+  1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relevant section](#connecting-to-your-board).
   2. Open a web browser and go to ***http://\<your Elk Pi board ip address\>:8080***
   3. You should see an Elk Audio OS update page. Just drag and drop the update file (`.swu`) or click in the middle to upload the file to start the update.
-  4. When the update is completed successfully, the page prompts a message that the board is restarting but you need to poweroff the board manually from the board's terminal (e.g. sudo poweroff).
-  5. Turn on the board, you should see the updated version on the splash logo and the rootfs partition will be switched.
+  4. When the update is completed successfully, the page prompts a message that the board is restarting, but you need to power off the board manually from the board's terminal (e.g. `sudo poweroff`).
+  5. Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.
 
 ### Updating with an USB drive
 
@@ -176,7 +176,7 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
   2. The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.
   3. Once the SWupdate is completed successfully, only the Green LED will be turned on.
   4. If the SWupdate failed for any reason, then only the Red LED will be turned on.
-  5. In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the [meta-elkpi](https://github.com/elk-audio/meta-elkpi) Github repository or ask on the forum.
+  5. In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the [meta-elkpi](https://github.com/elk-audio/meta-elkpi) GitHub repository or ask on the forum.
 
 
 ## Configuring Automatic Startup
