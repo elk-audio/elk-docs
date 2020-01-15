@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Sensei Configuration &#8212; Elk DevKit  documentation</title>
+    <title>Sensei Overview and Configuration Format &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
@@ -43,15 +43,42 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sensei-configuration">
-<h1>Sensei Configuration<a class="headerlink" href="#sensei-configuration" title="Permalink to this headline">¶</a></h1>
-<p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).</p>
-<p>The hardware configuration of the hardware pins can be declared in a JSON configuration file.</p>
-<p>On the UpCore based Elk development board, Sensei needs Sushi to be running to communicate with the GPIOs, since they both share a single SPI connect with the XMOS controller that handles both the audio controllers and the GPIOs. This limitation is not present on i.MX7/8 or Raspberry Pi based systems.</p>
-<p>Sensei generates a .log file similar to Sushi for reporting run-time messages.</p>
-<p>Following is a reference for the Sensei .json configuration file.</p>
+  <div class="section" id="sensei-overview-and-configuration-format">
+<h1>Sensei Overview and Configuration Format<a class="headerlink" href="#sensei-overview-and-configuration-format" title="Permalink to this headline">¶</a></h1>
+<p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs
+available on the development board, offering OSC endpoints for event reporting
+and control (gRPC API is under development and will be available soon).</p>
+<p>It allows describing physical devices or controllers connected to an Elk Powered
+Board’s GPIO through a JSON configuration file. All low level GPIO logic is taken
+care by Sensei and it allows programmers to quickly connect, modify and control
+physical devices with ease.</p>
+<p>The low level GPIO logic or program can either be running on a seperate
+micro-controller or the host itself, as is the case with Raspberry Pi systems.
+It samples the input GPIO and drives the output GPIO at a periodicity called
+<strong>tick rate</strong> which is typically 1000Hz.</p>
+<p>Sensei uses the <a class="reference external" href="https://github.com/elk-audio/elk-gpio-protocol">GPIO Control Protocol</a>
+to communicate with the low level GPIO logic program about information such as GPIO configuration, output GPIO values and input GPIO values.</p>
+<p>Sensei also generates a .log file similar to Sushi for reporting run-time messages.</p>
 <div class="section" id="example-configuration">
 <h2>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Lets consider an example Elk Powered board with 8 digital output pins numbered
+DO0 - DO7, 8 digital input pins numbered DI0 - DI7 and 3 analog input pins
+numbered A0 - A2.</p>
+<p>It has the following connections as shown in the example schematic shown below:</p>
+<ol class="simple">
+<li>An led connected to DO0.</li>
+<li>An led level meter connected to DO1 - DO7.</li>
+<li>A potentiometer connected to A0.</li>
+<li>A button connected to DI0.</li>
+<li>An encoder connected to DI1 - DI3.</li>
+<li>A 3 way selector switch connected to DI4 - DI6.</li>
+</ol>
+<p><img alt="img" src="../_images/example_sensei_schematic.png" /></p>
+<p>The Sensei configuration for these connections would typically look
+like. More examples are availabe
+<a class="reference external" href="https://github.com/elk-audio/sensei/tree/master/misc/example_configs">here</a>.
+Detailed breakdown and explanations of the various fields are provided in the
+following sections.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;backends&quot;</span> <span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -60,32 +87,114 @@
             <span class="s2">&quot;raw_input_enabled&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
             <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;osc&quot;</span><span class="p">,</span>
             <span class="s2">&quot;host&quot;</span> <span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;port&quot;</span> <span class="p">:</span> <span class="mi">23023</span><span class="p">,</span>
-            <span class="s2">&quot;base_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/sensei/sensors&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;base_raw_input_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/sensei/raw_input&quot;</span>
+            <span class="s2">&quot;port&quot;</span> <span class="p">:</span> <span class="mi">23000</span><span class="p">,</span>
+            <span class="s2">&quot;base_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/sensors&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;base_raw_input_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;/raw_input&quot;</span>
         <span class="p">}</span>
     <span class="p">],</span>
 
     <span class="s2">&quot;hw_frontend&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;raspa_xmos&quot;</span>
+        <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;elk_pi&quot;</span>
     <span class="p">},</span>
 
     <span class="s2">&quot;sensors&quot;</span> <span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;test_pin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;simple_led&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_output&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_output_pin&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;led_level_meter&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_output&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;stepped_output&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;button&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input_pin&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;active_low&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;rotary_encoder&quot;</span><span class="p">,</span>
             <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input&quot;</span><span class="p">,</span>
             <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;adc_resolution&quot;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-            <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">127</span><span class="p">],</span>
+            <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
             <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input_pin&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
-                    <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="s2">&quot;adc_resolution&quot;</span> <span class="p">:</span> <span class="mi">8</span>
-                <span class="p">}</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;encoder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;active_low&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;rotary_encoder_button&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input_pin&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;active_low&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+                <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;three_way_switch&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;range_input&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;n_way_switch&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+                <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;potentiometer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;on_value_changed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;analog_input_pin&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;adc_resolution&quot;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;filter_time_constant&quot;</span> <span class="p">:</span> <span class="mf">0.020</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -94,65 +203,192 @@
 </div>
 <div class="section" id="backends">
 <h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
-<p>Backends represent an interface for outputing data on the host or to a network. Currently 2 backend types are implemented, Open Sound Control (osc) and stdout.</p>
+<p>The Sensei backends represent an interface for outputing data on the host or to
+a network. Currently 2 backend types are implemented which are Open Sound
+Control (osc) and stdout.</p>
+<p>Backends are described using a <code class="docutils literal notranslate"><span class="pre">backends</span></code> json field, which is an array where
+you can define multiple backends. Each backend’s subfields are described below.</p>
 <ul class="simple">
-<li><strong>“id”</strong> - Identification number of this backend.</li>
-<li><strong>“enabled”</strong> - Whether this backend will output data or not.</li>
-<li><strong>“raw input enabled”</strong> - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be output.</li>
-<li><strong>“type”</strong> - The type of backend, currently “osc” is the only recognised value, else will default to stdout.</li>
-<li><strong>“host”</strong> - The address to output osc messages to, accepted values are “localhost” or an ip address. Only valid if type = “osc”.</li>
-<li><strong>“port”</strong> - The port used on the above host. Only valid if type = “osc”.</li>
-<li><strong>“base_path”</strong> - The Prefix added to osc messages. Only valid if type = “osc”.</li>
-<li><strong>“base_raw_input_path”</strong> - The prefix added to osc messages with unprocessed values. Only valid if type = “osc”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code> - Identification number of this backend.</li>
+<li><code class="docutils literal notranslate"><span class="pre">enabled</span></code> - Whether this backend will output data or not.</li>
+<li><code class="docutils literal notranslate"><span class="pre">raw_input_enabled</span></code> - If this is true then in addition to the processes
+value (clipped, scaled and possibly inverted), the unprocessed value from
+the sensor
+will also be output.</li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code> - The type of backend, currently <code class="docutils literal notranslate"><span class="pre">osc</span></code> is the only recognised value,
+else will default to stdout.</li>
+<li><code class="docutils literal notranslate"><span class="pre">host</span></code> - The address to output osc messages to, accepted values are
+<code class="docutils literal notranslate"><span class="pre">localhost</span></code> or an ip address. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code> - The port used on the above host. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">base_path</span></code> - The Prefix added to osc messages. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">base_raw_input_path</span></code> - The prefix added to osc messages with unprocessed
+values. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="hardware-frontend">
 <h2>Hardware Frontend<a class="headerlink" href="#hardware-frontend" title="Permalink to this headline">¶</a></h2>
-<p>The Hardware frontend is the type and method of connecting to the controller handling the physical sensors. Currently 2 controllers are supported. A Teensy 3.2 over a serial connection and Xmos controller connected through Raspalib.</p>
+<p>The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the physical devices connected to the pins. The
+<code class="docutils literal notranslate"><span class="pre">hw_frontend</span></code> field has only one subfield which describes its type.</p>
 <ul class="simple">
-<li><strong>“type”</strong> - The type used, recognised values are “raspa_xmos” and “serial_teensy”.</li>
-<li><strong>“port”</strong> - The serial device to connect to. Only valid if type = “serial_teensy”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code> - The hw frontend type used, Currently, only two types of hardware
+frontend is supported:<ol>
+<li><code class="docutils literal notranslate"><span class="pre">raspa_gpio</span></code> - for devices where a micro-controller is handling the GPIO
+logic. Sensei communicates with the micro-controller using
+<a class="reference external" href="https://github.com/elk-audio/raspa">RASPA</a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">elk_pi</span></code> - for Elk Pi devices, where Sensei itself takes care of the
+GPIO logic.</li>
+</ol>
+</li>
 </ul>
 </div>
-<div class="section" id="sensor">
-<h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this headline">¶</a></h2>
-<p>Sensors are a list of connected hardware sensor or indicators like knobs, buttons, leds, pressure sensors as well as more advanced devices like IMU:s</p>
+<div class="section" id="sensors-controllers">
+<h2>Sensors/Controllers<a class="headerlink" href="#sensors-controllers" title="Permalink to this headline">¶</a></h2>
+<p>Sensei needs information about the sensor or physical device is connected to the
+pins and how it should handle data to/from those sensors. It uses this
+information and informs the hardware frontend about the various physical
+devices and the pins to which they are connected to.</p>
+<p>For this reason, the Sensei json config file should contain the definition of:</p>
+<ol class="simple">
+<li>A description of how Sensei should process the raw data from these sensors.</li>
+<li>A description of the physical sensor and the pin(s) to which it is attached.</li>
+</ol>
+<p>All sensors are defined in a <code class="docutils literal notranslate"><span class="pre">sensors</span></code> array field in the json file. Each entry
+describes how Sensei will handle that sensor and contains a <code class="docutils literal notranslate"><span class="pre">hardware</span></code> subfield
+which describes what physical device/sensor is connected.</p>
+<div class="section" id="handling-of-sensor-data">
+<h3>Handling of sensor data<a class="headerlink" href="#handling-of-sensor-data" title="Permalink to this headline">¶</a></h3>
+<p>Sensei uses an abstract representation of all physical sensors which can fall
+into any of the following categories. All sensor values are represented in
+floating point number, whose range depends on these categories.</p>
+<ol class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">digital_input</span></code> - An input with only 2 possible values, on or off, useful
+for <strong>single pin</strong> button or switches. The sensor can have values 0.0 or 1.0.</li>
+<li><code class="docutils literal notranslate"><span class="pre">range_input</span></code> - An input with multiple discrete values, i.e. a multi
+position switch or an LED array. Its range has to be specified
+explicitly using the <code class="docutils literal notranslate"><span class="pre">range</span></code> keyword.</li>
+<li><code class="docutils literal notranslate"><span class="pre">continuous_input</span></code> - An Input from a sensor that comes “pre-processed” in
+floating point format.</li>
+<li><code class="docutils literal notranslate"><span class="pre">analog_input</span></code> - An sampled continuous input that is different from the
+range input in that it is intended to be mapped to a continuous range
+(0.0 to 1.0 in the case of the OSC backend) and not discrete values. This
+also needs the <code class="docutils literal notranslate"><span class="pre">range</span></code> keyword to be explicitly defined so that Sensei
+can normalize the sensor values. Could be potentiometers, encoders etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">digital_output</span></code> - An output that can be set on of off, like an LED.
+The sensor can have values 0.0 or 1.0.</li>
+<li><code class="docutils literal notranslate"><span class="pre">range_output</span></code> - An output that can accept a range of discrete values. Its
+range has to be specified explicitly using the <code class="docutils literal notranslate"><span class="pre">range</span></code> keyword.</li>
+<li><code class="docutils literal notranslate"><span class="pre">analog_output</span></code> - Similar to <code class="docutils literal notranslate"><span class="pre">analog_input</span></code>, this can be used to represent
+an output controller whose values range from 0.0 to 1.0. The <code class="docutils literal notranslate"><span class="pre">range</span></code> keyword
+needs to be explicitly defined for this type of sensor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">no_output</span></code> - A “helper” sensor that doesn’t output anything on it own but
+controls other sensors. Look at the multiplexer section described below.</li>
+</ol>
+<p>The first part of the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> json field is a description of how Sensei will
+handle the sensor and its data. It contains the following fields:</p>
 <ul class="simple">
-<li><strong>“id”</strong> - The identification number of this sensor.</li>
-<li><strong>“enabled”</strong> - If true, values from this sensor will be sent to the output backend(s).</li>
-<li><strong>“name”</strong> - Name of this sensor, will be used if the output backend supports it.</li>
-<li><strong>“inverted”</strong> - If set to true, output values from this sensor will be inverted. For a digital sensor this means true will be outputted as false and for analog sensors.</li>
-<li><strong>“sensor_type”</strong> - An abstract type that describes the behaviour of the sensor. Valid.</li>
-<li><strong>“digital_input”</strong> - An input with only 2 possible values, true or false, useful for button or switches.</li>
-<li><strong>“range_input”</strong> - An input with multiple discrete values, i.e. a multi position switch.</li>
-<li><strong>“analog_input”</strong> - An sampled continuous input. different from the range input in that it is intended to be mapped to a continuous range (0 to 1 in the case of the OSC backend) and not discrete values. Could be potentiometers, ribbon controllers. etc.</li>
-<li><strong>“continuous_input”</strong> - Input from a sensor that comes “pre-processed” in floating point format. I.e. IMU:s or similar complex devices.</li>
-<li><strong>“digital_output”</strong> - An output that can be set low or high, for controlling diodes or similar.</li>
-<li><strong>“range_output”</strong> - An output that can accept a range of discrete values.</li>
-<li><strong>“no_output”</strong> - A “helper” sensor that doesn’t output anything on it own. For instance for setting up multiplexers.</li>
-<li><strong>“mode”</strong> - The transmission mode of the sensor. Currently supported values are:</li>
-<li><strong>“continuous”</strong> - Values will be sent periodically according to the set tick rate.</li>
-<li><strong>“on_value_changed”</strong> - Values will be outputted only if a value is different from the previous value.</li>
-<li><strong>“range”</strong> - The output range of the sensor and can be used to clip the high and low end of an analog or continuous sensor. The values represent the mappings of 0 and 1 respectively of the un-mapped output of the sensor. In the case of an analog input with 8 bits of resolution this is 0 and 255 respectively.</li>
-<li><strong>“timestamp”</strong> - If true, all outputs from this sensor will be outputted with a timestamp. If using the OSC backend, then the signature of the output address will have an extra “t” tag at the end, containing the timestamp.</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code> - A unique identification number of the sensor. If an <code class="docutils literal notranslate"><span class="pre">id</span></code> is duplicated,
+Sensei will log an error message stating the same.</li>
+<li><code class="docutils literal notranslate"><span class="pre">enabled</span></code> - Can be <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>. If true, values from this sensor will
+be sent to the output backend(s).</li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code> - Name of this sensor, will be used if the output backend supports it.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sensor_type</span></code> - Any of the sensor types as described above.</li>
+<li><code class="docutils literal notranslate"><span class="pre">inverted</span></code> - Can be <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>. If true, Sensei will invert the values.
+for both output and input controllers.</li>
+<li><code class="docutils literal notranslate"><span class="pre">mode</span></code> - Specifies the notification mode of an input sensor/controller.
+Currently supported values are:<ol>
+<li><code class="docutils literal notranslate"><span class="pre">on_value_changed</span></code> - Values will be outputted only if a change in the sensor
+state has been detected. This is the default mode.</li>
+<li><code class="docutils literal notranslate"><span class="pre">continuous</span></code> - Values will be sent periodically according to the set tick rate.</li>
+</ol>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">range</span></code> - This represents the range of the sensor. The following <code class="docutils literal notranslate"><span class="pre">sensor_type</span></code>
+require this explicit definition:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">range_input</span></code> and <code class="docutils literal notranslate"><span class="pre">range_output</span></code> : Values of the sensor/controller range from minimum value to maximum. In the example json config shown above, the three
+way switch will have values 1.0, 2.0 and 3.0.</li>
+<li><code class="docutils literal notranslate"><span class="pre">analog_input</span></code> and <code class="docutils literal notranslate"><span class="pre">analog_output</span></code> : Values of the sensor/controller are
+normalized between minumam and maximum range. In the example json config
+shown above, the rotary encoder has a range of 15 and so it has 15
+possible values between 0.0 to 1.0.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">timestamp</span></code> - If true, all outputs from this sensor will be outputted
+with a timestamp. If using the OSC backend, then the signature of the
+output address will have an extra “t” tag at the end, containing the
+timestamp.</li>
 </ul>
 </div>
-<div class="section" id="sensor-hardware">
-<h2>Sensor Hardware<a class="headerlink" href="#sensor-hardware" title="Permalink to this headline">¶</a></h2>
-<p>The hardware specific config. This will be handled differently depending on what hardware frontend is used, and not all hardware frontend have support for all options.</p>
+</div>
+<div class="section" id="supported-sensor-controller-hardware">
+<h2>Supported Sensor/Controller Hardware<a class="headerlink" href="#supported-sensor-controller-hardware" title="Permalink to this headline">¶</a></h2>
+<p>The second part of the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> json field is a description of the actual
+sensor/controller and the pins to which they are connected to. There are three
+major categories of controllers:</p>
+<ol class="simple">
+<li><strong>Digital Outputs</strong> : LEDs, Relays etc. Connected to the Digital Output pins
+of the board.</li>
+<li><strong>Digital Inputs</strong> : Buttons, switches, rotary encoders etc. Connected to the
+Digital Input pins of the board.</li>
+<li><strong>Analog Inputs</strong> : Pots, ribbon cables etc. Connected to the Analog Input
+pins of the board. All analog input’s</li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">hardware</span></code> section of each <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry in the json config describes the
+sensor/controller type. The following list contains the required subfields.</p>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> : the type of sensor/controller. The following sections
+explain this in greater detail.</p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> represent sensors/controllers connected to
+the Digital Output Pins:</p>
 <ul class="simple">
-<li><strong>“hardware_type”</strong> -  The physical type of sensor used. This will be handled differently depending on the hardware frontend used. Recognised values are:”analog_input_pin, “digital_input_pin”, “digital_output_pin”, “ribbon”, “button”, “encoder”, “n_way_switch”, “stepped_output”, “multiplexer”, “imu_pitch”, “imu_roll”, imu_yaw”.</li>
-<li><strong>“pins”</strong> - A list of the physical pins the sensor is connected to. The number of pins depend on the sensor hardware type.</li>
-<li><strong>“adc_resolution”</strong> - For analog inputs, this represents the resolution of the analog to digital converter.</li>
-<li><strong>“delta_ticks”</strong> -  The update speed of the output represented as a fraction of the main tick rate of the controller.</li>
-<li><strong>“multiplexed”</strong> - If the sensor is connected through a multiplexer, then this member should be present with the fields below:</li>
-<li><strong>“multiplexer_id”</strong> - The sensor id of the multiplexer the sensor is connected to.</li>
-<li><strong>“multiplexer_pin”</strong> - The pin on the multiplexer to set this sensor active.</li>
-<li><strong>“polarity”</strong> - Sets the polarity of the sensor on a hw level. Reconised values are “active_high” and “active_low”.</li>
-<li><strong>“lowpass_cutoff”</strong> -  The cutof frequency in Hz of the filter filtering analog inputs.</li>
-<li><strong>“lowpass_order”</strong> - The steepnes of the above lowpass filter.</li>
-<li><strong>“slider_threshold”</strong> - Sets the touch on/off threshold. Only applicable if “hardware_type” is “ribbon”.</li>
-<li><strong>“fast_mode”</strong> - If true, the sensor will bypass any filtering or debouncing in order to send a value as soon as possible. Could result in double triggers and/or less accuracy.</li>
+<li><code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">stepped_output</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">multiplexer</span></code></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> represent sensors/controllers connected to
+the Digital Input Pins:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">digital_input_pin</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">n_way_switch</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">encoder</span></code></li>
+</ul>
+<p>The following <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> represent sensors/controllers connected to
+the Analog Pins:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code></li>
+</ul>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">pins</span></code> : An array of the pin numbers used by the controllers.</p>
+<ul class="simple">
+<li>Sensei automatically figures out their pin type (Digital Output, Digital
+Input or Analog Input) based on the <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> and so it is not
+necessary to mention the prefix of the pin number (DO, DI, A) here.</li>
+<li>The pins can be completely random and do not have to be contiguous.</li>
+<li>The order of the pins is very important and will affect the behavior. Make
+sure that the order follows the intention of use.</li>
+</ul>
+</li>
+</ul>
+<p>Optionally, it can also contain the following subfields depending on the
+<code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">polarity</span></code> : Optional field to describe the polarity of the sensor/controller.
+By default all controllers are active high. It can take values <code class="docutils literal notranslate"><span class="pre">active_high</span></code>
+or <code class="docutils literal notranslate"><span class="pre">active_low</span></code>. This is not applicable to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> : This field allows you to donwsample the sensor/controller.
+This is specified in terms of system tick rate. By default, this is set to 1
+for all sensors. For example, when delta_ticks is 4 for an input sensor, the
+sensor value is read only once every 4 system ticks. This can be used to
+handle noisy sensors. Not applicable to <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">adc_resolution</span></code> : Applicable only to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware types, this
+sets the adc resoultion for a particular sensor. By default, it is at max
+resoultion of the on board adc. This is particularly usefull to reduce
+crosstalk.</li>
+<li><code class="docutils literal notranslate"><span class="pre">filter_time_constant</span></code>: Applicable only to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware types,
+this sets the settling time constant for a particular sensor’s digital filter.
+By default, the settling time is 20ms.</li>
+<li><code class="docutils literal notranslate"><span class="pre">fast_mode</span></code> : By default, all digital input pins go through software debouncing
+to prevent erraneous values. By setting this to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the debouncing for
+a particular sensor is switched off. You can use this if you have hardware
+debouncing filters setup.</li>
 </ul>
 </div>
 </div>
@@ -165,12 +401,15 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Sensei Configuration</a><ul>
+<li><a class="reference internal" href="#">Sensei Overview and Configuration Format</a><ul>
 <li><a class="reference internal" href="#example-configuration">Example Configuration</a></li>
 <li><a class="reference internal" href="#backends">Backends</a></li>
 <li><a class="reference internal" href="#hardware-frontend">Hardware Frontend</a></li>
-<li><a class="reference internal" href="#sensor">Sensor</a></li>
-<li><a class="reference internal" href="#sensor-hardware">Sensor Hardware</a></li>
+<li><a class="reference internal" href="#sensors-controllers">Sensors/Controllers</a><ul>
+<li><a class="reference internal" href="#handling-of-sensor-data">Handling of sensor data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#supported-sensor-controller-hardware">Supported Sensor/Controller Hardware</a></li>
 </ul>
 </li>
 </ul>
