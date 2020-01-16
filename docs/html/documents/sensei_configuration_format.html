@@ -255,8 +255,6 @@ devices and the pins to which they are connected to.</p>
 <p>All sensors are defined in a <code class="docutils literal notranslate"><span class="pre">sensors</span></code> array field in the json file. Each entry
 describes how Sensei will handle that sensor and contains a <code class="docutils literal notranslate"><span class="pre">hardware</span></code> subfield
 which describes what physical device/sensor is connected.</p>
-<div class="section" id="handling-of-sensor-data">
-<h3>Handling of sensor data<a class="headerlink" href="#handling-of-sensor-data" title="Permalink to this headline">¶</a></h3>
 <p>Sensei uses an abstract representation of all physical sensors which can fall
 into any of the following categories. All sensor values are represented in
 floating point number, whose range depends on these categories.</p>
@@ -317,7 +315,6 @@ output address will have an extra “t” tag at the end, containing the
 timestamp.</li>
 </ul>
 </div>
-</div>
 <div class="section" id="supported-sensor-controller-hardware">
 <h2>Supported Sensor/Controller Hardware<a class="headerlink" href="#supported-sensor-controller-hardware" title="Permalink to this headline">¶</a></h2>
 <p>The second part of the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> json field is a description of the actual
@@ -367,10 +364,11 @@ sure that the order follows the intention of use.</li>
 </ul>
 </li>
 </ul>
-<p>Optionally, it can also contain the following subfields depending on the
+<p>It can also contain the following subfields depending on the
 <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">polarity</span></code> : Optional field to describe the polarity of the sensor/controller.
+<li><code class="docutils literal notranslate"><span class="pre">polarity</span></code> : Optional field to describe the polarity of signal on the pins.
+This is used to determine what constitures as an ON and OFF value of each pin.
 By default all controllers are active high. It can take values <code class="docutils literal notranslate"><span class="pre">active_high</span></code>
 or <code class="docutils literal notranslate"><span class="pre">active_low</span></code>. This is not applicable to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware type.</li>
 <li><code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> : This field allows you to donwsample the sensor/controller.
@@ -390,6 +388,325 @@ to prevent erraneous values. By setting this to <code class="docutils literal no
 a particular sensor is switched off. You can use this if you have hardware
 debouncing filters setup.</li>
 </ul>
+<div class="section" id="digital-output-pin">
+<h3>Digital Output Pin<a class="headerlink" href="#digital-output-pin" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> hardware type outputs its value in Little Endian binary
+to the pins. The minumum value possible is 0 and the maximum value is
+2^(num_pins) -1. A simple example is the <code class="docutils literal notranslate"><span class="pre">simple_led</span></code> as shown in the example
+json config above.</p>
+<p>For a <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> with a single pin connected to DO0, the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry
+would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; controller name &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_output&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_output_pin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_high or active_low &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">preferred</span> <span class="n">delta</span> <span class="n">ticks</span> <span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For a <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> with multuple pins, lets consider and example where 4
+LEDS are connected to pins DO0, DO1, DO2 and DO3. They can be the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry
+would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; controller name &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;range_output or analog_output&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_output_pin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_high or active_low &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">preferred</span> <span class="n">delta</span> <span class="n">ticks</span> <span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A value of 5 on this controller would result in the binary value of 5 (0101) on the
+output pins as shown below:</p>
+<p><img alt="img" src="../_images/digital_output_example.png" /></p>
+</div>
+<div class="section" id="stepped-output">
+<h3>Stepped Output<a class="headerlink" href="#stepped-output" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">stepped_output</span></code> hardware type is suitable for LED rings or LED level meters.
+Its value represents the number of output pins that are ON. For example, if a
+controller has 7 pins and has the value of 5, the first 5 pins are set to ON and
+the remaining are set to OFF.</p>
+<p>The LED level meter shown in the example schematic above is a typical use of a
+stepped output, whose configuration is shown below. The order of the pins
+dictate the start and stop pin. <strong>Note that the range specified is equal to the
+number of pins</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="n">name</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;range_output or analog_output&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;stepped_output&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_high or active_low &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">preferred</span> <span class="n">delta</span> <span class="n">ticks</span> <span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If this controller had a value had a value of 5, the LED level meter would like
+this:</p>
+<p><img alt="img" src="../_images/stepped_output_example.png" /></p>
+<p>If the pins were mentioned in reverse order (<code class="docutils literal notranslate"><span class="pre">&quot;pins&quot;</span> <span class="pre">:</span> <span class="pre">[7,6,5,4,3,2,1]</span></code>) and
+this controller had a value of 5, the LED level meter would look like this:</p>
+<p><img alt="img" src="../_images/stepped_output_example_reverse.png" /></p>
+</div>
+<div class="section" id="digital-input-pin">
+<h3>Digital Input Pin<a class="headerlink" href="#digital-input-pin" title="Permalink to this headline">¶</a></h3>
+<p>Works similar to <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> such that it reads the binary value
+(Little Endian) of the pins. Depending on the <code class="docutils literal notranslate"><span class="pre">polarity</span></code>, this sensor detects
+which pin is ON or OFF. This is mostly useful for buttons and other edge
+trigger type of devices. The configuration for a button with a single pin
+connected to DI0 would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; controller name &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; true or false &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; on_value_changed or continuous &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;digital_input_pin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">preferred</span> <span class="n">delta</span> <span class="n">ticks</span> <span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If this button is active low, then this sensor will report a value of 1.0 when
+pressed and 0.0 when released.</p>
+</div>
+<div class="section" id="n-way-switch">
+<h3>N Way Switch<a class="headerlink" href="#n-way-switch" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">n_way_switch</span></code> works by detecting which one of its pin is in ON state. Its
+value is the pin index which it detects as ON. This is only meant for multiple
+position switches such as the 3 way switch in the example schematic shown above.</p>
+<p>The order of the pins determines the value of this controller. The range should
+be equal to the number of pins. A typical configuration of the three way switch
+would like like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; controller name &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; range_input or analog_input &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; true or false &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; on_value_changed or continuous &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;n_way_switch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delta_ticks&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">preferred</span> <span class="n">delta</span> <span class="n">ticks</span> <span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following table describes all the values of the sensor for different position
+of the selector switch.
+|Switch Position| Active Pin | Value (<code class="docutils literal notranslate"><span class="pre">range_input</span></code>) | Value (<code class="docutils literal notranslate"><span class="pre">analog_input</span></code>) |
+| ————- |————|———————–|————————|
+| 1             | DI4        | 1.0                   | 0.333                  |
+| 2             | DI5        | 2.0                   | 0.666                  |
+| 3             | DI6        | 3.0                   | 0.999                  |</p>
+</div>
+<div class="section" id="encoder">
+<h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">encoder</span></code> hardware type, as the name suggests, meant to connect rotary
+encoder to the digital input pins. Rotary encoders usually have two pins carrying
+the enoder signals: Signal A and Signal B. Optionally, some encoders also come
+with a button functionality as well.</p>
+<p>The range of the encoder needs to be explicitly set in configuration and can take
+any values between 0 and 2^32 - 1. The <code class="docutils literal notranslate"><span class="pre">pins</span></code> field should have only two entries and should follow this format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span> <span class="n">signal</span> <span class="n">A</span> <span class="n">pin</span> <span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span> <span class="n">signal</span> <span class="n">B</span> <span class="n">pin</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot
+have a custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> setting as downsampling would result in missed rotations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; controller name &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; range_input or analog_input &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; true or false &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; on_value_changed or continuous &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;encoder&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multiplexer">
+<h2>Multiplexer<a class="headerlink" href="#multiplexer" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type is a special type of controller which in situations
+where many controllers share the same pin. Consider a board with connections as
+shown below.</p>
+<p><img alt="img" src="../_images/output_mux_example.png" /></p>
+<p>LED Level Meters A and B are both connected to the same digital output pins, i.e
+DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using
+<strong>Select Switch A</strong> and LED level meter B switched on using <strong>Select Switch B</strong>.
+Select Switches A and B are activated or switched ON using digial output pins DO0 and
+DO1 respectively. Such a layout is common practice when number of GPIOS are limited
+and is usually achieved by using transistors or relays.</p>
+<p>To accommodate this, the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type takes care of the switching
+at very high speeds. It makes sure only one of the two LED level meters are active at
+a given time and outputs it’s corresponding value. Now the two LED level
+meters can be configured as its own independent controller.</p>
+<p>The first step is to add a multiplexer to the sensors list as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;led_array_mux&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span><span class="s2">&quot;no_output&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;hardware&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;multiplexer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since it is of type <code class="docutils literal notranslate"><span class="pre">no_output</span></code>, its value cannot be set and is taken care of
+automatically due to the high switching speed requirement. Also note that custom
+<code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> is not supported on <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware types.</p>
+<p>Now you can add the led level meters to the config as before but the following
+extra information. These controllers are now become “multiplexed”.</p>
+<ol class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">multiplexer_id</span></code> : ID of the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> controller which controls this
+led level meter controller, which is 1 in this case.</li>
+<li><code class="docutils literal notranslate"><span class="pre">multiplexer_pin</span></code> : Pin number of the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> controller which
+activates or switches on this led level meter controller which is DO0 and
+DO1 for Led Level meters A and B respectively.</li>
+</ol>
+<p>The following shows the configuration for the LED level meters A and B. Note that
+the range is 6 as there are 6 pins used per controller. Also note that custom
+<code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> for multiplexed controllers is not allowed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="n">led_level_meter_A</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;range_output or analog_output&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;stepped_output&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_high or active_low &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;multiplexed&quot;</span> <span class="p">:</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;multiplexer_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;multiplexer_pin&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="n">led_level_meter_B</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;range_output or analog_output&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;stepped_output&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_high or active_low &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;multiplexed&quot;</span> <span class="p">:</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;multiplexer_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;multiplexer_pin&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Input controllers can also be multiplexed. The example below shows two 8 position
+switches sharing the same pins. Each 8 position switch can be read by enabling
+their respective select switches.</p>
+<p><img alt="img" src="../_images/input_mux_example.png" /></p>
+<p>The configuration would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+  <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;led_array_mux&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span><span class="s2">&quot;no_output&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;hardware&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;multiplexer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;8 Position Switch A&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; range_input or analog_input &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; true or false &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; on_value_changed or continuous &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;n_way_switch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;multiplexed&quot;</span> <span class="p">:</span>
+	      <span class="p">{</span>
+	        <span class="s2">&quot;multiplexer_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+	        <span class="s2">&quot;multiplexer_pin&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+	      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;8 Position Switch B&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sensor_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; range_input or analog_input &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;inverted&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; true or false &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; on_value_changed or continuous &gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;range&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="s2">&quot;hardware&quot;</span> <span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;hardware_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;n_way_switch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+        <span class="s2">&quot;polarity&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt; active_low or active_high &gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;multiplexed&quot;</span> <span class="p">:</span>
+	      <span class="p">{</span>
+	        <span class="s2">&quot;multiplexer_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+	        <span class="s2">&quot;multiplexer_pin&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+	      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> <strong>cannot be multiplexed</strong></p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">rotary_encoder</span></code></li>
+</ul>
 </div>
 </div>
 
@@ -405,11 +722,16 @@ debouncing filters setup.</li>
 <li><a class="reference internal" href="#example-configuration">Example Configuration</a></li>
 <li><a class="reference internal" href="#backends">Backends</a></li>
 <li><a class="reference internal" href="#hardware-frontend">Hardware Frontend</a></li>
-<li><a class="reference internal" href="#sensors-controllers">Sensors/Controllers</a><ul>
-<li><a class="reference internal" href="#handling-of-sensor-data">Handling of sensor data</a></li>
+<li><a class="reference internal" href="#sensors-controllers">Sensors/Controllers</a></li>
+<li><a class="reference internal" href="#supported-sensor-controller-hardware">Supported Sensor/Controller Hardware</a><ul>
+<li><a class="reference internal" href="#digital-output-pin">Digital Output Pin</a></li>
+<li><a class="reference internal" href="#stepped-output">Stepped Output</a></li>
+<li><a class="reference internal" href="#digital-input-pin">Digital Input Pin</a></li>
+<li><a class="reference internal" href="#n-way-switch">N Way Switch</a></li>
+<li><a class="reference internal" href="#encoder">Encoder</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#supported-sensor-controller-hardware">Supported Sensor/Controller Hardware</a></li>
+<li><a class="reference internal" href="#multiplexer">Multiplexer</a></li>
 </ul>
 </li>
 </ul>

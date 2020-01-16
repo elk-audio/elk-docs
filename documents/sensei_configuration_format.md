@@ -39,7 +39,6 @@ like. More examples are availabe
 [here](https://github.com/elk-audio/sensei/tree/master/misc/example_configs).
 Detailed breakdown and explanations of the various fields are provided in the
 following sections.
-
 ```
 {
     "backends" : [
@@ -214,8 +213,6 @@ All sensors are defined in a `sensors` array field in the json file. Each entry
 describes how Sensei will handle that sensor and contains a `hardware` subfield
 which describes what physical device/sensor is connected.
 
-### Handling of sensor data
-
 Sensei uses an abstract representation of all physical sensors which can fall
 into any of the following categories. All sensor values are represented in
 floating point number, whose range depends on these categories.
@@ -312,11 +309,13 @@ sensor/controller type. The following list contains the required subfields.
     * The order of the pins is very important and will affect the behavior. Make
       sure that the order follows the intention of use.
 
-Optionally, it can also contain the following subfields depending on the
+It can also contain the following subfields depending on the
 `hardware_type`:
-  * `polarity` : Optional field to describe the polarity of the sensor/controller.
-    By default all controllers are active high. It can take values `active_high`
-    or `active_low`. This is not applicable to `analog_input_pin` hardware type.
+
+  * `polarity` : Optional field to describe the polarity of signal on the pins.
+     This is used to determine what constitures as an ON and OFF value of each pin.
+     By default all controllers are active high. It can take values `active_high`
+     or `active_low`. This is not applicable to `analog_input_pin` hardware type.
   * `delta_ticks` : This field allows you to donwsample the sensor/controller.
     This is specified in terms of system tick rate. By default, this is set to 1
     for all sensors. For example, when delta_ticks is 4 for an input sensor, the
@@ -333,3 +332,342 @@ Optionally, it can also contain the following subfields depending on the
     to prevent erraneous values. By setting this to `true`, the debouncing for
     a particular sensor is switched off. You can use this if you have hardware
     debouncing filters setup.
+
+
+### Digital Output Pin
+The `digital_output_pin` hardware type outputs its value in Little Endian binary
+to the pins. The minumum value possible is 0 and the maximum value is
+2^(num_pins) -1. A simple example is the `simple_led` as shown in the example
+json config above.
+
+For a `digital_output_pin` with a single pin connected to DO0, the `sensors` entry
+would look like this:
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : "< controller name >",
+    "sensor_type" : "digital_output",
+    "hardware" :
+    {
+        "hardware_type" : "digital_output_pin",
+        "pins" : [0],
+        "polarity" : "< active_high or active_low >",
+        "delta_ticks" : < preferred delta ticks >
+    }
+}
+```
+
+For a `digital_output_pin` with multuple pins, lets consider and example where 4
+LEDS are connected to pins DO0, DO1, DO2 and DO3. They can be the `sensors` entry
+would look like this:
+
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : "< controller name >",
+    "sensor_type" : "<range_output or analog_output>",
+    "hardware" :
+    {
+        "hardware_type" : "digital_output_pin",
+        "pins" : [0,1,2,3],
+        "polarity" : "< active_high or active_low >",
+        "delta_ticks" : < preferred delta ticks >
+    }
+}
+```
+A value of 5 on this controller would result in the binary value of 5 (0101) on the
+output pins as shown below:
+
+![img](./illustrations/sensei_diagrams/digital_output_example.png)
+
+### Stepped Output
+The `stepped_output` hardware type is suitable for LED rings or LED level meters.
+Its value represents the number of output pins that are ON. For example, if a
+controller has 7 pins and has the value of 5, the first 5 pins are set to ON and
+the remaining are set to OFF.
+
+The LED level meter shown in the example schematic above is a typical use of a
+stepped output, whose configuration is shown below. The order of the pins
+dictate the start and stop pin. **Note that the range specified is equal to the
+number of pins**.
+
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : < controller name >,
+    "sensor_type" : "<range_output or analog_output>",
+    "range" : [0, 7],
+    "hardware" :
+    {
+        "hardware_type" : "stepped_output",
+        "pins" : [1,2,3,4,5,6,7],
+        "polarity" : "< active_high or active_low >",
+        "delta_ticks" : < preferred delta ticks >
+    }
+}
+```
+
+If this controller had a value had a value of 5, the LED level meter would like
+this:
+
+![img](./illustrations/sensei_diagrams/stepped_output_example.png)
+
+If the pins were mentioned in reverse order (`"pins" : [7,6,5,4,3,2,1]`) and
+this controller had a value of 5, the LED level meter would look like this:
+
+![img](./illustrations/sensei_diagrams/stepped_output_example_reverse.png)
+
+### Digital Input Pin
+
+Works similar to `digital_output_pin` such that it reads the binary value
+(Little Endian) of the pins. Depending on the `polarity`, this sensor detects
+which pin is ON or OFF. This is mostly useful for buttons and other edge
+trigger type of devices. The configuration for a button with a single pin
+connected to DI0 would look like this:
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : "< controller name >",
+    "sensor_type" : "digital_input",
+    "inverted" : "< true or false >",
+    "mode" : "< on_value_changed or continuous >",
+    "hardware" :
+    {
+        "hardware_type" : "digital_input_pin",
+        "pins" : [0],
+        "polarity" : "< active_low or active_high >",
+        "delta_ticks" : < preferred delta ticks >
+    }
+}
+```
+
+If this button is active low, then this sensor will report a value of 1.0 when
+pressed and 0.0 when released.
+
+### N Way Switch
+
+The `n_way_switch` works by detecting which one of its pin is in ON state. Its
+value is the pin index which it detects as ON. This is only meant for multiple
+position switches such as the 3 way switch in the example schematic shown above.
+
+The order of the pins determines the value of this controller. The range should
+be equal to the number of pins. A typical configuration of the three way switch
+would like like this:
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : "< controller name >",
+    "sensor_type" : "< range_input or analog_input >",
+    "inverted" : "< true or false >",
+    "mode" : "< on_value_changed or continuous >",
+    "range" : [1, 3],
+    "hardware" :
+    {
+        "hardware_type" : "n_way_switch",
+        "pins" : [4, 5, 6],
+        "polarity" : "< active_low or active_high >",
+        "delta_ticks" : < preferred delta ticks >
+    }
+}
+```
+
+The following table describes all the values of the sensor for different position
+of the selector switch.
+|Switch Position| Active Pin | Value (`range_input`) | Value (`analog_input`) |
+| ------------- |------------|-----------------------|------------------------|
+| 1             | DI4        | 1.0                   | 0.333                  |
+| 2             | DI5        | 2.0                   | 0.666                  |
+| 3             | DI6        | 3.0                   | 0.999                  |
+
+### Encoder
+
+The `encoder` hardware type, as the name suggests, meant to connect rotary
+encoder to the digital input pins. Rotary encoders usually have two pins carrying
+the enoder signals: Signal A and Signal B. Optionally, some encoders also come
+with a button functionality as well.
+
+The range of the encoder needs to be explicitly set in configuration and can take
+any values between 0 and 2^32 - 1. The `pins` field should have only two entries and should follow this format:
+```
+"pins" : [< signal A pin >, < signal B pin> ]
+```
+
+The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot
+have a custom `delta_ticks` setting as downsampling would result in missed rotations.
+```
+{
+    "id" : < controller id >,
+    "enabled": true,
+    "name" : "< controller name >",
+    "sensor_type" : "< range_input or analog_input >",
+    "inverted" : "< true or false >",
+    "mode" : "< on_value_changed or continuous >",
+    "range" : [0, 32],
+    "hardware" :
+    {
+        "hardware_type" : "encoder",
+        "pins" : [1, 2],
+        "polarity" : "< active_low or active_high >",
+    }
+}
+```
+
+## Multiplexer
+The `multiplexer` hardware type is a special type of controller which in situations
+where many controllers share the same pin. Consider a board with connections as
+shown below.
+
+![img](./illustrations/sensei_diagrams/output_mux_example.png)
+
+LED Level Meters A and B are both connected to the same digital output pins, i.e
+DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using
+**Select Switch A** and LED level meter B switched on using **Select Switch B**.
+Select Switches A and B are activated or switched ON using digial output pins DO0 and
+DO1 respectively. Such a layout is common practice when number of GPIOS are limited
+and is usually achieved by using transistors or relays.
+
+To accommodate this, the `multiplexer` hardware type takes care of the switching
+at very high speeds. It makes sure only one of the two LED level meters are active at
+a given time and outputs it's corresponding value. Now the two LED level
+meters can be configured as its own independent controller.
+
+The first step is to add a multiplexer to the sensors list as follows.
+```
+{
+  "id" : 1
+  "enabled": true,
+  "name" : "led_array_mux",
+  "sensor_type" :"no_output",
+  "hardware":
+  {
+    "hardware_type" : "multiplexer",
+    "pins" : [0,1],
+    "polarity" : "< active_low or active_high >"
+  }
+}
+```
+Since it is of type `no_output`, its value cannot be set and is taken care of
+automatically due to the high switching speed requirement. Also note that custom
+`delta_ticks` is not supported on `multiplexer` hardware types.
+
+Now you can add the led level meters to the config as before but the following
+extra information. These controllers are now become "multiplexed".
+  1. `multiplexer_id` : ID of the `multiplexer` controller which controls this 
+      led level meter controller, which is 1 in this case.
+  2. `multiplexer_pin` : Pin number of the `multiplexer` controller which 
+      activates or switches on this led level meter controller which is DO0 and
+      DO1 for Led Level meters A and B respectively.
+
+The following shows the configuration for the LED level meters A and B. Note that
+the range is 6 as there are 6 pins used per controller. Also note that custom
+`delta_ticks` for multiplexed controllers is not allowed.
+```
+{
+    "id" : 2,
+    "enabled": true,
+    "name" : led_level_meter_A
+    "sensor_type" : "<range_output or analog_output>",
+    "range" : [0, 6],
+    "hardware" :
+    {
+        "hardware_type" : "stepped_output",
+        "pins" : [2,3,4,5,6,7],
+        "polarity" : "< active_high or active_low >",
+        "multiplexed" :
+        {
+            "multiplexer_id" : 1,
+            "multiplexer_pin" : 0
+        }
+    }
+},
+{
+    "id" : 3,
+    "enabled": true,
+    "name" : led_level_meter_B
+    "sensor_type" : "<range_output or analog_output>",
+    "range" : [0, 6],
+    "hardware" :
+    {
+        "hardware_type" : "stepped_output",
+        "pins" : [2,3,4,5,6,7],
+        "polarity" : "< active_high or active_low >",
+        "multiplexed" :
+        {
+            "multiplexer_id" : 1,
+            "multiplexer_pin" : 1
+        }
+    }
+}
+
+```
+
+Input controllers can also be multiplexed. The example below shows two 8 position
+switches sharing the same pins. Each 8 position switch can be read by enabling
+their respective select switches.
+
+![img](./illustrations/sensei_diagrams/input_mux_example.png)
+
+The configuration would look like this:
+```
+{
+  "id" : 1
+  "enabled": true,
+  "name" : "led_array_mux",
+  "sensor_type" :"no_output",
+  "hardware":
+  {
+    "hardware_type" : "multiplexer",
+    "pins" : [0,1],
+    "polarity" : "< active_low or active_high >"
+  }
+},
+{
+    "id" : 2,
+    "enabled": true,
+    "name" : "8 Position Switch A",
+    "sensor_type" : "< range_input or analog_input >",
+    "inverted" : "< true or false >",
+    "mode" : "< on_value_changed or continuous >",
+    "range" : [1, 8],
+    "hardware" :
+    {
+        "hardware_type" : "n_way_switch",
+        "pins" : [0,1,2,3,4,5,6,7],
+        "polarity" : "< active_low or active_high >",
+        "multiplexed" :
+	      {
+	        "multiplexer_id" : 1,
+	        "multiplexer_pin" : 0
+	      }
+    }
+},
+{
+    "id" : 3,
+    "enabled": true,
+    "name" : "8 Position Switch B",
+    "sensor_type" : "< range_input or analog_input >",
+    "inverted" : "< true or false >",
+    "mode" : "< on_value_changed or continuous >",
+    "range" : [1, 8],
+    "hardware" :
+    {
+        "hardware_type" : "n_way_switch",
+        "pins" : [0,1,2,3,4,5,6,7],
+        "polarity" : "< active_low or active_high >",
+        "multiplexed" :
+	      {
+	        "multiplexer_id" : 1,
+	        "multiplexer_pin" : 1
+	      }
+    }
+}
+```
+
+The following `hardware_type` **cannot be multiplexed**
+  * `analog_input_pin`
+  * `rotary_encoder`
