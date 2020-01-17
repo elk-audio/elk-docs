@@ -46,8 +46,8 @@
   <div class="section" id="sensei-overview-and-configuration-format">
 <h1>Sensei Overview and Configuration Format<a class="headerlink" href="#sensei-overview-and-configuration-format" title="Permalink to this headline">¶</a></h1>
 <p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).</p>
-<p>It allows describing physical devices or controllers connected to an Elk Powered Board’s GPIO through a JSON configuration file. All low level GPIO logic is taken care by Sensei, allowing programmers to quickly connect, modify and control physical devices with ease.</p>
-<p>The low level GPIO logic or program can either be running on a separate micro-controller or the host itself, as is the case with Raspberry Pi systems. It samples the input GPIO and drives the output GPIO at a periodicity called <strong>tick rate</strong> which is typically 1000Hz.</p>
+<p>It allows describing sensors/controllers connected to an Elk Powered Board’s GPIO through a JSON configuration file. All low level GPIO logic is taken care of by Sensei, allowing programmers to quickly connect, modify and control sensors/controllers with ease.</p>
+<p>The low level GPIO logic or program can either be running on a separate micro-controller or the host itself, as is the case with Raspberry Pi systems. It samples the input GPIO and drives the output GPIO at a periodicity called <strong>system tick rate</strong> which is typically 1000Hz.</p>
 <p>Sensei uses the <a class="reference external" href="https://github.com/elk-audio/elk-gpio-protocol">GPIO Control Protocol</a> to communicate with the low level GPIO logic program about information such as GPIO configuration, output GPIO values and input GPIO values.</p>
 <p>Sensei also generates a .log file similar to Sushi for reporting run-time messages.</p>
 <div class="section" id="example-configuration">
@@ -190,13 +190,13 @@
 <div class="section" id="backends">
 <h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
 <p>The Sensei backends represent an interface for outputting data on the host or to a network. Currently 2 backend types are implemented: Open Sound Control (OSC) and stdout.</p>
-<p>Backends are described using a <code class="docutils literal notranslate"><span class="pre">backends</span></code> json field, which is an array where you can define multiple backends. Each backend’s subfields are described below.</p>
+<p>Backends are declared using a <code class="docutils literal notranslate"><span class="pre">backends</span></code> json field, which is an array where you can define multiple backends. Each backend’s sub fields are described below:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">id</span></code> - Identification number of this backend.</li>
 <li><code class="docutils literal notranslate"><span class="pre">enabled</span></code> - Whether this backend will output data or not.</li>
 <li><code class="docutils literal notranslate"><span class="pre">raw_input_enabled</span></code> - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be output.</li>
-<li><code class="docutils literal notranslate"><span class="pre">type</span></code> - The type of backend, currently <code class="docutils literal notranslate"><span class="pre">osc</span></code> is the only recognised value, else will default to stdout.</li>
-<li><code class="docutils literal notranslate"><span class="pre">host</span></code> - The address to output osc messages to, accepted values are <code class="docutils literal notranslate"><span class="pre">localhost</span></code> or an ip address. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code> - The type of backend, currently <code class="docutils literal notranslate"><span class="pre">osc</span></code> is the only recognized value, else will default to stdout.</li>
+<li><code class="docutils literal notranslate"><span class="pre">host</span></code> - The address to output osc messages to. Accepted values are <code class="docutils literal notranslate"><span class="pre">localhost</span></code> or an ip address. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">port</span></code> - The port used on the above host. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">base_path</span></code> - The Prefix added to OSC messages. Only valid if type is <code class="docutils literal notranslate"><span class="pre">osc</span></code>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">base_raw_input_path</span></code> - The prefix added to OSC messages with unprocessed
@@ -205,7 +205,7 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="hardware-frontend">
 <h2>Hardware Frontend<a class="headerlink" href="#hardware-frontend" title="Permalink to this headline">¶</a></h2>
-<p>The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the physical devices connected to the pins. The <code class="docutils literal notranslate"><span class="pre">hw_frontend</span></code> field has only one subfield which describes its type.</p>
+<p>The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the sensors/controllers connected to the pins. The <code class="docutils literal notranslate"><span class="pre">hw_frontend</span></code> field has only one subfield which declares its type.</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">type</span></code> - The hardware frontend type used, Currently, only two types of hardware frontend is supported:<ol>
 <li><code class="docutils literal notranslate"><span class="pre">raspa_gpio</span></code> - for devices where a micro-controller is handling the GPIO logic. Sensei communicates with the micro-controller using <a class="reference external" href="https://github.com/elk-audio/raspa">RASPA</a>.</li>
@@ -216,14 +216,14 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="sensors-controllers">
 <h2>Sensors/Controllers<a class="headerlink" href="#sensors-controllers" title="Permalink to this headline">¶</a></h2>
-<p>Sensei needs information about the sensor or physical device is connected to the pins, and how it should handle data to/from those sensors. It uses this information and informs the hardware frontend about the various physical devices and the pins to which they are connected to.</p>
+<p>Sensei needs information about the sensor/controller that is connected to the pins, and how it should handle data to/from those sensors. It uses this information and informs the hardware frontend about the various sensors/controllers and the pins to which they are connected to.</p>
 <p>For this reason, the Sensei json config file should contain the definition of:</p>
 <ol class="simple">
 <li>A description of how Sensei should process the raw data from these sensors.</li>
-<li>A description of the physical sensor and the pin(s) to which it is attached.</li>
+<li>A description of the sensor/controller and the pin(s) to which it is attached.</li>
 </ol>
-<p>All sensors are defined in a <code class="docutils literal notranslate"><span class="pre">sensors</span></code> array field in the json file. Each entry describes how Sensei will handle that sensor and contains a <code class="docutils literal notranslate"><span class="pre">hardware</span></code> subfield which describes what physical device/sensor is connected.</p>
-<p>Sensei uses an abstract representation of all physical sensors, which can fall into any of the following categories. All sensor values are represented as a floating point number, whose range depends on these categories:</p>
+<p>All sensors are defined in a <code class="docutils literal notranslate"><span class="pre">sensors</span></code> array field in the json file. Each entry describes how Sensei will handle that sensor and contains a <code class="docutils literal notranslate"><span class="pre">hardware</span></code> subfield which declares what sensor/controller is connected.</p>
+<p>Sensei uses an abstract representation of all sensors/controllers, which can fall into any of the following categories. All sensor values are represented as a floating point number, whose range depends on these categories:</p>
 <ol class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">digital_input</span></code> - An input with only 2 possible values, on or off, useful for <strong>single pin</strong> button or switches. The sensor can have values 0.0 or 1.0.</li>
 <li><code class="docutils literal notranslate"><span class="pre">range_input</span></code> - An input with multiple discrete values, i.e. a multi position switch or an LED array. Its range has to be specified explicitly using the <code class="docutils literal notranslate"><span class="pre">range</span></code> keyword.</li>
@@ -262,7 +262,7 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <li><strong>Digital Inputs</strong> : Buttons, switches, rotary encoders etc. Connected to the Digital Input pins of the board.</li>
 <li><strong>Analog Inputs</strong> : Pots, ribbon cables etc. Connected to the Analog Input pins of the board. All analog inputs.</li>
 </ol>
-<p>The <code class="docutils literal notranslate"><span class="pre">hardware</span></code> section of each <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry in the json config describes the sensor/controller type. The following list contains the required subfields:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">hardware</span></code> section of each <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry in the json config declares the sensor/controller type. The following list contains the required sub fields:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">hardware_type</span></code> : the type of sensor/controller. The following sections explain this in greater detail.</li>
 </ul>
@@ -291,15 +291,15 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <p>It can also contain the following subfields depending on the
 <code class="docutils literal notranslate"><span class="pre">hardware_type</span></code>:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">polarity</span></code> : Optional field to describe the polarity of signal on the pins. This is used to determine what constitutes as an ON and OFF value of each pin. By default all controllers are active high. It can take values <code class="docutils literal notranslate"><span class="pre">active_high</span></code> or <code class="docutils literal notranslate"><span class="pre">active_low</span></code>. This is not applicable to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> : This field allows you to donwsample the sensor/controller. This is specified in terms of system tick rate. By default, this is set to 1 for all sensors. For example, when delta_ticks is 4 for an input sensor, the sensor value is read only once every 4 system ticks. This can be used to handle noisy sensors. Not applicable to <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">polarity</span></code> : Optional field to declare the polarity of signal on the pins. This is used to determine what constitutes as an ON and OFF value of each pin. By default all controllers are active high. It can take values <code class="docutils literal notranslate"><span class="pre">active_high</span></code> or <code class="docutils literal notranslate"><span class="pre">active_low</span></code>. This is not applicable to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware type.</li>
+<li><code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> : This field allows you to set the rate of update of this sensor in terms of multiples of the system tick rate. By default, this is set to 1 for all sensors, which means they are updated every system tick. For example, when delta_ticks is 4 for an input sensor, the sensor value is read only once every 4 system ticks. Not applicable to <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type.</li>
 <li><code class="docutils literal notranslate"><span class="pre">adc_resolution</span></code> : Applicable only to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware types, this sets the ADC resolution for a particular sensor. By default, it is at max resolution of the on board ADC. This is particularly useful to reduce crosstalk.</li>
 <li><code class="docutils literal notranslate"><span class="pre">filter_time_constant</span></code>: Applicable only to <code class="docutils literal notranslate"><span class="pre">analog_input_pin</span></code> hardware types, this sets the settling time constant for a particular sensor’s digital filter. By default, the settling time is 20ms.</li>
 <li><code class="docutils literal notranslate"><span class="pre">fast_mode</span></code> : By default, all digital input pins go through software debouncing to prevent erroneous values. By setting this to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the debouncing for a particular sensor is switched off. You can use this if you have hardware debouncing filters setup.</li>
 </ul>
 <div class="section" id="digital-output-pin">
 <h3>Digital Output Pin<a class="headerlink" href="#digital-output-pin" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> hardware type outputs its value in Little Endian binary to the pins. The minumum value possible is 0 and the maximum value is 2^(num_pins) -1. A simple example is the <code class="docutils literal notranslate"><span class="pre">simple_led</span></code> as shown in the example json config above.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> hardware type outputs its value in Little Endian binary to the pins. The minimum value possible is 0 and the maximum value is 2^(num_pins) -1. A simple example is the <code class="docutils literal notranslate"><span class="pre">simple_led</span></code> as shown in the example json config above.</p>
 <p>For a <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> with a single pin connected to DO0, the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry would look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
@@ -316,7 +316,7 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For a <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> with multiple pins, lets consider and example where 4 LEDS are connected to pins DO0, DO1, DO2 and DO3. They can be the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry would look like this:</p>
+<p>For a <code class="docutils literal notranslate"><span class="pre">digital_output_pin</span></code> with multiple pins, lets consider and example where 4 LEDs are connected to pins DO0, DO1, DO2 and DO3. They can be the <code class="docutils literal notranslate"><span class="pre">sensors</span></code> entry would look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
@@ -404,12 +404,12 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The following table describes all the values of the sensor for different position of the selector switch.
-|Switch Position| Active Pin | Value (<code class="docutils literal notranslate"><span class="pre">range_input</span></code>) | Value (<code class="docutils literal notranslate"><span class="pre">analog_input</span></code>) |
-| ————- |————|———————–|————————|
-| 1             | DI4        | 1.0                   | 0.333                  |
-| 2             | DI5        | 2.0                   | 0.666                  |
-| 3             | DI6        | 3.0                   | 0.999                  |</p>
+<p>The following describes all the values of the sensor for different position of the selector switch.</p>
+<ul class="simple">
+<li>For switch position 1, the active pin is DI4. The value if the <code class="docutils literal notranslate"><span class="pre">sensor_type</span></code> is <code class="docutils literal notranslate"><span class="pre">range_input</span></code> is 1.0 and for <code class="docutils literal notranslate"><span class="pre">analog_input</span></code> it is 0.333.</li>
+<li>For switch position 2, the active pin is DI5. The value if the <code class="docutils literal notranslate"><span class="pre">sensor_type</span></code> is <code class="docutils literal notranslate"><span class="pre">range_input</span></code> is 2.0 and for <code class="docutils literal notranslate"><span class="pre">analog_input</span></code> it is 0.666.</li>
+<li>For switch position 3, the active pin is DI6. The value if the <code class="docutils literal notranslate"><span class="pre">sensor_type</span></code> is <code class="docutils literal notranslate"><span class="pre">range_input</span></code> is 3.0 and for <code class="docutils literal notranslate"><span class="pre">analog_input</span></code> it is 0.999.</li>
+</ul>
 </div>
 <div class="section" id="encoder">
 <h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h3>
@@ -418,7 +418,7 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pins&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span> <span class="n">signal</span> <span class="n">A</span> <span class="n">pin</span> <span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span> <span class="n">signal</span> <span class="n">B</span> <span class="n">pin</span><span class="o">&gt;</span> <span class="p">]</span>
 </pre></div>
 </div>
-<p>The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot have a custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> setting as downsampling would result in missed rotations.</p>
+<p>The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot have a custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> setting as lower update speed would result in missed rotations.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">controller</span> <span class="nb">id</span> <span class="o">&gt;</span><span class="p">,</span>
     <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
@@ -440,11 +440,11 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="multiplexer">
 <h2>Multiplexer<a class="headerlink" href="#multiplexer" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type is a special type of controller used in situations where many controllers share the same pin. Consider a board with connections as shown below:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type is a special type of controller used in situations where multiple controllers share the same pin. Consider a board with connections as shown below:</p>
 <p><img alt="img" src="../_images/output_mux_example.png" /></p>
-<p>LED Level Meters A and B are both connected to the same digital output pins, i.e DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using <strong>Select Switch A</strong> and LED level meter B switched on using <strong>Select Switch B</strong>. Select Switches A and B are activated or switched ON using digial output pins DO0 and DO1 respectively. Such a layout is common practice when number of GPIOS are limited and is usually achieved by using transistors or relays.</p>
-<p>To accommodate this, the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type takes care of the switching at very high speeds. It makes sure only one of the two LED level meters are active at a given time and outputs it’s corresponding value. Now the two LED level meters can be configured as its own independent controller.</p>
-<p>The first step is to add a multiplexer to the sensors list as follows:</p>
+<p>LED Level Meters A and B are both connected to the same digital output pins, i.e DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using <strong>Select Switch A</strong> and LED level meter B switched on using <strong>Select Switch B</strong>. Select Switches A and B are activated or enabled using digital output pins DO0 and DO1 respectively. Such a layout is common practice when number of GPIOS are limited and is usually achieved by using transistors, opto-couplers or relays.</p>
+<p>To accommodate this, the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware type takes care of the switching at very high speeds. It makes sure only one of the two LED level meters are active at a given time and outputs it’s corresponding value. Now the two LED level meters can be declared as its own independent controller.</p>
+<p>The first step is to declare a multiplexer as shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">1</span>
   <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
@@ -459,11 +459,11 @@ values. Only valid if type is <code class="docutils literal notranslate"><span c
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Since it is of type <code class="docutils literal notranslate"><span class="pre">no_output</span></code>, its value cannot be set and is taken care of automatically due to the high switching speed requirement. Also note that custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> is not supported on <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware types.</p>
-<p>Now you can add the LED level meters to the config as before but the following extra information. These controllers are now become “multiplexed”.
+<p>Since it is of type <code class="docutils literal notranslate"><span class="pre">no_output</span></code>, its value cannot be set and is taken care of automatically. This is needed due to the high switching speed requirement. Also note that custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> is not supported on <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> hardware types.</p>
+<p>Now you can declare the LED level meters in the config in the same way as decribed above but with the following extra information. These controllers are now “multiplexed”.
 1. <code class="docutils literal notranslate"><span class="pre">multiplexer_id</span></code> : ID of the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> controller which controls this LED level meter controller, which is 1 in this case.
 2. <code class="docutils literal notranslate"><span class="pre">multiplexer_pin</span></code> : Pin number of the <code class="docutils literal notranslate"><span class="pre">multiplexer</span></code> controller which activates or switches on this LED level meter controller which is DO0 and DO1 for Led Level meters A and B respectively.</p>
-<p>The following shows the configuration for the LED level meters A and B. Note that the range is 6 as there are 6 pins used per controller. Also note that custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> for multiplexed controllers is not allowed.</p>
+<p>The following shows the configuration for the LED level meters A and B. Note that the range is equal to 6 as there are 6 pins used per controller. Also note that custom <code class="docutils literal notranslate"><span class="pre">delta_ticks</span></code> declaration for multiplexed controllers is not allowed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>

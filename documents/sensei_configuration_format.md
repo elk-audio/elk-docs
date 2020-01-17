@@ -2,9 +2,9 @@
 
 Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).
 
-It allows describing physical devices or controllers connected to an Elk Powered Board's GPIO through a JSON configuration file. All low level GPIO logic is taken care by Sensei, allowing programmers to quickly connect, modify and control physical devices with ease.
+It allows describing sensors/controllers connected to an Elk Powered Board's GPIO through a JSON configuration file. All low level GPIO logic is taken care of by Sensei, allowing programmers to quickly connect, modify and control sensors/controllers with ease.
 
-The low level GPIO logic or program can either be running on a separate micro-controller or the host itself, as is the case with Raspberry Pi systems. It samples the input GPIO and drives the output GPIO at a periodicity called **tick rate** which is typically 1000Hz.
+The low level GPIO logic or program can either be running on a separate micro-controller or the host itself, as is the case with Raspberry Pi systems. It samples the input GPIO and drives the output GPIO at a periodicity called **system tick rate** which is typically 1000Hz.
 
 Sensei uses the [GPIO Control Protocol](https://github.com/elk-audio/elk-gpio-protocol) to communicate with the low level GPIO logic program about information such as GPIO configuration, output GPIO values and input GPIO values.
 
@@ -153,13 +153,13 @@ More examples are available [here](https://github.com/elk-audio/sensei/tree/mast
 
 The Sensei backends represent an interface for outputting data on the host or to a network. Currently 2 backend types are implemented: Open Sound Control (OSC) and stdout.
 
-Backends are described using a `backends` json field, which is an array where you can define multiple backends. Each backend's subfields are described below.
+Backends are declared using a `backends` json field, which is an array where you can define multiple backends. Each backend's sub fields are described below:
 
   * `id` - Identification number of this backend.
   * `enabled` - Whether this backend will output data or not.
   * `raw_input_enabled` - If this is true then in addition to the processes value (clipped, scaled and possibly inverted), the unprocessed value from the sensor will also be output.
-  * `type` - The type of backend, currently `osc` is the only recognised value, else will default to stdout.
-  * `host` - The address to output osc messages to, accepted values are `localhost` or an ip address. Only valid if type is `osc`.
+  * `type` - The type of backend, currently `osc` is the only recognized value, else will default to stdout.
+  * `host` - The address to output osc messages to. Accepted values are `localhost` or an ip address. Only valid if type is `osc`.
   * `port` - The port used on the above host. Only valid if type is `osc`.
   * `base_path` - The Prefix added to OSC messages. Only valid if type is `osc`.
   * `base_raw_input_path` - The prefix added to OSC messages with unprocessed
@@ -167,7 +167,7 @@ Backends are described using a `backends` json field, which is an array where yo
 
 ## Hardware Frontend
 
-The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the physical devices connected to the pins. The `hw_frontend` field has only one subfield which describes its type.
+The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the sensors/controllers connected to the pins. The `hw_frontend` field has only one subfield which declares its type.
 
   * `type` - The hardware frontend type used, Currently, only two types of hardware frontend is supported:
     1. `raspa_gpio` - for devices where a micro-controller is handling the GPIO logic. Sensei communicates with the micro-controller using [RASPA](https://github.com/elk-audio/raspa).
@@ -175,15 +175,15 @@ The Hardware frontend is the type and method of connecting to the program which 
 
 ## Sensors/Controllers
 
-Sensei needs information about the sensor or physical device is connected to the pins, and how it should handle data to/from those sensors. It uses this information and informs the hardware frontend about the various physical devices and the pins to which they are connected to.
+Sensei needs information about the sensor/controller that is connected to the pins, and how it should handle data to/from those sensors. It uses this information and informs the hardware frontend about the various sensors/controllers and the pins to which they are connected to.
 
 For this reason, the Sensei json config file should contain the definition of:
   1. A description of how Sensei should process the raw data from these sensors.
-  2. A description of the physical sensor and the pin(s) to which it is attached.
+  2. A description of the sensor/controller and the pin(s) to which it is attached.
 
-All sensors are defined in a `sensors` array field in the json file. Each entry describes how Sensei will handle that sensor and contains a `hardware` subfield which describes what physical device/sensor is connected.
+All sensors are defined in a `sensors` array field in the json file. Each entry describes how Sensei will handle that sensor and contains a `hardware` subfield which declares what sensor/controller is connected.
 
-Sensei uses an abstract representation of all physical sensors, which can fall into any of the following categories. All sensor values are represented as a floating point number, whose range depends on these categories:
+Sensei uses an abstract representation of all sensors/controllers, which can fall into any of the following categories. All sensor values are represented as a floating point number, whose range depends on these categories:
 
 1. `digital_input` - An input with only 2 possible values, on or off, useful for **single pin** button or switches. The sensor can have values 0.0 or 1.0.
 2. `range_input` - An input with multiple discrete values, i.e. a multi position switch or an LED array. Its range has to be specified explicitly using the `range` keyword.
@@ -217,7 +217,7 @@ The second part of the `sensors` json field is a description of the actual senso
 2. **Digital Inputs** : Buttons, switches, rotary encoders etc. Connected to the Digital Input pins of the board.
 3. **Analog Inputs** : Pots, ribbon cables etc. Connected to the Analog Input pins of the board. All analog inputs.
 
-The `hardware` section of each `sensors` entry in the json config describes the sensor/controller type. The following list contains the required subfields:
+The `hardware` section of each `sensors` entry in the json config declares the sensor/controller type. The following list contains the required sub fields:
   * `hardware_type` : the type of sensor/controller. The following sections explain this in greater detail.
     
 
@@ -246,15 +246,15 @@ The following `hardware_type` represent sensors/controllers connected to  the An
 It can also contain the following subfields depending on the
 `hardware_type`:
 
-  * `polarity` : Optional field to describe the polarity of signal on the pins. This is used to determine what constitutes as an ON and OFF value of each pin. By default all controllers are active high. It can take values `active_high` or `active_low`. This is not applicable to `analog_input_pin` hardware type.
-  * `delta_ticks` : This field allows you to donwsample the sensor/controller. This is specified in terms of system tick rate. By default, this is set to 1 for all sensors. For example, when delta_ticks is 4 for an input sensor, the sensor value is read only once every 4 system ticks. This can be used to handle noisy sensors. Not applicable to `multiplexer` hardware type.
+  * `polarity` : Optional field to declare the polarity of signal on the pins. This is used to determine what constitutes as an ON and OFF value of each pin. By default all controllers are active high. It can take values `active_high` or `active_low`. This is not applicable to `analog_input_pin` hardware type.
+  * `delta_ticks` : This field allows you to set the rate of update of this sensor in terms of multiples of the system tick rate. By default, this is set to 1 for all sensors, which means they are updated every system tick. For example, when delta_ticks is 4 for an input sensor, the sensor value is read only once every 4 system ticks. Not applicable to `multiplexer` hardware type.
   * `adc_resolution` : Applicable only to `analog_input_pin` hardware types, this sets the ADC resolution for a particular sensor. By default, it is at max resolution of the on board ADC. This is particularly useful to reduce crosstalk.
   * `filter_time_constant`: Applicable only to `analog_input_pin` hardware types, this sets the settling time constant for a particular sensor's digital filter. By default, the settling time is 20ms.
   * `fast_mode` : By default, all digital input pins go through software debouncing to prevent erroneous values. By setting this to `true`, the debouncing for a particular sensor is switched off. You can use this if you have hardware debouncing filters setup.
 
 
 ### Digital Output Pin
-The `digital_output_pin` hardware type outputs its value in Little Endian binary to the pins. The minumum value possible is 0 and the maximum value is 2^(num_pins) -1. A simple example is the `simple_led` as shown in the example json config above.
+The `digital_output_pin` hardware type outputs its value in Little Endian binary to the pins. The minimum value possible is 0 and the maximum value is 2^(num_pins) -1. A simple example is the `simple_led` as shown in the example json config above.
 
 For a `digital_output_pin` with a single pin connected to DO0, the `sensors` entry would look like this:
 ```
@@ -273,7 +273,7 @@ For a `digital_output_pin` with a single pin connected to DO0, the `sensors` ent
 }
 ```
 
-For a `digital_output_pin` with multiple pins, lets consider and example where 4 LEDS are connected to pins DO0, DO1, DO2 and DO3. They can be the `sensors` entry would look like this:
+For a `digital_output_pin` with multiple pins, lets consider and example where 4 LEDs are connected to pins DO0, DO1, DO2 and DO3. They can be the `sensors` entry would look like this:
 
 ```
 {
@@ -371,12 +371,11 @@ The order of the pins determines the value of this controller. The range should 
 }
 ```
 
-The following table describes all the values of the sensor for different position of the selector switch.
-|Switch Position| Active Pin | Value (`range_input`) | Value (`analog_input`) |
-| ------------- |------------|-----------------------|------------------------|
-| 1             | DI4        | 1.0                   | 0.333                  |
-| 2             | DI5        | 2.0                   | 0.666                  |
-| 3             | DI6        | 3.0                   | 0.999                  |
+The following describes all the values of the sensor for different position of the selector switch.
+
+  * For switch position 1, the active pin is DI4. The value if the `sensor_type` is `range_input` is 1.0 and for `analog_input` it is 0.333.
+  * For switch position 2, the active pin is DI5. The value if the `sensor_type` is `range_input` is 2.0 and for `analog_input` it is 0.666.
+  * For switch position 3, the active pin is DI6. The value if the `sensor_type` is `range_input` is 3.0 and for `analog_input` it is 0.999.
 
 ### Encoder
 
@@ -387,7 +386,7 @@ The range of the encoder needs to be explicitly set in configuration and can tak
 "pins" : [< signal A pin >, < signal B pin> ]
 ```
 
-The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot have a custom `delta_ticks` setting as downsampling would result in missed rotations.
+The example schematic above shows how a typical rotary encoder is connected to the pins DI1 for signal A and DI2 for signal B. Below is the typical configuration for that encoder, where it has been configured to have 32 rotation steps. It cannot have a custom `delta_ticks` setting as lower update speed would result in missed rotations.
 ```
 {
     "id" : < controller id >,
@@ -407,15 +406,15 @@ The example schematic above shows how a typical rotary encoder is connected to t
 ```
 
 ## Multiplexer
-The `multiplexer` hardware type is a special type of controller used in situations where many controllers share the same pin. Consider a board with connections as shown below:
+The `multiplexer` hardware type is a special type of controller used in situations where multiple controllers share the same pin. Consider a board with connections as shown below:
 
 ![img](./illustrations/sensei_diagrams/output_mux_example.png)
 
-LED Level Meters A and B are both connected to the same digital output pins, i.e DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using **Select Switch A** and LED level meter B switched on using **Select Switch B**. Select Switches A and B are activated or switched ON using digial output pins DO0 and DO1 respectively. Such a layout is common practice when number of GPIOS are limited and is usually achieved by using transistors or relays.
+LED Level Meters A and B are both connected to the same digital output pins, i.e DO2, DO3, DO4, DO5, DO6 and DO7. LED level meter A can be switched on using **Select Switch A** and LED level meter B switched on using **Select Switch B**. Select Switches A and B are activated or enabled using digital output pins DO0 and DO1 respectively. Such a layout is common practice when number of GPIOS are limited and is usually achieved by using transistors, opto-couplers or relays.
 
-To accommodate this, the `multiplexer` hardware type takes care of the switching at very high speeds. It makes sure only one of the two LED level meters are active at a given time and outputs it's corresponding value. Now the two LED level meters can be configured as its own independent controller.
+To accommodate this, the `multiplexer` hardware type takes care of the switching at very high speeds. It makes sure only one of the two LED level meters are active at a given time and outputs it's corresponding value. Now the two LED level meters can be declared as its own independent controller.
 
-The first step is to add a multiplexer to the sensors list as follows:
+The first step is to declare a multiplexer as shown below:
 ```
 {
   "id" : 1
@@ -430,13 +429,13 @@ The first step is to add a multiplexer to the sensors list as follows:
   }
 }
 ```
-Since it is of type `no_output`, its value cannot be set and is taken care of automatically due to the high switching speed requirement. Also note that custom `delta_ticks` is not supported on `multiplexer` hardware types.
+Since it is of type `no_output`, its value cannot be set and is taken care of automatically. This is needed due to the high switching speed requirement. Also note that custom `delta_ticks` is not supported on `multiplexer` hardware types.
 
-Now you can add the LED level meters to the config as before but the following extra information. These controllers are now become "multiplexed".
+Now you can declare the LED level meters in the config in the same way as decribed above but with the following extra information. These controllers are now "multiplexed".
     1. `multiplexer_id` : ID of the `multiplexer` controller which controls this LED level meter controller, which is 1 in this case.
     2. `multiplexer_pin` : Pin number of the `multiplexer` controller which activates or switches on this LED level meter controller which is DO0 and DO1 for Led Level meters A and B respectively.
 
-The following shows the configuration for the LED level meters A and B. Note that the range is 6 as there are 6 pins used per controller. Also note that custom `delta_ticks` for multiplexed controllers is not allowed.
+The following shows the configuration for the LED level meters A and B. Note that the range is equal to 6 as there are 6 pins used per controller. Also note that custom `delta_ticks` declaration for multiplexed controllers is not allowed.
 ```
 {
     "id" : 2,
