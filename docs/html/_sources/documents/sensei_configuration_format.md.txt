@@ -25,8 +25,8 @@ DO0 - DO7, 8 digital input pins numbered DI0 - DI7 and 3 analog input pins
 numbered A0 - A2.
 
 It has the following connections as shown in the example schematic shown below:
-  1. An led connected to DO0.
-  2. An led level meter connected to DO1 - DO7.
+  1. An LED connected to DO0.
+  2. An LED level meter connected to DO1 - DO7.
   3. A potentiometer connected to A0.
   4. A button connected to DI0.
   5. An encoder connected to DI1 - DI3.
@@ -172,13 +172,13 @@ you can define multiple backends. Each backend's subfields are described below.
 
   * `id` - Identification number of this backend.
   * `enabled` - Whether this backend will output data or not.
-  * `raw_input_enabled` - If this is true then in addition to the processes
+  * `raw_input_enabled` - If this is true then in addition to the processed
      value (clipped, scaled and possibly inverted), the unprocessed value from
      the sensor
      will also be output.
   * `type` - The type of backend, currently `osc` is the only recognised value,
   else will default to stdout.
-  * `host` - The address to output osc messages to, accepted values are
+  * `host` - The address to output osc messages to. Accepted values are
     `localhost` or an ip address. Only valid if type is `osc`.
   * `port` - The port used on the above host. Only valid if type is `osc`.
   * `base_path` - The Prefix added to osc messages. Only valid if type is `osc`.
@@ -190,7 +190,7 @@ you can define multiple backends. Each backend's subfields are described below.
 The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the physical devices connected to the pins. The
 `hw_frontend` field has only one subfield which describes its type.
 
-  * `type` - The hw frontend type used, Currently, only two types of hardware
+  * `type` - The hw frontend type used. Currently only two types of hardware
     frontend is supported:
     1. `raspa_gpio` - for devices where a micro-controller is handling the GPIO
         logic. Sensei communicates with the micro-controller using
@@ -200,10 +200,10 @@ The Hardware frontend is the type and method of connecting to the program which 
 
 ## Sensors/Controllers
 
-Sensei needs information about the sensor or physical device is connected to the
+Sensei needs information about the sensor or physical device that is connected to the
 pins and how it should handle data to/from those sensors. It uses this
 information and informs the hardware frontend about the various physical
-devices and the pins to which they are connected to.
+devices and the pins to which they are connected.
 
 For this reason, the Sensei json config file should contain the definition of:
   1. A description of how Sensei should process the raw data from these sensors.
@@ -229,15 +229,15 @@ floating point number, whose range depends on these categories.
       (0.0 to 1.0 in the case of the OSC backend) and not discrete values. This
       also needs the `range` keyword to be explicitly defined so that Sensei
       can normalize the sensor values. Could be potentiometers, encoders etc.
-  5. `digital_output` - An output that can be set on of off, like an LED.
+  5. `digital_output` - An output that can be set on or off, like an LED.
       The sensor can have values 0.0 or 1.0.
   6. `range_output` - An output that can accept a range of discrete values. Its
       range has to be specified explicitly using the `range` keyword.
   7. `analog_output` - Similar to `analog_input`, this can be used to represent
       an output controller whose values range from 0.0 to 1.0. The `range` keyword
       needs to be explicitly defined for this type of sensor.
-  8. `no_output` - A "helper" sensor that doesn't output anything on it own but
-      controls other sensors. Look at the multiplexer section described below.
+  8. `no_output` - A "helper" sensor that doesn't output anything on its own but
+      control other sensors. Look at the multiplexer section described below.
 
 The first part of the `sensors` json field is a description of how Sensei will
 handle the sensor and its data. It contains the following fields:
