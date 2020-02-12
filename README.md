@@ -14,7 +14,7 @@ If you have made any changes to an .MD documentation file, you also need to take
 
 Install [Sphinx](http://www.sphinx-doc.org/en/stable/):
 
-	pip install sphinx
+	apt-get install python3-sphinx
 
 Install [recommonmark](https://github.com/rtfd/recommonmark):
 
