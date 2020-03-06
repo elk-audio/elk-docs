@@ -198,3 +198,25 @@ $ systemctl enable sensei
 Sushi will still output its log file in `/tmp/sushi.log`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
 
 They can also be started temporarily with `$ systemctl start sushi` as any normal SystemD service.
+
+## Setting CPU Speed
+
+The default CPU speed for the Raspberry Pi is set to it's highest possible setting in the Elk Pi OS. 
+
+When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.
+
+If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:
+
+```bash
+$ sudo elk_system_utils --set-cpu-speed 600
+```
+
+The speeds supported are 600 and 1400 for the RPi 3. 
+
+By simply typing:
+
+```bash
+$ sudo elk_system_utils
+```
+
+You will see all the options available on your current board.

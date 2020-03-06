@@ -216,6 +216,21 @@ $ systemctl <span class="nb">enable</span> sensei
 <p>Sushi will still output its log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code>. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root).</p>
 <p>They can also be started temporarily with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
 </div>
+<div class="section" id="setting-cpu-speed">
+<h2>Setting CPU Speed<a class="headerlink" href="#setting-cpu-speed" title="Permalink to this headline">¶</a></h2>
+<p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting in the Elk Pi OS.</p>
+<p>When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.</p>
+<p>If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed <span class="m">600</span>
+</pre></div>
+</div>
+<p>The speeds supported are 600 and 1400 for the RPi 3.</p>
+<p>By simply typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
+</pre></div>
+</div>
+<p>You will see all the options available on your current board.</p>
+</div>
 </div>
 
 
@@ -259,6 +274,7 @@ $ systemctl <span class="nb">enable</span> sensei
 </ul>
 </li>
 <li><a class="reference internal" href="#configuring-automatic-startup">Configuring Automatic Startup</a></li>
+<li><a class="reference internal" href="#setting-cpu-speed">Setting CPU Speed</a></li>
 </ul>
 </li>
 </ul>
