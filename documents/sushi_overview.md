@@ -9,7 +9,7 @@ Sushi is a track-based, headless Digital Audio Workstation. It works as a plugin
 **In a nutshell:**
 
 - Headless host with full control over MIDI, OSC and gRPC interfaces.
-- Hosts VST 2.4, VST 3.6 and Rack Extensions plugins.
+- Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.
 - Highly optimised for low latency performance.
 - Multithreaded audio processing support.
 - Ableton Link support
@@ -71,7 +71,7 @@ See our documentation on the [Sushi Configuration Format](sushi_configuration_fo
 
 ## Plugin Format Support
 
-  + Sushi can host plugins in Steinberg's **VST 2.4** and **[VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html)** formats,  **LV2** (using the LV2VST wrapper), plus an Internal plugin format, which all are abstracted in a generic "Processor" interface. 
+  + Sushi can host plugins in Steinberg's **VST 2.4** and **[VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html)** formats,  **LV2** (natively as well as using the LV2VST wrapper), plus an Internal plugin format, which all are abstracted in a generic "Processor" interface. 
   + **Reason Studio's [Rack Extensions](https://www.propellerheads.com/developers)** are also supported, but due to Reason Studio's licensing restrictions this support is only available under closed-source commercial licenses of Sushi. Please get in touch for more information.
 
 In order to load plugins in Sushi, they need to be compiled for the system intended. Note that it is not possible to take an existing Windows, macOS, or even native Linux plugin binary and load it in Elk. That will not work. Though if the plugins are well written from the start, porting them to Elk should be a rather straightforward process of recompiling the plugins using our SDK.
