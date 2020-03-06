@@ -54,8 +54,8 @@ Here’s a very quick description of each block in the diagram. Details about th
 
 ## Hardware Components
 
-- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices, e.g. the [Intel Atom Cherry Trail X5-Z8350](https://ark.intel.com/products/93361/Intel-Atom-x5-Z8350-Processor-2M-Cache-up-to-1-92-GHz-) or the [NXP i.MX7](https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-7-processors:IMX7-SERIES)
-- **Microcontroller (MCU)** : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the **Audio Codec(s)** and to interface with **General Purpose Input Output (GPIOs)** pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4s or tiny CPLDs for this purpose
+- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices, e.g. the [Intel Atom Cherry Trail X5-Z8350](https://ark.intel.com/products/93361/Intel-Atom-x5-Z8350-Processor-2M-Cache-up-to-1-92-GHz-) or the [NXP i.MX7](https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-7-processors:IMX7-SERIES).
+- **Microcontroller (MCU)** : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the **Audio Codec(s)** and to interface with **General Purpose Input Output (GPIOs)** pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4s or tiny CPLDs for this purpose.
 
 ## Standard Linux Components
 
@@ -65,7 +65,7 @@ Most of the work in bringing up these parts into Elk is in their integration and
 
 - **Kernel**: this is a customized version of the *Linux Kernel* tuned for low-latency. In most of our boards we make use of the [Xenomai Cobalt Kernel](https://xenomai.org/), which uses a dedicated interrupt pipeline (I-Pipe) to achieve extremely low hard real-time performances. It is often described as a *Dual Kernel* architecture because a small Real-Time kernel is running on the same memory space as the traditional Linux Kernel.
   However, the rest of Elk does not depend strictly on Xenomai features and we have successfully used the more common [**PREEMPT_RT**](https://rt.wiki.kernel.org/index.php/Main_Page) patch in other boards, using core isolation and other optimizations on top of it. In this second case, there is some latency and performance penalty but the results are still good enough for some use cases.
-- **systemd** : as most modern Linux distros, Elk adopts [systemd](https://www.freedesktop.org/wiki/Software/systemd/) for its init system and many other system components in userspace. The core Elk processes have been designed to take advantage of systemd’s parallelism to minimize device boot time
+- **systemd** : as most modern Linux distros, Elk adopts [systemd](https://www.freedesktop.org/wiki/Software/systemd/) for its init system and many other system components in userspace. The core Elk processes have been designed to take advantage of systemd’s parallelism to minimize device boot time.
 - **Libraries / applications** : we leveraged the power of many famous userspace libraries and applications for writing Elk core services and for providing a good set of tools for developers writing product-specific components. Relevant examples are the [ALSA project’s userspace libraries](https://www.alsa-project.org/main/index.php/Main_Page) (for MIDI) or the [BlueZ](http://www.bluez.org/) stack (for Bluetooth connectivity).  The full list would be very long here and it includes many pieces of software which are not specific to Linux.
 
 On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python 2.7 installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb & gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in [OpenEmbedded Core](https://layers.openembedded.org/layerindex/branch/master/recipes/) can usually be easily added to the image on request.
@@ -87,14 +87,14 @@ We have seen many components so far but still the questions remain unanswered: *
 
 The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:
 
-- **Audio Plugins** : as already stated, Elk hosts normal VST, LV2 and RE plugins, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide several tools to aid this process, including a [fork of the popular JUCE framework](https://github.com/stez-mind/JUCE/tree/mind/headless_plugin_client)
+- **Audio Plugins** : as already stated, Elk hosts normal VST, LV2 and RE plugins, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide several tools to aid this process, including a [fork of the popular JUCE framework](https://github.com/stez-mind/JUCE/tree/mind/headless_plugin_client).
 - **Display UI** : this is a dedicated process to handle e.g. a *Touchscreen Display*. Elk does not provide a specific GUI framework but you are free to use any of the popular and well-maintained solutions for this purpose. For example, [Qt](https://www.qt.io/) is a popular choice in many embedded devices.
 
 All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:
 
-- Configurable via JSON files
-- Can be controlled at runtime using either [Open Sound Control (OSC)](http://opensoundcontrol.org/introduction-osc) (for quick prototypes) or a Google’s [gRPC](https://grpc.io/) protocol
-- A logging system configurable and accessible from other applications
+- Configurable via JSON files.
+- Can be controlled at runtime using either [Open Sound Control (OSC)](http://opensoundcontrol.org/introduction-osc) (for quick prototypes) or a Google’s [gRPC](https://grpc.io/) protocol.
+- A logging system configurable and accessible from other applications.
 
 The only part that’s missing is a custom **Main Application** that leverages this distributed infrastructure to connect all the components together for a specific device. For example, this will contain the logic for operations like “choose a different sound and change the display when the user press a button”, or “use the LEDs on the front panel to display a VU Meter”.
 

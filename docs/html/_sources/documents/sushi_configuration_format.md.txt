@@ -6,6 +6,8 @@ Following is a reference for the Sushi .json configuration file.
 **“host_config”**
 
 * **“samplerate”** - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.
+* **"midi_inputs"** - The number of MIDI input ports to use. Defaults to 1.
+* **"midi_outputs"** - The number of MIDI output ports to use. Defaults to 1.
 * **"cv_inputs"** - The number of control voltage inputs to use.
 * **"cv_outputs"** - The number of control voltage outputs to use.
 * **“tempo”** - The default tempo in beats per minute.
