@@ -61,8 +61,8 @@ Following is a reference for the Sushi .json configuration file.
     * **“plugin_name”** - Name of the plugin.
     * **"cc_number"** - Index of incoming Control Change message to map.
     * **“parameter_name”** - Name of the parameter on the above plugin.
-    * **“min_range”** - Minimum normalized range of the mapping (in [0, 1]), what a value a CC value of 0 corresponds to.
-    * **“max_range”** - Maximum normalized range of the mapping (in [0, 1]), corresponds to a CC value of 127.
+    * **“min_range”** -  A value between 0.0 and 1.0, defining what MIDI CC value 0 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieve using normalized values between 0.0-1.0).
+    * **“max_range”** - A value between 0.0 and 1.0, defining what MIDI CC value 127 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieve using normalized values between 0.0-1.0).
     * **“mode”** - Mode for controller, one of "absolute" (default) or "relative".
 * **“program\_change_connections”** - Route MIDI program change messages to a particular plugin. A list of routing objects with the following members:
     * **“port”** - Integer id of the MIDI port to use as input.
