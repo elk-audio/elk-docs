@@ -37,10 +37,11 @@ Following is a reference for the Sushi .json configuration file.
     *   Alternatively:
     * **“engine_channel”** - The id of the engine output channel to route audio to.
     * **“track_channel”** - The id of the track channel to route audio from.
-* **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3.6 plugins or LV2 plugins (currently using the LV2VST wrapper).
+* **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3.6 plugins or LV2 plugins (natively, or using the LV2VST wrapper).
     * **“name”** - The name of the plugin - must be unique.
-    * **“type”** - The plugin format, valid values are: “internal”, “vst2x”, “vst3x”.
-    * **“path”** - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins.
+    * **“type”** - The plugin format, valid values are: “internal”, “vst2x”, “vst3x”, or "lv2" for native LV2 hosting.
+    * **“path”** - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins, or for natively hosting LV2.
+    * **"uri"** - This is instead of "path", for natively hosting LV2 plugins. The LV2 standard requires that plugins are accessed through the LV2 platform tools, not directly. The paths where these platform tools search for plugins is on Linux defined with the LV2_PATH environment variable.
     * **“uid”** - For internal plugin this has the format “sushi.testing.plugin_name”. For VST 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for VST 2 plugins.
 
 ## MIDI

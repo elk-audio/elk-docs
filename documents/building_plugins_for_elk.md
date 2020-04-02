@@ -1,10 +1,10 @@
-# Build VST Plugins for Elk
+# Build Plugins for Elk
 
-Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg's APIs, so there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.
+Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg's APIs. It also supports LV2 plugins natively. So there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.
 
 Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk's provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.
 
-As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux VST host such as Carla, MrsWatson or Sushi itself.
+As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.
 
 ## Cross-Compiling Toolchain
 
@@ -86,8 +86,61 @@ $ AR=arm-elk-linux-gnueabi-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADL
   $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops -mvectorize-with-neon-quad"
   ```
 
+## LV2 Plugins
 
-## Running Compiled Plugins with Sushi on a virtual Machine
+Due to the LV2 plugin format's architecture, it is often very straightforward to build LV2 plugins for Elk. [LV2 strongly encourages the complete separation of GUI and plugin core](https://lv2plug.in/book/#_simple_oscilloscope), meaning building a headless plugin can be as simple as specifying an argument to not include the GUI, when generating the build project.
+
+To cross compile, the following steps are specific for cross-compiling the [Calf plugin collection](https://github.com/elk-community/calf), but should generalize well across the majority of LV2 plugins:
+
+### Generate ttl files
+
+This is done first since the script to generate the `.ttl` files won't run with the cross compilation toolchain.
+
+1. Make a folder to put the native build in `mkdir native`.
+
+2. Generate project files:
+
+   ```
+   $ ./autogen.sh --prefix=/absoute/path/to/calf/native
+   ```
+
+3. `make` and `make install` to generate the ttl files.
+
+4. `make clean` to prepare for cross compilation.
+
+### Cross Compile the plugins
+
+1. Set up the cross-compilation toolchain:
+
+   ```
+   $ unset LD_LIBRARY_PATH
+   $ source /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
+   ```
+
+2. Create a directory to build and install the cross compilation files to `$ mkdir build`.
+
+3. Generate the makefiles:
+
+   ```
+   $ ./configure --host=arm-elk-linux-gnu --prefix=/absolute/path/to/calf/build
+   ```
+
+4. Compile the plugin library:
+
+   ```
+   $ make
+   $ make install
+   ```
+
+5. move the .ttl files to the cross-compiled build.
+
+   ```
+   $ cp native/lib/lv2/calf.lv2/*.ttl build/lib/lv2/calf.lv2/
+   ```
+
+6. move the folder `build/lib/calf.lv2` to the desired location on the Elk Pi. Make sure the path to the parent folder is in the `LV2_PATH` variable.
+
+## Running Compiled Plugins with Sushi on a Virtual Machine
 
   1. Start JACK Server.
   2. Launch Sushi with a proper JSON file that has the path to your plugins. You can use one of the provided examples to start, e.g.:
