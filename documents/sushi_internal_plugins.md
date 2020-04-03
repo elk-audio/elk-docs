@@ -20,7 +20,7 @@ For those use cases, prefer using the internal gain parameter of the tracks.
 
   * **uid** : "sushi.testing.gain"
   * **Parameters** :
-    + "gain" : gain in dB. Range: [-120, 120], Default: 0.0
+    + "gain" : gain in dB. Range: [0, 1], Default: 0.83. (Normalized from [-120, 24], Default 0.0).
 
 ### Equalizer
 
@@ -29,9 +29,9 @@ Parameters are smoothed and can be modulated at run-time.
 
   * **uid** : "sushi.testing.equalizer"
   * **Parameters** :
-    + "frequency" : center frequency in Hertz. Range: [20, 20'000], Default: 1000.0
-    + "gain" : output gain in dB. Range: [-24, 24], Default: 0.0
-    + "q" : Q factor of the filter. Range: [0, 10], Default: 1.0
+    + "frequency" : center frequency in Hertz. Range: [0, 1], Default 0.05. (Normalized from [20, 20'000], Default: 1000.0).
+    + "gain" : output gain in dB. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
+    + "q" : Q factor of the filter. Range: [0, 1], Default: 0.1. (Normalized from [0, 10], Default: 1.0).
 
 ## Midi In / Audio Out Plugins
 
@@ -41,11 +41,11 @@ Simple polyphonic sample-based player. Only one sample can be loaded and played 
 
   * **uid** : "sushi.testing.sampleplayer"
   * **Parameters** :
-    + "volume" : static gain for the sample, in dB. Range: [-120, 36], Default: 0.0
-    + "attack" : envelope attack time, in seconds. Range: [0, 10], Default: 0.0
-    + "decay" : envelope decay time, in seconds. Range: [0, 10], Default: 0.0
+    + "volume" : static gain for the sample, in dB. Range: [0, 1], Default: 0.77. (Normalized from [-120, 36], Default: 0.0).
+    + "attack" : envelope attack time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).
+    + "decay" : envelope decay time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).
     + "sustain" : envelope sustain level. Range: [0, 1], Default: 1.0
-    + "release" : envelope release time, in seconds. Range: [0, 10], Default: 0.0
+    + "release" : envelope release time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).
 
   * **Properties**:
     + "sample_file" : path to .wav file to load
@@ -54,11 +54,11 @@ Simple polyphonic sample-based player. Only one sample can be loaded and played 
 
 ### Arpeggiator
 
-Simple Arpeggiator that repeats in "UP" movement the held MIDI notes on the track, using SUSHI's tempo configuration.
+Simple Arpeggiator that repeats in "UP" movement the held MIDI notes on the track, using Sushi's tempo configuration.
 
   * **uid** : "sushi.testing.arpeggiator"
   * **Parameters** :
-    + "range" : octave range, as integer. Range: [1, 5], Default: 2
+    + "range" : octave range, as integer. Range: [0, 1], Default: 0.25. (Normalized from: [1, 5], Default: 2).
 
 ### Transposer
 
@@ -66,7 +66,7 @@ Transposes incoming MIDI Note ON & OFF events by a fixed amount of semitones.
 
   * **uid** : "sushi.testing.transposer"
   * **Parameters** :
-    + "transpose" : transpose amount in semitones. Range: [-24, 24], Default: 0
+    + "transpose" : transpose amount in semitones. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
 
 ## Audio In / Parameter Out plugins
 
@@ -76,6 +76,6 @@ Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate 
 
   * **uid** : "sushi.testing.peakmeter"
   * Parameters (output only) :
-    + "left" : detected level on the left track in dB. Range: [-120, 0]
-    + "right" : detected level on the right track in dB. Range: [-120, 0]
+    + "left" : detected level on the left track in dB. Range: [0, 1], normalized from [-120, 0].
+    + "right" : detected level on the right track in dB. Range: [0, 1], normalized from [-120, 0].
 

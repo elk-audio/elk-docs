@@ -64,7 +64,7 @@ For those use cases, prefer using the internal gain parameter of the tracks.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.gain”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“gain” : gain in dB. Range: [-120, 120], Default: 0.0</li>
+<li>“gain” : gain in dB. Range: [0, 1], Default: 0.83. (Normalized from [-120, 24], Default 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -76,9 +76,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.equalizer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“frequency” : center frequency in Hertz. Range: [20, 20’000], Default: 1000.0</li>
-<li>“gain” : output gain in dB. Range: [-24, 24], Default: 0.0</li>
-<li>“q” : Q factor of the filter. Range: [0, 10], Default: 1.0</li>
+<li>“frequency” : center frequency in Hertz. Range: [0, 1], Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</li>
+<li>“gain” : output gain in dB. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“q” : Q factor of the filter. Range: [0, 1], Default: 0.1. (Normalized from [0, 10], Default: 1.0).</li>
 </ul>
 </li>
 </ul>
@@ -92,11 +92,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.sampleplayer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“volume” : static gain for the sample, in dB. Range: [-120, 36], Default: 0.0</li>
-<li>“attack” : envelope attack time, in seconds. Range: [0, 10], Default: 0.0</li>
-<li>“decay” : envelope decay time, in seconds. Range: [0, 10], Default: 0.0</li>
+<li>“volume” : static gain for the sample, in dB. Range: [0, 1], Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</li>
+<li>“attack” : envelope attack time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“decay” : envelope decay time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
 <li>“sustain” : envelope sustain level. Range: [0, 1], Default: 1.0</li>
-<li>“release” : envelope release time, in seconds. Range: [0, 10], Default: 0.0</li>
+<li>“release” : envelope release time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
 </ul>
 </li>
 <li><strong>Properties</strong>:<ul>
@@ -110,11 +110,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arpeggiator">
 <h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
-<p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using SUSHI’s tempo configuration.</p>
+<p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using Sushi’s tempo configuration.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.arpeggiator”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“range” : octave range, as integer. Range: [1, 5], Default: 2</li>
+<li>“range” : octave range, as integer. Range: [0, 1], Default: 0.25. (Normalized from: [1, 5], Default: 2).</li>
 </ul>
 </li>
 </ul>
@@ -125,7 +125,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.transposer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“transpose” : transpose amount in semitones. Range: [-24, 24], Default: 0</li>
+<li>“transpose” : transpose amount in semitones. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -139,8 +139,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.peakmeter”</li>
 <li>Parameters (output only) :<ul>
-<li>“left” : detected level on the left track in dB. Range: [-120, 0]</li>
-<li>“right” : detected level on the right track in dB. Range: [-120, 0]</li>
+<li>“left” : detected level on the left track in dB. Range: [0, 1], normalized from [-120, 0].</li>
+<li>“right” : detected level on the right track in dB. Range: [0, 1], normalized from [-120, 0].</li>
 </ul>
 </li>
 </ul>

@@ -124,8 +124,8 @@
 <li><strong>“plugin_name”</strong> - Name of the plugin.</li>
 <li><strong>“cc_number”</strong> - Index of incoming Control Change message to map.</li>
 <li><strong>“parameter_name”</strong> - Name of the parameter on the above plugin.</li>
-<li><strong>“min_range”</strong> - Minimum normalized range of the mapping (in [0, 1]), what a value a CC value of 0 corresponds to.</li>
-<li><strong>“max_range”</strong> - Maximum normalized range of the mapping (in [0, 1]), corresponds to a CC value of 127.</li>
+<li><strong>“min_range”</strong> -  A value between 0.0 and 1.0, defining what MIDI CC value 0 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieved using normalized floating-point values between 0.0-1.0).</li>
+<li><strong>“max_range”</strong> - A value between 0.0 and 1.0, defining what MIDI CC value 127 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieved using normalized floating-point values between 0.0-1.0).</li>
 <li><strong>“mode”</strong> - Mode for controller, one of “absolute” (default) or “relative”.</li>
 </ul>
 </li>

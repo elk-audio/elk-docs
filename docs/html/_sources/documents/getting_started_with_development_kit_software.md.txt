@@ -118,4 +118,8 @@ To use it, please refer to the TouchOSC manual - the only customisation needed i
 
 ![touch_osc_jx10_gui](illustrations/touch_osc_jx10_gui.png)
 
+
+
 Which OSC messages your particular configuration responds to, can be accessed by running Sushi with the `--dump-plugins` flag, as detailed in our [detailed documentation for Sushi](sushi_overview.md).
+
+Parameter values are in Sushi normalized to the range 0.0-1.0, floating point, across plugins and formats.
