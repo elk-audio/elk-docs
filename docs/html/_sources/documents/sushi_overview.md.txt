@@ -36,6 +36,30 @@ As Sushi is a headless host, and intended for use in an embedded device, it does
 
 For some applications, like the upcoming [Smart Multiamp](http://www.dvmark.it/news-detail/namm-2019-new-products/) from [DV Mark](http://www.dvmark.it/), user interactions will come from both front panel knobs and a handheld device, i.e. a smartphone or tablet. In that case, an app can use the gRPC interface to control Sushi. Other Elk devices could feature a built-in screen. In that case the GUI will run on the same CPU as Sushi, though in a different process. But as mentioned before, the GUI can be built in Python or any other programming language of choice. **The dual kernel architecture of Elk will guarantee that the graphics rendering will never interfere with the audio dsp processing.**
 
+## Run-time OSC control
+
+Sushi listens on port 24024 for the following OSC commands:
+
+| Path                                  | Typespec | Arguments                                                    |
+| ------------------------------------- | -------- | ------------------------------------------------------------ |
+| /parameter/plugin_name/parameter_name | f        | parameter value                                              |
+| /bypass/plugin_name/                  | i        | bypass state (1 = bypassed, 0 = enabled)                     |
+| /keyboard_event/track_name            | siif     | event type ("note_on", "note_off", "aftertouch"), channel, note index, norm. value |
+| /keyboard_event/track_name            | sif      | event type ("modulation", "pitch_bend", "aftertouch"), channel, norm. value |
+| /program/plugin_name                  | i        | program id                                                   |
+| /engine/add_track                     | si       | name, n. of channels                                         |
+| /engine/delete_track                  | s        | name                                                         |
+| /engine/add_processor                 | sssss    | track, id, name, file path, type                             |
+| /engine/delete_processor              | ss       | track name, plugin id                                        |
+| /engine/set_tempo                     | f        | tempo in beats per minute                                    |
+| /engine/set_time_signature            | ii       | time signature numerator, time signature denominator         |
+| /engine/set_playing_mode              | s        | "playing" or "stopped"                                       |
+| /engine/set_sync_mode                 | s        | "internal", "ableton_link" or "midi"                         |
+| /engine/set_timing_statistics_enabled | i        | 1 = enabled, 0 = disabled                                    |
+| /engine/reset_timing_statstics        | s(s)     | reset target ("all", "track", "processor"), track name/processor name |
+
+The UDP ports it receives from and sends to can be changed with command-line arguments - just type `$ sushi --help` for the exact syntax.
+
 ## Audio Frontends
 
 Sushi supports multiple audio frontends:
