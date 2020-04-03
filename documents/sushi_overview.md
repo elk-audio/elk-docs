@@ -83,7 +83,7 @@ So, from the above example, to set the JX 10 synth's resonance to 0.5 (halfway i
 
 ## Plugin Format Support
 
-  + Sushi can host plugins in Steinberg's **VST 2.4** and **[VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html)** formats,  **LV2** (using the LV2VST wrapper), plus an Internal plugin format, which all are abstracted in a generic "Processor" interface. 
+  + Sushi can host plugins in Steinberg's **VST 2.4** and **[VST 3.6](https://www.steinberg.net/en/company/technologies/vst3.html)** formats,  **LV2** (natively as well as using the LV2VST wrapper), plus an Internal plugin format, which all are abstracted in a generic "Processor" interface. 
   + **Reason Studio's [Rack Extensions](https://www.propellerheads.com/developers)** are also supported, but due to Reason Studio's licensing restrictions this support is only available under closed-source commercial licenses of Sushi. Please get in touch for more information.
 
 In order to load plugins in Sushi, they need to be compiled for the system intended. Note that it is not possible to take an existing Windows, macOS, or even native Linux plugin binary and load it in Elk. That will not work. Though if the plugins are well written from the start, porting them to Elk should be a rather straightforward process of recompiling the plugins using our SDK.
