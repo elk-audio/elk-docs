@@ -79,3 +79,34 @@ Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate 
     + "left" : detected level on the left track in dB. Range: [0, 1], normalized from [-120, 0].
     + "right" : detected level on the right track in dB. Range: [0, 1], normalized from [-120, 0].
 
+## CV In / Out plugins
+
+### CV to Control
+
+Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.
+
+  * **uid** : "sushi.testing.cv_to_control"
+  * **Parameters** :
+    + "channel": MIDI channel. Range: [0, 1], Default: 0.0. (Normalized from [0, 16], Default: 0.0).
+    + "tune": Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
+    + "polyphony": Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).
+    + For each of the max possible CV voices:
+      + "pitch_1"..."pitch_4": Pitch in semitones. Range: [0, 1], Default: 0.0.
+      + "velocity_1"..."velocity_4": Note On velocity. Range: [0, 1], Default: 0.5.
+
+### Control to CV
+
+Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.
+
+  * **uid** : "sushi.testing.control_to_cv"
+  * **Parameters** :
+    + "send_velocity": Switch velocity transmission on/off. Default off.
+    + "send_modulation": Switch modulation transmission on/off. Default off.
+    + "retrigger_enabled": Switch retrigger mode on/off. Default off.
+    + "tune": Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
+    + "fine_tune": Fine tune parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).
+    + "polyphony": Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).
+    + "modulation": Modulation parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).
+    + For each of the max possible CV voices:
+      + "pitch_1"..."pitch_4": Pitch in semitones. Range: [0, 1], Default: 0.0.
+      + "velocity_1"..."velocity_4": Note On velocity. Range: [0, 1], Default: 0.5.

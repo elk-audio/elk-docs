@@ -146,6 +146,49 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </div>
 </div>
+<div class="section" id="cv-in-out-plugins">
+<h2>CV In / Out plugins<a class="headerlink" href="#cv-in-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cv-to-control">
+<h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">¶</a></h3>
+<p>Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.cv_to_control”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“channel”: MIDI channel. Range: [0, 1], Default: 0.0. (Normalized from [0, 16], Default: 0.0).</li>
+<li>“tune”: Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>For each of the max possible CV voices:<ul>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Range: [0, 1], Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Range: [0, 1], Default: 0.5.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="control-to-cv">
+<h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">¶</a></h3>
+<p>Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.control_to_cv”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“send_velocity”: Switch velocity transmission on/off. Default off.</li>
+<li>“send_modulation”: Switch modulation transmission on/off. Default off.</li>
+<li>“retrigger_enabled”: Switch retrigger mode on/off. Default off.</li>
+<li>“tune”: Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“fine_tune”: Fine tune parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>“modulation”: Modulation parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>For each of the max possible CV voices:<ul>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Range: [0, 1], Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Range: [0, 1], Default: 0.5.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -174,6 +217,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </li>
 <li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
 <li><a class="reference internal" href="#peak-meter">Peak Meter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cv-in-out-plugins">CV In / Out plugins</a><ul>
+<li><a class="reference internal" href="#cv-to-control">CV to Control</a></li>
+<li><a class="reference internal" href="#control-to-cv">Control to CV</a></li>
 </ul>
 </li>
 </ul>
