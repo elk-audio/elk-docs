@@ -18,7 +18,7 @@ controlled through MIDI, OSC, or a gRPC interface.
 **In a nutshell:**
 
 -  Headless host with full control over MIDI, OSC and gRPC interfaces.
--  Hosts VST 2.4, VST 3.6 and Rack Extensions plugins.
+-  Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
 -  Ableton Link support.
