@@ -47,6 +47,7 @@
 <h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
 <p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
 <p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
+<p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
 <div class="section" id="audio-in-audio-out-plugins">
 <h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="passthrough">
@@ -64,7 +65,7 @@ For those use cases, prefer using the internal gain parameter of the tracks.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.gain”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“gain” : gain in dB. Range: [0, 1], Default: 0.83. (Normalized from [-120, 24], Default 0.0).</li>
+<li>“gain” : gain in dB. Default: 0.83. (Normalized from [-120, 24], Default 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -76,9 +77,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.equalizer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“frequency” : center frequency in Hertz. Range: [0, 1], Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</li>
-<li>“gain” : output gain in dB. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
-<li>“q” : Q factor of the filter. Range: [0, 1], Default: 0.1. (Normalized from [0, 10], Default: 1.0).</li>
+<li>“frequency” : center frequency in Hertz. Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</li>
+<li>“gain” : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“q” : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).</li>
 </ul>
 </li>
 </ul>
@@ -92,11 +93,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.sampleplayer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“volume” : static gain for the sample, in dB. Range: [0, 1], Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</li>
-<li>“attack” : envelope attack time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
-<li>“decay” : envelope decay time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
-<li>“sustain” : envelope sustain level. Range: [0, 1], Default: 1.0</li>
-<li>“release” : envelope release time, in seconds. Range: [0, 1], Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“volume” : static gain for the sample, in dB. Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</li>
+<li>“attack” : envelope attack time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“decay” : envelope decay time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“sustain” : envelope sustain level. Default: 1.0.</li>
+<li>“release” : envelope release time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
 </ul>
 </li>
 <li><strong>Properties</strong>:<ul>
@@ -114,7 +115,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.arpeggiator”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“range” : octave range, as integer. Range: [0, 1], Default: 0.25. (Normalized from: [1, 5], Default: 2).</li>
+<li>“range” : octave range, as integer. Default: 0.25. (Normalized from: [1, 5], Default: 2).</li>
 </ul>
 </li>
 </ul>
@@ -125,7 +126,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.transposer”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“transpose” : transpose amount in semitones. Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“transpose” : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -139,8 +140,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.peakmeter”</li>
 <li>Parameters (output only) :<ul>
-<li>“left” : detected level on the left track in dB. Range: [0, 1], normalized from [-120, 0].</li>
-<li>“right” : detected level on the right track in dB. Range: [0, 1], normalized from [-120, 0].</li>
+<li>“left” : detected level on the left track in dB. Normalized from [-120, 0].</li>
+<li>“right” : detected level on the right track in dB. Normalized from [-120, 0].</li>
 </ul>
 </li>
 </ul>
@@ -154,12 +155,12 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><strong>uid</strong> : “sushi.testing.cv_to_control”</li>
 <li><strong>Parameters</strong> :<ul>
-<li>“channel”: MIDI channel. Range: [0, 1], Default: 0.0. (Normalized from [0, 16], Default: 0.0).</li>
-<li>“tune”: Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
-<li>“polyphony”: Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>“channel”: MIDI channel. Default: 0.0. (Normalized from [0, 16], Default: 0.0).</li>
+<li>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
 <li>For each of the max possible CV voices:<ul>
-<li>“pitch_1”…”pitch_4”: Pitch in semitones. Range: [0, 1], Default: 0.0.</li>
-<li>“velocity_1”…”velocity_4”: Note On velocity. Range: [0, 1], Default: 0.5.</li>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</li>
 </ul>
 </li>
 </ul>
@@ -175,13 +176,13 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li>“send_velocity”: Switch velocity transmission on/off. Default off.</li>
 <li>“send_modulation”: Switch modulation transmission on/off. Default off.</li>
 <li>“retrigger_enabled”: Switch retrigger mode on/off. Default off.</li>
-<li>“tune”: Coarse tune parameter.  Range: [0, 1], Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
-<li>“fine_tune”: Fine tune parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
-<li>“polyphony”: Number of CV voices.  Range: [0, 1], Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
-<li>“modulation”: Modulation parameter.  Range: [0, 1], Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“fine_tune”: Fine tune parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>“modulation”: Modulation parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
 <li>For each of the max possible CV voices:<ul>
-<li>“pitch_1”…”pitch_4”: Pitch in semitones. Range: [0, 1], Default: 0.0.</li>
-<li>“velocity_1”…”velocity_4”: Note On velocity. Range: [0, 1], Default: 0.5.</li>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</li>
 </ul>
 </li>
 </ul>

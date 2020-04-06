@@ -142,19 +142,17 @@ arameter_name</td>
 <td>f</td>
 <td>parameter value</td>
 </tr>
-<tr class="row-odd"><td>/bypass/plugin_name/</td>
+<tr class="row-odd"><td>/bypass/plugin_name</td>
 <td>i</td>
 <td>bypass state (1 = bypassed, 0 = enabled)</td>
 </tr>
-<tr class="row-even"><td>/keyboard_event/track_n
-ame</td>
+<tr class="row-even"><td>/keyboard_event/track_name</td>
 <td>siif</td>
 <td>event type (“note_on”, “note_off”,
 “aftertouch”), channel, note index,
 norm. value</td>
 </tr>
-<tr class="row-odd"><td>/keyboard_event/track_n
-ame</td>
+<tr class="row-odd"><td>/keyboard_event/track_name</td>
 <td>sif</td>
 <td>event type (“modulation”, “pitch_bend”,
 “aftertouch”), channel, norm. value</td>
@@ -163,34 +161,16 @@ ame</td>
 <td>i</td>
 <td>program id</td>
 </tr>
-<tr class="row-odd"><td>/engine/add_track</td>
-<td>si</td>
-<td>name, n. of channels</td>
-</tr>
-<tr class="row-even"><td>/engine/delete_track</td>
-<td>s</td>
-<td>name</td>
-</tr>
-<tr class="row-odd"><td>/engine/add_processor</td>
-<td>sssss</td>
-<td>track, id, name, file path, type</td>
-</tr>
-<tr class="row-even"><td>/engine/delete_processor</td>
-<td>ss</td>
-<td>track name, plugin id</td>
-</tr>
 <tr class="row-odd"><td>/engine/set_tempo</td>
 <td>f</td>
 <td>tempo in beats per minute</td>
 </tr>
-<tr class="row-even"><td>/engine/set_time_signat
-ure</td>
+<tr class="row-even"><td>/engine/set_time_signature</td>
 <td>ii</td>
 <td>time signature numerator, time signature
 denominator</td>
 </tr>
-<tr class="row-odd"><td>/engine/set_playing_mod
-e</td>
+<tr class="row-odd"><td>/engine/set_playing_mode</td>
 <td>s</td>
 <td>“playing” or “stopped”</td>
 </tr>
@@ -198,13 +178,11 @@ e</td>
 <td>s</td>
 <td>“internal”, “ableton_link” or “midi”</td>
 </tr>
-<tr class="row-odd"><td>/engine/set_timing_stat
-istics_enabled</td>
+<tr class="row-odd"><td>/engine/set_timing_statistics_enabled</td>
 <td>i</td>
 <td>1 = enabled, 0 = disabled</td>
 </tr>
-<tr class="row-even"><td>/engine/reset_timing_st
-atstics</td>
+<tr class="row-even"><td>/engine/reset_timing_statstics</td>
 <td>s(s)</td>
 <td>reset target (“all”, “track”,
 “processor”), track name/processor name</td>

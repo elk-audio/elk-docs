@@ -12,7 +12,7 @@ For each targeted platform, we release a cross-compiling toolchain based on gcc 
 
 You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:
 ```
-$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
+$ source [path-to-extracted-sdk]/environment-setup-[aarch-name]-elk-linux
 ```
 
 Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
@@ -62,29 +62,32 @@ Here are the instructions to build a JUCE plugin with the cross-compiling toolch
      
   4. For a build to test natively on Linux, just run make normally, and follow the next points on how to test with the integrated Sushi host.
 
-  5. To cross-compile for Elk UpCore boards, import the cross-compiling toolchain:
-
-```bash
-$ unset LD_LIBRARY_PATH
-$ source /opt/elk-upcore-sdk/environment-setup-corei7-64-elk-linux
-
-and then build your plugin using:
-
-$ AR=x86_64-elk-linux-gcc-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-march=silvermont -mtune=silvermont"
-```
-
-  6. The equivalent for Elk Pi would instead be:
+  5. To cross-compile for *Elk Pi RPi3 32bit*, first source the SDK script in your shell environment:
 
 ```bash
 $ unset LD_LIBRARY_PATH
 $ source /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
+```
+
+and then build your plugin using:
+
+```
 $ AR=arm-elk-linux-gnueabi-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-mcpu=cortex-a53 -mtune=cortex-a53 -mfpu=neon-vfpv4 -mfloat-abi=hard"
 ```
 
-  7. By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
+  6. By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
   ```bash
   $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops -mvectorize-with-neon-quad"
   ```
+
+  7. The equivalent instructions for *Elk Pi RPi4 64 bit* would be:
+
+```bash
+$ unset LD_LIBRARY_PATH
+$ source /path/to/environment-setup-aarch64-elk-linux
+$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"
+$ AR=aarch64-elk-linux-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"
+```
 
 ## LV2 Plugins
 

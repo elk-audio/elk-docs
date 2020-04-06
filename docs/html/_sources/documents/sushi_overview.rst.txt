@@ -100,39 +100,31 @@ Sushi listens on port 24024 for the following OSC commands:
 | /parameter/plugin\_name/p | f         | parameter value                          |
 | arameter\_name            |           |                                          |
 +---------------------------+-----------+------------------------------------------+
-| /bypass/plugin\_name/     | i         | bypass state (1 = bypassed, 0 = enabled) |
+| /bypass/plugin\_name      | i         | bypass state (1 = bypassed, 0 = enabled) |
 +---------------------------+-----------+------------------------------------------+
-| /keyboard\_event/track\_n | siif      | event type ("note\_on", "note\_off",     |
+| /keyboard\_event/track\_n\| siif      | event type ("note\_on", "note\_off",     |
 | ame                       |           | "aftertouch"), channel, note index,      |
 |                           |           | norm. value                              |
 +---------------------------+-----------+------------------------------------------+
-| /keyboard\_event/track\_n | sif       | event type ("modulation", "pitch\_bend", |
+| /keyboard\_event/track\_n\| sif       | event type ("modulation", "pitch\_bend", |
 | ame                       |           | "aftertouch"), channel, norm. value      |
 +---------------------------+-----------+------------------------------------------+
 | /program/plugin\_name     | i         | program id                               |
 +---------------------------+-----------+------------------------------------------+
-| /engine/add\_track        | si        | name, n. of channels                     |
-+---------------------------+-----------+------------------------------------------+
-| /engine/delete\_track     | s         | name                                     |
-+---------------------------+-----------+------------------------------------------+
-| /engine/add\_processor    | sssss     | track, id, name, file path, type         |
-+---------------------------+-----------+------------------------------------------+
-| /engine/delete\_processor | ss        | track name, plugin id                    |
-+---------------------------+-----------+------------------------------------------+
 | /engine/set\_tempo        | f         | tempo in beats per minute                |
 +---------------------------+-----------+------------------------------------------+
-| /engine/set\_time\_signat | ii        | time signature numerator, time signature |
+| /engine/set\_time\_signat\| ii        | time signature numerator, time signature |
 | ure                       |           | denominator                              |
 +---------------------------+-----------+------------------------------------------+
-| /engine/set\_playing\_mod | s         | "playing" or "stopped"                   |
+| /engine/set\_playing\_mod\| s         | "playing" or "stopped"                   |
 | e                         |           |                                          |
 +---------------------------+-----------+------------------------------------------+
 | /engine/set\_sync\_mode   | s         | "internal", "ableton\_link" or "midi"    |
 +---------------------------+-----------+------------------------------------------+
-| /engine/set\_timing\_stat | i         | 1 = enabled, 0 = disabled                |
+| /engine/set\_timing\_stat\| i         | 1 = enabled, 0 = disabled                |
 | istics\_enabled           |           |                                          |
 +---------------------------+-----------+------------------------------------------+
-| /engine/reset\_timing\_st | s(s)      | reset target ("all", "track",            |
+| /engine/reset\_timing\_st\| s(s)      | reset target ("all", "track",            |
 | atstics                   |           | "processor"), track name/processor name  |
 +---------------------------+-----------+------------------------------------------+
 
