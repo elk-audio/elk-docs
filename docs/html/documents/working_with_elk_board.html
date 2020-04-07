@@ -68,8 +68,6 @@
 <p>Files in the user data partition under <code class="docutils literal notranslate"><span class="pre">/udata</span></code>, remain untouched after running a software update, so keep any temporary files used for development there.</p>
 <p>Also use  <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for the storage of settings &amp; user patches.</p>
 <p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition from there.</p>
-<p><em><strong>Important! When you first use an image, you will not be the owner of the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition, and need to take over ownership to gain write access.</strong></em></p>
-<p>Simply type <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">mind:mind</span> <span class="pre">/udata</span></code>, and you will have write access.</p>
 </div>
 </div>
 <div class="section" id="elk-images">
@@ -176,6 +174,7 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <div class="section" id="software-update-system">
 <h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
+<p><em>Important note</em>: as written in the <a class="reference external" href="#partition-layout">Partition Layout section</a>, your data in the mounted root partition will be lost after an update! Keep anything that you want to save under <code class="docutils literal notranslate"><span class="pre">/udata</span></code>.</p>
 <div class="section" id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
@@ -221,10 +220,10 @@ $ systemctl <span class="nb">enable</span> sensei
 <p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting in the Elk Pi OS.</p>
 <p>When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.</p>
 <p>If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed <span class="m">600</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed min
 </pre></div>
 </div>
-<p>The speeds supported are 600 and 1400 for the RPi 3.</p>
+<p>The speeds supported are 600 and 1400 for the RPi 3, and 600 / 1500 for the Pi4.</p>
 <p>By simply typing:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
 </pre></div>

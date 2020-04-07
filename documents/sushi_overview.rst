@@ -286,9 +286,7 @@ systems there's rarely the need from the user to adjust the buffer size
 and in this way, the compiler has more room for optimizations.
 
 However, Elk distributions are shipped with Sushi compiled at different
-buffer sizes, usually [16, 32, 64, 128]. The main command ``sushi`` is a
-wrapper around them that, when passed the option ``-b N`` as the first
-argument, select which one to run [default=64].
+buffer sizes, usually [16, 32, 64, 128].
 
 In case you want to use a different buffer size, you will also need to
 change the audio driver parameter ``audio_buffer_size`` in the script
