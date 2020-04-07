@@ -324,9 +324,7 @@ be specified with the command line flag <code class="docutils literal notranslat
 systems there’s rarely the need from the user to adjust the buffer size
 and in this way, the compiler has more room for optimizations.</p>
 <p>However, Elk distributions are shipped with Sushi compiled at different
-buffer sizes, usually [16, 32, 64, 128]. The main command <code class="docutils literal notranslate"><span class="pre">sushi</span></code> is a
-wrapper around them that, when passed the option <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">N</span></code> as the first
-argument, select which one to run [default=64].</p>
+buffer sizes, usually [16, 32, 64, 128].</p>
 <p>In case you want to use a different buffer size, you will also need to
 change the audio driver parameter <code class="docutils literal notranslate"><span class="pre">audio_buffer_size</span></code> in the script
 placed by default in <code class="docutils literal notranslate"><span class="pre">/usr/bin/load-drivers</span></code> and reboot the board (or

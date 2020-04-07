@@ -31,10 +31,6 @@ Also use  `/udata` for the storage of settings & user patches.
 
 If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `/udata` partition from there.
 
-***Important! When you first use an image, you will not be the owner of the `/udata` partition, and need to take over ownership to gain write access.***
-
-Simply type `sudo chown -R mind:mind /udata`, and you will have write access.
-
 ## Elk Images
 
 Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:
@@ -162,6 +158,8 @@ For a more fine-grained analysis, you can use Sushi's gRPC api to query timing s
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
 
+*Important note*: as written in the [Partition Layout section](#partition-layout), your data in the mounted root partition will be lost after an update! Keep anything that you want to save under `/udata`.
+
 ### Updating over Network (WiFi / Ethernet)
 
   1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relevant section](#connecting-to-your-board).
@@ -208,10 +206,10 @@ When running at that speed, there may be slightly more noise in the audio output
 If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:
 
 ```bash
-$ sudo elk_system_utils --set-cpu-speed 600
+$ sudo elk_system_utils --set-cpu-speed min
 ```
 
-The speeds supported are 600 and 1400 for the RPi 3. 
+The speeds supported are 600 and 1400 for the RPi 3, and 600 / 1500 for the Pi4.
 
 By simply typing:
 
