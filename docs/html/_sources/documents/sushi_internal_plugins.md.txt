@@ -70,6 +70,17 @@ Transposes incoming MIDI Note ON & OFF events by a fixed amount of semitones.
   * **Parameters** :
     + "transpose" : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
 
+### Step Sequencer
+
+A simple 8-step sequencer.
+
+* **uid** : "sushi.testing.step_sequencer"
+* **Parameters** :
+  * For each of the 8 steps:
+    + "pitch_1"..."pitch_8" : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
+    + "step_1"..."step_8" : Step on/off. Default: 1.0.
+    + "step_ind_1"..."step_ind_8" (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.
+
 ## Audio In / Parameter Out plugins
 
 ### Peak Meter
@@ -112,3 +123,12 @@ Adapter plugin to convert from note on and note off messages, to CV/gate informa
     + For each of the max possible CV voices:
       + "pitch_1"..."pitch_4": Pitch in semitones. Default: 0.0.
       + "velocity_1"..."velocity_4": Note On velocity. Default: 0.5.
+
+### LFO (Low Frequency Oscillator)
+
+Simple control, generating a sine-wave LFO signal as an output parameter. The out parameter can in Sushi's json configuration script be set to be output as CV - see documentation, and example configuration file on your board.
+
+  * **uid** : "sushi.testing.lfo"
+  * **Parameters** :
+    + "freq": LFO frequency in Hertz. Default 0.1. (Normalized from [0.001, 10], Default: 1.0).
+    + "out" (output only) : Generated LFO output. Default: 0.5.

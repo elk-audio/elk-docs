@@ -59,9 +59,7 @@ Here are the instructions to build a JUCE plugin with the cross-compiling toolch
 * Save the project to export a new Makefile.
   
   3. If you use recent Projucer releases 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
-     
-  4. For a build to test natively on Linux, just run make normally, and follow the next points on how to test with the integrated Sushi host.
-
+  4. For a build to test natively on Linux, just run make normally, using the `-DJUCE_HEADLESS_PLUGIN_CLIENT=1` argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.
   5. To cross-compile for *Elk Pi RPi3 32bit*, first source the SDK script in your shell environment:
 
 ```bash

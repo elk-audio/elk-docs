@@ -94,7 +94,7 @@
 <ul class="simple">
 <li>Save the project to export a new Makefile.<ol>
 <li>If you use recent Projucer releases 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <code class="docutils literal notranslate"><span class="pre">JUCE_CPPFLAGS</span></code> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</li>
-<li>For a build to test natively on Linux, just run make normally, and follow the next points on how to test with the integrated Sushi host.</li>
+<li>For a build to test natively on Linux, just run make normally, using the <code class="docutils literal notranslate"><span class="pre">-DJUCE_HEADLESS_PLUGIN_CLIENT=1</span></code> argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.</li>
 <li>To cross-compile for <em>Elk Pi RPi3 32bit</em>, first source the SDK script in your shell environment:</li>
 </ol>
 </li>

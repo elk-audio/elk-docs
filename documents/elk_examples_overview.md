@@ -8,6 +8,8 @@ Note that the linked files below, are all built for running natively on Linux or
 
 Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.
 
+
+
 **Note:** In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, set the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/jx10".
 
 ## MDA JX10 VST3 Example
