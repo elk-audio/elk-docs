@@ -222,6 +222,8 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+github_doc_root = 'https://elk-audio.github.io/elk-docs/html/'
+
 # At the bottom of conf.py
 def setup(app):
     app.add_config_value('recommonmark_config', {

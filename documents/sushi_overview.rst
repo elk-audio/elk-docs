@@ -199,7 +199,7 @@ most common configurations, including multitrack/multichannel
 configurations.
 
 See our documentation on the `Sushi Configuration
-Format <sushi_configuration_format.md>`__ for more details.
+Format <sushi_configuration_format.html>`__ for more details.
 
 Discovering Sushi Configuration's Available Parameters
 ------------------------------------------------------
