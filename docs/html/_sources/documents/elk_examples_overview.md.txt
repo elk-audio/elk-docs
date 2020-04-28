@@ -6,7 +6,7 @@ The examples include first some basic plugin hosting examples, with GUI template
 
 Then we present a set of complete instrument examples, which also involve the Blackboard, Sensei, and Python glue programs for integrating these into a complete instrument.
 
-## Basic plugin hosting examples
+# Basic Plugin Hosting
 
 For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the [MDA JX10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
 
@@ -16,7 +16,7 @@ Plugin binaries built to run natively on the ARM-based Elk Pi are included in th
 
 **Note:** In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, set the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/jx10".
 
-### MDA JX10 VST3 Example
+## MDA JX10 VST3
 
 This example requires the following files:
 
@@ -31,7 +31,7 @@ The example serves to demonstrate how to instantiate Sushi with a single VST 3 i
 
 This is the example referred to also in our guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md).
 
-### MDA JX10 VST2 Example
+## MDA JX10 VST2
 
 Control of plugin parameters is to certain extent different between VST 2 and VST 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.
 
@@ -49,7 +49,7 @@ The instructions for the VST 3 example in the guide for getting started with the
 
 **IMPORTANT NOTE:** The MDA JX10 VST 2 plugin will not work on the Raspberry Pi Elk, purely due to a bug in the plugin. We nonetheless leave this example, to best illustrate the differences between using VST 2 and VST 3.  Also, the MDA JX10 VST 2 will run fine on desktop Linux, as the bug does not affect that platform.
 
-### LV2VST Wrapper, with MDA JX10 LV2 Example
+## LV2VST Wrapper, with MDA JX10 LV2
 
 This example requires the following files:
 
@@ -64,7 +64,7 @@ The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.t
 
 Since the Sushi configuration file does not refer to absolute plugin paths for LV2, the .json file can be the same for both desktop Linux, and the RPi.
 
-### Elk Multi FX Example
+## Multi FX
 
 This example requires the following files:
 
@@ -77,13 +77,13 @@ This is a more complex example, demonstrating a simple 'glue' app between Sushi 
 
 The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.
 
-### **Elk JUCE Example** Source
+# JUCE Example C++ Source Code
 
 The source code and JUCE `.jucer` file, for building our Elk JUCE example VST 2 plugin.
 
 For a configuration file, and Python glue program, please refer to the folder `bloackboard/elk-juce-example`, of the elk-examples repository.
 
-## Complete Blackboard Instrument Examples
+# Complete Blackboard Examples
 
 The examples under the `blackboard` folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 b+ and Pi 4, but you will need to separately download the plugin binaries specific for each platform.
 
@@ -97,7 +97,7 @@ All examples are created with Sushi configuration files that expect the plugin b
 
 Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi's `/udata` folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.
 
-### Minimal Blackboard Example
+## Minimal
 
 The example is purposefully minimal, comprising of under 75 lines of Python code, comments included. It demonstrates the smallest amount of programming that still can produce a usable self-contained instrument. 
 
@@ -113,7 +113,7 @@ In the same folder, you can then call the `$ ./stop` script to terminate all the
 
 These scripts are provided as a convenience, and to demonstrate the commands needed to start and stop the example.
 
-### General Controller Example
+## General Controller
 
 This example uses the same Sushi configuration file as the previous minimal example, of OB-Xd, and step sequencer.
 
@@ -135,7 +135,7 @@ To run the example, execute the batch script `$ ./run_sequencer_general`, in the
 
 In the same folder, you can then call the `$ ./stop` script to terminate all the processes.
 
-### Multi-FX example on Blackboard
+## Multi-FX, for Blackboard
 
 This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.
 
@@ -143,7 +143,7 @@ To run the example, execute the batch script `$ ./run_multi_fx`, in the folder `
 
 In the sample folder, you can then call the `$ ./stop` script to terminate all the processes.
 
-### JUCE Example for Blackboard
+## JUCE Example, for Blackboard
 
 The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance's (Elk Pi and desktop) state over OSC.
 
@@ -159,7 +159,15 @@ Also enter the Elk Pi's IP address in the "Target IP Address" field of the Deskt
 
 Now, if you move a slider on the desktop GUI, the same parameter will be affected on the Elk Pi, with the display showing the new value received.
 
-### Benchmark Synth
+## OB-Xd Sequencer
+
+This example is an adaptation of the example we used when introducing the Elk Pi board at the 2019 ADC conference. Since it was very well received, we want to provide a version of it also for the Blackboard.
+
+It also comes with a fully-featured Open Stage Control GUI for remote-controlling over OSC.
+
+![obxd_open_stage_control](illustrations/obxd_open_stage_control.png)
+
+# Benchmark Synth
 
 This is a simple tool that uses Sushi's internal timing mechanism and its gRPC API to accurate measure the CPU load of a synthesizer at NoteON events.
 

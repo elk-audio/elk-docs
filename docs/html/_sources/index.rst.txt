@@ -43,6 +43,11 @@ are differences we will explicitly point them out.
    documents/working_with_elk_board.md
    documents/sensei_configuration_format.md
    documents/building_plugins_for_elk.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Examples:
+
    documents/elk_examples_overview.md
 
 Elk Online Forum
@@ -59,6 +64,13 @@ Elk Pi Datasheet
 
    documents/elk_pi_datasheet.rst
 
+Blackboard for Elk Pi 
+---------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   documents/blackboard.md
 
 Tech Articles
 --------------
