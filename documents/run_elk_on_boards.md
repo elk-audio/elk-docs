@@ -28,7 +28,7 @@ You will find several configurations and plugins ready to test on the image, und
 Unlike when running on a regular Linux machine, Sushi doesn't use JACK for audio on the Raspberry Pi, so you should run Sushi using the `-r` switch for selecting our RASPA low-latency front-end:
 
 ```bash
-$ sushi -r -c ~/config_files/mda-vst3-configs/config_mda_synth.json &
+$ sushi -r --multicore-processing=2 -c ~/config_files/mda-vst3-configs/config_mda_synth.json &
 ```
 
 Note the `&` at the end - this means the process starts in the background. When you later need to stop it, you type `$ pkill sushi`.

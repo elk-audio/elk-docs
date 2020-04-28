@@ -45,13 +45,17 @@
             
   <div class="section" id="examples-overview">
 <h1>Examples Overview<a class="headerlink" href="#examples-overview" title="Permalink to this headline">¶</a></h1>
-<p>All Elk example files can all be downloaded from our <a class="reference external" href="https://github.com/elk-audio/elk-examples/">elk-examples repository</a>, with the binary files they depend on available in the <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases">Releases section</a>.</p>
+<p>All Elk example files can be downloaded from our <a class="reference external" href="https://github.com/elk-audio/elk-examples/">elk-examples repository</a>, with the binary files they depend on available in the <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases">Releases section</a>.</p>
+<p>The examples include first some basic plugin hosting examples, with GUI templates demonstrating how they can be remote controlled over Open Sound Control.</p>
+<p>Then we present a set of complete instrument examples, which also involve the Blackboard, Sensei, and Python glue programs for integrating these into a complete instrument.</p>
+<div class="section" id="basic-plugin-hosting-examples">
+<h2>Basic plugin hosting examples<a class="headerlink" href="#basic-plugin-hosting-examples" title="Permalink to this headline">¶</a></h2>
 <p>For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the <a class="reference external" href="https://sourceforge.net/projects/mda-vst/">MDA JX10 synthesizer</a>, using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.</p>
 <p>Note that the linked files below, are all built for running natively on Linux or the UpCore board. All are for an Intel architecture, and will also run on Linux natively on an Intel computer.</p>
 <p>Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.</p>
 <p><strong>Note:</strong> In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the “JX-10 ELK CONTROLLER”-title, and then, in the ‘osc’-section of the editor, set the ‘address’ field to “/parameter/your_synth_name”, instead of the current “/parameter/jx10”.</p>
 <div class="section" id="mda-jx10-vst3-example">
-<h2>MDA JX10 VST3 Example<a class="headerlink" href="#mda-jx10-vst3-example" title="Permalink to this headline">¶</a></h2>
+<h3>MDA JX10 VST3 Example<a class="headerlink" href="#mda-jx10-vst3-example" title="Permalink to this headline">¶</a></h3>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li>config_play_vst3.json - the Sushi configuration file.</li>
@@ -59,52 +63,110 @@
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.</li>
 <li>mda-vst3-touchosc-gui.touchosc - a <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC</a> GUI controller, mirroring the controls in the Open Stage Control GUI.</li>
 </ol>
-<p>First unpack the tar-file with the plugin to your local drive, and edit the <code class="docutils literal notranslate"><span class="pre">config_play_vst3.json</span></code> to refer to that path.</p>
-<p>It serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.</p>
+<p>First unpack the tar-file with the plugin to your local drive, and edit the <code class="docutils literal notranslate"><span class="pre">config_play_vst3_desktop.json</span></code> to refer to that path, or place it in <code class="docutils literal notranslate"><span class="pre">/usr/lib/lxvst/</span></code>, the default path in the configuration path, and the  path commonly used for vst plugins on Linux.</p>
+<p>The example serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.</p>
 <p>This is the example referred to also in our guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>.</p>
 </div>
 <div class="section" id="mda-jx10-vst2-example">
-<h2>MDA JX10 VST2 Example<a class="headerlink" href="#mda-jx10-vst2-example" title="Permalink to this headline">¶</a></h2>
+<h3>MDA JX10 VST2 Example<a class="headerlink" href="#mda-jx10-vst2-example" title="Permalink to this headline">¶</a></h3>
 <p>Control of plugin parameters is to certain extent different between VST 2 and VST 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li>config_play_vst2.json - the Sushi configuration file.</li>
+<li>config_play_vst2_desktop.json - the Sushi configuration file.</li>
 <li>mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.</li>
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.</li>
 </ol>
-<p>The configuration file for this example differs to the one for the VST 3 version of the same plugin in one crucial way: besides routing MIDI messages directly to the plugin, it also:</p>
-<ol class="simple">
-<li>Maps MIDI CC values to control synth parameters.</li>
-<li>Connects MIDI Program Change messages to the plugin.</li>
-</ol>
-<p>You will also notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
+<p>You will notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
 <p>The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.</p>
 <p>The instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a> translate straightforwardly also for this VST 2 example - just read VST 2 where in the text and paths, VST 3 is specified.</p>
 <p><strong>IMPORTANT NOTE:</strong> The MDA JX10 VST 2 plugin will not work on the Raspberry Pi Elk, purely due to a bug in the plugin. We nonetheless leave this example, to best illustrate the differences between using VST 2 and VST 3.  Also, the MDA JX10 VST 2 will run fine on desktop Linux, as the bug does not affect that platform.</p>
 </div>
 <div class="section" id="lv2vst-wrapper-with-mda-jx10-lv2-example">
-<h2>LV2VST Wrapper, with MDA JX10 LV2 Example<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2-example" title="Permalink to this headline">¶</a></h2>
+<h3>LV2VST Wrapper, with MDA JX10 LV2 Example<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2-example" title="Permalink to this headline">¶</a></h3>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li>config_play_lv2vst.json - the Sushi configuration file.</li>
 <li>mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.</li>
 <li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the LV2VST plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</li>
-<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin for x86 desktop Linux.</li>
 </ol>
 <p>Again, the instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>, translate straightforwardly also for this example.</p>
-<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to <code class="docutils literal notranslate"><span class="pre">/usr/lib/lv2/mod-mda-JX10.lv2</span></code>. This is one of the paths where LV2 plugins should be installed, according to the LV2 standards conventions.</p>
+<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to <code class="docutils literal notranslate"><span class="pre">/usr/lib/lv2/mod-mda-JX10.lv2</span></code>. This is one of the paths where LV2 plugins should be installed, according to the LV2 standard’s conventions.</p>
+<p>Since the Sushi configuration file does not refer to absolute plugin paths for LV2, the .json file can be the same for both desktop Linux, and the RPi.</p>
 </div>
 <div class="section" id="elk-multi-fx-example">
-<h2>Elk Multi FX Example<a class="headerlink" href="#elk-multi-fx-example" title="Permalink to this headline">¶</a></h2>
+<h3>Elk Multi FX Example<a class="headerlink" href="#elk-multi-fx-example" title="Permalink to this headline">¶</a></h3>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li>elk_multi_fx.json - the Sushi configuration file.</li>
+<li>elk_multi_fx_desktop.json - the Sushi configuration file.</li>
+<li>elk_multi_fx_pi.json - the Sushi configuration file.</li>
 <li>elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.</li>
-<li>elk_multi_fx_main_app - a python script that acts as a middleman, a ‘glue’ app, between Sushi and the Open stage control GUI.</li>
-<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing the effects the example invokes.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins for x86 desktop Linux, containing the effects the example invokes.</li>
 </ol>
 <p>This is a more complex example, demonstrating a simple ‘glue’ app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.</p>
 <p>The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.</p>
+</div>
+<div class="section" id="elk-juce-example-source">
+<h3><strong>Elk JUCE Example</strong> Source<a class="headerlink" href="#elk-juce-example-source" title="Permalink to this headline">¶</a></h3>
+<p>The source code and JUCE <code class="docutils literal notranslate"><span class="pre">.jucer</span></code> file, for building our Elk JUCE example VST 2 plugin.</p>
+<p>For a configuration file, and Python glue program, please refer to the folder <code class="docutils literal notranslate"><span class="pre">bloackboard/elk-juce-example</span></code>, of the elk-examples repository.</p>
+</div>
+</div>
+<div class="section" id="complete-blackboard-instrument-examples">
+<h2>Complete Blackboard Instrument Examples<a class="headerlink" href="#complete-blackboard-instrument-examples" title="Permalink to this headline">¶</a></h2>
+<p>The examples under the <code class="docutils literal notranslate"><span class="pre">blackboard</span></code> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 b+ and Pi 4, but you will need to separately download the plugin binaries specific for each platform.</p>
+<p>Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.</p>
+<p>All examples depend on the same Sensei configuration file, which is available globally on your RPi starting from image version 0.7.2.</p>
+<p>The also depend on two Python libraries provided by Elk, and available globally on your RPi starting from image 0.7.2: elkpy, wrapping the gRPC and OSC calls to Sushi and Sensei, and elk_ui, wrapping the interfacing with the screen on the Blackboard.</p>
+<p>All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/plugins</span></code>.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  <code class="docutils literal notranslate"><span class="pre">/blackboard/controller-examples/sushi-configs/obxd_step.json</span></code>, to point to that new location.</p>
+<p>Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi’s <code class="docutils literal notranslate"><span class="pre">/udata</span></code> folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.</p>
+<div class="section" id="minimal-blackboard-example">
+<h3>Minimal Blackboard Example<a class="headerlink" href="#minimal-blackboard-example" title="Permalink to this headline">¶</a></h3>
+<p>The example is purposefully minimal, comprising of under 75 lines of Python code, comments included. It demonstrates the smallest amount of programming that still can produce a usable self-contained instrument.</p>
+<p>It consists of the <a class="reference external" href="https://www.discodsp.com/obxd/">OB-Xd</a> synthesizer, and our internal step-sequencer.</p>
+<p>The glue app <code class="docutils literal notranslate"><span class="pre">main_app_minimal</span></code> exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.</p>
+<p>The buttons on the Blackboard send Note on/off messages to Sushi, and also updates the LED above the button pressed. This way you can interact with the sequence played even if you do not have a midi keyboard. Or, if you turn off the sequencer starting by default (“playing_mode” : “playing” in the sushi config), you can play melodies with the buttons.</p>
+<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_sequencer_minimal</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
+<p>In the same folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+<p>These scripts are provided as a convenience, and to demonstrate the commands needed to start and stop the example.</p>
+</div>
+<div class="section" id="general-controller-example">
+<h3>General Controller Example<a class="headerlink" href="#general-controller-example" title="Permalink to this headline">¶</a></h3>
+<p>This example uses the same Sushi configuration file as the previous minimal example, of OB-Xd, and step sequencer.</p>
+<p>The Python glue app it uses however is much more extensive, and general purpose: no matter the Sushi configuration, the glue app will use the Blackboard controls to fully expose all plugins’ parameters for modification using the Blackboard’s physical controls.</p>
+<p>Pressing the encoder cycles through the available devices, exposing their parameters on the screen:</p>
+<ul class="simple">
+<li><strong>main</strong> [gain, pan]</li>
+<li><strong>sequencer</strong> [pitch, step, step_ind, for each step]. See <a class="reference internal" href="sushi_internal_plugins.html"><span class="doc">our documentation on internal plugins</span></a> for more details on the step sequencer.</li>
+<li><strong>synth</strong> - All of OB-Xd’s ~80 parameters - too many to list here. An OSC reference text file is available in <code class="docutils literal notranslate"><span class="pre">elk-examples/blackboard/obxd-sequencer/osc_address_patterns_for_obxd.txt</span></code>.</li>
+</ul>
+<p>By rotating the encoder, the page changes, exposing the next set of 4 parameters for the current plugin.</p>
+<p>Finally, each of the currently displayed 4 parameters, are editable using the Blackboard’s four faders.</p>
+<p>The buttons have the same note-playing functionality as in the minimal example.</p>
+<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_sequencer_general</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
+<p>In the same folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+</div>
+<div class="section" id="multi-fx-example-on-blackboard">
+<h3>Multi-FX example on Blackboard<a class="headerlink" href="#multi-fx-example-on-blackboard" title="Permalink to this headline">¶</a></h3>
+<p>This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.</p>
+<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_multi_fx</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
+<p>In the sample folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+</div>
+<div class="section" id="juce-example-for-blackboard">
+<h3>JUCE Example for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">¶</a></h3>
+<p>The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance’s (Elk Pi and desktop) state over OSC.</p>
+<p>Again, we provide batch scripts to start and stop, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/elk-juce-example</span></code>.</p>
+<p>In this repository’s releases section we provide downloads for the plugin built for Ubuntu Linux, Windows and OS X - executable as standalone, or as VST 2.</p>
+<p><img alt="elk_juce_example_screenshot" src="../_images/elk_juce_example_screenshot.png" /></p>
+<p>To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop’s IP address needs to be assigned to <code class="docutils literal notranslate"><span class="pre">GUI_APP_ADDRESS</span></code> in the Python glue app: <code class="docutils literal notranslate"><span class="pre">/blackboard/elk-juce-example/main/main_app</span></code>.</p>
+<p>Also enter the Elk Pi’s IP address in the “Target IP Address” field of the Desktop instance’s GUI.</p>
+<p>Now, if you move a slider on the desktop GUI, the same parameter will be affected on the Elk Pi, with the display showing the new value received.</p>
+</div>
+<div class="section" id="benchmark-synth">
+<h3>Benchmark Synth<a class="headerlink" href="#benchmark-synth" title="Permalink to this headline">¶</a></h3>
+<p>This is a simple tool that uses Sushi’s internal timing mechanism and its gRPC API to accurate measure the CPU load of a synthesizer at NoteON events.</p>
+<p>See the <a class="reference external" href="benchmark-synth/README">README.md in the benchmark-synth subfolder</a> (UPDATE LINK WHEN LIVE ON GITHUB) for more details.</p>
+</div>
 </div>
 </div>
 
@@ -117,10 +179,22 @@
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Examples Overview</a><ul>
+<li><a class="reference internal" href="#basic-plugin-hosting-examples">Basic plugin hosting examples</a><ul>
 <li><a class="reference internal" href="#mda-jx10-vst3-example">MDA JX10 VST3 Example</a></li>
 <li><a class="reference internal" href="#mda-jx10-vst2-example">MDA JX10 VST2 Example</a></li>
 <li><a class="reference internal" href="#lv2vst-wrapper-with-mda-jx10-lv2-example">LV2VST Wrapper, with MDA JX10 LV2 Example</a></li>
 <li><a class="reference internal" href="#elk-multi-fx-example">Elk Multi FX Example</a></li>
+<li><a class="reference internal" href="#elk-juce-example-source"><strong>Elk JUCE Example</strong> Source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-blackboard-instrument-examples">Complete Blackboard Instrument Examples</a><ul>
+<li><a class="reference internal" href="#minimal-blackboard-example">Minimal Blackboard Example</a></li>
+<li><a class="reference internal" href="#general-controller-example">General Controller Example</a></li>
+<li><a class="reference internal" href="#multi-fx-example-on-blackboard">Multi-FX example on Blackboard</a></li>
+<li><a class="reference internal" href="#juce-example-for-blackboard">JUCE Example for Blackboard</a></li>
+<li><a class="reference internal" href="#benchmark-synth">Benchmark Synth</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

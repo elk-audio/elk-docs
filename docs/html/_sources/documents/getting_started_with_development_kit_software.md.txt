@@ -15,12 +15,12 @@ First we assume you are able to run Sushi and connect to Jack audio.
 
 The example used, requires that you have these files from the  our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda_jx10_vst3):
 
-1. config_play_vst3.json - the Sushi configuration file.
+1. config_play_vst3_desktop.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
 3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the [TouchOSC app](https://hexler.net/products/touchosc).
 
-First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default path expected: `/usr/lib/VST3/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
+First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default path expected: `/usr/lib/lxvst/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
 
 To run Sushi using Jack, with the configuration file provided for running the MDA JX10 VST3 synthesizer: 
 
@@ -29,8 +29,10 @@ To run Sushi using Jack, with the configuration file provided for running the MD
 2. Type the following command:
 
 ```bash
-$ ./Sushi-x86_64-0.7.0.AppImage -j --connect-ports -c /path/to/example/config/files/config_play_vst3.json
+$ ./Sushi-x86_64-0.7.0.AppImage -j --multicore-processing=2 --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 ```
+
+The `--multicore-processing=2` argument specifies how many CPU cores Sushi can use. If omitted it uses 1.
 
 You should see the following status message:
 
@@ -50,8 +52,10 @@ That is because the `--connect-ports` command-line option used, attempts to conn
 If you were to instead run Sushi on the Development Kit Board, you should use the following command, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of Jack:
 
 ```bash
-$ sushi -r -c /relative/path/to/your/config.json
+$ sushi -r --multicore-processing=2 -c /relative/path/to/your/config.json
 ```
+
+Depending on which board you run, the number of cores can vary. For the Pi 4 we recommend 2 as a good starting point.
 
 ## Connecting MIDI to Sushi
 
