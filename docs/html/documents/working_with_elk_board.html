@@ -84,10 +84,39 @@
 </div>
 <div class="section" id="elk-system-utilities">
 <h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">¶</a></h2>
-<p>For important, common tasks with Elk, we provide the <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> script, which has commands for performing these common tasks straightforwardly.</p>
+<p>For important, common tasks with Elk, we provide the <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> script, which has commands for performing these common tasks straightforwardly. Type <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span> <span class="pre">-h</span></code> to get a description of the various commands and their respective arguments.</p>
+<div class="section" id="changing-audio-buffer-size">
+<h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">¶</a></h3>
+<p>The audio buffer size of the system can be changed by typing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--set-buffer-size</span> <span class="pre">[size]</span></code>. The buffer size should be a power of 2. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
+$ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
+</pre></div>
+</div>
+<p>Changes take place after a power cycle and persists across boots. It is reset upon a software update.</p>
+</div>
+<div class="section" id="changing-audio-hats">
+<h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
+<p>Currently Elk Audio OS supports the following audio hats:</p>
+<ol class="simple">
+<li>Elk Pi (default)</li>
+<li>HiFiBerry DAC+ ADC</li>
+<li>HiFiBerry DAC+ ADC Pro</li>
+</ol>
+<p>The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persists across boots. It is reset upon a software update.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
+$ sudo elk_system_utils --set-audio-hat elk-pi
+
+<span class="c1"># Use HiFiBerry DAC+ ADC audio hat</span>
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
+
+<span class="c1"># Use HiFiBerry DAC+ ADC Pro hat.</span>
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+</pre></div>
+</div>
+</div>
 <div class="section" id="enabling-disabling-write-access-to-root-partition">
 <h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">¶</a></h3>
-<p>The default state on a newly flashed image is that the root partition is read-only. With <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> you can change this, temporarily or permanently:</p>
+<p>The default state on a newly flashed image is that the root partition is has both read and write permissions. However, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default preference for Elk release images. You can change such permissions with <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code>, temporarily or permanently:</p>
 <div class="section" id="temporarily-change-write-access">
 <h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">¶</a></h4>
 <p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-rw</span></code> to mount your current rootfs partition as read-write.</p>
@@ -109,8 +138,8 @@
 </div>
 <div class="section" id="set-usb-speed">
 <h3>Set USB Speed<a class="headerlink" href="#set-usb-speed" title="Permalink to this headline">¶</a></h3>
-<p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers.</p>
-<p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost:</p>
+<p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. <em><strong>This problem seems to solved with the Raspberry Pi 4.</strong></em></p>
+<p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
 </pre></div>
 </div>
@@ -126,11 +155,6 @@
 <div class="section" id="over-wifi">
 <h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">¶</a></h3>
 <p>Log-in to the board as <em><strong>root</strong></em> (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
-<p>Temporarily give yourself write access to the partition for these changes to be stored:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
-</pre></div>
-</div>
-<p>Otherwise, you will need to complete the steps below every time you power on the board.</p>
 <p>The easiest way to setup WiFi access is through <code class="docutils literal notranslate"><span class="pre">connman</span></code>, which is enabled by default in dev
 images:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo connmanctl
@@ -150,6 +174,11 @@ $ ip a
 <p>Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
 Besides root access, you can login as <code class="docutils literal notranslate"><span class="pre">mind</span></code> user (password: <code class="docutils literal notranslate"><span class="pre">elk</span></code>) which is the preferred one to run Sushi and other userspace applications.</p>
 <p>Now finish with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-ro</span></code>  to set filesystem status back to read-only.</p>
+<p>If your file system is read-only, you can temporarily give yourself write access to the partition for these changes to be stored:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
+</pre></div>
+</div>
+<p>Otherwise, you will need to complete the steps above every time you power on the board.</p>
 </div>
 <div class="section" id="over-a-serial-connection">
 <h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
@@ -202,6 +231,7 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <ol>
 <li><p class="first">Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
 and, in case, additional environment variables or Sushi command line flags.</p>
+<p>Similarly, you can modify <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sensei.service</span></code> to provide the path for your SENSEI Json configuration.</p>
 <p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemD service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code>.</p>
 </li>
 <li><p class="first">Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p>
@@ -252,6 +282,8 @@ $ systemctl <span class="nb">enable</span> sensei
 </ul>
 </li>
 <li><a class="reference internal" href="#elk-system-utilities">Elk System Utilities</a><ul>
+<li><a class="reference internal" href="#changing-audio-buffer-size">Changing audio buffer size</a></li>
+<li><a class="reference internal" href="#changing-audio-hats">Changing Audio Hats</a></li>
 <li><a class="reference internal" href="#enabling-disabling-write-access-to-root-partition">Enabling/Disabling Write Access to Root Partition</a><ul>
 <li><a class="reference internal" href="#temporarily-change-write-access">Temporarily Change Write Access</a></li>
 <li><a class="reference internal" href="#permanently-change-write-access">Permanently Change Write Access</a></li>

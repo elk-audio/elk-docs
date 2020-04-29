@@ -45,11 +45,40 @@ The deployment/release image on the other hand is very streamlined, to minimise 
 
 ## Elk System Utilities
 
-For important, common tasks with Elk, we provide the `elk_system_utils` script, which has commands for performing these common tasks straightforwardly.
+For important, common tasks with Elk, we provide the `elk_system_utils` script, which has commands for performing these common tasks straightforwardly. Type `elk_system_utils -h` to get a description of the various commands and their respective arguments.
+
+### Changing audio buffer size
+The audio buffer size of the system can be changed by typing `sudo elk_system_utils --set-buffer-size [size]`. The buffer size should be a power of 2. For example:
+
+```bash
+# set audio buffer size to 32
+$ sudo elk_system_utils --set-buffer-size 32
+```
+
+Changes take place after a power cycle and persists across boots. It is reset upon a software update.
+
+### Changing Audio Hats
+Currently Elk Audio OS supports the following audio hats:
+  1. Elk Pi (default)
+  2. HiFiBerry DAC+ ADC
+  3. HiFiBerry DAC+ ADC Pro
+
+The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persists across boots. It is reset upon a software update.
+
+```bash
+# Use Elk Pi audio hat
+$ sudo elk_system_utils --set-audio-hat elk-pi
+
+# Use HiFiBerry DAC+ ADC audio hat
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
+
+# Use HiFiBerry DAC+ ADC Pro hat.
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+```
 
 ### Enabling/Disabling Write Access to Root Partition
 
-The default state on a newly flashed image is that the root partition is read-only. With `elk_system_utils` you can change this, temporarily or permanently:
+The default state on a newly flashed image is that the root partition is has both read and write permissions. However, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default preference for Elk release images. You can change such permissions with `elk_system_utils`, temporarily or permanently:
 
 #### Temporarily Change Write Access
 
@@ -77,9 +106,9 @@ To reset the boot count environment variable to 0, enter the command  `$ elk_sys
 
 ### Set USB Speed
 
-Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers.
+Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. ***This problem seems to solved with the Raspberry Pi 4.***
 
-We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost:
+We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:
 
 ```bash
 $ sudo elk_system_utils --usb-speed 1
@@ -98,14 +127,6 @@ $ sudo elk_system_utils --usb-speed 2
 ### Over WiFi
 
 Log-in to the board as ***root*** (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
-
-Temporarily give yourself write access to the partition for these changes to be stored:
-
-```bash
-$ sudo elk_system_utils --remount-as-rw
-```
-
-Otherwise, you will need to complete the steps below every time you power on the board.
 
 The easiest way to setup WiFi access is through `connman`, which is enabled by default in dev
 images:
@@ -129,6 +150,15 @@ Then, you can just ssh to the board from your host computer, and transfer files 
 Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
 
 Now finish with the command `$ sudo elk_system_utils --remount-as-ro`  to set filesystem status back to read-only.
+
+If your file system is read-only, you can temporarily give yourself write access to the partition for these changes to be stored:
+
+```bash
+$ sudo elk_system_utils --remount-as-rw
+```
+
+Otherwise, you will need to complete the steps above every time you power on the board.
+
 
 ### Over a Serial Connection
 
@@ -183,6 +213,8 @@ If you wish to have the board starting as an instrument automatically at startup
 
 1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
+
+   Similarly, you can modify `/lib/systemd/system/sensei.service` to provide the path for your SENSEI Json configuration.
    
    If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemD service defined in `/lib/systemd/system/midi-connections.service`.
 2. Enable both Sushi, Sensei and the MIDI connection service typing (as root):

@@ -92,8 +92,20 @@ $ aconnect X Y
 <p>Instead, type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">poweroff</span></code> to safely shutdown the system.</p>
 <p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>.</p>
 </div>
+<div class="section" id="if-you-have-an-hifiberry-audio-hat">
+<h2>4. If you have an HiFiBerry audio hat…<a class="headerlink" href="#if-you-have-an-hifiberry-audio-hat" title="Permalink to this headline">¶</a></h2>
+<p>Elk supports audio hats from HiFiBerry such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>. If you are using one of these, set the audio hat as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
+
+<span class="c1"># To use HiFiBerry DAC+ ADC Pro Hat.</span>
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+</pre></div>
+</div>
+<p>After this, restart the system for these changes to take into effect. Now you can run Sushi as described in Step 2. More information is available in the [Working with your Elk Board] (working_with_elk_board.md) section.</p>
+</div>
 <div class="section" id="further-steps">
-<h2>4. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>
+<h2>5. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>
 <p>Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!</p>
 <p>There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our documentation on <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a>.</p>
 </div>
@@ -111,7 +123,8 @@ $ aconnect X Y
 <li><a class="reference internal" href="#power-it-up-connect">1. Power it up, connect…</a></li>
 <li><a class="reference internal" href="#and-run-sushi">2. And run Sushi</a></li>
 <li><a class="reference internal" href="#powering-down">3. Powering Down</a></li>
-<li><a class="reference internal" href="#further-steps">4. Further steps</a></li>
+<li><a class="reference internal" href="#if-you-have-an-hifiberry-audio-hat">4. If you have an HiFiBerry audio hat…</a></li>
+<li><a class="reference internal" href="#further-steps">5. Further steps</a></li>
 </ul>
 </li>
 </ul>

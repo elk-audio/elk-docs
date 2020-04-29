@@ -56,7 +56,19 @@ Instead, type `$ sudo poweroff` to safely shutdown the system.
 
 Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under [Working with Elk](working_with_elk_board.md).
 
-## 4. Further steps
+## 4. If you have an HiFiBerry audio hat...
+Elk supports audio hats from HiFiBerry such as the ***DAC+ ADC*** and the ***DAC+ ADC Pro***. If you are using one of these, set the audio hat as follows:
+
+```bash
+# To use HiFiBerry DAC+ ADC audio hat
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
+
+# To use HiFiBerry DAC+ ADC Pro Hat.
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+```
+After this, restart the system for these changes to take into effect. Now you can run Sushi as described in Step 2. More information is available in the [Working with your Elk Board] (working_with_elk_board.md) section.
+
+## 5. Further steps
 
 Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!
 
