@@ -85,7 +85,7 @@ For a configuration file, and Python glue program, please refer to the folder `b
 
 # Complete Blackboard Examples
 
-The examples under the `blackboard` folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 b+ and Pi 4, but you will need to separately download the plugin binaries specific for each platform.
+The examples under the `blackboard` folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository's releases section: [Pi3](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz), & [Pi4](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz).
 
 Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.
 
@@ -149,7 +149,7 @@ The Elk JUCE example plugin is accompanied by a Python glue program for integrat
 
 Again, we provide batch scripts to start and stop, in the folder `/udata/elk-examples/blackboard/elk-juce-example`.
 
-In this repository's releases section we provide downloads for the plugin built for Ubuntu Linux, Windows and OS X - executable as standalone, or as VST 2.
+In this repository's releases section we provide downloads for the plugin built for [Ubuntu Linux](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip), [Windows](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip) and [OS X](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip) - executable as standalone, or as VST 2.
 
 ![elk_juce_example_screenshot](illustrations/elk_juce_example_screenshot.png)
 
@@ -171,4 +171,4 @@ It also comes with a fully-featured Open Stage Control GUI for remote-controllin
 
 This is a simple tool that uses Sushi's internal timing mechanism and its gRPC API to accurate measure the CPU load of a synthesizer at NoteON events.
 
-See the [README.md in the benchmark-synth subfolder](benchmark-synth/README.md) (UPDATE LINK WHEN LIVE ON GITHUB) for more details.
+See the [README.md in the benchmark-synth subfolder](https://github.com/elk-audio/elk-examples/blob/master/benchmark-synth/) for more details.

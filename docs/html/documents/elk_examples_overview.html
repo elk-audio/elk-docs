@@ -115,7 +115,7 @@
 </div>
 <div class="section" id="complete-blackboard-examples">
 <h1>Complete Blackboard Examples<a class="headerlink" href="#complete-blackboard-examples" title="Permalink to this headline">¶</a></h1>
-<p>The examples under the <code class="docutils literal notranslate"><span class="pre">blackboard</span></code> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 b+ and Pi 4, but you will need to separately download the plugin binaries specific for each platform.</p>
+<p>The examples under the <code class="docutils literal notranslate"><span class="pre">blackboard</span></code> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository’s releases section: <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz">Pi3</a>, &amp; <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz">Pi4</a>.</p>
 <p>Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.</p>
 <p>All examples depend on the same Sensei configuration file, which is available globally on your RPi starting from image version 0.7.2.</p>
 <p>The also depend on two Python libraries provided by Elk, and available globally on your RPi starting from image 0.7.2: elkpy, wrapping the gRPC and OSC calls to Sushi and Sensei, and elk_ui, wrapping the interfacing with the screen on the Blackboard.</p>
@@ -157,7 +157,7 @@
 <h2>JUCE Example, for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">¶</a></h2>
 <p>The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance’s (Elk Pi and desktop) state over OSC.</p>
 <p>Again, we provide batch scripts to start and stop, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/elk-juce-example</span></code>.</p>
-<p>In this repository’s releases section we provide downloads for the plugin built for Ubuntu Linux, Windows and OS X - executable as standalone, or as VST 2.</p>
+<p>In this repository’s releases section we provide downloads for the plugin built for <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip">Ubuntu Linux</a>, <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip">Windows</a> and <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip">OS X</a> - executable as standalone, or as VST 2.</p>
 <p><img alt="elk_juce_example_screenshot" src="../_images/elk_juce_example_screenshot.png" /></p>
 <p>To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop’s IP address needs to be assigned to <code class="docutils literal notranslate"><span class="pre">GUI_APP_ADDRESS</span></code> in the Python glue app: <code class="docutils literal notranslate"><span class="pre">/blackboard/elk-juce-example/main/main_app</span></code>.</p>
 <p>Also enter the Elk Pi’s IP address in the “Target IP Address” field of the Desktop instance’s GUI.</p>
@@ -173,7 +173,7 @@
 <div class="section" id="benchmark-synth">
 <h1>Benchmark Synth<a class="headerlink" href="#benchmark-synth" title="Permalink to this headline">¶</a></h1>
 <p>This is a simple tool that uses Sushi’s internal timing mechanism and its gRPC API to accurate measure the CPU load of a synthesizer at NoteON events.</p>
-<p>See the <a class="reference external" href="benchmark-synth/README">README.md in the benchmark-synth subfolder</a> (UPDATE LINK WHEN LIVE ON GITHUB) for more details.</p>
+<p>See the <a class="reference external" href="https://github.com/elk-audio/elk-examples/blob/master/benchmark-synth/">README.md in the benchmark-synth subfolder</a> for more details.</p>
 </div>
 
 
