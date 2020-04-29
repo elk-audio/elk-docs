@@ -88,23 +88,6 @@ Development Kit:
    `Elk Development Boards
    Overview <https://elk.audio/elk-development-boards-overview-3/>`__
 
-Examples
---------
-
-The Development Kit ships with a number of example plugins and
-configurations, which you should use to better learn what is possible
-with Elk:
-
-   MDA JX10 VST2 plugin example
-
-   MDA JX10 VST3 plugin example
-   MDA JX10 LV2 plugin example
-
-   Elk Multi FX Example
-
-All Elk example files can all be downloaded from our `GitHub elk-examples
-repository <https://github.com/elk-audio/elk-examples/>`__, with the binary files they depend on available in the `Releases section <https://github.com/elk-audio/elk-examples/releases/>`__.
-
 
 Search Page
 -----------
