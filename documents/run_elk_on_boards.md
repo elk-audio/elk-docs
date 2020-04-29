@@ -21,7 +21,25 @@ For setting up SSH connections follow these tips:
 3. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
 4. Once you have a terminal window, just log in: username `mind`, password `elk`.
 
-## 2. And run Sushi
+## 2. (If you have an HiFiBerry audio hat)
+
+Elk supports audio hats from HiFiBerry, such as the ***DAC+ ADC*** and the ***DAC+ ADC Pro***. 
+
+If you are not using these, you can skip to step 3, and run Sushi. 
+
+If however you *are* using one of these, set the audio hat as follows:
+
+```bash
+# To use HiFiBerry DAC+ ADC audio hat
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
+
+# To use HiFiBerry DAC+ ADC Pro Hat.
+$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+```
+
+After this, restart the system for these changes to take effect. Now you can run Sushi as described in step 3. More information on reconfiguring what hat to use is available in the [Working with your Elk Board](working_with_elk_board.md) section.
+
+## 3. And run Sushi
 
 You will find several configurations and plugins ready to test on the image, under the folders `~/config_files` and `~/plugins` in the user folder.
 
@@ -48,25 +66,13 @@ If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you w
 
 Since this is a development board, you will need to start Sushi manually - but under [Working with Elk](working_with_elk_board.md). we show how the device can be configured to load a setup automatically on power-on.
 
-## 3. Powering Down
+## 4. Powering down
 
 In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.
 
 Instead, type `$ sudo poweroff` to safely shutdown the system.
 
 Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under [Working with Elk](working_with_elk_board.md).
-
-## 4. If you have an HiFiBerry audio hat...
-Elk supports audio hats from HiFiBerry such as the ***DAC+ ADC*** and the ***DAC+ ADC Pro***. If you are using one of these, set the audio hat as follows:
-
-```bash
-# To use HiFiBerry DAC+ ADC audio hat
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
-
-# To use HiFiBerry DAC+ ADC Pro Hat.
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
-```
-After this, restart the system for these changes to take into effect. Now you can run Sushi as described in Step 2. More information is available in the [Working with your Elk Board] (working_with_elk_board.md) section.
 
 ## 5. Further steps
 

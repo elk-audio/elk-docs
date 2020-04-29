@@ -63,7 +63,7 @@ Currently Elk Audio OS supports the following audio hats:
   2. HiFiBerry DAC+ ADC
   3. HiFiBerry DAC+ ADC Pro
 
-The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persists across boots. It is reset upon a software update.
+The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persist across boots. The setting is however reset after any software update.
 
 ```bash
 # Use Elk Pi audio hat
