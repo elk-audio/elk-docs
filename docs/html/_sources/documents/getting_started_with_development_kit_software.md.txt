@@ -13,7 +13,7 @@ To output sound, you need to have Jack audio configured on your computer, which 
 
 First we assume you are able to run Sushi and connect to Jack audio.
 
-The example used, requires that you have these files from the  our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda_jx10_vst3):
+The example used, requires that you have these files from the  our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3):
 
 1. config_play_vst3_desktop.json - the Sushi configuration file.
 2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
