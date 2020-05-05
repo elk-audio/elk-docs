@@ -112,3 +112,17 @@ Adapter plugin to convert from note on and note off messages, to CV/gate informa
     + For each of the max possible CV voices:
       + "pitch_1"..."pitch_4": Pitch in semitones. Default: 0.0.
       + "velocity_1"..."velocity_4": Note On velocity. Default: 0.5.
+
+## Utility plugins
+
+### Wav writer
+
+Basic plugin that passes through audio without processing while writing it to a wav file.
+
+* **uid** : "sushi.testing.wav_writer"
+* **Parameters**:
++ "recording" : set the plugin to record. Range: [0, 1], Default: 0
++ "write_speed" : how often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0
+
+* **Properties**:
++ "destination_file" : the path and name of the file to write to. ".wav" is appended to the end of the property value internally.
