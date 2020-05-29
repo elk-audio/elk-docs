@@ -190,6 +190,27 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </div>
 </div>
+<div class="section" id="utility-plugins">
+<h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wav-writer">
+<h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
+<p>Basic plugin that passes through audio without processing while writing it to a wav file.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.wav_writer”</li>
+<li><strong>Parameters</strong>:</li>
+</ul>
+<ul class="simple">
+<li>“recording” : set the plugin to record. Range: [0, 1], Default: 0</li>
+<li>“write_speed” : how often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0</li>
+</ul>
+<ul class="simple">
+<li><strong>Properties</strong>:</li>
+</ul>
+<ul class="simple">
+<li>“destination_file” : the path and name of the file to write to. “.wav” is appended to the end of the property value internally.</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -223,6 +244,10 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#cv-in-out-plugins">CV In / Out plugins</a><ul>
 <li><a class="reference internal" href="#cv-to-control">CV to Control</a></li>
 <li><a class="reference internal" href="#control-to-cv">Control to CV</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utility-plugins">Utility plugins</a><ul>
+<li><a class="reference internal" href="#wav-writer">Wav writer</a></li>
 </ul>
 </li>
 </ul>
