@@ -35,6 +35,12 @@ Parameters are smoothed and can be modulated at run-time.
     + "gain" : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
     + "q" : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).
 
+### Mono Summing
+
+Simple plugin that sums all input channels to mono and outputs the same mono audio to all channels.
+
+ * **uid** : "sushi.testing.mono_summing"
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
