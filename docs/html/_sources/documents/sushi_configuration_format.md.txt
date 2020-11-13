@@ -72,7 +72,22 @@ Following is a reference for the Sushi .json configuration file.
     * **“channel”** - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
     * **“plugin”** - Name of the plugin to route program changes to.
 
+## Open Sound Control Connections
+
+**"osc"** -  Open Sound Control (OSC) notifications from processors.
+
+Here you can enable OSC messages to be transmitted from Sushi, whenever a processor's internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.
+
+This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:
+
+- **"enable_all_outputs"** - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.
+- **"enable_processor_outputs"** - Enable the OSC notifications for the specific processors. This is a list of entries with fields:
+  - **"processor"** - The name of the track or plugin to connect from.
+    - **"parameter_blocklist"** - A list of parameters of the processor, which should not trigger notifications.
+      - **"parameter"** - The name of the parameter to block the OSC output from.
+
 ## Control voltage and Gate connections
+
 **"cv\_control"** - Control Voltage (CV) and Gate connections to and from tracks and plugins.
 
 * **"cv\_inputs"** - Connect a CV input to parameter changes. Values from the selected CV input will be converted to parameter changes on the selected parameter. A list of routing objects with the following members:

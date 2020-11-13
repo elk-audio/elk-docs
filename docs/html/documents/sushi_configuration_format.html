@@ -140,6 +140,25 @@
 </li>
 </ul>
 </div>
+<div class="section" id="open-sound-control-connections">
+<h2>Open Sound Control Connections<a class="headerlink" href="#open-sound-control-connections" title="Permalink to this headline">¶</a></h2>
+<p><strong>“osc”</strong> -  Open Sound Control (OSC) notifications from processors.</p>
+<p>Here you can enable OSC messages to be transmitted from Sushi, whenever a processor’s internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.</p>
+<p>This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:</p>
+<ul class="simple">
+<li><strong>“enable_all_outputs”</strong> - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.</li>
+<li><strong>“enable_processor_outputs”</strong> - Enable the OSC notifications for the specific processors. This is a list of entries with fields:<ul>
+<li><strong>“processor”</strong> - The name of the track or plugin to connect from.<ul>
+<li><strong>“parameter_blocklist”</strong> - A list of parameters of the processor, which should not trigger notifications.<ul>
+<li><strong>“parameter”</strong> - The name of the parameter to block the OSC output from.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="control-voltage-and-gate-connections">
 <h2>Control voltage and Gate connections<a class="headerlink" href="#control-voltage-and-gate-connections" title="Permalink to this headline">¶</a></h2>
 <p><strong>“cv_control”</strong> - Control Voltage (CV) and Gate connections to and from tracks and plugins.</p>
@@ -205,6 +224,7 @@
 <li><a class="reference internal" href="#main-host-configuration">Main Host Configuration</a></li>
 <li><a class="reference internal" href="#tracks">Tracks</a></li>
 <li><a class="reference internal" href="#midi">MIDI</a></li>
+<li><a class="reference internal" href="#open-sound-control-connections">Open Sound Control Connections</a></li>
 <li><a class="reference internal" href="#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
 <li><a class="reference internal" href="#events">Events</a></li>
 </ul>
