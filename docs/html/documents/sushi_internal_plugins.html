@@ -84,6 +84,13 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="mono-summing">
+<h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">¶</a></h3>
+<p>Simple plugin that sums all input channels to mono and outputs the same mono audio to all channels.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.mono_summing”</li>
+</ul>
+</div>
 </div>
 <div class="section" id="midi-in-audio-out-plugins">
 <h2>Midi In / Audio Out Plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
@@ -127,22 +134,6 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><strong>uid</strong> : “sushi.testing.transposer”</li>
 <li><strong>Parameters</strong> :<ul>
 <li>“transpose” : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="step-sequencer">
-<h3>Step Sequencer<a class="headerlink" href="#step-sequencer" title="Permalink to this headline">¶</a></h3>
-<p>A simple 8-step sequencer.</p>
-<ul class="simple">
-<li><strong>uid</strong> : “sushi.testing.step_sequencer”</li>
-<li><strong>Parameters</strong> :<ul>
-<li>For each of the 8 steps:<ul>
-<li>“pitch_1”…”pitch_8” : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
-<li>“step_1”…”step_8” : Step on/off. Default: 1.0.</li>
-<li>“step_ind_1”…”step_ind_8” (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -205,16 +196,25 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="lfo-low-frequency-oscillator">
-<h3>LFO (Low Frequency Oscillator)<a class="headerlink" href="#lfo-low-frequency-oscillator" title="Permalink to this headline">¶</a></h3>
-<p>Simple control, generating a sine-wave LFO signal as an output parameter. The out parameter can in Sushi’s json configuration script be set to be output as CV - see documentation, and example configuration file on your board.</p>
+</div>
+<div class="section" id="utility-plugins">
+<h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wav-writer">
+<h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
+<p>Basic plugin that passes through audio without processing while writing it to a wav file.</p>
 <ul class="simple">
-<li><strong>uid</strong> : “sushi.testing.lfo”</li>
-<li><strong>Parameters</strong> :<ul>
-<li>“freq”: LFO frequency in Hertz. Default 0.1. (Normalized from [0.001, 10], Default: 1.0).</li>
-<li>“out” (output only) : Generated LFO output. Default: 0.5.</li>
+<li><strong>uid</strong> : “sushi.testing.wav_writer”</li>
+<li><strong>Parameters</strong>:</li>
 </ul>
-</li>
+<ul class="simple">
+<li>“recording” : set the plugin to record. Range: [0, 1], Default: 0</li>
+<li>“write_speed” : how often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0</li>
+</ul>
+<ul class="simple">
+<li><strong>Properties</strong>:</li>
+</ul>
+<ul class="simple">
+<li>“destination_file” : the path and name of the file to write to. “.wav” is appended to the end of the property value internally.</li>
 </ul>
 </div>
 </div>
@@ -233,6 +233,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#passthrough">Passthrough</a></li>
 <li><a class="reference internal" href="#gain">Gain</a></li>
 <li><a class="reference internal" href="#equalizer">Equalizer</a></li>
+<li><a class="reference internal" href="#mono-summing">Mono Summing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul>
@@ -242,7 +243,6 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
 <li><a class="reference internal" href="#arpeggiator">Arpeggiator</a></li>
 <li><a class="reference internal" href="#transposer">Transposer</a></li>
-<li><a class="reference internal" href="#step-sequencer">Step Sequencer</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
@@ -252,7 +252,10 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#cv-in-out-plugins">CV In / Out plugins</a><ul>
 <li><a class="reference internal" href="#cv-to-control">CV to Control</a></li>
 <li><a class="reference internal" href="#control-to-cv">Control to CV</a></li>
-<li><a class="reference internal" href="#lfo-low-frequency-oscillator">LFO (Low Frequency Oscillator)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utility-plugins">Utility plugins</a><ul>
+<li><a class="reference internal" href="#wav-writer">Wav writer</a></li>
 </ul>
 </li>
 </ul>

@@ -35,6 +35,12 @@ Parameters are smoothed and can be modulated at run-time.
     + "gain" : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
     + "q" : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).
 
+### Mono Summing
+
+Simple plugin that sums all input channels to mono, and outputs the same mono audio to all channels.
+
+ * **uid** : "sushi.testing.mono_summing"
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
@@ -69,17 +75,6 @@ Transposes incoming MIDI Note ON & OFF events by a fixed amount of semitones.
   * **uid** : "sushi.testing.transposer"
   * **Parameters** :
     + "transpose" : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
-
-### Step Sequencer
-
-A simple 8-step sequencer.
-
-* **uid** : "sushi.testing.step_sequencer"
-* **Parameters** :
-  * For each of the 8 steps:
-    + "pitch_1"..."pitch_8" : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
-    + "step_1"..."step_8" : Step on/off. Default: 1.0.
-    + "step_ind_1"..."step_ind_8" (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.
 
 ## Audio In / Parameter Out plugins
 
@@ -124,11 +119,16 @@ Adapter plugin to convert from note on and note off messages, to CV/gate informa
       + "pitch_1"..."pitch_4": Pitch in semitones. Default: 0.0.
       + "velocity_1"..."velocity_4": Note On velocity. Default: 0.5.
 
-### LFO (Low Frequency Oscillator)
+## Utility plugins
 
-Simple control, generating a sine-wave LFO signal as an output parameter. The out parameter can in Sushi's json configuration script be set to be output as CV - see documentation, and example configuration file on your board.
+### Wav writer
 
-  * **uid** : "sushi.testing.lfo"
-  * **Parameters** :
-    + "freq": LFO frequency in Hertz. Default 0.1. (Normalized from [0.001, 10], Default: 1.0).
-    + "out" (output only) : Generated LFO output. Default: 0.5.
+Basic plugin that passes through audio without processing while writing it to a wav file.
+
+* **uid** : "sushi.testing.wav_writer"
+* **Parameters**:
++ "recording" : set the plugin to record. Range: [0, 1], Default: 0
++ "write_speed" : how often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0
+
+* **Properties**:
++ "destination_file" : the path and name of the file to write to. ".wav" is appended to the end of the property value internally.
