@@ -60,6 +60,7 @@ plugins like sequencers.
 Sushi also supports `Open Sound Control
 (OSC) <http://opensoundcontrol.org/introduction-osc>`__. And can both
 send OSC updates and receive notes and parameter changes through OSC.
+Please see the dedicated subheading :ref:`sushi-control-osc` for more details on Sushi's OSC features.
 
 Another cool feature is **tempo sync over Ableton Link**, which enables
 you to seamlessly tempo sync Sushi with other devices over wifi. This
@@ -89,48 +90,7 @@ other programming language of choice. **The dual kernel architecture of
 Elk will guarantee that the graphics rendering will never interfere with
 the audio dsp processing.**
 
-Run-time OSC control
---------------------
 
-Sushi listens on port 24024 for the following OSC commands:
-
-+---------------------------+-----------+------------------------------------------+
-| **Path**                  |**TypeTag**| **Arguments**                            |
-+---------------------------+-----------+------------------------------------------+
-| /parameter/plugin\_name/p | f         | parameter value                          |
-| arameter\_name            |           |                                          |
-+---------------------------+-----------+------------------------------------------+
-| /bypass/plugin\_name      | i         | bypass state (1 = bypassed, 0 = enabled) |
-+---------------------------+-----------+------------------------------------------+
-| /keyboard\_event/track\_n\| siif      | event type ("note\_on", "note\_off",     |
-| ame                       |           | "aftertouch"), channel, note index,      |
-|                           |           | norm. value                              |
-+---------------------------+-----------+------------------------------------------+
-| /keyboard\_event/track\_n\| sif       | event type ("modulation", "pitch\_bend", |
-| ame                       |           | "aftertouch"), channel, norm. value      |
-+---------------------------+-----------+------------------------------------------+
-| /program/plugin\_name     | i         | program id                               |
-+---------------------------+-----------+------------------------------------------+
-| /engine/set\_tempo        | f         | tempo in beats per minute                |
-+---------------------------+-----------+------------------------------------------+
-| /engine/set\_time\_signat\| ii        | time signature numerator, time signature |
-| ure                       |           | denominator                              |
-+---------------------------+-----------+------------------------------------------+
-| /engine/set\_playing\_mod\| s         | "playing" or "stopped"                   |
-| e                         |           |                                          |
-+---------------------------+-----------+------------------------------------------+
-| /engine/set\_sync\_mode   | s         | "internal", "ableton\_link" or "midi"    |
-+---------------------------+-----------+------------------------------------------+
-| /engine/set\_timing\_stat\| i         | 1 = enabled, 0 = disabled                |
-| istics\_enabled           |           |                                          |
-+---------------------------+-----------+------------------------------------------+
-| /engine/reset\_timing\_st\| s(s)      | reset target ("all", "track",            |
-| atstics                   |           | "processor"), track name/processor name  |
-+---------------------------+-----------+------------------------------------------+
-
-The UDP ports it receives from and sends to can be changed with
-command-line arguments - just type ``$ sushi --help`` for the exact
-syntax.
 
 Audio Frontends
 ---------------

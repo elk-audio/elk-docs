@@ -1,0 +1,205 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Controlling Sushi using Open Sound Control &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" />
+    <link rel="prev" title="Sushi Configuration" href="sushi_configuration_format.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="controlling-sushi-using-open-sound-control">
+<span id="sushi-control-osc"></span><h1>Controlling Sushi using Open Sound Control<a class="headerlink" href="#controlling-sushi-using-open-sound-control" title="Permalink to this headline">¶</a></h1>
+<p>Sushi supports <a class="reference external" href="http://opensoundcontrol.org/introduction-osc">Open Sound Control
+(OSC)</a>. And can both
+send OSC updates and receive notes and parameter changes through OSC.</p>
+<div class="section" id="osc-messages-sushi-reacts-to">
+<h2>OSC Messages Sushi Reacts To<a class="headerlink" href="#osc-messages-sushi-reacts-to" title="Permalink to this headline">¶</a></h2>
+<p>By default, Sushi listens on port 24024 for the following OSC commands:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="14%" />
+<col width="53%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Path</strong></td>
+<td><strong>TypeTag</strong></td>
+<td><strong>Arguments</strong></td>
+</tr>
+<tr class="row-even"><td>/parameter/plugin_name/p
+arameter_name</td>
+<td>f</td>
+<td>parameter value</td>
+</tr>
+<tr class="row-odd"><td>/bypass/plugin_name</td>
+<td>i</td>
+<td>bypass state (1 = bypassed, 0 = enabled)</td>
+</tr>
+<tr class="row-even"><td>/keyboard_event/track_name</td>
+<td>siif</td>
+<td>event type (“note_on”, “note_off”,
+“aftertouch”), channel, note index,
+norm. value</td>
+</tr>
+<tr class="row-odd"><td>/keyboard_event/track_name</td>
+<td>sif</td>
+<td>event type (“modulation”, “pitch_bend”,
+“aftertouch”), channel, norm. value</td>
+</tr>
+<tr class="row-even"><td>/program/plugin_name</td>
+<td>i</td>
+<td>program id</td>
+</tr>
+<tr class="row-odd"><td>/engine/set_tempo</td>
+<td>f</td>
+<td>tempo in beats per minute</td>
+</tr>
+<tr class="row-even"><td>/engine/set_time_signature</td>
+<td>ii</td>
+<td>time signature numerator, time signature
+denominator</td>
+</tr>
+<tr class="row-odd"><td>/engine/set_playing_mode</td>
+<td>s</td>
+<td>“playing” or “stopped”</td>
+</tr>
+<tr class="row-even"><td>/engine/set_sync_mode</td>
+<td>s</td>
+<td>“internal”, “ableton_link” or “midi”</td>
+</tr>
+<tr class="row-odd"><td>/engine/set_timing_statistics_enabled</td>
+<td>i</td>
+<td>1 = enabled, 0 = disabled</td>
+</tr>
+<tr class="row-even"><td>/engine/reset_timing_statistics</td>
+<td>s(s)</td>
+<td>reset target (“all”, “track”,
+“processor”), track name/processor name</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="osc-messages-sushi-transmits">
+<h2>OSC Messages Sushi Transmits<a class="headerlink" href="#osc-messages-sushi-transmits" title="Permalink to this headline">¶</a></h2>
+<p>By default, Sushi transmits to port 24023.</p>
+<p>Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
+By default, this feature is disabled, but can be enabled either through adding a relevant section to the json
+configuration file, or by invoking relevant commands over gRPC.</p>
+<p>The message transmitted are from plugins in Sushi, when internal parameter is changed - for example,
+the level parameters of the internal Peak Meter plugin.</p>
+<p>This works in two ways, either all, or only specific processors, are enabled. See the relevant section
+in the documentation of the Sushi json configuration file for more details.</p>
+</div>
+<div class="section" id="changing-the-ports-for-sending-and-receiving-osc">
+<h2>Changing the ports for sending and receiving OSC<a class="headerlink" href="#changing-the-ports-for-sending-and-receiving-osc" title="Permalink to this headline">¶</a></h2>
+<p>The UDP ports it receives from and sends to can be changed with
+command-line arguments - just type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sushi</span> <span class="pre">--help</span></code> for the exact
+syntax.</p>
+<p>These can also be set over the gRPC API, or the json configuration file.</p>
+<p>Currently, Sushi only transmits to the localhost IP, so for listening to any OSC events from it,
+the OSC listener process will have to run on the same device as Sushi.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Controlling Sushi using Open Sound Control</a><ul>
+<li><a class="reference internal" href="#osc-messages-sushi-reacts-to">OSC Messages Sushi Reacts To</a></li>
+<li><a class="reference internal" href="#osc-messages-sushi-transmits">OSC Messages Sushi Transmits</a></li>
+<li><a class="reference internal" href="#changing-the-ports-for-sending-and-receiving-osc">Changing the ports for sending and receiving OSC</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_configuration_format.html"
+                        title="previous chapter">Sushi Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sushi_internal_plugins.html"
+                        title="next chapter">Sushi Internal Plugins</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_control_osc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
