@@ -39,6 +39,7 @@ are differences we will explicitly point them out.
 
    documents/sushi_overview.rst
    documents/sushi_configuration_format.md
+   documents/sushi_control_grpc.rst
    documents/sushi_control_osc.rst
    documents/sushi_internal_plugins.md
    documents/working_with_elk_board.md

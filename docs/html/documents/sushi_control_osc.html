@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" />
-    <link rel="prev" title="Sushi Configuration" href="sushi_configuration_format.html" /> 
+    <link rel="prev" title="Controlling Sushi using gRPC" href="sushi_control_grpc.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -32,7 +32,7 @@
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
@@ -48,6 +48,7 @@
 <p>Sushi supports <a class="reference external" href="http://opensoundcontrol.org/introduction-osc">Open Sound Control
 (OSC)</a>. And can both
 send OSC updates and receive notes and parameter changes through OSC.</p>
+<p>If you are unfamiliar with OSC, reading our <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">article introducing OSC in the context of Elk Audio OS</a> is a very good start.</p>
 <div class="section" id="osc-messages-sushi-reacts-to">
 <h2>OSC Messages Sushi Reacts To<a class="headerlink" href="#osc-messages-sushi-reacts-to" title="Permalink to this headline">¶</a></h2>
 <p>By default, Sushi listens on port 24024 for the following OSC commands:</p>
@@ -119,8 +120,8 @@ denominator</td>
 <h2>OSC Messages Sushi Transmits<a class="headerlink" href="#osc-messages-sushi-transmits" title="Permalink to this headline">¶</a></h2>
 <p>By default, Sushi transmits to port 24023.</p>
 <p>Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
-By default, this feature is disabled, but can be enabled either through adding a relevant section to the json
-configuration file, or by invoking relevant commands over gRPC.</p>
+By default, this feature is disabled, but can be enabled either through adding a relevant section to the <a class="reference external" href="sushi_configuration_format.html">json
+configuration file</a>, or by invoking relevant commands over <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">gRPC</span></a>.</p>
 <p>The message transmitted are from plugins in Sushi, when internal parameter is changed - for example,
 the level parameters of the internal Peak Meter plugin.</p>
 <p>This works in two ways, either all, or only specific processors, are enabled. See the relevant section
@@ -154,8 +155,8 @@ the OSC listener process will have to run on the same device as Sushi.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="sushi_configuration_format.html"
-                        title="previous chapter">Sushi Configuration</a></p>
+  <p class="topless"><a href="sushi_control_grpc.html"
+                        title="previous chapter">Controlling Sushi using gRPC</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="sushi_internal_plugins.html"
                         title="next chapter">Sushi Internal Plugins</a></p>
@@ -192,7 +193,7 @@ the OSC listener process will have to run on the same device as Sushi.</p>
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              >next</a> |</li>
         <li class="right" >
-          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>

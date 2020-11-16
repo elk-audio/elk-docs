@@ -7,6 +7,8 @@ Sushi supports `Open Sound Control
 (OSC) <http://opensoundcontrol.org/introduction-osc>`__. And can both
 send OSC updates and receive notes and parameter changes through OSC.
 
+If you are unfamiliar with OSC, reading our `article introducing OSC in the context of Elk Audio OS <https://elk.audio/controlling-plug-ins-in-elk-part-i/>`__ is a very good start.
+
 OSC Messages Sushi Reacts To
 ----------------------------
 
@@ -52,8 +54,8 @@ OSC Messages Sushi Transmits
 By default, Sushi transmits to port 24023.
 
 Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
-By default, this feature is disabled, but can be enabled either through adding a relevant section to the json
-configuration file, or by invoking relevant commands over gRPC.
+By default, this feature is disabled, but can be enabled either through adding a relevant section to the `json
+configuration file <sushi_configuration_format.html>`__, or by invoking relevant commands over :ref:`gRPC<sushi-control-grpc>`.
 
 The message transmitted are from plugins in Sushi, when internal parameter is changed - for example,
 the level parameters of the internal Peak Meter plugin.

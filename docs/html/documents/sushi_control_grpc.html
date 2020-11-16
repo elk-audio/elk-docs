@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Controlling Sushi using gRPC &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" />
+    <link rel="prev" title="Sushi Configuration" href="sushi_configuration_format.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="controlling-sushi-using-grpc">
+<span id="sushi-control-grpc"></span><h1>Controlling Sushi using gRPC<a class="headerlink" href="#controlling-sushi-using-grpc" title="Permalink to this headline">¶</a></h1>
+<p>If you are unfamiliar with gRPC, reading our <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-ii/">article introducing gRPC in the context of Elk Audio OS</a> is a very good start.</p>
+<p>We provide <a class="reference external" href="elk_examples_overview.html">up-to-date examples</a> of programs which use gRPC to communicate with Sushi.</p>
+<p>All these examples are written in Python, and use our <a class="reference external" href="https://github.com/elk-audio/elkpy">elkpy Python library</a>, which greatly simplifies controlling Sushi over gRPC.</p>
+<p>The heart of the gRPC integration, is the API definition in the <a class="reference external" href="https://github.com/elk-audio/sushi/blob/master/rpc_interface/protos/sushi_rpc.proto">sushi_rpc.proto file</a>, which you will find in the Sushi repository.</p>
+<p>If you plan to work in Python we recommend using our elkpy library, in which case you do not need to use gRPC directly, and can just read the documentation for elkpy.</p>
+<p>But if you are programming a controller using a different language than Python, referring to the above .proto file will be needed. Although even in that case,
+reading how the elkpy library invokes the Sushi gRPC methods may be useful.</p>
+<div class="section" id="high-level-overview-of-sushi-s-grpc-api">
+<h2>High-level Overview of Sushi’s gRPC API<a class="headerlink" href="#high-level-overview-of-sushi-s-grpc-api" title="Permalink to this headline">¶</a></h2>
+<p>Given Sushi’s complexity, we have split up the gRPC API to specific controllers, using each of which you can control one
+subsystem of Sushi.</p>
+<p>These are:</p>
+<ul class="simple">
+<li>SystemController</li>
+<li>KeyboardController</li>
+<li>AudioGraphController</li>
+<li>ProgramController</li>
+<li>ParameterController</li>
+<li>MidiController</li>
+<li>AudioRoutingController</li>
+<li>OscController</li>
+<li>CvGateController</li>
+<li>TransportController</li>
+<li>TimingController</li>
+<li>NotificationController</li>
+</ul>
+<p>All except NotificationController, define methods which the GUI can invoke to query Sushi on its state,
+and to issue commands to modify that state.</p>
+</div>
+<div class="section" id="sushi-grpc-notifications">
+<h2>Sushi gRPC Notifications<a class="headerlink" href="#sushi-grpc-notifications" title="Permalink to this headline">¶</a></h2>
+<p>NotificationController is different in that using it the GUI can subscribe to notifications of events happening in Sushi:
+for example if a plugin is added/removed, a track is added/removed, the transport state is changed, or a plugin’s internal parameter has changed value.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Controlling Sushi using gRPC</a><ul>
+<li><a class="reference internal" href="#high-level-overview-of-sushi-s-grpc-api">High-level Overview of Sushi’s gRPC API</a></li>
+<li><a class="reference internal" href="#sushi-grpc-notifications">Sushi gRPC Notifications</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_configuration_format.html"
+                        title="previous chapter">Sushi Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sushi_control_osc.html"
+                        title="next chapter">Controlling Sushi using Open Sound Control</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_control_grpc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_configuration_format.html" title="Sushi Configuration"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
