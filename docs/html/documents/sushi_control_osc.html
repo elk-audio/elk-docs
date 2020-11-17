@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controlling Sushi using Open Sound Control &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" />
+    <link rel="prev" title="Controlling Sushi using gRPC" href="sushi_control_grpc.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Controlling Sushi using Open Sound Control</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="controlling-sushi-using-open-sound-control">
+<span id="sushi-control-osc"></span><h1>Controlling Sushi using Open Sound Control<a class="headerlink" href="#controlling-sushi-using-open-sound-control" title="Permalink to this headline">¶</a></h1>
+<p>Sushi supports <a class="reference external" href="http://opensoundcontrol.org/introduction-osc">Open Sound Control
+(OSC)</a>. And can both
+send OSC updates and receive notes and parameter changes through OSC.</p>
+<p>If you are unfamiliar with OSC, reading our <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">article introducing OSC in the context of Elk Audio OS</a> is a very good start.</p>
+<div class="section" id="osc-messages-sushi-reacts-to">
+<h2>OSC Messages Sushi Reacts To<a class="headerlink" href="#osc-messages-sushi-reacts-to" title="Permalink to this headline">¶</a></h2>
+<p>By default, Sushi listens on port 24024 for the following OSC commands:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 14%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p><strong>TypeTag</strong></p></td>
+<td><p><strong>Arguments</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>/parameter/plugin_name/p
+arameter_name</p></td>
+<td><p>f</p></td>
+<td><p>parameter value</p></td>
+</tr>
+<tr class="row-odd"><td><p>/bypass/plugin_name</p></td>
+<td><p>i</p></td>
+<td><p>bypass state (1 = bypassed, 0 = enabled)</p></td>
+</tr>
+<tr class="row-even"><td><p>/keyboard_event/track_name</p></td>
+<td><p>siif</p></td>
+<td><p>event type (“note_on”, “note_off”,
+“aftertouch”), channel, note index,
+norm. value</p></td>
+</tr>
+<tr class="row-odd"><td><p>/keyboard_event/track_name</p></td>
+<td><p>sif</p></td>
+<td><p>event type (“modulation”, “pitch_bend”,
+“aftertouch”), channel, norm. value</p></td>
+</tr>
+<tr class="row-even"><td><p>/program/plugin_name</p></td>
+<td><p>i</p></td>
+<td><p>program id</p></td>
+</tr>
+<tr class="row-odd"><td><p>/engine/set_tempo</p></td>
+<td><p>f</p></td>
+<td><p>tempo in beats per minute</p></td>
+</tr>
+<tr class="row-even"><td><p>/engine/set_time_signature</p></td>
+<td><p>ii</p></td>
+<td><p>time signature numerator, time signature
+denominator</p></td>
+</tr>
+<tr class="row-odd"><td><p>/engine/set_playing_mode</p></td>
+<td><p>s</p></td>
+<td><p>“playing” or “stopped”</p></td>
+</tr>
+<tr class="row-even"><td><p>/engine/set_sync_mode</p></td>
+<td><p>s</p></td>
+<td><p>“internal”, “ableton_link” or “midi”</p></td>
+</tr>
+<tr class="row-odd"><td><p>/engine/set_timing_statistics_enabled</p></td>
+<td><p>i</p></td>
+<td><p>1 = enabled, 0 = disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>/engine/reset_timing_statistics</p></td>
+<td><p>s(s)</p></td>
+<td><p>reset target (“all”, “track”,
+“processor”), track name/processor name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="osc-messages-sushi-transmits">
+<h2>OSC Messages Sushi Transmits<a class="headerlink" href="#osc-messages-sushi-transmits" title="Permalink to this headline">¶</a></h2>
+<p>By default, Sushi transmits to port 24023.</p>
+<p>Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
+By default, this feature is disabled, but can be enabled either through adding a relevant section to the <a class="reference external" href="sushi_configuration_format.html">json
+configuration file</a>, or by invoking relevant commands over <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">gRPC</span></a>.</p>
+<p>The message transmitted are from plugins in Sushi, when internal parameter is changed - for example,
+the level parameters of the internal Peak Meter plugin.</p>
+<p>This works in two ways, either all, or only specific processors, are enabled. See the relevant section
+in the documentation of the Sushi json configuration file for more details.</p>
+</div>
+<div class="section" id="changing-the-ports-for-sending-and-receiving-osc">
+<h2>Changing the ports for sending and receiving OSC<a class="headerlink" href="#changing-the-ports-for-sending-and-receiving-osc" title="Permalink to this headline">¶</a></h2>
+<p>The UDP ports it receives from and sends to can be changed with
+command-line arguments - just type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sushi</span> <span class="pre">--help</span></code> for the exact
+syntax.</p>
+<p>These can also be set over the gRPC API, or the json configuration file.</p>
+<p>Currently, Sushi only transmits to the localhost IP, so for listening to any OSC events from it,
+the OSC listener process will have to run on the same device as Sushi.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Controlling Sushi using Open Sound Control</a><ul>
+<li><a class="reference internal" href="#osc-messages-sushi-reacts-to">OSC Messages Sushi Reacts To</a></li>
+<li><a class="reference internal" href="#osc-messages-sushi-transmits">OSC Messages Sushi Transmits</a></li>
+<li><a class="reference internal" href="#changing-the-ports-for-sending-and-receiving-osc">Changing the ports for sending and receiving OSC</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_control_grpc.html"
+                        title="previous chapter">Controlling Sushi using gRPC</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sushi_internal_plugins.html"
+                        title="next chapter">Sushi Internal Plugins</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_control_osc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Controlling Sushi using Open Sound Control</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

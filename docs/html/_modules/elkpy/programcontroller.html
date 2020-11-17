@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.programcontroller &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.programcontroller</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for elkpy.programcontroller</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Ruben Svensson&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Copyright 2017-2019 Modern Ancient Instruments Networked AB, dba Elk</span>
+
+<span class="s2">    elkpy is free software: you can redistribute it and/or modify it under the terms of the</span>
+<span class="s2">    GNU General Public License as published by the Free Software Foundation, either version 3</span>
+<span class="s2">    of the License, or (at your option) any later version.</span>
+
+<span class="s2">    elkpy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without</span>
+<span class="s2">    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
+
+<span class="s2">    You should have received a copy of the GNU General Public License along with elkpy.  If</span>
+<span class="s2">    not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL-3.0&quot;</span>
+
+<span class="kn">import</span> <span class="nn">grpc</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="c1">####################################</span>
+<span class="c1"># Sushi program controller class #</span>
+<span class="c1">####################################</span>
+
+<div class="viewcode-block" id="ProgramController"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController">[docs]</a><span class="k">class</span> <span class="nc">ProgramController</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to control the program in sushi via gRPC. It controls the programs for the processors and</span>
+<span class="sd">    can set programs and the get the current program as well as other programs availble.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _stub (ProgramControllerStub): Connection stubs to the gRPC program interface implemented in sushi.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ProgramController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
+                 <span class="n">sushi_proto_def</span> <span class="o">=</span> <span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The constructor for the ProgramController class setting up the gRPC connection with sushi.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            address (str): &#39;ip-addres:port&#39; The ip-addres and port at which to connect to sushi.</span>
+<span class="sd">            sushi_proto_def (str): path to .proto file with SUSHI&#39;s gRPC services definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Parameter address = </span><span class="si">{}</span><span class="s2">. Should be a string containing the ip-address and port of sushi (&#39;ip-address:port&#39;)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">address</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span> <span class="o">=</span> <span class="n">grpc_gen</span><span class="o">.</span><span class="n">modules_from_proto</span><span class="p">(</span><span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span><span class="o">.</span><span class="n">ProgramControllerStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProgramController.get_processor_current_program"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program">[docs]</a>    <span class="k">def</span> <span class="nf">get_processor_current_program</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the id of the current program of the specified processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_identifier (int): The id of the processor to get the current program id from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The id of the processors current program.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetProcessorCurrentProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span>
+            <span class="p">))</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">program</span>
+
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ProgramController.get_processor_current_program_name"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_processor_current_program_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the name of the current program of the specified processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_identifier (int): The id of the processor to get the current program name from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The name of the processors current program.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetProcessorCurrentProgramName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span>
+            <span class="p">))</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ProgramController.get_processor_program_name"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_program_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_processor_program_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">program_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the name of the specified program on the specified processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_identifier (int): The id of the processor to get the program name from.</span>
+<span class="sd">            program_identifier (int): The id of the program to get the name of.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The name of the program matching the processor and program id.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetProcessorProgramName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorProgramIdentifier</span><span class="p">(</span>
+                <span class="n">processor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span><span class="p">),</span>
+                <span class="n">program</span> <span class="o">=</span> <span class="n">program_identifier</span>
+            <span class="p">))</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">, program id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">,</span> <span class="n">program_identifier</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ProgramController.get_processor_programs"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_programs">[docs]</a>    <span class="k">def</span> <span class="nf">get_processor_programs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">info_types</span><span class="o">.</span><span class="n">ProgramInfo</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a list of the available programs of the specified processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_identifier (int): The id of the processor to get the programs from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[info_types.ProgramInfo]: A list of the programs available to the processor matching the id.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetProcessorPrograms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span>
+            <span class="p">))</span>
+
+            <span class="n">program_info_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">program_info</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">programs</span><span class="p">:</span>
+                <span class="n">program_info_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">info_types</span><span class="o">.</span><span class="n">ProgramInfo</span><span class="p">(</span><span class="n">program_info</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">program_info_list</span>
+
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ProgramController.set_processor_program"><a class="viewcode-back" href="../../elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.set_processor_program">[docs]</a>    <span class="k">def</span> <span class="nf">set_processor_program</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">program_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the program of the specified processor to the one matching the specified program id.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_identifier (int): The id of the processor to set the program of.</span>
+<span class="sd">            program_identifier (int): The id of the program to set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">SetProcessorProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorProgramSetRequest</span><span class="p">(</span>
+                <span class="n">processor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span><span class="p">),</span>
+                <span class="n">program</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProgramIdentifier</span><span class="p">(</span><span class="n">program</span> <span class="o">=</span> <span class="n">program_identifier</span><span class="p">)</span>
+            <span class="p">))</span>
+
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">, program id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">,</span> <span class="n">program_identifier</span><span class="p">))</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.programcontroller</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

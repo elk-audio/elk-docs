@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushi Internal Plugins &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with Elk Board" href="working_with_elk_board.html" />
+    <link rel="prev" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="working_with_elk_board.html" title="Working with Elk Board"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sushi-internal-plugins">
+<h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
+<p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
+<p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
+<p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
+<div class="section" id="audio-in-audio-out-plugins">
+<h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="passthrough">
+<h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">¶</a></h3>
+<p>Simply a bypass.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.passthrough”</p></li>
+<li><p><strong>Parameters</strong> : none</p></li>
+</ul>
+</div>
+<div class="section" id="gain">
+<h3>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">¶</a></h3>
+<p>Simple gain plugin. Note that the input controls are not smoothed, so it is not suitable to be used in a real-time context where the gain is adjusted by the user.
+For those use cases, prefer using the internal gain parameter of the tracks.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.gain”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“gain” : gain in dB. Default: 0.83. (Normalized from [-120, 24], Default 0.0).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="equalizer">
+<h3>Equalizer<a class="headerlink" href="#equalizer" title="Permalink to this headline">¶</a></h3>
+<p>Parametric peak equalizer (single band). The implementation is based on the warped bilinear transform following RBJ Audio Cookbook’s formulas.
+Parameters are smoothed and can be modulated at run-time.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.equalizer”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“frequency” : center frequency in Hertz. Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</p></li>
+<li><p>“gain” : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
+<li><p>“q” : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="mono-summing">
+<h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">¶</a></h3>
+<p>Simple plugin that sums all input channels to mono, and outputs the same mono audio to all channels.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.mono_summing”</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="midi-in-audio-out-plugins">
+<h2>Midi In / Audio Out Plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sample-player">
+<h3>Sample Player<a class="headerlink" href="#sample-player" title="Permalink to this headline">¶</a></h3>
+<p>Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.sampleplayer”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“volume” : static gain for the sample, in dB. Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</p></li>
+<li><p>“attack” : envelope attack time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
+<li><p>“decay” : envelope decay time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
+<li><p>“sustain” : envelope sustain level. Default: 1.0.</p></li>
+<li><p>“release” : envelope release time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
+</ul>
+</li>
+<li><p><strong>Properties</strong>:</p>
+<ul>
+<li><p>“sample_file” : path to .wav file to load</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="midi-in-midi-out-plugins">
+<h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arpeggiator">
+<h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
+<p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using Sushi’s tempo configuration.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.arpeggiator”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“range” : octave range, as integer. Default: 0.25. (Normalized from: [1, 5], Default: 2).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="transposer">
+<h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">¶</a></h3>
+<p>Transposes incoming MIDI Note ON &amp; OFF events by a fixed amount of semitones.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.transposer”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“transpose” : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="audio-in-parameter-out-plugins">
+<h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="peak-meter">
+<h3>Peak Meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">¶</a></h3>
+<p>Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.peakmeter”</p></li>
+<li><p>Parameters (output only) :</p>
+<ul>
+<li><p>“left” : detected level on the left track in dB. Normalized from [-120, 0].</p></li>
+<li><p>“right” : detected level on the right track in dB. Normalized from [-120, 0].</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cv-in-out-plugins">
+<h2>CV In / Out plugins<a class="headerlink" href="#cv-in-out-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cv-to-control">
+<h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">¶</a></h3>
+<p>Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.cv_to_control”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“channel”: MIDI channel. Default: 0.0. (Normalized from [0, 16], Default: 0.0).</p></li>
+<li><p>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
+<li><p>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</p></li>
+<li><p>For each of the max possible CV voices:</p>
+<ul>
+<li><p>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</p></li>
+<li><p>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="control-to-cv">
+<h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">¶</a></h3>
+<p>Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.control_to_cv”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“send_velocity”: Switch velocity transmission on/off. Default off.</p></li>
+<li><p>“send_modulation”: Switch modulation transmission on/off. Default off.</p></li>
+<li><p>“retrigger_enabled”: Switch retrigger mode on/off. Default off.</p></li>
+<li><p>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
+<li><p>“fine_tune”: Fine tune parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
+<li><p>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</p></li>
+<li><p>“modulation”: Modulation parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
+<li><p>For each of the max possible CV voices:</p>
+<ul>
+<li><p>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</p></li>
+<li><p>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="utility-plugins">
+<h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wav-writer">
+<h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
+<p>This plugin passes through audio without altering it, while writing it to a wav file.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.wav_writer”</p></li>
+<li><p><strong>Parameters</strong>:</p></li>
+</ul>
+<ul class="simple">
+<li><p>“recording” : Switch the plugin recording on/off. Range: [0, 1], Default: 0, for off.</p></li>
+<li><p>“write_speed” : How often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Properties</strong>:</p></li>
+</ul>
+<ul class="simple">
+<li><p>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sushi Internal Plugins</a><ul>
+<li><a class="reference internal" href="#audio-in-audio-out-plugins">Audio In / Audio Out Plugins</a><ul>
+<li><a class="reference internal" href="#passthrough">Passthrough</a></li>
+<li><a class="reference internal" href="#gain">Gain</a></li>
+<li><a class="reference internal" href="#equalizer">Equalizer</a></li>
+<li><a class="reference internal" href="#mono-summing">Mono Summing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul>
+<li><a class="reference internal" href="#sample-player">Sample Player</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
+<li><a class="reference internal" href="#arpeggiator">Arpeggiator</a></li>
+<li><a class="reference internal" href="#transposer">Transposer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
+<li><a class="reference internal" href="#peak-meter">Peak Meter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cv-in-out-plugins">CV In / Out plugins</a><ul>
+<li><a class="reference internal" href="#cv-to-control">CV to Control</a></li>
+<li><a class="reference internal" href="#control-to-cv">Control to CV</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utility-plugins">Utility plugins</a><ul>
+<li><a class="reference internal" href="#wav-writer">Wav writer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_control_osc.html"
+                        title="previous chapter">Controlling Sushi using Open Sound Control</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="working_with_elk_board.html"
+                        title="next chapter">Working with Elk Board</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_internal_plugins.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="working_with_elk_board.html" title="Working with Elk Board"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

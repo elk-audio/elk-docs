@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.OSCController &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="elkpy.ParameterController" href="elkpy.parametercontroller.html" />
+    <link rel="prev" title="elkpy.NotificationController" href="elkpy.notificationcontroller.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.parametercontroller.html" title="elkpy.ParameterController"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.notificationcontroller.html" title="elkpy.NotificationController"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.OSCController</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-elkpy.osccontroller">
+<span id="elkpy-osccontroller"></span><h1>elkpy.OSCController<a class="headerlink" href="#module-elkpy.osccontroller" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="elkpy.osccontroller.OscController">
+<em class="property">class </em><code class="sig-prename descclassname">elkpy.osccontroller.</code><code class="sig-name descname">OscController</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to manage OSC communication features in Sushi. It can change the OSC port and enable/disable
+OSC output for particular parameters</p>
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for the MidiController class setting up the gRPC connection with sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>address (str): IP address to Sushi in the uri form : ‘ip-addr:port’
+sushi_proto_def (str): path to the .proto file with SUSHI gRPC services definitions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.disable_output_for_parameter">
+<code class="sig-name descname">disable_output_for_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameter_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.disable_output_for_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.disable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable OSC for a parameter</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>parameter_id (int): The id of the parameter to disble OSC for</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.enable_output_for_parameter">
+<code class="sig-name descname">enable_output_for_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameter_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.enable_output_for_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.enable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable OSC for a parameter</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>parameter_id (int): The id of the parameter to enable OSC for</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.get_enabled_parameter_outputs">
+<code class="sig-name descname">get_enabled_parameter_outputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.get_enabled_parameter_outputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.get_enabled_parameter_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get which parameters have OSC output enabled</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List[str]: List of names of the parameters for which OSC is enabled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.get_receive_port">
+<code class="sig-name descname">get_receive_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.get_receive_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.get_receive_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>The the current port that OSC is receiving on</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: The port number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.osccontroller.OscController.get_send_port">
+<code class="sig-name descname">get_send_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.get_send_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.get_send_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>The the current port that OSC is transmitting to</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: The port number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="elkpy.notificationcontroller.html"
+                        title="previous chapter">elkpy.NotificationController</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elkpy.parametercontroller.html"
+                        title="next chapter">elkpy.ParameterController</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/elkpy-doc/elkpy.osccontroller.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.parametercontroller.html" title="elkpy.ParameterController"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.notificationcontroller.html" title="elkpy.NotificationController"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.OSCController</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

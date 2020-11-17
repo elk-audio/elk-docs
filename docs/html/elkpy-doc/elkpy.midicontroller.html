@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.MidiController &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="elkpy.NotificationController" href="elkpy.notificationcontroller.html" />
+    <link rel="prev" title="elkpy.KeyboadController" href="elkpy.keyboardcontroller.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.notificationcontroller.html" title="elkpy.NotificationController"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.keyboardcontroller.html" title="elkpy.KeyboadController"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.MidiController</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-elkpy.midicontroller">
+<span id="elkpy-midicontroller"></span><h1>elkpy.MidiController<a class="headerlink" href="#module-elkpy.midicontroller" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="elkpy.midicontroller.MidiController">
+<em class="property">class </em><code class="sig-prename descclassname">elkpy.midicontroller.</code><code class="sig-name descname">MidiController</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class to manage MIDI connections in Sushi via gRPC.
+It can create and remove keyboard, CC and PC connections from an external midi device to tracks,
+processors, and parameters in sushi.</p>
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span> <span class="o">=</span> <span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for the MidiController class setting up the gRPC connection with sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>address (str): IP address to Sushi in the uri form : ‘ip-addr:port’
+sushi_proto_def (str): path to the .proto file with SUSHI gRPC services definitions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.connect_cc_to_parameter">
+<code class="sig-name descname">connect_cc_to_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameter</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">cc_number</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">min_range</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em>, <em class="sig-param"><span class="n">max_range</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em>, <em class="sig-param"><span class="n">relative_mode</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.connect_cc_to_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.connect_cc_to_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects a Midi CC connection to a parameter</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>parameter (int): The id of the parameter to connect to
+channel (int): The midi channel to use for the connection
+port (int): The id of the midi port to use for the connection
+cc_number (int): The cc number to use for the connection
+min_range (float): The minimum parameter value used for the connection
+max_range (float): The maximum parameter value used for the connection
+relative_mode (bool): Wether the parameter changes realative to a previous value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.connect_kbd_input_to_track">
+<code class="sig-name descname">connect_kbd_input_to_track</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">raw_midi</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.connect_kbd_input_to_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.connect_kbd_input_to_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects a Midi Keyboard input connection to a track</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track (int): The id of the track to connect to
+channel (int): The id of the channel to connect to
+port (int): The id of the port to connect to
+raw_midi (bool): Enable raw midi</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.connect_kbd_output_from_track">
+<code class="sig-name descname">connect_kbd_output_from_track</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">raw_midi</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.connect_kbd_output_from_track"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.connect_kbd_output_from_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects a Midi Keyboard output connection to a track</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track (int): The id of the track to connect to
+channel (int): The id of the channel to connect to
+port (int): The id of the port to connect to
+raw_midi (bool): Enable raw midi</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.connect_pc_to_processor">
+<code class="sig-name descname">connect_pc_to_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.connect_pc_to_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.connect_pc_to_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects a Midi PC connection to a processor</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect
+channel (int): The midi channel to use for the connection
+port (int): The midi port to use for the connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_all_cc_from_processor">
+<code class="sig-name descname">disconnect_all_cc_from_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_all_cc_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_all_cc_from_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects all Midi CC connections from processor</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor to disconnect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_all_pc_from_processor">
+<code class="sig-name descname">disconnect_all_pc_from_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_all_pc_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_all_pc_from_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects all Midi PC connections from processor</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of processor to disconnect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_cc">
+<code class="sig-name descname">disconnect_cc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameter</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">cc_number</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">min_range</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em>, <em class="sig-param"><span class="n">max_range</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em>, <em class="sig-param"><span class="n">relative_mode</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_cc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects a Midi CC connection</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>parameter (int): The id of the parameter to connect to
+channel (int): The midi channel to use for the connection
+port (int): The id of the midi port to use for the connection
+cc_number (int): The cc number to use for the connection
+min_range (float): The minimum parameter value used for the connection
+max_range (float): The maximum parameter value used for the connection
+relative_mode (bool): Wether the parameter changes realative to a previous value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_kbd_input">
+<code class="sig-name descname">disconnect_kbd_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">raw_midi</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_kbd_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_kbd_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects a Midi Keyboard input connection from a track</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track (int): The id of the track to disconnect
+channel (int): The midi channel to disconnect
+port (int): The midi port to disconnect
+raw_midi (bool): Disconnect raw midi</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_kbd_output">
+<code class="sig-name descname">disconnect_kbd_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">raw_midi</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_kbd_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_kbd_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects a Midi Keyboard output connection from a track</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track (int): The id of the track to disconnect
+channel (int): The midi channel to disconnect
+port (int): The midi port to disconnect
+raw_midi (bool): Disconnect raw midi</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.disconnect_pc">
+<code class="sig-name descname">disconnect_pc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.disconnect_pc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.disconnect_pc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects a Midi PC connection</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect
+channel (int): The midi channel to use for the connection
+port (int): The midi port to use for the connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_all_cc_input_connections">
+<code class="sig-name descname">get_all_cc_input_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection" title="elkpy.sushi_info_types.MidiCCConnection">elkpy.sushi_info_types.MidiCCConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_all_cc_input_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_all_cc_input_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI CC input connections in Sushi</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List[info_types.MidiCCConnection]: List of MidiCCConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_all_kbd_input_connections">
+<code class="sig-name descname">get_all_kbd_input_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection" title="elkpy.sushi_info_types.MidiKbdConnection">elkpy.sushi_info_types.MidiKbdConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_all_kbd_input_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_all_kbd_input_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI Keyboard input Connections in Sushi</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List[info_types.MidiKbdConnection]: List of MidiKbdConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_all_kbd_output_connections">
+<code class="sig-name descname">get_all_kbd_output_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection" title="elkpy.sushi_info_types.MidiKbdConnection">elkpy.sushi_info_types.MidiKbdConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_all_kbd_output_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_all_kbd_output_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI Keyboard output Connections in Sushi</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List[info_types.MidiKbdConnection]: List of MidiKbdConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_all_pc_input_connections">
+<code class="sig-name descname">get_all_pc_input_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection" title="elkpy.sushi_info_types.MidiPCConnection">elkpy.sushi_info_types.MidiPCConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_all_pc_input_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_all_pc_input_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI PC input connections in Sushi</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List[info_types.MidiPCConnection]: List of MidiPCConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_cc_input_connections_for_processor">
+<code class="sig-name descname">get_cc_input_connections_for_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection" title="elkpy.sushi_info_types.MidiCCConnection">elkpy.sushi_info_types.MidiCCConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_cc_input_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_cc_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI CC connection for a processor.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor to get the input connections from</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[info_types.MidiCCConnection]: List of MidiCCConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_input_ports">
+<code class="sig-name descname">get_input_ports</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_input_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_input_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets MIDI input ports.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: IDs of the MIDI input ports</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_output_ports">
+<code class="sig-name descname">get_output_ports</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_output_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_output_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets MIDI output ports.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: IDs of the MIDI output ports</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.midicontroller.MidiController.get_pc_input_connections_for_processor">
+<code class="sig-name descname">get_pc_input_connections_for_processor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">processor_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection" title="elkpy.sushi_info_types.MidiPCConnection">elkpy.sushi_info_types.MidiPCConnection</a><span class="p">]</span><a class="reference internal" href="../_modules/elkpy/midicontroller.html#MidiController.get_pc_input_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.midicontroller.MidiController.get_pc_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all MIDI PC connection for a processor.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor to get the input connections from</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[info_types.MidiPCConnection]: List of MidiPCConnection objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="elkpy.keyboardcontroller.html"
+                        title="previous chapter">elkpy.KeyboadController</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elkpy.notificationcontroller.html"
+                        title="next chapter">elkpy.NotificationController</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/elkpy-doc/elkpy.midicontroller.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.notificationcontroller.html" title="elkpy.NotificationController"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.keyboardcontroller.html" title="elkpy.KeyboadController"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.MidiController</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

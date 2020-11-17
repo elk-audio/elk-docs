@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.KeyboadController &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="elkpy.MidiController" href="elkpy.midicontroller.html" />
+    <link rel="prev" title="elkpy.gRPCGenerator" href="elkpy.grpc_gen.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.midicontroller.html" title="elkpy.MidiController"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.grpc_gen.html" title="elkpy.gRPCGenerator"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.KeyboadController</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-elkpy.keyboardcontroller">
+<span id="elkpy-keyboadcontroller"></span><h1>elkpy.KeyboadController<a class="headerlink" href="#module-elkpy.keyboardcontroller" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="elkpy.keyboardcontroller.KeyboardController">
+<em class="property">class </em><code class="sig-prename descclassname">elkpy.keyboardcontroller.</code><code class="sig-name descname">KeyboardController</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="o">=</span><span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class to control the keyboard in sushi via gRPC. It can send typical keyboard events like
+note on, note off, pitch bend, modulation and after touch.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>_stub (KeyboardControllerStub): Connection stubs to the gRPC keyboard interface implemented in sushi.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="o">=</span><span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for the KeyboardController class setting up the gRPC connection with sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_aftertouch">
+<code class="sig-name descname">send_aftertouch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_aftertouch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_aftertouch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a aftertouch message to the specified track.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+value (float): The aftertouch value. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_modulation">
+<code class="sig-name descname">send_modulation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_modulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_modulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a modulation message to the specified track.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+value (float): The modulation value. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_note_aftertouch">
+<code class="sig-name descname">send_note_aftertouch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">note</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_note_aftertouch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_note_aftertouch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a aftertouch message to the specified track and note.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+note (int): The note which should receive the message. Follows the MIDI standard where middle c = 60.
+value (float): The aftertouch value of the note. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_note_off">
+<code class="sig-name descname">send_note_off</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">note</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">velocity</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_note_off"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_note_off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a note off message to the specified track.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+note (int): The note to send. Follows the MIDI standard where middle c = 60.
+velocity (float): The velocity of the note. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_note_on">
+<code class="sig-name descname">send_note_on</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">note</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">velocity</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_note_on"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_note_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a note on message to the specified track.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+note (int): The note to send. Follows the MIDI standard where middle c = 60.
+velocity (float): The velocity of the note. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="elkpy.keyboardcontroller.KeyboardController.send_pitch_bend">
+<code class="sig-name descname">send_pitch_bend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">track_identifier</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">channel</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)">float</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/keyboardcontroller.html#KeyboardController.send_pitch_bend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.keyboardcontroller.KeyboardController.send_pitch_bend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a pitch bend message to the specified track.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track that should receive the message.
+channel (int): The channel on which the message should be sent.
+value (float): The pitch bend value. Should be in range (0.0-1.0).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="elkpy.grpc_gen.html"
+                        title="previous chapter">elkpy.gRPCGenerator</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elkpy.midicontroller.html"
+                        title="next chapter">elkpy.MidiController</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/elkpy-doc/elkpy.keyboardcontroller.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.midicontroller.html" title="elkpy.MidiController"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.grpc_gen.html" title="elkpy.gRPCGenerator"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.KeyboadController</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
