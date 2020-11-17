@@ -33,59 +33,66 @@ This should also be straightforward by using standard build systems. Since relea
 
 There is an example plugin that can be compiled with the provided toolchain under `work/vst3-template`, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.
 
-## VST 2.x Plugins Using JUCE
+## VST Plugins Using JUCE
 
 Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.
 
 JUCE actively supports Linux as a build target, so if you don't use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. However, there are a couple of important issues to consider:
 
-  * Currently (release 5.4.x), JUCE only generates VST 2.4 plugins for Linux.
-  * JUCE plugins have a dependency on the X11 libraries.
+### Plugins using JUCE Version 6 
+
+With the JUCE 6 release, the ability to build for headless targets was added, meaning JUCE 6 can be used directly for building VST 3 plugins for Elk.
+
+Only a minor patch to JUCE is needed, unsetting $CC $CXX environment variables, as having those set broke cross-compilation.
+
+### Plugins using JUCE Version 5.x
+
+If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.
+
+  * JUCE release 5.4.x only generates VST 2.4 plugins for Linux.
+  * Generated plugins have a dependency on the X11 libraries.
 
 To overcome the second problem, we created a [JUCE fork](https://github.com/elk-audio/JUCE) that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin's editor functions. As a consequence, you don't need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.
 
-Here are the instructions to build a JUCE plugin with the cross-compiling toolchain:
-
-
-  1. Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.
-
-  2. Inside Projucer:
+If you use JUCE 5.4 you need to:
+  
+1. Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.
+2. Inside Projucer:
      * Ensure that the File -> Global Paths... are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.
-     * Create a new exporter of type "Linux Makefile".
-     * Choose only "VST Legacy" as audio plugin type under project properties.
-     * Remove modules like `juce_video` or `juce_opengl` if present.
-     * Disable the option for JUCE Browser under the module `juce_gui_extra`.
-     * For every module, make sure to use the option "use global search path".
+     * Choose only "VST Legacy" as audio plugin type under project properties.  
+3. Follow the instructions in the next section to export a makefile. 
+4. If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
+    
+ ### Cross-compiling JUCE Plugin
+
+Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.
+
+Inside Projucer:     
+* Create a new exporter of type "Linux Makefile".
+* Remove modules like `juce_video` or `juce_opengl` if present.
+* Disable the option for JUCE Browser under the module `juce_gui_extra`.
+* For every module, make sure to use the option "use global search path".
 * Save the project to export a new Makefile.
   
-  3. If you use recent Projucer releases 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the `JUCE_CPPFLAGS` variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
-  4. For a build to test natively on Linux, just run make normally, using the `-DJUCE_HEADLESS_PLUGIN_CLIENT=1` argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.
-  5. To cross-compile for *Elk Pi RPi3 32bit*, first source the SDK script in your shell environment:
+For a build to test natively on Linux, just run make normally, using the `-DJUCE_HEADLESS_PLUGIN_CLIENT=1` argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.
 
-```bash
-$ unset LD_LIBRARY_PATH
-$ source /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
-```
-
-and then build your plugin using:
-
-```
-$ AR=arm-elk-linux-gnueabi-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1" TARGET_ARCH="-mcpu=cortex-a53 -mtune=cortex-a53 -mfpu=neon-vfpv4 -mfloat-abi=hard"
-```
-
-  6. By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
-  ```bash
-  $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops -mvectorize-with-neon-quad"
-  ```
-
-  7. The equivalent instructions for *Elk Pi RPi4 64 bit* would be:
+To cross-compile for *Elk Pi RPi4 64 bit*, first source the SDK script in your shell environment:
 
 ```bash
 $ unset LD_LIBRARY_PATH
 $ source /path/to/environment-setup-aarch64-elk-linux
-$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"
+```
+
+And then build your plugin using:
+
+```
 $ AR=aarch64-elk-linux-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"
 ```
+
+By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
+  ```bash
+  $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"
+  ```
 
 ## LV2 Plugins
 

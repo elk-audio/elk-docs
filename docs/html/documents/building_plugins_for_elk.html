@@ -69,58 +69,60 @@
 <p>This should also be straightforward by using standard build systems. Since release 3.6.6, Steinberg also uses CMake as its primary build system and since 3.6.10, there have been several improvements for making it easier to use in a cross-compiling setup.</p>
 <p>There is an example plugin that can be compiled with the provided toolchain under <code class="docutils literal notranslate"><span class="pre">work/vst3-template</span></code>, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.</p>
 </div>
-<div class="section" id="vst-2-x-plugins-using-juce">
-<h2>VST 2.x Plugins Using JUCE<a class="headerlink" href="#vst-2-x-plugins-using-juce" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vst-plugins-using-juce">
+<h2>VST Plugins Using JUCE<a class="headerlink" href="#vst-plugins-using-juce" title="Permalink to this headline">¶</a></h2>
 <p>Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.</p>
 <p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. However, there are a couple of important issues to consider:</p>
+<div class="section" id="plugins-using-juce-version-6">
+<h3>Plugins using JUCE Version 6<a class="headerlink" href="#plugins-using-juce-version-6" title="Permalink to this headline">¶</a></h3>
+<p>With the JUCE 6 release, the ability to build for headless targets was added, meaning JUCE 6 can be used directly for building VST 3 plugins for Elk.</p>
+<p>Only a minor patch to JUCE is needed, unsetting $CC $CXX environment variables, as having those set broke cross-compilation.</p>
+</div>
+<div class="section" id="plugins-using-juce-version-5-x">
+<h3>Plugins using JUCE Version 5.x<a class="headerlink" href="#plugins-using-juce-version-5-x" title="Permalink to this headline">¶</a></h3>
+<p>If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.</p>
 <ul class="simple">
-<li>Currently (release 5.4.x), JUCE only generates VST 2.4 plugins for Linux.</li>
-<li>JUCE plugins have a dependency on the X11 libraries.</li>
+<li>JUCE release 5.4.x only generates VST 2.4 plugins for Linux.</li>
+<li>Generated plugins have a dependency on the X11 libraries.</li>
 </ul>
 <p>To overcome the second problem, we created a <a class="reference external" href="https://github.com/elk-audio/JUCE">JUCE fork</a> that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin’s editor functions. As a consequence, you don’t need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.</p>
-<p>Here are the instructions to build a JUCE plugin with the cross-compiling toolchain:</p>
+<p>If you use JUCE 5.4 you need to:</p>
 <ol class="simple">
 <li>Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.</li>
 <li>Inside Projucer:<ul>
 <li>Ensure that the File -&gt; Global Paths… are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.</li>
-<li>Create a new exporter of type “Linux Makefile”.</li>
 <li>Choose only “VST Legacy” as audio plugin type under project properties.</li>
+</ul>
+</li>
+<li>Follow the instructions in the next section to export a makefile.</li>
+<li>If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <code class="docutils literal notranslate"><span class="pre">JUCE_CPPFLAGS</span></code> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</li>
+</ol>
+</div>
+<div class="section" id="cross-compiling-juce-plugin">
+<h3>Cross-compiling JUCE Plugin<a class="headerlink" href="#cross-compiling-juce-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.</p>
+<p>Inside Projucer:</p>
+<ul class="simple">
+<li>Create a new exporter of type “Linux Makefile”.</li>
 <li>Remove modules like <code class="docutils literal notranslate"><span class="pre">juce_video</span></code> or <code class="docutils literal notranslate"><span class="pre">juce_opengl</span></code> if present.</li>
 <li>Disable the option for JUCE Browser under the module <code class="docutils literal notranslate"><span class="pre">juce_gui_extra</span></code>.</li>
 <li>For every module, make sure to use the option “use global search path”.</li>
+<li>Save the project to export a new Makefile.</li>
 </ul>
-</li>
-</ol>
-<ul class="simple">
-<li>Save the project to export a new Makefile.<ol>
-<li>If you use recent Projucer releases 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <code class="docutils literal notranslate"><span class="pre">JUCE_CPPFLAGS</span></code> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</li>
-<li>For a build to test natively on Linux, just run make normally, using the <code class="docutils literal notranslate"><span class="pre">-DJUCE_HEADLESS_PLUGIN_CLIENT=1</span></code> argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.</li>
-<li>To cross-compile for <em>Elk Pi RPi3 32bit</em>, first source the SDK script in your shell environment:</li>
-</ol>
-</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">unset</span> LD_LIBRARY_PATH
-$ <span class="nb">source</span> /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
-</pre></div>
-</div>
-<p>and then build your plugin using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ AR=arm-elk-linux-gnueabi-ar make -j`nproc` CONFIG=Release CFLAGS=&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1&quot; TARGET_ARCH=&quot;-mcpu=cortex-a53 -mtune=cortex-a53 -mfpu=neon-vfpv4 -mfloat-abi=hard&quot;
-</pre></div>
-</div>
-<ol class="simple">
-<li>By default, the toolchain only sets “-O2” and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:</li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops -mvectorize-with-neon-quad&quot;</span>
-</pre></div>
-</div>
-<ol class="simple">
-<li>The equivalent instructions for <em>Elk Pi RPi4 64 bit</em> would be:</li>
-</ol>
+<p>For a build to test natively on Linux, just run make normally, using the <code class="docutils literal notranslate"><span class="pre">-DJUCE_HEADLESS_PLUGIN_CLIENT=1</span></code> argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.</p>
+<p>To cross-compile for <em>Elk Pi RPi4 64 bit</em>, first source the SDK script in your shell environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">unset</span> LD_LIBRARY_PATH
 $ <span class="nb">source</span> /path/to/environment-setup-aarch64-elk-linux
-$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops&quot;</span>
-$ <span class="nv">AR</span><span class="o">=</span>aarch64-elk-linux-ar make -j<span class="sb">`</span>nproc<span class="sb">`</span> <span class="nv">CONFIG</span><span class="o">=</span>Release <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi&quot;</span> <span class="nv">TARGET_ARCH</span><span class="o">=</span><span class="s2">&quot;-mcpu=cortex-a72 -mtune=cortex-a72&quot;</span>
 </pre></div>
+</div>
+<p>And then build your plugin using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ AR=aarch64-elk-linux-ar make -j`nproc` CONFIG=Release CFLAGS=&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi&quot; TARGET_ARCH=&quot;-mcpu=cortex-a72 -mtune=cortex-a72&quot;
+</pre></div>
+</div>
+<p>By default, the toolchain only sets “-O2” and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="lv2-plugins">
@@ -240,7 +242,12 @@ $ make install
 <li><a class="reference internal" href="#cross-compiling-toolchain">Cross-Compiling Toolchain</a></li>
 <li><a class="reference internal" href="#vst-2-x-plugins-using-steinberg-sdk">VST 2.x Plugins Using Steinberg SDK</a></li>
 <li><a class="reference internal" href="#vst-3-x-plugins-using-steinberg-sdk">VST 3.x Plugins Using Steinberg SDK</a></li>
-<li><a class="reference internal" href="#vst-2-x-plugins-using-juce">VST 2.x Plugins Using JUCE</a></li>
+<li><a class="reference internal" href="#vst-plugins-using-juce">VST Plugins Using JUCE</a><ul>
+<li><a class="reference internal" href="#plugins-using-juce-version-6">Plugins using JUCE Version 6</a></li>
+<li><a class="reference internal" href="#plugins-using-juce-version-5-x">Plugins using JUCE Version 5.x</a></li>
+<li><a class="reference internal" href="#cross-compiling-juce-plugin">Cross-compiling JUCE Plugin</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#lv2-plugins">LV2 Plugins</a><ul>
 <li><a class="reference internal" href="#generate-ttl-files">Generate ttl files</a></li>
 <li><a class="reference internal" href="#cross-compile-the-plugins">Cross Compile the plugins</a></li>
