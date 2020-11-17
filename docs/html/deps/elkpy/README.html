@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushi - gRPC controller wrapper &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi - gRPC controller wrapper</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sushi-grpc-controller-wrapper">
+<h1>Sushi - gRPC controller wrapper<a class="headerlink" href="#sushi-grpc-controller-wrapper" title="Permalink to this headline">¶</a></h1>
+<p>A simple wrapper for controlling sushi over gRPC via a python script.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To use this wrapper, <a class="reference external" href="https://www.python.org/downloads/">python3.5</a> or greater need to be installed, together with the <code class="docutils literal notranslate"><span class="pre">grpcio-tools</span></code> Python package. Both are installed by default in the development releases of Elk for the various supported architectures.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>At the moment, just copy the <code class="docutils literal notranslate"><span class="pre">elkpy</span></code> module folder to the directory where you want to run it from.</p>
+<p><em>In the future a more automated install will be created.</em></p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>First import the sushicontroller package, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">elkpy</span> <span class="kn">import</span> <span class="n">sushicontroller</span> <span class="k">as</span> <span class="n">sc</span>
+</pre></div>
+</div>
+<p>Then create an instance of the <code class="docutils literal notranslate"><span class="pre">SushiController</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">controller</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">SushiController</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The default gRPC address is <code class="docutils literal notranslate"><span class="pre">localhost:51051</span></code> if you want to connect to another address. You can pass it as an argument to the constructor of the controller on the form <code class="docutils literal notranslate"><span class="pre">ip-address:port</span></code>.</p>
+<p>The second argument to the constructor of SushiController is a path to the <code class="docutils literal notranslate"><span class="pre">sushi_rpc.proto</span></code> file with Protobuf protocol definition. If empty, the class will look at <code class="docutils literal notranslate"><span class="pre">usr/share/sushi/sushi_rpc.proto</span></code> which is the deafult installtion path for sushi.</p>
+<p>To use the controller simply use the methods of the controller objects different sections. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a list of the tracks available in sushi</span>
+<span class="n">list_of_tracks</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">audio_graph</span><span class="o">.</span><span class="n">get_tracks</span><span class="p">()</span>
+
+<span class="c1"># Get the parameters of the track with the id passed to the method</span>
+<span class="n">track_id</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">list_of_processors</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get_track_parameters</span><span class="p">(</span><span class="n">track_id</span><span class="p">)</span>
+
+<span class="c1"># Send a note on message to a track in sushi</span>
+<span class="n">track_id</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">note</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_note_on</span><span class="p">(</span><span class="n">track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a full documentation of the available methods. Use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pydoc3 elkpy.sushicontroller.SushiController
+</pre></div>
+</div>
+<p>from where the elkpy folder is located.</p>
+</div>
+<div class="section" id="running-unit-tests">
+<h2>Running Unit Tests<a class="headerlink" href="#running-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Before running unit tests with the unittest command-line interface, you need to export the environment variable <code class="docutils literal notranslate"><span class="pre">SUSHI_GRPC_ELKPY_PROTO</span></code> pointing to the Sushi’s <code class="docutils literal notranslate"><span class="pre">.proto</span></code> definition file.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export SUSHI_GRPC_ELKPY_PROTO=./sushi_rpc.proto
+$ python3 -m unittest tests/sushi_controller_test.py
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sushi - gRPC controller wrapper</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/deps/elkpy/README.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi - gRPC controller wrapper</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

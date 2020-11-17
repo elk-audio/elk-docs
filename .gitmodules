@@ -1,0 +1,3 @@
+[submodule "deps/elkpy"]
+	path = deps/elkpy
+	url = git@bitbucket.org:mindswteam/elkpy.git

@@ -46,7 +46,8 @@ These are:
 All except NotificationController, define methods which the GUI can invoke to query Sushi on its state,
 and to issue commands to modify that state.
 
-For the details on the methods that can be invoked from each controller, please refer to the .proto file, and elkpy library.
+For the details on the methods that can be invoked from each controller, please refer to the .proto file, and `elkpy library
+documentation <../elkpy-doc/elkpy.html>`__.
 Here we'll only present a high-level overview of what each is for, without too much detail of how it is used.
 
 AudioGraphController
