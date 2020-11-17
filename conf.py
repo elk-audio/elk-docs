@@ -224,8 +224,14 @@ todo_include_todos = True
 
 github_doc_root = 'https://elk-audio.github.io/elk-docs/html/'
 
+def skip(app, what, name, obj, would_skip, options):
+    if name == "__init__":
+        return False
+    return would_skip
+
 # At the bottom of conf.py
 def setup(app):
+    app.connect("autodoc-skip-member", skip)
     app.add_config_value('recommonmark_config', {
             'url_resolver': lambda url: github_doc_root + url,
             'auto_toc_tree_section': 'Contents',

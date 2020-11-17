@@ -1,0 +1,7 @@
+SushiInfoTypes
+==============
+
+.. automodule:: elkpy.sushi_info_types
+   :members:
+   :undoc-members:
+   :show-inheritance:

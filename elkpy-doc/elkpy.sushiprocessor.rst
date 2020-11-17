@@ -1,0 +1,7 @@
+SushiProcessor
+==============
+
+.. automodule:: elkpy.sushiprocessor
+   :members:
+   :undoc-members:
+   :show-inheritance:

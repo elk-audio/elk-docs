@@ -1,0 +1,7 @@
+ParameterController
+===================
+
+.. automodule:: elkpy.parametercontroller
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+MidiController
+==============
+
+.. automodule:: elkpy.midicontroller
+   :members:
+   :undoc-members:
+   :show-inheritance:

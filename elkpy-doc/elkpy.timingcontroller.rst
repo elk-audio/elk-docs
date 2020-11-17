@@ -1,0 +1,7 @@
+TimingController
+================
+
+.. automodule:: elkpy.timingcontroller
+   :members:
+   :undoc-members:
+   :show-inheritance:

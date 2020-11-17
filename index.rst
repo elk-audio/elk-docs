@@ -43,6 +43,7 @@ are differences we will explicitly point them out.
    documents/working_with_elk_board.md
    documents/sensei_configuration_format.md
    documents/building_plugins_for_elk.md
+   elkpy-doc/modules.rst
 
 .. toctree::
    :maxdepth: 3
@@ -64,7 +65,7 @@ Elk Pi Datasheet
 
    documents/elk_pi_datasheet.rst
 
-Blackboard for Elk Pi 
+Blackboard for Elk Pi
 ---------------------
 
 .. toctree::

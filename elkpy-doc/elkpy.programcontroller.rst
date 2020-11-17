@@ -1,0 +1,7 @@
+ProgramController
+=================
+
+.. automodule:: elkpy.programcontroller
+   :members:
+   :undoc-members:
+   :show-inheritance:
