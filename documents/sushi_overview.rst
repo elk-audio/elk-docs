@@ -1,10 +1,8 @@
 Sushi: The DAW Inside Elk
 =========================
 
-The Elk Music Operating System consists of many different parts. In this
-post I will focus on what we call **Sushi**, the DAW that is at the core
-of audio and midi processing in the Elk MusicOS. I hope you find it
-interesting!
+The Elk Music Operating System consists of many different parts. Here we focus on what we call **Sushi**,
+the DAW that is at the core of audio and midi processing in the Elk MusicOS.
 
 Main Features
 -------------
@@ -17,7 +15,7 @@ controlled through MIDI, OSC, or a gRPC interface.
 
 **In a nutshell:**
 
--  Headless host with full control over MIDI, OSC and gRPC interfaces.
+-  Headless host with full run-time control over MIDI, OSC and gRPC interfaces.
 -  Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
@@ -30,7 +28,8 @@ Architecture
 
 Sushi shares the same basic architecture with most common DAWs like
 Cubase or Ableton Live, having an unlimited number of parallel channels.
-Each track supporting mono, stereo or up to 64 audio channels and as
+Most closely it is comparable to Logic Mainstage, in that it is a Live DAW.
+Each track supports mono, stereo or up to 64 audio channels and as
 many plugins as the CPU can handle. Pure MIDI tracks are also supported,
 for instance outputting MIDI from an arpeggiator or step sequencer to an
 external device.
@@ -105,7 +104,7 @@ Sushi supports multiple audio frontends:
 
 **The ability to run Sushi with Jack, the most common audio framework on
 Linux, makes it possible to run on almost any Linux system**. While it
-doesn’t give the same ultra low latency as running it with Raspa on an
+doesn't give the same ultra low latency as running it with Raspa on an
 Elk system. It does make it incredibly easy to test and develop plugins
 and setups for Elk on a standard Linux machine. In fact, **almost all of
 the development of Sushi has been done on standard Linux machines**.
@@ -128,7 +127,7 @@ Configuration and Routing
 
 Most of the initial setup of Sushi is done through a
 `JSON <https://en.wikipedia.org/wiki/JSON>`__ configuration file. In
-this it’s possible to specify the number of tracks to use, their channel
+this it’s possible to specify the initial number of tracks to use, their channel
 setup (mono, stereo, multichannel), the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
@@ -145,10 +144,10 @@ Control <http://opensoundcontrol.org/>`__ (OSC) is available, as well as
 a more complex API using Google's gRPC, which offers full control and
 bidirectional communication to a remote client.
 
-With the run-time RPC API it is possible to perform common tasks such as
-control of plugins' automation parameters, track and mixing controls,
-adding/removing plugin to tracks, querying the engine for track level
-meters or CPU usage by plugin, etc.
+With the run-time RPC API it is possible to perform the majority of tasks desired,
+such as adding/removing tracks & plugins; controlling plugins' automation parameters, track and mixing controls;
+adding/removing plugin to tracks;
+querying the engine for track level meters or CPU usage by plugin; etc.
 
 Sushi's JSON format is fully specified in a JSON schema, but it is
 probably easier to learn by studying the provided examples, which cover
@@ -160,6 +159,8 @@ Format <sushi_configuration_format.html>`__ for more details.
 
 Discovering Sushi Configuration's Available Parameters
 ------------------------------------------------------
+
+These can be discovered in several ways.
 
 The name, label, ID and OSC paths for the hosted plugins' parameters, is
 dumped to stdout in JSON format when running Sushi with the flag
@@ -179,6 +180,8 @@ So, from the above example, to set the JX 10 synth's resonance to 0.5
 default UDP port for this is 24024):
 
 ``/parameter/jx10/VCF_Reso, f, 0.5``
+
+The parameters can also be queried over gRPC's ParameterController, documented under :ref:`sushi-control-grpc`.
 
 Plugin Format Support
 ---------------------

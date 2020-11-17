@@ -45,10 +45,8 @@
             
   <div class="section" id="sushi-the-daw-inside-elk">
 <h1>Sushi: The DAW Inside Elk<a class="headerlink" href="#sushi-the-daw-inside-elk" title="Permalink to this headline">¶</a></h1>
-<p>The Elk Music Operating System consists of many different parts. In this
-post I will focus on what we call <strong>Sushi</strong>, the DAW that is at the core
-of audio and midi processing in the Elk MusicOS. I hope you find it
-interesting!</p>
+<p>The Elk Music Operating System consists of many different parts. Here we focus on what we call <strong>Sushi</strong>,
+the DAW that is at the core of audio and midi processing in the Elk MusicOS.</p>
 <div class="section" id="main-features">
 <h2>Main Features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
 <p>Sushi is a track-based, headless Digital Audio Workstation. It works as
@@ -58,7 +56,7 @@ high performance and stability under low latency conditions. It can be
 controlled through MIDI, OSC, or a gRPC interface.</p>
 <p><strong>In a nutshell:</strong></p>
 <ul class="simple">
-<li>Headless host with full control over MIDI, OSC and gRPC interfaces.</li>
+<li>Headless host with full run-time control over MIDI, OSC and gRPC interfaces.</li>
 <li>Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.</li>
 <li>Highly optimized for low latency performance.</li>
 <li>Multithreaded audio processing support.</li>
@@ -71,7 +69,8 @@ controlled through MIDI, OSC, or a gRPC interface.</p>
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <p>Sushi shares the same basic architecture with most common DAWs like
 Cubase or Ableton Live, having an unlimited number of parallel channels.
-Each track supporting mono, stereo or up to 64 audio channels and as
+Most closely it is comparable to Logic Mainstage, in that it is a Live DAW.
+Each track supports mono, stereo or up to 64 audio channels and as
 many plugins as the CPU can handle. Pure MIDI tracks are also supported,
 for instance outputting MIDI from an arpeggiator or step sequencer to an
 external device.</p>
@@ -157,7 +156,7 @@ frontends.</p>
 <h2>Configuration and Routing<a class="headerlink" href="#configuration-and-routing" title="Permalink to this headline">¶</a></h2>
 <p>Most of the initial setup of Sushi is done through a
 <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> configuration file. In
-this it’s possible to specify the number of tracks to use, their channel
+this it’s possible to specify the initial number of tracks to use, their channel
 setup (mono, stereo, multichannel), the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
@@ -171,10 +170,10 @@ network. At the moment, an API based on <a class="reference external" href="http
 Control</a> (OSC) is available, as well as
 a more complex API using Google’s gRPC, which offers full control and
 bidirectional communication to a remote client.</p>
-<p>With the run-time RPC API it is possible to perform common tasks such as
-control of plugins’ automation parameters, track and mixing controls,
-adding/removing plugin to tracks, querying the engine for track level
-meters or CPU usage by plugin, etc.</p>
+<p>With the run-time RPC API it is possible to perform the majority of tasks desired,
+such as adding/removing tracks &amp; plugins; controlling plugins’ automation parameters, track and mixing controls;
+adding/removing plugin to tracks;
+querying the engine for track level meters or CPU usage by plugin; etc.</p>
 <p>Sushi’s JSON format is fully specified in a JSON schema, but it is
 probably easier to learn by studying the provided examples, which cover
 most common configurations, including multitrack/multichannel
@@ -184,6 +183,7 @@ Format</a> for more details.</p>
 </div>
 <div class="section" id="discovering-sushi-configuration-s-available-parameters">
 <h2>Discovering Sushi Configuration’s Available Parameters<a class="headerlink" href="#discovering-sushi-configuration-s-available-parameters" title="Permalink to this headline">¶</a></h2>
+<p>These can be discovered in several ways.</p>
 <p>The name, label, ID and OSC paths for the hosted plugins’ parameters, is
 dumped to stdout in JSON format when running Sushi with the flag
 <code class="docutils literal notranslate"><span class="pre">--dump-plugins</span></code>. For example, to pipe the parameters for the LV2 JX10
@@ -197,6 +197,7 @@ across plugin formats.</p>
 (halfway its range), send the following OSC message to Sushi (the
 default UDP port for this is 24024):</p>
 <p><code class="docutils literal notranslate"><span class="pre">/parameter/jx10/VCF_Reso,</span> <span class="pre">f,</span> <span class="pre">0.5</span></code></p>
+<p>The parameters can also be queried over gRPC’s ParameterController, documented under <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">Controlling Sushi using gRPC</span></a>.</p>
 </div>
 <div class="section" id="plugin-format-support">
 <h2>Plugin Format Support<a class="headerlink" href="#plugin-format-support" title="Permalink to this headline">¶</a></h2>

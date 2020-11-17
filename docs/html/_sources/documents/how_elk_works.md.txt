@@ -4,11 +4,11 @@ This section provides a look under the hood of a device Powered by Elk.
 
 This post is the first in a series that will give you a quick and informal overview of Elk MusicOS and its components for the more tech-savvy of you who want to dive into the details.
 
-Elk is an **embedded Linux distribution**, *highly* *optimized for low-latency audio* and that comes with *several components to streamline the development of professional audio and music devices*. The supported hardware are either one of our **Elk development boards** or custom hardware designed for products powered by Elk, such as the [DV Mark Smart Multiamp](http://www.dvmark.it/media/upload_area/2019/01/20/dvm_news2019_web.pdf).
+Elk is an **embedded Linux distribution**, *highly* *optimized for low-latency audio* and that comes with *several components to streamline the development of professional audio and music devices*. The supported hardware are either one of our **Elk development boards** or custom hardware designed for products powered by Elk.
 
 In the design of Elk we have tried to follow a UNIX-like philosophy of having several focused components that “*do one thing and do it well*”. All of these can be reused for devices of different kinds such as digital FX units, synthesizers, mixers, etc. The only custom work required for each device is then just a matter of writing a small *glue application* that connects together Elk’s components for the particular use case.
 
-The last ingredients needed for the product recipe are **audio processing plugins**. Luckily, Elk is able to support standard formats such as **VST** (both 2.x and 3.x), **LV2** and **Rack Extensions**. If you have access to the plugins’ source code is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.
+The last ingredients needed for the product recipe are **audio processing plugins**. Luckily, Elk supports standard formats such as **VST** (both 2.x and 3.x), **LV2** and **Rack Extensions**. If you have access to the plugins’ source code is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.
 
 ## What Can You Do With Elk?
 
