@@ -122,12 +122,21 @@ which can be used together or separately to set Sushi up, and control it during 
 <li>At run-time, Sushi can be controlled via two API’s available over the network: gRPC, and OSC.</li>
 <li>End-users can additionally control Sushi and hosted plugins directly, using MIDI and Ableton Link, with the added flexibility of OSC for more advanced users.</li>
 </ul>
-<div class="figure">
+<div class="figure" id="id1">
 <img alt="img" src="../_images/sushi_architecture.png" />
+<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span></p>
 </div>
+</div>
+<div class="section" id="sushi-s-public-api-model">
+<h2>Sushi’s Public API Model<a class="headerlink" href="#sushi-s-public-api-model" title="Permalink to this headline">¶</a></h2>
+<p>While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC and OSC,
+the model they all control is the same.</p>
+<p>It is thus best to describe this common model once below, and then address individual peculiarities for the
+separate control avenues available.</p>
+<p>Please refer to the dedicated section on the <a class="reference internal" href="sushi_public_api_model.html#sushi-public-api-model"><span class="std std-ref">Sushi Public API Model</span></a> for the full description.</p>
 <div class="section" id="json-configuration-file">
-<h3>JSON configuration file<a class="headerlink" href="#json-configuration-file" title="Permalink to this headline">¶</a></h3>
-<p>In this it’s possible to specify the initial number of tracks to use, their channel
+<h3>JSON Configuration File<a class="headerlink" href="#json-configuration-file" title="Permalink to this headline">¶</a></h3>
+<p>In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel
 setup (mono, stereo, multichannel), the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
@@ -140,7 +149,7 @@ configurations.</p>
 Format</a> for more details.</p>
 </div>
 <div class="section" id="run-time-control">
-<h3>Run-time control<a class="headerlink" href="#run-time-control" title="Permalink to this headline">¶</a></h3>
+<h3>Run-Time Control<a class="headerlink" href="#run-time-control" title="Permalink to this headline">¶</a></h3>
 <p>The majority of run-time functionality is available using Google’s gRPC,
 which offers full control of all aspects of Sushi and hosted plugins,
 with bidirectional communication to a remote client.</p>
@@ -155,7 +164,7 @@ Sushi can both send OSC updates and receive notes and parameter changes through 
 Please see the dedicated subheading <a class="reference internal" href="sushi_control_osc.html#sushi-control-osc"><span class="std std-ref">Controlling Sushi using Open Sound Control</span></a> for more details on Sushi’s OSC features.</p>
 </div>
 <div class="section" id="end-user-control">
-<h3>End-User control<a class="headerlink" href="#end-user-control" title="Permalink to this headline">¶</a></h3>
+<h3>End-User Control<a class="headerlink" href="#end-user-control" title="Permalink to this headline">¶</a></h3>
 <p>MIDI input and output is supported through
 <a class="reference external" href="https://www.alsa-project.org/">ALSA</a>. This enables integration with
 any class compliant midi device, like USB MIDI keyboards or controllers.
@@ -172,8 +181,8 @@ Compact</a>
 or <a class="reference external" href="https://www.korg.com/uk/products/software/korg_gadget/">Korg
 Gadget</a>.</p>
 </div>
-<div class="section" id="examples-for-configuration-and-control">
-<h3>Examples for configuration and control<a class="headerlink" href="#examples-for-configuration-and-control" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="examples-on-configuration-and-control">
+<h3>Examples on Configuration and Control<a class="headerlink" href="#examples-on-configuration-and-control" title="Permalink to this headline">¶</a></h3>
 <p>Used in combination, the above enable the creation of rich devices.</p>
 <p>For some applications, user interactions will come from both front panel
 knobs and a handheld device, i.e. a smartphone or tablet.
@@ -189,14 +198,6 @@ the audio dsp processing.</strong></p>
 using MIDI, Ableton Link, and OSC.</p>
 </div>
 </div>
-<div class="section" id="sushi-s-public-api-model">
-<h2>Sushi’s Public API Model<a class="headerlink" href="#sushi-s-public-api-model" title="Permalink to this headline">¶</a></h2>
-<p>While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC and OSC,
-the model they all control is the same.</p>
-<p>It is thus best to describe this common model once below, and then only address individual peculiarities for the
-separate control avenues available.</p>
-<p>Please refer to the dedicated section on the <a class="reference internal" href="sushi_public_api_model.html#sushi-public-api-model"><span class="std std-ref">Sushi Public API Model</span></a> for the full description.</p>
-</div>
 <div class="section" id="discovering-initial-sushi-configuration-s-available-parameters">
 <h2>Discovering Initial Sushi Configuration’s Available Parameters<a class="headerlink" href="#discovering-initial-sushi-configuration-s-available-parameters" title="Permalink to this headline">¶</a></h2>
 <p>These can be discovered in several ways.</p>
@@ -209,11 +210,12 @@ example configuration into a .json file, type the following:</p>
 after dumping the parameters.</p>
 <p>Parameter values are normalized to the range 0.0-1.0, floating point,
 across plugin formats.</p>
-<p>So, from the above example, to set the JX 10 synth’s resonance to 0.5
+<p>So, from the above example, to set the JX 10 synthesizers’ resonance to 0.5
 (halfway its range), send the following OSC message to Sushi (the
 default UDP port for this is 24024):</p>
 <p><code class="docutils literal notranslate"><span class="pre">/parameter/jx10/VCF_Reso,</span> <span class="pre">f,</span> <span class="pre">0.5</span></code></p>
-<p>The parameters can also be queried over gRPC’s ParameterController, documented under <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">Controlling Sushi using gRPC</span></a>.</p>
+<p>The parameters can also be queried over gRPC’s ParameterController,
+documented under <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">Controlling Sushi using gRPC</span></a>.</p>
 </div>
 <div class="section" id="plugin-format-support">
 <h2>Plugin Format Support<a class="headerlink" href="#plugin-format-support" title="Permalink to this headline">¶</a></h2>
@@ -292,14 +294,14 @@ restart the audio driver by removing and reinserting the module
 <li><a class="reference internal" href="#main-features">Main Features</a></li>
 <li><a class="reference internal" href="#architecture">Architecture</a></li>
 <li><a class="reference internal" href="#audio-frontends">Audio Frontends</a></li>
-<li><a class="reference internal" href="#configuration-and-control">Configuration and Control</a><ul>
-<li><a class="reference internal" href="#json-configuration-file">JSON configuration file</a></li>
-<li><a class="reference internal" href="#run-time-control">Run-time control</a></li>
-<li><a class="reference internal" href="#end-user-control">End-User control</a></li>
-<li><a class="reference internal" href="#examples-for-configuration-and-control">Examples for configuration and control</a></li>
+<li><a class="reference internal" href="#configuration-and-control">Configuration and Control</a></li>
+<li><a class="reference internal" href="#sushi-s-public-api-model">Sushi’s Public API Model</a><ul>
+<li><a class="reference internal" href="#json-configuration-file">JSON Configuration File</a></li>
+<li><a class="reference internal" href="#run-time-control">Run-Time Control</a></li>
+<li><a class="reference internal" href="#end-user-control">End-User Control</a></li>
+<li><a class="reference internal" href="#examples-on-configuration-and-control">Examples on Configuration and Control</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sushi-s-public-api-model">Sushi’s Public API Model</a></li>
 <li><a class="reference internal" href="#discovering-initial-sushi-configuration-s-available-parameters">Discovering Initial Sushi Configuration’s Available Parameters</a></li>
 <li><a class="reference internal" href="#plugin-format-support">Plugin Format Support</a></li>
 <li><a class="reference internal" href="#threading">Threading</a></li>

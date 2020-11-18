@@ -112,7 +112,8 @@
 <li><strong>“port”</strong> - The integer id of the midi port to use as input.</li>
 <li><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</li>
 <li><strong>“track”</strong> - Name of the track to route MIDI to.</li>
-<li><strong>“raw_midi”</strong> - If set to true, Sushi will pass the raw MIDI events directly to the track without conversion or processing. If enabled, plugins will need to handle things like program change on their own. Default off. only valid for plugin formats which accept raw MIDI data input, such as VST 2.</li>
+<li><strong>“raw_midi”</strong> - If set to true, Sushi will pass the raw MIDI events directly to the track without conversion
+or processing. If enabled, plugins will need to handle things like program change on their own. Default off. Only valid for plugin formats which accept raw MIDI data input, such as VST 2.</li>
 </ul>
 </li>
 <li><strong>“track_out_connections”</strong> - A list of routing objects for passing MIDI from a track to an external MIDI port.<ul>

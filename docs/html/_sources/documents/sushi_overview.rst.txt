@@ -91,10 +91,23 @@ which can be used together or separately to set Sushi up, and control it during 
 .. figure:: ./illustrations/sushi_architecture.png
    :alt: img
 
-JSON configuration file
+   *(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).*
+
+Sushi's Public API Model
+------------------------
+
+While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC and OSC,
+the model they all control is the same.
+
+It is thus best to describe this common model once below, and then address individual peculiarities for the
+separate control avenues available.
+
+Please refer to the dedicated section on the :ref:`sushi-public-api-model` for the full description.
+
+JSON Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In this it’s possible to specify the initial number of tracks to use, their channel
+In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel
 setup (mono, stereo, multichannel), the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
@@ -108,7 +121,7 @@ configurations.
 See our documentation on the `Sushi Configuration
 Format <sushi_configuration_format.html>`__ for more details.
 
-Run-time control
+Run-Time Control
 ^^^^^^^^^^^^^^^^
 
 The majority of run-time functionality is available using Google's gRPC,
@@ -126,7 +139,7 @@ which covers a smaller subset of control for Sushi, than gRPC.
 Sushi can both send OSC updates and receive notes and parameter changes through OSC.
 Please see the dedicated subheading :ref:`sushi-control-osc` for more details on Sushi's OSC features.
 
-End-User control
+End-User Control
 ^^^^^^^^^^^^^^^^
 
 MIDI input and output is supported through
@@ -146,8 +159,8 @@ Compact <https://itunes.apple.com/se/app/reason-compact-make-music/id1253419004>
 or `Korg
 Gadget <https://www.korg.com/uk/products/software/korg_gadget/>`__.
 
-Examples for configuration and control
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Examples on Configuration and Control
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Used in combination, the above enable the creation of rich devices.
 
@@ -165,17 +178,6 @@ the audio dsp processing.**
 
 Meanwhile, end-users can integrate your device with their other media devices,
 using MIDI, Ableton Link, and OSC.
-
-Sushi's Public API Model
-------------------------
-
-While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC and OSC,
-the model they all control is the same.
-
-It is thus best to describe this common model once below, and then only address individual peculiarities for the
-separate control avenues available.
-
-Please refer to the dedicated section on the :ref:`sushi-public-api-model` for the full description.
 
 Discovering Initial Sushi Configuration's Available Parameters
 --------------------------------------------------------------
@@ -195,13 +197,14 @@ after dumping the parameters.
 Parameter values are normalized to the range 0.0-1.0, floating point,
 across plugin formats.
 
-So, from the above example, to set the JX 10 synth's resonance to 0.5
+So, from the above example, to set the JX 10 synthesizers' resonance to 0.5
 (halfway its range), send the following OSC message to Sushi (the
 default UDP port for this is 24024):
 
 ``/parameter/jx10/VCF_Reso, f, 0.5``
 
-The parameters can also be queried over gRPC's ParameterController, documented under :ref:`sushi-control-grpc`.
+The parameters can also be queried over gRPC's ParameterController,
+documented under :ref:`sushi-control-grpc`.
 
 Plugin Format Support
 ---------------------
