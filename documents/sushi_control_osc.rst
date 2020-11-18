@@ -67,7 +67,7 @@ Changing the ports for sending and receiving OSC
 ------------------------------------------------
 
 The UDP ports it receives from and sends to can be changed with
-command-line arguments - just type ``$ sushi --help`` for the exact
+command-line arguments - just type *$ sushi --help* for the exact
 syntax.
 
 These can also be set over the gRPC API, or the json configuration file.

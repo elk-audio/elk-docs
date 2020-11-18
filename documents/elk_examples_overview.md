@@ -25,7 +25,7 @@ This example requires the following files:
 3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz) - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.
 4. mda-vst3-touchosc-gui.touchosc - a [TouchOSC](https://hexler.net/products/touchosc) GUI controller, mirroring the controls in the Open Stage Control GUI.
 
-First unpack the tar-file with the plugin to your local drive, and edit the `config_play_vst3_desktop.json` to refer to that path, or place it in `/usr/lib/lxvst/`, the default path in the configuration path, and the  path commonly used for vst plugins on Linux.
+First unpack the tar-file with the plugin to your local drive, and edit the *config_play_vst3_desktop.json* to refer to that path, or place it in */usr/lib/lxvst/*, the default path in the configuration path, and the  path commonly used for vst plugins on Linux.
 
 The example serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.
 
@@ -60,7 +60,7 @@ This example requires the following files:
 
 Again, the instructions for the VST 3 example in the guide for getting started with the [Elk Development Kit Software](getting_started_with_development_kit_software.md), translate straightforwardly also for this example.
 
-The extra preparation step is needed however, to extract the `mod-mda-JX10.lv2.tar.xz` file content to `/usr/lib/lv2/mod-mda-JX10.lv2`. This is one of the paths where LV2 plugins should be installed, according to the LV2 standard's conventions.
+The extra preparation step is needed however, to extract the *mod-mda-JX10.lv2.tar.xz* file content to */usr/lib/lv2/mod-mda-JX10.lv2*. This is one of the paths where LV2 plugins should be installed, according to the LV2 standard's conventions.
 
 Since the Sushi configuration file does not refer to absolute plugin paths for LV2, the .json file can be the same for both desktop Linux, and the RPi.
 
@@ -79,13 +79,13 @@ The example consists of 4 simple effect plugins in series, each having 1 adjusta
 
 # JUCE Example C++ Source Code
 
-The source code and JUCE `.jucer` file, for building our Elk JUCE example VST 2 plugin.
+The source code and JUCE *.jucer* file, for building our Elk JUCE example VST 2 plugin.
 
-For a configuration file, and Python glue program, please refer to the folder `bloackboard/elk-juce-example`, of the elk-examples repository.
+For a configuration file, and Python glue program, please refer to the folder *bloackboard/elk-juce-example*, of the elk-examples repository.
 
 # Complete Blackboard Examples
 
-The examples under the `blackboard` folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository's releases section: [Pi3](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz), & [Pi4](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz).
+The examples under the *blackboard* folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository's releases section: [Pi3](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz), & [Pi4](https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz).
 
 Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.
 
@@ -93,9 +93,9 @@ All examples depend on the same Sensei configuration file, which is available gl
 
 The also depend on two Python libraries provided by Elk, and available globally on your RPi starting from image 0.7.2: elkpy, wrapping the gRPC and OSC calls to Sushi and Sensei, and elk_ui, wrapping the interfacing with the screen on the Blackboard.
 
-All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in `/udata/elk-examples/plugins`.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  `/blackboard/controller-examples/sushi-configs/obxd_step.json`, to point to that new location.
+All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in */udata/elk-examples/plugins*.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  */blackboard/controller-examples/sushi-configs/obxd_step.json*, to point to that new location.
 
-Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi's `/udata` folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.
+Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi's */udata* folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.
 
 ## Minimal
 
@@ -103,13 +103,13 @@ The example is purposefully minimal, comprising of under 75 lines of Python code
 
 It consists of the [OB-Xd](https://www.discodsp.com/obxd/) synthesizer, and our internal step-sequencer.
 
-The glue app `main_app_minimal` exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.
+The glue app *main_app_minimal* exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.
 
 The buttons on the Blackboard send Note on/off messages to Sushi, and also updates the LED above the button pressed. This way you can interact with the sequence played even if you do not have a midi keyboard. Or, if you turn off the sequencer starting by default ("playing_mode" : "playing" in the sushi config), you can play melodies with the buttons.
 
-To run the example, execute the batch script `$ ./run_sequencer_minimal`, in the folder `/udata/elk-examples/blackboard/controller-examples`.
+To run the example, execute the batch script *$ ./run_sequencer_minimal*, in the folder */udata/elk-examples/blackboard/controller-examples*.
 
-In the same folder, you can then call the `$ ./stop` script to terminate all the processes.
+In the same folder, you can then call the *$ ./stop* script to terminate all the processes.
 
 These scripts are provided as a convenience, and to demonstrate the commands needed to start and stop the example.
 
@@ -123,7 +123,7 @@ Pressing the encoder cycles through the available devices, exposing their parame
 
 - **main** [gain, pan]
 - **sequencer** [pitch, step, step_ind, for each step]. See [our documentation on internal plugins](sushi_internal_plugins.md) for more details on the step sequencer.
-- **synth** - All of OB-Xd's ~80 parameters - too many to list here. An OSC reference text file is available in `elk-examples/blackboard/obxd-sequencer/osc_address_patterns_for_obxd.txt`.
+- **synth** - All of OB-Xd's ~80 parameters - too many to list here. An OSC reference text file is available in *elk-examples/blackboard/obxd-sequencer/osc_address_patterns_for_obxd.txt*.
 
 By rotating the encoder, the page changes, exposing the next set of 4 parameters for the current plugin. 
 
@@ -131,29 +131,29 @@ Finally, each of the currently displayed 4 parameters, are editable using the Bl
 
 The buttons have the same note-playing functionality as in the minimal example.
 
-To run the example, execute the batch script `$ ./run_sequencer_general`, in the folder `/udata/elk-examples/blackboard/controller-examples`.
+To run the example, execute the batch script *$ ./run_sequencer_general*, in the folder */udata/elk-examples/blackboard/controller-examples*.
 
-In the same folder, you can then call the `$ ./stop` script to terminate all the processes.
+In the same folder, you can then call the *$ ./stop* script to terminate all the processes.
 
 ## Multi-FX, for Blackboard
 
 This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.
 
-To run the example, execute the batch script `$ ./run_multi_fx`, in the folder `/udata/elk-examples/blackboard/controller-examples`.
+To run the example, execute the batch script *$ ./run_multi_fx*, in the folder */udata/elk-examples/blackboard/controller-examples*.
 
-In the sample folder, you can then call the `$ ./stop` script to terminate all the processes.
+In the sample folder, you can then call the *$ ./stop* script to terminate all the processes.
 
 ## JUCE Example, for Blackboard
 
 The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance's (Elk Pi and desktop) state over OSC.
 
-Again, we provide batch scripts to start and stop, in the folder `/udata/elk-examples/blackboard/elk-juce-example`.
+Again, we provide batch scripts to start and stop, in the folder */udata/elk-examples/blackboard/elk-juce-example*.
 
 In this repository's releases section we provide downloads for the plugin built for [Ubuntu Linux](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip), [Windows](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip) and [OS X](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip) - executable as standalone, or as VST 2.
 
 ![elk_juce_example_screenshot](illustrations/elk_juce_example_screenshot.png)
 
-To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop's IP address needs to be assigned to `GUI_APP_ADDRESS` in the Python glue app: `/blackboard/elk-juce-example/main/main_app`.
+To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop's IP address needs to be assigned to *GUI_APP_ADDRESS* in the Python glue app: */blackboard/elk-juce-example/main/main_app*.
 
 Also enter the Elk Pi's IP address in the "Target IP Address" field of the Desktop instance's GUI.
 

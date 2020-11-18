@@ -114,7 +114,7 @@ Allows querying static information about the current Sushi version.
 TimingController
 ^^^^^^^^^^^^^^^^
 
-Allows the generation and querying of CPU timing for the engine, individual tracks or processors.
+Allows the generation and querying of CPU timing information for the engine, individual tracks or processors.
 
 Sushi gRPC Notifications
 ------------------------

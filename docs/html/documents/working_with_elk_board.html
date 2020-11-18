@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Working with Elk Board &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" />
     <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -28,16 +34,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,23 +56,28 @@
 <div class="section" id="partition-layout">
 <h3>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">¶</a></h3>
 <p>Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
-<p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep on the mounted root partition!</strong></em> There is a separate partition mounted under <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for files that you want to preserve between system updates.</p>
+<p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep on the mounted root partition
+!</strong></em> There is a separate partition mounted under <em>/udata</em> for files that you want to preserve between system updates.</p>
 <p>The internal eMMC storage on the board is divided into four partitions:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">boot</span></code>    : Boot partition with secondary bootloader and Kernel image</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> : First copy of root filesystem</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rootfs2</span></code> : Second copy of root filesystem</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">udata</span></code>   : User data partition</p></li>
+<li><em>boot</em>    : Boot partition with secondary bootloader and Kernel image</li>
+<li><em>rootfs1</em> : First copy of root filesystem</li>
+<li><em>rootfs2</em> : Second copy of root filesystem</li>
+<li><em>udata</em>   : User data partition</li>
 </ul>
-<p>The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in <code class="docutils literal notranslate"><span class="pre">/</span></code>). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.</p>
+<p>The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through
+.swu files. At boot, only one of the two redundant filesystem is mounted (in <em>/</em>). When a software update is run, it
+will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.</p>
 <p>It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.</p>
 <p>Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
 </div>
 <div class="section" id="user-data-separation">
 <h3>User Data Separation<a class="headerlink" href="#user-data-separation" title="Permalink to this headline">¶</a></h3>
-<p>Files in the user data partition under <code class="docutils literal notranslate"><span class="pre">/udata</span></code>, remain untouched after running a software update, so keep any temporary files used for development there.</p>
-<p>Also use  <code class="docutils literal notranslate"><span class="pre">/udata</span></code> for the storage of settings &amp; user patches.</p>
-<p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the <code class="docutils literal notranslate"><span class="pre">/udata</span></code> partition from there.</p>
+<p>Files in the user data partition under <em>/udata</em>, remain untouched after running a software update, so keep any
+temporary files used for development there.</p>
+<p>Also use  <em>/udata</em> for the storage of settings &amp; user patches.</p>
+<p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create
+symbolic links to the <em>/udata</em> partition from there.</p>
 </div>
 </div>
 <div class="section" id="elk-images">
@@ -82,16 +89,21 @@
 </div>
 <div class="section" id="release-image">
 <h3>Release Image<a class="headerlink" href="#release-image" title="Permalink to this headline">¶</a></h3>
-<p>The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for <code class="docutils literal notranslate"><span class="pre">/udata</span></code>if needed.</p>
+<p>The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It
+is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight
+BusyBox alternatives. It is also setup to be read-only, with exception for <em>/udata</em> if needed.</p>
 </div>
 </div>
 <div class="section" id="elk-system-utilities">
 <h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">¶</a></h2>
-<p>For important, common tasks with Elk, we provide the <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code> script, which has commands for performing these common tasks straightforwardly. Type <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span> <span class="pre">-h</span></code> to get a description of the various commands and their respective arguments.</p>
+<p>For important, common tasks with Elk, we provide the <em>elk_system_utils</em> script, which has commands for performing
+these common tasks straightforwardly. Type <em>elk_system_utils -h</em> to get a description of the various commands and
+their respective arguments.</p>
 <div class="section" id="changing-audio-buffer-size">
 <h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">¶</a></h3>
-<p>The audio buffer size of the system can be changed by typing <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--set-buffer-size</span> <span class="pre">[size]</span></code>. The buffer size should be a power of 2. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
+<p>The audio buffer size of the system can be changed by typing <em>sudo elk_system_utils –set-buffer-size [size]</em>. The
+buffer size should be a power of 2. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
 $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 </pre></div>
 </div>
@@ -101,12 +113,12 @@ $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 <h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
 <p>Currently Elk Audio OS supports the following audio hats:</p>
 <ol class="simple">
-<li><p>Elk Pi (default)</p></li>
-<li><p>HiFiBerry DAC+ ADC</p></li>
-<li><p>HiFiBerry DAC+ ADC Pro</p></li>
+<li>Elk Pi (default)</li>
+<li>HiFiBerry DAC+ ADC</li>
+<li>HiFiBerry DAC+ ADC Pro</li>
 </ol>
 <p>The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persist across boots. The setting is however reset after any software update.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
 $ sudo elk_system_utils --set-audio-hat elk-pi
 
 <span class="c1"># Use HiFiBerry DAC+ ADC audio hat</span>
@@ -119,36 +131,42 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 </div>
 <div class="section" id="enabling-disabling-write-access-to-root-partition">
 <h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">¶</a></h3>
-<p>The default state on a newly flashed image is that the root partition is has both read and write permissions. However, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default preference for Elk release images. You can change such permissions with <code class="docutils literal notranslate"><span class="pre">elk_system_utils</span></code>, temporarily or permanently:</p>
+<p>The default state on a newly flashed image is that the root partition is has both read and write permissions. However
+, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default
+preference for Elk release images. You can change such permissions with <em>elk_system_utils</em>, temporarily or permanently:</p>
 <div class="section" id="temporarily-change-write-access">
 <h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">¶</a></h4>
-<p>Type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-rw</span></code> to mount your current rootfs partition as read-write.</p>
-<p>The command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-ro</span></code>  to set read-only status.</p>
+<p>Type <em>$ sudo elk_system_utils –remount-as-rw</em> to mount your current rootfs partition as read-write.</p>
+<p>The command <em>$ sudo elk_system_utils –remount-as-ro</em>  to set read-only status.</p>
 <p>Neither of these changes persist across boot cycles.</p>
 </div>
 <div class="section" id="permanently-change-write-access">
 <h4>Permanently Change Write Access<a class="headerlink" href="#permanently-change-write-access" title="Permalink to this headline">¶</a></h4>
-<p>Use <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--ro-rootfs</span> <span class="pre">enable</span></code> to enable read-only access to current rootfs partition.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--ro-rootfs</span> <span class="pre">disable</span></code>, permanently gives read-write access.</p>
+<p>Use <em>$ sudo elk_system_utils –ro-rootfs enable</em> to enable read-only access to current rootfs partition.</p>
+<p><em>$ sudo elk_system_utils –ro-rootfs disable</em>, permanently gives read-write access.</p>
 <p>You need to perform a power cycle for either change to take effect.</p>
 </div>
 </div>
 <div class="section" id="manually-controlling-default-fallback-root-partition">
 <h3>Manually Controlling Default/Fallback Root Partition<a class="headerlink" href="#manually-controlling-default-fallback-root-partition" title="Permalink to this headline">¶</a></h3>
-<p>As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions, <code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> and <code class="docutils literal notranslate"><span class="pre">rootfs2</span></code>. It maintains a counter internally, for the number of failed boot attempts. Once that counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.</p>
-<p>You can manually trigger this swap with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--default-rootfs</span> <span class="pre">1</span></code> to set <code class="docutils literal notranslate"><span class="pre">rootfs1</span></code> as the default partition - or parameter 2 for <code class="docutils literal notranslate"><span class="pre">rootfs2</span></code>. The other partition is then automatically assigned as fallback.</p>
-<p>To reset the boot count environment variable to 0, enter the command  <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">elk_system_utils</span> <span class="pre">--reset-boot-count</span></code>. This may be useful if you have for example yourself frequently disconnected power before booting completes.</p>
+<p>As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions
+, <em>rootfs1</em> and <em>rootfs2</em>. It maintains a counter internally, for the number of failed boot attempts. Once that
+counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.</p>
+<p>You can manually trigger this swap with the command <em>$ sudo elk_system_utils –default-rootfs 1</em> to set <em>rootfs1</em> as
+the default partition - or parameter 2 for <em>rootfs2</em>. The other partition is then automatically assigned as fallback.</p>
+<p>To reset the boot count environment variable to 0, enter the command  <em>$ elk_system_utils –reset-boot-count</em>. This
+may be useful if you have for example yourself frequently disconnected power before booting completes.</p>
 </div>
 <div class="section" id="set-usb-speed">
 <h3>Set USB Speed<a class="headerlink" href="#set-usb-speed" title="Permalink to this headline">¶</a></h3>
 <p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. <em><strong>This problem seems to solved with the Raspberry Pi 4.</strong></em></p>
 <p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
 </pre></div>
 </div>
 <p>There is an important caveat though: <em><strong>with the speed reduced using the above command, transfer speeds will be slow, and many common USB devices, such as QUERTY keyboards, will no longer work</strong></em>.</p>
 <p>For a musical instrument that may not be a problem, but during development, you may want to switch back and forth between low and high speeds - setting the speed back to high is achieved as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
 </pre></div>
 </div>
 </div>
@@ -158,9 +176,9 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 <div class="section" id="over-wifi">
 <h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">¶</a></h3>
 <p>Log-in to the board as <em><strong>root</strong></em> (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
-<p>The easiest way to setup WiFi access is through <code class="docutils literal notranslate"><span class="pre">connman</span></code>, which is enabled by default in dev
+<p>The easiest way to setup WiFi access is through <em>connman</em>, which is enabled by default in dev
 images:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo connmanctl
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo connmanctl
 <span class="c1"># Now you should see a connmanctl shell where to type these extra commands:</span>
 $ connmanctl&gt; agent on
 $ connmanctl&gt; scan wifi
@@ -175,10 +193,11 @@ $ ip a
 </pre></div>
 </div>
 <p>Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
-Besides root access, you can login as <code class="docutils literal notranslate"><span class="pre">mind</span></code> user (password: <code class="docutils literal notranslate"><span class="pre">elk</span></code>) which is the preferred one to run Sushi and other userspace applications.</p>
-<p>Now finish with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">elk_system_utils</span> <span class="pre">--remount-as-ro</span></code>  to set filesystem status back to read-only.</p>
+Besides root access, you can login as <em>mind</em> user (password: <em>elk</em>) which is the preferred one to run Sushi and other
+userspace applications.</p>
+<p>Now finish with the command <em>$ sudo elk_system_utils –remount-as-ro</em>  to set filesystem status back to read-only.</p>
 <p>If your file system is read-only, you can temporarily give yourself write access to the partition for these changes to be stored:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
 </pre></div>
 </div>
 <p>Otherwise, you will need to complete the steps above every time you power on the board.</p>
@@ -187,44 +206,52 @@ Besides root access, you can login as <code class="docutils literal notranslate"
 <h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
 <p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
 <p>For example, on a host Linux / macOS machine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
 $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 </pre></div>
 </div>
 <p>Note: For ElkPi image version 0.6.0 and below use 115200 as baudrate.</p>
-<p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (installed in the development images) as a terminal multiplexer when working in this way.</p>
+<p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over
+the network or using a USB storage device. It might be useful to use <em>tmux</em> (installed in the development images) as
+a terminal multiplexer when working in this way.</p>
 </div>
 </div>
 <div class="section" id="monitoring-sushi-performance">
 <h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
-<p>Given Sushi is running, to get a rough view of CPU performance, <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">htop</span></code> and similar Linux tools will only show you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 cat /proc/xenomai/sched/stat
+<p>Given Sushi is running, to get a rough view of CPU performance, <em>top</em>, <em>htop</em> and similar Linux tools will only show
+you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 cat /proc/xenomai/sched/stat
 </pre></div>
 </div>
-<p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the <code class="docutils literal notranslate"><span class="pre">--timing-statistics</span></code> flag to get the results on a file.</p>
+<p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin
+, or you can run Sushi with the <em>–timing-statistics</em> flag to get the results on a file.</p>
 </div>
 <div class="section" id="software-update-system">
 <h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
-<p><em>Important note</em>: as written in the <a class="reference external" href="#partition-layout">Partition Layout section</a>, your data in the mounted root partition will be lost after an update! Keep anything that you want to save under <code class="docutils literal notranslate"><span class="pre">/udata</span></code>.</p>
+<p><em>Important note</em>: as written in the <a class="reference external" href="#partition-layout">Partition Layout section</a>, your data in the mounted root
+partition will be lost after an update! Keep anything that you want to save under <em>/udata</em>.</p>
 <div class="section" id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</p></li>
-<li><p>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></p></li>
-<li><p>You should see an Elk Audio OS update page. Just drag and drop the update file (<code class="docutils literal notranslate"><span class="pre">.swu</span></code>) or click in the middle to upload the file to start the update.</p></li>
-<li><p>When the update is completed successfully, the page prompts a message that the board is restarting, but you need to power off the board manually from the board’s terminal (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">poweroff</span></code>).</p></li>
-<li><p>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</p></li>
+<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</li>
+<li>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
+<li>You should see an Elk Audio OS update page. Just drag and drop the update file (<em>.swu</em>) or click in the middle
+to upload the file to start the update.</li>
+<li>When the update is completed successfully, the page prompts a message that the board is restarting, but you need
+to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</li>
+<li>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</li>
 </ol>
 </div>
 <div class="section" id="updating-with-an-usb-drive">
 <h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Elk updates are shipped in form of <code class="docutils literal notranslate"><span class="pre">.swu</span></code> files that can be put on a FAT32 formatted USB pendrive and inserted at any time.</p></li>
-<li><p>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</p></li>
-<li><p>Once the SWupdate is completed successfully, only the Green LED will be turned on.</p></li>
-<li><p>If the SWupdate failed for any reason, then only the Red LED will be turned on.</p></li>
-<li><p>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</p></li>
+<li>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
+at any time.</li>
+<li>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</li>
+<li>Once the SWupdate is completed successfully, only the Green LED will be turned on.</li>
+<li>If the SWupdate failed for any reason, then only the Red LED will be turned on.</li>
+<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</li>
 </ol>
 </div>
 </div>
@@ -232,32 +259,37 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
-<li><p>Modify the file <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sushi.service</span></code> to provide the path to your JSON configuration
+<li><p class="first">Modify the file <em>/lib/systemd/system/sushi.service</em> to provide the path to your JSON configuration
 and, in case, additional environment variables or Sushi command line flags.</p>
-<p>Similarly, you can modify <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/sensei.service</span></code> to provide the path for your SENSEI Json configuration.</p>
-<p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script <code class="docutils literal notranslate"><span class="pre">/usr/bin/connect-midi-apps</span></code>, which is started by the systemD service defined in <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/midi-connections.service</span></code>.</p>
+<p>Similarly, you can modify <em>/lib/systemd/system/sensei.service</em> to provide the path for your SENSEI Json
+configuration.</p>
+<p>If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number
+/name in the script <em>/usr/bin/connect-midi-apps</em>, which is started by the systemD service defined in <em>/lib/systemd
+/system/midi-connections.service</em>.</p>
 </li>
-<li><p>Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p></li>
+<li><p class="first">Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p>
+</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
 $ systemctl <span class="nb">enable</span> midi-connections
 $ systemctl <span class="nb">enable</span> sensei
 </pre></div>
 </div>
-<p>Sushi will still output its log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code>. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-fu</span> <span class="pre">sushi</span></code> (as root).</p>
-<p>They can also be started temporarily with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">sushi</span></code> as any normal SystemD service.</p>
+<p>Sushi will still output its log file in <em>/tmp/sushi.log</em>. If you want to see the standard output as well, for example
+because you have put some debug printfs in your plugin, you can run <em>journalctl -fu sushi</em> (as root).</p>
+<p>They can also be started temporarily with <em>$ systemctl start sushi</em> as any normal SystemD service.</p>
 </div>
 <div class="section" id="setting-cpu-speed">
 <h2>Setting CPU Speed<a class="headerlink" href="#setting-cpu-speed" title="Permalink to this headline">¶</a></h2>
 <p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting in the Elk Pi OS.</p>
 <p>When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.</p>
 <p>If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed min
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed min
 </pre></div>
 </div>
 <p>The speeds supported are 600 and 1400 for the RPi 3, and 600 / 1500 for the Pi4.</p>
 <p>By simply typing:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
 </pre></div>
 </div>
 <p>You will see all the options available on your current board.</p>
@@ -265,13 +297,12 @@ $ systemctl <span class="nb">enable</span> sensei
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Working with Elk Board</a><ul>
 <li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
@@ -327,15 +358,15 @@ $ systemctl <span class="nb">enable</span> sensei
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -347,21 +378,17 @@ $ systemctl <span class="nb">enable</span> sensei
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              >next</a> |</li>
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

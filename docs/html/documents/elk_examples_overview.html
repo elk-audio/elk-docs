@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Examples Overview &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview" href="elk_pi_datasheet.html" />
-    <link rel="prev" title="elkpy.TransportControlller" href="../elkpy-doc/elkpy.transportcontroller.html" /> 
-  </head><body>
+    <link rel="prev" title="Build Plugins for Elk" href="building_plugins_for_elk.html" /> 
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -28,16 +34,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="elk_pi_datasheet.html" title="Overview"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../elkpy-doc/elkpy.transportcontroller.html" title="elkpy.TransportControlller"
+          <a href="building_plugins_for_elk.html" title="Build Plugins for Elk"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Examples Overview</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -62,12 +64,12 @@
 <h2>MDA JX10 VST3<a class="headerlink" href="#mda-jx10-vst3" title="Permalink to this headline">¶</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li><p>config_play_vst3.json - the Sushi configuration file.</p></li>
-<li><p>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.</p></li>
-<li><p>mda-vst3-touchosc-gui.touchosc - a <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC</a> GUI controller, mirroring the controls in the Open Stage Control GUI.</p></li>
+<li>config_play_vst3.json - the Sushi configuration file.</li>
+<li>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - a build of the MDA VST 3 plugins, containing also the JX 10 Synthesizer binary.</li>
+<li>mda-vst3-touchosc-gui.touchosc - a <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC</a> GUI controller, mirroring the controls in the Open Stage Control GUI.</li>
 </ol>
-<p>First unpack the tar-file with the plugin to your local drive, and edit the <code class="docutils literal notranslate"><span class="pre">config_play_vst3_desktop.json</span></code> to refer to that path, or place it in <code class="docutils literal notranslate"><span class="pre">/usr/lib/lxvst/</span></code>, the default path in the configuration path, and the  path commonly used for vst plugins on Linux.</p>
+<p>First unpack the tar-file with the plugin to your local drive, and edit the <em>config_play_vst3_desktop.json</em> to refer to that path, or place it in <em>/usr/lib/lxvst/</em>, the default path in the configuration path, and the  path commonly used for vst plugins on Linux.</p>
 <p>The example serves to demonstrate how to instantiate Sushi with a single VST 3 instrument reacting to MIDI and OSC control messages, sent using the accompanying GUI file for Open Stage Control.</p>
 <p>This is the example referred to also in our guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>.</p>
 </div>
@@ -76,9 +78,9 @@
 <p>Control of plugin parameters is to certain extent different between VST 2 and VST 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li><p>config_play_vst2_desktop.json - the Sushi configuration file.</p></li>
-<li><p>mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.</p></li>
+<li>config_play_vst2_desktop.json - the Sushi configuration file.</li>
+<li>mda_jx10_vst2_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins, containing also the JX 10 Synthesizer binary.</li>
 </ol>
 <p>You will notice that the OSC GUI for the VST 2 version lacks controls for Pitch and Modulation, which the VST 3 version has.</p>
 <p>The reason is, those are in VST 2 received and handled as MIDI values, from your MIDI controller keyboard, while, for the VST 3 version of the same plugin, they are control parameters exposed over the VST 3 standard.</p>
@@ -89,23 +91,23 @@
 <h2>LV2VST Wrapper, with MDA JX10 LV2<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2" title="Permalink to this headline">¶</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li><p>config_play_lv2vst.json - the Sushi configuration file.</p></li>
-<li><p>mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the LV2VST plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin for x86 desktop Linux.</p></li>
+<li>config_play_lv2vst.json - the Sushi configuration file.</li>
+<li>mda_jx10_lv2vst_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/lv2vst_plugin.tar.xz">lv2vst_plugin.tar.xz</a> - the LV2VST plugin, and it’s corresponding .whitelist file, referring it to which LV2 plugin it should load.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mod-mda-JX10.lv2.tar.xz">mod-mda-JX10.lv2.tar.xz</a> - the LV2 MDA JX 10 plugin for x86 desktop Linux.</li>
 </ol>
 <p>Again, the instructions for the VST 3 example in the guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>, translate straightforwardly also for this example.</p>
-<p>The extra preparation step is needed however, to extract the <code class="docutils literal notranslate"><span class="pre">mod-mda-JX10.lv2.tar.xz</span></code> file content to <code class="docutils literal notranslate"><span class="pre">/usr/lib/lv2/mod-mda-JX10.lv2</span></code>. This is one of the paths where LV2 plugins should be installed, according to the LV2 standard’s conventions.</p>
+<p>The extra preparation step is needed however, to extract the <em>mod-mda-JX10.lv2.tar.xz</em> file content to <em>/usr/lib/lv2/mod-mda-JX10.lv2</em>. This is one of the paths where LV2 plugins should be installed, according to the LV2 standard’s conventions.</p>
 <p>Since the Sushi configuration file does not refer to absolute plugin paths for LV2, the .json file can be the same for both desktop Linux, and the RPi.</p>
 </div>
 <div class="section" id="multi-fx">
 <h2>Multi FX<a class="headerlink" href="#multi-fx" title="Permalink to this headline">¶</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
-<li><p>elk_multi_fx_desktop.json - the Sushi configuration file.</p></li>
-<li><p>elk_multi_fx_pi.json - the Sushi configuration file.</p></li>
-<li><p>elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins for x86 desktop Linux, containing the effects the example invokes.</p></li>
+<li>elk_multi_fx_desktop.json - the Sushi configuration file.</li>
+<li>elk_multi_fx_pi.json - the Sushi configuration file.</li>
+<li>elk_multi_fx_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst2-plugins.tar.gz">mda-vst2-plugins.tar.gz</a> - a build of the MDA VST 2 plugins for x86 desktop Linux, containing the effects the example invokes.</li>
 </ol>
 <p>This is a more complex example, demonstrating a simple ‘glue’ app between Sushi and an external hardware controller or software GUI, to enable 2-way communication between the controller and Sushi, as well as setting parameter values and programs over gRPC. An Open Stage Control setup is provided, but the OSC paths are deliberately named so as to mimic those of a hardware control surface set up with Sensei.</p>
 <p>The example consists of 4 simple effect plugins in series, each having 1 adjustable parameter, an enabled/disabled button with indicator and 4 preset slots.</p>
@@ -113,25 +115,25 @@
 </div>
 <div class="section" id="juce-example-c-source-code">
 <h1>JUCE Example C++ Source Code<a class="headerlink" href="#juce-example-c-source-code" title="Permalink to this headline">¶</a></h1>
-<p>The source code and JUCE <code class="docutils literal notranslate"><span class="pre">.jucer</span></code> file, for building our Elk JUCE example VST 2 plugin.</p>
-<p>For a configuration file, and Python glue program, please refer to the folder <code class="docutils literal notranslate"><span class="pre">bloackboard/elk-juce-example</span></code>, of the elk-examples repository.</p>
+<p>The source code and JUCE <em>.jucer</em> file, for building our Elk JUCE example VST 2 plugin.</p>
+<p>For a configuration file, and Python glue program, please refer to the folder <em>bloackboard/elk-juce-example</em>, of the elk-examples repository.</p>
 </div>
 <div class="section" id="complete-blackboard-examples">
 <h1>Complete Blackboard Examples<a class="headerlink" href="#complete-blackboard-examples" title="Permalink to this headline">¶</a></h1>
-<p>The examples under the <code class="docutils literal notranslate"><span class="pre">blackboard</span></code> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository’s releases section: <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz">Pi3</a>, &amp; <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz">Pi4</a>.</p>
+<p>The examples under the <em>blackboard</em> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository’s releases section: <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz">Pi3</a>, &amp; <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz">Pi4</a>.</p>
 <p>Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.</p>
 <p>All examples depend on the same Sensei configuration file, which is available globally on your RPi starting from image version 0.7.2.</p>
 <p>The also depend on two Python libraries provided by Elk, and available globally on your RPi starting from image 0.7.2: elkpy, wrapping the gRPC and OSC calls to Sushi and Sensei, and elk_ui, wrapping the interfacing with the screen on the Blackboard.</p>
-<p>All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/plugins</span></code>.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  <code class="docutils literal notranslate"><span class="pre">/blackboard/controller-examples/sushi-configs/obxd_step.json</span></code>, to point to that new location.</p>
-<p>Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi’s <code class="docutils literal notranslate"><span class="pre">/udata</span></code> folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.</p>
+<p>All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in <em>/udata/elk-examples/plugins</em>.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  <em>/blackboard/controller-examples/sushi-configs/obxd_step.json</em>, to point to that new location.</p>
+<p>Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi’s <em>/udata</em> folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.</p>
 <div class="section" id="minimal">
 <h2>Minimal<a class="headerlink" href="#minimal" title="Permalink to this headline">¶</a></h2>
 <p>The example is purposefully minimal, comprising of under 75 lines of Python code, comments included. It demonstrates the smallest amount of programming that still can produce a usable self-contained instrument.</p>
 <p>It consists of the <a class="reference external" href="https://www.discodsp.com/obxd/">OB-Xd</a> synthesizer, and our internal step-sequencer.</p>
-<p>The glue app <code class="docutils literal notranslate"><span class="pre">main_app_minimal</span></code> exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.</p>
+<p>The glue app <em>main_app_minimal</em> exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.</p>
 <p>The buttons on the Blackboard send Note on/off messages to Sushi, and also updates the LED above the button pressed. This way you can interact with the sequence played even if you do not have a midi keyboard. Or, if you turn off the sequencer starting by default (“playing_mode” : “playing” in the sushi config), you can play melodies with the buttons.</p>
-<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_sequencer_minimal</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
-<p>In the same folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+<p>To run the example, execute the batch script <em>$ ./run_sequencer_minimal</em>, in the folder <em>/udata/elk-examples/blackboard/controller-examples</em>.</p>
+<p>In the same folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 <p>These scripts are provided as a convenience, and to demonstrate the commands needed to start and stop the example.</p>
 </div>
 <div class="section" id="general-controller">
@@ -140,29 +142,29 @@
 <p>The Python glue app it uses however is much more extensive, and general purpose: no matter the Sushi configuration, the glue app will use the Blackboard controls to fully expose all plugins’ parameters for modification using the Blackboard’s physical controls.</p>
 <p>Pressing the encoder cycles through the available devices, exposing their parameters on the screen:</p>
 <ul class="simple">
-<li><p><strong>main</strong> [gain, pan]</p></li>
-<li><p><strong>sequencer</strong> [pitch, step, step_ind, for each step]. See <a class="reference internal" href="sushi_internal_plugins.html"><span class="doc">our documentation on internal plugins</span></a> for more details on the step sequencer.</p></li>
-<li><p><strong>synth</strong> - All of OB-Xd’s ~80 parameters - too many to list here. An OSC reference text file is available in <code class="docutils literal notranslate"><span class="pre">elk-examples/blackboard/obxd-sequencer/osc_address_patterns_for_obxd.txt</span></code>.</p></li>
+<li><strong>main</strong> [gain, pan]</li>
+<li><strong>sequencer</strong> [pitch, step, step_ind, for each step]. See <a class="reference internal" href="sushi_internal_plugins.html"><span class="doc">our documentation on internal plugins</span></a> for more details on the step sequencer.</li>
+<li><strong>synth</strong> - All of OB-Xd’s ~80 parameters - too many to list here. An OSC reference text file is available in <em>elk-examples/blackboard/obxd-sequencer/osc_address_patterns_for_obxd.txt</em>.</li>
 </ul>
 <p>By rotating the encoder, the page changes, exposing the next set of 4 parameters for the current plugin.</p>
 <p>Finally, each of the currently displayed 4 parameters, are editable using the Blackboard’s four faders.</p>
 <p>The buttons have the same note-playing functionality as in the minimal example.</p>
-<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_sequencer_general</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
-<p>In the same folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+<p>To run the example, execute the batch script <em>$ ./run_sequencer_general</em>, in the folder <em>/udata/elk-examples/blackboard/controller-examples</em>.</p>
+<p>In the same folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 </div>
 <div class="section" id="multi-fx-for-blackboard">
 <h2>Multi-FX, for Blackboard<a class="headerlink" href="#multi-fx-for-blackboard" title="Permalink to this headline">¶</a></h2>
 <p>This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.</p>
-<p>To run the example, execute the batch script <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./run_multi_fx</span></code>, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/controller-examples</span></code>.</p>
-<p>In the sample folder, you can then call the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./stop</span></code> script to terminate all the processes.</p>
+<p>To run the example, execute the batch script <em>$ ./run_multi_fx</em>, in the folder <em>/udata/elk-examples/blackboard/controller-examples</em>.</p>
+<p>In the sample folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 </div>
 <div class="section" id="juce-example-for-blackboard">
 <h2>JUCE Example, for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">¶</a></h2>
 <p>The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance’s (Elk Pi and desktop) state over OSC.</p>
-<p>Again, we provide batch scripts to start and stop, in the folder <code class="docutils literal notranslate"><span class="pre">/udata/elk-examples/blackboard/elk-juce-example</span></code>.</p>
+<p>Again, we provide batch scripts to start and stop, in the folder <em>/udata/elk-examples/blackboard/elk-juce-example</em>.</p>
 <p>In this repository’s releases section we provide downloads for the plugin built for <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip">Ubuntu Linux</a>, <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip">Windows</a> and <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip">OS X</a> - executable as standalone, or as VST 2.</p>
 <p><img alt="elk_juce_example_screenshot" src="../_images/elk_juce_example_screenshot.png" /></p>
-<p>To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop’s IP address needs to be assigned to <code class="docutils literal notranslate"><span class="pre">GUI_APP_ADDRESS</span></code> in the Python glue app: <code class="docutils literal notranslate"><span class="pre">/blackboard/elk-juce-example/main/main_app</span></code>.</p>
+<p>To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop’s IP address needs to be assigned to <em>GUI_APP_ADDRESS</em> in the Python glue app: <em>/blackboard/elk-juce-example/main/main_app</em>.</p>
 <p>Also enter the Elk Pi’s IP address in the “Target IP Address” field of the Desktop instance’s GUI.</p>
 <p>Now, if you move a slider on the desktop GUI, the same parameter will be affected on the Elk Pi, with the display showing the new value received.</p>
 </div>
@@ -180,13 +182,12 @@
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Examples Overview</a></li>
 <li><a class="reference internal" href="#basic-plugin-hosting">Basic Plugin Hosting</a><ul>
@@ -209,8 +210,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../elkpy-doc/elkpy.transportcontroller.html"
-                        title="previous chapter">elkpy.TransportControlller</a></p>
+  <p class="topless"><a href="building_plugins_for_elk.html"
+                        title="previous chapter">Build Plugins for Elk</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="elk_pi_datasheet.html"
                         title="next chapter">Overview</a></p>
@@ -222,15 +223,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -242,21 +243,17 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="elk_pi_datasheet.html" title="Overview"
              >next</a> |</li>
         <li class="right" >
-          <a href="../elkpy-doc/elkpy.transportcontroller.html" title="elkpy.TransportControlller"
+          <a href="building_plugins_for_elk.html" title="Build Plugins for Elk"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Examples Overview</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

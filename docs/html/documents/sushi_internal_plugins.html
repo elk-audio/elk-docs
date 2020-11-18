@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sushi Internal Plugins &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Elk Board" href="working_with_elk_board.html" />
     <link rel="prev" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -28,16 +34,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="working_with_elk_board.html" title="Working with Elk Board"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -57,8 +59,8 @@
 <h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">¶</a></h3>
 <p>Simply a bypass.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.passthrough”</p></li>
-<li><p><strong>Parameters</strong> : none</p></li>
+<li><strong>uid</strong> : “sushi.testing.passthrough”</li>
+<li><strong>Parameters</strong> : none</li>
 </ul>
 </div>
 <div class="section" id="gain">
@@ -66,10 +68,9 @@
 <p>Simple gain plugin. Note that the input controls are not smoothed, so it is not suitable to be used in a real-time context where the gain is adjusted by the user.
 For those use cases, prefer using the internal gain parameter of the tracks.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.gain”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“gain” : gain in dB. Default: 0.83. (Normalized from [-120, 24], Default 0.0).</p></li>
+<li><strong>uid</strong> : “sushi.testing.gain”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“gain” : gain in dB. Default: 0.83. (Normalized from [-120, 24], Default 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -79,12 +80,11 @@ For those use cases, prefer using the internal gain parameter of the tracks.</p>
 <p>Parametric peak equalizer (single band). The implementation is based on the warped bilinear transform following RBJ Audio Cookbook’s formulas.
 Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.equalizer”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“frequency” : center frequency in Hertz. Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</p></li>
-<li><p>“gain” : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
-<li><p>“q” : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).</p></li>
+<li><strong>uid</strong> : “sushi.testing.equalizer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“frequency” : center frequency in Hertz. Default 0.05. (Normalized from [20, 20’000], Default: 1000.0).</li>
+<li>“gain” : output gain in dB. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“q” : Q factor of the filter. Default: 0.1. (Normalized from [0, 10], Default: 1.0).</li>
 </ul>
 </li>
 </ul>
@@ -93,7 +93,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">¶</a></h3>
 <p>Simple plugin that sums all input channels to mono, and outputs the same mono audio to all channels.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.mono_summing”</p></li>
+<li><strong>uid</strong> : “sushi.testing.mono_summing”</li>
 </ul>
 </div>
 </div>
@@ -103,19 +103,17 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Sample Player<a class="headerlink" href="#sample-player" title="Permalink to this headline">¶</a></h3>
 <p>Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.sampleplayer”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“volume” : static gain for the sample, in dB. Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</p></li>
-<li><p>“attack” : envelope attack time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
-<li><p>“decay” : envelope decay time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
-<li><p>“sustain” : envelope sustain level. Default: 1.0.</p></li>
-<li><p>“release” : envelope release time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</p></li>
+<li><strong>uid</strong> : “sushi.testing.sampleplayer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“volume” : static gain for the sample, in dB. Default: 0.77. (Normalized from [-120, 36], Default: 0.0).</li>
+<li>“attack” : envelope attack time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“decay” : envelope decay time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
+<li>“sustain” : envelope sustain level. Default: 1.0.</li>
+<li>“release” : envelope release time, in seconds. Default: 0.0. (Normalized from [0, 10], Default: 0.0).</li>
 </ul>
 </li>
-<li><p><strong>Properties</strong>:</p>
-<ul>
-<li><p>“sample_file” : path to .wav file to load</p></li>
+<li><strong>Properties</strong>:<ul>
+<li>“sample_file” : path to .wav file to load</li>
 </ul>
 </li>
 </ul>
@@ -127,10 +125,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
 <p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using Sushi’s tempo configuration.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.arpeggiator”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“range” : octave range, as integer. Default: 0.25. (Normalized from: [1, 5], Default: 2).</p></li>
+<li><strong>uid</strong> : “sushi.testing.arpeggiator”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“range” : octave range, as integer. Default: 0.25. (Normalized from: [1, 5], Default: 2).</li>
 </ul>
 </li>
 </ul>
@@ -139,10 +136,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">¶</a></h3>
 <p>Transposes incoming MIDI Note ON &amp; OFF events by a fixed amount of semitones.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.transposer”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“transpose” : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
+<li><strong>uid</strong> : “sushi.testing.transposer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“transpose” : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
 </ul>
 </li>
 </ul>
@@ -154,11 +150,10 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Peak Meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">¶</a></h3>
 <p>Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.peakmeter”</p></li>
-<li><p>Parameters (output only) :</p>
-<ul>
-<li><p>“left” : detected level on the left track in dB. Normalized from [-120, 0].</p></li>
-<li><p>“right” : detected level on the right track in dB. Normalized from [-120, 0].</p></li>
+<li><strong>uid</strong> : “sushi.testing.peakmeter”</li>
+<li>Parameters (output only) :<ul>
+<li>“left” : detected level on the left track in dB. Normalized from [-120, 0].</li>
+<li>“right” : detected level on the right track in dB. Normalized from [-120, 0].</li>
 </ul>
 </li>
 </ul>
@@ -170,16 +165,14 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">¶</a></h3>
 <p>Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.cv_to_control”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“channel”: MIDI channel. Default: 0.0. (Normalized from [0, 16], Default: 0.0).</p></li>
-<li><p>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
-<li><p>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</p></li>
-<li><p>For each of the max possible CV voices:</p>
-<ul>
-<li><p>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</p></li>
-<li><p>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</p></li>
+<li><strong>uid</strong> : “sushi.testing.cv_to_control”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“channel”: MIDI channel. Default: 0.0. (Normalized from [0, 16], Default: 0.0).</li>
+<li>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>For each of the max possible CV voices:<ul>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</li>
 </ul>
 </li>
 </ul>
@@ -190,20 +183,18 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">¶</a></h3>
 <p>Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.control_to_cv”</p></li>
-<li><p><strong>Parameters</strong> :</p>
-<ul>
-<li><p>“send_velocity”: Switch velocity transmission on/off. Default off.</p></li>
-<li><p>“send_modulation”: Switch modulation transmission on/off. Default off.</p></li>
-<li><p>“retrigger_enabled”: Switch retrigger mode on/off. Default off.</p></li>
-<li><p>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</p></li>
-<li><p>“fine_tune”: Fine tune parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
-<li><p>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</p></li>
-<li><p>“modulation”: Modulation parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
-<li><p>For each of the max possible CV voices:</p>
-<ul>
-<li><p>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</p></li>
-<li><p>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</p></li>
+<li><strong>uid</strong> : “sushi.testing.control_to_cv”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>“send_velocity”: Switch velocity transmission on/off. Default off.</li>
+<li>“send_modulation”: Switch modulation transmission on/off. Default off.</li>
+<li>“retrigger_enabled”: Switch retrigger mode on/off. Default off.</li>
+<li>“tune”: Coarse tune parameter. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“fine_tune”: Fine tune parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>“polyphony”: Number of CV voices. Default: 0.0. (Normalized from [1, 4], Default: 1).</li>
+<li>“modulation”: Modulation parameter. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</li>
+<li>For each of the max possible CV voices:<ul>
+<li>“pitch_1”…”pitch_4”: Pitch in semitones. Default: 0.0.</li>
+<li>“velocity_1”…”velocity_4”: Note On velocity. Default: 0.5.</li>
 </ul>
 </li>
 </ul>
@@ -217,31 +208,30 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
 <p>This plugin passes through audio without altering it, while writing it to a wav file.</p>
 <ul class="simple">
-<li><p><strong>uid</strong> : “sushi.testing.wav_writer”</p></li>
-<li><p><strong>Parameters</strong>:</p></li>
+<li><strong>uid</strong> : “sushi.testing.wav_writer”</li>
+<li><strong>Parameters</strong>:</li>
 </ul>
 <ul class="simple">
-<li><p>“recording” : Switch the plugin recording on/off. Range: [0, 1], Default: 0, for off.</p></li>
-<li><p>“write_speed” : How often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0</p></li>
+<li>“recording” : Switch the plugin recording on/off. Range: [0, 1], Default: 0, for off.</li>
+<li>“write_speed” : How often to write the audio data in seconds. Range: [0.5, 4.0], Default: 1.0</li>
 </ul>
 <ul class="simple">
-<li><p><strong>Properties</strong>:</p></li>
+<li><strong>Properties</strong>:</li>
 </ul>
 <ul class="simple">
-<li><p>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</p></li>
+<li>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Sushi Internal Plugins</a><ul>
 <li><a class="reference internal" href="#audio-in-audio-out-plugins">Audio In / Audio Out Plugins</a><ul>
@@ -291,15 +281,15 @@ Parameters are smoothed and can be modulated at run-time.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -311,21 +301,17 @@ Parameters are smoothed and can be modulated at run-time.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="working_with_elk_board.html" title="Working with Elk Board"
              >next</a> |</li>
         <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

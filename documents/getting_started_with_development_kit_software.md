@@ -20,11 +20,13 @@ The example used, requires that you have these files from the  our [elk-examples
 3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
 4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the [TouchOSC app](https://hexler.net/products/touchosc).
 
-First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default path expected: `/usr/lib/lxvst/mda-vst3.vst3`. If you place the mda-vst3.vst3 extracted content elsewhere, you also need to edit the config_play_vst3.json to refer to that new path.
+First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default
+ path expected: */usr/lib/lxvst/mda-vst3.vst3*. If you place the mda-vst3.vst3 extracted content elsewhere, you also
+  need to edit the config_play_vst3.json to refer to that new path.
 
 To run Sushi using Jack, with the configuration file provided for running the MDA JX10 VST3 synthesizer: 
 
-1. Navigate to `/the/folder/where/you/have/placed/sushi` in a console window.
+1. Navigate to */the/folder/where/you/have/placed/sushi* in a console window.
 
 2. Type the following command:
 
@@ -32,7 +34,7 @@ To run Sushi using Jack, with the configuration file provided for running the MD
 $ ./Sushi-x86_64-0.7.0.AppImage -j --multicore-processing=2 --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 ```
 
-The `--multicore-processing=2` argument specifies how many CPU cores Sushi can use. If omitted it uses 1.
+The *--multicore-processing=2* argument specifies how many CPU cores Sushi can use. If omitted it uses 1.
 
 You should see the following status message:
 
@@ -47,9 +49,11 @@ Copyright 2016-2019 Elk, Stockholm
 ​  
 Note that its outputs are already connected.
 
-That is because the `--connect-ports` command-line option used, attempts to connect the Sushi outputs. If they are not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.
+That is because the *--connect-ports* command-line option used, attempts to connect the Sushi outputs. If they are
+ not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.
 
-If you were to instead run Sushi on the Development Kit Board, you should use the following command, this time using the `-r` switch for selecting the RASPA low-latency front-end instead of Jack:
+If you were to instead run Sushi on the Development Kit Board, you should use the following command, this time using
+ the *-r* switch for selecting the RASPA low-latency front-end instead of Jack:
 
 ```bash
 $ sushi -r --multicore-processing=2 -c /relative/path/to/your/config.json
@@ -59,10 +63,11 @@ Depending on which board you run, the number of cores can vary. For the Pi 4 we 
 
 ## Connecting MIDI to Sushi
 
-Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to connect it to a MIDI device to be able to play sound. For this, connect them with the `aconnect` tool:
+Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to
+ connect it to a MIDI device to be able to play sound. For this, connect them with the *aconnect* tool:
 
 1. Start a new terminal window than the one where Sushi is running.
-2. Type `'aconnect -l'` to list all available MIDI devices and ports for connections:
+2. Type *'aconnect -l'* to list all available MIDI devices and ports for connections:
 
 ```bash
 client 0: 'System' [type=kernel]
@@ -85,7 +90,8 @@ client 128: 'Sushi' [type=user,pid=20167]
 
 3. The output you see will vary depending on your configuration, you should take note of the port number X for your MIDI controller (e.g. 28) and the one Y assigned to Sushi, here 128. 
 
-4. By typing `aconnect X Y`, or in this example `aconnect 28 128`, you should now hear sound when playing on your keyboard. 
+4. By typing *aconnect X Y*, or in this example *aconnect 28 128*, you should now hear sound when playing on your
+ keyboard. 
 
 Tip: If you do not have a physical keyboard available, you can use the ***Virtual MIDI Piano Keyboard*** software (VMPK).
 
@@ -116,7 +122,8 @@ For example, dragging the knob 'Resonance', will send the point value of the kno
 
 ### Control MDA JX10 VST3 plugin with TouchOSC
 
-If you would prefer to control your plugin from an iPad/Android tablet, we have also created an example GUI using the [TouchOSC software](https://hexler.net/touchosc) - the file named `mda-vst3-touchosc-gui.touchosc`.
+If you would prefer to control your plugin from an iPad/Android tablet, we have also created an example GUI using the
+ [TouchOSC software](https://hexler.net/touchosc) - the file named *mda-vst3-touchosc-gui.touchosc*.
 
 To use it, please refer to the TouchOSC manual - the only customisation needed is setting the IP-address that your computer running Sushi is using, in your TouchOSC app's settings.
 
@@ -124,6 +131,7 @@ To use it, please refer to the TouchOSC manual - the only customisation needed i
 
 
 
-Which OSC messages your particular configuration responds to, can be accessed by running Sushi with the `--dump-plugins` flag, as detailed in our [detailed documentation for Sushi](sushi_overview.md).
+Which OSC messages your particular configuration responds to, can be accessed by running Sushi with the *--dump
+-plugins* flag, as detailed in our [detailed documentation for Sushi](sushi_overview.md).
 
 Parameter values are in Sushi normalized to the range 0.0-1.0, floating point, across plugins and formats.

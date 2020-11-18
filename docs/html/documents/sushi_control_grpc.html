@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Controlling Sushi using gRPC &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" />
     <link rel="prev" title="Sushi Configuration" href="sushi_configuration_format.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -28,16 +34,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="sushi_configuration_format.html" title="Sushi Configuration"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Controlling Sushi using gRPC</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -67,23 +69,22 @@ and how how the elkpy library invokes the Sushi gRPC API.</p>
 subsystem of Sushi.</p>
 <p>These are:</p>
 <ul class="simple">
-<li><p>AudioGraphController</p></li>
-<li><p>ParameterController</p></li>
-<li><p>AudioRoutingController</p></li>
-<li><p>MidiController</p></li>
-<li><p>CvGateController</p></li>
-<li><p>KeyboardController</p></li>
-<li><p>ProgramController</p></li>
-<li><p>OscController</p></li>
-<li><p>TransportController</p></li>
-<li><p>SystemController</p></li>
-<li><p>TimingController</p></li>
-<li><p>NotificationController</p></li>
+<li>AudioGraphController</li>
+<li>ParameterController</li>
+<li>AudioRoutingController</li>
+<li>MidiController</li>
+<li>CvGateController</li>
+<li>KeyboardController</li>
+<li>ProgramController</li>
+<li>OscController</li>
+<li>TransportController</li>
+<li>SystemController</li>
+<li>TimingController</li>
+<li>NotificationController</li>
 </ul>
 <p>All except NotificationController, define methods which the GUI can invoke to query Sushi on its state,
 and to issue commands to modify that state.</p>
-<p>For the details on the methods that can be invoked from each controller, please refer to the .proto file, and <a class="reference external" href="../elkpy-doc/elkpy.html">elkpy library
-documentation</a>.
+<p>For the details on the methods that can be invoked from each controller, please refer to the .proto file, and elkpy library.
 Here we’ll only present a high-level overview of what each is for, without too much detail of how it is used.</p>
 <div class="section" id="audiographcontroller">
 <h3>AudioGraphController<a class="headerlink" href="#audiographcontroller" title="Permalink to this headline">¶</a></h3>
@@ -137,7 +138,7 @@ can all be controlled and synchronized.</p>
 </div>
 <div class="section" id="timingcontroller">
 <h3>TimingController<a class="headerlink" href="#timingcontroller" title="Permalink to this headline">¶</a></h3>
-<p>Allows the generation and querying of CPU timing for the engine, individual tracks or processors.</p>
+<p>Allows the generation and querying of CPU timing information for the engine, individual tracks or processors.</p>
 </div>
 </div>
 <div class="section" id="sushi-grpc-notifications">
@@ -151,13 +152,12 @@ notifications are not yet enabled.</p>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Controlling Sushi using gRPC</a><ul>
 <li><a class="reference internal" href="#high-level-overview-of-sushi-s-grpc-api">High-level Overview of Sushi’s gRPC API</a><ul>
@@ -193,15 +193,15 @@ notifications are not yet enabled.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -213,21 +213,17 @@ notifications are not yet enabled.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              >next</a> |</li>
         <li class="right" >
           <a href="sushi_configuration_format.html" title="Sushi Configuration"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Controlling Sushi using gRPC</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

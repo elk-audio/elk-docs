@@ -38,6 +38,7 @@ are differences we will explicitly point them out.
    :caption: Elk Reference Manual:
 
    documents/sushi_overview.rst
+   documents/sushi_public_api_model.rst
    documents/sushi_configuration_format.md
    documents/sushi_control_grpc.rst
    documents/sushi_control_osc.rst
