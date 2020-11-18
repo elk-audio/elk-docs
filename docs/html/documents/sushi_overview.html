@@ -4,24 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sushi: The DAW Inside Elk &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi Public API Model" href="sushi_public_api_model.html" />
     <link rel="prev" title="Run Elk on Boards" href="run_elk_on_boards.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -106,8 +111,8 @@ freely routed to physical outputs or inputs, or other Jack software.</p>
 <p>The Offline frontend can be used for testing in an environment that
 lacks audio codecs and for evaluating systems in a very early stage. It
 has also proven to be very useful in debugging.</p>
-<p>See Sushi’s integrated usage help (by running <code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">-h</span></code> or
-<code class="docutils literal notranslate"><span class="pre">sushi</span> <span class="pre">--help</span></code>), for command line options to choose one of the
+<p>See Sushi’s integrated usage help (by running <em>sushi -h</em> or
+<em>sushi –help</em>), for command line options to choose one of the
 frontends.</p>
 </div>
 <div class="section" id="configuration-and-control">
@@ -203,9 +208,9 @@ using MIDI, Ableton Link, and OSC.</p>
 <p>These can be discovered in several ways.</p>
 <p>The name, label, ID and OSC paths for the hosted plugins’ parameters, is
 dumped to stdout in JSON format when running Sushi with the flag
-<code class="docutils literal notranslate"><span class="pre">--dump-plugins</span></code>. For example, to pipe the parameters for the LV2 JX10
+<em>–dump-plugins</em>. For example, to pipe the parameters for the LV2 JX10
 example configuration into a .json file, type the following:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sushi</span> <span class="pre">--dump-plugins</span> <span class="pre">-c</span> <span class="pre">/config_play_lv2_jx10.json</span> <span class="pre">&gt;</span> <span class="pre">jx10_parameters.json</span></code></p>
+<p><em>$ sushi –dump-plugins -c /config_play_lv2_jx10.json &gt; jx10_parameters.json</em></p>
 <p>This flag starts sushi with the dummy frontend and exits immediately
 after dumping the parameters.</p>
 <p>Parameter values are normalized to the range 0.0-1.0, floating point,
@@ -213,7 +218,7 @@ across plugin formats.</p>
 <p>So, from the above example, to set the JX 10 synthesizers’ resonance to 0.5
 (halfway its range), send the following OSC message to Sushi (the
 default UDP port for this is 24024):</p>
-<p><code class="docutils literal notranslate"><span class="pre">/parameter/jx10/VCF_Reso,</span> <span class="pre">f,</span> <span class="pre">0.5</span></code></p>
+<p><em>/parameter/jx10/VCF_Reso, f, 0.5</em></p>
 <p>The parameters can also be queried over gRPC’s ParameterController,
 documented under <a class="reference internal" href="sushi_control_grpc.html#sushi-control-grpc"><span class="std std-ref">Controlling Sushi using gRPC</span></a>.</p>
 </div>
@@ -257,15 +262,15 @@ safe timers, and multithreaded worker pools.</p>
 <p>The library has a fall-back implementation for POSIX systems (tested on
 standard Linux distros and macOS), which makes it convenient for
 inclusion in an existing codebase.</p>
-<p>Full source code is included in <code class="docutils literal notranslate"><span class="pre">work/twine</span></code> with Doxygen
+<p>Full source code is included in <em>work/twine</em> with Doxygen
 documentation, unit tests and example code.</p>
 </div>
 <div class="section" id="logging">
 <h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
-<p>On start, Sushi creates a log file in <code class="docutils literal notranslate"><span class="pre">/tmp/sushi.log</span></code> where it logs
+<p>On start, Sushi creates a log file in <em>/tmp/sushi.log</em> where it logs
 all relevant run-time information. Logging level and log destination can
-be specified with the command line flag <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--log-level</span></code> and
-<code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">-L</span></code> <code class="docutils literal notranslate"><span class="pre">-log-file=filename</span></code> respectively.</p>
+be specified with the command line flag <em>-l</em> or <em>–log-level</em> and
+<em>-l</em> or <em>-L</em> <em>-log-file=filename</em> respectively.</p>
 </div>
 <div class="section" id="running-sushi-with-a-different-buffer-size">
 <h2>Running Sushi with a Different Buffer Size<a class="headerlink" href="#running-sushi-with-a-different-buffer-size" title="Permalink to this headline">¶</a></h2>
@@ -275,10 +280,10 @@ and in this way, the compiler has more room for optimizations.</p>
 <p>However, Elk distributions are shipped with Sushi compiled at different
 buffer sizes, usually [16, 32, 64, 128].</p>
 <p>In case you want to use a different buffer size, you will also need to
-change the audio driver parameter <code class="docutils literal notranslate"><span class="pre">audio_buffer_size</span></code> in the script
-placed by default in <code class="docutils literal notranslate"><span class="pre">/usr/bin/load-drivers</span></code> and reboot the board (or
+change the audio driver parameter <em>audio_buffer_size</em> in the script
+placed by default in <em>/usr/bin/load-drivers</em> and reboot the board (or
 restart the audio driver by removing and reinserting the module
-<code class="docutils literal notranslate"><span class="pre">audio_rtdm</span></code>).</p>
+<em>audio_rtdm</em>).</p>
 </div>
 </div>
 
@@ -288,7 +293,7 @@ restart the audio driver by removing and reinserting the module
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Sushi: The DAW Inside Elk</a><ul>
 <li><a class="reference internal" href="#main-features">Main Features</a></li>
@@ -327,14 +332,12 @@ restart the audio driver by removing and reinserting the module
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -358,7 +361,7 @@ restart the audio driver by removing and reinserting the module
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

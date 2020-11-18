@@ -4,24 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Run Elk on Boards &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" />
     <link rel="prev" title="Elk UpCore Hardware" href="getting_started_with_development_kit_upcore_hardware.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -58,12 +63,13 @@
 <p>For setting up SSH connections follow these tips:</p>
 <ol class="simple">
 <li>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</li>
-<li>Assuming Linux/macOS, you can connect to your board with the command <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">mind&#64;elk-pi.local</span></code>.<ol>
-<li>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address of your board(s). to see the IP address(es) run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">arp</span> <span class="pre">-a</span></code> - then connect over SSH to the IP you find.</li>
+<li>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.<ol>
+<li>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
+of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</li>
 </ol>
 </li>
 <li>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</li>
-<li>Once you have a terminal window, just log in: username <code class="docutils literal notranslate"><span class="pre">mind</span></code>, password <code class="docutils literal notranslate"><span class="pre">elk</span></code>.</li>
+<li>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</li>
 </ol>
 </div>
 <div class="section" id="if-you-have-an-hifiberry-audio-hat">
@@ -71,7 +77,7 @@
 <p>Elk supports audio hats from HiFiBerry, such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>.</p>
 <p>If you are not using these, you can skip to step 3, and run Sushi.</p>
 <p>If however you <em>are</em> using one of these, set the audio hat as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
 $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
 
 <span class="c1"># To use HiFiBerry DAC+ ADC Pro Hat.</span>
@@ -82,14 +88,17 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 </div>
 <div class="section" id="and-run-sushi">
 <h2>3. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this headline">¶</a></h2>
-<p>You will find several configurations and plugins ready to test on the image, under the folders <code class="docutils literal notranslate"><span class="pre">~/config_files</span></code> and <code class="docutils literal notranslate"><span class="pre">~/plugins</span></code> in the user folder.</p>
-<p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should run Sushi using the <code class="docutils literal notranslate"><span class="pre">-r</span></code> switch for selecting our RASPA low-latency front-end:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/mda-vst3-configs/config_mda_synth.json <span class="p">&amp;</span>
+<p>You will find several configurations and plugins ready to test on the image, under the folders <em>~/config_files</em> and
+<em>~/plugins</em> in the user folder.</p>
+<p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should
+run Sushi using the <em>-r</em> switch for selecting our RASPA low-latency front-end:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/mda-vst3-configs/config_mda_synth.json <span class="p">&amp;</span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> at the end - this means the process starts in the background. When you later need to stop it, you type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pkill</span> <span class="pre">sushi</span></code>.</p>
-<p>To connect USB Midi devices, just plug them and connect them with the <code class="docutils literal notranslate"><span class="pre">aconnect</span></code> tool:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
+<p>Note the <em>&amp;</em> at the end - this means the process starts in the background. When you later need to stop it, you type
+<em>$ pkill sushi</em>.</p>
+<p>To connect USB Midi devices, just plug them and connect them with the <em>aconnect</em> tool:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
 $ aconnect -l
 <span class="c1"># Take note of the port number X for your MIDI controller (e.g. 16) and the one Y assigned to Sushi</span>
 <span class="c1"># (e.g. 128)</span>
@@ -103,7 +112,7 @@ $ aconnect X Y
 <div class="section" id="powering-down">
 <h2>4. Powering down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
 <p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
-<p>Instead, type <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">poweroff</span></code> to safely shutdown the system.</p>
+<p>Instead, type <em>$ sudo poweroff</em> to safely shutdown the system.</p>
 <p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>.</p>
 </div>
 <div class="section" id="further-steps">
@@ -119,7 +128,7 @@ $ aconnect X Y
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Run Elk on Boards</a><ul>
 <li><a class="reference internal" href="#power-it-up-connect">1. Power it up, connect…</a></li>
@@ -146,14 +155,12 @@ $ aconnect X Y
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -177,7 +184,7 @@ $ aconnect X Y
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

@@ -70,8 +70,8 @@ The Offline frontend can be used for testing in an environment that
 lacks audio codecs and for evaluating systems in a very early stage. It
 has also proven to be very useful in debugging.
 
-See Sushi's integrated usage help (by running ``sushi -h`` or
-``sushi --help``), for command line options to choose one of the
+See Sushi's integrated usage help (by running *sushi -h* or
+*sushi --help*), for command line options to choose one of the
 frontends.
 
 Configuration and Control
@@ -186,10 +186,10 @@ These can be discovered in several ways.
 
 The name, label, ID and OSC paths for the hosted plugins' parameters, is
 dumped to stdout in JSON format when running Sushi with the flag
-``--dump-plugins``. For example, to pipe the parameters for the LV2 JX10
+*--dump-plugins*. For example, to pipe the parameters for the LV2 JX10
 example configuration into a .json file, type the following:
 
-``$ sushi --dump-plugins -c /config_play_lv2_jx10.json > jx10_parameters.json``
+*$ sushi --dump-plugins -c /config_play_lv2_jx10.json > jx10_parameters.json*
 
 This flag starts sushi with the dummy frontend and exits immediately
 after dumping the parameters.
@@ -201,7 +201,7 @@ So, from the above example, to set the JX 10 synthesizers' resonance to 0.5
 (halfway its range), send the following OSC message to Sushi (the
 default UDP port for this is 24024):
 
-``/parameter/jx10/VCF_Reso, f, 0.5``
+*/parameter/jx10/VCF_Reso, f, 0.5*
 
 The parameters can also be queried over gRPC's ParameterController,
 documented under :ref:`sushi-control-grpc`.
@@ -250,16 +250,16 @@ The library has a fall-back implementation for POSIX systems (tested on
 standard Linux distros and macOS), which makes it convenient for
 inclusion in an existing codebase.
 
-Full source code is included in ``work/twine`` with Doxygen
+Full source code is included in *work/twine* with Doxygen
 documentation, unit tests and example code.
 
 Logging
 -------
 
-On start, Sushi creates a log file in ``/tmp/sushi.log`` where it logs
+On start, Sushi creates a log file in */tmp/sushi.log* where it logs
 all relevant run-time information. Logging level and log destination can
-be specified with the command line flag ``-l`` or ``--log-level`` and
-``-l`` or ``-L`` ``-log-file=filename`` respectively.
+be specified with the command line flag *-l* or *--log-level* and
+*-l* or *-L* *-log-file=filename* respectively.
 
 Running Sushi with a Different Buffer Size
 ------------------------------------------
@@ -272,7 +272,7 @@ However, Elk distributions are shipped with Sushi compiled at different
 buffer sizes, usually [16, 32, 64, 128].
 
 In case you want to use a different buffer size, you will also need to
-change the audio driver parameter ``audio_buffer_size`` in the script
-placed by default in ``/usr/bin/load-drivers`` and reboot the board (or
+change the audio driver parameter *audio_buffer_size* in the script
+placed by default in */usr/bin/load-drivers* and reboot the board (or
 restart the audio driver by removing and reinserting the module
-``audio_rtdm``).
+*audio_rtdm*).

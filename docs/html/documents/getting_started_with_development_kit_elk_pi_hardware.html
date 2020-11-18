@@ -4,24 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Elk Pi Hardware &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Elk UpCore Hardware" href="getting_started_with_development_kit_upcore_hardware.html" />
     <link rel="prev" title="Development Kit Software" href="getting_started_with_development_kit_software.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -53,16 +58,16 @@
 <p>We have created a brief time-lapse video of the assembly process <a class="reference external" href="https://www.youtube.com/watch?v=euB_fGGumZg&amp;feature=youtu.be">you may want to refer to</a>, illustrating the steps below.</p>
 <ol>
 <li><p class="first">While we do not provide a heat sink for your RPi, we do recommend that you use one, at the very least for the CPU. Attach heat sink(s) first, by peeling off the blue protective film from the bottom  and applying it on top of the Raspberry Pi CPU, along with eventual additional heat sinks for network and Bluetooth chips.</p>
-<p><img alt="Figure 1" src="../_images/image25.jpg" /></p>
+<p><img alt="Figure 1" src="../_images/image251.jpg" /></p>
 </li>
 <li><p class="first">Mount the four short spacers onto the Raspberry Pi using the included screws:</p>
-<p><img alt="Figure 2" src="../_images/image14.jpg" /></p>
+<p><img alt="Figure 2" src="../_images/image141.jpg" /></p>
 </li>
 <li><p class="first">Plug the Hat on top of the Raspberry Pi:</p>
-<p><img alt="Figure 3" src="../_images/image17.jpg" /></p>
+<p><img alt="Figure 3" src="../_images/image171.jpg" /></p>
 </li>
 <li><p class="first">Add another four of the included screws to the holes illustrated below, if you want extra stability:</p>
-<p><img alt="Figure 4" src="../_images/image26.jpg" /></p>
+<p><img alt="Figure 4" src="../_images/image261.jpg" /></p>
 </li>
 <li><p class="first">Finally, if you want you can add the optional bottom plate, using the included long spacers and screws. The final assembly then appears as follows:</p>
 <p><img alt="Figure 4" src="../_images/elk_pi_completed_assembly.jpg" /></p>
@@ -79,36 +84,36 @@
 <div class="section" id="windows">
 <h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Extract the <code class="docutils literal notranslate"><span class="pre">.wic</span></code> file from the <code class="docutils literal notranslate"><span class="pre">.bz2</span></code> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
+<li>Extract the <code class="docutils literal"><span class="pre">.wic</span></code> file from the <code class="docutils literal"><span class="pre">.bz2</span></code> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
 <li>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</li>
-<li>Flash the extracted <code class="docutils literal notranslate"><span class="pre">.wic</span></code> file to the SD card.</li>
+<li>Flash the extracted <code class="docutils literal"><span class="pre">.wic</span></code> file to the SD card.</li>
 </ol>
 </div>
 <div class="section" id="linux">
 <h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <code class="docutils literal notranslate"><span class="pre">dd</span></code> with these instructions:</p>
+<p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <code class="docutils literal"><span class="pre">dd</span></code> with these instructions:</p>
 <ol class="simple">
-<li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal notranslate"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/sdc</span></code>, or subsequent letters, or sometimes <code class="docutils literal notranslate"><span class="pre">/dev/mmcblk0</span></code>. We will from now on refer to it as <code class="docutils literal notranslate"><span class="pre">/dev/sdX</span></code>.</li>
+<li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is <code class="docutils literal"><span class="pre">/dev/sdb</span></code>, <code class="docutils literal"><span class="pre">/dev/sdc</span></code>, or subsequent letters, or sometimes <code class="docutils literal"><span class="pre">/dev/mmcblk0</span></code>. We will from now on refer to it as <code class="docutils literal"><span class="pre">/dev/sdX</span></code>.</li>
 <li>Unmount the SD card if it was already mounted:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
+<div class="highlight-bash"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
 </pre></div>
 </div>
 <ol class="simple">
 <li><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress <span class="o">&amp;&amp;</span> sync
+<div class="highlight-bash"><div class="highlight"><pre><span></span>   $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress <span class="o">&amp;&amp;</span> sync
 </pre></div>
 </div>
 <ol>
 <li><p class="first">The process can take a few minutes, so this is a good time to stretch your legs.</p>
-<p>If for any reason the process fails, just reduce the <code class="docutils literal notranslate"><span class="pre">bs=4M</span></code> speed to <code class="docutils literal notranslate"><span class="pre">bs=1M</span></code> for example, and it should work great.</p>
+<p>If for any reason the process fails, just reduce the <code class="docutils literal"><span class="pre">bs=4M</span></code> speed to <code class="docutils literal"><span class="pre">bs=1M</span></code> for example, and it should work great.</p>
 </li>
 </ol>
 </div>
 <div class="section" id="macos">
 <h3>macOS:<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
-<p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <code class="docutils literal notranslate"><span class="pre">.bz2</span></code> file first.</p>
+<p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <code class="docutils literal"><span class="pre">.bz2</span></code> file first.</p>
 </div>
 </div>
 <div class="section" id="power-up-and-next-steps">
@@ -127,7 +132,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Elk Pi Hardware</a><ul>
 <li><a class="reference internal" href="#assembly">1. Assembly</a></li>
@@ -157,14 +162,12 @@
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -188,7 +191,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

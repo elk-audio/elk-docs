@@ -8,16 +8,19 @@ There are several specific ways of working that you need to be aware of when dev
 
 Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.
 
-Therefore, it is important to remember to ***never put any files that you want to keep on the mounted root partition!*** There is a separate partition mounted under `/udata` for files that you want to preserve between system updates.
+Therefore, it is important to remember to ***never put any files that you want to keep on the mounted root partition
+!*** There is a separate partition mounted under */udata* for files that you want to preserve between system updates.
 
 The internal eMMC storage on the board is divided into four partitions:
 
-  * `boot`    : Boot partition with secondary bootloader and Kernel image
-  * `rootfs1` : First copy of root filesystem
-  * `rootfs2` : Second copy of root filesystem
-  * `udata`   : User data partition
+  * *boot*    : Boot partition with secondary bootloader and Kernel image
+  * *rootfs1* : First copy of root filesystem
+  * *rootfs2* : Second copy of root filesystem
+  * *udata*   : User data partition
 
-The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through .swu files. At boot, only one of the two redundant filesystem is mounted (in `/`). When a software update is run, it will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.
+The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through
+ .swu files. At boot, only one of the two redundant filesystem is mounted (in */*). When a software update is run, it
+  will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.
 
 It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.
 
@@ -25,11 +28,13 @@ Developer images can mount all partitions as read-write, but on production image
 
 ### User Data Separation
 
-Files in the user data partition under `/udata`, remain untouched after running a software update, so keep any temporary files used for development there. 
+Files in the user data partition under */udata*, remain untouched after running a software update, so keep any
+ temporary files used for development there. 
 
-Also use  `/udata` for the storage of settings & user patches.
+Also use  */udata* for the storage of settings & user patches.
 
-If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create symbolic links to the `/udata` partition from there.
+If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create
+ symbolic links to the */udata* partition from there.
 
 ## Elk Images
 
@@ -41,14 +46,19 @@ The development image contains the gcc toolchain, gdb & gdbserver, valgrind, tmu
 
 ### Release Image
 
-The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight BusyBox alternatives. It is also setup to be read-only, with exception for `/udata`if needed.
+The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It
+ is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight
+  BusyBox alternatives. It is also setup to be read-only, with exception for */udata* if needed.
 
 ## Elk System Utilities
 
-For important, common tasks with Elk, we provide the `elk_system_utils` script, which has commands for performing these common tasks straightforwardly. Type `elk_system_utils -h` to get a description of the various commands and their respective arguments.
+For important, common tasks with Elk, we provide the *elk_system_utils* script, which has commands for performing
+ these common tasks straightforwardly. Type *elk_system_utils -h* to get a description of the various commands and
+  their respective arguments.
 
 ### Changing audio buffer size
-The audio buffer size of the system can be changed by typing `sudo elk_system_utils --set-buffer-size [size]`. The buffer size should be a power of 2. For example:
+The audio buffer size of the system can be changed by typing *sudo elk_system_utils --set-buffer-size [size]*. The
+ buffer size should be a power of 2. For example:
 
 ```bash
 # set audio buffer size to 32
@@ -78,31 +88,37 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 
 ### Enabling/Disabling Write Access to Root Partition
 
-The default state on a newly flashed image is that the root partition is has both read and write permissions. However, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default preference for Elk release images. You can change such permissions with `elk_system_utils`, temporarily or permanently:
+The default state on a newly flashed image is that the root partition is has both read and write permissions. However
+, to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default
+ preference for Elk release images. You can change such permissions with *elk_system_utils*, temporarily or permanently:
 
 #### Temporarily Change Write Access
 
-Type `$ sudo elk_system_utils --remount-as-rw` to mount your current rootfs partition as read-write.
+Type *$ sudo elk_system_utils --remount-as-rw* to mount your current rootfs partition as read-write.
 
-The command `$ sudo elk_system_utils --remount-as-ro`  to set read-only status.
+The command *$ sudo elk_system_utils --remount-as-ro*  to set read-only status.
 
 Neither of these changes persist across boot cycles.
 
 #### Permanently Change Write Access
 
-Use `$ sudo elk_system_utils --ro-rootfs enable` to enable read-only access to current rootfs partition.
+Use *$ sudo elk_system_utils --ro-rootfs enable* to enable read-only access to current rootfs partition.
 
-`$ sudo elk_system_utils --ro-rootfs disable`, permanently gives read-write access.
+*$ sudo elk_system_utils --ro-rootfs disable*, permanently gives read-write access.
 
 You need to perform a power cycle for either change to take effect.
 
 ### Manually Controlling Default/Fallback Root Partition
 
-As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions, `rootfs1` and `rootfs2`. It maintains a counter internally, for the number of failed boot attempts. Once that counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.
+As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions
+, *rootfs1* and *rootfs2*. It maintains a counter internally, for the number of failed boot attempts. Once that
+ counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.
 
-You can manually trigger this swap with the command `$ sudo elk_system_utils --default-rootfs 1` to set `rootfs1` as the default partition - or parameter 2 for `rootfs2`. The other partition is then automatically assigned as fallback.
+You can manually trigger this swap with the command *$ sudo elk_system_utils --default-rootfs 1* to set *rootfs1* as
+ the default partition - or parameter 2 for *rootfs2*. The other partition is then automatically assigned as fallback.
 
-To reset the boot count environment variable to 0, enter the command  `$ elk_system_utils --reset-boot-count`. This may be useful if you have for example yourself frequently disconnected power before booting completes.
+To reset the boot count environment variable to 0, enter the command  *$ elk_system_utils --reset-boot-count*. This
+ may be useful if you have for example yourself frequently disconnected power before booting completes.
 
 ### Set USB Speed
 
@@ -128,7 +144,7 @@ $ sudo elk_system_utils --usb-speed 2
 
 Log-in to the board as ***root*** (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
 
-The easiest way to setup WiFi access is through `connman`, which is enabled by default in dev
+The easiest way to setup WiFi access is through *connman*, which is enabled by default in dev
 images:
 
 ```bash
@@ -147,9 +163,10 @@ $ ip a
 ```
 
 Then, you can just ssh to the board from your host computer, and transfer files using scp / sftp.
-Besides root access, you can login as `mind` user (password: `elk`) which is the preferred one to run Sushi and other userspace applications.
+Besides root access, you can login as *mind* user (password: *elk*) which is the preferred one to run Sushi and other
+ userspace applications.
 
-Now finish with the command `$ sudo elk_system_utils --remount-as-ro`  to set filesystem status back to read-only.
+Now finish with the command *$ sudo elk_system_utils --remount-as-ro*  to set filesystem status back to read-only.
 
 If your file system is read-only, you can temporarily give yourself write access to the partition for these changes to be stored:
 
@@ -172,35 +189,43 @@ $ picocom /dev/ttyXXX -b 57600 -l
 ```
 Note: For ElkPi image version 0.6.0 and below use 115200 as baudrate.
 
-With a serial connection you can login and have full shell access to the board, but files need to be transferred over the network or using a USB storage device. It might be useful to use `tmux` (installed in the development images) as a terminal multiplexer when working in this way.
+With a serial connection you can login and have full shell access to the board, but files need to be transferred over
+ the network or using a USB storage device. It might be useful to use *tmux* (installed in the development images) as
+  a terminal multiplexer when working in this way.
 
 ## Monitoring Sushi Performance
 
-Given Sushi is running, to get a rough view of CPU performance, `top`, `htop` and similar Linux tools will only show you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:
+Given Sushi is running, to get a rough view of CPU performance, *top*, *htop* and similar Linux tools will only show
+ you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:
 
 ```bash
 $ watch -n 0.5 cat /proc/xenomai/sched/stat
 ```
 
-For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin, or you can run Sushi with the `--timing-statistics` flag to get the results on a file.
+For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin
+, or you can run Sushi with the *--timing-statistics* flag to get the results on a file.
 
 ## Software Update System
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
 
-*Important note*: as written in the [Partition Layout section](#partition-layout), your data in the mounted root partition will be lost after an update! Keep anything that you want to save under `/udata`.
+*Important note*: as written in the [Partition Layout section](#partition-layout), your data in the mounted root
+ partition will be lost after an update! Keep anything that you want to save under */udata*.
 
 ### Updating over Network (WiFi / Ethernet)
 
   1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relevant section](#connecting-to-your-board).
   2. Open a web browser and go to ***http://\<your Elk Pi board ip address\>:8080***
-  3. You should see an Elk Audio OS update page. Just drag and drop the update file (`.swu`) or click in the middle to upload the file to start the update.
-  4. When the update is completed successfully, the page prompts a message that the board is restarting, but you need to power off the board manually from the board's terminal (e.g. `sudo poweroff`).
+  3. You should see an Elk Audio OS update page. Just drag and drop the update file (*.swu*) or click in the middle
+   to upload the file to start the update.
+  4. When the update is completed successfully, the page prompts a message that the board is restarting, but you need
+   to power off the board manually from the board's terminal (e.g. *sudo poweroff*).
   5. Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.
 
 ### Updating with an USB drive
 
-  1. Elk updates are shipped in form of `.swu` files that can be put on a FAT32 formatted USB pendrive and inserted at any time.
+  1. Elk updates are shipped in form of *.swu* files that can be put on a FAT32 formatted USB pendrive and inserted
+   at any time.
   2. The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.
   3. Once the SWupdate is completed successfully, only the Green LED will be turned on.
   4. If the SWupdate failed for any reason, then only the Red LED will be turned on.
@@ -211,12 +236,15 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 
 If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.
 
-1. Modify the file `/lib/systemd/system/sushi.service` to provide the path to your JSON configuration
+1. Modify the file */lib/systemd/system/sushi.service* to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
 
-   Similarly, you can modify `/lib/systemd/system/sensei.service` to provide the path for your SENSEI Json configuration.
+   Similarly, you can modify */lib/systemd/system/sensei.service* to provide the path for your SENSEI Json
+    configuration.
    
-   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number/name in the script `/usr/bin/connect-midi-apps`, which is started by the systemD service defined in `/lib/systemd/system/midi-connections.service`.
+   If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number
+   /name in the script */usr/bin/connect-midi-apps*, which is started by the systemD service defined in */lib/systemd
+   /system/midi-connections.service*.
 2. Enable both Sushi, Sensei and the MIDI connection service typing (as root):
 
 ```bash
@@ -225,9 +253,10 @@ $ systemctl enable midi-connections
 $ systemctl enable sensei
 ```
 
-Sushi will still output its log file in `/tmp/sushi.log`. If you want to see the standard output as well, for example because you have put some debug printfs in your plugin, you can run `journalctl -fu sushi` (as root).
+Sushi will still output its log file in */tmp/sushi.log*. If you want to see the standard output as well, for example
+ because you have put some debug printfs in your plugin, you can run *journalctl -fu sushi* (as root).
 
-They can also be started temporarily with `$ systemctl start sushi` as any normal SystemD service.
+They can also be started temporarily with *$ systemctl start sushi* as any normal SystemD service.
 
 ## Setting CPU Speed
 
