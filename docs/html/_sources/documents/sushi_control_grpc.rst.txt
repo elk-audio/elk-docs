@@ -11,6 +11,8 @@ We provide `up-to-date examples <elk_examples_overview.html>`__ of programs whic
 All these examples are written in Python, and use our `elkpy Python library <https://github.com/elk-audio/elkpy>`__,
 which greatly simplifies controlling Sushi over gRPC.
 
+The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__.
+
 The heart of the gRPC integration, is the API definition in the
 `sushi_rpc.proto file <https://github.com/elk-audio/sushi/blob/master/rpc_interface/protos/sushi_rpc.proto>`__, which you will find in the Sushi repository.
 
@@ -20,7 +22,7 @@ in which case you do not need to use gRPC directly, and can just read the docume
 But if you are programming a controller using a different language than Python,
 referring to the above .proto file will be needed.
 Even in that case, it will be very useful for you to read the comments for the elkpy methods,
-and how how the elkpy library invokes the Sushi gRPC API.
+and how the elkpy library invokes the Sushi gRPC API.
 
 High-level Overview of Sushi's gRPC API
 ---------------------------------------

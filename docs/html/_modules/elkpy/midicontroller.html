@@ -1,24 +1,30 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.midicontroller &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -29,8 +35,7 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.midicontroller</a></li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -60,10 +65,10 @@
 
 <span class="kn">import</span> <span class="nn">grpc</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
 
 <span class="c1">############################################</span>
 <span class="c1">#   Sushi MIDI Controller class   #</span>
@@ -76,7 +81,7 @@
 <span class="sd">    It can create and remove keyboard, CC and PC connections from an external midi device to tracks,</span>
 <span class="sd">    processors, and parameters in sushi.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="MidiController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="MidiController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
                  <span class="n">sushi_proto_def</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -89,8 +94,8 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">. Should be a string containing the ip-address and port &quot;</span>
-                            <span class="sa">f</span><span class="s2">&quot;to Sushi&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{address}</span><span class="s2">. Should be a string containing the ip-address and port &quot;</span>
+                            <span class="n">f</span><span class="s2">&quot;to Sushi&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span> <span class="o">=</span> <span class="n">grpc_gen</span><span class="o">.</span><span class="n">modules_from_proto</span><span class="p">(</span><span class="n">sushi_proto_def</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span><span class="o">.</span><span class="n">MidiControllerStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span></div>
@@ -187,7 +192,7 @@
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetCCInputConnectionsForProcessor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">processor_id</span><span class="p">))</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">connections</span><span class="p">]</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{</span><span class="n">processor_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{processor_id}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.get_pc_input_connections_for_processor"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_pc_input_connections_for_processor">[docs]</a>    <span class="k">def</span> <span class="nf">get_pc_input_connections_for_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">info_types</span><span class="o">.</span><span class="n">MidiPCConnection</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -204,7 +209,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">processor_id</span><span class="p">))</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">connections</span><span class="p">]</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{</span><span class="n">processor_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{processor_id}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.connect_kbd_input_to_track"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_input_to_track">[docs]</a>    <span class="k">def</span> <span class="nf">connect_kbd_input_to_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">raw_midi</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -222,8 +227,8 @@
                                                                                   <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
                                                                                   <span class="n">raw_midi</span><span class="o">=</span><span class="n">raw_midi</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{</span><span class="n">track</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, raw_midi: </span><span class="si">{</span><span class="n">raw_midi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{track}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, raw_midi: </span><span class="si">{raw_midi}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.connect_kbd_output_from_track"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_output_from_track">[docs]</a>    <span class="k">def</span> <span class="nf">connect_kbd_output_from_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">raw_midi</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -241,8 +246,8 @@
                                                                                   <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
                                                                                   <span class="n">raw_midi</span><span class="o">=</span><span class="n">raw_midi</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{</span><span class="n">track</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, raw_midi: </span><span class="si">{</span><span class="n">raw_midi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{track}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, raw_midi: </span><span class="si">{raw_midi}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.connect_cc_to_parameter"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_cc_to_parameter">[docs]</a>    <span class="k">def</span> <span class="nf">connect_cc_to_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cc_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                                 <span class="n">min_range</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_range</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">relative_mode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -267,9 +272,9 @@
                                                                                <span class="n">max_range</span><span class="o">=</span><span class="n">max_range</span><span class="p">,</span>
                                                                                <span class="n">relative_mode</span><span class="o">=</span><span class="n">relative_mode</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiCCConnection: parameter: </span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, cc_number: </span><span class="si">{</span><span class="n">cc_number</span><span class="si">}</span><span class="s2">, min_range: </span><span class="si">{</span><span class="n">min_range</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;max_range: </span><span class="si">{</span><span class="n">max_range</span><span class="si">}</span><span class="s2">, relative_mode: </span><span class="si">{</span><span class="n">relative_mode</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiCCConnection: parameter: </span><span class="si">{parameter}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, cc_number: </span><span class="si">{cc_number}</span><span class="s2">, min_range: </span><span class="si">{min_range}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;max_range: </span><span class="si">{max_range}</span><span class="s2">, relative_mode: </span><span class="si">{relative_mode}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.connect_pc_to_processor"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_pc_to_processor">[docs]</a>    <span class="k">def</span> <span class="nf">connect_pc_to_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -285,8 +290,8 @@
                                                                                <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span>
                                                                                <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiPCConnection: processor: </span><span class="si">{</span><span class="n">processor</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiPCConnection: processor: </span><span class="si">{processor}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_kbd_input"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_input">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_kbd_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">raw_midi</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -304,8 +309,8 @@
                                                                               <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
                                                                               <span class="n">raw_midi</span><span class="o">=</span><span class="n">raw_midi</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{</span><span class="n">track</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, raw_midi: </span><span class="si">{</span><span class="n">raw_midi</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{track}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, raw_midi: </span><span class="si">{raw_midi}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_kbd_output"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_output">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_kbd_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">track</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">raw_midi</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -323,8 +328,8 @@
                                                                                <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
                                                                                <span class="n">raw_midi</span><span class="o">=</span><span class="n">raw_midi</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{</span><span class="n">track</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, raw_midi: </span><span class="si">{</span><span class="n">raw_midi</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiKbdConnection: track: </span><span class="si">{track}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, raw_midi: </span><span class="si">{raw_midi}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_cc"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_cc">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_cc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cc_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                                 <span class="n">min_range</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_range</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">relative_mode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -349,9 +354,9 @@
                                                                        <span class="n">max_range</span><span class="o">=</span><span class="n">max_range</span><span class="p">,</span>
                                                                        <span class="n">relative_mode</span><span class="o">=</span><span class="n">relative_mode</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiCCConnection: parameter: </span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">, cc_number: </span><span class="si">{</span><span class="n">cc_number</span><span class="si">}</span><span class="s2">, min_range: </span><span class="si">{</span><span class="n">min_range</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;max_range: </span><span class="si">{</span><span class="n">max_range</span><span class="si">}</span><span class="s2">, relative_mode: </span><span class="si">{</span><span class="n">relative_mode</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiCCConnection: parameter: </span><span class="si">{parameter}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">, cc_number: </span><span class="si">{cc_number}</span><span class="s2">, min_range: </span><span class="si">{min_range}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;max_range: </span><span class="si">{max_range}</span><span class="s2">, relative_mode: </span><span class="si">{relative_mode}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_pc"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_pc">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_pc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -367,8 +372,8 @@
                                                                        <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span>
                                                                        <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With MidiPCConnection: processor: </span><span class="si">{</span><span class="n">processor</span><span class="si">}</span><span class="s2">, channel: </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">, &quot;</span>
-                                               <span class="sa">f</span><span class="s2">&quot;port: </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With MidiPCConnection: processor: </span><span class="si">{processor}</span><span class="s2">, channel: </span><span class="si">{channel}</span><span class="s2">, &quot;</span>
+                                               <span class="n">f</span><span class="s2">&quot;port: </span><span class="si">{port}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_all_cc_from_processor"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_cc_from_processor">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_all_cc_from_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -380,7 +385,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">DisconnectAllCCFromProcessor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">processor_id</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{</span><span class="n">processor_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{processor_id}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MidiController.disconnect_all_pc_from_processor"><a class="viewcode-back" href="../../elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_pc_from_processor">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect_all_pc_from_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -392,25 +397,24 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">DisconnectAllPCFromProcessor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">processor_id</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{</span><span class="n">processor_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="s2">&quot;With processor_id: </span><span class="si">{processor_id}</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -425,13 +429,12 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.midicontroller</a></li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

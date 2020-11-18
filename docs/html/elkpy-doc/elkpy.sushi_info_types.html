@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.SushiInfoTypes &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.SushiController" href="elkpy.sushicontroller.html" />
     <link rel="prev" title="elkpy.ProgramController" href="elkpy.programcontroller.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -38,8 +44,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.SushiInfoTypes</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,349 +55,339 @@
             
   <div class="section" id="module-elkpy.sushi_info_types">
 <span id="elkpy-sushiinfotypes"></span><h1>elkpy.SushiInfoTypes<a class="headerlink" href="#module-elkpy.sushi_info_types" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.AudioConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">AudioConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_AudioConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#AudioConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.AudioConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">AudioConnection</code><span class="sig-paren">(</span><em>grpc_AudioConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#AudioConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.AudioConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent an audio connection info received from Sushi in a cleaner way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>track (TrackIdentifier): an int
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>track (TrackIdentifier): an int
 track_channel (int):
-engine_channel (int):</p>
-</dd>
+engine_channel (int):</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.AudioConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_AudioConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#AudioConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.AudioConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_AudioConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#AudioConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.AudioConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.CvConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">CvConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_CvConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#CvConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.CvConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">CvConnection</code><span class="sig-paren">(</span><em>grpc_CvConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#CvConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.CvConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent a CV connection in Sushi in a cleaner way</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>parameter (int): The id of the connected parameter
-cv_port_id (int): The id of the connected CV port</p>
-</dd>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>parameter (int): The id of the connected parameter
+cv_port_id (int): The id of the connected CV port</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.CvConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_CvConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#CvConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.CvConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_CvConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#CvConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.CvConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.GateConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">GateConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_CvConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#GateConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.GateConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">GateConnection</code><span class="sig-paren">(</span><em>grpc_CvConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#GateConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.GateConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent a Gate connection in Sushi in a cleaner way</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>processor (int): The id of the connected processor
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>processor (int): The id of the connected processor
 gate_port_id (int): The id of the connected Gate port
 channel (int): The connected midi channel number
-note_no (int): The midi note number to trigger</p>
-</dd>
+note_no (int): The midi note number to trigger</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.GateConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_CvConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#GateConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.GateConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_CvConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#GateConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.GateConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.MidiCCConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">MidiCCConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiCCConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiCCConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiCCConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">MidiCCConnection</code><span class="sig-paren">(</span><em>grpc_MidiCCConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiCCConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiCCConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent a MIDI Continious Controller connection in Sushi in a cleaner way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>parameter (_sushi_proto.ParameterIdentifier):
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>parameter (_sushi_proto.ParameterIdentifier):
 channel (MidiChannel)
 port (int)
 cc_number (int)
 min_range (float)
 max_range (float)
-relative_mode (bool)</p>
-</dd>
+relative_mode (bool)</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.MidiCCConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiCCConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiCCConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiCCConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_MidiCCConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiCCConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiCCConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.MidiKbdConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">MidiKbdConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiKbdConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiKbdConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiKbdConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">MidiKbdConnection</code><span class="sig-paren">(</span><em>grpc_MidiKbdConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiKbdConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiKbdConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent a MIDI keyboard connection in Sushi in a cleaner way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>track (_sushi_proto.TrackIdentifier): a track id
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>track (_sushi_proto.TrackIdentifier): a track id
 channel (_sushi_proto.MidiChannel): a MIDI channel
 port (int): a MIDI port number
-raw_midi (bool): is this track a raw MIDI track or not.</p>
-</dd>
+raw_midi (bool): is this track a raw MIDI track or not.</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.MidiKbdConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiKbdConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiKbdConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiKbdConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_MidiKbdConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiKbdConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiKbdConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.MidiPCConnection">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">MidiPCConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiPCConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiPCConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiPCConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">MidiPCConnection</code><span class="sig-paren">(</span><em>grpc_MidiPCConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiPCConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiPCConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent a MIDI Program Change connection in Sushi in a cleaner way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>processor (_sushi_proto.ProcessorIdentifier): a processor id
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>processor (_sushi_proto.ProcessorIdentifier): a processor id
 channel (_sushi_proto.MidiChannel): a MIDI channel
-port (int): a MIDI port number</p>
-</dd>
+port (int): a MIDI port number</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.MidiPCConnection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_MidiPCConnection</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiPCConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiPCConnection.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_MidiPCConnection=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#MidiPCConnection.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.MidiPCConnection.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.ParameterInfo">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">ParameterInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ParameterInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">ParameterInfo</code><span class="sig-paren">(</span><em>grpc_ParameterInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent the parameter info received from sushi in a clear way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The id of the parameter.
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>id (int): The id of the parameter.
 type (str): The type of the parameter.
 label (str): The label of the parameter.
 name (str): The name of the parameter.
 unit (str): The unit of the parameter.
 automatable (bool): If the parameter is automatable or not.
 min_domain_value (float): The minimum value of the parameter.
-max_domain_value (float): The maximum value of the parameter.</p>
-</dd>
+max_domain_value (float): The maximum value of the parameter.</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.ParameterInfo.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ParameterInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_ParameterInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterInfo.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor of the ParameterInfo class.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>grpc_ParameterInfo (sushi_rpc_pb2.ParameterInfo): the gRPC parameter info object to get the data from.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>grpc_ParameterInfo (sushi_rpc_pb2.ParameterInfo): the gRPC parameter info object to get the data from.</dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.ParameterType">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">ParameterType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">ParameterType</code><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ParameterType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>Enum class to hold the values matching the different parameter types.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>BOOL,
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>BOOL,
 INT,
 FLOAT,
 STRING_PROPERTY,
-DATA_PROPERTY</p>
-</dd>
+DATA_PROPERTY</dd>
 </dl>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.ParameterType.BOOL">
-<code class="sig-name descname">BOOL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.BOOL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BOOL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.BOOL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.ParameterType.DATA_PROPERTY">
-<code class="sig-name descname">DATA_PROPERTY</code><em class="property"> = 5</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.DATA_PROPERTY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DATA_PROPERTY</code><em class="property"> = 5</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.DATA_PROPERTY" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.ParameterType.FLOAT">
-<code class="sig-name descname">FLOAT</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.FLOAT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FLOAT</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.FLOAT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.ParameterType.INT">
-<code class="sig-name descname">INT</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.INT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INT</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.INT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.ParameterType.STRING_PROPERTY">
-<code class="sig-name descname">STRING_PROPERTY</code><em class="property"> = 4</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.STRING_PROPERTY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STRING_PROPERTY</code><em class="property"> = 4</em><a class="headerlink" href="#elkpy.sushi_info_types.ParameterType.STRING_PROPERTY" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.PlayingMode">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">PlayingMode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#PlayingMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">PlayingMode</code><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#PlayingMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>Enum class to hold the values matching the different playing modes.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>STOPPED,
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>STOPPED,
 PLAYING,
-RECORDING</p>
-</dd>
+RECORDING</dd>
 </dl>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PlayingMode.PLAYING">
-<code class="sig-name descname">PLAYING</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.PLAYING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PLAYING</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.PLAYING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PlayingMode.RECORDING">
-<code class="sig-name descname">RECORDING</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.RECORDING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RECORDING</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.RECORDING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PlayingMode.STOPPED">
-<code class="sig-name descname">STOPPED</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.STOPPED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STOPPED</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.PlayingMode.STOPPED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.PluginType">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">PluginType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#PluginType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.PluginType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">PluginType</code><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#PluginType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.PluginType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>Enum class to hold the values matching the different plugin types.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>INTERNAL,
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>INTERNAL,
 VST2X,
 VST3X,
-LV2</p>
-</dd>
+LV2</dd>
 </dl>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PluginType.INTERNAL">
-<code class="sig-name descname">INTERNAL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.INTERNAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INTERNAL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.INTERNAL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PluginType.LV2">
-<code class="sig-name descname">LV2</code><em class="property"> = 4</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.LV2" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LV2</code><em class="property"> = 4</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.LV2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PluginType.VST2X">
-<code class="sig-name descname">VST2X</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.VST2X" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VST2X</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.VST2X" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.PluginType.VST3X">
-<code class="sig-name descname">VST3X</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.VST3X" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VST3X</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.PluginType.VST3X" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.ProcessorInfo">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">ProcessorInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ProcessorInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProcessorInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProcessorInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">ProcessorInfo</code><span class="sig-paren">(</span><em>grpc_ProcessorInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProcessorInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProcessorInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent the processor info received from sushi in a clear way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The id of the processor.
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>id (int): The id of the processor.
 label (str): The label of the processor.
 name (str): The name of the processor.
 parameter_count (int): The number of parameters available to the processor.
-program_count (int): The number of programs available to the processor.</p>
-</dd>
+program_count (int): The number of programs available to the processor.</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.ProcessorInfo.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ProcessorInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProcessorInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProcessorInfo.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_ProcessorInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProcessorInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProcessorInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.ProgramInfo">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">ProgramInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ProgramInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProgramInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProgramInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">ProgramInfo</code><span class="sig-paren">(</span><em>grpc_ProgramInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProgramInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProgramInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent the program info received from sushi in a clear way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The id of the program.
-name (str): The name of the program.</p>
-</dd>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>id (int): The id of the program.
+name (str): The name of the program.</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.ProgramInfo.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_ProgramInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProgramInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProgramInfo.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_ProgramInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#ProgramInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.ProgramInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.SyncMode">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">SyncMode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#SyncMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">SyncMode</code><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#SyncMode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>Enum class to hold the values matching the different sync modes.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>INTERNAL,
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>INTERNAL,
 MIDI,
-LINK</p>
-</dd>
+LINK</dd>
 </dl>
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.SyncMode.INTERNAL">
-<code class="sig-name descname">INTERNAL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.INTERNAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INTERNAL</code><em class="property"> = 1</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.INTERNAL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.SyncMode.LINK">
-<code class="sig-name descname">LINK</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.LINK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LINK</code><em class="property"> = 3</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.LINK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
+<dl class="attribute">
 <dt id="elkpy.sushi_info_types.SyncMode.MIDI">
-<code class="sig-name descname">MIDI</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.MIDI" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MIDI</code><em class="property"> = 2</em><a class="headerlink" href="#elkpy.sushi_info_types.SyncMode.MIDI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.sushi_info_types.TrackInfo">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.sushi_info_types.</code><code class="sig-name descname">TrackInfo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_TrackInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#TrackInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.TrackInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.sushi_info_types.</code><code class="descname">TrackInfo</code><span class="sig-paren">(</span><em>grpc_TrackInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#TrackInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.TrackInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to represent the track info received from sushi in a clear way.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The id of the track.
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>id (int): The id of the track.
 label (str): The label of the track.
 name (str): The name of the track.
 input_channels (int): The number of input channels available to the track.
 input_busses (int): The number input busses available to the track.
 output_channels (int): The number of output channels available to the track.
-output_busses (int): The number of output busses available to the track.</p>
-</dd>
+output_busses (int): The number of output busses available to the track.</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.sushi_info_types.TrackInfo.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grpc_TrackInfo</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#TrackInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.TrackInfo.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>grpc_TrackInfo=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#TrackInfo.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.sushi_info_types.TrackInfo.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -412,15 +407,15 @@ output_busses (int): The number of output busses available to the track.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -442,13 +437,12 @@ output_busses (int): The number of output busses available to the track.</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.SushiInfoTypes</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

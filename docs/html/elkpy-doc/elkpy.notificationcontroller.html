@@ -1,26 +1,32 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.NotificationController &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.OSCController" href="elkpy.osccontroller.html" />
     <link rel="prev" title="elkpy.MidiController" href="elkpy.midicontroller.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -38,8 +44,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.NotificationController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,114 +55,114 @@
             
   <div class="section" id="module-elkpy.notificationcontroller">
 <span id="elkpy-notificationcontroller"></span><h1>elkpy.NotificationController<a class="headerlink" href="#module-elkpy.notificationcontroller" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
+<dl class="class">
 <dt id="elkpy.notificationcontroller.NotificationController">
-<em class="property">class </em><code class="sig-prename descclassname">elkpy.notificationcontroller.</code><code class="sig-name descname">NotificationController</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="o">=</span><span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">elkpy.notificationcontroller.</code><code class="descname">NotificationController</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class to manage subscriptions to Sushi notifications (changes, updates, …)
 It allows the User, through simple API calls, to subscribe to any notification stream implemented in Sushi,
 and to attach call-back functions to each subscribed stream.</p>
 <p>(See the API section at the bottom of this class.)</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>address: gRPC server IP (str: ip:port)
-loop: an asynchronous event loop</p>
-</dd>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>address: gRPC server IP (str: ip:port)
+loop: an asynchronous event loop</dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">'localhost:51051'</span></em>, <em class="sig-param"><span class="n">sushi_proto_def</span><span class="o">=</span><span class="default_value">'/usr/share/sushi/sushi_rpc.proto'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor for the NotificationController class setting up the gRPC connection with sushi.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>address (str): ‘ip-address:port’ The ip-address and port at which to connect to sushi.
-sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>address (str): ‘ip-address:port’ The ip-address and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">
-<em class="property">async </em><code class="sig-name descname">process_parameter_update_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">call_back</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">param_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_parameter_update_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_parameter_update_notifications</code><span class="sig-paren">(</span><em>call_back=None</em>, <em>param_list=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_parameter_update_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">
-<em class="property">async </em><code class="sig-name descname">process_processor_change_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">call_back</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_processor_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_processor_change_notifications</code><span class="sig-paren">(</span><em>call_back=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_processor_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.process_timing_update_notifications">
-<em class="property">async </em><code class="sig-name descname">process_timing_update_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">call_back</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_timing_update_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_timing_update_notifications</code><span class="sig-paren">(</span><em>call_back=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_timing_update_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.process_track_change_notifications">
-<em class="property">async </em><code class="sig-name descname">process_track_change_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">call_back</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_track_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_track_change_notifications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_track_change_notifications</code><span class="sig-paren">(</span><em>call_back=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_track_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_track_change_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.process_transport_change_notifications">
-<em class="property">async </em><code class="sig-name descname">process_transport_change_notifications</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">call_back</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_transport_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_transport_change_notifications" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_transport_change_notifications</code><span class="sig-paren">(</span><em>call_back=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_transport_change_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_transport_change_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates">
-<code class="sig-name descname">subscribe_to_parameter_updates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cb</span></em>, <em class="sig-param"><span class="n">param_blocklist</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_parameter_updates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_to_parameter_updates</code><span class="sig-paren">(</span><em>cb</em>, <em>param_blocklist=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_parameter_updates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribes to Parameter update notification stream from Sushi
 User needs to implement their own logic to process these notification in the placeholder methods below</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.
-param_blocklist: a list of parameter identifiers for which to block update notifications.                         A parameter identifier is itself a list of [processor_id: int, parameter_id: int]                         If no param_blocklist is passed, all parameter notifications will be subscribed to.</p>
-</dd>
-<dt>Notes to write useful callbacks:</dt><dd><p>Notification objects have 2 attributes: parameter and value;
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cb: a callable that will be called for each notification received from the stream.
+param_blocklist: a list of parameter identifiers for which to block update notifications.                         A parameter identifier is itself a list of [processor_id: int, parameter_id: int]                         If no param_blocklist is passed, all parameter notifications will be subscribed to.</dd>
+<dt>Notes to write useful callbacks:</dt>
+<dd>Notification objects have 2 attributes: parameter and value;
 Parameter itself has 2 attributes: processor_id and _parameter_id;
 ex: notification.parameter.parameter_id (gets the parameter ID)
 ex: notification.parameter.processor_id (gets the processor ID)
-ex: notification.value (gets the value)</p>
-</dd>
+ex: notification.value (gets the value)</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes">
-<code class="sig-name descname">subscribe_to_processor_changes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cb</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_processor_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_to_processor_changes</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_processor_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribes to Processor change notification stream from Sushi.
 User needs to implement their own stream consumer logic and pass it as cb.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cb: a callable that will be called for each notification received from the stream.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates">
-<code class="sig-name descname">subscribe_to_timing_updates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cb</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_timing_updates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_to_timing_updates</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_timing_updates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribes to Timing update notification stream from Sushi
 User needs to implement their own stream consumer logic and pass it as cb.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cb: a callable that will be called for each notification received from the stream.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.subscribe_to_track_changes">
-<code class="sig-name descname">subscribe_to_track_changes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cb</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_track_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_track_changes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_to_track_changes</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_track_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_track_changes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribes to Track change notification stream from Sushi.
 User needs to implement their own stream consumer logic and pass it as cb.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cb: a callable that will be called for each notification received from the stream.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="elkpy.notificationcontroller.NotificationController.subscribe_to_transport_changes">
-<code class="sig-name descname">subscribe_to_transport_changes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cb</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)">None</a><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_transport_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_transport_changes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_to_transport_changes</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_transport_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_transport_changes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribes to Transport changes notification stream from Sushi
 User needs to implement their own stream consumer logic and pass it as cb.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>cb: a callable that will be called for each notification received from the stream.</dd>
 </dl>
 </dd></dl>
 
@@ -166,7 +171,6 @@ User needs to implement their own stream consumer logic and pass it as cb.</p>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -186,15 +190,15 @@ User needs to implement their own stream consumer logic and pass it as cb.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -216,13 +220,12 @@ User needs to implement their own stream consumer logic and pass it as cb.</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.NotificationController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

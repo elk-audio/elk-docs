@@ -34,6 +34,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -55,6 +58,7 @@ is a very good start.</p>
 <p>We provide <a class="reference external" href="elk_examples_overview.html">up-to-date examples</a> of programs which use gRPC to communicate with Sushi.</p>
 <p>All these examples are written in Python, and use our <a class="reference external" href="https://github.com/elk-audio/elkpy">elkpy Python library</a>,
 which greatly simplifies controlling Sushi over gRPC.</p>
+<p>The elkpy library has comprehensive comments, and is also <a class="reference external" href="../_modules/index.html">documented here</a>.</p>
 <p>The heart of the gRPC integration, is the API definition in the
 <a class="reference external" href="https://github.com/elk-audio/sushi/blob/master/rpc_interface/protos/sushi_rpc.proto">sushi_rpc.proto file</a>, which you will find in the Sushi repository.</p>
 <p>If you plan to work in Python we recommend using our elkpy library,
@@ -62,7 +66,7 @@ in which case you do not need to use gRPC directly, and can just read the docume
 <p>But if you are programming a controller using a different language than Python,
 referring to the above .proto file will be needed.
 Even in that case, it will be very useful for you to read the comments for the elkpy methods,
-and how how the elkpy library invokes the Sushi gRPC API.</p>
+and how the elkpy library invokes the Sushi gRPC API.</p>
 <div class="section" id="high-level-overview-of-sushi-s-grpc-api">
 <h2>High-level Overview of Sushi’s gRPC API<a class="headerlink" href="#high-level-overview-of-sushi-s-grpc-api" title="Permalink to this headline">¶</a></h2>
 <p>Given Sushi’s complexity, we have split up the gRPC API to specific controllers, using each of which you can control one
@@ -84,7 +88,8 @@ subsystem of Sushi.</p>
 </ul>
 <p>All except NotificationController, define methods which the GUI can invoke to query Sushi on its state,
 and to issue commands to modify that state.</p>
-<p>For the details on the methods that can be invoked from each controller, please refer to the .proto file, and elkpy library.
+<p>For the details on the methods that can be invoked from each controller, please refer to the .proto file, and <a class="reference external" href="../elkpy-doc/elkpy.html">elkpy library
+documentation</a>.
 Here we’ll only present a high-level overview of what each is for, without too much detail of how it is used.</p>
 <div class="section" id="audiographcontroller">
 <h3>AudioGraphController<a class="headerlink" href="#audiographcontroller" title="Permalink to this headline">¶</a></h3>
@@ -212,6 +217,9 @@ notifications are not yet enabled.</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
              >next</a> |</li>
