@@ -76,6 +76,17 @@ Transposes incoming MIDI Note ON & OFF events by a fixed amount of semitones.
   * **Parameters** :
     + "transpose" : transpose amount in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
 
+### Step Sequencer
+
+A simple 8-step sequencer.
+
+* **uid** : "sushi.testing.step_sequencer"
+* **Parameters** :
+  * For each of the 8 steps:
+    + "pitch_1"..."pitch_8" : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
+    + "step_1"..."step_8" : Step on/off. Default: 1.0.
+    + "step_ind_1"..."step_ind_8" (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.
+
 ## Audio In / Parameter Out plugins
 
 ### Peak Meter

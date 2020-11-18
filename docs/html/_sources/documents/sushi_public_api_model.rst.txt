@@ -24,8 +24,6 @@ Each processor has:
 -  A set of input and output audio channels.
 -  A set of input and output keyboard channels.
 -  A set of programs (presets) which can be stored and recalled.
--  A set of input and output CV channels.
--  A set of input and output Gate channels.
 
 The audio and MIDI channels of a track need to be explicitly connected to the
 inputs and outputs of Sushi.
@@ -35,15 +33,11 @@ The processors contained in tracks all have the same audio and keyboard connecti
 Each audio track can be set to use one of three modes for the audio channel configuration:
 “mono”, “stereo” and “multibus”. The multibus option is for tracks with several stereo output busses routable to different output.
 
-Each audio track can also have MIDI messages sent to it raw or parsed, depending on whether its "Raw MIDI" option is on or off (default is off).
-If enabled, plugins will need to handle things like program change on their own.
-Only valid for plugin formats which accept raw MIDI data input, such as VST 2, the setting is ignored for VST 3.
-
 Individually, the parameters of each processor can be controlled by various means:
 
 -  Over MIDI Control Change.
 -  Over Open Sound Control (OSC) messages.
--  Using CV / Gate connections.
+-  Using CV connections.
 -  Set directly over gRPC.
 -  Set in the JSON configuration file to specific values on startup, or even played back over time during off-line processing.
 
