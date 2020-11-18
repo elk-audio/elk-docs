@@ -146,6 +146,22 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </li>
 </ul>
 </div>
+<div class="section" id="step-sequencer">
+<h3>Step Sequencer<a class="headerlink" href="#step-sequencer" title="Permalink to this headline">¶</a></h3>
+<p>A simple 8-step sequencer.</p>
+<ul class="simple">
+<li><strong>uid</strong> : “sushi.testing.step_sequencer”</li>
+<li><strong>Parameters</strong> :<ul>
+<li>For each of the 8 steps:<ul>
+<li>“pitch_1”…”pitch_8” : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).</li>
+<li>“step_1”…”step_8” : Step on/off. Default: 1.0.</li>
+<li>“step_ind_1”…”step_ind_8” (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="audio-in-parameter-out-plugins">
 <h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">¶</a></h2>
@@ -251,6 +267,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
 <li><a class="reference internal" href="#arpeggiator">Arpeggiator</a></li>
 <li><a class="reference internal" href="#transposer">Transposer</a></li>
+<li><a class="reference internal" href="#step-sequencer">Step Sequencer</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>

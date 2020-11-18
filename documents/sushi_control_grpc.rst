@@ -105,8 +105,7 @@ enable/disable which parameters will broadcast their state.
 TransportController
 ^^^^^^^^^^^^^^^^^^^
 
-Enables querying and setting the state of the global Sushi transport - so that plugins which playback musical notes for example,
-can all be controlled and synchronized.
+Enables querying and setting the state of the global Sushi transport - start/stop, time signature, tempo and tempo synchronisation methods.
 
 SystemController
 ^^^^^^^^^^^^^^^^
