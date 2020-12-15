@@ -141,6 +141,8 @@ This example invokes the same Sushi configuration file as the multi-fx example f
 
 To run the example, execute the batch script *$ ./run_multi_fx*, in the folder */udata/elk-examples/blackboard/controller-examples*.
 
+**Important: To use the blackboard's rightmost 2 jack audio inputs, you need to plug a 3.5mm stereo mini-jack adapted/cable into the elk-pi input as well, leaving cable's/adapter's other end unconnected. That bridges the connection to the Blackboards inputs - if you don't the inputs will not reach the elk-pi.** Or, just use the minijack input on the elk-pi right away, if that is more convenient to you. 
+
 In the sample folder, you can then call the *$ ./stop* script to terminate all the processes.
 
 ## JUCE Example, for Blackboard
