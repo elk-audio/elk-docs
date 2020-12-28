@@ -33,11 +33,17 @@ This should also be straightforward by using standard build systems. Since relea
 
 There is an example plugin that can be compiled with the provided toolchain under *work/vst3-template*, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.
 
+After cross-compilation, ensure that the folder under *"plugin.vst3/Contents"* is named **aarch64-linux**, not *arm64-linux*, or the plugin will not work on the Elk-Pi - rename it yourself if needed.
+
 ## VST Plugins Using JUCE
 
 Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.
 
-JUCE actively supports Linux as a build target, so if you don't use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. However, there are a couple of important issues to consider:
+JUCE actively supports Linux as a build target, so if you don't use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. 
+
+Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.
+
+Moreover, there are a couple of important issues to consider:
 
 ### Plugins using JUCE Version 6 
 
@@ -55,14 +61,14 @@ If you cannot use the latest version of JUCE, it is possibly to also build using
 To overcome the second problem, we created a [JUCE fork](https://github.com/elk-audio/JUCE) that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin's editor functions. As a consequence, you don't need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.
 
 If you use JUCE 5.4 you need to:
-  
+
 1. Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.
 2. Inside Projucer:
      * Ensure that the File -> Global Paths... are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.
      * Choose only "VST Legacy" as audio plugin type under project properties.  
 3. Follow the instructions in the next section to export a makefile. 
 4. If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the *JUCE_CPPFLAGS* variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
-    
+   
  ### Cross-compiling JUCE Plugin
 
 Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.
@@ -74,6 +80,7 @@ Inside Projucer:
 * For every module, make sure to use the option "use global search path".
 * Save the project to export a new Makefile.
   
+
 For a build to test natively on Linux, just run make normally, using the *-DJUCE_HEADLESS_PLUGIN_CLIENT=1* argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.
 
 To cross-compile for *Elk Pi RPi4 64 bit*, first source the SDK script in your shell environment:
