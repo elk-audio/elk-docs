@@ -41,6 +41,14 @@ Simple plugin that sums all input channels to mono, and outputs the same mono au
 
  * **uid** : "sushi.testing.mono_summing"
 
+### Sample Delay
+
+Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one second at 48 kHz)
+
+  * **uid** : "sushi.testing.sample_delay"
+  * **Parameters** :
+    + "sample_delay" : delay in samples. Default: 0.0. (Normalized from [0, 48000])
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
