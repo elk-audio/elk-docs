@@ -40,16 +40,16 @@ To get the system running, you need to flash an Elk operating system image onto 
 
 ### Windows:
 
-   1. Extract the `.wic` file from the `.bz2` archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility.
+   1. Extract the *.wic* file from the *.bz2* archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility.
 
    2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32DiskImager](https://www.raspberrypi.org/downloads/).
    
-   3. Flash the extracted `.wic` file to the SD card.
+   3. Flash the extracted *\*.wic* file to the SD card.
 
 ### Linux:
-At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain `dd` with these instructions:
+At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain *dd* with these instructions:
 
-   1. Find out under what name your SD card is listed on your computer, using e.g. `lsblk -f`. On modern Linux distributions it usually is `/dev/sdb`, `/dev/sdc`, or subsequent letters, or sometimes `/dev/mmcblk0`. We will from now on refer to it as `/dev/sdX`.
+   1. Find out under what name your SD card is listed on your computer, using e.g. *lsblk -f*. On modern Linux distributions it usually is */dev/sdb*, */dev/sdc*, or subsequent letters, or sometimes */dev/mmcblk0*. We will from now on refer to it as */dev/sdX*.
    
    2. Unmount the SD card if it was already mounted:
 
@@ -66,11 +66,11 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
 
    4. The process can take a few minutes, so this is a good time to stretch your legs.
 
-      If for any reason the process fails, just reduce the `bs=4M` speed to `bs=1M` for example, and it should work great.
+      If for any reason the process fails, just reduce the *bs=4M* speed to *bs=1M* for example, and it should work great.
 
 ### macOS:
 
-   Also here you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the `.bz2` file first.
+   Also here you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the *.bz2* file first.
 
 ## 3. Power up, and next steps
 

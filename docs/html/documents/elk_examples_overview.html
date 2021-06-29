@@ -159,6 +159,7 @@
 <h2>Multi-FX, for Blackboard<a class="headerlink" href="#multi-fx-for-blackboard" title="Permalink to this headline">¶</a></h2>
 <p>This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.</p>
 <p>To run the example, execute the batch script <em>$ ./run_multi_fx</em>, in the folder <em>/udata/elk-examples/blackboard/controller-examples</em>.</p>
+<p><strong>Important: To use the blackboard’s rightmost 2 jack audio inputs, you need to plug a 3.5mm stereo mini-jack adapted/cable into the elk-pi input as well, leaving cable’s/adapter’s other end unconnected. That bridges the connection to the Blackboards inputs - if you don’t the inputs will not reach the elk-pi.</strong> Or, just use the minijack input on the elk-pi right away, if that is more convenient to you.</p>
 <p>In the sample folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 </div>
 <div class="section" id="juce-example-for-blackboard">

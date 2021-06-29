@@ -76,11 +76,14 @@
 <h2>VST 3.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-3-x-plugins-using-steinberg-sdk" title="Permalink to this headline">¶</a></h2>
 <p>This should also be straightforward by using standard build systems. Since release 3.6.6, Steinberg also uses CMake as its primary build system and since 3.6.10, there have been several improvements for making it easier to use in a cross-compiling setup.</p>
 <p>There is an example plugin that can be compiled with the provided toolchain under <em>work/vst3-template</em>, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.</p>
+<p>After cross-compilation, ensure that the folder under <em>“plugin.vst3/Contents”</em> is named <strong>aarch64-linux</strong>, not <em>arm64-linux</em>, or the plugin will not work on the Elk-Pi - rename it yourself if needed.</p>
 </div>
 <div class="section" id="vst-plugins-using-juce">
 <h2>VST Plugins Using JUCE<a class="headerlink" href="#vst-plugins-using-juce" title="Permalink to this headline">¶</a></h2>
 <p>Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.</p>
-<p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. However, there are a couple of important issues to consider:</p>
+<p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk.</p>
+<p>Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.</p>
+<p>Moreover, there are a couple of important issues to consider:</p>
 <div class="section" id="plugins-using-juce-version-6">
 <h3>Plugins using JUCE Version 6<a class="headerlink" href="#plugins-using-juce-version-6" title="Permalink to this headline">¶</a></h3>
 <p>With the JUCE 6 release, the ability to build for headless targets was added, meaning JUCE 6 can be used directly for building VST 3 plugins for Elk.</p>

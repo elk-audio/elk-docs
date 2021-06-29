@@ -81,7 +81,7 @@ Here you can enable OSC messages to be transmitted from Sushi, whenever a proces
 
 This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:
 
-- **"enable_all_outputs"** - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.
+- **"enable_all_processor_outputs"** - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.
 - **"enable_processor_outputs"** - Enable the OSC notifications for the specific processors. This is a list of entries with fields:
   - **"processor"** - The name of the track or plugin to connect from.
     - **"parameter_blocklist"** - A list of parameters of the processor, which should not trigger notifications.

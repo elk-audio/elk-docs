@@ -155,7 +155,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 <p>Here you can enable OSC messages to be transmitted from Sushi, whenever a processor’s internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.</p>
 <p>This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:</p>
 <ul class="simple">
-<li><strong>“enable_all_outputs”</strong> - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.</li>
+<li><strong>“enable_all_processor_outputs”</strong> - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.</li>
 <li><strong>“enable_processor_outputs”</strong> - Enable the OSC notifications for the specific processors. This is a list of entries with fields:<ul>
 <li><strong>“processor”</strong> - The name of the track or plugin to connect from.<ul>
 <li><strong>“parameter_blocklist”</strong> - A list of parameters of the processor, which should not trigger notifications.<ul>

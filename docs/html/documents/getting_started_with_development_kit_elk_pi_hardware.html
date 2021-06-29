@@ -87,16 +87,16 @@
 <div class="section" id="windows">
 <h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Extract the <code class="docutils literal"><span class="pre">.wic</span></code> file from the <code class="docutils literal"><span class="pre">.bz2</span></code> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
+<li>Extract the <em>.wic</em> file from the <em>.bz2</em> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
 <li>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</li>
-<li>Flash the extracted <code class="docutils literal"><span class="pre">.wic</span></code> file to the SD card.</li>
+<li>Flash the extracted <em>*.wic</em> file to the SD card.</li>
 </ol>
 </div>
 <div class="section" id="linux">
 <h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <code class="docutils literal"><span class="pre">dd</span></code> with these instructions:</p>
+<p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <em>dd</em> with these instructions:</p>
 <ol class="simple">
-<li>Find out under what name your SD card is listed on your computer, using e.g. <code class="docutils literal"><span class="pre">lsblk</span> <span class="pre">-f</span></code>. On modern Linux distributions it usually is <code class="docutils literal"><span class="pre">/dev/sdb</span></code>, <code class="docutils literal"><span class="pre">/dev/sdc</span></code>, or subsequent letters, or sometimes <code class="docutils literal"><span class="pre">/dev/mmcblk0</span></code>. We will from now on refer to it as <code class="docutils literal"><span class="pre">/dev/sdX</span></code>.</li>
+<li>Find out under what name your SD card is listed on your computer, using e.g. <em>lsblk -f</em>. On modern Linux distributions it usually is <em>/dev/sdb</em>, <em>/dev/sdc</em>, or subsequent letters, or sometimes <em>/dev/mmcblk0</em>. We will from now on refer to it as <em>/dev/sdX</em>.</li>
 <li>Unmount the SD card if it was already mounted:</li>
 </ol>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
@@ -110,13 +110,13 @@
 </div>
 <ol>
 <li><p class="first">The process can take a few minutes, so this is a good time to stretch your legs.</p>
-<p>If for any reason the process fails, just reduce the <code class="docutils literal"><span class="pre">bs=4M</span></code> speed to <code class="docutils literal"><span class="pre">bs=1M</span></code> for example, and it should work great.</p>
+<p>If for any reason the process fails, just reduce the <em>bs=4M</em> speed to <em>bs=1M</em> for example, and it should work great.</p>
 </li>
 </ol>
 </div>
 <div class="section" id="macos">
 <h3>macOS:<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
-<p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <code class="docutils literal"><span class="pre">.bz2</span></code> file first.</p>
+<p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <em>.bz2</em> file first.</p>
 </div>
 </div>
 <div class="section" id="power-up-and-next-steps">
