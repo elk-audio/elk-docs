@@ -41,6 +41,32 @@ Simple plugin that sums all input channels to mono, and outputs the same mono au
 
  * **uid** : "sushi.testing.mono_summing"
 
+### Sample Delay
+
+Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one second at 48 kHz)
+
+  * **uid** : "sushi.testing.sample_delay"
+  * **Parameters** :
+    + "sample_delay" : delay in samples. Default: 0.0. (Normalized from [0, 48000])
+
+### Send
+
+Plugin that passes audio to a Return plugin as well as passing to the next plugin in chain. Can be used for creating effect send busses, parallel processing, or more complex audio routings. Multiple Send plugins can send to the same Return plugin instance.
+
+  * **uid** : "sushi.testing.send"
+  * **Parameters** :
+    + "gain" : Level control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
+
+  * **Properties**:
+    + "destination" : Name of a Return plugin to send to.
+
+### Return
+
+Return bus plugin. Receives audio from 1 or several Send plugins. Note: the audio output from a Return plugin is delayed by 1 processing buffer.
+
+  * **uid** : "sushi.testing.return"
+  * **Parameters** : none
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
@@ -91,12 +117,18 @@ A simple 8-step sequencer.
 
 ### Peak Meter
 
-Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.
+Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate.
 
   * **uid** : "sushi.testing.peakmeter"
-  * Parameters (output only) :
-    + "left" : detected level on the left track in dB. Normalized from [-120, 0].
-    + "right" : detected level on the right track in dB. Normalized from [-120, 0].
+  * **Parameters (control)**:
+    + "link_channels" : Links channels 0 and 1 so that both will display the highest peak from any of them. Range: [0, 1], Default: 0, for off.
+    + "only_peaks" : Send only peak values that are louder that the decaying value. For displays that handle peak decay by themselves, reduces the amount of updates sent. Range: [0, 1], Default: 0, for off.
+    + "update_rate" : The rate at which peak updates are sent, in updates/s. Default: 1.0 (Normalized from [0.1, 25], Default: 25).
+  * **Parameters (output only)**:
+    + "level_0" : Detected peak level on channel 0 (left) in dB. Normalized from [-120, 0].
+    + "level_1" : Detected peak level on channel 1 (right) in dB. Normalized from [-120, 0].
+    + "clip_0" : Clipped audio samples (abs > 1.0) in channel 0 (left). Range: [0, 1], Default: 0, for off.
+    + "clip_1" : Clipped audio samples (abs > 1.0) in channel 1 (right). Range: [0, 1], Default: 0, for off.
 
 ## CV In / Out plugins
 
