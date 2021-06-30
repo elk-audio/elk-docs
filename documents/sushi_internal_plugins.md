@@ -95,16 +95,40 @@ A simple 8-step sequencer.
     + "step_1"..."step_8" : Step on/off. Default: 1.0.
     + "step_ind_1"..."step_ind_8" (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.
 
+### Send
+
+Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings.
+
+  * **uid** : "sushi.testing.send"
+  * **Parameters** :
+    + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
+
+  * **Properties**:
+    + "destination" : Name of a Return plugin to send to
+
+### Return
+
+Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.
+
+  * **uid** : "sushi.testing.return"
+  * **Parameters** :
+
 ## Audio In / Parameter Out plugins
 
 ### Peak Meter
 
-Basic plugin that analyzes the level of the incoming audio signal at 25 Hz rate and outputs parameter values corresponding to the detected level.
+Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate.
 
   * **uid** : "sushi.testing.peakmeter"
-  * Parameters (output only) :
-    + "left" : detected level on the left track in dB. Normalized from [-120, 0].
-    + "right" : detected level on the right track in dB. Normalized from [-120, 0].
+  * **Parameters (control)**:
+    + "link_channels" : Links channels 0 and 1 so that both will display the highest peak from any of them. Range: [0, 1], Default: 0, for off.
+    + "only_peaks" : Send only peak values that are louder that the decaying value. For displays that handle peak decay by themselves, reduces the amount of updates sent. Range: [0, 1], Default: 0, for off.
+    + "update_rate" : The rate at which peak updates are sent, in updates/s. Default: 1.0 (Normalized from [0.1, 25], Default: 25).
+  * **Parameters (output only)**:
+    + "level_0" : Detected peak level on channel 0 (left) in dB. Normalized from [-120, 0].
+    + "level_1" : Detected peak level on channel 1 (right) in dB. Normalized from [-120, 0].
+    + "clip_0" : Clipped audio samples (abs > 1.0) in channel 0 (left). Range: [0, 1], Default: 0, for off.
+    + "clip_1" : Clipped audio samples (abs > 1.0) in channel 1 (right). Range: [0, 1], Default: 0, for off.
 
 ## CV In / Out plugins
 
