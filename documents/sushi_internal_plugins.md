@@ -49,6 +49,19 @@ Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one 
   * **Parameters** :
     + "sample_delay" : delay in samples. Default: 0.0. (Normalized from [0, 48000])
 
+### Stereo Mixer
+
+Utility plugin for mixing the two channels of a stereo signal independently.
+
+  * **uid** : "sushi.testing.stereo_mixer"
+  * **Parameters** :
+    + "ch1_gain" : The gain of channel 1 (left channel) in dB (Normalized from [-120, 24], Default: 0.0)
+    + "ch1_pan" : The pan of channel 1 (left channel) (Normalized from [-1.0, 1.0], Default: -1.0)
+    + "ch1_invert_phase : Invert the phase of channel 1 (left channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
+    + "ch2_gain" : The gain of channel 2 (right channel) in dB (Normalized from [-120, 24], Default: 0.0)
+    + "ch2_pan" : The pan of channel 2 (right channel) (Normalized from [-1.0, 1.0], Default: -1.0)
+    + "ch2_invert_phase : Invert the phase of channel 2 (right channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
