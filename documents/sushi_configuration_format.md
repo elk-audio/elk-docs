@@ -19,6 +19,7 @@ Following is a reference for the Sushi .json configuration file.
 * **“audio\_clip_detection”** - Sets whether audio inputs and/or outputs detect sample values outside of the range of the analog audio circuits.
     * **“inputs”** - Clip detection enabled on the audio inputs.
     * **“outputs”** - clip detection enabled on the audio outputs.
+* **"master_limiter"** - Set to true to enable brickwall limiting on each engine output. Attack is 0 ms and Relase ~100ms
 
 ## Tracks
 **“tracks”** : A json list of track objects with the following members:
