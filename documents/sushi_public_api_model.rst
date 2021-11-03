@@ -20,7 +20,8 @@ modification of this structure is managed.
 
 Each processor has:
 
--  A set of input and output parameters.
+-  A set of numerical parameters for realtime control
+-  A set of properties containing string data
 -  A set of input and output audio channels.
 -  A set of input and output keyboard channels.
 -  A set of programs (presets) which can be stored and recalled.
@@ -50,7 +51,7 @@ Also, mappings can be created to each processor, to echo/notify of the change of
 Global Sushi Settings
 ---------------------
 
-Besides parameters set per processor, there are several global settings to control in Sushi.
+Besides parameter and property set per processor, there are several global settings to control in Sushi.
 
 The set of physical audio, MIDI and CV/Gate channels to use (limited of course by the hardware Sushi runs on), are defined during startup,
 and are not changeable run-time.
