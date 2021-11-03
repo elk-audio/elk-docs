@@ -62,6 +62,24 @@ Utility plugin for mixing the two channels of a stereo signal independently.
     + "ch2_pan" : The pan of channel 2 (right channel) (Normalized from [-1.0, 1.0], Default: -1.0)
     + "ch2_invert_phase : Invert the phase of channel 2 (right channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
 
+### Send
+
+Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings.
+
+  * **uid** : "sushi.testing.send"
+  * **Parameters** :
+    + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
+
+  * **Properties**:
+    + "destination" : Name of a Return plugin to send to
+
+### Return
+
+Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.
+
+  * **uid** : "sushi.testing.return"
+  * **Parameters** :
+
 ## Midi In / Audio Out Plugins
 
 ### Sample Player
@@ -107,24 +125,6 @@ A simple 8-step sequencer.
     + "pitch_1"..."pitch_8" : Pitch in semitones. Default: 0.0. (Normalized from [-24, 24], Default: 0.0).
     + "step_1"..."step_8" : Step on/off. Default: 1.0.
     + "step_ind_1"..."step_ind_8" (output only) : Indicator whether steps are turned on/off, to provide visual feedback when the sequencer is running. Default: 1.0.
-
-### Send
-
-Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings.
-
-  * **uid** : "sushi.testing.send"
-  * **Parameters** :
-    + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
-
-  * **Properties**:
-    + "destination" : Name of a Return plugin to send to
-
-### Return
-
-Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.
-
-  * **uid** : "sushi.testing.return"
-  * **Parameters** :
 
 ## Audio In / Parameter Out plugins
 
