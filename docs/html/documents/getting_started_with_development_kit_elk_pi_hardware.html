@@ -1,20 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Elk Pi Hardware &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -36,8 +37,7 @@
         <li class="right" >
           <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Elk Pi Hardware</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,86 +46,85 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="elk-pi-hardware">
+  <div class="section" id="elk-pi-hardware">
 <h1>Elk Pi Hardware<a class="headerlink" href="#elk-pi-hardware" title="Permalink to this headline">¶</a></h1>
 <p>Get Started with the Elk Pi Hardware.</p>
 <p>This document contains basic information on how to set up Elk Pi development boards.</p>
 <p>Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate and screws.</p>
-<section id="assembly">
+<div class="section" id="assembly">
 <h2>1. Assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h2>
 <p>We have created a brief time-lapse video of the assembly process <a class="reference external" href="https://www.youtube.com/watch?v=euB_fGGumZg&amp;feature=youtu.be">you may want to refer to</a>, illustrating the steps below.</p>
 <ol>
-<li><p>While we do not provide a heat sink for your RPi, we do recommend that you use one, at the very least for the CPU. Attach heat sink(s) first, by peeling off the blue protective film from the bottom  and applying it on top of the Raspberry Pi CPU, along with eventual additional heat sinks for network and Bluetooth chips.</p>
+<li><p class="first">While we do not provide a heat sink for your RPi, we do recommend that you use one, at the very least for the CPU. Attach heat sink(s) first, by peeling off the blue protective film from the bottom  and applying it on top of the Raspberry Pi CPU, along with eventual additional heat sinks for network and Bluetooth chips.</p>
 <p><img alt="Figure 1" src="../_images/image25.jpg" /></p>
 </li>
-<li><p>Mount the four short spacers onto the Raspberry Pi using the included screws:</p>
+<li><p class="first">Mount the four short spacers onto the Raspberry Pi using the included screws:</p>
 <p><img alt="Figure 2" src="../_images/image14.jpg" /></p>
 </li>
-<li><p>Plug the Hat on top of the Raspberry Pi:</p>
+<li><p class="first">Plug the Hat on top of the Raspberry Pi:</p>
 <p><img alt="Figure 3" src="../_images/image17.jpg" /></p>
 </li>
-<li><p>Add another four of the included screws to the holes illustrated below, if you want extra stability:</p>
+<li><p class="first">Add another four of the included screws to the holes illustrated below, if you want extra stability:</p>
 <p><img alt="Figure 4" src="../_images/image26.jpg" /></p>
 </li>
-<li><p>Finally, if you want you can add the optional bottom plate, using the included long spacers and screws. The final assembly then appears as follows:</p>
+<li><p class="first">Finally, if you want you can add the optional bottom plate, using the included long spacers and screws. The final assembly then appears as follows:</p>
 <p><img alt="Figure 4" src="../_images/elk_pi_completed_assembly.jpg" /></p>
 </li>
 </ol>
-</section>
-<section id="flashing-the-elk-operating-system-image-to-the-sd-card">
+</div>
+<div class="section" id="flashing-the-elk-operating-system-image-to-the-sd-card">
 <h2>2. Flashing the Elk operating system image to the SD card<a class="headerlink" href="#flashing-the-elk-operating-system-image-to-the-sd-card" title="Permalink to this headline">¶</a></h2>
 <p>To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. The minimum required SD card size is 8GB.</p>
 <ol class="simple">
-<li><p>Download the compressed image from the provided link. It will have a filename such as: <em>elk-sika-image-dev-raspberrypi3-64.wic.bz2</em>.</p></li>
-<li><p>Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.</p></li>
+<li>Download the compressed image from the provided link. It will have a filename such as: <em>elk-sika-image-dev-raspberrypi3-64.wic.bz2</em>.</li>
+<li>Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.</li>
 </ol>
-<section id="windows">
+<div class="section" id="windows">
 <h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Extract the <em>.wic</em> file from the <em>.bz2</em> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</p></li>
-<li><p>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</p></li>
-<li><p>Flash the extracted <em>*.wic</em> file to the SD card.</p></li>
+<li>Extract the <em>.wic</em> file from the <em>.bz2</em> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</li>
+<li>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</li>
+<li>Flash the extracted <em>*.wic</em> file to the SD card.</li>
 </ol>
-</section>
-<section id="linux">
+</div>
+<div class="section" id="linux">
 <h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <em>dd</em> with these instructions:</p>
 <ol class="simple">
-<li><p>Find out under what name your SD card is listed on your computer, using e.g. <em>lsblk -f</em>. On modern Linux distributions it usually is <em>/dev/sdb</em>, <em>/dev/sdc</em>, or subsequent letters, or sometimes <em>/dev/mmcblk0</em>. We will from now on refer to it as <em>/dev/sdX</em>.</p></li>
-<li><p>Unmount the SD card if it was already mounted:</p></li>
+<li>Find out under what name your SD card is listed on your computer, using e.g. <em>lsblk -f</em>. On modern Linux distributions it usually is <em>/dev/sdb</em>, <em>/dev/sdc</em>, or subsequent letters, or sometimes <em>/dev/mmcblk0</em>. We will from now on refer to it as <em>/dev/sdX</em>.</li>
+<li>Unmount the SD card if it was already mounted:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
 </pre></div>
 </div>
 <ol class="simple">
-<li><p><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run:</p></li>
+<li><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress <span class="o">&amp;&amp;</span> sync
 </pre></div>
 </div>
 <ol>
-<li><p>The process can take a few minutes, so this is a good time to stretch your legs.</p>
+<li><p class="first">The process can take a few minutes, so this is a good time to stretch your legs.</p>
 <p>If for any reason the process fails, just reduce the <em>bs=4M</em> speed to <em>bs=1M</em> for example, and it should work great.</p>
 </li>
 </ol>
-</section>
-<section id="macos">
+</div>
+<div class="section" id="macos">
 <h3>macOS:<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
 <p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <em>.bz2</em> file first.</p>
-</section>
-</section>
-<section id="power-up-and-next-steps">
+</div>
+</div>
+<div class="section" id="power-up-and-next-steps">
 <h2>3. Power up, and next steps<a class="headerlink" href="#power-up-and-next-steps" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Put the SD card in the corresponding slot on the Raspberry Pi.</p></li>
-<li><p>Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.</p></li>
+<li>Put the SD card in the corresponding slot on the Raspberry Pi.</li>
+<li>Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.</li>
 </ol>
 <p>From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">Run Elk on Boards</span></a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -160,15 +159,17 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -188,13 +189,12 @@
         <li class="right" >
           <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Elk Pi Hardware</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

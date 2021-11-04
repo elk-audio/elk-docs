@@ -1,20 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Run Elk on Boards &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -36,8 +37,7 @@
         <li class="right" >
           <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,32 +46,31 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="run-elk-on-boards">
+  <div class="section" id="run-elk-on-boards">
 <h1>Run Elk on Boards<a class="headerlink" href="#run-elk-on-boards" title="Permalink to this headline">¶</a></h1>
 <p>This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.</p>
 <p>The following steps are the same for all our development kit boards, covering the software, and how you get your first sound to play from the board.</p>
-<section id="power-it-up-connect">
+<div class="section" id="power-it-up-connect">
 <h2>1. Power it up, connect…<a class="headerlink" href="#power-it-up-connect" title="Permalink to this headline">¶</a></h2>
 <p>For getting access to the board terminal you have several options:</p>
 <ol class="simple">
-<li><p>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</p></li>
-<li><p>Connect over SSH using Ethernet.</p></li>
-<li><p>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="working_with_elk_board.html"><span class="doc">read more here</span></a>.</p></li>
+<li>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</li>
+<li>Connect over SSH using Ethernet.</li>
+<li>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="working_with_elk_board.html"><span class="doc">read more here</span></a>.</li>
 </ol>
 <p>For setting up SSH connections follow these tips:</p>
 <ol class="simple">
-<li><p>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</p></li>
-<li><p>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.</p>
-<ol class="simple">
-<li><p>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
-of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</p></li>
+<li>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</li>
+<li>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.<ol>
+<li>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
+of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</li>
 </ol>
 </li>
-<li><p>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</p></li>
-<li><p>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</p></li>
+<li>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</li>
+<li>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</li>
 </ol>
-</section>
-<section id="if-you-have-an-hifiberry-audio-hat">
+</div>
+<div class="section" id="if-you-have-an-hifiberry-audio-hat">
 <h2>2. (If you have an HiFiBerry audio hat)<a class="headerlink" href="#if-you-have-an-hifiberry-audio-hat" title="Permalink to this headline">¶</a></h2>
 <p>Elk supports audio hats from HiFiBerry, such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>.</p>
 <p>If you are not using these, you can skip to step 3, and run Sushi.</p>
@@ -84,8 +83,8 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 </pre></div>
 </div>
 <p>After this, restart the system for these changes to take effect. Now you can run Sushi as described in step 3. More information on reconfiguring what hat to use is available in the <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a> section.</p>
-</section>
-<section id="and-run-sushi">
+</div>
+<div class="section" id="and-run-sushi">
 <h2>3. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this headline">¶</a></h2>
 <p>You will find several configurations and plugins ready to test on the image, under the folders <em>~/config_files</em> and
 <em>~/plugins</em> in the user folder.</p>
@@ -107,22 +106,21 @@ $ aconnect X Y
 </div>
 <p>If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!</p>
 <p>Since this is a development board, you will need to start Sushi manually - but under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>. we show how the device can be configured to load a setup automatically on power-on.</p>
-</section>
-<section id="powering-down">
+</div>
+<div class="section" id="powering-down">
 <h2>4. Powering down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
 <p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
 <p>Instead, type <em>$ sudo poweroff</em> to safely shutdown the system.</p>
 <p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>.</p>
-</section>
-<section id="further-steps">
+</div>
+<div class="section" id="further-steps">
 <h2>5. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>
 <p>Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!</p>
 <p>There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our documentation on <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -154,15 +152,17 @@ $ aconnect X Y
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -182,13 +182,12 @@ $ aconnect X Y
         <li class="right" >
           <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

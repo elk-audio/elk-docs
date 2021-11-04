@@ -1,20 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.SushiController &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,8 +39,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.SushiController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -48,86 +48,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-elkpy.sushicontroller">
-<span id="elkpy-sushicontroller"></span><h1>elkpy.SushiController<a class="headerlink" href="#module-elkpy.sushicontroller" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiController">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiController" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>A class to control sushi via gRPC.
-This class creates one instance of each different controller type and makes
-these sub-controllers available as member variables. See the documentation
-of the separate sub-controllers for their usage.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>_stub (SushiControllerStub): Connection stubs to the gRPC interface implemented in sushi.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiController.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiController.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>The constructor for the SushiController class setting up the gRPC connection with sushi.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
-sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiInternalError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiInternalError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiInternalError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiInternalError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown if sushi encountered an internal error</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiInvalidArgumentError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiInvalidArgumentError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiInvalidArgumentError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiInvalidArgumentError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown if one or more of the passed arguments are invalid</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiNotFoundError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiNotFoundError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiNotFoundError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown if the requested entity is not found in sushi</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiOutOfRangeError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiOutOfRangeError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiOutOfRangeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiOutOfRangeError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown if one or more of the passed arguments are out of their allowed range</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiUnkownError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiUnkownError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiUnkownError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiUnkownError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown when the source of the error can’t be determined</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiUnsupportedOperationError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiUnsupportedOperationError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiUnsupportedOperationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiUnsupportedOperationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-<p>Error thrown when the operation attempted is not currently supported in sushi</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="elkpy.sushicontroller.grpc_error_handling">
-<span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">grpc_error_handling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#grpc_error_handling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.grpc_error_handling" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maps a gRPC exception to the corresponding sushi error. If the exception doesn’t have a mapping
-the context info will be printed and the same exception will be re-raised</p>
-</dd></dl>
-
-</section>
+  <div class="section" id="elkpy-sushicontroller">
+<h1>elkpy.SushiController<a class="headerlink" href="#elkpy-sushicontroller" title="Permalink to this headline">¶</a></h1>
+</div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -147,15 +72,17 @@ the context info will be printed and the same exception will be re-raised</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -177,13 +104,12 @@ the context info will be printed and the same exception will be re-raised</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.SushiController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>
