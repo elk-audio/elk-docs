@@ -105,7 +105,7 @@ buffer size should be a power of 2. For example:</p>
 $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 </pre></div>
 </div>
-<p>Changes take place after a power cycle and persists across boots. It is reset upon a software update.</p>
+<p>The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.</p>
 </div>
 <div class="section" id="changing-audio-hats">
 <h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
@@ -183,7 +183,7 @@ $ connmanctl&gt; scan wifi
 $ connmanctl&gt; services
 <span class="c1"># The last command should have showed you a list of WiFi network available with their SSID and a</span>
 <span class="c1"># long code starting with wifi_</span>
-$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete. </span>
+$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete.</span>
 $ connmanctl&gt; Ctrl+D
 
 <span class="c1"># This will show you the IP address assigned to the board by DHCP</span>
