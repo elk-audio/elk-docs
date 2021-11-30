@@ -48,8 +48,207 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="elkpy-parametercontroller">
-<h1>elkpy.ParameterController<a class="headerlink" href="#elkpy-parametercontroller" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-elkpy.parametercontroller">
+<span id="elkpy-parametercontroller"></span><h1>elkpy.ParameterController<a class="headerlink" href="#module-elkpy.parametercontroller" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="elkpy.parametercontroller.ParameterController">
+<em class="property">class </em><code class="descclassname">elkpy.parametercontroller.</code><code class="descname">ParameterController</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class to control the parameter in sushi via gRPC. It manages the parameters of sushi. Enabling
+getting and setting of values as well as getting info about what parameters are availble and their
+ranges, types, etc.</p>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>_stub (ParameterControllerStub): Connection stubs to the gRPC parameter interface implemented in sushi.</dd>
+</dl>
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for the ParameterController class setting up the gRPC connection with sushi.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_parameter_id">
+<code class="descname">get_parameter_id</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_name: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_parameter_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_parameter_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the id of the parameter of the specified processor corresponding to the specified parameter name.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter id from.
+parameter_name (str): The name of the parameter to get the id from.</dd>
+<dt>Returns:</dt>
+<dd>int: The id of the parameter matching the parameter name.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_parameter_info">
+<code class="descname">get_parameter_info</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_identifier: int</em><span class="sig-paren">)</span> &#x2192; elkpy.sushi_info_types.ParameterInfo<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_parameter_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_parameter_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about the specified parameter on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter info from.
+parameter_identifier (int): The id of the parameter to get the info from.</dd>
+<dt>Returns:</dt>
+<dd>info_types.ParameterInfo: Info of the parameter matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_parameter_value">
+<code class="descname">get_parameter_value</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_identifier: int</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_parameter_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_parameter_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the parameter matching the specified parameter on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter value from.
+parameter_identifier (int): The id of the parameter to get the value from.</dd>
+<dt>Returns:</dt>
+<dd>float: The value of the parameter matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_parameter_value_as_string">
+<code class="descname">get_parameter_value_as_string</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_identifier: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_parameter_value_as_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_parameter_value_as_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the parameter matching the specified parameter on the specified processor as a string.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter value string from.
+parameter_identifier (int): The id of the parameter to get value string from.</dd>
+<dt>Returns:</dt>
+<dd>str: The value as a string of the parameter matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_parameter_value_in_domain">
+<code class="descname">get_parameter_value_in_domain</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_identifier: int</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_parameter_value_in_domain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_parameter_value_in_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the normalised value of the parameter matching the specified parameter on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the normalised parameter value from.
+parameter_identifier (int): The id of the parameter to get the normalised value from.</dd>
+<dt>Returns:</dt>
+<dd>float: The normalised value of the parameter matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_processor_parameters">
+<code class="descname">get_processor_parameters</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.ParameterInfo]<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_processor_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_processor_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of the parameters available to the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameters from.</dd>
+<dt>Returns:</dt>
+<dd>List[info_types.ParameterInfo]: A list of the parameters available to the processor matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_processor_properties">
+<code class="descname">get_processor_properties</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.PropertyInfo]<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_processor_properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_processor_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of the string properties available to the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the properties from.</dd>
+<dt>Returns:</dt>
+<dd>List[info_types.PropertyInfo]: A list of the properties available to the processor matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_property_id">
+<code class="descname">get_property_id</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>property_name: str</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_property_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_property_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the id of the property of the specified processor corresponding to the specified property name.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter id from.
+property_name (str): The name of the property to get the id from.</dd>
+<dt>Returns:</dt>
+<dd>int: The id of the property matching the property name.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_property_info">
+<code class="descname">get_property_info</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>property_identifier: int</em><span class="sig-paren">)</span> &#x2192; elkpy.sushi_info_types.PropertyInfo<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_property_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_property_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about the specified property on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter info from.
+property_identifier (int): The id of the string property to get the info from.</dd>
+<dt>Returns:</dt>
+<dd>info_types.PropertyInfo: Info of the property matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_property_value">
+<code class="descname">get_property_value</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>property_identifier: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_property_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_property_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the property matching the specified property on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get the parameter value string from.
+property_identifier (int): The id of the string property to get value string from.</dd>
+<dt>Returns:</dt>
+<dd>str: The value of the property matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_track_parameters">
+<code class="descname">get_track_parameters</code><span class="sig-paren">(</span><em>track_identifier: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.ParameterInfo]<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_track_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_track_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of parameters available on the specified track.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>track_identifier (int): The id of the track to get the parameter list from.</dd>
+<dt>Returns:</dt>
+<dd>List[info_types.ParameterInfo]: A list of the info of the parameters assigned to the track matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.get_track_properties">
+<code class="descname">get_track_properties</code><span class="sig-paren">(</span><em>track_identifier: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.PropertyInfo]<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.get_track_properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.get_track_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of string properties available on the specified track.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>track_identifier (int): The id of the track to get the property list from.</dd>
+<dt>Returns:</dt>
+<dd>List[info_types.PropertyInfo]: A list of the info of the properties assigned to the track matching the id.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.set_parameter_value">
+<code class="descname">set_parameter_value</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>parameter_identifier: int</em>, <em>value: float</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.set_parameter_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.set_parameter_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of the specified parameter on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor that has the parameter to be changed.
+parameter_identifier (int): The id of the property to set the value of.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="elkpy.parametercontroller.ParameterController.set_property_value">
+<code class="descname">set_property_value</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>property_identifier: int</em>, <em>value: float</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/parametercontroller.html#ParameterController.set_property_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.parametercontroller.ParameterController.set_property_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the value of the specified property on the specified processor.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor that has the property to be changed.
+property_identifier (int): The id of the property to set the value of.
+value (string) : The new value to assign to the property</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
