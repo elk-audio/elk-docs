@@ -84,6 +84,7 @@
 <p>JUCE 6 can be used directly for building VST plugins for Elk, due to its new “headless” features.</p>
 <p>Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.</p>
 <p>The following steps are involved to cross-compile using JUCE’s new CMake support - demonstrated using the <code class="docutils literal notranslate"><span class="pre">JUCE/examples/CMake/AudioPlugin</span></code> plugin.</p>
+<p>(The below example assumes a RPi4 build with our v0.11.0 SDK installed in the default location).</p>
 <ol class="simple">
 <li>Begin by copying the AudioPlugin folder out of the JUCE folder.</li>
 <li>Clone a fresh copy of JUCE as a subfolder of AudioPlugin</li>
@@ -105,9 +106,9 @@
 <li>In your <code class="docutils literal notranslate"><span class="pre">AudioPlugin</span></code> folder, type:<ol>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">x-build</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">x-build</span></code> (Very handy to keep your x-build in a separate folder from your native one).</li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code></li>
+<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></li>
 </ol>
 </li>
