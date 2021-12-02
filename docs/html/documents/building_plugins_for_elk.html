@@ -107,8 +107,8 @@
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code></li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code></li>
 </ol>
 </li>
 </ol>

@@ -74,8 +74,8 @@ The following steps are involved to cross-compile using JUCE's new CMake support
    2. `$ unset LD_LIBRARY_PATH`
    3. `$ source /opt/elk/0.11.0/environment-setup-cortexa72-elk-linux `
    4. `$ cmake ../ -DCMAKE_BUILD_TYPE=Release`
-   5. `$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"`
-   6. `$ AR=aarch64-elk-linux-ar make -j(enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"`
+   5. `$ AR=aarch64-elk-linux-ar make -j (enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"`
+   6. `$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"`
 
 The resulting `AudioPluginExample_artefacts/Debug/VST3/Audio Plugin Example.vst3`is ready to use on your Elk-Pi device.
 

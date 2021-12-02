@@ -113,7 +113,7 @@
 </div>
 <div class="section" id="juce-example-c-source-code">
 <h1>JUCE Example C++ Source Code<a class="headerlink" href="#juce-example-c-source-code" title="Permalink to this headline">¶</a></h1>
-<p>The source code and JUCE <em>.jucer</em> file, for building our Elk JUCE example VST 2 plugin.</p>
+<p>The source code, CMake, and JUCE <em>.jucer</em> file, for building our Elk JUCE example VST 3 plugin.</p>
 <p>For a configuration file, and Python glue program, please refer to the folder <em>bloackboard/elk-juce-example</em>, of the elk-examples repository.</p>
 </div>
 <div class="section" id="complete-blackboard-examples">
@@ -161,7 +161,7 @@
 <h2>JUCE Example, for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">¶</a></h2>
 <p>The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance’s (Elk Pi and desktop) state over OSC.</p>
 <p>Again, we provide batch scripts to start and stop, in the folder <em>/udata/elk-examples/blackboard/elk-juce-example</em>.</p>
-<p>In this repository’s releases section we provide downloads for the plugin built for <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip">Ubuntu Linux</a>, <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip">Windows</a> and <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip">OS X</a> - executable as standalone, or as VST 2.</p>
+<p>In this repository’s releases section we provide downloads for the plugin built for <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip">Ubuntu Linux</a>, <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip">Windows</a> and <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip">OS X</a> - executable as standalone, or as VST 2 (previously), and now also a new VST 3, given the added JUCE VST 3 Linux support.</p>
 <p><img alt="elk_juce_example_screenshot" src="../_images/elk_juce_example_screenshot.png" /></p>
 <p>To achieve the bi-directional control synchronization between the instances running on the desktop and on the Elk Pi, the two devices need to be on the same network, and the desktop’s IP address needs to be assigned to <em>GUI_APP_ADDRESS</em> in the Python glue app: <em>/blackboard/elk-juce-example/main/main_app</em>.</p>
 <p>Also enter the Elk Pi’s IP address in the “Target IP Address” field of the Desktop instance’s GUI.</p>
