@@ -21,12 +21,12 @@ Following is a reference for the Sushi .json configuration file.
     * **“outputs”** - clip detection enabled on the audio outputs.
 * **"master_limiter"** - Set to true to enable brickwall limiting on each engine output. Attack is 0 ms and Relase ~100ms
 * **"rt_midi_input_mappings"** - List of RtMidi input mappings objects with the following members (only applies if built with RtMidi as midi frontend):
-    * **"rt_midi_device"** - The index of the RtMidi port to connect to
-    * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to
+    * **"rt_midi_device"** - The index of the RtMidi port to connect to.
+    * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to.
     * **"virtual_port"** - True if the port should be a virtual midi port false if not. Default is false.
 * **"rt_midi_output_mappings"** - List of RtMidi input mappings objects with the following members (only applies if built with RtMidi as midi frontend):
-    * **"rt_midi_device"** - The index of the RtMidi port to connect to
-    * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to
+    * **"rt_midi_device"** - The index of the RtMidi port to connect to.
+    * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to.
     * **"virtual_port"** - True if the port should be a virtual midi port false if not. Default is false.
 
 ## Tracks
