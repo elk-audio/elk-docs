@@ -49,6 +49,8 @@ Sushi supports multiple audio frontends:
    proprietary low-latency audio framework.
 -  `JACK Audio Toolkit <http://jackaudio.org/>`__: for running
    real-time code on normal Linux machines.
+- **PortAudio**: For running realtime on macOS using coreAudio
+   or Linux using JACK or ALSA.
 -  **Offline**: for processing audio and scripted event files (e.g. for
    automatic testing).
 -  **Dummy**: without any connection to audio I/O, useful to debug some
@@ -61,10 +63,10 @@ Elk system. It does make it incredibly easy to test and develop plugins
 and setups for Elk on a standard Linux machine. In fact, **almost all of
 the development of Sushi has been done on standard Linux machines**.
 
-When running with RASPA, Sushi is limited to the number of inputs and
-outputs supported by the physical hardware. While when running with
-Jack, Sushi exposes 8 input ports and 8 output ports that can then be
-freely routed to physical outputs or inputs, or other Jack software.
+When running with RASPA or PortAudio, Sushi is limited to the number
+of inputs and outputs supported by the physical hardware. While when
+running with Jack, Sushi exposes 8 input ports and 8 output ports that
+can then be freely routed to physical outputs or inputs, or other Jack software.
 
 The Offline frontend can be used for testing in an environment that
 lacks audio codecs and for evaluating systems in a very early stage. It

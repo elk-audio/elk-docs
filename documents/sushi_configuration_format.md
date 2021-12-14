@@ -20,6 +20,8 @@ Following is a reference for the Sushi .json configuration file.
     * **“inputs”** - Clip detection enabled on the audio inputs.
     * **“outputs”** - clip detection enabled on the audio outputs.
 * **"master_limiter"** - Set to true to enable brickwall limiting on each engine output. Attack is 0 ms and Relase ~100ms
+* **"portaudio_input_device"** - The index of the input audio device to use with PortAudio. Defaults to the system default.
+* **"portaudio_output_device"** - The index of the output audio device to use with PortAudio. Defaults to the system default.
 * **"rt_midi_input_mappings"** - List of RtMidi input mappings objects with the following members (only applies if built with RtMidi as midi frontend):
     * **"rt_midi_device"** - The index of the RtMidi port to connect to.
     * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to.
