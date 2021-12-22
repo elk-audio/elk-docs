@@ -20,7 +20,8 @@ modification of this structure is managed.
 
 Each processor has:
 
--  A set of input and output parameters.
+-  A set of numerical parameters for realtime control
+-  A set of properties containing string data
 -  A set of input and output audio channels.
 -  A set of input and output keyboard channels.
 -  A set of programs (presets) which can be stored and recalled.
@@ -47,10 +48,21 @@ Also, mappings can be created to each processor, to echo/notify of the change of
 -  Using CV / Gate connections.
 -  Using Notifications over gRPC.
 
+Tracks have the following parameters that can be controller in realtime:
+
+- "gain" : The volume of the main bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).
+- "pan" : The left - right panning of the main bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).
+- "mute" : Mute the output of the track. Default: 0.0. (Normalized from [0, 1], Default: 0.0).
+
+In addition, multi-bus tracks have parameters to set the pan and gain of additional output busses:
+
+- "gain_sub_n" : The volume of the n:th output bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).
+- "pan_sub_n" : The left - right panning of the n:th output bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).
+
 Global Sushi Settings
 ---------------------
 
-Besides parameters set per processor, there are several global settings to control in Sushi.
+Besides parameter and property set per processor, there are several global settings to control in Sushi.
 
 The set of physical audio, MIDI and CV/Gate channels to use (limited of course by the hardware Sushi runs on), are defined during startup,
 and are not changeable run-time.

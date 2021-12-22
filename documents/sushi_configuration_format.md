@@ -140,5 +140,5 @@ This works in two ways, either all, or only specific processors, are enabled. Th
 * **"processor"** -  The name of the processor to apply the settings to.
 * **"program"** - If included, the id of the initial program to load.
 * **"bypassed"** - If included, set the initial bypass state of the processor.
-* **"parameters"** - A list of name - value pairs for parameters that will be set on the processor
-* **"properties"** - A list of name - value pairs for string properties that will be set on the processor
+* **"parameters"** - A list of name - value pairs for parameters that will be set on the processor.
+* **"properties"** - A list of name - value pairs for string properties that will be set on the processor.
