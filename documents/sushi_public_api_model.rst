@@ -48,7 +48,7 @@ Also, mappings can be created to each processor, to echo/notify of the change of
 -  Using CV / Gate connections.
 -  Using Notifications over gRPC.
 
-Tracks have the following parameters that can be controller in realtime:
+Tracks have the following parameters that can be controlled in realtime:
 
 - "gain" : The volume of the main bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).
 - "pan" : The left - right panning of the main bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).

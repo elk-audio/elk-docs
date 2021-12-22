@@ -16,13 +16,21 @@ Install [Sphinx](http://www.sphinx-doc.org/en/stable/):
 
 	apt-get install python3-sphinx
 
+Alternatively install through pip:
+
+	python3 -m pip install sphinx
+
 Install [recommonmark](https://github.com/rtfd/recommonmark):
 
-	pip install recommonmark
+	python3 -m pip install recommonmark
 
 Build with:
 
 	make html
+
+Alternatively, if you've pip-installed Sphinx:w
+
+	python3 -m sphinx -M html ./ ./docs/
 
 The output will be generated in `docs`, the folder expected by GitHub Pages for the HTML files it serves. 
 
