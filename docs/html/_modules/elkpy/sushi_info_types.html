@@ -4,27 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.sushi_info_types &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -132,6 +127,63 @@
 <span class="c1"># Info Classes #</span>
 <span class="c1">################</span>
 
+<div class="viewcode-block" id="SushiBuildInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SushiBuildInfo">[docs]</a><span class="k">class</span> <span class="nc">SushiBuildInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent build info from sushi in a clear way</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        version (str): The sushi version</span>
+<span class="sd">        build_options (List[str]) : A list of build options</span>
+<span class="sd">        audio_buffer_size (int) : The buffer size used when building sushi</span>
+<span class="sd">        commit_hash (str) : Commit hash of the build</span>
+<span class="sd">        build_date (str) : The date sushi was built</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SushiBuildInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SushiBuildInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_SushiBuildInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">grpc_SushiBuildInfo</span><span class="o">.</span><span class="n">version</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_options</span> <span class="o">=</span> <span class="n">grpc_SushiBuildInfo</span><span class="o">.</span><span class="n">build_options</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">audio_buffer_size</span> <span class="o">=</span> <span class="n">grpc_SushiBuildInfo</span><span class="o">.</span><span class="n">audio_buffer_size</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">audio_buffer_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">commit_hash</span> <span class="o">=</span> <span class="n">grpc_SushiBuildInfo</span><span class="o">.</span><span class="n">commit_hash</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">commit_hash</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_date</span> <span class="o">=</span> <span class="n">grpc_SushiBuildInfo</span><span class="o">.</span><span class="n">build_date</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_date</span> <span class="o">=</span> <span class="s2">&quot;1-1-1970&quot;</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; version: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; build options: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">build_options</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; audio buffer size: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">audio_buffer_size</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; commit hash: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">commit_hash</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; build date: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">build_date</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">version</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_options</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">build_options</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">audio_buffer_size</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">audio_buffer_size</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">commit_hash</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">commit_hash</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_date</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">build_date</span></div>
+
+
+
+
 <div class="viewcode-block" id="ParameterInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterInfo">[docs]</a><span class="k">class</span> <span class="nc">ParameterInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class to represent the parameter info received from sushi in a clear way.</span>
@@ -221,6 +273,54 @@
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">automatable</span> <span class="o">==</span> <span class="n">other</span> <span class="o">.</span><span class="n">automatable</span> \
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_domain_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">min_domain_value</span> \
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_domain_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">max_domain_value</span></div>
+
+<div class="viewcode-block" id="PropertyInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PropertyInfo">[docs]</a><span class="k">class</span> <span class="nc">PropertyInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the property info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The id of the property.</span>
+<span class="sd">        label (str): The label of the property.</span>
+<span class="sd">        name (str): The name of the property.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PropertyInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PropertyInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_PropertyInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The constructor of the PropertyInfo class.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            grpc_PropertyInfo (sushi_rpc_pb2.PropertyInfo): the gRPC parameter info object to get the data from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">grpc_PropertyInfo</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">grpc_PropertyInfo</span><span class="o">.</span><span class="n">label</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">grpc_PropertyInfo</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; label: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; name: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span></div>
 
 <div class="viewcode-block" id="ProcessorInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo">[docs]</a><span class="k">class</span> <span class="nc">ProcessorInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -345,7 +445,7 @@
         <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; input_busses: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">input_busses</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; output_channels: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; output_busses: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">output_busses</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; processor_count: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">processors</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; processors: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">processors</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
         <span class="k">return</span> <span class="n">s</span>
 
@@ -394,6 +494,61 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span></div>
+
+<div class="viewcode-block" id="ProcessorState"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState">[docs]</a><span class="k">class</span> <span class="nc">ProcessorState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the processor state info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        program_id (int): The id of the current program.</span>
+<span class="sd">        bypassed (bool): Whether the processor is currently bypassed or not.</span>
+<span class="sd">        properties ((int, str)): All property values of the processor.</span>
+<span class="sd">        parameters ((int, float)): All parameter values of the processor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ProcessorState.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_ProcessorState</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">program_id</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">=</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">bypassed</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="nb">property</span> <span class="ow">in</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">property</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">property</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; program_id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; bypassed: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; properties: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; parameters: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">program_id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">bypassed</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">properties</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameters</span> </div>
 
 
 <div class="viewcode-block" id="AudioConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection">[docs]</a><span class="k">class</span> <span class="nc">AudioConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -490,9 +645,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="MidiCCConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_MidiCCConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">processor_id</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">channel</span>
         <span class="k">except</span><span class="p">:</span>
@@ -531,7 +690,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">port</span> \
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">port</span> \
                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_number</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">cc_number</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_range</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">min_range</span> \
                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_range</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">max_range</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_mode</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">relative_mode</span></div>
 
@@ -582,9 +741,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="CvConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_CvConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">processor_id</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">cv_port_id</span>
         <span class="k">except</span><span class="p">:</span>
@@ -598,7 +761,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">cv_port_id</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">cv_port_id</span></div>
 
 
 <div class="viewcode-block" id="GateConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection">[docs]</a><span class="k">class</span> <span class="nc">GateConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -613,9 +776,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="GateConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_CvConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">processor</span><span class="o">.</span><span class="n">id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">processor</span><span class="o">.</span><span class="n">id</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">gate_port_id</span>
         <span class="k">except</span><span class="p">:</span>
@@ -630,7 +793,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">note_no</span> <span class="o">=</span> <span class="mi">0</span></div>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;{{</span><span class="se">\n</span><span class="s2"> processor: </span><span class="si">{self.processor}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+        <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;{{</span><span class="se">\n</span><span class="s2"> processor: </span><span class="si">{self.processor_id}</span><span class="se">\n</span><span class="s2">&quot;</span> \
                <span class="n">f</span><span class="s2">&quot; gate_port_id: </span><span class="si">{self.gate_port_id}</span><span class="se">\n</span><span class="s2">&quot;</span> \
                <span class="n">f</span><span class="s2">&quot; channel: </span><span class="si">{self.channel}</span><span class="se">\n</span><span class="s2">&quot;</span> \
                <span class="n">f</span><span class="s2">&quot; note_no: </span><span class="si">{self.note_no}</span><span class="se">\n</span><span class="s2">}}&quot;</span>
@@ -639,7 +802,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">gate_port_id</span> \
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">gate_port_id</span> \
                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">note_no</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">note_no</span></div>
 </pre></div>
 
@@ -650,12 +813,14 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -677,7 +842,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

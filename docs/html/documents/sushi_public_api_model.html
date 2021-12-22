@@ -1,32 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sushi Public API Model &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi Configuration" href="sushi_configuration_format.html" />
     <link rel="prev" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +35,8 @@
         <li class="right" >
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Public API Model</a></li> 
       </ul>
     </div>  
 
@@ -53,9 +47,9 @@
             
   <div class="section" id="sushi-public-api-model">
 <span id="id1"></span><h1>Sushi Public API Model<a class="headerlink" href="#sushi-public-api-model" title="Permalink to this headline">¶</a></h1>
-<div class="figure" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="img" src="../_images/sushi_architecture.png" />
-<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span></p>
+<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="processors-tracks-plugins-and-parameters">
 <h2>Processors, Tracks, Plugins and Parameters<a class="headerlink" href="#processors-tracks-plugins-and-parameters" title="Permalink to this headline">¶</a></h2>
@@ -66,10 +60,11 @@ that tracks can in turn contain a set of processors (originating as instantiated
 modification of this structure is managed.</p>
 <p>Each processor has:</p>
 <ul class="simple">
-<li>A set of input and output parameters.</li>
-<li>A set of input and output audio channels.</li>
-<li>A set of input and output keyboard channels.</li>
-<li>A set of programs (presets) which can be stored and recalled.</li>
+<li><p>A set of numerical parameters for realtime control</p></li>
+<li><p>A set of properties containing string data</p></li>
+<li><p>A set of input and output audio channels.</p></li>
+<li><p>A set of input and output keyboard channels.</p></li>
+<li><p>A set of programs (presets) which can be stored and recalled.</p></li>
 </ul>
 <p>The audio and MIDI channels of a track need to be explicitly connected to the
 inputs and outputs of Sushi.</p>
@@ -78,22 +73,33 @@ inputs and outputs of Sushi.</p>
 “mono”, “stereo” and “multibus”. The multibus option is for tracks with several stereo output busses routable to different output.</p>
 <p>Individually, the parameters of each processor can be controlled by various means:</p>
 <ul class="simple">
-<li>Over MIDI Control Change.</li>
-<li>Over Open Sound Control (OSC) messages.</li>
-<li>Using CV connections.</li>
-<li>Set directly over gRPC.</li>
-<li>Set in the JSON configuration file to specific values on startup, or even played back over time during off-line processing.</li>
+<li><p>Over MIDI Control Change.</p></li>
+<li><p>Over Open Sound Control (OSC) messages.</p></li>
+<li><p>Using CV connections.</p></li>
+<li><p>Set directly over gRPC.</p></li>
+<li><p>Set in the JSON configuration file to specific values on startup, or even played back over time during off-line processing.</p></li>
 </ul>
 <p>Also, mappings can be created to each processor, to echo/notify of the change of state of its internal parameters:</p>
 <ul class="simple">
-<li>Over OSC messages.</li>
-<li>Using CV / Gate connections.</li>
-<li>Using Notifications over gRPC.</li>
+<li><p>Over OSC messages.</p></li>
+<li><p>Using CV / Gate connections.</p></li>
+<li><p>Using Notifications over gRPC.</p></li>
+</ul>
+<p>Tracks have the following parameters that can be controlled in realtime:</p>
+<ul class="simple">
+<li><p>“gain” : The volume of the main bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).</p></li>
+<li><p>“pan” : The left - right panning of the main bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
+<li><p>“mute” : Mute the output of the track. Default: 0.0. (Normalized from [0, 1], Default: 0.0).</p></li>
+</ul>
+<p>Multi-bus tracks have additional parameters to set the pan and gain of additional output busses:</p>
+<ul class="simple">
+<li><p>“gain_sub_n” : The volume of the n:th output bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).</p></li>
+<li><p>“pan_sub_n” : The left - right panning of the n:th output bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
 </ul>
 </div>
 <div class="section" id="global-sushi-settings">
 <h2>Global Sushi Settings<a class="headerlink" href="#global-sushi-settings" title="Permalink to this headline">¶</a></h2>
-<p>Besides parameters set per processor, there are several global settings to control in Sushi.</p>
+<p>Besides parameter and property set per processor, there are several global settings to control in Sushi.</p>
 <p>The set of physical audio, MIDI and CV/Gate channels to use (limited of course by the hardware Sushi runs on), are defined during startup,
 and are not changeable run-time.</p>
 <p>The Global Transport is used to set tempo, time signature and play/stop states, for any plugins that have internal sequencing,
@@ -106,21 +112,22 @@ and for Ableton Link and midi clock.</p>
 For others, it may only be possible over one of the above.</p>
 <p>Generally the complexity of what can be achieved with each is as follows:</p>
 <ul class="simple">
-<li><a class="reference external" href="sushi_configuration_format.html">Configuration over JSON</a>: Everything that can be defined statically is possible to set in the configuration file.</li>
-<li>The <a class="reference external" href="sushi_control_grpc.html">gRPC API</a>: covers the vast majority of all that can be accessed, adding also run-time access for dynamic alterations and monitoring.</li>
-<li>The <a class="reference external" href="sushi_control_osc.html">Open Sound Control API</a> defines a streamlined sub-set of operations, selected to make sense for the common contexts of use for OSC: Efficient messages notifying of parameter changes; and enabling End-Users to create their own custom GUI’s and mappings to other media tools.</li>
-<li>MIDI, CC and CV/Gate are also primarily defined to be accessible by end-users, for their integration of the audio device with their other technologies.</li>
+<li><p><a class="reference external" href="sushi_configuration_format.html">Configuration over JSON</a>: Everything that can be defined statically is possible to set in the configuration file.</p></li>
+<li><p>The <a class="reference external" href="sushi_control_grpc.html">gRPC API</a>: covers the vast majority of all that can be accessed, adding also run-time access for dynamic alterations and monitoring.</p></li>
+<li><p>The <a class="reference external" href="sushi_control_osc.html">Open Sound Control API</a> defines a streamlined sub-set of operations, selected to make sense for the common contexts of use for OSC: Efficient messages notifying of parameter changes; and enabling End-Users to create their own custom GUI’s and mappings to other media tools.</p></li>
+<li><p>MIDI, CC and CV/Gate are also primarily defined to be accessible by end-users, for their integration of the audio device with their other technologies.</p></li>
 </ul>
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Sushi Public API Model</a><ul>
 <li><a class="reference internal" href="#processors-tracks-plugins-and-parameters">Processors, Tracks, Plugins and Parameters</a></li>
@@ -144,15 +151,15 @@ For others, it may only be possible over one of the above.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -172,12 +179,13 @@ For others, it may only be possible over one of the above.</p>
         <li class="right" >
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Public API Model</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

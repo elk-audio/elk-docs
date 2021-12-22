@@ -1,32 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Working with Elk Board &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" />
     <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +35,8 @@
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
       </ul>
     </div>  
 
@@ -63,10 +57,10 @@
 !</strong></em> There is a separate partition mounted under <em>/udata</em> for files that you want to preserve between system updates.</p>
 <p>The internal eMMC storage on the board is divided into four partitions:</p>
 <ul class="simple">
-<li><em>boot</em>    : Boot partition with secondary bootloader and Kernel image</li>
-<li><em>rootfs1</em> : First copy of root filesystem</li>
-<li><em>rootfs2</em> : Second copy of root filesystem</li>
-<li><em>udata</em>   : User data partition</li>
+<li><p><em>boot</em>    : Boot partition with secondary bootloader and Kernel image</p></li>
+<li><p><em>rootfs1</em> : First copy of root filesystem</p></li>
+<li><p><em>rootfs2</em> : Second copy of root filesystem</p></li>
+<li><p><em>udata</em>   : User data partition</p></li>
 </ul>
 <p>The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through
 .swu files. At boot, only one of the two redundant filesystem is mounted (in <em>/</em>). When a software update is run, it
@@ -106,7 +100,7 @@ their respective arguments.</p>
 <h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">¶</a></h3>
 <p>The audio buffer size of the system can be changed by typing <em>sudo elk_system_utils –set-buffer-size [size]</em>. The
 buffer size should be a power of 2. For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
 $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 </pre></div>
 </div>
@@ -116,12 +110,12 @@ $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 <h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
 <p>Currently Elk Audio OS supports the following audio hats:</p>
 <ol class="simple">
-<li>Elk Pi (default)</li>
-<li>HiFiBerry DAC+ ADC</li>
-<li>HiFiBerry DAC+ ADC Pro</li>
+<li><p>Elk Pi (default)</p></li>
+<li><p>HiFiBerry DAC+ ADC</p></li>
+<li><p>HiFiBerry DAC+ ADC Pro</p></li>
 </ol>
 <p>The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persist across boots. The setting is however reset after any software update.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
 $ sudo elk_system_utils --set-audio-hat elk-pi
 
 <span class="c1"># Use HiFiBerry DAC+ ADC audio hat</span>
@@ -164,12 +158,12 @@ may be useful if you have for example yourself frequently disconnected power bef
 <h3>Set USB Speed<a class="headerlink" href="#set-usb-speed" title="Permalink to this headline">¶</a></h3>
 <p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. <em><strong>This problem seems to solved with the Raspberry Pi 4.</strong></em></p>
 <p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">1</span>
 </pre></div>
 </div>
 <p>There is an important caveat though: <em><strong>with the speed reduced using the above command, transfer speeds will be slow, and many common USB devices, such as QUERTY keyboards, will no longer work</strong></em>.</p>
 <p>For a musical instrument that may not be a problem, but during development, you may want to switch back and forth between low and high speeds - setting the speed back to high is achieved as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
 </pre></div>
 </div>
 </div>
@@ -181,7 +175,7 @@ may be useful if you have for example yourself frequently disconnected power bef
 <p>Log-in to the board as <em><strong>root</strong></em> (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
 <p>The easiest way to setup WiFi access is through <em>connman</em>, which is enabled by default in dev
 images:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo connmanctl
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo connmanctl
 <span class="c1"># Now you should see a connmanctl shell where to type these extra commands:</span>
 $ connmanctl&gt; agent on
 $ connmanctl&gt; scan wifi
@@ -200,7 +194,7 @@ Besides root access, you can login as <em>mind</em> user (password: <em>elk</em>
 userspace applications.</p>
 <p>Now finish with the command <em>$ sudo elk_system_utils –remount-as-ro</em>  to set filesystem status back to read-only.</p>
 <p>If your file system is read-only, you can temporarily give yourself write access to the partition for these changes to be stored:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --remount-as-rw
 </pre></div>
 </div>
 <p>Otherwise, you will need to complete the steps above every time you power on the board.</p>
@@ -209,7 +203,7 @@ userspace applications.</p>
 <h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
 <p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
 <p>For example, on a host Linux / macOS machine:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
 $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 </pre></div>
 </div>
@@ -223,7 +217,7 @@ a terminal multiplexer when working in this way.</p>
 <h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
 <p>Given Sushi is running, to get a rough view of CPU performance, <em>top</em>, <em>htop</em> and similar Linux tools will only show
 you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 cat /proc/xenomai/sched/stat
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 cat /proc/xenomai/sched/stat
 </pre></div>
 </div>
 <p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin
@@ -237,24 +231,24 @@ partition will be lost after an update! Keep anything that you want to save unde
 <div class="section" id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</li>
-<li>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
-<li>You should see an Elk Audio OS update page. Just drag and drop the update file (<em>.swu</em>) or click in the middle
-to upload the file to start the update.</li>
-<li>When the update is completed successfully, the page prompts a message that the board is restarting, but you need
-to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</li>
-<li>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</li>
+<li><p>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</p></li>
+<li><p>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></p></li>
+<li><p>You should see an Elk Audio OS update page. Just drag and drop the update file (<em>.swu</em>) or click in the middle
+to upload the file to start the update.</p></li>
+<li><p>When the update is completed successfully, the page prompts a message that the board is restarting, but you need
+to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</p></li>
+<li><p>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</p></li>
 </ol>
 </div>
 <div class="section" id="updating-with-an-usb-drive">
 <h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
-at any time.</li>
-<li>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</li>
-<li>Once the SWupdate is completed successfully, only the Green LED will be turned on.</li>
-<li>If the SWupdate failed for any reason, then only the Red LED will be turned on.</li>
-<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</li>
+<li><p>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
+at any time.</p></li>
+<li><p>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</p></li>
+<li><p>Once the SWupdate is completed successfully, only the Green LED will be turned on.</p></li>
+<li><p>If the SWupdate failed for any reason, then only the Red LED will be turned on.</p></li>
+<li><p>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</p></li>
 </ol>
 </div>
 </div>
@@ -262,7 +256,7 @@ at any time.</li>
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
-<li><p class="first">Modify the file <em>/lib/systemd/system/sushi.service</em> to provide the path to your JSON configuration
+<li><p>Modify the file <em>/lib/systemd/system/sushi.service</em> to provide the path to your JSON configuration
 and, in case, additional environment variables or Sushi command line flags.</p>
 <p>Similarly, you can modify <em>/lib/systemd/system/sensei.service</em> to provide the path for your SENSEI Json
 configuration.</p>
@@ -270,10 +264,9 @@ configuration.</p>
 /name in the script <em>/usr/bin/connect-midi-apps</em>, which is started by the systemD service defined in <em>/lib/systemd
 /system/midi-connections.service</em>.</p>
 </li>
-<li><p class="first">Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p>
-</li>
+<li><p>Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p></li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
 $ systemctl <span class="nb">enable</span> midi-connections
 $ systemctl <span class="nb">enable</span> sensei
 </pre></div>
@@ -287,12 +280,12 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
 <p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting in the Elk Pi OS.</p>
 <p>When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.</p>
 <p>If any of these are a problem for your particular application, we have included the option of swapping to a lower CPU speed with the command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed min
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --set-cpu-speed min
 </pre></div>
 </div>
 <p>The speeds supported are 600 and 1400 for the RPi 3, and 600 / 1500 for the Pi4.</p>
 <p>By simply typing:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils
 </pre></div>
 </div>
 <p>You will see all the options available on your current board.</p>
@@ -300,12 +293,13 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Working with Elk Board</a><ul>
 <li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
@@ -361,15 +355,15 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -389,12 +383,13 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>
