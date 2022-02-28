@@ -49,23 +49,36 @@ Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one 
   * **Parameters** :
     + "sample_delay" : delay in samples. Default: 0.0. (Normalized from [0, 48000])
 
+### Stereo Mixer
+
+Utility plugin for mixing the two channels of a stereo signal independently.
+
+  * **uid** : "sushi.testing.stereo_mixer"
+  * **Parameters** :
+    + "ch1_gain" : The gain of channel 1 (left channel) in dB (Normalized from [-120, 24], Default: 0.0)
+    + "ch1_pan" : The pan of channel 1 (left channel) (Normalized from [-1.0, 1.0], Default: -1.0)
+    + "ch1_invert_phase : Invert the phase of channel 1 (left channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
+    + "ch2_gain" : The gain of channel 2 (right channel) in dB (Normalized from [-120, 24], Default: 0.0)
+    + "ch2_pan" : The pan of channel 2 (right channel) (Normalized from [-1.0, 1.0], Default: -1.0)
+    + "ch2_invert_phase : Invert the phase of channel 2 (right channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
+
 ### Send
 
-Plugin that passes audio to a Return plugin as well as passing to the next plugin in chain. Can be used for creating effect send busses, parallel processing, or more complex audio routings. Multiple Send plugins can send to the same Return plugin instance.
+Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings.
 
   * **uid** : "sushi.testing.send"
   * **Parameters** :
-    + "gain" : Level control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
+    + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
 
   * **Properties**:
-    + "destination" : Name of a Return plugin to send to.
+    + "destination" : Name of a Return plugin to send to
 
 ### Return
 
-Return bus plugin. Receives audio from 1 or several Send plugins. Note: the audio output from a Return plugin is delayed by 1 processing buffer.
+Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.
 
   * **uid** : "sushi.testing.return"
-  * **Parameters** : none
+  * **Parameters** :
 
 ## Midi In / Audio Out Plugins
 

@@ -61,7 +61,7 @@ and query the current tracks and plugins in the engine.
 ParameterController
 ^^^^^^^^^^^^^^^^^^^
 
-Allows the querying of all Track and Processor (plugin) parameters, and setting them to new values.
+Allows the querying of all Track and Processor (plugin) parameters and properties, and setting them to new values.
 
 AudioRoutingController
 ^^^^^^^^^^^^^^^^^^^^^^
