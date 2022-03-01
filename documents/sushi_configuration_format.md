@@ -20,11 +20,6 @@ Following is a reference for the Sushi .json configuration file.
     * **“inputs”** - Clip detection enabled on the audio inputs.
     * **“outputs”** - clip detection enabled on the audio outputs.
 * **"master_limiter"** - Set to true to enable brickwall limiting on each engine output. Attack is 0 ms and Relase ~100ms
-<<<<<<< HEAD
-=======
-* **"portaudio_input_device"** - The index of the input audio device to use with PortAudio. Defaults to the system default.
-* **"portaudio_output_device"** - The index of the output audio device to use with PortAudio. Defaults to the system default.
->>>>>>> parent of a440951 (Added id suffix to portaudio device field)
 * **"rt_midi_input_mappings"** - List of RtMidi input mappings objects with the following members (only applies if built with RtMidi as midi frontend):
     * **"rt_midi_device"** - The index of the RtMidi port to connect to.
     * **"sushi_midi_port"** - The index of the sushi midi port to connect the device to.
@@ -138,3 +133,12 @@ This works in two ways, either all, or only specific processors, are enabled. Th
     * **“value”** - If “type” = “parameter_change”, the decimal value to set. If “type” = “property_change”, the string value to set.
     * **“note”** - Note value to set, only valid if “type” = “note_on” or “note_off”.
     * **“velocity”** - Velocity value to set, only valid if “type” = “note_on” or “note_off”.
+
+## Initial State
+**“initial_state** - A list of initial settings (parameters, propeties, programs) that will be applied to processors before audio starts playing.
+
+* **"processor"** -  The name of the processor to apply the settings to.
+* **"program"** - If included, the id of the initial program to load.
+* **"bypassed"** - If included, set the initial bypass state of the processor.
+* **"parameters"** - A list of name - value pairs for parameters that will be set on the processor.
+* **"properties"** - A list of name - value pairs for string properties that will be set on the processor.

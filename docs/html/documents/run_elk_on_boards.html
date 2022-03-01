@@ -1,32 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Run Elk on Boards &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" />
     <link rel="prev" title="Elk UpCore Hardware" href="getting_started_with_development_kit_upcore_hardware.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +35,8 @@
         <li class="right" >
           <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
       </ul>
     </div>  
 
@@ -59,20 +53,21 @@
 <h2>1. Power it up, connect…<a class="headerlink" href="#power-it-up-connect" title="Permalink to this headline">¶</a></h2>
 <p>For getting access to the board terminal you have several options:</p>
 <ol class="simple">
-<li>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</li>
-<li>Connect over SSH using Ethernet.</li>
-<li>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="working_with_elk_board.html"><span class="doc">read more here</span></a>.</li>
+<li><p>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</p></li>
+<li><p>Connect over SSH using Ethernet.</p></li>
+<li><p>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="working_with_elk_board.html"><span class="doc">read more here</span></a>.</p></li>
 </ol>
 <p>For setting up SSH connections follow these tips:</p>
 <ol class="simple">
-<li>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</li>
-<li>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.<ol>
-<li>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
-of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</li>
+<li><p>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</p></li>
+<li><p>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.</p>
+<ol class="simple">
+<li><p>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
+of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</p></li>
 </ol>
 </li>
-<li>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</li>
-<li>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</li>
+<li><p>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</p></li>
+<li><p>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</p></li>
 </ol>
 </div>
 <div class="section" id="if-you-have-an-hifiberry-audio-hat">
@@ -80,7 +75,7 @@ of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect
 <p>Elk supports audio hats from HiFiBerry, such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>.</p>
 <p>If you are not using these, you can skip to step 3, and run Sushi.</p>
 <p>If however you <em>are</em> using one of these, set the audio hat as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
 $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
 
 <span class="c1"># To use HiFiBerry DAC+ ADC Pro Hat.</span>
@@ -95,13 +90,13 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 <em>~/plugins</em> in the user folder.</p>
 <p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should
 run Sushi using the <em>-r</em> switch for selecting our RASPA low-latency front-end:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/mda-vst3-configs/config_mda_synth.json <span class="p">&amp;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/mda-vst3-configs/config_mda_synth.json <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>Note the <em>&amp;</em> at the end - this means the process starts in the background. When you later need to stop it, you type
 <em>$ pkill sushi</em>.</p>
 <p>To connect USB Midi devices, just plug them and connect them with the <em>aconnect</em> tool:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
 $ aconnect -l
 <span class="c1"># Take note of the port number X for your MIDI controller (e.g. 16) and the one Y assigned to Sushi</span>
 <span class="c1"># (e.g. 128)</span>
@@ -126,12 +121,13 @@ $ aconnect X Y
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Run Elk on Boards</a><ul>
 <li><a class="reference internal" href="#power-it-up-connect">1. Power it up, connect…</a></li>
@@ -157,15 +153,15 @@ $ aconnect X Y
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -185,12 +181,13 @@ $ aconnect X Y
         <li class="right" >
           <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>
