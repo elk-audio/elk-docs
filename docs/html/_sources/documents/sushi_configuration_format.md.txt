@@ -122,7 +122,7 @@ This works in two ways, either all, or only specific processors, are enabled. Th
     * **"channel"** - The note number to use for gate events from this gate output (0-15)
 
 ## Events
-**“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa, PortAudio and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.
+**“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.
 
 * **“type”** - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.
 * **“time”** - Time, in seconds from the start of Sushi, when event should be executed.
