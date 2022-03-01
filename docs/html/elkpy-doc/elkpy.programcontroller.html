@@ -1,32 +1,25 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>elkpy.ProgramController &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.SushiInfoTypes" href="elkpy.sushi_info_types.html" />
     <link rel="prev" title="elkpy.ParameterController" href="elkpy.parametercontroller.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,7 +37,8 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.ProgramController</a></li> 
       </ul>
     </div>  
 
@@ -55,84 +49,84 @@
             
   <div class="section" id="module-elkpy.programcontroller">
 <span id="elkpy-programcontroller"></span><h1>elkpy.ProgramController<a class="headerlink" href="#module-elkpy.programcontroller" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="elkpy.programcontroller.ProgramController">
-<em class="property">class </em><code class="descclassname">elkpy.programcontroller.</code><code class="descname">ProgramController</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.programcontroller.</span></span><span class="sig-name descname"><span class="pre">ProgramController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A class to control the program in sushi via gRPC. It controls the programs for the processors and
 can set programs and the get the current program as well as other programs availble.</p>
-<dl class="docutils">
-<dt>Attributes:</dt>
-<dd>_stub (ProgramControllerStub): Connection stubs to the gRPC program interface implemented in sushi.</dd>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>_stub (ProgramControllerStub): Connection stubs to the gRPC program interface implemented in sushi.</p>
+</dd>
 </dl>
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor for the ProgramController class setting up the gRPC connection with sushi.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
-sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.get_processor_current_program">
-<code class="descname">get_processor_current_program</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_current_program"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_current_program" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.get_processor_current_program">
+<span class="sig-name descname"><span class="pre">get_processor_current_program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_current_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_current_program" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the id of the current program of the specified processor.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>processor_identifier (int): The id of the processor to get the current program id from.</dd>
-<dt>Returns:</dt>
-<dd>int: The id of the processors current program.</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to get the current program id from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int: The id of the processors current program.</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.get_processor_current_program_name">
-<code class="descname">get_processor_current_program_name</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_current_program_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_current_program_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.get_processor_current_program_name">
+<span class="sig-name descname"><span class="pre">get_processor_current_program_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_current_program_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_current_program_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the name of the current program of the specified processor.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>processor_identifier (int): The id of the processor to get the current program name from.</dd>
-<dt>Returns:</dt>
-<dd>str: The name of the processors current program.</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to get the current program name from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The name of the processors current program.</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.get_processor_program_name">
-<code class="descname">get_processor_program_name</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>program_identifier: int</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_program_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_program_name" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.get_processor_program_name">
+<span class="sig-name descname"><span class="pre">get_processor_program_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_program_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_program_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the name of the specified program on the specified processor.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>processor_identifier (int): The id of the processor to get the program name from.
-program_identifier (int): The id of the program to get the name of.</dd>
-<dt>Returns:</dt>
-<dd>str: The name of the program matching the processor and program id.</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to get the program name from.
+program_identifier (int): The id of the program to get the name of.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The name of the program matching the processor and program id.</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.get_processor_programs">
-<code class="descname">get_processor_programs</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; typing.List[elkpy.sushi_info_types.ProgramInfo]<a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_programs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_programs" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.get_processor_programs">
+<span class="sig-name descname"><span class="pre">get_processor_programs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProgramInfo" title="elkpy.sushi_info_types.ProgramInfo"><span class="pre">elkpy.sushi_info_types.ProgramInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.get_processor_programs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.get_processor_programs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a list of the available programs of the specified processor.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>processor_identifier (int): The id of the processor to get the programs from.</dd>
-<dt>Returns:</dt>
-<dd>List[info_types.ProgramInfo]: A list of the programs available to the processor matching the id.</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to get the programs from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[info_types.ProgramInfo]: A list of the programs available to the processor matching the id.</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="elkpy.programcontroller.ProgramController.set_processor_program">
-<code class="descname">set_processor_program</code><span class="sig-paren">(</span><em>processor_identifier: int</em>, <em>program_identifier: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.set_processor_program"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.set_processor_program" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.programcontroller.ProgramController.set_processor_program">
+<span class="sig-name descname"><span class="pre">set_processor_program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/programcontroller.html#ProgramController.set_processor_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.programcontroller.ProgramController.set_processor_program" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the program of the specified processor to the one matching the specified program id.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>processor_identifier (int): The id of the processor to set the program of.
-program_identifier (int): The id of the program to set.</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to set the program of.
+program_identifier (int): The id of the program to set.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -141,6 +135,7 @@ program_identifier (int): The id of the program to set.</dd>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -160,15 +155,15 @@ program_identifier (int): The id of the program to set.</dd>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -190,12 +185,13 @@ program_identifier (int): The id of the program to set.</dd>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.ProgramController</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

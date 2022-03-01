@@ -138,3 +138,12 @@ This works in two ways, either all, or only specific processors, are enabled. Th
     * **“value”** - If “type” = “parameter_change”, the decimal value to set. If “type” = “property_change”, the string value to set.
     * **“note”** - Note value to set, only valid if “type” = “note_on” or “note_off”.
     * **“velocity”** - Velocity value to set, only valid if “type” = “note_on” or “note_off”.
+
+## Initial State
+**“initial_state** - A list of initial settings (parameters, propeties, programs) that will be applied to processors before audio starts playing.
+
+* **"processor"** -  The name of the processor to apply the settings to.
+* **"program"** - If included, the id of the initial program to load.
+* **"bypassed"** - If included, set the initial bypass state of the processor.
+* **"parameters"** - A list of name - value pairs for parameters that will be set on the processor.
+* **"properties"** - A list of name - value pairs for string properties that will be set on the processor.
