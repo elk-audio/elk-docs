@@ -71,7 +71,7 @@ Sends audio to a return bus plugin. Can be used for creating effect sends, paral
     + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
 
   * **Properties**:
-    + "destination" : Name of a Return plugin to send to
+    + "destination_name" : Name of a Return plugin to send to
 
 ### Return
 

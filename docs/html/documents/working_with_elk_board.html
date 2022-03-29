@@ -1,19 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Working with Elk Board &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,8 +37,7 @@
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -57,10 +58,10 @@
 !</strong></em> There is a separate partition mounted under <em>/udata</em> for files that you want to preserve between system updates.</p>
 <p>The internal eMMC storage on the board is divided into four partitions:</p>
 <ul class="simple">
-<li><p><em>boot</em>    : Boot partition with secondary bootloader and Kernel image</p></li>
-<li><p><em>rootfs1</em> : First copy of root filesystem</p></li>
-<li><p><em>rootfs2</em> : Second copy of root filesystem</p></li>
-<li><p><em>udata</em>   : User data partition</p></li>
+<li><em>boot</em>    : Boot partition with secondary bootloader and Kernel image</li>
+<li><em>rootfs1</em> : First copy of root filesystem</li>
+<li><em>rootfs2</em> : Second copy of root filesystem</li>
+<li><em>udata</em>   : User data partition</li>
 </ul>
 <p>The reason for having two distinct root filesystem partitions is due to the power-off safe update mechanism through
 .swu files. At boot, only one of the two redundant filesystem is mounted (in <em>/</em>). When a software update is run, it
@@ -104,15 +105,15 @@ buffer size should be a power of 2. For example:</p>
 $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 </pre></div>
 </div>
-<p>Changes take place after a power cycle and persists across boots. It is reset upon a software update.</p>
+<p>The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.</p>
 </div>
 <div class="section" id="changing-audio-hats">
 <h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
 <p>Currently Elk Audio OS supports the following audio hats:</p>
 <ol class="simple">
-<li><p>Elk Pi (default)</p></li>
-<li><p>HiFiBerry DAC+ ADC</p></li>
-<li><p>HiFiBerry DAC+ ADC Pro</p></li>
+<li>Elk Pi (default)</li>
+<li>HiFiBerry DAC+ ADC</li>
+<li>HiFiBerry DAC+ ADC Pro</li>
 </ol>
 <p>The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persist across boots. The setting is however reset after any software update.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Elk Pi audio hat</span>
@@ -182,7 +183,7 @@ $ connmanctl&gt; scan wifi
 $ connmanctl&gt; services
 <span class="c1"># The last command should have showed you a list of WiFi network available with their SSID and a</span>
 <span class="c1"># long code starting with wifi_</span>
-$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete. </span>
+$ connmanctl&gt; connect wifi_xxx <span class="c1"># choose the code for the desired network. You can tab-complete.</span>
 $ connmanctl&gt; Ctrl+D
 
 <span class="c1"># This will show you the IP address assigned to the board by DHCP</span>
@@ -231,24 +232,24 @@ partition will be lost after an update! Keep anything that you want to save unde
 <div class="section" id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</p></li>
-<li><p>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></p></li>
-<li><p>You should see an Elk Audio OS update page. Just drag and drop the update file (<em>.swu</em>) or click in the middle
-to upload the file to start the update.</p></li>
-<li><p>When the update is completed successfully, the page prompts a message that the board is restarting, but you need
-to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</p></li>
-<li><p>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</p></li>
+<li>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</li>
+<li>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></li>
+<li>You should see an Elk Audio OS update page. Just drag and drop the update file (<em>.swu</em>) or click in the middle
+to upload the file to start the update.</li>
+<li>When the update is completed successfully, the page prompts a message that the board is restarting, but you need
+to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</li>
+<li>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</li>
 </ol>
 </div>
 <div class="section" id="updating-with-an-usb-drive">
 <h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
-at any time.</p></li>
-<li><p>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</p></li>
-<li><p>Once the SWupdate is completed successfully, only the Green LED will be turned on.</p></li>
-<li><p>If the SWupdate failed for any reason, then only the Red LED will be turned on.</p></li>
-<li><p>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</p></li>
+<li>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
+at any time.</li>
+<li>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</li>
+<li>Once the SWupdate is completed successfully, only the Green LED will be turned on.</li>
+<li>If the SWupdate failed for any reason, then only the Red LED will be turned on.</li>
+<li>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</li>
 </ol>
 </div>
 </div>
@@ -256,7 +257,7 @@ at any time.</p></li>
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
-<li><p>Modify the file <em>/lib/systemd/system/sushi.service</em> to provide the path to your JSON configuration
+<li><p class="first">Modify the file <em>/lib/systemd/system/sushi.service</em> to provide the path to your JSON configuration
 and, in case, additional environment variables or Sushi command line flags.</p>
 <p>Similarly, you can modify <em>/lib/systemd/system/sensei.service</em> to provide the path for your SENSEI Json
 configuration.</p>
@@ -264,7 +265,8 @@ configuration.</p>
 /name in the script <em>/usr/bin/connect-midi-apps</em>, which is started by the systemD service defined in <em>/lib/systemd
 /system/midi-connections.service</em>.</p>
 </li>
-<li><p>Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p></li>
+<li><p class="first">Enable both Sushi, Sensei and the MIDI connection service typing (as root):</p>
+</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> sushi
 $ systemctl <span class="nb">enable</span> midi-connections
@@ -293,7 +295,6 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -355,15 +356,17 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -383,13 +386,12 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
         <li class="right" >
           <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

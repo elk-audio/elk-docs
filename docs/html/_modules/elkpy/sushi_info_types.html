@@ -495,61 +495,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span></div>
 
-<div class="viewcode-block" id="ProcessorState"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState">[docs]</a><span class="k">class</span> <span class="nc">ProcessorState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class to represent the processor state info received from sushi in a clear way.</span>
-
-<span class="sd">    Attributes:</span>
-<span class="sd">        program_id (int): The id of the current program.</span>
-<span class="sd">        bypassed (bool): Whether the processor is currently bypassed or not.</span>
-<span class="sd">        properties ((int, str)): All property values of the processor.</span>
-<span class="sd">        parameters ((int, float)): All parameter values of the processor.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ProcessorState.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_ProcessorState</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">program_id</span><span class="o">.</span><span class="n">value</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">=</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">bypassed</span><span class="o">.</span><span class="n">value</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">=</span> <span class="kc">False</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="nb">property</span> <span class="ow">in</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">property</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="nb">property</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
-
-        <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">grpc_ProcessorState</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
-
-        <span class="k">except</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span></div>
-
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; program_id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">program_id</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; bypassed: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; properties: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; parameters: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
-        <span class="k">return</span> <span class="n">s</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">program_id</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">bypassed</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">bypassed</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">properties</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameters</span> </div>
-
 
 <div class="viewcode-block" id="AudioConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection">[docs]</a><span class="k">class</span> <span class="nc">AudioConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

@@ -1,19 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.TimingController &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,8 +39,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.TimingController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -49,110 +50,110 @@
             
   <div class="section" id="module-elkpy.timingcontroller">
 <span id="elkpy-timingcontroller"></span><h1>elkpy.TimingController<a class="headerlink" href="#module-elkpy.timingcontroller" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.timingcontroller.</span></span><span class="sig-name descname"><span class="pre">TimingController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController" title="Permalink to this definition">¶</a></dt>
+<dl class="class">
+<dt id="elkpy.timingcontroller.TimingController">
+<em class="property">class </em><code class="descclassname">elkpy.timingcontroller.</code><code class="descname">TimingController</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A class to control the timing in sushi via gRPC. It can get and reset the different timing statistics
 provided by sushi.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>_stub (TimingControllerStub): Connection stubs to the gRPC timing interface implemented in sushi.</p>
-</dd>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>_stub (TimingControllerStub): Connection stubs to the gRPC timing interface implemented in sushi.</dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor for the TimingController class setting up the gRPC connection with sushi.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
-sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.get_engine_timings">
-<span class="sig-name descname"><span class="pre">get_engine_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_engine_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_engine_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.get_engine_timings">
+<code class="descname">get_engine_timings</code><span class="sig-paren">(</span><em>) -&gt; (&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_engine_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_engine_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average, min and max timings of the engine.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>float: The average engine processing time in ms.
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>float: The average engine processing time in ms.
 float: The minimum engine processing time in ms.
-float: The maximum engine processing time in ms.</p>
-</dd>
+float: The maximum engine processing time in ms.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.get_processor_timings">
-<span class="sig-name descname"><span class="pre">get_processor_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_processor_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_processor_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.get_processor_timings">
+<code class="descname">get_processor_timings</code><span class="sig-paren">(</span><em>processor_identifier: int) -&gt; (&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_processor_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_processor_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average, min and max timings of the specified processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to get timings from.</p>
-</dd>
-<dt>Returns:</dt><dd><p>float: The average processor processing time in ms.
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to get timings from.</dd>
+<dt>Returns:</dt>
+<dd>float: The average processor processing time in ms.
 float: The minimum processor processing time in ms.
-float: The maximum processor processing time in ms.</p>
-</dd>
+float: The maximum processor processing time in ms.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.get_timings_enabled">
-<span class="sig-name descname"><span class="pre">get_timings_enabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_timings_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_timings_enabled" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.get_timings_enabled">
+<code class="descname">get_timings_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_timings_enabled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_timings_enabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the state of timing statstics.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>bool: True if statistics is enabled, False if not.</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>bool: True if statistics is enabled, False if not.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.get_track_timings">
-<span class="sig-name descname"><span class="pre">get_track_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_track_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_track_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.get_track_timings">
+<code class="descname">get_track_timings</code><span class="sig-paren">(</span><em>track_identifier: int) -&gt; (&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em>, <em>&lt;class 'float'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.get_track_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.get_track_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average, min and max timings of the specified track.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track to get timings from.</p>
-</dd>
-<dt>Returns:</dt><dd><p>float: The average track processing time in ms.
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>track_identifier (int): The id of the track to get timings from.</dd>
+<dt>Returns:</dt>
+<dd>float: The average track processing time in ms.
 float: The minimum track processing time in ms.
-float: The maximum track processing time in ms.</p>
-</dd>
+float: The maximum track processing time in ms.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.reset_all_timings">
-<span class="sig-name descname"><span class="pre">reset_all_timings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_all_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_all_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.reset_all_timings">
+<code class="descname">reset_all_timings</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_all_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_all_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset all the timings.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.reset_processor_timings">
-<span class="sig-name descname"><span class="pre">reset_processor_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_processor_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_processor_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.reset_processor_timings">
+<code class="descname">reset_processor_timings</code><span class="sig-paren">(</span><em>processor_identifier: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_processor_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_processor_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the timings of the specified processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to reset the timings of.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_identifier (int): The id of the processor to reset the timings of.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.reset_track_timings">
-<span class="sig-name descname"><span class="pre">reset_track_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_track_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_track_timings" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.reset_track_timings">
+<code class="descname">reset_track_timings</code><span class="sig-paren">(</span><em>track_identifier: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.reset_track_timings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.reset_track_timings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the timings of the specified track.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track to reset the timings of.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>track_identifier (int): The id of the track to reset the timings of.</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.timingcontroller.TimingController.set_timings_enabled">
-<span class="sig-name descname"><span class="pre">set_timings_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.set_timings_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.set_timings_enabled" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.timingcontroller.TimingController.set_timings_enabled">
+<code class="descname">set_timings_enabled</code><span class="sig-paren">(</span><em>enabled: bool</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/timingcontroller.html#TimingController.set_timings_enabled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.timingcontroller.TimingController.set_timings_enabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the state of timing statstics.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>bool: True if statistics is enabled, False if not.</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>bool: True if statistics is enabled, False if not.</dd>
 </dl>
 </dd></dl>
 
@@ -161,7 +162,6 @@ float: The maximum track processing time in ms.</p>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -181,15 +181,17 @@ float: The maximum track processing time in ms.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -211,13 +213,12 @@ float: The maximum track processing time in ms.</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.TimingController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

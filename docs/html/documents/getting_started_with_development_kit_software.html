@@ -1,19 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Development Kit Software &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,8 +37,7 @@
         <li class="right" >
           <a href="how_elk_works.html" title="Powered by Elk"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Development Kit Software</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -59,18 +60,18 @@
 <p>First we assume you are able to run Sushi and connect to Jack audio.</p>
 <p>The example used, requires that you have these files from the  our <a class="reference external" href="https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3">elk-examples repository</a>:</p>
 <ol class="simple">
-<li><p>config_play_vst3_desktop.json - the Sushi configuration file.</p></li>
-<li><p>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</p></li>
-<li><p><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.</p></li>
-<li><p>(optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC app</a>.</p></li>
+<li>config_play_vst3_desktop.json - the Sushi configuration file.</li>
+<li>mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.</li>
+<li><a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz">mda-vst3.vst3.tar.xz</a> - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.</li>
+<li>(optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the <a class="reference external" href="https://hexler.net/products/touchosc">TouchOSC app</a>.</li>
 </ol>
 <p>First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default
 path expected: <em>/usr/lib/lxvst/mda-vst3.vst3</em>. If you place the mda-vst3.vst3 extracted content elsewhere, you also
 need to edit the config_play_vst3.json to refer to that new path.</p>
 <p>To run Sushi using Jack, with the configuration file provided for running the MDA JX10 VST3 synthesizer:</p>
 <ol class="simple">
-<li><p>Navigate to <em>/the/folder/where/you/have/placed/sushi</em> in a console window.</p></li>
-<li><p>Type the following command:</p></li>
+<li>Navigate to <em>/the/folder/where/you/have/placed/sushi</em> in a console window.</li>
+<li>Type the following command:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./Sushi-x86_64-0.7.0.AppImage -j --multicore-processing<span class="o">=</span><span class="m">2</span> --connect-ports -c /path/to/example/config/files/config_play_vst3.json
 </pre></div>
@@ -82,7 +83,7 @@ Copyright <span class="m">2016</span>-2019 Elk, Stockholm
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:</p></li>
+<li>Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:</li>
 </ol>
 <p><img alt="CATIA with SUSHI" src="../_images/CATIA_with_SUSHI.png" />
 ​<br />Note that its outputs are already connected.</p>
@@ -100,8 +101,8 @@ the <em>-r</em> switch for selecting the RASPA low-latency front-end instead of 
 <p>Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to
 connect it to a MIDI device to be able to play sound. For this, connect them with the <em>aconnect</em> tool:</p>
 <ol class="simple">
-<li><p>Start a new terminal window than the one where Sushi is running.</p></li>
-<li><p>Type <em>‘aconnect -l’</em> to list all available MIDI devices and ports for connections:</p></li>
+<li>Start a new terminal window than the one where Sushi is running.</li>
+<li>Type <em>‘aconnect -l’</em> to list all available MIDI devices and ports for connections:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>client <span class="m">0</span>: <span class="s1">&#39;System&#39;</span> <span class="o">[</span><span class="nv">type</span><span class="o">=</span>kernel<span class="o">]</span>
     <span class="m">0</span> <span class="s1">&#39;Timer           &#39;</span>
@@ -122,9 +123,9 @@ client <span class="m">128</span>: <span class="s1">&#39;Sushi&#39;</span> <span
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>The output you see will vary depending on your configuration, you should take note of the port number X for your MIDI controller (e.g. 28) and the one Y assigned to Sushi, here 128.</p></li>
-<li><p>By typing <em>aconnect X Y</em>, or in this example <em>aconnect 28 128</em>, you should now hear sound when playing on your
-keyboard.</p></li>
+<li>The output you see will vary depending on your configuration, you should take note of the port number X for your MIDI controller (e.g. 28) and the one Y assigned to Sushi, here 128.</li>
+<li>By typing <em>aconnect X Y</em>, or in this example <em>aconnect 28 128</em>, you should now hear sound when playing on your
+keyboard.</li>
 </ol>
 <p>Tip: If you do not have a physical keyboard available, you can use the <em><strong>Virtual MIDI Piano Keyboard</strong></em> software (VMPK).</p>
 </div>
@@ -132,20 +133,21 @@ keyboard.</p></li>
 <h2>Control MDA JX10 VST3 plugin with Open Stage Control<a class="headerlink" href="#control-mda-jx10-vst3-plugin-with-open-stage-control" title="Permalink to this headline">¶</a></h2>
 <p>If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">if you first read the article on the Elk Tech blog, dedicated to the topic</a>.</p>
 <ol>
-<li><p>Download and install the free <a class="reference external" href="https://openstagecontrol.ammd.net/">Open Stage Control</a> application to your computer.</p></li>
-<li><p>Upon starting it, you will see the screen below. Here, all you need to do, is enter the IP and Port number, as is displayed under ‘send’ below. If you run the software on the same computer as you run Sushi, the IP should remain 127.0.0.1, and if you have not changed the Sushi default configuration, Sushi’s Port should remain 24024.</p>
+<li><p class="first">Download and install the free <a class="reference external" href="https://openstagecontrol.ammd.net/">Open Stage Control</a> application to your computer.</p>
+</li>
+<li><p class="first">Upon starting it, you will see the screen below. Here, all you need to do, is enter the IP and Port number, as is displayed under ‘send’ below. If you run the software on the same computer as you run Sushi, the IP should remain 127.0.0.1, and if you have not changed the Sushi default configuration, Sushi’s Port should remain 24024.</p>
 <p><img alt="OpenStageControl_LaunchScreen" src="../_images/OpenStageControl_LaunchScreen.png" />
 ​</p>
 <ol class="simple">
-<li><p>Click Start, and subsequently ‘Browse…’, to navigate to the path where “mda_jx10_vst3_open_stage_control_gui.json” is available.</p></li>
-<li><p>You will now see the GUI below for controlling the jx10 synthesizer:</p></li>
+<li>Click Start, and subsequently ‘Browse…’, to navigate to the path where “mda_jx10_vst3_open_stage_control_gui.json” is available.</li>
+<li>You will now see the GUI below for controlling the jx10 synthesizer:</li>
 </ol>
 </li>
 </ol>
 <p><img alt="OpenStageControl_with_jx10" src="../_images/OpenStageControl_with_jx10.png" />
 ​</p>
 <ol class="simple">
-<li><p>Assuming everything is correctly configured, the controls on the screen will send OSC messages to to the jx10 synth via Sushi, altering its parameters.</p></li>
+<li>Assuming everything is correctly configured, the controls on the screen will send OSC messages to to the jx10 synth via Sushi, altering its parameters.</li>
 </ol>
 <p>For example, dragging the knob ‘Resonance’, will send the point value of the knob to the OSC address  ‘/parameter/jx10/VCF_Reso’.</p>
 <p>‘jx10’ is here the name given the plugin in the Sushi configuration file.</p>
@@ -164,7 +166,6 @@ keyboard.</p></li>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -198,15 +199,17 @@ keyboard.</p></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -226,13 +229,12 @@ keyboard.</p></li>
         <li class="right" >
           <a href="how_elk_works.html" title="Powered by Elk"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Development Kit Software</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

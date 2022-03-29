@@ -1,19 +1,21 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>elkpy.CvGateController &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,8 +39,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.CvGateController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -49,264 +50,264 @@
             
   <div class="section" id="module-elkpy.cvgatecontroller">
 <span id="elkpy-cvgatecontroller"></span><h1>elkpy.CvGateController<a class="headerlink" href="#module-elkpy.cvgatecontroller" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.cvgatecontroller.</span></span><span class="sig-name descname"><span class="pre">CvGateController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController" title="Permalink to this definition">¶</a></dt>
+<dl class="class">
+<dt id="elkpy.cvgatecontroller.CvGateController">
+<em class="property">class </em><code class="descclassname">elkpy.cvgatecontroller.</code><code class="descname">CvGateController</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to manage CV/Gate connections in Sushi via gRPC. It creates, deletes and gets info about
 Cv/Gate connections on sushi tracks.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>_stub (CvGateControllerStub): Connection stub to the gRPC CvGate interface.</p>
-</dd>
+<dl class="docutils">
+<dt>Attributes:</dt>
+<dd>_stub (CvGateControllerStub): Connection stub to the gRPC CvGate interface.</dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.__init__" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>address='localhost:51051'</em>, <em>sushi_proto_def='/usr/share/sushi/sushi_rpc.proto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>The constructor for the CvGateController class setting up the gRPC connection with sushi.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>address: IP address to Sushi in the uri form : ‘ip-addr:port’
-sushi_proto_def: path to the .proto file with SUSHI gRPC services definitions</p>
-</dd>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>address: IP address to Sushi in the uri form : ‘ip-addr:port’
+sushi_proto_def: path to the .proto file with SUSHI gRPC services definitions</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter">
-<span class="sig-name descname"><span class="pre">connect_cv_input_to_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_cv_input_to_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter">
+<code class="descname">connect_cv_input_to_parameter</code><span class="sig-paren">(</span><em>processor_id: int</em>, <em>parameter_id: int</em>, <em>cv_port_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_cv_input_to_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects a CV input to a parameter</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor to parameter belongs to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_id (int): The id of the processor to parameter belongs to
 parameter_id (int): The id of parameter to connect to
-cv_port_id (int): The id of the CV port to connect to</p>
-</dd>
+cv_port_id (int): The id of the CV port to connect to</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter">
-<span class="sig-name descname"><span class="pre">connect_cv_output_from_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_cv_output_from_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter">
+<code class="descname">connect_cv_output_from_parameter</code><span class="sig-paren">(</span><em>processor_id: int</em>, <em>parameter_id: int</em>, <em>cv_port_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_cv_output_from_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects a CV output to a parameter</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor to parameter belongs to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor_id (int): The id of the processor to parameter belongs to
 parameter_id (int): The id of parameter to connect to
-cv_port_id (int): The id of the CV port to connect to</p>
-</dd>
+cv_port_id (int): The id of the CV port to connect to</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor">
-<span class="sig-name descname"><span class="pre">connect_gate_input_to_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_gate_input_to_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor">
+<code class="descname">connect_gate_input_to_processor</code><span class="sig-paren">(</span><em>processor: int</em>, <em>gate_port_id: int</em>, <em>channel: int</em>, <em>note_no: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_gate_input_to_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects a Gate input to a processor</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): The id of the processor to connect to
 gate_port_id (int): The id of the gate port being connected
 channel (int): The midi channel number
-note_no (int): The note number to trigger</p>
-</dd>
+note_no (int): The note number to trigger</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor">
-<span class="sig-name descname"><span class="pre">connect_gate_output_from_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_gate_output_from_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor">
+<code class="descname">connect_gate_output_from_processor</code><span class="sig-paren">(</span><em>processor: int</em>, <em>gate_port_id: int</em>, <em>channel: int</em>, <em>note_no: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.connect_gate_output_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects a Gate output from a processor</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): The id of the processor to connect to
 gate_port_id (int): The id of the gate port being connected
 channel (int): The midi channel number
-note_no (int): The note number to trigger</p>
-</dd>
+note_no (int): The note number to trigger</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor">
-<span class="sig-name descname"><span class="pre">disconnect_all_cv_inputs_from_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_cv_inputs_from_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor">
+<code class="descname">disconnect_all_cv_inputs_from_processor</code><span class="sig-paren">(</span><em>processor: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_cv_inputs_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects all CV inputs from a processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): the processor ID from which to disconnect CV inputs</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): the processor ID from which to disconnect CV inputs</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor">
-<span class="sig-name descname"><span class="pre">disconnect_all_cv_outputs_from_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_cv_outputs_from_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor">
+<code class="descname">disconnect_all_cv_outputs_from_processor</code><span class="sig-paren">(</span><em>processor: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_cv_outputs_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects all CV outputs from a processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): the processor ID from which to disconnect CV outputs</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): the processor ID from which to disconnect CV outputs</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor">
-<span class="sig-name descname"><span class="pre">disconnect_all_gate_inputs_from_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_gate_inputs_from_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor">
+<code class="descname">disconnect_all_gate_inputs_from_processor</code><span class="sig-paren">(</span><em>processor: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_gate_inputs_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects all Gate inputs from a processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): the processor ID from which to disconnect Gate inputs</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): the processor ID from which to disconnect Gate inputs</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor">
-<span class="sig-name descname"><span class="pre">disconnect_all_gate_outputs_from_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_gate_outputs_from_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor">
+<code class="descname">disconnect_all_gate_outputs_from_processor</code><span class="sig-paren">(</span><em>processor: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_all_gate_outputs_from_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects all Gate outputs from a processor.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): the processor ID from which to disconnect Gate outputs</p>
-</dd>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): the processor ID from which to disconnect Gate outputs</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_cv_input">
-<span class="sig-name descname"><span class="pre">disconnect_cv_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_cv_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_cv_input" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_cv_input">
+<code class="descname">disconnect_cv_input</code><span class="sig-paren">(</span><em>processor_id: int</em>, <em>parameter_id: int</em>, <em>cv_port_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_cv_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_cv_input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects a CV input from a parameter</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>procsessor_id (int): The id of the processor the parameter belongs to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>procsessor_id (int): The id of the processor the parameter belongs to
 parameter_id (int): The id of the parameter to disconnect
-cv_port_id (int): The id of the CV port to disconnect</p>
-</dd>
+cv_port_id (int): The id of the CV port to disconnect</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_cv_output">
-<span class="sig-name descname"><span class="pre">disconnect_cv_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_cv_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_cv_output" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_cv_output">
+<code class="descname">disconnect_cv_output</code><span class="sig-paren">(</span><em>processor_id: int</em>, <em>parameter_id: int</em>, <em>cv_port_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_cv_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_cv_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects a CV output from a parameter</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>procsessor_id (int): The id of the processor the parameter belongs to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>procsessor_id (int): The id of the processor the parameter belongs to
 parameter_id (int): The id of the parameter to disconnect
-cv_port_id (int): The id of the CV port to disconnect</p>
-</dd>
+cv_port_id (int): The id of the CV port to disconnect</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_gate_input">
-<span class="sig-name descname"><span class="pre">disconnect_gate_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_gate_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_gate_input" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_gate_input">
+<code class="descname">disconnect_gate_input</code><span class="sig-paren">(</span><em>processor: int</em>, <em>gate_port_id: int</em>, <em>channel: int</em>, <em>note_no: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_gate_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_gate_input" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects a Gate input from a processor</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): The id of the processor to connect to
 gate_port_id (int): The id of the gate port being connected
 channel (int): The midi channel number
-note_no (int): The note number to trigger</p>
-</dd>
+note_no (int): The note number to trigger</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.disconnect_gate_output">
-<span class="sig-name descname"><span class="pre">disconnect_gate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_gate_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_gate_output" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.disconnect_gate_output">
+<code class="descname">disconnect_gate_output</code><span class="sig-paren">(</span><em>processor: int</em>, <em>gate_port_id: int</em>, <em>channel: int</em>, <em>note_no: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.disconnect_gate_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.disconnect_gate_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects a Gate output from a processor</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor (int): The id of the processor to connect to
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>processor (int): The id of the processor to connect to
 gate_port_id (int): The id of the gate port being connected
 channel (int): The midi channel number
-note_no (int): The note number to trigger</p>
-</dd>
+note_no (int): The note number to trigger</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections">
-<span class="sig-name descname"><span class="pre">get_all_cv_input_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection" title="elkpy.sushi_info_types.CvConnection"><span class="pre">elkpy.sushi_info_types.CvConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_cv_input_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections">
+<code class="descname">get_all_cv_input_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.CvConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_cv_input_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all CV input connections</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.CvConnection]: List of CvConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.CvConnection]: List of CvConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections">
-<span class="sig-name descname"><span class="pre">get_all_cv_output_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection" title="elkpy.sushi_info_types.CvConnection"><span class="pre">elkpy.sushi_info_types.CvConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_cv_output_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections">
+<code class="descname">get_all_cv_output_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.CvConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_cv_output_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all CV output connections</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.CvConnection]: List of CvConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.CvConnection]: List of CvConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections">
-<span class="sig-name descname"><span class="pre">get_all_gate_input_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection" title="elkpy.sushi_info_types.GateConnection"><span class="pre">elkpy.sushi_info_types.GateConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_gate_input_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections">
+<code class="descname">get_all_gate_input_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.GateConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_gate_input_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all Gate input connections</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.GateConnection]: List of GateConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.GateConnection]: List of GateConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections">
-<span class="sig-name descname"><span class="pre">get_all_gate_output_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection" title="elkpy.sushi_info_types.GateConnection"><span class="pre">elkpy.sushi_info_types.GateConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_gate_output_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections">
+<code class="descname">get_all_gate_output_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.GateConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_all_gate_output_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all Gate output connections</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.GateConnection]: List of GateConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.GateConnection]: List of GateConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count">
-<span class="sig-name descname"><span class="pre">get_cv_input_channel_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_input_channel_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count">
+<code class="descname">get_cv_input_channel_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_input_channel_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a count of all CV input channels</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>int: count</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: count</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor">
-<span class="sig-name descname"><span class="pre">get_cv_input_connections_for_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection" title="elkpy.sushi_info_types.CvConnection"><span class="pre">elkpy.sushi_info_types.CvConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_input_connections_for_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor">
+<code class="descname">get_cv_input_connections_for_processor</code><span class="sig-paren">(</span><em>processor_id: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.CvConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_input_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of all CV input connections for specified processor.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.CvConnection]: List of CvConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.CvConnection]: List of CvConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count">
-<span class="sig-name descname"><span class="pre">get_cv_output_channel_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_output_channel_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count">
+<code class="descname">get_cv_output_channel_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_output_channel_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a count of all CV output channels</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>int: count</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: count</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor">
-<span class="sig-name descname"><span class="pre">get_cv_output_connections_for_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection" title="elkpy.sushi_info_types.CvConnection"><span class="pre">elkpy.sushi_info_types.CvConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_output_connections_for_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor">
+<code class="descname">get_cv_output_connections_for_processor</code><span class="sig-paren">(</span><em>processor_id: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.CvConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_cv_output_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of all CV output connections for specified processor.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.CvConnection]: List of CvConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.CvConnection]: List of CvConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor">
-<span class="sig-name descname"><span class="pre">get_gate_input_connections_for_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection" title="elkpy.sushi_info_types.GateConnection"><span class="pre">elkpy.sushi_info_types.GateConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_gate_input_connections_for_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor">
+<code class="descname">get_gate_input_connections_for_processor</code><span class="sig-paren">(</span><em>processor_id: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.GateConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_gate_input_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of all Gate input connections for specified processor.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.GateConnection]: List of GateConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.GateConnection]: List of GateConnection objects</dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor">
-<span class="sig-name descname"><span class="pre">get_gate_output_connections_for_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection" title="elkpy.sushi_info_types.GateConnection"><span class="pre">elkpy.sushi_info_types.GateConnection</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_gate_output_connections_for_processor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor">
+<code class="descname">get_gate_output_connections_for_processor</code><span class="sig-paren">(</span><em>processor_id: int</em><span class="sig-paren">)</span> &#x2192; List[elkpy.sushi_info_types.GateConnection]<a class="reference internal" href="../_modules/elkpy/cvgatecontroller.html#CvGateController.get_gate_output_connections_for_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a list of all Gate output connections for specified processor.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>List[info_types.GateConnection]: List of GateConnection objects</p>
-</dd>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>List[info_types.GateConnection]: List of GateConnection objects</dd>
 </dl>
 </dd></dl>
 
@@ -315,7 +316,6 @@ note_no (int): The note number to trigger</p>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -335,15 +335,17 @@ note_no (int): The note number to trigger</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -365,13 +367,12 @@ note_no (int): The note number to trigger</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.CvGateController</a></li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>
