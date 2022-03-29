@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.sushiprocessor &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushiprocessor</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for elkpy.sushiprocessor</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Ruben Svensson&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Copyright 2017-2019 Modern Ancient Instruments Networked AB, dba Elk</span>
+
+<span class="s2">    elkpy is free software: you can redistribute it and/or modify it under the terms of the</span>
+<span class="s2">    GNU General Public License as published by the Free Software Foundation, either version 3</span>
+<span class="s2">    of the License, or (at your option) any later version.</span>
+
+<span class="s2">    elkpy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without</span>
+<span class="s2">    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
+
+<span class="s2">    You should have received a copy of the GNU General Public License along with elkpy.  If</span>
+<span class="s2">    not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL-3.0&quot;</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushicontroller</span> <span class="k">as</span> <span class="n">sc</span>
+<span class="kn">from</span> <span class="nn">.sushicontroller</span> <span class="kn">import</span> <span class="n">SushiController</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<div class="viewcode-block" id="SushiProcessor"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor">[docs]</a><span class="k">class</span> <span class="nc">SushiProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Class to provide control of a specific processor in sushi.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _name (str): The name of the processor.</span>
+<span class="sd">        _controller (SushiController): The sushi controller to use.</span>
+<span class="sd">        _track_id (int): The id of the track the processor is assigned to.</span>
+<span class="sd">        _id (int): The id corresponding to the name of the processor.</span>
+<span class="sd">        _parameters (dict): A mapping from parameter name to parameter id.</span>
+<span class="sd">        _programs (dict): A mapping from program name to program id.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SushiProcessor.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">SushiController</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor for the sushi processor. Takes the name and the controller used to control sushi.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            processor_name (str): The name of the processor to control.</span>
+<span class="sd">            controller (SushiController): The controller to use for controlling the processor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">processor_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span> <span class="o">=</span> <span class="n">controller</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_programs</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+        <span class="c1"># TODO: Use try block when error handling is approved</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">controller</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get_processor_parameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span><span class="o">.</span><span class="n">program_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="c1"># TODO: Use try block when error handling is approved</span>
+            <span class="k">for</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_programs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_programs</span><span class="p">[</span><span class="n">program</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">id</span></div>
+
+    <span class="c1">#####################</span>
+    <span class="c1"># Parameter Control #</span>
+    <span class="c1">#####################</span>
+
+<div class="viewcode-block" id="SushiProcessor.set_parameter_value"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_parameter_value">[docs]</a>    <span class="k">def</span> <span class="nf">set_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the value of parameter by name.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            parameter_name (str): The name of the parameter to set the value of.</span>
+<span class="sd">            value (float): The value to set the parameter to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">set_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">],</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_parameter_value"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the value of a parameter by name.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            parameter_name (str): The name of the parameter to get the value from.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The current value of the parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_parameters"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">get_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a list of the names of the parameters available to the processor.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: List of parameter names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_parameter_values"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_values">[docs]</a>    <span class="k">def</span> <span class="nf">get_parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current value of the parameters with their name as the key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary with key as parameter names and value as the current parameter value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parameter_values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">:</span>
+            <span class="n">parameter_values</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameters</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">parameter_values</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_bypass_state"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_bypass_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_bypass_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the bypass state of the processor.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: The bypass state of the processor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_bypass_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.set_bypass_state"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_bypass_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_bypass_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bypass_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the bypass state of the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            bypass_state (bool): The bypass state to set the processor to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">set_processor_bypass_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">bypass_state</span><span class="p">)</span></div>
+
+    <span class="c1">###################</span>
+    <span class="c1"># Program control #</span>
+    <span class="c1">###################</span>
+
+<div class="viewcode-block" id="SushiProcessor.set_program"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program">[docs]</a>    <span class="k">def</span> <span class="nf">set_program</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the current program of the processor with the program name</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            program_name (str): The name of the program to set the processor to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">set_processor_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_programs</span><span class="p">[</span><span class="n">program_name</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">set_processor_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">program_name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.set_program_next"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_next">[docs]</a>    <span class="k">def</span> <span class="nf">set_program_next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the processor to the next program or loopback to the beginning if at the end of the program list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">number_of_programs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_programs</span><span class="p">)</span>
+        <span class="n">current_program_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_current_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">current_program_index</span> <span class="o">==</span> <span class="n">number_of_programs</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">new_program_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_program_index</span> <span class="o">=</span> <span class="n">current_program_index</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">set_processor_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">new_program_index</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.set_program_previous"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_previous">[docs]</a>    <span class="k">def</span> <span class="nf">set_program_previous</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the processor to the previous program or loopback to the end if at the start of the program list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">number_of_programs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_programs</span><span class="p">)</span>
+        <span class="n">current_program_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_current_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">current_program_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">new_program_index</span> <span class="o">=</span> <span class="n">number_of_programs</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_program_index</span> <span class="o">=</span> <span class="n">current_program_index</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">set_processor_program</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">new_program_index</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_program"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_program">[docs]</a>    <span class="k">def</span> <span class="nf">get_program</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the name of the current program.</span>
+
+<span class="sd">            Returns (str): The name of the current program.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get_processor_current_program_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.get_programs"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_programs">[docs]</a>    <span class="k">def</span> <span class="nf">get_programs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a list of the names of the available programs.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                List[str]: The names of the available programs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_programs</span><span class="p">)</span></div>
+
+    <span class="c1">####################</span>
+    <span class="c1"># Keyboard control #</span>
+    <span class="c1">####################</span>
+
+<div class="viewcode-block" id="SushiProcessor.send_note_on"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_on">[docs]</a>    <span class="k">def</span> <span class="nf">send_note_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a note on message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            note (int): The midi note value to send.</span>
+<span class="sd">            velocity (float): The velocity of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_note_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.send_note_off"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_off">[docs]</a>    <span class="k">def</span> <span class="nf">send_note_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a note off message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            note (int): The midi note value to send.</span>
+<span class="sd">            velocity (float): The velocity of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_note_off</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.send_note_aftertouch"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch">[docs]</a>    <span class="k">def</span> <span class="nf">send_note_aftertouch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">note</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a note aftertouch message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            note (int): The midi note value to send.</span>
+<span class="sd">            value (float): The aftertouch value of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_note_aftertouch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.send_aftertouch"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_aftertouch">[docs]</a>    <span class="k">def</span> <span class="nf">send_aftertouch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a aftertouch message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            value (float): The aftertouch value of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_aftertouch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.send_pitch_bend"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend">[docs]</a>    <span class="k">def</span> <span class="nf">send_pitch_bend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a pitch bend message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            value (float): The pitch bend value of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_pitch_bend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SushiProcessor.send_modulation"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_modulation">[docs]</a>    <span class="k">def</span> <span class="nf">send_modulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send a modulation message to the track containing the processor.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            channel (int): The channel to send the message on.</span>
+<span class="sd">            value (float): The modulation value of the note as a float between 0-1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span><span class="o">.</span><span class="n">keyboard</span><span class="o">.</span><span class="n">send_pitch_bend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_track_id</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushiprocessor</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

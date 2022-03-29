@@ -79,7 +79,7 @@ The example consists of 4 simple effect plugins in series, each having 1 adjusta
 
 # JUCE Example C++ Source Code
 
-The source code and JUCE *.jucer* file, for building our Elk JUCE example VST 2 plugin.
+The source code, CMake, and JUCE *.jucer* file, for building our Elk JUCE example VST 3 plugin.
 
 For a configuration file, and Python glue program, please refer to the folder *bloackboard/elk-juce-example*, of the elk-examples repository.
 
@@ -151,7 +151,7 @@ The Elk JUCE example plugin is accompanied by a Python glue program for integrat
 
 Again, we provide batch scripts to start and stop, in the folder */udata/elk-examples/blackboard/elk-juce-example*.
 
-In this repository's releases section we provide downloads for the plugin built for [Ubuntu Linux](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip), [Windows](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip) and [OS X](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip) - executable as standalone, or as VST 2.
+In this repository's releases section we provide downloads for the plugin built for [Ubuntu Linux](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip), [Windows](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip) and [OS X](https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip) - executable as standalone, or as VST 2 (previously), and now also a new VST 3, given the added JUCE VST 3 Linux support.
 
 ![elk_juce_example_screenshot](illustrations/elk_juce_example_screenshot.png)
 

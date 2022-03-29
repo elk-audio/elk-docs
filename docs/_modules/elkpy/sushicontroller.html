@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.sushicontroller &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushicontroller</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for elkpy.sushicontroller</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Ruben Svensson&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Copyright 2017-2019 Modern Ancient Instruments Networked AB, dba Elk</span>
+
+<span class="s2">    elkpy is free software: you can redistribute it and/or modify it under the terms of the</span>
+<span class="s2">    GNU General Public License as published by the Free Software Foundation, either version 3</span>
+<span class="s2">    of the License, or (at your option) any later version.</span>
+
+<span class="s2">    elkpy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without</span>
+<span class="s2">    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
+
+<span class="s2">    You should have received a copy of the GNU General Public License along with elkpy.  If</span>
+<span class="s2">    not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL-3.0&quot;</span>
+
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">grpc</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">audiographcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">keyboardcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">parametercontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">programcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">timingcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">transportcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">audioroutingcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">midicontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cvgatecontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">osccontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">systemcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">notificationcontroller</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
+
+
+
+<span class="c1">############################</span>
+<span class="c1"># Error handling functions #</span>
+<span class="c1">############################</span>
+<div class="viewcode-block" id="SushiUnkownError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnkownError">[docs]</a><span class="k">class</span> <span class="nc">SushiUnkownError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown when the source of the error can&#39;t be determined</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SushiUnsupportedOperationError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnsupportedOperationError">[docs]</a><span class="k">class</span> <span class="nc">SushiUnsupportedOperationError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown when the operation attempted is not currently supported in sushi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SushiNotFoundError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiNotFoundError">[docs]</a><span class="k">class</span> <span class="nc">SushiNotFoundError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown if the requested entity is not found in sushi</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SushiOutOfRangeError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiOutOfRangeError">[docs]</a><span class="k">class</span> <span class="nc">SushiOutOfRangeError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown if one or more of the passed arguments are out of their allowed range</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SushiInvalidArgumentError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInvalidArgumentError">[docs]</a><span class="k">class</span> <span class="nc">SushiInvalidArgumentError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown if one or more of the passed arguments are invalid</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="SushiInternalError"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInternalError">[docs]</a><span class="k">class</span> <span class="nc">SushiInternalError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error thrown if sushi encountered an internal error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="grpc_error_handling"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.grpc_error_handling">[docs]</a><span class="k">def</span> <span class="nf">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">context_info</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Maps a gRPC exception to the corresponding sushi error. If the exception doesn&#39;t have a mapping</span>
+<span class="sd">    the context info will be printed and the same exception will be re-raised</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiUnkownError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;FAILED_PRECONDITION&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiUnsupportedOperationError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;NOT_FOUND&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiNotFoundError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;OUT_OF_RANGE&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiOutOfRangeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;INVALID_ARGUMENT&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiInvalidArgumentError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;INTERNAL&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SushiInternalError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">context_info</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span></div>
+      <span class="c1">#  print(&#39;Grpc error: &#39; + str e.code().name) + &#39;, &#39; + e.details())</span>
+
+<span class="c1">###############################</span>
+<span class="c1"># Main sushi controller class #</span>
+<span class="c1">###############################</span>
+
+<div class="viewcode-block" id="SushiController"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController">[docs]</a><span class="k">class</span> <span class="nc">SushiController</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to control sushi via gRPC.</span>
+<span class="sd">    This class creates one instance of each different controller type and makes</span>
+<span class="sd">    these sub-controllers available as member variables. See the documentation</span>
+<span class="sd">    of the separate sub-controllers for their usage.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _stub (SushiControllerStub): Connection stubs to the gRPC interface implemented in sushi.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SushiController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
+                 <span class="n">sushi_proto_def</span> <span class="o">=</span> <span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The constructor for the SushiController class setting up the gRPC connection with sushi.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            address (str): &#39;ip-addres:port&#39; The ip-addres and port at which to connect to sushi.</span>
+<span class="sd">            sushi_proto_def (str): path to .proto file with SUSHI&#39;s gRPC services definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">audio_graph</span> <span class="o">=</span> <span class="n">audiographcontroller</span><span class="o">.</span><span class="n">AudioGraphController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keyboard</span> <span class="o">=</span> <span class="n">keyboardcontroller</span><span class="o">.</span><span class="n">KeyboardController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parametercontroller</span><span class="o">.</span><span class="n">ParameterController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">programs</span> <span class="o">=</span> <span class="n">programcontroller</span><span class="o">.</span><span class="n">ProgramController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timings</span> <span class="o">=</span> <span class="n">timingcontroller</span><span class="o">.</span><span class="n">TimingController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span> <span class="o">=</span> <span class="n">transportcontroller</span><span class="o">.</span><span class="n">TransportController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">audio_routing</span> <span class="o">=</span> <span class="n">audioroutingcontroller</span><span class="o">.</span><span class="n">AudioRoutingController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">midi_controller</span> <span class="o">=</span> <span class="n">midicontroller</span><span class="o">.</span><span class="n">MidiController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv_gate_controller</span> <span class="o">=</span> <span class="n">cvgatecontroller</span><span class="o">.</span><span class="n">CvGateController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">osc_controller</span> <span class="o">=</span> <span class="n">osccontroller</span><span class="o">.</span><span class="n">OscController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">systemcontroller</span><span class="o">.</span><span class="n">SystemController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notifications</span> <span class="o">=</span> <span class="n">notificationcontroller</span><span class="o">.</span><span class="n">NotificationController</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">sushi_proto_def</span><span class="p">)</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushicontroller</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.sushi_info_types &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushi_info_types</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for elkpy.sushi_info_types</h1><div class="highlight"><pre>
+<span></span><span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Ruben Svensson&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Copyright 2017-2019 Modern Ancient Instruments Networked AB, dba Elk</span>
+
+<span class="s2">    elkpy is free software: you can redistribute it and/or modify it under the terms of the</span>
+<span class="s2">    GNU General Public License as published by the Free Software Foundation, either version 3</span>
+<span class="s2">    of the License, or (at your option) any later version.</span>
+
+<span class="s2">    elkpy is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without</span>
+<span class="s2">    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="s2">    GNU General Public License for more details.</span>
+
+<span class="s2">    You should have received a copy of the GNU General Public License along with elkpy.  If</span>
+<span class="s2">    not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL-3.0&quot;</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+
+<span class="c1">################</span>
+<span class="c1"># Custom Enums #</span>
+<span class="c1">################</span>
+
+<div class="viewcode-block" id="PlayingMode"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode">[docs]</a><span class="k">class</span> <span class="nc">PlayingMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum class to hold the values matching the different playing modes.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        STOPPED,</span>
+<span class="sd">        PLAYING,</span>
+<span class="sd">        RECORDING</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">STOPPED</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PLAYING</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">RECORDING</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+<div class="viewcode-block" id="SyncMode"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode">[docs]</a><span class="k">class</span> <span class="nc">SyncMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum class to hold the values matching the different sync modes.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        INTERNAL,</span>
+<span class="sd">        MIDI,</span>
+<span class="sd">        LINK</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">MIDI</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">LINK</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+<div class="viewcode-block" id="ParameterType"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType">[docs]</a><span class="k">class</span> <span class="nc">ParameterType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum class to hold the values matching the different parameter types.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        BOOL,</span>
+<span class="sd">        INT,</span>
+<span class="sd">        FLOAT,</span>
+<span class="sd">        STRING_PROPERTY,</span>
+<span class="sd">        DATA_PROPERTY</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">BOOL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">INT</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">FLOAT</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">STRING_PROPERTY</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">DATA_PROPERTY</span> <span class="o">=</span> <span class="mi">5</span></div>
+
+<div class="viewcode-block" id="PluginType"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType">[docs]</a><span class="k">class</span> <span class="nc">PluginType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum class to hold the values matching the different plugin types.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        INTERNAL,</span>
+<span class="sd">        VST2X,</span>
+<span class="sd">        VST3X,</span>
+<span class="sd">        LV2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">VST2X</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">VST3X</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">LV2</span> <span class="o">=</span> <span class="mi">4</span></div>
+
+<span class="c1">################</span>
+<span class="c1"># Info Classes #</span>
+<span class="c1">################</span>
+
+<div class="viewcode-block" id="ParameterInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterInfo">[docs]</a><span class="k">class</span> <span class="nc">ParameterInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the parameter info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The id of the parameter.</span>
+<span class="sd">        type (str): The type of the parameter.</span>
+<span class="sd">        label (str): The label of the parameter.</span>
+<span class="sd">        name (str): The name of the parameter.</span>
+<span class="sd">        unit (str): The unit of the parameter.</span>
+<span class="sd">        automatable (bool): If the parameter is automatable or not.</span>
+<span class="sd">        min_domain_value (float): The minimum value of the parameter.</span>
+<span class="sd">        max_domain_value (float): The maximum value of the parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ParameterInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_ParameterInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The constructor of the ParameterInfo class.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            grpc_ParameterInfo (sushi_rpc_pb2.ParameterInfo): the gRPC parameter info object to get the data from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">grpc_types</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;DUMMY&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;BOOL&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;INT&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;FLOAT&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;STRING_PROPERTY&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;DATA_PROPERTY&quot;</span><span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ParameterType</span><span class="p">(</span><span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s2">&quot;DUMMY&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">label</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">unit</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">automatable</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">automatable</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">automatable</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_domain_value</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">min_domain_value</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_domain_value</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_domain_value</span> <span class="o">=</span> <span class="n">grpc_ParameterInfo</span><span class="o">.</span><span class="n">max_domain_value</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_domain_value</span> <span class="o">=</span> <span class="mf">0.0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; type: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; label: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; name: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; unit: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; automatable: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">automatable</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; min_domain_value: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">min_domain_value</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; max_domain_value: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">max_domain_value</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">type</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">unit</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">automatable</span> <span class="o">==</span> <span class="n">other</span> <span class="o">.</span><span class="n">automatable</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_domain_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">min_domain_value</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_domain_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">max_domain_value</span></div>
+
+<div class="viewcode-block" id="ProcessorInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo">[docs]</a><span class="k">class</span> <span class="nc">ProcessorInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the processor info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The id of the processor.</span>
+<span class="sd">        label (str): The label of the processor.</span>
+<span class="sd">        name (str): The name of the processor.</span>
+<span class="sd">        parameter_count (int): The number of parameters available to the processor.</span>
+<span class="sd">        program_count (int): The number of programs available to the processor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ProcessorInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_ProcessorInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">grpc_ProcessorInfo</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">grpc_ProcessorInfo</span><span class="o">.</span><span class="n">label</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">grpc_ProcessorInfo</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_count</span> <span class="o">=</span> <span class="n">grpc_ProcessorInfo</span><span class="o">.</span><span class="n">parameter_count</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_count</span> <span class="o">=</span> <span class="n">grpc_ProcessorInfo</span><span class="o">.</span><span class="n">program_count</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_count</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39; id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39; label: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39; name: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39; parameter count: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_count</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39; program count: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">program_count</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_count</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter_count</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_count</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">program_count</span></div>
+
+
+<div class="viewcode-block" id="TrackInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo">[docs]</a><span class="k">class</span> <span class="nc">TrackInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the track info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The id of the track.</span>
+<span class="sd">        label (str): The label of the track.</span>
+<span class="sd">        name (str): The name of the track.</span>
+<span class="sd">        input_channels (int): The number of input channels available to the track.</span>
+<span class="sd">        input_busses (int): The number input busses available to the track.</span>
+<span class="sd">        output_channels (int): The number of output channels available to the track.</span>
+<span class="sd">        output_busses (int): The number of output busses available to the track.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TrackInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_TrackInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">label</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">input_channels</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_busses</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">input_busses</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_busses</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">output_channels</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_busses</span> <span class="o">=</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">output_busses</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_busses</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="n">grpc_TrackInfo</span><span class="o">.</span><span class="n">processors</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processors</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; label: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; name: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; input_channels: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; input_busses: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">input_busses</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; output_channels: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; output_busses: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">output_busses</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; processor_count: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">processors</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_channels</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">input_channels</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_busses</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">input_busses</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_channels</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">output_channels</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_busses</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">output_busses</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">processors</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processors</span></div>
+
+<div class="viewcode-block" id="ProgramInfo"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProgramInfo">[docs]</a><span class="k">class</span> <span class="nc">ProgramInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent the program info received from sushi in a clear way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The id of the program.</span>
+<span class="sd">        name (str): The name of the program.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ProgramInfo.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProgramInfo.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_ProgramInfo</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">grpc_ProgramInfo</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">program</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">grpc_ProgramInfo</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;{ </span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; id: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; name: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;}&#39;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="AudioConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection">[docs]</a><span class="k">class</span> <span class="nc">AudioConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent an audio connection info received from Sushi in a cleaner way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        track (TrackIdentifier): an int</span>
+<span class="sd">        track_channel (int):</span>
+<span class="sd">        engine_channel (int):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AudioConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_AudioConnection</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">=</span> <span class="n">grpc_AudioConnection</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track_channel</span> <span class="o">=</span> <span class="n">grpc_AudioConnection</span><span class="o">.</span><span class="n">track_channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track_channel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">engine_channel</span> <span class="o">=</span> <span class="n">grpc_AudioConnection</span><span class="o">.</span><span class="n">engine_channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">engine_channel</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> track: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">track</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; track_channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">track_channel</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; engine_channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">engine_channel</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">track</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">track_channel</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">engine_channel</span></div>
+
+
+<div class="viewcode-block" id="MidiKbdConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection">[docs]</a><span class="k">class</span> <span class="nc">MidiKbdConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent a MIDI keyboard connection in Sushi in a cleaner way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        track (_sushi_proto.TrackIdentifier): a track id</span>
+<span class="sd">        channel (_sushi_proto.MidiChannel): a MIDI channel</span>
+<span class="sd">        port (int): a MIDI port number</span>
+<span class="sd">        raw_midi (bool): is this track a raw MIDI track or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="MidiKbdConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_MidiKbdConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">=</span> <span class="n">grpc_MidiKbdConnection</span><span class="o">.</span><span class="n">track</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">grpc_MidiKbdConnection</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">grpc_MidiKbdConnection</span><span class="o">.</span><span class="n">port</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_midi</span> <span class="o">=</span> <span class="n">grpc_MidiKbdConnection</span><span class="o">.</span><span class="n">raw_midi</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_midi</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{\n</span><span class="s2"> track: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">track</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; port: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; raw_midi: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_midi</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">track</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">port</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_midi</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">raw_midi</span></div>
+
+
+<div class="viewcode-block" id="MidiCCConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection">[docs]</a><span class="k">class</span> <span class="nc">MidiCCConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent a MIDI Continious Controller connection in Sushi in a cleaner way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parameter (_sushi_proto.ParameterIdentifier):</span>
+<span class="sd">        channel (MidiChannel)</span>
+<span class="sd">        port (int)</span>
+<span class="sd">        cc_number (int)</span>
+<span class="sd">        min_range (float)</span>
+<span class="sd">        max_range (float)</span>
+<span class="sd">        relative_mode (bool)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="MidiCCConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_MidiCCConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">port</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cc_number</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">cc_number</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cc_number</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_range</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">min_range</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_range</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_range</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">max_range</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_range</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">relative_mode</span> <span class="o">=</span> <span class="n">grpc_MidiCCConnection</span><span class="o">.</span><span class="n">relative_mode</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">relative_mode</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{\n</span><span class="s2"> parameter: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; port: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; cc_number: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cc_number</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; min_range: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_range</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; max_range: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_range</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; relative_mode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">relative_mode</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">port</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_number</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">cc_number</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_range</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">min_range</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_range</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">max_range</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_mode</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">relative_mode</span></div>
+
+
+<div class="viewcode-block" id="MidiPCConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection">[docs]</a><span class="k">class</span> <span class="nc">MidiPCConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent a MIDI Program Change connection in Sushi in a cleaner way.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        processor (_sushi_proto.ProcessorIdentifier): a processor id</span>
+<span class="sd">        channel (_sushi_proto.MidiChannel): a MIDI channel</span>
+<span class="sd">        port (int): a MIDI port number</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="MidiPCConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_MidiPCConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="n">grpc_MidiPCConnection</span><span class="o">.</span><span class="n">processor</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">grpc_MidiPCConnection</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">grpc_MidiPCConnection</span><span class="o">.</span><span class="n">port</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{\n</span><span class="s2"> processor: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">processor</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; port: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">port</span></div>
+
+
+<div class="viewcode-block" id="CvConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection">[docs]</a><span class="k">class</span> <span class="nc">CvConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent a CV connection in Sushi in a cleaner way</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parameter (int): The id of the connected parameter</span>
+<span class="sd">        cv_port_id (int): The id of the connected CV port</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CvConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_CvConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">cv_port_id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{\n</span><span class="s2"> parameter: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; cv_port_id: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">parameter</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">cv_port_id</span></div>
+
+
+<div class="viewcode-block" id="GateConnection"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection">[docs]</a><span class="k">class</span> <span class="nc">GateConnection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to represent a Gate connection in Sushi in a cleaner way</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        processor (int): The id of the connected processor</span>
+<span class="sd">        gate_port_id (int): The id of the connected Gate port</span>
+<span class="sd">        channel (int): The connected midi channel number</span>
+<span class="sd">        note_no (int): The midi note number to trigger</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="GateConnection.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grpc_CvConnection</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">processor</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">gate_port_id</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">channel</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note_no</span> <span class="o">=</span> <span class="n">grpc_CvConnection</span><span class="o">.</span><span class="n">note_no</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">note_no</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{\n</span><span class="s2"> processor: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">processor</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; gate_port_id: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; channel: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot; note_no: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">note_no</span><span class="si">}</span><span class="se">\n}}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">processor</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_port_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">gate_port_id</span> \
+               <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">note_no</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">note_no</span></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.sushi_info_types</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

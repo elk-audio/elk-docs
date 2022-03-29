@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sushi Configuration &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Controlling Sushi using gRPC" href="sushi_control_grpc.html" />
+    <link rel="prev" title="Sushi Public API Model" href="sushi_public_api_model.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sushi_public_api_model.html" title="Sushi Public API Model"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Configuration</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sushi-configuration">
+<h1>Sushi Configuration<a class="headerlink" href="#sushi-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Following is a reference for the Sushi .json configuration file.</p>
+<section id="main-host-configuration">
+<h2>Main Host Configuration<a class="headerlink" href="#main-host-configuration" title="Permalink to this headline">¶</a></h2>
+<p><strong>“host_config”</strong></p>
+<ul class="simple">
+<li><p><strong>“samplerate”</strong> - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.</p></li>
+<li><p><strong>“midi_inputs”</strong> - The number of MIDI input ports to use. Defaults to 1.</p></li>
+<li><p><strong>“midi_outputs”</strong> - The number of MIDI output ports to use. Defaults to 1.</p></li>
+<li><p><strong>“cv_inputs”</strong> - The number of control voltage inputs to use.</p></li>
+<li><p><strong>“cv_outputs”</strong> - The number of control voltage outputs to use.</p></li>
+<li><p><strong>“tempo”</strong> - The default tempo in beats per minute.</p></li>
+<li><p><strong>“playing_mode”</strong> - The default mode to start Sushi in. Affects sequencers and tempo synced plugins. Valid values are “playing” and “stopped”.</p></li>
+<li><p><strong>“tempo_sync”</strong> - The mode of synchronising tempo. Valid modes are “internal” where Sushi is the master, “midi” for syncing to midi tempo, and “ableton_link” for synchronising with Ableton Link.</p></li>
+<li><p><strong>“time_signature”</strong> - Time signature to use in Sushi.</p>
+<ul>
+<li><p><strong>“numerator”</strong> - Time signature numerator.</p></li>
+<li><p><strong>“denominator”</strong> - Time signature denominator.</p></li>
+</ul>
+</li>
+<li><p><strong>“audio_clip_detection”</strong> - Sets whether audio inputs and/or outputs detect sample values outside of the range of the analog audio circuits.</p>
+<ul>
+<li><p><strong>“inputs”</strong> - Clip detection enabled on the audio inputs.</p></li>
+<li><p><strong>“outputs”</strong> - clip detection enabled on the audio outputs.</p></li>
+</ul>
+</li>
+<li><p><strong>“master_limiter”</strong> - Set to true to enable brickwall limiting on each engine output. Attack is 0 ms and Relase ~100ms</p></li>
+</ul>
+</section>
+<section id="tracks">
+<h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h2>
+<p><strong>“tracks”</strong> : A json list of track objects with the following members:</p>
+<ul class="simple">
+<li><p><strong>“name”</strong> - Name of the track, must be unique.</p></li>
+<li><p><strong>“mode”</strong> - The channel mode of the track. Valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.</p></li>
+<li><p><strong>“input_busses”</strong> - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</p></li>
+<li><p><strong>“output_busses”</strong> - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</p></li>
+<li><p><strong>“inputs”</strong> - Audio inputs to the track. A list objects with the following members:</p>
+<ul>
+<li><p><strong>“engine_bus”</strong> - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.</p></li>
+<li><p><strong>“track_bus”</strong> - The id of the track bus to route audio to.</p></li>
+<li><p>Alternatively:</p></li>
+<li><p><strong>“engine_channel”</strong> - The id of the engine input channel to route audio from.</p></li>
+<li><p><strong>“track_channel”</strong> - The id of the track channel to route audio to.</p></li>
+</ul>
+</li>
+<li><p><strong>“outputs”</strong> - Audio outputs from the track. A list objects with the following members:</p>
+<ul>
+<li><p><strong>“engine_bus”</strong> - The id of the engine bus to route to, where bus is a stereo pair where bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.</p></li>
+<li><p><strong>“track_bus”</strong> - The id of the track bus to route audio from.</p></li>
+<li><p>Alternatively:</p></li>
+<li><p><strong>“engine_channel”</strong> - The id of the engine output channel to route audio to.</p></li>
+<li><p><strong>“track_channel”</strong> - The id of the track channel to route audio from.</p></li>
+</ul>
+</li>
+<li><p><strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3.6 plugins or LV2 plugins (natively, or using the LV2VST wrapper).</p>
+<ul>
+<li><p><strong>“name”</strong> - The name of the plugin - must be unique.</p></li>
+<li><p><strong>“type”</strong> - The plugin format, valid values are: “internal”, “vst2x”, “vst3x”, or “lv2” for native LV2 hosting.</p></li>
+<li><p><strong>“path”</strong> - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins, or for natively hosting LV2.</p></li>
+<li><p><strong>“uri”</strong> - This is instead of “path”, for natively hosting LV2 plugins. The LV2 standard requires that plugins are accessed through the LV2 platform tools, not directly. The paths where these platform tools search for plugins is on Linux defined with the LV2_PATH environment variable.</p></li>
+<li><p><strong>“uid”</strong> - For internal plugin this has the format “sushi.testing.plugin_name”. For VST 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for VST 2 plugins.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="midi">
+<h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">¶</a></h2>
+<p><strong>“midi”</strong> - MIDI connections to and from tracks and plugins.</p>
+<ul class="simple">
+<li><p><strong>“track_connections”</strong> - A list of routing objects that route midi keyboard data to a track. MIDI keyboard data is routed to the first plugin on the track, that plugin then either consumes the MIDI data or passes it on to the next plugin on the track.</p>
+<ul>
+<li><p><strong>“port”</strong> - The integer id of the midi port to use as input.</p></li>
+<li><p><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</p></li>
+<li><p><strong>“track”</strong> - Name of the track to route MIDI to.</p></li>
+<li><p><strong>“raw_midi”</strong> - If set to true, Sushi will pass the raw MIDI events directly to the track without conversion
+or processing. If enabled, plugins will need to handle things like program change on their own. Default off. Only valid for plugin formats which accept raw MIDI data input, such as VST 2.</p></li>
+</ul>
+</li>
+<li><p><strong>“track_out_connections”</strong> - A list of routing objects for passing MIDI from a track to an external MIDI port.</p>
+<ul>
+<li><p><strong>“port”</strong> - The integer id of the MIDI port to output data to.</p></li>
+<li><p><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers between 0-15; if you need multiple channels, you can have multiple entries for each channel.</p></li>
+<li><p><strong>“track”</strong> - Name of the track to route MIDI from.</p></li>
+</ul>
+</li>
+<li><p><strong>“cc_mappings”</strong> - Map control change messages to parameters on plugins and tracks. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“port”</strong> - Integer id of the MIDI port to use as input.</p></li>
+<li><p><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</p></li>
+<li><p><strong>“plugin_name”</strong> - Name of the plugin.</p></li>
+<li><p><strong>“cc_number”</strong> - Index of incoming Control Change message to map.</p></li>
+<li><p><strong>“parameter_name”</strong> - Name of the parameter on the above plugin.</p></li>
+<li><p><strong>“min_range”</strong> -  A value between 0.0 and 1.0, defining what MIDI CC value 0 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieved using normalized floating-point values between 0.0-1.0).</p></li>
+<li><p><strong>“max_range”</strong> - A value between 0.0 and 1.0, defining what MIDI CC value 127 corresponds to when setting. (Setting parameters in Sushi and plugins can only be achieved using normalized floating-point values between 0.0-1.0).</p></li>
+<li><p><strong>“mode”</strong> - Mode for controller, one of “absolute” (default) or “relative”.</p></li>
+</ul>
+</li>
+<li><p><strong>“program_change_connections”</strong> - Route MIDI program change messages to a particular plugin. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“port”</strong> - Integer id of the MIDI port to use as input.</p></li>
+<li><p><strong>“channel”</strong> - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.</p></li>
+<li><p><strong>“plugin”</strong> - Name of the plugin to route program changes to.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="open-sound-control-connections">
+<h2>Open Sound Control Connections<a class="headerlink" href="#open-sound-control-connections" title="Permalink to this headline">¶</a></h2>
+<p><strong>“osc”</strong> -  Open Sound Control (OSC) notifications from processors.</p>
+<p>Here you can enable OSC messages to be transmitted from Sushi, whenever a processor’s internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.</p>
+<p>This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:</p>
+<ul class="simple">
+<li><p><strong>“enable_all_processor_outputs”</strong> - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.</p></li>
+<li><p><strong>“enable_processor_outputs”</strong> - Enable the OSC notifications for the specific processors. This is a list of entries with fields:</p>
+<ul>
+<li><p><strong>“processor”</strong> - The name of the track or plugin to connect from.</p>
+<ul>
+<li><p><strong>“parameter_blocklist”</strong> - A list of parameters of the processor, which should not trigger notifications.</p>
+<ul>
+<li><p><strong>“parameter”</strong> - The name of the parameter to block the OSC output from.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="control-voltage-and-gate-connections">
+<h2>Control voltage and Gate connections<a class="headerlink" href="#control-voltage-and-gate-connections" title="Permalink to this headline">¶</a></h2>
+<p><strong>“cv_control”</strong> - Control Voltage (CV) and Gate connections to and from tracks and plugins.</p>
+<ul class="simple">
+<li><p><strong>“cv_inputs”</strong> - Connect a CV input to parameter changes. Values from the selected CV input will be converted to parameter changes on the selected parameter. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“cv”</strong> - The id of the CV input to connect from.</p></li>
+<li><p><strong>“processor”</strong> - The name of the track or plugin to connect to.</p></li>
+<li><p><strong>“parameter”</strong> - The name of the parameter to connect the CV input to.</p></li>
+</ul>
+</li>
+<li><p><strong>“cv_outputs”</strong> - Connect parameters to CV outputs Parameter changes from the plugin will appear as values on the selected CV output. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“cv”</strong> - The id of the CV input to send values to.</p></li>
+<li><p><strong>“processor”</strong> - The name of the track or plugin to connect from.</p></li>
+<li><p><strong>“parameter”</strong> - The name of the parameter to connect from.</p></li>
+</ul>
+</li>
+<li><p><strong>“gate_inputs”</strong> - Connect gate inputs to plugins. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“mode”</strong> - The mode to use for the selected gate input, currently “note_event” is the only supported mode. In this mode gate events will be converted to note events and passed on to the plugin with the selected channel and note number (note on for positive gate and note off for negative).</p></li>
+<li><p><strong>“processor”</strong> - The name of the plugin or track to connect to.</p></li>
+<li><p><strong>“gate”</strong> - The id of the Gate input.</p></li>
+<li><p><strong>“note_no”</strong> - The note number to use for gate events from this gate input (0-127)</p></li>
+<li><p><strong>“channel”</strong> - The note number to use for gate events from this gate input (0-15)</p></li>
+</ul>
+</li>
+<li><p><strong>“gate_outputs”</strong> - Connect gate inputs to plugins. A list of routing objects with the following members:</p>
+<ul>
+<li><p><strong>“mode”</strong> - The mode to use for the selected gate output, currently “note_event” is the only supported mode. In this mode note events sent from the plugin with the selected note numbers and channel will be converted to gate events (note on to positive gate and note on) and sent to the selected Gate output.</p></li>
+<li><p><strong>“processor”</strong> - The name of the plugin to connect from.</p></li>
+<li><p><strong>“gate”</strong> - The id of the Gate output.</p></li>
+<li><p><strong>“note_no”</strong> - The note number to use for gate events from this gate output (0-127)</p></li>
+<li><p><strong>“channel”</strong> - The note number to use for gate events from this gate output (0-15)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p><strong>“events”</strong> - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.</p>
+<ul class="simple">
+<li><p><strong>“type”</strong> - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.</p></li>
+<li><p><strong>“time”</strong> - Time, in seconds from the start of Sushi, when event should be executed.</p></li>
+<li><p><strong>“data”</strong> - Type specific data containing some of the following:</p>
+<ul>
+<li><p><strong>“plugin_name”</strong> - Name of the plugin or track to send the event to.</p></li>
+<li><p><strong>“parameter_name”</strong> - If “type” = “parameter_change”, the name of the parameter to set.</p></li>
+<li><p><strong>“property_name”</strong> - If “type” = “property_change”, the name of the string property to set.</p></li>
+<li><p><strong>“value”</strong> - If “type” = “parameter_change”, the decimal value to set. If “type” = “property_change”, the string value to set.</p></li>
+<li><p><strong>“note”</strong> - Note value to set, only valid if “type” = “note_on” or “note_off”.</p></li>
+<li><p><strong>“velocity”</strong> - Velocity value to set, only valid if “type” = “note_on” or “note_off”.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sushi Configuration</a><ul>
+<li><a class="reference internal" href="#main-host-configuration">Main Host Configuration</a></li>
+<li><a class="reference internal" href="#tracks">Tracks</a></li>
+<li><a class="reference internal" href="#midi">MIDI</a></li>
+<li><a class="reference internal" href="#open-sound-control-connections">Open Sound Control Connections</a></li>
+<li><a class="reference internal" href="#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
+<li><a class="reference internal" href="#events">Events</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sushi_public_api_model.html"
+                        title="previous chapter">Sushi Public API Model</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sushi_control_grpc.html"
+                        title="next chapter">Controlling Sushi using gRPC</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/sushi_configuration_format.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sushi_public_api_model.html" title="Sushi Public API Model"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi Configuration</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>

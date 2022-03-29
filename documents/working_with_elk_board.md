@@ -29,7 +29,7 @@ Developer images can mount all partitions as read-write, but on production image
 ### User Data Separation
 
 Files in the user data partition under */udata*, remain untouched after running a software update, so keep any
- temporary files used for development there. 
+ temporary files used for development there.
 
 Also use  */udata* for the storage of settings & user patches.
 
@@ -65,7 +65,7 @@ The audio buffer size of the system can be changed by typing *sudo elk_system_ut
 $ sudo elk_system_utils --set-buffer-size 32
 ```
 
-Changes take place after a power cycle and persists across boots. It is reset upon a software update.
+The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.
 
 ### Changing Audio Hats
 Currently Elk Audio OS supports the following audio hats:
@@ -155,7 +155,7 @@ $ connmanctl> scan wifi
 $ connmanctl> services
 # The last command should have showed you a list of WiFi network available with their SSID and a
 # long code starting with wifi_
-$ connmanctl> connect wifi_xxx # choose the code for the desired network. You can tab-complete. 
+$ connmanctl> connect wifi_xxx # choose the code for the desired network. You can tab-complete.
 $ connmanctl> Ctrl+D
 
 # This will show you the IP address assigned to the board by DHCP
@@ -241,7 +241,7 @@ If you wish to have the board starting as an instrument automatically at startup
 
    Similarly, you can modify */lib/systemd/system/sensei.service* to provide the path for your SENSEI Json
     configuration.
-   
+
    If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number
    /name in the script */usr/bin/connect-midi-apps*, which is started by the systemD service defined in */lib/systemd
    /system/midi-connections.service*.
@@ -260,7 +260,7 @@ They can also be started temporarily with *$ systemctl start sushi* as any norma
 
 ## Setting CPU Speed
 
-The default CPU speed for the Raspberry Pi is set to it's highest possible setting in the Elk Pi OS. 
+The default CPU speed for the Raspberry Pi is set to it's highest possible setting in the Elk Pi OS.
 
 When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.
 
