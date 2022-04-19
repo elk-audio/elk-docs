@@ -64,14 +64,17 @@ Utility plugin for mixing the two channels of a stereo signal independently.
 
 ### Send
 
-Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings.
+Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings. With the default parameters all channels of the track are sent to the return instance but it can also be configured to send a range of channels using the "channel_count" and "start_channel" parameters.
 
   * **uid** : "sushi.testing.send"
   * **Parameters** :
     + "gain" : Gain control of audio sent in dB. Default: 0.83. (Normalized from [-120, 24], Default 0 dB).
+    + "channel_count" : The number of channels to send, Default: 1 (all channels). (Normalized from [0, 16], Default All).
+    + "start_channel" : The channel number to start counting from. Default: 0. (Normalized from [0, 16], Default 0).
+    + "dest_channel" : The destination channel on the return plugin for the first channel sent. If this is higher than the channel count of the track which host the return plugin, no audio is sent. Default: 0. (Normalized from [0, 16], Default 0).
 
   * **Properties**:
-    + "destination" : Name of a Return plugin to send to
+    + "destination" : Name of a Return plugin instance to send audio to
 
 ### Return
 
