@@ -250,25 +250,6 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="AudioGraphController.get_processor_state"><a class="viewcode-back" href="../../elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_processor_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">info_types</span><span class="o">.</span><span class="n">ProcessorState</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get the full state of the specified processor.</span>
-
-<span class="sd">        Parameters:</span>
-<span class="sd">            processor_identifier (int): The id of processor to get the full state from.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            ProcessorState: An object describing the full the processor matching the id.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">GetProcessorState</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span>
-                <span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span>
-            <span class="p">))</span>
-            <span class="k">return</span> <span class="n">info_types</span><span class="o">.</span><span class="n">ProcessorState</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-
-        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
-
 <div class="viewcode-block" id="AudioGraphController.set_processor_bypass_state"><a class="viewcode-back" href="../../elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_processor_bypass_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bypass_state</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the bypass state of the specified processor.</span>
@@ -285,47 +266,6 @@
 
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">, bypass state: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">,</span> <span class="n">bypass_state</span><span class="p">))</span></div>
-
-
-<div class="viewcode-block" id="AudioGraphController.set_processor_state"><a class="viewcode-back" href="../../elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_processor_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_identifier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">program_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bypassed</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-            <span class="n">property_values</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">parameter_values</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set the full or partial state of the specified processor.</span>
-
-<span class="sd">        Parameters:</span>
-<span class="sd">            program_id (int): The id of the program to set.</span>
-<span class="sd">            bypassed (bool): Whether the processor should be bypassed or not.</span>
-<span class="sd">            properties ((int, str)): A list of tuples (id, value) of string properties to set.</span>
-<span class="sd">            parameters ((int, float)): A list of tuples (id, value) of parameter values to set.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">grpc_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorState</span><span class="p">()</span>
-
-            <span class="k">if</span> <span class="n">program_id</span><span class="p">:</span>
-                <span class="n">grpc_state</span><span class="o">.</span><span class="n">program_id</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">program_id</span>
-                <span class="n">grpc_state</span><span class="o">.</span><span class="n">program_id</span><span class="o">.</span><span class="n">has_value</span> <span class="o">=</span> <span class="kc">True</span>
-
-            <span class="k">if</span> <span class="n">bypassed</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">grpc_state</span><span class="o">.</span><span class="n">bypassed</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">bypassed</span>
-                <span class="n">grpc_state</span><span class="o">.</span><span class="n">bypassed</span><span class="o">.</span><span class="n">has_value</span> <span class="o">=</span> <span class="kc">True</span>
-
-            <span class="k">for</span> <span class="nb">property</span> <span class="ow">in</span> <span class="n">property_values</span><span class="p">:</span>
-                <span class="n">grpc_property</span> <span class="o">=</span> <span class="n">grpc_state</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-                <span class="n">grpc_property</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">property_id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">grpc_property</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">property</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-            <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameter_values</span><span class="p">:</span>
-                <span class="n">grpc_parameter</span> <span class="o">=</span> <span class="n">grpc_state</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-                <span class="n">grpc_parameter</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="n">parameter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">grpc_parameter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">parameter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span><span class="o">.</span><span class="n">SetProcessorState</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorStateSetRequest</span><span class="p">(</span>
-                <span class="n">processor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">ProcessorIdentifier</span><span class="p">(</span><span class="nb">id</span> <span class="o">=</span> <span class="n">processor_identifier</span><span class="p">),</span>
-                <span class="n">state</span> <span class="o">=</span> <span class="n">grpc_state</span>
-            <span class="p">))</span>
-
-        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;With processor id: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">processor_identifier</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="AudioGraphController.create_track"><a class="viewcode-back" href="../../elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_track">[docs]</a>    <span class="k">def</span> <span class="nf">create_track</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>

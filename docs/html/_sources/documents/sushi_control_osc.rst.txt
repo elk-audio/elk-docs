@@ -54,7 +54,7 @@ By default, Sushi listens on port 24024 for the following OSC commands:
 OSC Messages Sushi Transmits
 ----------------------------
 
-By default, Sushi transmits to port 24023.
+By default, Sushi transmits to port 24023, on 127.0.0.1.
 
 Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
 By default, this feature is disabled, but can be enabled either through adding a relevant section to the `json
@@ -66,14 +66,13 @@ the level parameters of the internal Peak Meter plugin.
 This works in two ways, either all, or only specific processors, are enabled. See the relevant section
 in the documentation of the Sushi json configuration file for more details.
 
-Changing the ports for sending and receiving OSC
-------------------------------------------------
+Changing the ports and IP address for sending and receiving OSC
+---------------------------------------------------------------
 
-The UDP ports it receives from and sends to can be changed with
-command-line arguments - just type *$ sushi --help* for the exact
+The UDP port it receives from, and the port and IP it sends to, can be changed with
+command-line arguments.
+
+Just type *$ sushi --help* for the exact
 syntax.
 
-These can also be set over the gRPC API, or the json configuration file.
-
-Currently, Sushi only transmits to the localhost IP, so for listening to any OSC events from it,
-the OSC listener process will have to run on the same device as Sushi.
+The IP and port values set can also be retrieved over the gRPC API.

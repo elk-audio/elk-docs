@@ -74,7 +74,7 @@ Sends audio to a return bus plugin. Can be used for creating effect sends, paral
     + "dest_channel" : The destination channel on the return plugin for the first channel sent. If this is higher than the channel count of the track which host the return plugin, no audio is sent. Default: 0. (Normalized from [0, 16], Default 0).
 
   * **Properties**:
-    + "destination" : Name of a Return plugin instance to send audio to
+    + "destination_name" : Name of a Return plugin instance to send audio to.
 
 ### Return
 

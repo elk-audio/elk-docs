@@ -6,7 +6,7 @@ This repository contains the source files, and generated HTML output, for the El
 
 If you have cloned/downloaded this repository you can browse the documentation by opening the `./docs/index.html` file in your browser.
 
-All sections are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/), the accepted standard by [Sphinx](http://www.sphinx-doc.org) and [ReadtheDocs](https://readthedocs.com/). The only exception is the index, which uses ReStructuredText - the main format for Sphinx - so that indexes can be generated.
+Most sections are written in MarkDown, and have to use the [CommonMark flavor](https://commonmark.org/), the accepted standard by [Sphinx](http://www.sphinx-doc.org) and [ReadtheDocs](https://readthedocs.com/). Some exceptions, such as is the index, use ReStructuredText - the main format for Sphinx.
 
 ## Building HTML From Source Files
 

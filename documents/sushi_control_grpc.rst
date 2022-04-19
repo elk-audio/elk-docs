@@ -100,7 +100,7 @@ OscController
 ^^^^^^^^^^^^^
 
 With the OscController you can query the state of the Open Sound Control broadcasting from Sushi, and selectively
-enable/disable which parameters will broadcast their state.
+enable/disable which parameters will broadcast their state. You can also fetch the IP and ports which Sushi uses for OSC.
 
 TransportController
 ^^^^^^^^^^^^^^^^^^^
