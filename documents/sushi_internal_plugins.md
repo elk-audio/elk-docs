@@ -130,18 +130,16 @@ A simple 8-step sequencer.
 
 ### Peak Meter
 
-Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate.
+Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate. Supports metering of up to 16 channels on a track.
 
   * **uid** : "sushi.testing.peakmeter"
   * **Parameters (control)**:
-    + "link_channels" : Links channels 0 and 1 so that both will display the highest peak from any of them. Range: [0, 1], Default: 0, for off.
+    + "link_channels" : Links channels 0 and 1 in a stereo config, so that both will display the highest peak from any of them. Range: [0, 1], Default: 0, for off.
     + "only_peaks" : Send only peak values that are louder that the decaying value. For displays that handle peak decay by themselves, reduces the amount of updates sent. Range: [0, 1], Default: 0, for off.
     + "update_rate" : The rate at which peak updates are sent, in updates/s. Default: 1.0 (Normalized from [0.1, 25], Default: 25).
   * **Parameters (output only)**:
-    + "level_0" : Detected peak level on channel 0 (left) in dB. Normalized from [-120, 0].
-    + "level_1" : Detected peak level on channel 1 (right) in dB. Normalized from [-120, 0].
-    + "clip_0" : Clipped audio samples (abs > 1.0) in channel 0 (left). Range: [0, 1], Default: 0, for off.
-    + "clip_1" : Clipped audio samples (abs > 1.0) in channel 1 (right). Range: [0, 1], Default: 0, for off.
+    + "level_n" : (n = 0 - 15) Detected peak level on channel n in dB. Normalized from [-120, 24].
+    + "clip_n" : (n = 0 - 15) Clipped audio samples (abs > 1.0) in channel n. Range: [0, 1], Default: 0, for off.
 
 ## CV In / Out plugins
 
