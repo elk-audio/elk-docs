@@ -81,8 +81,8 @@ Following is a reference for the Sushi .json configuration file.
     * **“port”** - Integer id of the MIDI port to use as input.
     * **“channel”** - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
     * **“plugin”** - Name of the plugin to route program changes to.
-* **"clock_output"** - Control output of midi clock messages.
-    * **"enabled_outputs"** A list of midi port ids from which output midi clock messages and midi start/stop messages will be emitted.
+* **"clock_output"** - Control output of MIDI clock messages.
+    * **"enabled_outputs"** A list of MIDI port ids from which output midi clock messages and midi start/stop messages will be emitted.
 
 ## Open Sound Control Connections
 
