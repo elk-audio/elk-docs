@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elkpy.SessionController &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="elkpy.TransportControlller" href="elkpy.transportcontroller.html" />
+    <link rel="prev" title="elkpy.TimingController" href="elkpy.timingcontroller.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.transportcontroller.html" title="elkpy.TransportControlller"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.timingcontroller.html" title="elkpy.TimingController"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.SessionController</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-elkpy.sessioncontroller">
+<span id="elkpy-sessioncontroller"></span><h1>elkpy.SessionController<a class="headerlink" href="#module-elkpy.sessioncontroller" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="elkpy.sessioncontroller.SessionController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sessioncontroller.</span></span><span class="sig-name descname"><span class="pre">SessionController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sessioncontroller.html#SessionController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sessioncontroller.SessionController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class to save and restore the full state of a sushi session.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>_stub (SessionControllerStub): Connection stubs to the session interface implemented in sushi.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.sessioncontroller.SessionController.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sessioncontroller.html#SessionController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sessioncontroller.SessionController.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor for the SessionController class setting up the gRPC connection with sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
+sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.sessioncontroller.SessionController.restore_binary_session">
+<span class="sig-name descname"><span class="pre">restore_binary_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binary_session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sessioncontroller.html#SessionController.restore_binary_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sessioncontroller.SessionController.restore_binary_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the sushi session from a previously save session state. This will clear all track and loaded plugins</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.sessioncontroller.SessionController.save_binary_session">
+<span class="sig-name descname"><span class="pre">save_binary_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><span class="pre">bytes</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sessioncontroller.html#SessionController.save_binary_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sessioncontroller.SessionController.save_binary_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the sushi session.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bytes: A bytes object containing the complete state of the sushi session.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="elkpy.timingcontroller.html"
+                        title="previous chapter">elkpy.TimingController</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="elkpy.transportcontroller.html"
+                        title="next chapter">elkpy.TransportControlller</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/elkpy-doc/elkpy.sessioncontroller.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="elkpy.transportcontroller.html" title="elkpy.TransportControlller"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="elkpy.timingcontroller.html" title="elkpy.TimingController"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.SessionController</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

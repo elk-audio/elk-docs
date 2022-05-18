@@ -119,7 +119,7 @@ TimingController
 Allows the generation and querying of CPU timing information for the engine, individual tracks or processors.
 
 SessionController
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 Allows for saving and restoring the full state of Sushi including tracks, loaded plugins, audio and control routing.
 

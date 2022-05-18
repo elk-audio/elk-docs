@@ -1,21 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sushi: The DAW Inside Elk &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +35,8 @@
         <li class="right" >
           <a href="run_elk_on_boards.html" title="Run Elk on Boards"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi: The DAW Inside Elk</a></li> 
       </ul>
     </div>  
 
@@ -59,13 +58,13 @@ high performance and stability under low latency conditions. It can be
 controlled through MIDI, OSC, and a gRPC interface.</p>
 <p><strong>In a nutshell:</strong></p>
 <ul class="simple">
-<li>Headless host with full run-time control over MIDI, gRPC and OSC interfaces.</li>
-<li>Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.</li>
-<li>Highly optimized for low latency performance.</li>
-<li>Multithreaded audio processing support.</li>
-<li>Ableton Link support.</li>
-<li>Audio connections through Raspa, Jack, and file I/O.</li>
-<li>Simple scripting configuration.</li>
+<li><p>Headless host with full run-time control over MIDI, gRPC and OSC interfaces.</p></li>
+<li><p>Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.</p></li>
+<li><p>Highly optimized for low latency performance.</p></li>
+<li><p>Multithreaded audio processing support.</p></li>
+<li><p>Ableton Link support.</p></li>
+<li><p>Audio connections through Raspa, Jack, and file I/O.</p></li>
+<li><p>Simple scripting configuration.</p></li>
 </ul>
 </div>
 <div class="section" id="architecture">
@@ -87,14 +86,19 @@ corresponding return tracks for effects processing.</p>
 <h2>Audio Frontends<a class="headerlink" href="#audio-frontends" title="Permalink to this headline">¶</a></h2>
 <p>Sushi supports multiple audio frontends:</p>
 <ul class="simple">
-<li><strong>RASPA</strong>: Sushi was built to work in perfect sync with Raspa, our
-proprietary low-latency audio framework.</li>
-<li><a class="reference external" href="http://jackaudio.org/">JACK Audio Toolkit</a>: for running
-real-time code on normal Linux machines.</li>
-<li><strong>Offline</strong>: for processing audio and scripted event files (e.g. for
-automatic testing).</li>
-<li><strong>Dummy</strong>: without any connection to audio I/O, useful to debug some
-real-time safety issues on normal Linux machines.</li>
+<li><p><strong>RASPA</strong>: Sushi was built to work in perfect sync with Raspa, our
+proprietary low-latency audio framework.</p></li>
+<li><p><a class="reference external" href="http://jackaudio.org/">JACK Audio Toolkit</a>: for running
+real-time code on normal Linux machines.</p></li>
+<li><dl class="simple">
+<dt><strong>PortAudio</strong>: For running realtime on macOS using coreAudio</dt><dd><p>or Linux using JACK or ALSA.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Offline</strong>: for processing audio and scripted event files (e.g. for
+automatic testing).</p></li>
+<li><p><strong>Dummy</strong>: without any connection to audio I/O, useful to debug some
+real-time safety issues on normal Linux machines.</p></li>
 </ul>
 <p><strong>The ability to run Sushi with Jack, the most common audio framework on
 Linux, makes it possible to run on almost any Linux system</strong>. While it
@@ -102,10 +106,10 @@ doesn’t give the same ultra low latency as running it with Raspa on an
 Elk system. It does make it incredibly easy to test and develop plugins
 and setups for Elk on a standard Linux machine. In fact, <strong>almost all of
 the development of Sushi has been done on standard Linux machines</strong>.</p>
-<p>When running with RASPA, Sushi is limited to the number of inputs and
-outputs supported by the physical hardware. While when running with
-Jack, Sushi exposes 8 input ports and 8 output ports that can then be
-freely routed to physical outputs or inputs, or other Jack software.</p>
+<p>When running with RASPA or PortAudio, Sushi is limited to the number
+of inputs and outputs supported by the physical hardware. While when
+running with Jack, Sushi exposes 8 input ports and 8 output ports that
+can then be freely routed to physical outputs or inputs, or other Jack software.</p>
 <p>The Offline frontend can be used for testing in an environment that
 lacks audio codecs and for evaluating systems in a very early stage. It
 has also proven to be very useful in debugging.</p>
@@ -121,13 +125,13 @@ and syncing with external sources and devices: MIDI, gRPC, Open Sound Control (O
 it does not feature a graphical user interface. Instead, we have implemented several means of control,
 which can be used together or separately to set Sushi up, and control it during run-time.</p>
 <ul class="simple">
-<li>The initial setup is done through a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> configuration file.</li>
-<li>At run-time, Sushi can be controlled via two API’s available over the network: gRPC, and OSC.</li>
-<li>End-users can additionally control Sushi and hosted plugins directly, using MIDI and Ableton Link, with the added flexibility of OSC for more advanced users.</li>
+<li><p>The initial setup is done through a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> configuration file.</p></li>
+<li><p>At run-time, Sushi can be controlled via two API’s available over the network: gRPC, and OSC.</p></li>
+<li><p>End-users can additionally control Sushi and hosted plugins directly, using MIDI and Ableton Link, with the added flexibility of OSC for more advanced users.</p></li>
 </ul>
-<div class="figure" id="id1">
+<div class="figure align-default" id="id1">
 <img alt="img" src="../_images/sushi_architecture.png" />
-<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span></p>
+<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="sushi-s-public-api-model">
@@ -223,16 +227,16 @@ documented under <a class="reference internal" href="sushi_control_grpc.html#sus
 <div class="section" id="plugin-format-support">
 <h2>Plugin Format Support<a class="headerlink" href="#plugin-format-support" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Sushi can host plugins in Steinberg’s <strong>VST 2.4</strong> and <a class="reference external" href="https://www.steinberg.net/en/company/technologies/vst3.html">VST
+<li><p>Sushi can host plugins in Steinberg’s <strong>VST 2.4</strong> and <a class="reference external" href="https://www.steinberg.net/en/company/technologies/vst3.html">VST
 3.6</a>
 formats, <strong>LV2</strong> (natively as well as using the LV2VST wrapper), plus
 an Internal plugin format, which all are abstracted in a generic
-“Processor” interface.</li>
-<li><strong>Reason Studio’s</strong> <a class="reference external" href="https://www.propellerheads.com/developers">Rack
+“Processor” interface.</p></li>
+<li><p><strong>Reason Studio’s</strong> <a class="reference external" href="https://www.propellerheads.com/developers">Rack
 Extensions</a> are also
 supported, but due to Reason Studio’s licensing restrictions this
 support is only available under closed-source commercial licenses of
-Sushi. Please get in touch for more information.</li>
+Sushi. Please get in touch for more information.</p></li>
 </ul>
 <p>In order to load plugins in Sushi, they need to be compiled for the
 system intended. Note that it is not possible to take an existing
@@ -286,6 +290,7 @@ restart the audio driver by removing and reinserting the module
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -329,17 +334,15 @@ restart the audio driver by removing and reinserting the module
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -359,12 +362,13 @@ restart the audio driver by removing and reinserting the module
         <li class="right" >
           <a href="run_elk_on_boards.html" title="Run Elk on Boards"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sushi: The DAW Inside Elk</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

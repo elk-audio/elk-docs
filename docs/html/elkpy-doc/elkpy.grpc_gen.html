@@ -1,21 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>elkpy.gRPCGenerator &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -39,7 +37,8 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.gRPCGenerator</a></li> 
       </ul>
     </div>  
 
@@ -50,21 +49,22 @@
             
   <div class="section" id="module-elkpy.grpc_gen">
 <span id="elkpy-grpcgenerator"></span><h1>elkpy.gRPCGenerator<a class="headerlink" href="#module-elkpy.grpc_gen" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="elkpy.grpc_gen.modules_from_proto">
-<code class="descclassname">elkpy.grpc_gen.</code><code class="descname">modules_from_proto</code><span class="sig-paren">(</span><em>proto_filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/grpc_gen.html#modules_from_proto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#elkpy.grpc_gen.modules_from_proto" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="elkpy.grpc_gen.modules_from_proto">
+<span class="sig-prename descclassname"><span class="pre">elkpy.grpc_gen.</span></span><span class="sig-name descname"><span class="pre">modules_from_proto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proto_filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/grpc_gen.html#modules_from_proto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.grpc_gen.modules_from_proto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run protoc compiler and get generated modules.</p>
-<dl class="docutils">
-<dt>Parameters:</dt>
-<dd>proto_filename : path to .proto file with service definition</dd>
-<dt>Returns:</dt>
-<dd>(protobuf_module, grpc_module)</dd>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>proto_filename : path to .proto file with service definition</p>
+</dd>
+<dt>Returns:</dt><dd><p>(protobuf_module, grpc_module)</p>
+</dd>
 </dl>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -84,17 +84,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -116,12 +114,13 @@
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">elkpy.gRPCGenerator</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

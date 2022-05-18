@@ -1,21 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Build Plugins for Elk &#8212; Elk DevKit  documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -37,7 +35,8 @@
         <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Build Plugins for Elk</a></li> 
       </ul>
     </div>  
 
@@ -86,10 +85,10 @@
 <p>The following steps are involved to cross-compile using JUCE’s new CMake support - demonstrated using the <code class="docutils literal notranslate"><span class="pre">JUCE/examples/CMake/AudioPlugin</span></code> plugin.</p>
 <p>(The below example assumes a RPi4 build with our v0.11.0 SDK installed in the default location).</p>
 <ol class="simple">
-<li>Begin by copying the AudioPlugin folder out of the JUCE folder.</li>
-<li>Clone a fresh copy of JUCE as a subfolder of AudioPlugin</li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/juce-framework/JUCE.git</span></code>.</li>
-<li>We need to un-set $CC $CXX - one practical way we have found, is to edit <code class="docutils literal notranslate"><span class="pre">/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt</span></code>, removing the following 3 lines (56-58):</li>
+<li><p>Begin by copying the AudioPlugin folder out of the JUCE folder.</p></li>
+<li><p>Clone a fresh copy of JUCE as a subfolder of AudioPlugin</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/juce-framework/JUCE.git</span></code>.</p></li>
+<li><p>We need to un-set $CC $CXX - one practical way we have found, is to edit <code class="docutils literal notranslate"><span class="pre">/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt</span></code>, removing the following 3 lines (56-58):</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">ASM</span><span class="p">})</span>
 <span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">CC</span><span class="p">})</span>
@@ -97,19 +96,21 @@
 </pre></div>
 </div>
 <ol class="simple">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">AudioPlugin/CMakeLists.txt</span></code> as follows:<ol>
-<li>Un-comment line 27: <code class="docutils literal notranslate"><span class="pre">add_subdirectory(JUCE)</span></code>.</li>
-<li>Alter line 55 to only include the target format(s) to produce, for example: <code class="docutils literal notranslate"><span class="pre">FORMATS</span> <span class="pre">VST3</span></code></li>
-<li>Remove line 111: <code class="docutils literal notranslate"><span class="pre">juce::juce_recommended_lto_flags</span></code> - the LTO setting breaks x-compiling Release builds.</li>
+<li><p>Edit <code class="docutils literal notranslate"><span class="pre">AudioPlugin/CMakeLists.txt</span></code> as follows:</p>
+<ol class="simple">
+<li><p>Un-comment line 27: <code class="docutils literal notranslate"><span class="pre">add_subdirectory(JUCE)</span></code>.</p></li>
+<li><p>Alter line 55 to only include the target format(s) to produce, for example: <code class="docutils literal notranslate"><span class="pre">FORMATS</span> <span class="pre">VST3</span></code></p></li>
+<li><p>Remove line 111: <code class="docutils literal notranslate"><span class="pre">juce::juce_recommended_lto_flags</span></code> - the LTO setting breaks x-compiling Release builds.</p></li>
 </ol>
 </li>
-<li>In your <code class="docutils literal notranslate"><span class="pre">AudioPlugin</span></code> folder, type:<ol>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">x-build</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">x-build</span></code> (Very handy to keep your x-build in a separate folder from your native one).</li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></li>
+<li><p>In your <code class="docutils literal notranslate"><span class="pre">AudioPlugin</span></code> folder, type:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">x-build</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">x-build</span></code> (Very handy to keep your x-build in a separate folder from your native one).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></p></li>
 </ol>
 </li>
 </ol>
@@ -119,20 +120,21 @@
 <h3>Plugins using JUCE Version 5.x<a class="headerlink" href="#plugins-using-juce-version-5-x" title="Permalink to this headline">¶</a></h3>
 <p>If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.</p>
 <ul class="simple">
-<li>JUCE release 5.4.x only generates VST 2.4 plugins for Linux.</li>
-<li>Generated plugins have a dependency on the X11 libraries.</li>
+<li><p>JUCE release 5.4.x only generates VST 2.4 plugins for Linux.</p></li>
+<li><p>Generated plugins have a dependency on the X11 libraries.</p></li>
 </ul>
 <p>To overcome the second problem, we created a <a class="reference external" href="https://github.com/elk-audio/JUCE">JUCE fork</a> that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin’s editor functions. As a consequence, you don’t need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.</p>
 <p>If you use JUCE 5.4 you need to:</p>
 <ol class="simple">
-<li>Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.</li>
-<li>Inside Projucer:<ul>
-<li>Ensure that the File -&gt; Global Paths… are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.</li>
-<li>Choose only “VST Legacy” as audio plugin type under project properties.</li>
+<li><p>Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.</p></li>
+<li><p>Inside Projucer:</p>
+<ul class="simple">
+<li><p>Ensure that the File -&gt; Global Paths… are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.</p></li>
+<li><p>Choose only “VST Legacy” as audio plugin type under project properties.</p></li>
 </ul>
 </li>
-<li>Follow the instructions in the next section to export a makefile.</li>
-<li>If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <em>JUCE_CPPFLAGS</em> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</li>
+<li><p>Follow the instructions in the next section to export a makefile.</p></li>
+<li><p>If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <em>JUCE_CPPFLAGS</em> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</p></li>
 </ol>
 </div>
 <div class="section" id="cross-compiling-juce-plugin">
@@ -140,11 +142,11 @@
 <p>Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.</p>
 <p>Inside Projucer:</p>
 <ul class="simple">
-<li>Create a new exporter of type “Linux Makefile”.</li>
-<li>Remove modules like <em>juce_video</em> or <em>juce_opengl</em> if present.</li>
-<li>Disable the option for JUCE Browser under the module <em>juce_gui_extra</em>.</li>
-<li>For every module, make sure to use the option “use global search path”.</li>
-<li>Save the project to export a new Makefile.</li>
+<li><p>Create a new exporter of type “Linux Makefile”.</p></li>
+<li><p>Remove modules like <em>juce_video</em> or <em>juce_opengl</em> if present.</p></li>
+<li><p>Disable the option for JUCE Browser under the module <em>juce_gui_extra</em>.</p></li>
+<li><p>For every module, make sure to use the option “use global search path”.</p></li>
+<li><p>Save the project to export a new Makefile.</p></li>
 </ul>
 <p>For a build to test natively on Linux, just run make normally, using the <em>-DJUCE_HEADLESS_PLUGIN_CLIENT=1</em> argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.</p>
 <p>To cross-compile for <em>Elk Pi RPi4 64 bit</em>, first source the SDK script in your shell environment:</p>
@@ -170,58 +172,53 @@ $ <span class="nb">source</span> /path/to/environment-setup-aarch64-elk-linux
 <h3>Generate ttl files<a class="headerlink" href="#generate-ttl-files" title="Permalink to this headline">¶</a></h3>
 <p>This is done first since the script to generate the <em>.ttl</em> files won’t run with the cross compilation toolchain.</p>
 <ol>
-<li><p class="first">Make a folder to put the native build in <em>mkdir native</em>.</p>
-</li>
-<li><p class="first">Generate project files:</p>
+<li><p>Make a folder to put the native build in <em>mkdir native</em>.</p></li>
+<li><p>Generate project files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./autogen.sh --prefix=/absoute/path/to/calf/native
 </pre></div>
 </div>
 </li>
-<li><p class="first"><em>make</em> and <em>make install</em> to generate the ttl files.</p>
-</li>
-<li><p class="first"><em>make clean</em> to prepare for cross compilation.</p>
-</li>
+<li><p><em>make</em> and <em>make install</em> to generate the ttl files.</p></li>
+<li><p><em>make clean</em> to prepare for cross compilation.</p></li>
 </ol>
 </div>
 <div class="section" id="cross-compile-the-plugins">
 <h3>Cross Compile the plugins<a class="headerlink" href="#cross-compile-the-plugins" title="Permalink to this headline">¶</a></h3>
 <ol>
-<li><p class="first">Set up the cross-compilation toolchain:</p>
+<li><p>Set up the cross-compilation toolchain:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset LD_LIBRARY_PATH
 $ source /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
 </pre></div>
 </div>
 </li>
-<li><p class="first">Create a directory to build and install the cross compilation files to <em>$ mkdir build</em>.</p>
-</li>
-<li><p class="first">Generate the makefiles:</p>
+<li><p>Create a directory to build and install the cross compilation files to <em>$ mkdir build</em>.</p></li>
+<li><p>Generate the makefiles:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./configure --host=arm-elk-linux-gnu --prefix=/absolute/path/to/calf/build
 </pre></div>
 </div>
 </li>
-<li><p class="first">Compile the plugin library:</p>
+<li><p>Compile the plugin library:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
 $ make install
 </pre></div>
 </div>
 </li>
-<li><p class="first">move the .ttl files to the cross-compiled build.</p>
+<li><p>move the .ttl files to the cross-compiled build.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp native/lib/lv2/calf.lv2/*.ttl build/lib/lv2/calf.lv2/
 </pre></div>
 </div>
 </li>
-<li><p class="first">move the folder <em>build/lib/calf.lv2</em> to the desired location on the Elk Pi. Make sure the path to the parent folder is in the <em>LV2_PATH</em> variable.</p>
-</li>
+<li><p>move the folder <em>build/lib/calf.lv2</em> to the desired location on the Elk Pi. Make sure the path to the parent folder is in the <em>LV2_PATH</em> variable.</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="running-compiled-plugins-with-sushi-on-a-virtual-machine">
 <h2>Running Compiled Plugins with Sushi on a Virtual Machine<a class="headerlink" href="#running-compiled-plugins-with-sushi-on-a-virtual-machine" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li>Start JACK Server.</li>
-<li>Launch Sushi with a proper JSON file that has the path to your plugins. You can use one of the provided examples to start, e.g.:
-<em>sushi -j -c ~/work/sushi/example_configs/config_fx.json</em></li>
-<li>Connect Sushi’s input and output ports to the system.</li>
+<li><p>Start JACK Server.</p></li>
+<li><p>Launch Sushi with a proper JSON file that has the path to your plugins. You can use one of the provided examples to start, e.g.:
+<em>sushi -j -c ~/work/sushi/example_configs/config_fx.json</em></p></li>
+<li><p>Connect Sushi’s input and output ports to the system.</p></li>
 </ol>
 <p>On most hosts, VirtualBox offers a virtual audio interface with output only. If you need to test an effect plugin, a quick way is to load an audio file in Audacity, select the JACK audio engine and connect it to Sushi.</p>
 <p>If you need to test MIDI, you can either use a Virtual MIDI Keyboard (like <em>vmpk</em>) or redirect a USB MIDI device to the virtual machine. In both cases, you can use <em>aconnect</em> to connect the MIDI port of your control device to Sushi’s ALSA input ports, just as on a native machine.</p>
@@ -239,9 +236,9 @@ $ make install
 <h2>Analyzing and Resolving Xenomai Mode Switches<a class="headerlink" href="#analyzing-and-resolving-xenomai-mode-switches" title="Permalink to this headline">¶</a></h2>
 <p>As in any real-time system, you are not allowed to call any operating system functions from your real-time processing callback. This includes among the others:</p>
 <ul class="simple">
-<li>Any memory allocation, directly or by using e.g. standard library containers that can allocate on their own.</li>
-<li>Any thread synchronization primitives, like mutexes, semaphores, etc.</li>
-<li>Some operations that are usually RT-safe on desktop systems but are not on Xenomai, for example querying system timers with e.g. <em>clock_gettime</em>.</li>
+<li><p>Any memory allocation, directly or by using e.g. standard library containers that can allocate on their own.</p></li>
+<li><p>Any thread synchronization primitives, like mutexes, semaphores, etc.</p></li>
+<li><p>Some operations that are usually RT-safe on desktop systems but are not on Xenomai, for example querying system timers with e.g. <em>clock_gettime</em>.</p></li>
 </ul>
 <p>We provide the Twine library as a replacement for common use cases in audio plugins, e.g. querying timers and synchronizing worker threads in a real-time safe way.</p>
 <p>Whenever you do an operation that is not RT-safe, Xenomai will perform a <em>mode switch</em>, i.e. it will give back control to the Linux Kernel to perform the needed system call and then will switch back to the Cobalt Kernel to continue its activity. The performance penalty for such operations is huge and you will very likely encounter audio dropouts if any mode switch will occur.</p>
@@ -249,15 +246,13 @@ $ make install
 <p>In order to spot code paths that are responsible for mode switches, you can launch Sushi under gdb and use a special command-line flag to activate the throw of SIGXCPU signal whenever a mode switch happens.</p>
 <p>From a terminal in an Elk board, you need to:</p>
 <ol>
-<li><p class="first">Launch Sushi inside gdb:
-<em>gdb sushi</em></p>
-</li>
-<li><p class="first">Set gdb to break on SIGXCPU signal:
+<li><p>Launch Sushi inside gdb:
+<em>gdb sushi</em></p></li>
+<li><p>Set gdb to break on SIGXCPU signal:
 <em>catch signal SIGXCPU</em></p>
 <p>It is possible to use the <em>ignore</em> command in gdb to ignore the first N occurrences, in case you have some non-problematic mode switches at plugin initialization.</p>
 </li>
-<li><p class="first">Run by passing the <em>–debug-mode-sw</em> flag, plus any other argument in your case, e.g.:</p>
-</li>
+<li><p>Run by passing the <em>–debug-mode-sw</em> flag, plus any other argument in your case, e.g.:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">-</span><span class="n">r</span> <span class="o">--</span><span class="n">debug</span><span class="o">-</span><span class="n">mode</span><span class="o">-</span><span class="n">sw</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
@@ -268,6 +263,7 @@ $ make install
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -311,17 +307,15 @@ $ make install
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -341,12 +335,13 @@ $ make install
         <li class="right" >
           <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Build Plugins for Elk</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Elk.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
     </div>
   </body>
 </html>

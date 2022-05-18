@@ -27,4 +27,5 @@ Submodules
    elkpy.sushierrors
    elkpy.sushiprocessor
    elkpy.timingcontroller
+   elkpy.sessioncontroller
    elkpy.transportcontroller
