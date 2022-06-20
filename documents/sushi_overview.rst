@@ -40,6 +40,12 @@ panning controls**, which in turn can be routed to any audio output.
 Useful for multi bus plugins. Sushi also features aux sends and
 corresponding return tracks for effects processing.
 
+In addition, Sushi allows adding up to 2 master tracks, each with as many
+channels as there are audio inputs and outputs in sushi. They can be used
+for pre-processing audio inputs before routing to individual tracks and
+for adding master effects to the audio outputs.
+
+
 Audio Frontends
 ---------------
 
@@ -109,8 +115,7 @@ Please refer to the dedicated section on the :ref:`sushi-public-api-model` for t
 JSON Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel
-setup (mono, stereo, multichannel), the plugins on the track, audio
+In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel setup, the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
 for how to set up a synth plugin with MIDI-mapped parameters.

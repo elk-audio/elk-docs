@@ -30,12 +30,12 @@ Following is a reference for the Sushi .json configuration file.
     * **"virtual_port"** - True if the port should be a virtual midi port false if not. Default is false.
 
 ## Tracks
-**“tracks”** : A json list of track objects with the following members:
+**“tracks”** : A list of track objects with the following members:
 
 * **“name”** - Name of the track, must be unique.
-* **“mode”** - The channel mode of the track. Valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.
-* **“input_busses”** - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
-* **“output_busses”** - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.
+* **"channels"** - The number of audio channels in the track, 2 for a stereo track.
+* **"multibus"** If true, enables multibus mode for the track where every pair of audio channels have thei own pan and gain control. The track must have an even number of channels.
+* **buses”** - The number of buses to use for a multibus track, where each bus is a stereo pair. Only valid if “multibus” is set to True.
 * **“inputs”** - Audio inputs to the track. A list objects with the following members:
     * **“engine_bus”** - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.
     * **“track_bus”** - The id of the track bus to route audio to.
@@ -54,6 +54,15 @@ Following is a reference for the Sushi .json configuration file.
     * **“path”** - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins, or for natively hosting LV2.
     * **"uri"** - This is instead of "path", for natively hosting LV2 plugins. The LV2 standard requires that plugins are accessed through the LV2 platform tools, not directly. The paths where these platform tools search for plugins is on Linux defined with the LV2_PATH environment variable.
     * **“uid”** - For internal plugin this has the format “sushi.testing.plugin_name”. For VST 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for VST 2 plugins.
+
+## Master Tracks
+**“master_tracks”** - Tracks added at the beginning or end of the audio processing chain
+* **"pre"** - A master track that processes audio inputs before being routed to regular tracks (optional).
+    * **“name”** - Name of the track, must be unique.
+    * **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.
+* **"post"** - A master track that processes audio after mixing down regular tracks (optional).
+    * **“name”** - Name of the track, must be unique.
+    * **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.
 
 ## MIDI
 **“midi”** - MIDI connections to and from tracks and plugins.
