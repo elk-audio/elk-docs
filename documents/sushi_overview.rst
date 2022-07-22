@@ -40,7 +40,7 @@ panning controls**, which in turn can be routed to any audio output.
 Useful for multi bus plugins. Sushi also features aux sends and
 corresponding return tracks for effects processing.
 
-In addition, Sushi allows adding up to 2 master tracks, each with as many
+In addition, Sushi allows adding pre and post tracks, each with as many
 channels as there are audio inputs and outputs in sushi. They can be used
 for pre-processing audio inputs before routing to individual tracks and
 for adding master effects to the audio outputs.

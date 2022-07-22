@@ -34,7 +34,7 @@ Following is a reference for the Sushi .json configuration file.
 
 * **“name”** - Name of the track, must be unique.
 * **"channels"** - The number of audio channels in the track, 2 for a stereo track.
-* **"multibus"** If true, enables multibus mode for the track where every pair of audio channels have thei own pan and gain control. The track must have an even number of channels.
+* **"multibus"** If true, enables multibus mode for the track where every pair of audio channels have their own pan and gain control. The track must have an even number of channels.
 * **buses”** - The number of buses to use for a multibus track, where each bus is a stereo pair. Only valid if “multibus” is set to True.
 * **“inputs”** - Audio inputs to the track. A list objects with the following members:
     * **“engine_bus”** - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.
@@ -55,12 +55,12 @@ Following is a reference for the Sushi .json configuration file.
     * **"uri"** - This is instead of "path", for natively hosting LV2 plugins. The LV2 standard requires that plugins are accessed through the LV2 platform tools, not directly. The paths where these platform tools search for plugins is on Linux defined with the LV2_PATH environment variable.
     * **“uid”** - For internal plugin this has the format “sushi.testing.plugin_name”. For VST 3 plugins, this is the string id of the plugin to load, as multiple plugins can be packaged inside one plugin folder/binary. Not valid for VST 2 plugins.
 
-## Master Tracks
-**“master_tracks”** - Tracks added at the beginning or end of the audio processing chain
-* **"pre"** - A master track that processes audio inputs before being routed to regular tracks (optional).
+## Pre/Post Tracks
+**“pre_track”** - A track added at the beginning of the audio processing chain and processes audio inputs before being routed to regular tracks (optional)
     * **“name”** - Name of the track, must be unique.
     * **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.
-* **"post"** - A master track that processes audio after mixing down regular tracks (optional).
+
+**“post_track”** - A track added at the end of the audio processing chain and processes audio after mixing all regular tracks (optional)
     * **“name”** - Name of the track, must be unique.
     * **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.
 
