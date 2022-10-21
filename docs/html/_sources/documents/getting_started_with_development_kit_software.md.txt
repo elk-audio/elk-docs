@@ -7,7 +7,7 @@ In this guide you will quickly see which the first steps are, to run a plugin fr
 
 You can run Sushi natively on your own macOS or Linux computer, or on a Linux virtual machine.
 
-We provide binary releases that pack together prebuilt Sushi binaries, the MDA plugins suite in VST3 format and some example JSON configurations.
+We provide binary releases that pack prebuilt Sushi binaries, the MDA plugins suite in VST3 format and some example JSON configurations.
 
 1. Download the binary package for your system (Linux-x86_64, macOS-arm64 or macOS-x86_64) from the [Sushi's Github releases page](https://github.com/elk-audio/sushi/releases/tag/1.0.0).
 2. Unzip the archive wherever you prefer
@@ -27,7 +27,7 @@ $ ./sushi -a -c config_files/play_vst3.json
 
 By default, this will use the system's default sound device. If you want to specify a different one, you can do that with the `--audio-output-device` flag.
 
-Sushi will connect by default to the first available MIDI input device on the system, if present. If you want to use a different MIDI device, you would need to change the `rt_midi_device` field in the Sushi's JSON config file, as explained in the [Sushi's configuration format document](sushi_configuration_format.md).
+Sushi will connect by default to the first available MIDI input device on the system, if present. If you want to use a different MIDI device, you need to change the `rt_midi_device` field in the Sushi's JSON config file, as explained in the [Sushi's configuration format document](sushi_configuration_format.md).
 
 ### Running Sushi on Linux
 
@@ -93,9 +93,9 @@ Tip: If you do not have a physical keyboard available, you can use the ***Virtua
 
 If you want to do more on your synthesizer instance, e.g. changing some run-time parameters, SUSHI exposes everything that you need using both OSC or gRPC APIs.
 
-Using the gRPC API gives you the greater flexibility and performance but it's more of advanced topic, covered in its [dedicated section](sushi_control_grpc.md).
+Using the gRPC API gives you the greater flexibility and performance but as that is it's a more of advanced topic, it’s covered in a [dedicated section](sushi_control_grpc.md).
 
-For OSC, we prepared some configuration files that can be used with popular applications in our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3).
+For OSC, we've prepared some configuration files that can be used with popular applications in our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3).
 
 ### Control MDA JX10 VST3 plugin with Open Stage Control
 

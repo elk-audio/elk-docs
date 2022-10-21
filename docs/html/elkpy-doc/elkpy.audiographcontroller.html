@@ -73,12 +73,31 @@ sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definiti
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_multibus_track">
-<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_busses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_busses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new multibus track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.
-output_busses (int): The number of output busses to assign the new track.
-input_busses (int): The number of input busses to assign the new track.</p>
+buses (int): The number of audio buses in the new track.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_post_track">
+<span class="sig-name descname"><span class="pre">create_post_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_post_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_post_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new post track in sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_pre_track">
+<span class="sig-name descname"><span class="pre">create_pre_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_pre_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_pre_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new pre track in sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -188,6 +207,18 @@ track (int): The id of the track that contains the processor.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_processor_state">
+<span class="sig-name descname"><span class="pre">get_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">elkpy.sushi_info_types.ProcessorState</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the full state of the specified processor.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>processor_identifier (int): The id of processor to get the full state from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>ProcessorState: An object describing the full the processor matching the id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_track_id">
 <span class="sig-name descname"><span class="pre">get_track_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the id of a track from its name.</p>
@@ -244,6 +275,16 @@ add_to_back (bool): Set to true to add the processor to the back of the processi
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to set the bypass state of.
 bypass_sate (bool): The bypass state of the processor matching the id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.set_processor_state">
+<span class="sig-name descname"><span class="pre">set_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">elkpy.sushi_info_types.ProcessorState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.set_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the full or partial state of the specified processor from an existing state object.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>state (info_types.ProcessorState): a state object either populated manually or received from a call to get_processor_state.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -62,6 +62,9 @@ and to attach call-back functions to each subscribed stream.</p>
 <dt>Attributes:</dt><dd><p>address: gRPC server IP (str: ip:port)
 loop: an asynchronous event loop</p>
 </dd>
+<dt>Notes:</dt><dd><p>close() should ALWAYS be called as part of an application housekeeping/cleanup-before-shutdown routine as it
+ensure proper releasing of resources and clean joining of concurrent threads.</p>
+</dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.__init__">
@@ -75,6 +78,11 @@ sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definiti
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_parameter_update_notifications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">call_back</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_parameter_update_notifications"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -82,6 +90,11 @@ sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definiti
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_processor_change_notifications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">call_back</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_processor_change_notifications"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.process_property_update_notifications">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_property_update_notifications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">call_back</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.process_property_update_notifications"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.process_property_update_notifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -112,7 +125,9 @@ param_blocklist: a list of parameter identifiers for which to block update notif
 Parameter itself has 2 attributes: processor_id and _parameter_id;
 ex: notification.parameter.parameter_id (gets the parameter ID)
 ex: notification.parameter.processor_id (gets the processor ID)
-ex: notification.value (gets the value)</p>
+ex: notification.normalized_value (gets the value normalized between 0 and 1)
+ex: notification.domain_value (gets the domain value)
+ex: notification.formatted_value (gets the value formatted as a string)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -124,6 +139,23 @@ ex: notification.value (gets the value)</p>
 User needs to implement their own stream consumer logic and pass it as cb.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates">
+<span class="sig-name descname"><span class="pre">subscribe_to_property_updates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_blocklist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.subscribe_to_property_updates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribes to Property update notification stream from Sushi
+User needs to implement their own logic to process these notification in the placeholder methods below</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>cb: a callable that will be called for each notification received from the stream.</p>
+</dd>
+<dt>Notes to write useful callbacks:</dt><dd><p>Notification objects have 2 attributes: property and value;
+Property itself has 2 attributes: processor_id and property_id;
+ex: notification.parameter.property_id (gets the property ID)
+ex: notification.parameter.processor_id (gets the processor ID)
+ex: notification.value (gets the value)</p>
 </dd>
 </dl>
 </dd></dl>

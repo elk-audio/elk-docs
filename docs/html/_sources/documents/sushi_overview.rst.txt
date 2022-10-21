@@ -16,7 +16,7 @@ controlled through MIDI, OSC, and a gRPC interface.
 **In a nutshell:**
 
 -  Headless host with full run-time control over MIDI, gRPC and OSC interfaces.
--  Hosts VST 2.4, VST 3.6 and LV2  plugins.
+-  Hosts VST 2.4, VST 3.7 and LV2  plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
 -  Ableton Link support.
@@ -217,15 +217,10 @@ Plugin Format Support
 ---------------------
 
 -  Sushi can host plugins in Steinberg's **VST 2.4** and `VST
-   3.6 <https://www.steinberg.net/en/company/technologies/vst3.html>`__
+   3.7 <https://www.steinberg.net/en/company/technologies/vst3.html>`__
    formats, **LV2** (natively as well as using the LV2VST wrapper), plus
    an Internal plugin format, which all are abstracted in a generic
    "Processor" interface.
--  **Reason Studio's** `Rack
-   Extensions <https://www.propellerheads.com/developers>`__ are also
-   supported, but due to Reason Studio's licensing restrictions this
-   support is only available under closed-source commercial licenses of
-   Sushi. Please get in touch for more information.
 
 In order to load plugins in Sushi, they need to be compiled for the
 system intended. Note that it is not possible to take an existing

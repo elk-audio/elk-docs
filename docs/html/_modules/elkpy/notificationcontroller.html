@@ -59,11 +59,11 @@
 
 <span class="kn">import</span> <span class="nn">grpc.experimental.aio</span>
 <span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushierrors</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">grpc_gen</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="c1">###########################################</span>
 <span class="c1">#   Sushi Notification Controller class   #</span>
@@ -86,7 +86,7 @@
 <span class="sd">        close() should ALWAYS be called as part of an application housekeeping/cleanup-before-shutdown routine as it</span>
 <span class="sd">        ensure proper releasing of resources and clean joining of concurrent threads.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="NotificationController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="NotificationController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">address</span><span class="o">=</span><span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
                  <span class="n">sushi_proto_def</span><span class="o">=</span><span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -114,7 +114,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">call_soon_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notification_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="c1">#################################################</span>
@@ -134,8 +134,8 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{self.address}</span><span class="s2">. &quot;</span>
-                            <span class="n">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NotificationController.process_timing_update_notifications"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_timing_update_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call_back</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -152,8 +152,8 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{self.address}</span><span class="s2">. &quot;</span>
-                            <span class="n">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NotificationController.process_track_change_notifications"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_track_change_notifications">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_track_change_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call_back</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -170,8 +170,8 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{self.address}</span><span class="s2">. &quot;</span>
-                            <span class="n">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NotificationController.process_processor_change_notifications"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_processor_change_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call_back</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -188,8 +188,8 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{self.address}</span><span class="s2">. &quot;</span>
-                            <span class="n">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NotificationController.process_parameter_update_notifications"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_parameter_update_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call_back</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">param_list</span><span class="p">:</span>
@@ -214,8 +214,34 @@
         <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{self.address}</span><span class="s2">. &quot;</span>
-                            <span class="n">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NotificationController.process_property_update_notifications"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_property_update_notifications">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_property_update_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call_back</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">property_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">property_list</span><span class="p">:</span>
+            <span class="n">block_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">GenericVoidValue</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">property_list</span><span class="p">:</span>
+                <span class="nb">property</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">PropertyIdentifier</span><span class="p">(</span><span class="n">processor_id</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">property_id</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">p_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+            <span class="n">block_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="o">.</span><span class="n">PropertyNotificationBlocklist</span><span class="p">(</span><span class="n">properties</span><span class="o">=</span><span class="n">p_list</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">grpc</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">aio</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="k">as</span> <span class="n">channel</span><span class="p">:</span>
+                <span class="n">stub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span><span class="o">.</span><span class="n">NotificationControllerStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                <span class="n">stream</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">SubscribeToPropertyUpdates</span><span class="p">(</span><span class="n">block_list</span><span class="p">)</span>
+                <span class="k">async</span> <span class="k">for</span> <span class="n">notification</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+                    <span class="c1"># User logic here</span>
+                    <span class="k">if</span> <span class="n">call_back</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">call_back</span><span class="p">):</span>
+                        <span class="n">call_back</span><span class="p">(</span><span class="n">notification</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;No valid call-back function has been provided for Property Change &quot;</span>
+                                        <span class="s2">&quot;notification processing &quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">sushierrors</span><span class="o">.</span><span class="n">grpc_error_handling</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;Should be a string containing the IP address and port to Sushi&quot;</span><span class="p">)</span></div>
 
     <span class="c1">####################################################</span>
     <span class="c1"># API : Subscription to Sushi notification streams #</span>
@@ -276,9 +302,28 @@
 <span class="sd">            Parameter itself has 2 attributes: processor_id and _parameter_id;</span>
 <span class="sd">            ex: notification.parameter.parameter_id (gets the parameter ID)</span>
 <span class="sd">            ex: notification.parameter.processor_id (gets the processor ID)</span>
+<span class="sd">            ex: notification.normalized_value (gets the value normalized between 0 and 1)</span>
+<span class="sd">            ex: notification.domain_value (gets the domain value)</span>
+<span class="sd">            ex: notification.formatted_value (gets the value formatted as a string)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">run_coroutine_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_parameter_update_notifications</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">param_blocklist</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NotificationController.subscribe_to_property_updates"><a class="viewcode-back" href="../../elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_to_property_updates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">,</span> <span class="n">property_blocklist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Subscribes to Property update notification stream from Sushi</span>
+<span class="sd">        User needs to implement their own logic to process these notification in the placeholder methods below</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            cb: a callable that will be called for each notification received from the stream.</span>
+
+<span class="sd">        Notes to write useful callbacks:</span>
+<span class="sd">            Notification objects have 2 attributes: property and value;</span>
+<span class="sd">            Property itself has 2 attributes: processor_id and property_id;</span>
+<span class="sd">            ex: notification.parameter.property_id (gets the property ID)</span>
+<span class="sd">            ex: notification.parameter.processor_id (gets the processor ID)</span>
 <span class="sd">            ex: notification.value (gets the value)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">asyncio</span><span class="o">.</span><span class="n">run_coroutine_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_parameter_update_notifications</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">param_blocklist</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">)</span></div></div>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">run_coroutine_threadsafe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_property_update_notifications</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">property_blocklist</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>

@@ -68,21 +68,35 @@ sushi_proto_def (str): path to the .proto file with SUSHI gRPC services definiti
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="elkpy.osccontroller.OscController.disable_all_output">
+<span class="sig-name descname"><span class="pre">disable_all_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.disable_all_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.disable_all_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable OSC output for all parameters</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.osccontroller.OscController.disable_output_for_parameter">
-<span class="sig-name descname"><span class="pre">disable_output_for_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.disable_output_for_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.disable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">disable_output_for_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.disable_output_for_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.disable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disable OSC for a parameter</p>
 <dl class="simple">
-<dt>Parameters:</dt><dd><p>parameter_id (int): The id of the parameter to disble OSC for</p>
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor the parameter belongs to
+parameter_id (int): The id of the parameter to disble OSC for</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="elkpy.osccontroller.OscController.enable_all_output">
+<span class="sig-name descname"><span class="pre">enable_all_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.enable_all_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.enable_all_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable OSC output for all parameters</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.osccontroller.OscController.enable_output_for_parameter">
-<span class="sig-name descname"><span class="pre">enable_output_for_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.enable_output_for_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.enable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">enable_output_for_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/osccontroller.html#OscController.enable_output_for_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.osccontroller.OscController.enable_output_for_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable OSC for a parameter</p>
 <dl class="simple">
-<dt>Parameters:</dt><dd><p>parameter_id (int): The id of the parameter to enable OSC for</p>
+<dt>Parameters:</dt><dd><p>processor_id (int): The id of the processor the parameter belongs to
+parameter_id (int): The id of the parameter to enable OSC for</p>
 </dd>
 </dl>
 </dd></dl>

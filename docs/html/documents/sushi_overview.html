@@ -60,7 +60,7 @@ controlled through MIDI, OSC, and a gRPC interface.</p>
 <p><strong>In a nutshell:</strong></p>
 <ul class="simple">
 <li><p>Headless host with full run-time control over MIDI, gRPC and OSC interfaces.</p></li>
-<li><p>Hosts VST 2.4, VST 3.6 and LV2  plugins.</p></li>
+<li><p>Hosts VST 2.4, VST 3.7 and LV2  plugins.</p></li>
 <li><p>Highly optimized for low latency performance.</p></li>
 <li><p>Multithreaded audio processing support.</p></li>
 <li><p>Ableton Link support.</p></li>
@@ -234,15 +234,10 @@ documented under <a class="reference internal" href="sushi_control_grpc.html#sus
 <h2>Plugin Format Support<a class="headerlink" href="#plugin-format-support" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sushi can host plugins in Steinberg’s <strong>VST 2.4</strong> and <a class="reference external" href="https://www.steinberg.net/en/company/technologies/vst3.html">VST
-3.6</a>
+3.7</a>
 formats, <strong>LV2</strong> (natively as well as using the LV2VST wrapper), plus
 an Internal plugin format, which all are abstracted in a generic
 “Processor” interface.</p></li>
-<li><p><strong>Reason Studio’s</strong> <a class="reference external" href="https://www.propellerheads.com/developers">Rack
-Extensions</a> are also
-supported, but due to Reason Studio’s licensing restrictions this
-support is only available under closed-source commercial licenses of
-Sushi. Please get in touch for more information.</p></li>
 </ul>
 <p>In order to load plugins in Sushi, they need to be compiled for the
 system intended. Note that it is not possible to take an existing

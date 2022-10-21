@@ -61,6 +61,9 @@ of the separate sub-controllers for their usage.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><p>_stub (SushiControllerStub): Connection stubs to the gRPC interface implemented in sushi.</p>
 </dd>
+<dt>Notes:</dt><dd><p>close() should ALWAYS be called as part of an application housekeeping/cleanup-before-shutdown routine as it
+ensure proper releasing of resources and clean joining of concurrent threads.</p>
+</dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiController.__init__">
@@ -71,6 +74,17 @@ of the separate sub-controllers for their usage.</p>
 sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.sushicontroller.SushiController.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiController.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiController.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should be called at app close.
+It should call any sub-controller close routines whenever they exist.
+i.e.: NotificationController has an infinite event loop running in its own thread, which has to be stopped and joined</p>
+<blockquote>
+<div><p>to ensure clean closing and proper releasing of any resources.</p>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
