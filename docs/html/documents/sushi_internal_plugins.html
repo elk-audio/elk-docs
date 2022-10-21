@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Sushi Internal Plugins &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,22 +46,22 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sushi-internal-plugins">
+  <section id="sushi-internal-plugins">
 <h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
 <p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
 <p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
 <p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
-<div class="section" id="audio-in-audio-out-plugins">
+<section id="audio-in-audio-out-plugins">
 <h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="passthrough">
+<section id="passthrough">
 <h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">¶</a></h3>
 <p>Simply a bypass.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.passthrough”</p></li>
 <li><p><strong>Parameters</strong> : none</p></li>
 </ul>
-</div>
-<div class="section" id="gain">
+</section>
+<section id="gain">
 <h3>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">¶</a></h3>
 <p>Simple gain plugin. Note that the input controls are not smoothed, so it is not suitable to be used in a real-time context where the gain is adjusted by the user.
 For those use cases, prefer using the internal gain parameter of the tracks.</p>
@@ -72,8 +73,8 @@ For those use cases, prefer using the internal gain parameter of the tracks.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="equalizer">
+</section>
+<section id="equalizer">
 <h3>Equalizer<a class="headerlink" href="#equalizer" title="Permalink to this headline">¶</a></h3>
 <p>Parametric peak equalizer (single band). The implementation is based on the warped bilinear transform following RBJ Audio Cookbook’s formulas.
 Parameters are smoothed and can be modulated at run-time.</p>
@@ -87,15 +88,15 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="mono-summing">
+</section>
+<section id="mono-summing">
 <h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">¶</a></h3>
 <p>Simple plugin that sums all input channels to mono, and outputs the same mono audio to all channels.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.mono_summing”</p></li>
 </ul>
-</div>
-<div class="section" id="sample-delay">
+</section>
+<section id="sample-delay">
 <h3>Sample Delay<a class="headerlink" href="#sample-delay" title="Permalink to this headline">¶</a></h3>
 <p>Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one second at 48 kHz)</p>
 <ul class="simple">
@@ -106,8 +107,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="stereo-mixer">
+</section>
+<section id="stereo-mixer">
 <h3>Stereo Mixer<a class="headerlink" href="#stereo-mixer" title="Permalink to this headline">¶</a></h3>
 <p>Utility plugin for mixing the two channels of a stereo signal independently.</p>
 <ul class="simple">
@@ -123,8 +124,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="send">
+</section>
+<section id="send">
 <h3>Send<a class="headerlink" href="#send" title="Permalink to this headline">¶</a></h3>
 <p>Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings. With the default parameters all channels of the track are sent to the return instance but it can also be configured to send a range of channels using the “channel_count” and “start_channel” parameters.</p>
 <ul class="simple">
@@ -143,19 +144,19 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="return">
+</section>
+<section id="return">
 <h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
 <p>Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.return”</p></li>
 <li><p><strong>Parameters</strong> :</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="midi-in-audio-out-plugins">
+</section>
+</section>
+<section id="midi-in-audio-out-plugins">
 <h2>Midi In / Audio Out Plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="sample-player">
+<section id="sample-player">
 <h3>Sample Player<a class="headerlink" href="#sample-player" title="Permalink to this headline">¶</a></h3>
 <p>Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.</p>
 <ul class="simple">
@@ -175,11 +176,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="midi-in-midi-out-plugins">
+</section>
+</section>
+<section id="midi-in-midi-out-plugins">
 <h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="arpeggiator">
+<section id="arpeggiator">
 <h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
 <p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using Sushi’s tempo configuration.</p>
 <ul class="simple">
@@ -190,8 +191,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="transposer">
+</section>
+<section id="transposer">
 <h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">¶</a></h3>
 <p>Transposes incoming MIDI Note ON &amp; OFF events by a fixed amount of semitones.</p>
 <ul class="simple">
@@ -202,8 +203,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="step-sequencer">
+</section>
+<section id="step-sequencer">
 <h3>Step Sequencer<a class="headerlink" href="#step-sequencer" title="Permalink to this headline">¶</a></h3>
 <p>A simple 8-step sequencer.</p>
 <ul class="simple">
@@ -220,11 +221,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="audio-in-parameter-out-plugins">
+</section>
+</section>
+<section id="audio-in-parameter-out-plugins">
 <h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="peak-meter">
+<section id="peak-meter">
 <h3>Peak Meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">¶</a></h3>
 <p>Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate. Supports metering of up to 16 channels on a track.</p>
 <ul class="simple">
@@ -243,11 +244,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="cv-in-out-plugins">
+</section>
+</section>
+<section id="cv-in-out-plugins">
 <h2>CV In / Out plugins<a class="headerlink" href="#cv-in-out-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cv-to-control">
+<section id="cv-to-control">
 <h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">¶</a></h3>
 <p>Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.</p>
 <ul class="simple">
@@ -266,8 +267,8 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="control-to-cv">
+</section>
+<section id="control-to-cv">
 <h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">¶</a></h3>
 <p>Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.</p>
 <ul class="simple">
@@ -290,11 +291,11 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="utility-plugins">
+</section>
+</section>
+<section id="utility-plugins">
 <h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="wav-writer">
+<section id="wav-writer">
 <h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
 <p>This plugin passes through audio without altering it, while writing it to a wav file.</p>
 <ul class="simple">
@@ -311,9 +312,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><p>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>

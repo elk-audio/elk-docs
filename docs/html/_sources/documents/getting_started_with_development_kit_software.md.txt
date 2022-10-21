@@ -1,50 +1,52 @@
 # Development Kit Software
 In this guide you will quickly see which the first steps are, to run a plugin from within Elk's Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.
 
-**IMPORTANT:** All the below instructions and example files, are written for the context of running on a Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments will differ. Refer instead to our [instructions for running on the boards](run_elk_on_boards.md).
+**IMPORTANT:** All the below instructions and example files, are written for the context of running on a macOS or Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments will differ. Refer instead to our [instructions for running on the boards](run_elk_on_boards.md).
 
 ## Running a plugin within the Sushi host
 
-You could run Sushi natively on your own Debian Linux computer, or on a virtual machine. To get started you need the Sushi AppImage, available from the [Releases section of our Sushi repository](https://github.com/elk-audio/sushi/releases). Read [these brief instructions if you are unfamiliar with running software in Linux AppImages](https://itsfoss.com/use-appimage-linux/).
+You can run Sushi natively on your own macOS or Linux computer, or on a Linux virtual machine.
 
-To output sound using the Jack audio frontend, you need to have Jack audio configured on your computer, which is beyond the scope of this guide - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! We here show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer in their place.
-Another option is to use the PortAudio frontend which is started with passing the `-a` flag when starting sushi. This will by default use the system default audio device but can be configured with passing the id of the device you wish to use with the arguments `--audio-input-device` and `--audio-output-device`.
+We provide binary releases that pack together prebuilt Sushi binaries, the MDA plugins suite in VST3 format and some example JSON configurations.
 
-## Starting Sushi with the MDA JX10 VST synthesizer
+1. Download the binary package for your system (Linux-x86_64, macOS-arm64 or macOS-x86_64) from the [Sushi's Github releases page](https://github.com/elk-audio/sushi/releases/tag/1.0.0).
+2. Unzip the archive wherever you prefer
 
-First we assume you are able to run Sushi and connect to Jack audio.
+### Running Sushi on macOS
 
-The example used, requires that you have these files from the  our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3):
-
-1. config_play_vst3_desktop.json - the Sushi configuration file.
-2. mda_jx10_vst3_open_stage_control_gui.json - the Open Stage Control GUI.
-3. [mda-vst3.vst3.tar.xz](https://github.com/elk-audio/elk-examples/releases/download/examples_01/mda-vst3.vst3.tar.xz) - an x86 build of the MDA plugins, containing also the JX10 Synthesizer binary.
-4. (optionally) mda-vst3-touchosc-gui.touchosc, to control JX10 from the [TouchOSC app](https://hexler.net/products/touchosc).
-
-First unpack the tar-file with the plugin to your local drive. Place the contained VST3-plugin folder in the default
- path expected: */usr/lib/lxvst/mda-vst3.vst3*. If you place the mda-vst3.vst3 extracted content elsewhere, you also
-  need to edit the config_play_vst3.json to refer to that new path.
-
-To run Sushi using Jack, with the configuration file provided for running the MDA JX10 VST3 synthesizer:
-
-1. Navigate to */the/folder/where/you/have/placed/sushi* in a console window.
-
-2. Type the following command:
-
+If you downloaded the release .zip file from a browser, you'd need to clear the quarantine bit by doing this on the extracted `sushi` folder:
 ```bash
-$ ./Sushi-x86_64-0.7.0.AppImage -j --multicore-processing=2 --connect-ports -c /path/to/example/config/files/config_play_vst3.json
+$ xattr -rc sushi
 ```
 
-The *--multicore-processing=2* argument specifies how many CPU cores Sushi can use. If omitted it uses 1.
+To output sound to your soundcard, you can use the PortAudio frontend, which will internally use the system's CoreAudio devices. Simply run Sushi with:
 
-You should see the following status message:
+```bash
+$ ./sushi -a -c config_files/play_vst3.json
+```
+
+By default, this will use the system's default sound device. If you want to specify a different one, you can do that with the `--audio-output-device` flag.
+
+Sushi will connect by default to the first available MIDI input device on the system, if present. If you want to use a different MIDI device, you would need to change the `rt_midi_device` field in the Sushi's JSON config file, as explained in the [Sushi's configuration format document](sushi_configuration_format.md).
+
+### Running Sushi on Linux
+
+The preferred way to connect to your soundcard on a Linux computer is through the JACK audio system. You need to have Jack audio configured on your computer, which is beyond the scope of this guide - but if you have trouble getting it working [definitely ask us on the forum](https://forum.elk.audio) and we'll do our best to get you going! We here show how use [Cadence and Catia for managing Jack](https://kx.studio/Repositories#Ubuntu), but you can use any other tools you prefer in their place.
+
+Simply run the bundled AppImage with:
+
+```bash
+$ ./Sushi-x86_64.AppImage -j --connect-ports -c config_files/play_vst3.json
+```
+
+You should see the following status message if everything is fine:
 
 ```bash
 SUSHI - Sensus Universal Sound Host Interface
-Copyright 2016-2019 Elk, Stockholm
+Copyright 2016-2022 Elk, Stockholm
 ```
 
-3. Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:
+Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:
 
 ![CATIA with SUSHI](illustrations/CATIA_with_SUSHI.png)
 ​
@@ -53,16 +55,7 @@ Note that its outputs are already connected.
 That is because the *--connect-ports* command-line option used, attempts to connect the Sushi outputs. If they are
  not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.
 
-If you were to instead run Sushi on the Development Kit Board, you should use the following command, this time using
- the *-r* switch for selecting the RASPA low-latency front-end instead of Jack:
-
-```bash
-$ sushi -r --multicore-processing=2 -c /relative/path/to/your/config.json
-```
-
-Depending on which board you run, the number of cores can vary. For the Pi 4 we recommend 2 as a good starting point.
-
-## Connecting MIDI to Sushi
+#### Connecting MIDI to Sushi on Linux
 
 Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to
  connect it to a MIDI device to be able to play sound. For this, connect them with the *aconnect* tool:
@@ -96,7 +89,15 @@ client 128: 'Sushi' [type=user,pid=20167]
 
 Tip: If you do not have a physical keyboard available, you can use the ***Virtual MIDI Piano Keyboard*** software (VMPK).
 
-## Control MDA JX10 VST3 plugin with Open Stage Control
+## Control MDA JX10 VST3 plugin parameters
+
+If you want to do more on your synthesizer instance, e.g. changing some run-time parameters, SUSHI exposes everything that you need using both OSC or gRPC APIs.
+
+Using the gRPC API gives you the greater flexibility and performance but it's more of advanced topic, covered in its [dedicated section](sushi_control_grpc.md).
+
+For OSC, we prepared some configuration files that can be used with popular applications in our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3).
+
+### Control MDA JX10 VST3 plugin with Open Stage Control
 
 If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the Elk Tech blog, dedicated to the topic](https://elk.audio/controlling-plug-ins-in-elk-part-i/).
 
@@ -130,9 +131,8 @@ To use it, please refer to the TouchOSC manual - the only customisation needed i
 
 ![touch_osc_jx10_gui](illustrations/touch_osc_jx10_gui.png)
 
-
-
 Which OSC messages your particular configuration responds to, can be accessed by running Sushi with the *--dump
 -plugins* flag, as detailed in our [detailed documentation for Sushi](sushi_overview.md).
 
 Parameter values are in Sushi normalized to the range 0.0-1.0, floating point, across plugins and formats.
+

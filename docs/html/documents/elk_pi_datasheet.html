@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Overview &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -63,9 +64,9 @@ Networked AB</strong> does not recommend the use of any of its products in
 critical applications where the failure or may cause damage to property,
 injury or death. Products are not authorized for use in such
 applications.</p>
-<div class="section" id="overview">
+<section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="features">
+<section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Texas instrument PCM3168 audio codec, 24 Bit, 48 / 96 / 192 kHz</p></li>
@@ -84,8 +85,8 @@ applications.</p>
 <li><p>5-poles DIN MIDI In/Out (2.54 mm pitch pin-header)</p></li>
 <li><p>1 I2C interface (2.54 mm pitch pin-header)</p></li>
 </ul>
-</div>
-<div class="section" id="assembly-content-and-accessories">
+</section>
+<section id="assembly-content-and-accessories">
 <h2>Assembly content and accessories<a class="headerlink" href="#assembly-content-and-accessories" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -153,8 +154,8 @@ applications.</p>
 </dd>
 </dl>
 <p>For assembling the board, follow the steps in our guide for <a class="reference external" href="getting_started_with_development_kit_elk_pi_hardware.html">getting started with Elk Pi Hardware.</a></p>
-</div>
-<div class="section" id="raspberry-pi-guidelines">
+</section>
+<section id="raspberry-pi-guidelines">
 <h2>Raspberry Pi guidelines<a class="headerlink" href="#raspberry-pi-guidelines" title="Permalink to this headline">¶</a></h2>
 <p>The following guidelines must be followed when using the Raspberry Pi
 with the <em>Elk Pi</em> board. We are not responsible for possible damages
@@ -173,15 +174,15 @@ power on the RPi).</p></li>
 <strong>not more than 5.1V</strong> and make sure to respect the polarity of
 J12 (Figure 5).</p></li>
 </ul>
-</div>
-<div class="section" id="connectors-and-pinout">
+</section>
+<section id="connectors-and-pinout">
 <h2>Connectors and pinout<a class="headerlink" href="#connectors-and-pinout" title="Permalink to this headline">¶</a></h2>
 <p><em>Figure 5:</em></p>
 <p><img alt="image5" src="../_images/image16.jpg" /></p>
 <p><em>Figure 6:</em></p>
 <p><img alt="image6" src="../_images/image13.jpg" /></p>
-</div>
-<div class="section" id="status-leds">
+</section>
+<section id="status-leds">
 <h2>Status LEDs<a class="headerlink" href="#status-leds" title="Permalink to this headline">¶</a></h2>
 <p>Two of the Raspberry Pi GPIOS are directly wired to two general purpose
 LEDs, labeled on the board as “STATUS”.</p>
@@ -207,9 +208,9 @@ LEDs, labeled on the board as “STATUS”.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="power-requirements">
+</section>
+</section>
+<section id="power-requirements">
 <h1>Power requirements<a class="headerlink" href="#power-requirements" title="Permalink to this headline">¶</a></h1>
 <p>Elk Pi is fully powered from the 5V pin header exposed on the Raspberry
 Pi, so <em>no additional power supply is needed other than the Raspberry
@@ -220,7 +221,7 @@ the board is likely malfunctioning. Note that you can power the
 Raspberry Pi before plugging the Elk Pi onto it, there is no functional
 requirement related to this sequence, just make sure that the pins
 correctly line up to avoid possible short circuits.</p>
-<div class="section" id="recommended-power-supply">
+<section id="recommended-power-supply">
 <h2>Recommended Power Supply<a class="headerlink" href="#recommended-power-supply" title="Permalink to this headline">¶</a></h2>
 <p>The power supply that you will use to power the Rpi, has to have the
 following specifications:</p>
@@ -238,8 +239,8 @@ also if the Raspberry is powered from a less reliable power sources like
 phone chargers, USB ports or power-banks, but always try to <strong>avoid
 using third-party power sources to minimize possible poor supply
 conditions</strong>.</p>
-</div>
-<div class="section" id="power-consumption">
+</section>
+<section id="power-consumption">
 <h2>Power Consumption<a class="headerlink" href="#power-consumption" title="Permalink to this headline">¶</a></h2>
 <p>The power consumption of the Elk Pi board highly depends on the usage of
 the board or, in other words, what you connect to it.</p>
@@ -253,8 +254,8 @@ that the Raspberry Pi can draw at maximum around 1A of current with a
 function, and this will be enough current in most use cases.</p>
 <p>Idle Power consumption on 5V pin (Elk Pi only) = 200 - 300 mA</p>
 <p>Idle Power consumption on 5V pin (Elk Pi+Rpi) = 800 - 950 mA</p>
-</div>
-<div class="section" id="alternative-power-supply">
+</section>
+<section id="alternative-power-supply">
 <h2>Alternative Power Supply<a class="headerlink" href="#alternative-power-supply" title="Permalink to this headline">¶</a></h2>
 <p>In the standard configuration, the Elk Pi is taking the power from the
 5V pin of the raspberry Pi, which is directly coming from the micro USB
@@ -268,9 +269,9 @@ viceversa).</strong> Only one power source must provide power to the system.
 This alternative power method is intended for special use cases where is
 not practical to have the default microUSB power supply. The power
 requirement is, clearly the same stated previously: 5V, 2.5A.</p>
-</div>
-</div>
-<div class="section" id="audio-cv-configurations">
+</section>
+</section>
+<section id="audio-cv-configurations">
 <h1>Audio/CV configurations<a class="headerlink" href="#audio-cv-configurations" title="Permalink to this headline">¶</a></h1>
 <p>One of the Elk Pi main features is its audio/cv configurability. The
 board has a total of 6 inputs and 8 output channels. A total of 4
@@ -319,8 +320,8 @@ is oriented with the connections parallel to the long side of the header
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="audio-i-o">
+</section>
+<section id="audio-i-o">
 <h1>Audio I/O<a class="headerlink" href="#audio-i-o" title="Permalink to this headline">¶</a></h1>
 <p>The board presents a maximum of 6 audio inputs (if J7 and J8 are on
 “audio” configuration) and 6 audio outputs (if J10 and J11 are on
@@ -383,7 +384,7 @@ neither of the two options is applied, the channel/s will be muted.</p>
 <dd><p>To understand which version of the board you have, just read the quote on the back of the board.</p>
 </dd>
 </dl>
-<div class="section" id="eurorack-compatibility">
+<section id="eurorack-compatibility">
 <h2>Eurorack Compatibility<a class="headerlink" href="#eurorack-compatibility" title="Permalink to this headline">¶</a></h2>
 <p>The Elk pi board is designed to be interfaceable with the Eurorack world
 thanks to its CV and Gate capabilities. However, the audio levels are
@@ -398,8 +399,8 @@ signal before feeding it to the board, (for example with an attenuator
 module). The line level output might sound a bit weak in a eurorack
 system, but this is less concerning since it is likely to find source of
 gain in your signal path (in the worst case, from your output module).</p>
-</div>
-<div class="section" id="mini-jack-input">
+</section>
+<section id="mini-jack-input">
 <h2>Mini-jack input<a class="headerlink" href="#mini-jack-input" title="Permalink to this headline">¶</a></h2>
 <p>A 3.5 mm stereo jack input (J13) is present on the board. This is
 directly connected to input channels 1 (RING) and 2 (TIP). The same two
@@ -410,8 +411,8 @@ required to access most of the I/O on the board. Since channel 1 and 2
 of the board goes through the preamp, it is also possible to connect an
 instrument-level signal into it, using a mini-jack to mono jack
 splitter.</p>
-</div>
-<div class="section" id="stereo-preamp">
+</section>
+<section id="stereo-preamp">
 <h2>Stereo Preamp<a class="headerlink" href="#stereo-preamp" title="Permalink to this headline">¶</a></h2>
 <p>The board has a two-channel preamp with a fixed gain of +10dB (3.16
 times). <strong>The preamp is only available on channels 1 and 2 and it can be
@@ -456,8 +457,8 @@ boost the input.</p>
 <p>Note: when the preamp is +0dB mode, the audio level of ch. 1 and 2 is
 approximately 0.3dB higher with respect audio channel 3, 4, 5 and 6, due
 to its high impedance.</p>
-</div>
-<div class="section" id="headphones-output">
+</section>
+<section id="headphones-output">
 <h2>Headphones output<a class="headerlink" href="#headphones-output" title="Permalink to this headline">¶</a></h2>
 <p>The output channel 1 and 2 of the Codec are also available on the
 headphone jack J5 (L = Ch 1, R = Ch2).</p>
@@ -474,11 +475,11 @@ short-circuiting the right channel (by using mono 6.3 mm to RCA plug for
 example) the right channel will be muted on the headphones. You can
 adjust the volume of the headphone output by means of the rotary
 potentiometer R50. The volume is increased with a clockwise rotation.</p>
-</div>
-</div>
-<div class="section" id="analog-and-digital-gpios">
+</section>
+</section>
+<section id="analog-and-digital-gpios">
 <h1>Analog and Digital GPIOs<a class="headerlink" href="#analog-and-digital-gpios" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="digital-io">
+<section id="digital-io">
 <h2>Digital IO<a class="headerlink" href="#digital-io" title="Permalink to this headline">¶</a></h2>
 <p>Digital IO is based on shift registers. Namely 74HC165 for input and
 74HC595 for output. Logic level for both is 3.3V and exceeding it will
@@ -518,8 +519,8 @@ clock input.</p>
 the 40-pins male connectors J3 and J4 (refer to pinout). They shall be
 used to connect buttons, switches, rotary encoders, rotary switches,
 LEDs, LED rings, etc..</p>
-</div>
-<div class="section" id="analog-inputs">
+</section>
+<section id="analog-inputs">
 <h2>Analog Inputs<a class="headerlink" href="#analog-inputs" title="Permalink to this headline">¶</a></h2>
 <p>The analog inputs are based on one single channel 10-bit analog to
 digital converter ADS70411 and an analog multiplexer 74HC4067. The
@@ -547,8 +548,8 @@ certain multiplexer and selecting desired channel.</p>
 <p>16 Analog inputs are (Ax) are available on the 26-pins male connector J6
 (refer to pinout). They shall be used to connect potentiometers, sliders
 and sensors.</p>
-</div>
-<div class="section" id="connection-guidelines-for-gpio-peripherals">
+</section>
+<section id="connection-guidelines-for-gpio-peripherals">
 <h2>Connection guidelines for GPIO peripherals<a class="headerlink" href="#connection-guidelines-for-gpio-peripherals" title="Permalink to this headline">¶</a></h2>
 <p>Inputs and outputs of multi-pin peripheral device must be sequential
 for the ease of software development. A perfect example would be
@@ -566,11 +567,11 @@ respectively, <strong>analog</strong> inputs and <strong>digital</strong> I/O.</
 <p>Current sink and source from digital outputs should be kept lower than 4 mA per pin.</p>
 <p>Use as reference the examples illustrated in the diagram below:</p>
 <p><img alt="image14" src="../_images/image15.png" /></p>
-</div>
-</div>
-<div class="section" id="cv-gate-i-o">
+</section>
+</section>
+<section id="cv-gate-i-o">
 <h1>CV &amp; GATE I/O<a class="headerlink" href="#cv-gate-i-o" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="cv-i-o">
+<section id="cv-i-o">
 <h2>CV I/O<a class="headerlink" href="#cv-i-o" title="Permalink to this headline">¶</a></h2>
 <p>Up to two CV inputs and four CV outputs are available on the board
 (refer to <em>Figure 4</em> to understand the possible configurations). The CV
@@ -615,8 +616,8 @@ the buffer size. CV inputs that exceed the input range are clipped.</p>
 to be non inverting.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="gate-i-o">
+</section>
+<section id="gate-i-o">
 <h2>GATE I/O<a class="headerlink" href="#gate-i-o" title="Permalink to this headline">¶</a></h2>
 <p>Two gate inputs and four gate outputs are available on the board. The
 input stage is inverting and is based on a transistor high-side switch
@@ -662,9 +663,9 @@ clock IOs, depending on the software configuration.</p>
 to be non inverting.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="uart-interface">
+</section>
+</section>
+<section id="uart-interface">
 <h1>UART interface<a class="headerlink" href="#uart-interface" title="Permalink to this headline">¶</a></h1>
 <p>The UART interface can be accessed using the pins 32, 34, 36, 38, 39 of
 J4 (Figure 11), that are labeled as “MIDI” since they are the same pins
@@ -679,8 +680,8 @@ and pin [34] will be UART RX. Figure 11 illustrates how to connect the
 Elk Pi to your computer with a TTL to USB connector (FTDI).</p>
 <p><em>Figure 12:</em></p>
 <p><img alt="image100" src="../_images/image100.jpg" /></p>
-</div>
-<div class="section" id="midi-din-i-o">
+</section>
+<section id="midi-din-i-o">
 <h1>MIDI DIN I/O<a class="headerlink" href="#midi-din-i-o" title="Permalink to this headline">¶</a></h1>
 <p>Elk Pi has Optocoupled MIDI IN and MIDI OUT built in, so it is possible
 to interface it with 5 pins DIN connectors. You might want to do this
@@ -734,11 +735,11 @@ to make the connections:</p>
 </tbody>
 </table>
 <p><a class="reference internal" href="../_images/image12.png"><img alt="image16" src="../_images/image12.png" style="width: 200px;" /></a></p>
-</div>
-<div class="section" id="board-dimensions">
+</section>
+<section id="board-dimensions">
 <h1>Board dimensions<a class="headerlink" href="#board-dimensions" title="Permalink to this headline">¶</a></h1>
 <p><img alt="image17" src="../_images/image11.jpg" /></p>
-</div>
+</section>
 
 
             <div class="clearer"></div>

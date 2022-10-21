@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Elk Pi Hardware &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -17,7 +18,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Elk UpCore Hardware" href="getting_started_with_development_kit_upcore_hardware.html" />
+    <link rel="next" title="Run Elk on Boards" href="run_elk_on_boards.html" />
     <link rel="prev" title="Development Kit Software" href="getting_started_with_development_kit_software.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -30,7 +31,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
+          <a href="run_elk_on_boards.html" title="Run Elk on Boards"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"
@@ -45,12 +46,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="elk-pi-hardware">
+  <section id="elk-pi-hardware">
 <h1>Elk Pi Hardware<a class="headerlink" href="#elk-pi-hardware" title="Permalink to this headline">¶</a></h1>
 <p>Get Started with the Elk Pi Hardware.</p>
 <p>This document contains basic information on how to set up Elk Pi development boards.</p>
 <p>Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate and screws.</p>
-<div class="section" id="assembly">
+<section id="assembly">
 <h2>1. Assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h2>
 <p>We have created a brief time-lapse video of the assembly process <a class="reference external" href="https://www.youtube.com/watch?v=euB_fGGumZg&amp;feature=youtu.be">you may want to refer to</a>, illustrating the steps below.</p>
 <ol>
@@ -70,23 +71,23 @@
 <p><img alt="Figure 4" src="../_images/elk_pi_completed_assembly.jpg" /></p>
 </li>
 </ol>
-</div>
-<div class="section" id="flashing-the-elk-operating-system-image-to-the-sd-card">
+</section>
+<section id="flashing-the-elk-operating-system-image-to-the-sd-card">
 <h2>2. Flashing the Elk operating system image to the SD card<a class="headerlink" href="#flashing-the-elk-operating-system-image-to-the-sd-card" title="Permalink to this headline">¶</a></h2>
 <p>To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. The minimum required SD card size is 8GB.</p>
 <ol class="simple">
 <li><p>Download the compressed image from the provided link. It will have a filename such as: <em>elk-sika-image-dev-raspberrypi3-64.wic.bz2</em>.</p></li>
 <li><p>Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.</p></li>
 </ol>
-<div class="section" id="windows">
+<section id="windows">
 <h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Extract the <em>.wic</em> file from the <em>.bz2</em> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</p></li>
 <li><p>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</p></li>
 <li><p>Flash the extracted <em>*.wic</em> file to the SD card.</p></li>
 </ol>
-</div>
-<div class="section" id="linux">
+</section>
+<section id="linux">
 <h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <em>dd</em> with these instructions:</p>
 <ol class="simple">
@@ -107,21 +108,21 @@
 <p>If for any reason the process fails, just reduce the <em>bs=4M</em> speed to <em>bs=1M</em> for example, and it should work great.</p>
 </li>
 </ol>
-</div>
-<div class="section" id="macos">
+</section>
+<section id="macos">
 <h3>macOS:<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
 <p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <em>.bz2</em> file first.</p>
-</div>
-</div>
-<div class="section" id="power-up-and-next-steps">
+</section>
+</section>
+<section id="power-up-and-next-steps">
 <h2>3. Power up, and next steps<a class="headerlink" href="#power-up-and-next-steps" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Put the SD card in the corresponding slot on the Raspberry Pi.</p></li>
 <li><p>Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.</p></li>
 </ol>
 <p>From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">Run Elk on Boards</span></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -149,8 +150,8 @@
   <p class="topless"><a href="getting_started_with_development_kit_software.html"
                         title="previous chapter">Development Kit Software</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="getting_started_with_development_kit_upcore_hardware.html"
-                        title="next chapter">Elk UpCore Hardware</a></p>
+  <p class="topless"><a href="run_elk_on_boards.html"
+                        title="next chapter">Run Elk on Boards</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -182,7 +183,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
+          <a href="run_elk_on_boards.html" title="Run Elk on Boards"
              >next</a> |</li>
         <li class="right" >
           <a href="getting_started_with_development_kit_software.html" title="Development Kit Software"

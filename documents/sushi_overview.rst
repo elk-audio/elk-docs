@@ -16,11 +16,11 @@ controlled through MIDI, OSC, and a gRPC interface.
 **In a nutshell:**
 
 -  Headless host with full run-time control over MIDI, gRPC and OSC interfaces.
--  Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.
+-  Hosts VST 2.4, VST 3.6 and LV2  plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
 -  Ableton Link support.
--  Audio connections through Raspa, Jack, and file I/O.
+-  Audio connections through Raspa, Jack, Portaudio, and file I/O.
 -  Simple scripting configuration.
 
 Architecture
@@ -150,7 +150,7 @@ End-User Control
 ^^^^^^^^^^^^^^^^
 
 MIDI input and output is supported through
-`ALSA <https://www.alsa-project.org/>`__. This enables integration with
+`ALSA <https://www.alsa-project.org/>`__, or RtMidi (for accessing CoreMIDI on macOS). This enables integration with
 any class compliant midi device, like USB MIDI keyboards or controllers.
 **A flexible routing system allows you to route MIDI based on channels
 to any track**. MIDI can be freely routed to tracks and MIDI Program

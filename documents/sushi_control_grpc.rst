@@ -84,7 +84,7 @@ CvGateController
 Enables the connection/disconnection of Control Voltage (CV) and Gate signals to and from processor parameters.
 It also allows querying existing connections.
 
-\* Note that in the current release version (0.11) of Sushi, while the .proto file API for creating and destroying is defined,
+\* Note that in the current release version of Sushi, while the .proto file API for creating and destroying is defined,
 it is not yet functional.
 
 KeyboardController
@@ -131,5 +131,3 @@ NotificationController is different in that using it the GUI can subscribe to no
 for example if a plugin is added/removed, a track is added/removed,
 the transport state is changed, or a plugin's internal parameter has changed value.
 
-\* Note that in the current release version (0.11) of Sushi, while the .proto file API is defined, transport and timing change
-notifications are not yet enabled.

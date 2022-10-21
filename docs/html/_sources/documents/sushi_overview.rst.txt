@@ -16,11 +16,11 @@ controlled through MIDI, OSC, and a gRPC interface.
 **In a nutshell:**
 
 -  Headless host with full run-time control over MIDI, gRPC and OSC interfaces.
--  Hosts VST 2.4, VST 3.6, LV2 and Rack Extensions plugins.
+-  Hosts VST 2.4, VST 3.6 and LV2  plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
 -  Ableton Link support.
--  Audio connections through Raspa, Jack, and file I/O.
+-  Audio connections through Raspa, Jack, Portaudio, and file I/O.
 -  Simple scripting configuration.
 
 Architecture
@@ -39,6 +39,12 @@ have multiple stereo outputs, **each with their own individual gain and
 panning controls**, which in turn can be routed to any audio output.
 Useful for multi bus plugins. Sushi also features aux sends and
 corresponding return tracks for effects processing.
+
+In addition, Sushi allows adding pre and post tracks, each with as many
+channels as there are audio inputs and outputs in sushi. They can be used
+for pre-processing audio inputs before routing to individual tracks and
+for adding master effects to the audio outputs.
+
 
 Audio Frontends
 ---------------
@@ -109,8 +115,7 @@ Please refer to the dedicated section on the :ref:`sushi-public-api-model` for t
 JSON Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel
-setup (mono, stereo, multichannel), the plugins on the track, audio
+In the JSON configuration file it is possible to specify the initial number of tracks to use, their channel setup, the plugins on the track, audio
 input and output routing, MIDI routing, which plugin parameters map to
 Control Change messages, and so on. See below for a very simple example
 for how to set up a synth plugin with MIDI-mapped parameters.
@@ -145,7 +150,7 @@ End-User Control
 ^^^^^^^^^^^^^^^^
 
 MIDI input and output is supported through
-`ALSA <https://www.alsa-project.org/>`__. This enables integration with
+`ALSA <https://www.alsa-project.org/>`__, or RtMidi (for accessing CoreMIDI on macOS). This enables integration with
 any class compliant midi device, like USB MIDI keyboards or controllers.
 **A flexible routing system allows you to route MIDI based on channels
 to any track**. MIDI can be freely routed to tracks and MIDI Program

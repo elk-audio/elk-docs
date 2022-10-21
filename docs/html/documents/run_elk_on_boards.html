@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Run Elk on Boards &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -18,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" />
-    <link rel="prev" title="Elk UpCore Hardware" href="getting_started_with_development_kit_upcore_hardware.html" /> 
+    <link rel="prev" title="Elk Pi Hardware" href="getting_started_with_development_kit_elk_pi_hardware.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -33,7 +34,7 @@
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
+          <a href="getting_started_with_development_kit_elk_pi_hardware.html" title="Elk Pi Hardware"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
@@ -45,11 +46,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="run-elk-on-boards">
+  <section id="run-elk-on-boards">
 <h1>Run Elk on Boards<a class="headerlink" href="#run-elk-on-boards" title="Permalink to this headline">¶</a></h1>
 <p>This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.</p>
 <p>The following steps are the same for all our development kit boards, covering the software, and how you get your first sound to play from the board.</p>
-<div class="section" id="power-it-up-connect">
+<section id="power-it-up-connect">
 <h2>1. Power it up, connect…<a class="headerlink" href="#power-it-up-connect" title="Permalink to this headline">¶</a></h2>
 <p>For getting access to the board terminal you have several options:</p>
 <ol class="simple">
@@ -59,7 +60,7 @@
 </ol>
 <p>For setting up SSH connections follow these tips:</p>
 <ol class="simple">
-<li><p>If your host board has an Ethernet port and you connected it directly to your computer (Elk Pi does, but not UpCore), set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</p></li>
+<li><p>If your host board has an Ethernet port and you connected it directly to your computer, set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</p></li>
 <li><p>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.</p>
 <ol class="simple">
 <li><p>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
@@ -69,8 +70,8 @@ of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect
 <li><p>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</p></li>
 <li><p>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</p></li>
 </ol>
-</div>
-<div class="section" id="if-you-have-an-hifiberry-audio-hat">
+</section>
+<section id="if-you-have-an-hifiberry-audio-hat">
 <h2>2. (If you have an HiFiBerry audio hat)<a class="headerlink" href="#if-you-have-an-hifiberry-audio-hat" title="Permalink to this headline">¶</a></h2>
 <p>Elk supports audio hats from HiFiBerry, such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>.</p>
 <p>If you are not using these, you can skip to step 3, and run Sushi.</p>
@@ -83,8 +84,8 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 </pre></div>
 </div>
 <p>After this, restart the system for these changes to take effect. Now you can run Sushi as described in step 3. More information on reconfiguring what hat to use is available in the <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a> section.</p>
-</div>
-<div class="section" id="and-run-sushi">
+</section>
+<section id="and-run-sushi">
 <h2>3. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this headline">¶</a></h2>
 <p>You will find several configurations and plugins ready to test on the image, under the folders <em>~/config_files</em> and
 <em>~/plugins</em> in the user folder.</p>
@@ -106,19 +107,19 @@ $ aconnect X Y
 </div>
 <p>If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!</p>
 <p>Since this is a development board, you will need to start Sushi manually - but under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>. we show how the device can be configured to load a setup automatically on power-on.</p>
-</div>
-<div class="section" id="powering-down">
+</section>
+<section id="powering-down">
 <h2>4. Powering down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
 <p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
 <p>Instead, type <em>$ sudo poweroff</em> to safely shutdown the system.</p>
 <p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>.</p>
-</div>
-<div class="section" id="further-steps">
+</section>
+<section id="further-steps">
 <h2>5. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>
 <p>Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!</p>
 <p>There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our documentation on <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -140,8 +141,8 @@ $ aconnect X Y
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="getting_started_with_development_kit_upcore_hardware.html"
-                        title="previous chapter">Elk UpCore Hardware</a></p>
+  <p class="topless"><a href="getting_started_with_development_kit_elk_pi_hardware.html"
+                        title="previous chapter">Elk Pi Hardware</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="sushi_overview.html"
                         title="next chapter">Sushi: The DAW Inside Elk</a></p>
@@ -179,7 +180,7 @@ $ aconnect X Y
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              >next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_upcore_hardware.html" title="Elk UpCore Hardware"
+          <a href="getting_started_with_development_kit_elk_pi_hardware.html" title="Elk Pi Hardware"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 

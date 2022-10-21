@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Sushi Public API Model &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,13 +46,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sushi-public-api-model">
+  <section id="sushi-public-api-model">
 <span id="id1"></span><h1>Sushi Public API Model<a class="headerlink" href="#sushi-public-api-model" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="img" src="../_images/sushi_architecture.png" />
-<p class="caption"><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="processors-tracks-plugins-and-parameters">
+<figcaption>
+<p><span class="caption-text"><em>(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).</em></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="processors-tracks-plugins-and-parameters">
 <h2>Processors, Tracks, Plugins and Parameters<a class="headerlink" href="#processors-tracks-plugins-and-parameters" title="Permalink to this headline">¶</a></h2>
 <p>The central entity in Sushi is the Processor. Plugins, once loaded, are processors.
 And, Tracks are also processors, with the difference,
@@ -96,8 +99,8 @@ inputs and outputs of Sushi.</p>
 <li><p>“gain_sub_n” : The volume of the n:th output bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).</p></li>
 <li><p>“pan_sub_n” : The left - right panning of the n:th output bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).</p></li>
 </ul>
-</div>
-<div class="section" id="global-sushi-settings">
+</section>
+<section id="global-sushi-settings">
 <h2>Global Sushi Settings<a class="headerlink" href="#global-sushi-settings" title="Permalink to this headline">¶</a></h2>
 <p>Besides parameter and property set per processor, there are several global settings to control in Sushi.</p>
 <p>The set of physical audio, MIDI and CV/Gate channels to use (limited of course by the hardware Sushi runs on), are defined during startup,
@@ -105,8 +108,8 @@ and are not changeable run-time.</p>
 <p>The Global Transport is used to set tempo, time signature and play/stop states, for any plugins that have internal sequencing,
 and for Ableton Link and midi clock.</p>
 <p>During run-time, timing data on the processor utilization can be generated and fetched / subscribed to.</p>
-</div>
-<div class="section" id="accessing-the-sushi-model">
+</section>
+<section id="accessing-the-sushi-model">
 <h2>Accessing the Sushi Model<a class="headerlink" href="#accessing-the-sushi-model" title="Permalink to this headline">¶</a></h2>
 <p>For many of the above, there are ways of accessing the data over both the JSON configuration file, MIDI, OSC and gRPC.
 For others, it may only be possible over one of the above.</p>
@@ -117,8 +120,8 @@ For others, it may only be possible over one of the above.</p>
 <li><p>The <a class="reference external" href="sushi_control_osc.html">Open Sound Control API</a> defines a streamlined sub-set of operations, selected to make sense for the common contexts of use for OSC: Efficient messages notifying of parameter changes; and enabling End-Users to create their own custom GUI’s and mappings to other media tools.</p></li>
 <li><p>MIDI, CC and CV/Gate are also primarily defined to be accessible by end-users, for their integration of the audio device with their other technologies.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>

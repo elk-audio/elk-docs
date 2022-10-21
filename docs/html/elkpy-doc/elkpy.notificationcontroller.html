@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>elkpy.NotificationController &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -47,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-elkpy.notificationcontroller">
+  <section id="module-elkpy.notificationcontroller">
 <span id="elkpy-notificationcontroller"></span><h1>elkpy.NotificationController<a class="headerlink" href="#module-elkpy.notificationcontroller" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController">
@@ -61,9 +62,6 @@ and to attach call-back functions to each subscribed stream.</p>
 <dt>Attributes:</dt><dd><p>address: gRPC server IP (str: ip:port)
 loop: an asynchronous event loop</p>
 </dd>
-<dt>Notes:</dt><dd><p>close() should ALWAYS be called as part of an application housekeeping/cleanup-before-shutdown routine as it
-ensure proper releasing of resources and clean joining of concurrent threads.</p>
-</dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.__init__">
@@ -75,11 +73,6 @@ sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definiti
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/notificationcontroller.html#NotificationController.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.notificationcontroller.NotificationController.close" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">
@@ -170,7 +163,7 @@ User needs to implement their own stream consumer logic and pass it as cb.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>

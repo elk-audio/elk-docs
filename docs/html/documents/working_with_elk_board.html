@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Working with Elk Board &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,12 +46,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="working-with-elk-board">
+  <section id="working-with-elk-board">
 <h1>Working with Elk Board<a class="headerlink" href="#working-with-elk-board" title="Permalink to this headline">¶</a></h1>
 <p>There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.</p>
-<div class="section" id="filesystem">
+<section id="filesystem">
 <h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="partition-layout">
+<section id="partition-layout">
 <h3>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">¶</a></h3>
 <p>Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
 <p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep on the mounted root partition
@@ -67,36 +68,36 @@
 will put its contents on the root filesystem copy that is not currently mounted, and it will change the bootloader configuration to boot from it if the update is run successfully.</p>
 <p>It is also worth noticing that while on development images all the partitions are mounted as read/write, in production images the root filesystems are usually mounted as read-only to minimise NAND wearing and possible corruptions when powering off the device.</p>
 <p>Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
-</div>
-<div class="section" id="user-data-separation">
+</section>
+<section id="user-data-separation">
 <h3>User Data Separation<a class="headerlink" href="#user-data-separation" title="Permalink to this headline">¶</a></h3>
 <p>Files in the user data partition under <em>/udata</em>, remain untouched after running a software update, so keep any
 temporary files used for development there.</p>
 <p>Also use  <em>/udata</em> for the storage of settings &amp; user patches.</p>
 <p>If your plugin or other process needs to store data e.g. in the user home directory, a quick workaround is to create
 symbolic links to the <em>/udata</em> partition from there.</p>
-</div>
-</div>
-<div class="section" id="elk-images">
+</section>
+</section>
+<section id="elk-images">
 <h2>Elk Images<a class="headerlink" href="#elk-images" title="Permalink to this headline">¶</a></h2>
 <p>Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:</p>
-<div class="section" id="development-image">
+<section id="development-image">
 <h3>Development Image<a class="headerlink" href="#development-image" title="Permalink to this headline">¶</a></h3>
 <p>The development image contains the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.</p>
-</div>
-<div class="section" id="release-image">
+</section>
+<section id="release-image">
 <h3>Release Image<a class="headerlink" href="#release-image" title="Permalink to this headline">¶</a></h3>
 <p>The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It
 is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight
 BusyBox alternatives. It is also setup to be read-only, with exception for <em>/udata</em> if needed.</p>
-</div>
-</div>
-<div class="section" id="elk-system-utilities">
+</section>
+</section>
+<section id="elk-system-utilities">
 <h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">¶</a></h2>
 <p>For important, common tasks with Elk, we provide the <em>elk_system_utils</em> script, which has commands for performing
 these common tasks straightforwardly. Type <em>elk_system_utils -h</em> to get a description of the various commands and
 their respective arguments.</p>
-<div class="section" id="changing-audio-buffer-size">
+<section id="changing-audio-buffer-size">
 <h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">¶</a></h3>
 <p>The audio buffer size of the system can be changed by typing <em>sudo elk_system_utils –set-buffer-size [size]</em>. The
 buffer size should be a power of 2. For example:</p>
@@ -105,8 +106,8 @@ $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 </pre></div>
 </div>
 <p>The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.</p>
-</div>
-<div class="section" id="changing-audio-hats">
+</section>
+<section id="changing-audio-hats">
 <h3>Changing Audio Hats<a class="headerlink" href="#changing-audio-hats" title="Permalink to this headline">¶</a></h3>
 <p>Currently Elk Audio OS supports the following audio hats:</p>
 <ol class="simple">
@@ -125,26 +126,26 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
 $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 </pre></div>
 </div>
-</div>
-<div class="section" id="enabling-disabling-write-access-to-root-partition">
+</section>
+<section id="enabling-disabling-write-access-to-root-partition">
 <h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">¶</a></h3>
 <p>The default state on a newly flashed image is that the root partition is has both read and write permissions. However
 , to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default
 preference for Elk release images. You can change such permissions with <em>elk_system_utils</em>, temporarily or permanently:</p>
-<div class="section" id="temporarily-change-write-access">
+<section id="temporarily-change-write-access">
 <h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">¶</a></h4>
 <p>Type <em>$ sudo elk_system_utils –remount-as-rw</em> to mount your current rootfs partition as read-write.</p>
 <p>The command <em>$ sudo elk_system_utils –remount-as-ro</em>  to set read-only status.</p>
 <p>Neither of these changes persist across boot cycles.</p>
-</div>
-<div class="section" id="permanently-change-write-access">
+</section>
+<section id="permanently-change-write-access">
 <h4>Permanently Change Write Access<a class="headerlink" href="#permanently-change-write-access" title="Permalink to this headline">¶</a></h4>
 <p>Use <em>$ sudo elk_system_utils –ro-rootfs enable</em> to enable read-only access to current rootfs partition.</p>
 <p><em>$ sudo elk_system_utils –ro-rootfs disable</em>, permanently gives read-write access.</p>
 <p>You need to perform a power cycle for either change to take effect.</p>
-</div>
-</div>
-<div class="section" id="manually-controlling-default-fallback-root-partition">
+</section>
+</section>
+<section id="manually-controlling-default-fallback-root-partition">
 <h3>Manually Controlling Default/Fallback Root Partition<a class="headerlink" href="#manually-controlling-default-fallback-root-partition" title="Permalink to this headline">¶</a></h3>
 <p>As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions
 , <em>rootfs1</em> and <em>rootfs2</em>. It maintains a counter internally, for the number of failed boot attempts. Once that
@@ -153,8 +154,8 @@ counter reaches 10, the two filesystems are automatically swapped, so that if a 
 the default partition - or parameter 2 for <em>rootfs2</em>. The other partition is then automatically assigned as fallback.</p>
 <p>To reset the boot count environment variable to 0, enter the command  <em>$ elk_system_utils –reset-boot-count</em>. This
 may be useful if you have for example yourself frequently disconnected power before booting completes.</p>
-</div>
-<div class="section" id="set-usb-speed">
+</section>
+<section id="set-usb-speed">
 <h3>Set USB Speed<a class="headerlink" href="#set-usb-speed" title="Permalink to this headline">¶</a></h3>
 <p>Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. <em><strong>This problem seems to solved with the Raspberry Pi 4.</strong></em></p>
 <p>We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:</p>
@@ -166,11 +167,11 @@ may be useful if you have for example yourself frequently disconnected power bef
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo elk_system_utils --usb-speed <span class="m">2</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="connecting-to-your-board">
+</section>
+</section>
+<section id="connecting-to-your-board">
 <h2>Connecting to Your Board<a class="headerlink" href="#connecting-to-your-board" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="over-wifi">
+<section id="over-wifi">
 <h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">¶</a></h3>
 <p>Log-in to the board as <em><strong>root</strong></em> (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
 <p>The easiest way to setup WiFi access is through <em>connman</em>, which is enabled by default in dev
@@ -198,8 +199,8 @@ userspace applications.</p>
 </pre></div>
 </div>
 <p>Otherwise, you will need to complete the steps above every time you power on the board.</p>
-</div>
-<div class="section" id="over-a-serial-connection">
+</section>
+<section id="over-a-serial-connection">
 <h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
 <p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
 <p>For example, on a host Linux / macOS machine:</p>
@@ -211,9 +212,9 @@ $ picocom /dev/ttyXXX -b <span class="m">57600</span> -l
 <p>With a serial connection you can login and have full shell access to the board, but files need to be transferred over
 the network or using a USB storage device. It might be useful to use <em>tmux</em> (installed in the development images) as
 a terminal multiplexer when working in this way.</p>
-</div>
-</div>
-<div class="section" id="monitoring-sushi-performance">
+</section>
+</section>
+<section id="monitoring-sushi-performance">
 <h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
 <p>Given Sushi is running, to get a rough view of CPU performance, <em>top</em>, <em>htop</em> and similar Linux tools will only show
 you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
@@ -222,13 +223,13 @@ you the amount of CPU used in non-RT tasks and not the real time audio processin
 </div>
 <p>For a more fine-grained analysis, you can use Sushi’s gRPC api to query timing statistics of each track and plugin
 , or you can run Sushi with the <em>–timing-statistics</em> flag to get the results on a file.</p>
-</div>
-<div class="section" id="software-update-system">
+</section>
+<section id="software-update-system">
 <h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
 <p><em>Important note</em>: as written in the <a class="reference external" href="#partition-layout">Partition Layout section</a>, your data in the mounted root
 partition will be lost after an update! Keep anything that you want to save under <em>/udata</em>.</p>
-<div class="section" id="updating-over-network-wifi-ethernet">
+<section id="updating-over-network-wifi-ethernet">
 <h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</p></li>
@@ -239,8 +240,8 @@ to upload the file to start the update.</p></li>
 to power off the board manually from the board’s terminal (e.g. <em>sudo poweroff</em>).</p></li>
 <li><p>Turn on the board. You should see the updated version number on the splash logo, and the rootfs partition will be switched.</p></li>
 </ol>
-</div>
-<div class="section" id="updating-with-an-usb-drive">
+</section>
+<section id="updating-with-an-usb-drive">
 <h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted
@@ -250,9 +251,9 @@ at any time.</p></li>
 <li><p>If the SWupdate failed for any reason, then only the Red LED will be turned on.</p></li>
 <li><p>In a failed SWupdate scenario, turn off the board and try again. If the problem persists, raise an issue on the <a class="reference external" href="https://github.com/elk-audio/meta-elkpi">meta-elkpi</a> GitHub repository or ask on the forum.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="configuring-automatic-startup">
+</section>
+</section>
+<section id="configuring-automatic-startup">
 <h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
@@ -274,8 +275,8 @@ $ systemctl <span class="nb">enable</span> sensei
 <p>Sushi will still output its log file in <em>/tmp/sushi.log</em>. If you want to see the standard output as well, for example
 because you have put some debug printfs in your plugin, you can run <em>journalctl -fu sushi</em> (as root).</p>
 <p>They can also be started temporarily with <em>$ systemctl start sushi</em> as any normal SystemD service.</p>
-</div>
-<div class="section" id="setting-cpu-speed">
+</section>
+<section id="setting-cpu-speed">
 <h2>Setting CPU Speed<a class="headerlink" href="#setting-cpu-speed" title="Permalink to this headline">¶</a></h2>
 <p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting in the Elk Pi OS.</p>
 <p>When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.</p>
@@ -289,8 +290,8 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
 </pre></div>
 </div>
 <p>You will see all the options available on your current board.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>

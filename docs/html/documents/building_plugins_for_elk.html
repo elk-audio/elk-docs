@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Build Plugins for Elk &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,12 +46,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="build-plugins-for-elk">
+  <section id="build-plugins-for-elk">
 <h1>Build Plugins for Elk<a class="headerlink" href="#build-plugins-for-elk" title="Permalink to this headline">¶</a></h1>
 <p>Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg’s APIs. It also supports LV2 plugins natively. So there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.</p>
 <p>Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk’s provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.</p>
 <p>As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.</p>
-<div class="section" id="cross-compiling-toolchain">
+<section id="cross-compiling-toolchain">
 <h2>Cross-Compiling Toolchain<a class="headerlink" href="#cross-compiling-toolchain" title="Permalink to this headline">¶</a></h2>
 <p>For each targeted platform, we release a cross-compiling toolchain based on gcc (clang available on request) that replaces all the commands of the standard toolchain, including make, CMake, system libraries, etc.</p>
 <p>You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:</p>
@@ -59,26 +60,26 @@
 </div>
 <p>Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.</p>
 <p>If you had previously changed your  <em>LD_LIBRARY_PATH</em>, you would need to first issue the <em>#$ unset LD_LIBRARY_PATH</em> command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in <em>/home/minddev/.zshrc</em>.</p>
-</div>
-<div class="section" id="vst-2-x-plugins-using-steinberg-sdk">
+</section>
+<section id="vst-2-x-plugins-using-steinberg-sdk">
 <h2>VST 2.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-2-x-plugins-using-steinberg-sdk" title="Permalink to this headline">¶</a></h2>
 <p>This use case is for those that don’t rely on a cross platform framework like JUCE to generate VST 2.x plugins but rather want to use the original Steinberg SDK directly.</p>
 <p>Please notice that Steinberg has discontinued the VST 2.4 SDK, so it is no longer available for download since October 2018. You are still allowed to use the SDK and release VST 2.4 plugins if you have obtained a signed agreement with Steinberg prior to that date.</p>
 <p>The process in this case should be trivial if your plugin doesn’t have dependencies on any graphical libraries - this includes the VST GUI framework.</p>
-</div>
-<div class="section" id="vst-3-x-plugins-using-steinberg-sdk">
+</section>
+<section id="vst-3-x-plugins-using-steinberg-sdk">
 <h2>VST 3.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-3-x-plugins-using-steinberg-sdk" title="Permalink to this headline">¶</a></h2>
 <p>This should also be straightforward by using standard build systems. Since release 3.6.6, Steinberg also uses CMake as its primary build system and since 3.6.10, there have been several improvements for making it easier to use in a cross-compiling setup.</p>
 <p>There is an example plugin that can be compiled with the provided toolchain under <em>work/vst3-template</em>, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.</p>
 <p>After cross-compilation, ensure that the folder under <em>“plugin.vst3/Contents”</em> is named <strong>aarch64-linux</strong>, not <em>arm64-linux</em>, or the plugin will not work on the Elk-Pi - rename it yourself if needed.</p>
-</div>
-<div class="section" id="vst-plugins-using-juce">
+</section>
+<section id="vst-plugins-using-juce">
 <h2>VST Plugins Using JUCE<a class="headerlink" href="#vst-plugins-using-juce" title="Permalink to this headline">¶</a></h2>
 <p>Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.</p>
 <p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk.</p>
 <p>Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.</p>
 <p>Moreover, there are a couple of important issues to consider:</p>
-<div class="section" id="plugins-using-juce-version-6">
+<section id="plugins-using-juce-version-6">
 <h3>Plugins using JUCE Version 6<a class="headerlink" href="#plugins-using-juce-version-6" title="Permalink to this headline">¶</a></h3>
 <p>JUCE 6 can be used directly for building VST plugins for Elk, due to its new “headless” features.</p>
 <p>Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.</p>
@@ -115,8 +116,8 @@
 </li>
 </ol>
 <p>The resulting <code class="docutils literal notranslate"><span class="pre">AudioPluginExample_artefacts/Debug/VST3/Audio</span> <span class="pre">Plugin</span> <span class="pre">Example.vst3</span></code>is ready to use on your Elk-Pi device.</p>
-</div>
-<div class="section" id="plugins-using-juce-version-5-x">
+</section>
+<section id="plugins-using-juce-version-5-x">
 <h3>Plugins using JUCE Version 5.x<a class="headerlink" href="#plugins-using-juce-version-5-x" title="Permalink to this headline">¶</a></h3>
 <p>If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.</p>
 <ul class="simple">
@@ -136,8 +137,8 @@
 <li><p>Follow the instructions in the next section to export a makefile.</p></li>
 <li><p>If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <em>JUCE_CPPFLAGS</em> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</p></li>
 </ol>
-</div>
-<div class="section" id="cross-compiling-juce-plugin">
+</section>
+<section id="cross-compiling-juce-plugin">
 <h3>Cross-compiling JUCE Plugin<a class="headerlink" href="#cross-compiling-juce-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.</p>
 <p>Inside Projucer:</p>
@@ -162,13 +163,13 @@ $ <span class="nb">source</span> /path/to/environment-setup-aarch64-elk-linux
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="lv2-plugins">
+</section>
+</section>
+<section id="lv2-plugins">
 <h2>LV2 Plugins<a class="headerlink" href="#lv2-plugins" title="Permalink to this headline">¶</a></h2>
 <p>Due to the LV2 plugin format’s architecture, it is often very straightforward to build LV2 plugins for Elk. <a class="reference external" href="https://lv2plug.in/book/#_simple_oscilloscope">LV2 strongly encourages the complete separation of GUI and plugin core</a>, meaning building a headless plugin can be as simple as specifying an argument to not include the GUI, when generating the build project.</p>
 <p>To cross compile, the following steps are specific for cross-compiling the <a class="reference external" href="https://github.com/elk-community/calf">Calf plugin collection</a>, but should generalize well across the majority of LV2 plugins:</p>
-<div class="section" id="generate-ttl-files">
+<section id="generate-ttl-files">
 <h3>Generate ttl files<a class="headerlink" href="#generate-ttl-files" title="Permalink to this headline">¶</a></h3>
 <p>This is done first since the script to generate the <em>.ttl</em> files won’t run with the cross compilation toolchain.</p>
 <ol>
@@ -181,8 +182,8 @@ $ <span class="nb">source</span> /path/to/environment-setup-aarch64-elk-linux
 <li><p><em>make</em> and <em>make install</em> to generate the ttl files.</p></li>
 <li><p><em>make clean</em> to prepare for cross compilation.</p></li>
 </ol>
-</div>
-<div class="section" id="cross-compile-the-plugins">
+</section>
+<section id="cross-compile-the-plugins">
 <h3>Cross Compile the plugins<a class="headerlink" href="#cross-compile-the-plugins" title="Permalink to this headline">¶</a></h3>
 <ol>
 <li><p>Set up the cross-compilation toolchain:</p>
@@ -210,9 +211,9 @@ $ make install
 </li>
 <li><p>move the folder <em>build/lib/calf.lv2</em> to the desired location on the Elk Pi. Make sure the path to the parent folder is in the <em>LV2_PATH</em> variable.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="running-compiled-plugins-with-sushi-on-a-virtual-machine">
+</section>
+</section>
+<section id="running-compiled-plugins-with-sushi-on-a-virtual-machine">
 <h2>Running Compiled Plugins with Sushi on a Virtual Machine<a class="headerlink" href="#running-compiled-plugins-with-sushi-on-a-virtual-machine" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Start JACK Server.</p></li>
@@ -222,8 +223,8 @@ $ make install
 </ol>
 <p>On most hosts, VirtualBox offers a virtual audio interface with output only. If you need to test an effect plugin, a quick way is to load an audio file in Audacity, select the JACK audio engine and connect it to Sushi.</p>
 <p>If you need to test MIDI, you can either use a Virtual MIDI Keyboard (like <em>vmpk</em>) or redirect a USB MIDI device to the virtual machine. In both cases, you can use <em>aconnect</em> to connect the MIDI port of your control device to Sushi’s ALSA input ports, just as on a native machine.</p>
-</div>
-<div class="section" id="running-compiled-plugins-with-sushi-on-elk-boards">
+</section>
+<section id="running-compiled-plugins-with-sushi-on-elk-boards">
 <h2>Running Compiled Plugins with Sushi on Elk Boards<a class="headerlink" href="#running-compiled-plugins-with-sushi-on-elk-boards" title="Permalink to this headline">¶</a></h2>
 <p>Simply run sushi using the <em>-r</em> switch instead of the <em>-j</em> one used on a non Elk machine, e.g.:</p>
 <p><em>sushi -r -c /path/to/your/config.json</em></p>
@@ -231,8 +232,8 @@ $ make install
 <p>To get a rough view of CPU performance, <em>top</em> and similar Linux tools will only show you the amount of CPU used in non-RT tasks. To see CPU usage of Real Time tasks, use:</p>
 <p><em>watch -n 0.5 cat /proc/xenomai/sched/stat</em></p>
 <p>For a more fine-grained analysis, you can use Sushi’s gRPC API to query timing statistics of each track and plugin.</p>
-</div>
-<div class="section" id="analyzing-and-resolving-xenomai-mode-switches">
+</section>
+<section id="analyzing-and-resolving-xenomai-mode-switches">
 <h2>Analyzing and Resolving Xenomai Mode Switches<a class="headerlink" href="#analyzing-and-resolving-xenomai-mode-switches" title="Permalink to this headline">¶</a></h2>
 <p>As in any real-time system, you are not allowed to call any operating system functions from your real-time processing callback. This includes among the others:</p>
 <ul class="simple">
@@ -259,8 +260,8 @@ $ make install
 </div>
 <p>When a mode switch occurs, you should now have control over the gdb shell, and be able to analyze the backtrace, local variables, etc. to find its cause.</p>
 <p>As a separate tool that you can use in a virtual machine or your Linux development environment, Sushi also has a <em>dummy</em> frontend that spawns a separate thread to mock the real-time process and never does any real-time calls. You can therefore use tools like <em>strace</em> or similar to spot OS calls on that thread. This is useful, for example, to spot timer related calls which can cause Xenomai lockups and are otherwise impossible to localize using the JACK frontend since the JACK audio server use the same calls on its own.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
