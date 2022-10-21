@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Sensei Overview and Configuration Format &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,14 +46,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sensei-overview-and-configuration-format">
+  <section id="sensei-overview-and-configuration-format">
 <h1>Sensei Overview and Configuration Format<a class="headerlink" href="#sensei-overview-and-configuration-format" title="Permalink to this headline">¶</a></h1>
 <p>Sensei is a hardware abstraction daemon that simplifies the access to the GPIOs available on the development board, offering OSC endpoints for event reporting and control (gRPC API is under development and will be available soon).</p>
 <p>It allows describing sensors/controllers connected to an Elk Powered Board’s GPIO through a JSON configuration file. All low level GPIO logic is taken care of by Sensei, allowing programmers to quickly connect, modify and control sensors/controllers with ease.</p>
 <p>The low level GPIO logic or program can either be running on a separate micro-controller or the host itself, as is the case with Raspberry Pi systems. It samples the input GPIO and drives the output GPIO at a periodicity called <strong>system tick rate</strong> which is typically 1000Hz.</p>
 <p>Sensei uses the <a class="reference external" href="https://github.com/elk-audio/elk-gpio-protocol">GPIO Control Protocol</a> to communicate with the low level GPIO logic program about information such as GPIO configuration, output GPIO values and input GPIO values.</p>
 <p>Sensei also generates a .log file similar to Sushi for reporting run-time messages.</p>
-<div class="section" id="example-configuration">
+<section id="example-configuration">
 <h2>Example Configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Lets consider an example Elk Powered board with 8 digital output pins numbered DO0 - DO7, 8 digital input pins numbered DI0 - DI7, and 3 analog input pins numbered A0 - A2.</p>
 <p>It has the following connections as shown in the example schematic shown below:</p>
@@ -188,8 +189,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="backends">
+</section>
+<section id="backends">
 <h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
 <p>The Sensei backends represent an interface for outputting data on the host or to a network. Currently 2 backend types are implemented: Open Sound Control (OSC) and stdout.</p>
 <p>Backends are declared using a <em>backends</em> json field, which is an array where you can define multiple backends. Each
@@ -206,8 +207,8 @@ inverted), the unprocessed value from the sensor will also be output.</p></li>
 <li><p><em>base_raw_input_path</em> - The prefix added to OSC messages with unprocessed
 values. Only valid if type is <em>osc</em>.</p></li>
 </ul>
-</div>
-<div class="section" id="hardware-frontend">
+</section>
+<section id="hardware-frontend">
 <h2>Hardware Frontend<a class="headerlink" href="#hardware-frontend" title="Permalink to this headline">¶</a></h2>
 <p>The Hardware frontend is the type and method of connecting to the program which handles the low level logic of the sensors/controllers connected to the pins. The <em>hw_frontend</em> field has only one subfield which declares its type.</p>
 <ul class="simple">
@@ -218,8 +219,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 </ol>
 </li>
 </ul>
-</div>
-<div class="section" id="sensors-controllers">
+</section>
+<section id="sensors-controllers">
 <h2>Sensors/Controllers<a class="headerlink" href="#sensors-controllers" title="Permalink to this headline">¶</a></h2>
 <p>Sensei needs information about the sensor/controller that is connected to the pins, and how it should handle data to/from those sensors. It uses this information and informs the hardware frontend about the various sensors/controllers and the pins to which they are connected to.</p>
 <p>For this reason, the Sensei json config file should contain the definition of:</p>
@@ -260,8 +261,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 </li>
 <li><p><em>timestamp</em> - If true, all outputs from this sensor will be output with a timestamp. If using the OSC  backend, then the signature of the output address will have an extra “t” tag at the end, containing the timestamp.</p></li>
 </ul>
-</div>
-<div class="section" id="supported-sensor-controller-hardware">
+</section>
+<section id="supported-sensor-controller-hardware">
 <h2>Supported Sensor/Controller Hardware<a class="headerlink" href="#supported-sensor-controller-hardware" title="Permalink to this headline">¶</a></h2>
 <p>The second part of the <em>sensors</em> json field is a description of the actual sensor/controller and the pins to which they are connected to. There are three major categories of controllers:</p>
 <ol class="simple">
@@ -306,7 +307,7 @@ values. Only valid if type is <em>osc</em>.</p></li>
 <li><p><em>filter_time_constant</em>: Applicable only to <em>analog_input_pin</em> hardware types, this sets the settling time constant for a particular sensor’s digital filter. By default, the settling time is 20ms.</p></li>
 <li><p><em>fast_mode</em> : By default, all digital input pins go through software debouncing to prevent erroneous values. By setting this to <em>true</em>, the debouncing for a particular sensor is switched off. You can use this if you have hardware debouncing filters setup.</p></li>
 </ul>
-<div class="section" id="digital-output-pin">
+<section id="digital-output-pin">
 <h3>Digital Output Pin<a class="headerlink" href="#digital-output-pin" title="Permalink to this headline">¶</a></h3>
 <p>The <em>digital_output_pin</em> hardware type outputs its value in Little Endian binary to the pins. The minimum value possible is 0 and the maximum value is 2^(num_pins) -1. A simple example is the <em>simple_led</em> as shown in the example json config above.</p>
 <p>For a <em>digital_output_pin</em> with a single pin connected to DO0, the <em>sensors</em> entry would look like this:</p>
@@ -343,8 +344,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 </div>
 <p>A value of 5 on this controller would result in the binary value of 5 (0101) on the output pins as shown below:</p>
 <p><img alt="img" src="../_images/digital_output_example.png" /></p>
-</div>
-<div class="section" id="stepped-output">
+</section>
+<section id="stepped-output">
 <h3>Stepped Output<a class="headerlink" href="#stepped-output" title="Permalink to this headline">¶</a></h3>
 <p>The <em>stepped_output</em> hardware type is suitable for LED rings or LED level meters. Its value represents the number of output pins that are ON. For example, if a controller has 7 pins and has the value of 5, the first 5 pins are set to ON and the remaining are set to OFF.</p>
 <p>The LED level meter shown in the example schematic above is a typical use of a stepped output, whose configuration is shown below. The order of the pins dictate the start and stop pin. <strong>Note that the range specified is equal to the number of pins</strong>.</p>
@@ -366,10 +367,10 @@ values. Only valid if type is <em>osc</em>.</p></li>
 </div>
 <p>If this controller had a value had a value of 5, the LED level meter would like this:</p>
 <p><img alt="img" src="../_images/stepped_output_example.png" /></p>
-<p>If the pins were mentioned in reverse order (<em>“pins” : [7,6,5,4,3,2,1]</em>) and this controller had a value of 5, the LED level meter would look like this:</p>
+<p>If the pins were mentioned in reverse order (<em>”pins” : [7,6,5,4,3,2,1]</em>) and this controller had a value of 5, the LED level meter would look like this:</p>
 <p><img alt="img" src="../_images/stepped_output_example_reverse.png" /></p>
-</div>
-<div class="section" id="digital-input-pin">
+</section>
+<section id="digital-input-pin">
 <h3>Digital Input Pin<a class="headerlink" href="#digital-input-pin" title="Permalink to this headline">¶</a></h3>
 <p>Works similar to <em>digital_output_pin</em> in that it reads the binary value (Little Endian) of the pins. Depending on the <em>polarity</em>, this sensor detects which pin is ON or OFF. This is mostly useful for buttons and other edge trigger type of devices. The configuration for a button with a single pin connected to DI0 would look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -390,8 +391,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 </pre></div>
 </div>
 <p>If this button is active low, then this sensor will report a value of 1.0 when pressed and 0.0 when released.</p>
-</div>
-<div class="section" id="n-way-switch">
+</section>
+<section id="n-way-switch">
 <h3>N Way Switch<a class="headerlink" href="#n-way-switch" title="Permalink to this headline">¶</a></h3>
 <p>The <em>n_way_switch</em> works by detecting which one of its pin is in ON state. Its value is the pin index which it detects as ON. This is only meant for multiple position switches, such as the 3 way switch in the example schematic shown above.</p>
 <p>The order of the pins determines the value of this controller. The range should be equal to the number of pins. A typical configuration of the three way switch would like like this:</p>
@@ -419,8 +420,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 <li><p>For switch position 2, the active pin is DI5. The value if the <em>sensor_type</em> is <em>range_input</em> is 2.0 and for <em>analog_input</em> it is 0.666.</p></li>
 <li><p>For switch position 3, the active pin is DI6. The value if the <em>sensor_type</em> is <em>range_input</em> is 3.0 and for <em>analog_input</em> it is 0.999.</p></li>
 </ul>
-</div>
-<div class="section" id="encoder">
+</section>
+<section id="encoder">
 <h3>Encoder<a class="headerlink" href="#encoder" title="Permalink to this headline">¶</a></h3>
 <p>The <em>encoder</em> hardware type, as the name suggests, connects a rotary encoder to the digital input pins. Rotary encoders usually have two pins carrying the encoder signals: Signal A and Signal B. Optionally, some encoders also come with a button functionality as well.</p>
 <p>The range of the encoder needs to be explicitly set in configuration and can take any values between 0 and 2^32 - 1. The <em>pins</em> field should have only two entries and should follow this format:</p>
@@ -445,9 +446,9 @@ values. Only valid if type is <em>osc</em>.</p></li>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="multiplexer">
+</section>
+</section>
+<section id="multiplexer">
 <h2>Multiplexer<a class="headerlink" href="#multiplexer" title="Permalink to this headline">¶</a></h2>
 <p>The <em>multiplexer</em> hardware type is a special type of controller used in situations where multiple controllers share the same pin. Consider a board with connections as shown below:</p>
 <p><img alt="img" src="../_images/output_mux_example.png" /></p>
@@ -573,8 +574,8 @@ values. Only valid if type is <em>osc</em>.</p></li>
 <li><p><em>analog_input_pin</em></p></li>
 <li><p><em>rotary_encoder</em></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>

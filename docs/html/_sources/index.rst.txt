@@ -10,7 +10,7 @@ This collection of documents is our introduction and manual for the Elk
 Development Kit.
 
 The Development Kit consists of a software prototyping component, and
-the Elk Add-On board for the Raspberry Pi/UpCore, which will be
+the Elk Add-On board for the Raspberry Pi, which will be
 documented here in that order.
 
 You will be able to run the software component natively on a Debian
@@ -30,7 +30,6 @@ are differences we will explicitly point them out.
 
    documents/getting_started_with_development_kit_software.md
    documents/getting_started_with_development_kit_elk_pi_hardware.md
-   documents/getting_started_with_development_kit_upcore_hardware.md
    documents/run_elk_on_boards.md
 
 .. toctree::

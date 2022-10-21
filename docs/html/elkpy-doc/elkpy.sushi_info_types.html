@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>elkpy.SushiInfoTypes &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -47,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-elkpy.sushi_info_types">
+  <section id="module-elkpy.sushi_info_types">
 <span id="elkpy-sushiinfotypes"></span><h1>elkpy.SushiInfoTypes<a class="headerlink" href="#module-elkpy.sushi_info_types" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.sushi_info_types.AudioConnection">
@@ -429,10 +430,9 @@ LINK</p>
 <dt>Attributes:</dt><dd><p>id (int): The id of the track.
 label (str): The label of the track.
 name (str): The name of the track.
-input_channels (int): The number of input channels available to the track.
-input_busses (int): The number input busses available to the track.
-output_channels (int): The number of output channels available to the track.
-output_busses (int): The number of output busses available to the track.</p>
+channels (int): The number of input channels available to the track.
+buses (int): The number input buses available to the track.
+type (TrackType): The type of track</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -442,7 +442,35 @@ output_busses (int): The number of output busses available to the track.</p>
 
 </dd></dl>
 
-</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="elkpy.sushi_info_types.TrackType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushi_info_types.</span></span><span class="sig-name descname"><span class="pre">TrackType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushi_info_types.html#TrackType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushi_info_types.TrackType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>Enum class to hold the type of track</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>REGULAR,
+PRE,
+POST</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elkpy.sushi_info_types.TrackType.POST">
+<span class="sig-name descname"><span class="pre">POST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#elkpy.sushi_info_types.TrackType.POST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elkpy.sushi_info_types.TrackType.PRE">
+<span class="sig-name descname"><span class="pre">PRE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#elkpy.sushi_info_types.TrackType.PRE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="elkpy.sushi_info_types.TrackType.REGULAR">
+<span class="sig-name descname"><span class="pre">REGULAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#elkpy.sushi_info_types.TrackType.REGULAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
 
 
             <div class="clearer"></div>

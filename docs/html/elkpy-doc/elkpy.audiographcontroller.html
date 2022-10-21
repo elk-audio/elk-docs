@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>elkpy.AudioGraphController &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -47,7 +48,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-elkpy.audiographcontroller">
+  <section id="module-elkpy.audiographcontroller">
 <span id="elkpy-audiographcontroller"></span><h1>elkpy.AudioGraphController<a class="headerlink" href="#module-elkpy.audiographcontroller" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController">
@@ -72,12 +73,31 @@ sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definiti
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_multibus_track">
-<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_busses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_busses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new multibus track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.
-output_busses (int): The number of output busses to assign the new track.
-input_busses (int): The number of input busses to assign the new track.</p>
+buses (int): The number of audio buses in the new track.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_post_track">
+<span class="sig-name descname"><span class="pre">create_post_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_post_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_post_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new post track in sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_pre_track">
+<span class="sig-name descname"><span class="pre">create_pre_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_pre_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_pre_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new pre track in sushi.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -271,7 +291,7 @@ bypass_sate (bool): The bypass state of the processor matching the id.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>

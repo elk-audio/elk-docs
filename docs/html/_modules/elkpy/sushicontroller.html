@@ -59,26 +59,26 @@
 
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">grpc</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushierrors</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">grpc_gen</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">audiographcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">keyboardcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">parametercontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">programcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">timingcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">transportcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">audioroutingcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">midicontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">cvgatecontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">osccontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">systemcontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sessioncontroller</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">notificationcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">audiographcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">keyboardcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">parametercontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">programcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">timingcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">transportcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">audioroutingcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">midicontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cvgatecontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">osccontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">systemcontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sessioncontroller</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">notificationcontroller</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
 
 
 
@@ -161,7 +161,7 @@
 <span class="sd">        close() should ALWAYS be called as part of an application housekeeping/cleanup-before-shutdown routine as it</span>
 <span class="sd">        ensure proper releasing of resources and clean joining of concurrent threads.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="SushiController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="SushiController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
                  <span class="n">sushi_proto_def</span> <span class="o">=</span> <span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -194,7 +194,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">notifications</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 </pre></div>
 

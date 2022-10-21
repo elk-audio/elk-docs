@@ -167,10 +167,10 @@
 </li>
       <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_input_channel_to_track">connect_input_channel_to_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_input_to_track">connect_kbd_input_to_track() (elkpy.midicontroller.MidiController method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_output_from_track">connect_kbd_output_from_track() (elkpy.midicontroller.MidiController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_output_channel_from_track">connect_output_channel_from_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
@@ -178,6 +178,10 @@
       <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_pc_to_processor">connect_pc_to_processor() (elkpy.midicontroller.MidiController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_multibus_track">create_multibus_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_post_track">create_post_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_pre_track">create_pre_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track">create_processor_on_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
 </li>
@@ -670,12 +674,18 @@
 </li>
       <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType">PluginType (class in elkpy.sushi_info_types)</a>
 </li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">process_parameter_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
+      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.POST">POST (elkpy.sushi_info_types.TrackType attribute)</a>
 </li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">process_processor_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
+      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.PRE">PRE (elkpy.sushi_info_types.TrackType attribute)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">process_parameter_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">process_processor_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_property_update_notifications">process_property_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
+</li>
       <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications">process_timing_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_track_change_notifications">process_track_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
@@ -699,6 +709,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.RECORDING">RECORDING (elkpy.sushi_info_types.PlayingMode attribute)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.REGULAR">REGULAR (elkpy.sushi_info_types.TrackType attribute)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_all_timings">reset_all_timings() (elkpy.timingcontroller.TimingController method)</a>
 </li>
@@ -776,10 +788,10 @@
 </li>
       <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program">set_program() (elkpy.sushiprocessor.SushiProcessor method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_next">set_program_next() (elkpy.sushiprocessor.SushiProcessor method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_previous">set_program_previous() (elkpy.sushiprocessor.SushiProcessor method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.set_property_value">set_property_value() (elkpy.parametercontroller.ParameterController method)</a>
@@ -799,6 +811,8 @@
       <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates">subscribe_to_parameter_updates() (elkpy.notificationcontroller.NotificationController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes">subscribe_to_processor_changes() (elkpy.notificationcontroller.NotificationController method)</a>
+</li>
+      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates">subscribe_to_property_updates() (elkpy.notificationcontroller.NotificationController method)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates">subscribe_to_timing_updates() (elkpy.notificationcontroller.NotificationController method)</a>
 </li>
@@ -834,9 +848,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController">TimingController (class in elkpy.timingcontroller)</a>
 </li>
+      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo">TrackInfo (class in elkpy.sushi_info_types)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo">TrackInfo (class in elkpy.sushi_info_types)</a>
+      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType">TrackType (class in elkpy.sushi_info_types)</a>
 </li>
       <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController">TransportController (class in elkpy.transportcontroller)</a>
 </li>

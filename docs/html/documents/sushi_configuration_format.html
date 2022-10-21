@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Sushi Configuration &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,10 +46,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sushi-configuration">
+  <section id="sushi-configuration">
 <h1>Sushi Configuration<a class="headerlink" href="#sushi-configuration" title="Permalink to this headline">¶</a></h1>
 <p>Following is a reference for the Sushi .json configuration file.</p>
-<div class="section" id="main-host-configuration">
+<section id="main-host-configuration">
 <h2>Main Host Configuration<a class="headerlink" href="#main-host-configuration" title="Permalink to this headline">¶</a></h2>
 <p><strong>“host_config”</strong></p>
 <ul class="simple">
@@ -88,15 +89,15 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="tracks">
+</section>
+<section id="tracks">
 <h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h2>
-<p><strong>“tracks”</strong> : A json list of track objects with the following members:</p>
+<p><strong>“tracks”</strong> : A list of track objects with the following members:</p>
 <ul class="simple">
 <li><p><strong>“name”</strong> - Name of the track, must be unique.</p></li>
-<li><p><strong>“mode”</strong> - The channel mode of the track. Valid options are: “mono”, “stereo” and “multibus”. The last option is for tracks with several stereo output busses routable to different output.</p></li>
-<li><p><strong>“input_busses”</strong> - The number of input busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</p></li>
-<li><p><strong>“output_busses”</strong> - The number of output busses on the track, where each bus is a stereo pair. Only valid if “mode” is set to “multibus”.</p></li>
+<li><p><strong>“channels”</strong> - The number of audio channels in the track, 2 for a stereo track.</p></li>
+<li><p><strong>“multibus”</strong> If true, enables multibus mode for the track where every pair of audio channels have their own pan and gain control. The track must have an even number of channels.</p></li>
+<li><p><strong>buses”</strong> - The number of buses to use for a multibus track, where each bus is a stereo pair. Only valid if “multibus” is set to True.</p></li>
 <li><p><strong>“inputs”</strong> - Audio inputs to the track. A list objects with the following members:</p>
 <ul>
 <li><p><strong>“engine_bus”</strong> - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.</p></li>
@@ -125,8 +126,17 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="midi">
+</section>
+<section id="pre-post-tracks">
+<h2>Pre/Post Tracks<a class="headerlink" href="#pre-post-tracks" title="Permalink to this headline">¶</a></h2>
+<p><strong>“pre_track”</strong> - A track added at the beginning of the audio processing chain and processes audio inputs before being routed to regular tracks (optional)
+* <strong>“name”</strong> - Name of the track, must be unique.
+* <strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.</p>
+<p><strong>“post_track”</strong> - A track added at the end of the audio processing chain and processes audio after mixing all regular tracks (optional)
+* <strong>“name”</strong> - Name of the track, must be unique.
+* <strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.</p>
+</section>
+<section id="midi">
 <h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">¶</a></h2>
 <p><strong>“midi”</strong> - MIDI connections to and from tracks and plugins.</p>
 <ul class="simple">
@@ -171,8 +181,8 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="open-sound-control-connections">
+</section>
+<section id="open-sound-control-connections">
 <h2>Open Sound Control Connections<a class="headerlink" href="#open-sound-control-connections" title="Permalink to this headline">¶</a></h2>
 <p><strong>“osc”</strong> -  Open Sound Control (OSC) notifications from processors.</p>
 <p>Here you can enable OSC messages to be transmitted from Sushi, whenever a processor’s internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.</p>
@@ -193,8 +203,8 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="control-voltage-and-gate-connections">
+</section>
+<section id="control-voltage-and-gate-connections">
 <h2>Control voltage and Gate connections<a class="headerlink" href="#control-voltage-and-gate-connections" title="Permalink to this headline">¶</a></h2>
 <p><strong>“cv_control”</strong> - Control Voltage (CV) and Gate connections to and from tracks and plugins.</p>
 <ul class="simple">
@@ -231,8 +241,8 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="events">
+</section>
+<section id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
 <p><strong>“events”</strong> - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.</p>
 <ul class="simple">
@@ -249,8 +259,8 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="initial-state">
+</section>
+<section id="initial-state">
 <h2>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this headline">¶</a></h2>
 <p><strong>“initial_state</strong> - A list of initial settings (parameters, propeties, programs) that will be applied to processors before audio starts playing.</p>
 <ul class="simple">
@@ -260,8 +270,8 @@ or processing. If enabled, plugins will need to handle things like program chang
 <li><p><strong>“parameters”</strong> - A list of name - value pairs for parameters that will be set on the processor.</p></li>
 <li><p><strong>“properties”</strong> - A list of name - value pairs for string properties that will be set on the processor.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -275,6 +285,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 <li><a class="reference internal" href="#">Sushi Configuration</a><ul>
 <li><a class="reference internal" href="#main-host-configuration">Main Host Configuration</a></li>
 <li><a class="reference internal" href="#tracks">Tracks</a></li>
+<li><a class="reference internal" href="#pre-post-tracks">Pre/Post Tracks</a></li>
 <li><a class="reference internal" href="#midi">MIDI</a></li>
 <li><a class="reference internal" href="#open-sound-control-connections">Open Sound Control Connections</a></li>
 <li><a class="reference internal" href="#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>

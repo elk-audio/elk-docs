@@ -83,8 +83,8 @@
 
     <span class="n">protoc_args</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;dummy&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;-I</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">inc_path</span><span class="p">,</span>
-                    <span class="n">f</span><span class="s1">&#39;--python_out=</span><span class="si">{out_dir}</span><span class="s1">&#39;</span><span class="p">,</span>
-                    <span class="n">f</span><span class="s1">&#39;--grpc_python_out=</span><span class="si">{out_dir}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s1">&#39;--python_out=</span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s1">&#39;--grpc_python_out=</span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                     <span class="n">rel_proto_filename</span> <span class="p">]</span>
     <span class="n">gprotoc</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">protoc_args</span><span class="p">)</span>
     <span class="n">proto_base_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">rel_proto_filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>

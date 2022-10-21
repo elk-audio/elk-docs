@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Elk Development Kit Documentation &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -41,12 +42,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="elk-development-kit-documentation">
+  <section id="elk-development-kit-documentation">
 <h1>Elk Development Kit Documentation<a class="headerlink" href="#elk-development-kit-documentation" title="Permalink to this headline">¶</a></h1>
 <p>This collection of documents is our introduction and manual for the Elk
 Development Kit.</p>
 <p>The Development Kit consists of a software prototyping component, and
-the Elk Add-On board for the Raspberry Pi/UpCore, which will be
+the Elk Add-On board for the Raspberry Pi, which will be
 documented here in that order.</p>
 <p>You will be able to run the software component natively on a Debian
 Linux, on a Virtual Machine, as well as on the Elk development board.
@@ -71,20 +72,13 @@ are differences we will explicitly point them out.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html">Development Kit Software</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#running-a-plugin-within-the-sushi-host">Running a plugin within the Sushi host</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#starting-sushi-with-the-mda-jx10-vst-synthesizer">Starting Sushi with the MDA JX10 VST synthesizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#connecting-midi-to-sushi">Connecting MIDI to Sushi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#control-mda-jx10-vst3-plugin-with-open-stage-control">Control MDA JX10 VST3 plugin with Open Stage Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#control-mda-jx10-vst3-plugin-parameters">Control MDA JX10 VST3 plugin parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html">Elk Pi Hardware</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html#assembly">1. Assembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html#flashing-the-elk-operating-system-image-to-the-sd-card">2. Flashing the Elk operating system image to the SD card</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html#power-up-and-next-steps">3. Power up, and next steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html">Elk UpCore Hardware</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#installing-an-image-to-emmc">1. Installing an image to eMMC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_upcore_hardware.html#power-up-and-next-steps">2. Power up, and next steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="documents/run_elk_on_boards.html">Run Elk on Boards</a><ul>
@@ -129,6 +123,7 @@ are differences we will explicitly point them out.</p>
 <li class="toctree-l1"><a class="reference internal" href="documents/sushi_configuration_format.html">Sushi Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#main-host-configuration">Main Host Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#tracks">Tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#pre-post-tracks">Pre/Post Tracks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#midi">MIDI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#open-sound-control-connections">Open Sound Control Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
@@ -300,12 +295,12 @@ are differences we will explicitly point them out.</p>
 <li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview.html#benchmark-synth">Benchmark Synth</a></li>
 </ul>
 </div>
-<div class="section" id="elk-online-forum">
+<section id="elk-online-forum">
 <h2>Elk Online Forum<a class="headerlink" href="#elk-online-forum" title="Permalink to this headline">¶</a></h2>
 <p>For any questions or discussion on the Elk Development Kit,
 please refer to the <a class="reference external" href="https://forum.elk.audio">Elk Online Forum</a>.</p>
-</div>
-<div class="section" id="elk-pi-datasheet">
+</section>
+<section id="elk-pi-datasheet">
 <h2>Elk Pi Datasheet<a class="headerlink" href="#elk-pi-datasheet" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -347,8 +342,8 @@ please refer to the <a class="reference external" href="https://forum.elk.audio"
 <li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#board-dimensions">Board dimensions</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="blackboard-for-elk-pi">
+</section>
+<section id="blackboard-for-elk-pi">
 <h2>Blackboard for Elk Pi<a class="headerlink" href="#blackboard-for-elk-pi" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -356,8 +351,8 @@ please refer to the <a class="reference external" href="https://forum.elk.audio"
 <li class="toctree-l1"><a class="reference internal" href="documents/blackboard.html#open-source-hardware">Open-Source Hardware</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="tech-articles">
+</section>
+<section id="tech-articles">
 <h2>Tech Articles<a class="headerlink" href="#tech-articles" title="Permalink to this headline">¶</a></h2>
 <p>On the Elk website, there are a number of Tech articles that cover
 important topics directly relevant for learning to work with our
@@ -370,14 +365,14 @@ Call</a></p>
 <p><a class="reference external" href="https://elk.audio/elk-development-boards-overview-3/">Elk Development Boards
 Overview</a></p>
 </div></blockquote>
-</div>
-<div class="section" id="search-page">
+</section>
+<section id="search-page">
 <h2>Search Page<a class="headerlink" href="#search-page" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>

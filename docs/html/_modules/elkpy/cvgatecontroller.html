@@ -59,10 +59,10 @@
 
 <span class="kn">import</span> <span class="nn">grpc</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushierrors</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">grpc_gen</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushierrors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sushi_info_types</span> <span class="k">as</span> <span class="n">info_types</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">grpc_gen</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="c1">######################################</span>
 <span class="c1">#   Sushi CV-Gate Controller class   #</span>
@@ -77,7 +77,7 @@
 <span class="sd">    Attributes:</span>
 <span class="sd">        _stub (CvGateControllerStub): Connection stub to the gRPC CvGate interface.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="CvGateController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="CvGateController.__init__"><a class="viewcode-back" href="../../elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">address</span><span class="o">=</span><span class="s1">&#39;localhost:51051&#39;</span><span class="p">,</span>
                  <span class="n">sushi_proto_def</span><span class="o">=</span><span class="s1">&#39;/usr/share/sushi/sushi_rpc.proto&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -90,7 +90,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">channel</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{address}</span><span class="s2">. Should be a string with the IP address and port of Sushi&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter address = </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">. Should be a string with the IP address and port of Sushi&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_proto</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span> <span class="o">=</span> <span class="n">grpc_gen</span><span class="o">.</span><span class="n">modules_from_proto</span><span class="p">(</span><span class="n">sushi_proto_def</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sushi_grpc</span><span class="o">.</span><span class="n">CvGateControllerStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span></div>

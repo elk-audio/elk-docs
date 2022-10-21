@@ -93,9 +93,9 @@
     <span class="k">elif</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;INTERNAL&#39;</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">SushiInternalError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span> <span class="p">,</span> <span class="n">context_info</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">context_info</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">context_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">context_info</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">e</span></div>
-      <span class="c1">#  print(&#39;Grpc error: &#39; + str e.code().name) + &#39;, &#39; + e.details())</span>
 </pre></div>
 
             <div class="clearer"></div>

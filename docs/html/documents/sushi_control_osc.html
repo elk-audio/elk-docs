@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Controlling Sushi using Open Sound Control &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="controlling-sushi-using-open-sound-control">
+  <section id="controlling-sushi-using-open-sound-control">
 <span id="sushi-control-osc"></span><h1>Controlling Sushi using Open Sound Control<a class="headerlink" href="#controlling-sushi-using-open-sound-control" title="Permalink to this headline">¶</a></h1>
 <p>Sushi supports <a class="reference external" href="http://opensoundcontrol.org/introduction-osc">Open Sound Control
 (OSC)</a>. And can both
 send OSC updates and receive notes and parameter changes through OSC.</p>
 <p>If you are unfamiliar with OSC, reading our <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">article introducing OSC in the context of Elk Audio OS</a> is a very good start.</p>
-<div class="section" id="osc-messages-sushi-reacts-to">
+<section id="osc-messages-sushi-reacts-to">
 <h2>OSC Messages Sushi Reacts To<a class="headerlink" href="#osc-messages-sushi-reacts-to" title="Permalink to this headline">¶</a></h2>
 <p>By default, Sushi listens on port 24024 for the following OSC commands:</p>
 <table class="docutils align-default">
@@ -122,8 +123,8 @@ denominator</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="osc-messages-sushi-transmits">
+</section>
+<section id="osc-messages-sushi-transmits">
 <h2>OSC Messages Sushi Transmits<a class="headerlink" href="#osc-messages-sushi-transmits" title="Permalink to this headline">¶</a></h2>
 <p>By default, Sushi transmits to port 24023, on 127.0.0.1.</p>
 <p>Besides reacting to OSC messages, Sushi can also echo some aspects of its state, by broadcasting OSC messages.
@@ -133,16 +134,16 @@ configuration file</a>, or by invoking relevant commands over <a class="referenc
 the level parameters of the internal Peak Meter plugin.</p>
 <p>This works in two ways, either all, or only specific processors, are enabled. See the relevant section
 in the documentation of the Sushi json configuration file for more details.</p>
-</div>
-<div class="section" id="changing-the-ports-and-ip-address-for-sending-and-receiving-osc">
+</section>
+<section id="changing-the-ports-and-ip-address-for-sending-and-receiving-osc">
 <h2>Changing the ports and IP address for sending and receiving OSC<a class="headerlink" href="#changing-the-ports-and-ip-address-for-sending-and-receiving-osc" title="Permalink to this headline">¶</a></h2>
 <p>The UDP port it receives from, and the port and IP it sends to, can be changed with
 command-line arguments.</p>
 <p>Just type <em>$ sushi –help</em> for the exact
 syntax.</p>
 <p>The IP and port values set can also be retrieved over the gRPC API.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>

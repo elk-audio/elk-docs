@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Controlling Sushi using gRPC &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
@@ -45,7 +46,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="controlling-sushi-using-grpc">
+  <section id="controlling-sushi-using-grpc">
 <span id="sushi-control-grpc"></span><h1>Controlling Sushi using gRPC<a class="headerlink" href="#controlling-sushi-using-grpc" title="Permalink to this headline">¶</a></h1>
 <p>If you are unfamiliar with gRPC, reading our <a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-ii/">article introducing gRPC in the context of Elk Audio OS</a>
 is a very good start.</p>
@@ -61,7 +62,7 @@ in which case you do not need to use gRPC directly, and can just read the docume
 referring to the above .proto file will be needed.
 Even in that case, it will be very useful for you to read the comments for the elkpy methods,
 and how the elkpy library invokes the Sushi gRPC API.</p>
-<div class="section" id="high-level-overview-of-sushi-s-grpc-api">
+<section id="high-level-overview-of-sushi-s-grpc-api">
 <h2>High-level Overview of Sushi’s gRPC API<a class="headerlink" href="#high-level-overview-of-sushi-s-grpc-api" title="Permalink to this headline">¶</a></h2>
 <p>Given Sushi’s complexity, we have split up the gRPC API to specific controllers, using each of which you can control one
 subsystem of Sushi.</p>
@@ -86,73 +87,71 @@ and to issue commands to modify that state.</p>
 <p>For the details on the methods that can be invoked from each controller, please refer to the .proto file, and <a class="reference external" href="../elkpy-doc/elkpy.html">elkpy library
 documentation</a>.
 Here we’ll only present a high-level overview of what each is for, without too much detail of how it is used.</p>
-<div class="section" id="audiographcontroller">
+<section id="audiographcontroller">
 <h3>AudioGraphController<a class="headerlink" href="#audiographcontroller" title="Permalink to this headline">¶</a></h3>
 <p>With the AudioGraphController you can add/move/remove tracks and processors (plugins) at runtime,
 and query the current tracks and plugins in the engine.</p>
-</div>
-<div class="section" id="parametercontroller">
+</section>
+<section id="parametercontroller">
 <h3>ParameterController<a class="headerlink" href="#parametercontroller" title="Permalink to this headline">¶</a></h3>
 <p>Allows the querying of all Track and Processor (plugin) parameters and properties, and setting them to new values.</p>
-</div>
-<div class="section" id="audioroutingcontroller">
+</section>
+<section id="audioroutingcontroller">
 <h3>AudioRoutingController<a class="headerlink" href="#audioroutingcontroller" title="Permalink to this headline">¶</a></h3>
 <p>Allows connecting audio input and output to and from tracks, and query the current connections.
 When a track is added, no routings are automatically created, meaning you need to create them for it to process and output sound
 to/from Sushi’s inputs and outputs.</p>
-</div>
-<div class="section" id="midicontroller">
+</section>
+<section id="midicontroller">
 <h3>MidiController<a class="headerlink" href="#midicontroller" title="Permalink to this headline">¶</a></h3>
 <p>Similarly, with the MidiController you connect MIDI input and output to and from tracks, and query the current connections.
 When a track is added, no MIDI connections are automatically created, meaning you need to create them for it to
 process and output MIDI to/from Sushi’s inputs and outputs.</p>
-</div>
-<div class="section" id="cvgatecontroller">
+</section>
+<section id="cvgatecontroller">
 <h3>CvGateController<a class="headerlink" href="#cvgatecontroller" title="Permalink to this headline">¶</a></h3>
 <p>Enables the connection/disconnection of Control Voltage (CV) and Gate signals to and from processor parameters.
 It also allows querying existing connections.</p>
-<p>* Note that in the current release version (0.11) of Sushi, while the .proto file API for creating and destroying is defined,
+<p>* Note that in the current release version of Sushi, while the .proto file API for creating and destroying is defined,
 it is not yet functional.</p>
-</div>
-<div class="section" id="keyboardcontroller">
+</section>
+<section id="keyboardcontroller">
 <h3>KeyboardController<a class="headerlink" href="#keyboardcontroller" title="Permalink to this headline">¶</a></h3>
 <p>KeyboardController allows you to send keyboard events to tracks - e.g. Note On/Off messages, pitch bend, modulation, etc.</p>
-</div>
-<div class="section" id="programcontroller">
+</section>
+<section id="programcontroller">
 <h3>ProgramController<a class="headerlink" href="#programcontroller" title="Permalink to this headline">¶</a></h3>
 <p>For querying, loading and storing programs (pre-sets) for processors (plugins).</p>
-</div>
-<div class="section" id="osccontroller">
+</section>
+<section id="osccontroller">
 <h3>OscController<a class="headerlink" href="#osccontroller" title="Permalink to this headline">¶</a></h3>
 <p>With the OscController you can query the state of the Open Sound Control broadcasting from Sushi, and selectively
 enable/disable which parameters will broadcast their state. You can also fetch the IP and ports which Sushi uses for OSC.</p>
-</div>
-<div class="section" id="transportcontroller">
+</section>
+<section id="transportcontroller">
 <h3>TransportController<a class="headerlink" href="#transportcontroller" title="Permalink to this headline">¶</a></h3>
 <p>Enables querying and setting the state of the global Sushi transport - start/stop, time signature, tempo and tempo synchronisation methods.</p>
-</div>
-<div class="section" id="systemcontroller">
+</section>
+<section id="systemcontroller">
 <h3>SystemController<a class="headerlink" href="#systemcontroller" title="Permalink to this headline">¶</a></h3>
 <p>Allows querying static information about the current Sushi version.</p>
-</div>
-<div class="section" id="timingcontroller">
+</section>
+<section id="timingcontroller">
 <h3>TimingController<a class="headerlink" href="#timingcontroller" title="Permalink to this headline">¶</a></h3>
 <p>Allows the generation and querying of CPU timing information for the engine, individual tracks or processors.</p>
-</div>
-<div class="section" id="sessioncontroller">
+</section>
+<section id="sessioncontroller">
 <h3>SessionController<a class="headerlink" href="#sessioncontroller" title="Permalink to this headline">¶</a></h3>
 <p>Allows for saving and restoring the full state of Sushi including tracks, loaded plugins, audio and control routing.</p>
-</div>
-</div>
-<div class="section" id="sushi-grpc-notifications">
+</section>
+</section>
+<section id="sushi-grpc-notifications">
 <h2>Sushi gRPC Notifications<a class="headerlink" href="#sushi-grpc-notifications" title="Permalink to this headline">¶</a></h2>
 <p>NotificationController is different in that using it the GUI can subscribe to notifications of events happening in Sushi:
 for example if a plugin is added/removed, a track is added/removed,
 the transport state is changed, or a plugin’s internal parameter has changed value.</p>
-<p>* Note that in the current release version (0.11) of Sushi, while the .proto file API is defined, transport and timing change
-notifications are not yet enabled.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
