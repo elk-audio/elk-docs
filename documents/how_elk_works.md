@@ -96,7 +96,7 @@ We have seen many components so far but still the questions remain unanswered: *
 
 The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:
 
-- **Audio Plugins** : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide [several tools to aid this process](https://elk-audio.github.io/elk-docs/html/documents/building_plugins_for_elk.htmlbuilding_plugins_for_elk.md).
+- **Audio Plugins** : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide [several tools to aid this process](https://elk-audio.github.io/elk-docs/html/documents/building_plugins_for_elk.html).
 - **Display UI** : this is a dedicated process to handle e.g. a *Touchscreen Display*. Elk does not provide a specific GUI framework but you are free to use any of the popular and well-maintained solutions for this purpose. For example, [Qt](https://www.qt.io/) is a popular choice in many embedded devices.
 
 All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:

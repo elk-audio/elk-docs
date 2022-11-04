@@ -23,6 +23,8 @@ are differences we will explicitly point them out.
    :caption: Elk Introduction and Overview:
 
    documents/how_elk_works.md
+   documents/license.md
+   documents/supported_hw.md
 
 .. toctree::
    :maxdepth: 2
