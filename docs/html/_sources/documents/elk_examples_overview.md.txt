@@ -10,9 +10,7 @@ Then we present a set of complete instrument examples, which also involve the Bl
 
 For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the [MDA JX10 synthesizer](https://sourceforge.net/projects/mda-vst/), using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.
 
-Note that the linked files below, are all built for running natively on Linux or the UpCore board. All are for an Intel architecture, and will also run on Linux natively on an Intel computer.
-
-Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.
+Note that the linked files below, are all built for running natively on Linux x86-64. Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.
 
 **Note:** In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the "JX-10 ELK CONTROLLER"-title, and then, in the 'osc'-section of the editor, set the 'address' field to "/parameter/your_synth_name", instead of the current "/parameter/jx10".
 
