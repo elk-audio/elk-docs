@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Powered by Elk &#8212; Elk DevKit  documentation</title>
+    <title>What is Elk Audio OS? &#8212; Elk DevKit  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
@@ -37,7 +37,7 @@
           <a href="../index.html" title="Elk Development Kit Documentation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Powered by Elk</a></li> 
+        <li class="nav-item nav-item-this"><a href="">What is Elk Audio OS?</a></li> 
       </ul>
     </div>  
 
@@ -46,28 +46,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="powered-by-elk">
-<h1>Powered by Elk<a class="headerlink" href="#powered-by-elk" title="Permalink to this headline">¶</a></h1>
-<p>This section provides a look under the hood of a device Powered by Elk.</p>
-<p>This post is the first in a series that will give you a quick and informal overview of Elk MusicOS and its components for the more tech-savvy of you who want to dive into the details.</p>
-<p>Elk is an <strong>embedded Linux distribution</strong>, <em>highly</em> <em>optimized for low-latency audio</em> and that comes with <em>several components to streamline the development of professional audio and music devices</em>. The supported hardware are either one of our <strong>Elk development boards</strong> or custom hardware designed for products powered by Elk.</p>
+  <section id="what-is-elk-audio-os">
+<h1>What is Elk Audio OS?<a class="headerlink" href="#what-is-elk-audio-os" title="Permalink to this headline">¶</a></h1>
+<p>This section provides a look under the hood of a device made with Elk Audio OS, i.e. “Powered by Elk”.</p>
+<p>This article will give you a quick and informal overview of Elk Audio OS and its components, using a practical example
+to see how they can be used in a real product.</p>
+<section id="why-would-you-need-elk-audio-os">
+<h2>Why would you need Elk Audio OS?<a class="headerlink" href="#why-would-you-need-elk-audio-os" title="Permalink to this headline">¶</a></h2>
+<p>Making embedded audio devices is hard. Sure, there are plenty of easy-to-use frameworks targeted at makers using simple
+custom boards, and you can make very nice simple DYI projects with them. But then, scaling to an industrial product that
+you can safely put in the hands of a random user, is a totally different story.</p>
+<p>Elk is an <strong>embedded Linux distribution</strong>, <em>highly</em> <em>optimized for low-latency audio</em> and that comes with <em>several components to streamline the development of professional audio and music devices</em>. The supported hardware are either one of our <strong>Elk development boards</strong>, or a simple Raspberry Pi with a audio hat, or custom hardware designed for products powered by Elk. We take care of abstracting the hardware for you, so the code that you end up writing for a product is <strong>highly reusable across different hardware platforms</strong>. This is especially important these days with all the uncertainties of component sourcing, giving you the flexibility to quickly transition from one platform to another if needed.</p>
 <p>In the design of Elk we have tried to follow a UNIX-like philosophy of having several focused components that “<em>do one thing and do it well</em>”. All of these can be reused for devices of different kinds such as digital FX units, synthesizers, mixers, etc. The only custom work required for each device is then just a matter of writing a small <em>glue application</em> that connects together Elk’s components for the particular use case.</p>
-<p>The last ingredients needed for the product recipe are <strong>audio processing plugins</strong>. Luckily, Elk supports standard formats such as <strong>VST</strong> (both 2.x and 3.x), <strong>LV2</strong> and <strong>Rack Extensions</strong>. If you have access to the plugins’ source code is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.</p>
+<p>The last ingredients needed for the product recipe are <strong>audio processing plugins</strong>. Luckily, Elk supports standard formats such as <strong>VST</strong> (both 2.x and 3.x), <strong>LV2</strong> and an internal plugin format. If you have access to the plugins’ source code is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.</p>
+</section>
 <section id="what-can-you-do-with-elk">
 <h2>What Can You Do With Elk?<a class="headerlink" href="#what-can-you-do-with-elk" title="Permalink to this headline">¶</a></h2>
-<p>Rather than dryly go into deep details of the Elk’s software architecture and components, it’s might be easier to describe how they would actually be used in an example product.</p>
+<p>Rather than dryly go into deep details of the Elk’s software architecture and components, it might be easier to describe how they would actually be used in an example product.</p>
 <p>So, using a hypothetical <em>Powered by Elk</em> device, which we’ll refer to as <em>“The Box”</em>, to illustrate what a device like this could do and what its software architecture would like.</p>
-<p><strong>DISCLAIMER</strong>: <em>Again, this is not a real product nor anything that is under development</em>, so don’t look around for where you can buy it or get more information about it. It’s true however that it will be easily possible to make a product like this with Elk and indeed we will be showing some proof-of-concept prototypes, as well as the first real powered by Elk product, the DV Mark Smart Multiamp, at our NAMM 2019 booth.</p>
-<p>Enough with words, here’s a quick sketch for <em>The Box</em>:</p>
+<p><strong>DISCLAIMER</strong>: <em>Again, this is not a real product nor anything that is under development</em>, so don’t look around for where you can buy it or get more information about it. It’s true however that it will be easily possible to make a product like this with Elk.</p>
+<p>Here’s a quick sketch for <em>The Box</em>:</p>
 <p><img alt="img" src="../_images/elk_box_sketch.jpg" /></p>
 <p>So, what could the hardware components of <em>The Box</em>, besides a main board with a System-on-Chip (SOC) that runs Elk be?</p>
 <ul class="simple">
+<li><p>Analog audio connections, e.g. TSR or XLR connectors</p></li>
+<li><p>Digital audio I/O: SPDIF, ADAT, USB UAC 2.0, Audio over Ethernet (AES67, AVB, etc.)</p></li>
+<li><p>MIDI, Control Voltage</p></li>
 <li><p>A Touchscreen display</p></li>
 <li><p>Some physical controls e.g. knobs, faders, buttons</p></li>
 <li><p>A bunch of LEDs and/or smaller secondary displays</p></li>
-<li><p>Audio connections, e.g. TSR or XLR connectors, MIDI 5-din, CV in/out</p></li>
-<li><p>Bluetooth Low-Energy (BLE) and WiFi components, plus antenna</p></li>
-<li><p>General purpose connectors, such as USB or RJ45 Ethernet</p></li>
+<li><p>Bluetooth Low-Energy (BLE) and WiFi components</p></li>
 <li><p>… and of course a square box where to put all these things together :)</p></li>
 </ul>
 <p>And what could an end user do with such a thing?</p>
@@ -84,18 +92,19 @@
 <h2>Software Components Inside an Elk Product<a class="headerlink" href="#software-components-inside-an-elk-product" title="Permalink to this headline">¶</a></h2>
 <p>Let’s take a look inside <em>The Box</em> or, better, inside the main SOC that runs Elk and see how all the various software components are connected to obtain the desired features.</p>
 <p>The following diagram gives you a bird’s-eye on the most relevant pieces and the interconnections between them:</p>
-<p><img alt="img" src="../_images/flow_chart.jpg" /></p>
+<p><img alt="img" src="../_images/elk_main_diagram.png" /></p>
 <p>Here’s a very quick description of each block in the diagram. Details about the core Elk components (i.e. those in orange/red) will be given in following posts of this series.</p>
 </section>
-<section id="hardware-components">
-<h2>Hardware Components<a class="headerlink" href="#hardware-components" title="Permalink to this headline">¶</a></h2>
+<section id="hardware-components-white">
+<h2>Hardware Components (white)<a class="headerlink" href="#hardware-components-white" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Main SOC</strong>: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices, e.g. the <a class="reference external" href="https://ark.intel.com/products/93361/Intel-Atom-x5-Z8350-Processor-2M-Cache-up-to-1-92-GHz-">Intel Atom Cherry Trail X5-Z8350</a> or the <a class="reference external" href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-7-processors:IMX7-SERIES">NXP i.MX7</a>.</p></li>
-<li><p><strong>Microcontroller (MCU)</strong> : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the <strong>Audio Codec(s)</strong> and to interface with <strong>General Purpose Input Output (GPIOs)</strong> pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4s or tiny CPLDs for this purpose.</p></li>
+<li><p><strong>Main SOC</strong>: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs.
+#TODO: link to new page with license &amp; supported platforms</p></li>
+<li><p><strong>Microcontroller (MCU)</strong> : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the <strong>Audio Codec(s)</strong> and to interface with <strong>General Purpose Input Output (GPIOs)</strong> pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4/M7 or tiny CPLDs for this purpose.</p></li>
 </ul>
 </section>
-<section id="standard-linux-components">
-<h2>Standard Linux Components<a class="headerlink" href="#standard-linux-components" title="Permalink to this headline">¶</a></h2>
+<section id="standard-linux-components-pink">
+<h2>Standard Linux Components (pink)<a class="headerlink" href="#standard-linux-components-pink" title="Permalink to this headline">¶</a></h2>
 <p>These are open-source software components that are common to most Embedded Linux devices. We tend to adopt the latest stable version of each one of them, usually without significant modifications to their code.</p>
 <p>Most of the work in bringing up these parts into Elk is in their integration and configuration. For this purpose we use tools from the <a class="reference external" href="https://www.yoctoproject.org/">Yocto Project</a>, which is an industry-standard tool to create custom embedded Linux distros.</p>
 <ul class="simple">
@@ -104,25 +113,25 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <li><p><strong>systemd</strong> : as most modern Linux distros, Elk adopts <a class="reference external" href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> for its init system and many other system components in userspace. The core Elk processes have been designed to take advantage of systemd’s parallelism to minimize device boot time.</p></li>
 <li><p><strong>Libraries / applications</strong> : we leveraged the power of many famous userspace libraries and applications for writing Elk core services and for providing a good set of tools for developers writing product-specific components. Relevant examples are the <a class="reference external" href="https://www.alsa-project.org/main/index.php/Main_Page">ALSA project’s userspace libraries</a> (for MIDI) or the <a class="reference external" href="http://www.bluez.org/">BlueZ</a> stack (for Bluetooth connectivity).  The full list would be very long here and it includes many pieces of software which are not specific to Linux.</p></li>
 </ul>
-<p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python 2.7 installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can usually be easily added to the image on request.</p>
+<p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can usually be easily added to the image on request.</p>
 </section>
-<section id="elk-core-components">
-<h2>Elk Core Components<a class="headerlink" href="#elk-core-components" title="Permalink to this headline">¶</a></h2>
+<section id="elk-core-components-blue-orange">
+<h2>Elk Core Components (blue/orange)<a class="headerlink" href="#elk-core-components-blue-orange" title="Permalink to this headline">¶</a></h2>
 <p>The list here includes all the custom software written specifically for Elk. There are some variations between Elk boards for some parts (for example, each SOC family usually requires a dedicated driver for the specific peripherals used for audio IO) but the interface towards product-specific components will still be the same.</p>
 <ul class="simple">
 <li><p><strong>Audio and Sensors Drivers</strong>: these interface directly with hardware components (codecs, MCUs, etc.) included in the custom boards for Elk. They are designed with the goal of achieving the lowest possible latency so very often we are not using standard Linux infrastructures directly  (like ALSA for the audio driver).</p></li>
-<li><p><strong>Update Manager</strong>: this module/component takes care of deploying software updates to Elk devices, making the process easy and robust for the final user. The system is guaranteed to always boot in a working condition even in presence of power failures during the update.</p></li>
+<li><p><strong>Update Manager</strong>: this module/component takes care of deploying software updates to Elk devices, making the process easy and robust for the final user. The system is guaranteed to always boot in a working condition even in presence of power failures during the update. Updates can be delivered over USB sticks, local network or directly from a server.</p></li>
 <li><p><strong>Sensei</strong>: this is a daemon that makes it very easy to handle several kinds of sensors and GPIOs (buttons, LEDs, etc.) on the physical device. The hardware connections can be declared flexibly using a JSON configuration file, without the need for custom software for each device. SENSEI then takes care of creating software events that can be accessed by the product-specific applications. You can think of it as a sort of “<em>physical widgets</em>” framework.</p></li>
-<li><p><strong>Sushi</strong>: this is the <em>core audio engine</em> behind any device running Elk. It is a multitrack &amp; multichannel live plugin host, with advanced audio &amp; MIDI routing capabilities, Ableton Link integration and much more. In other words, a small DAW included in Elk that you can configure to run VST, LV2 or Rack Extension plugins.</p></li>
+<li><p><strong>Sushi</strong>: this is the <em>core audio engine</em> behind any device running Elk. It is a multitrack &amp; multichannel live plugin host, with advanced audio &amp; MIDI routing capabilities, Ableton Link integration and much more. In other words, a small DAW included in Elk that you can configure to run VST or LV2 plugins. More details can be found in the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/sushi_overview.html">dedicated section in our reference documentation</a> and in the <a class="reference external" href="https://github.com/elk-audio/sushi">Github repository</a>.</p></li>
 </ul>
-<p>As with all the other Elk core components, SUSHI is a command line process that is fully configurable with its remote API (more on this on the next section), so it doesn’t ship with any GUI. SUSHI has been developed with the strict requirements of real-time programming in mind in all cases, especially when a <em>Xenomai Cobalt Kernel</em> is employed. The integration with the lower-level drivers &amp; subsystems happens with dedicated libraries: <strong>RASPA</strong> for interfacing with the custom audio driver, and <strong>TWINE</strong> to offer a high-level API into common real-time functions such as managing <em>multiple real-time threads</em> for <strong>multicore processing</strong> and <em>accurate timers</em>. TWINE can also be used by third-party’s plugins.</p>
+<p>As with all the other Elk core components, SUSHI is a command line process that is fully configurable with its remote API (more on this on the next section), so it doesn’t ship with any GUI. SUSHI has been developed with the strict requirements of real-time programming in mind in all cases, especially when a <em>Xenomai Real-Time Kernel</em> is employed. The integration with the lower-level drivers &amp; subsystems happens with dedicated libraries: <strong>RASPA</strong> for interfacing with the custom audio driver, and <strong>TWINE</strong> to offer a high-level API into common real-time functions such as managing <em>multiple real-time threads</em> for <strong>multicore processing</strong> and <em>accurate timers</em>. TWINE can also be used by third-party’s plugins.</p>
 </section>
-<section id="gluing-things-together">
-<h2>Gluing Things Together<a class="headerlink" href="#gluing-things-together" title="Permalink to this headline">¶</a></h2>
+<section id="custom-components-for-your-product-green">
+<h2>Custom components for your product (green)<a class="headerlink" href="#custom-components-for-your-product-green" title="Permalink to this headline">¶</a></h2>
 <p>We have seen many components so far but still the questions remain unanswered: <em>“how can we build The Box using Elk”</em>?</p>
 <p>The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:</p>
 <ul class="simple">
-<li><p><strong>Audio Plugins</strong> : as already stated, Elk hosts normal VST, LV2 and RE plugins, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide several tools to aid this process, including a <a class="reference external" href="https://github.com/stez-mind/JUCE/tree/mind/headless_plugin_client">fork of the popular JUCE framework</a>.</p></li>
+<li><p><strong>Audio Plugins</strong> : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/building_plugins_for_elk.htmlbuilding_plugins_for_elk.md">several tools to aid this process</a>.</p></li>
 <li><p><strong>Display UI</strong> : this is a dedicated process to handle e.g. a <em>Touchscreen Display</em>. Elk does not provide a specific GUI framework but you are free to use any of the popular and well-maintained solutions for this purpose. For example, <a class="reference external" href="https://www.qt.io/">Qt</a> is a popular choice in many embedded devices.</p></li>
 </ul>
 <p>All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:</p>
@@ -132,7 +141,23 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <li><p>A logging system configurable and accessible from other applications.</p></li>
 </ul>
 <p>The only part that’s missing is a custom <strong>Main Application</strong> that leverages this distributed infrastructure to connect all the components together for a specific device. For example, this will contain the logic for operations like “choose a different sound and change the display when the user press a button”, or “use the LEDs on the front panel to display a VU Meter”.</p>
-<p>Since gRPC is supported by a large number of languages, it is possible to write this component in Python, or Javascript, or Lua, etc. in addition to the conventional choice of C/C++. A cool example workflow might be to quickly prototype the main application in Python and then port it to C++17 for production, without making any changes in the other parts.</p>
+<p>Since gRPC is supported by a large number of languages, it is possible to write this component in Python, or Javascript, or Lua, etc. in addition to the conventional choice of C/C++. A cool example workflow might be to quickly prototype the main application in Python and then port it to C++17 for production, without making any changes in the other parts. In the specific case of Python and C++, we made things even easier by providing two modules, <a class="reference external" href="https://github.com/elk-audio/elkpy">elkpy</a> and <a class="reference external" href="https://github.com/elk-audio/elkcpp">elkcpp</a> that do not require you to learn gRPC to be used.</p>
+</section>
+<section id="try-it-yourself">
+<h2>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">¶</a></h2>
+<p>It is very simple to get a taste of the experience in developing a hardware product using Elk just using your computer!</p>
+<p>Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the
+logic that can then be deployed straight away on a custom hardware. Check the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/getting_started_with_development_kit_software.html">getting started
+guide</a> to see
+how to do that.</p>
+<p>From there, the easiest way to test Elk running at low-latency on an embedded hardware is to use a Raspberry Pi4
+together with a HiFiBerry audio shield. In the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/run_elk_on_boards.html">hardware getting started
+guide</a> you will find all the information
+needed to get your hands dirty with this simple hardware configuration.</p>
+<p>You can find all of Elk’s source code on our main <a class="reference external" href="https://github.com/elk-audio">Github organization</a>. We also provide a
+<a class="reference external" href="https://github.com/elk-community">collection of pre-built open-source plugins</a> that you can use to quickly prototype
+various type of audio systems without writing dedicated C++ code.</p>
+<p>If you had any questions, feel free to join our <a class="reference external" href="https://forum.elk.audio/">forum community</a> and ask them there.</p>
 </section>
 </section>
 
@@ -145,13 +170,15 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Powered by Elk</a><ul>
+<li><a class="reference internal" href="#">What is Elk Audio OS?</a><ul>
+<li><a class="reference internal" href="#why-would-you-need-elk-audio-os">Why would you need Elk Audio OS?</a></li>
 <li><a class="reference internal" href="#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
 <li><a class="reference internal" href="#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
-<li><a class="reference internal" href="#hardware-components">Hardware Components</a></li>
-<li><a class="reference internal" href="#standard-linux-components">Standard Linux Components</a></li>
-<li><a class="reference internal" href="#elk-core-components">Elk Core Components</a></li>
-<li><a class="reference internal" href="#gluing-things-together">Gluing Things Together</a></li>
+<li><a class="reference internal" href="#hardware-components-white">Hardware Components (white)</a></li>
+<li><a class="reference internal" href="#standard-linux-components-pink">Standard Linux Components (pink)</a></li>
+<li><a class="reference internal" href="#elk-core-components-blue-orange">Elk Core Components (blue/orange)</a></li>
+<li><a class="reference internal" href="#custom-components-for-your-product-green">Custom components for your product (green)</a></li>
+<li><a class="reference internal" href="#try-it-yourself">Try it yourself</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +226,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
           <a href="../index.html" title="Elk Development Kit Documentation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Powered by Elk</a></li> 
+        <li class="nav-item nav-item-this"><a href="">What is Elk Audio OS?</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
