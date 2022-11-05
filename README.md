@@ -1,6 +1,6 @@
 # Elk Development Kit Documentation
 
-To read the documentation, follow this link: https://elk-audio.github.io/elk-docs/
+To read the documentation, follow this link: https://elk-audio.github.io/elk-docs/html/
 
 This repository contains the source files, and generated HTML output, for the Elk Development Kit Documentation.
 
