@@ -8,9 +8,9 @@ The other components are redistributed following their original license's terms.
 
 ## Open-source license
 
-The open-source license comes completely free of charge and it's the best way to get started. It is a "copyleft" license, which means that if you want to redistribute a product using it, you will also have to open-source your own code.
+The open-source license comes completely free of charge and is the best way to get started. It is a "copyleft" license, which means that if you want to redistribute a product using it, you will also have to open-source your own code.
 
-Binaries and support are provided only for the Raspberry Pi 4 and images are available [on Github](https://github.com/elk-audio/elk-pi).
+Binaries and support are provided only for the Raspberry Pi 4, for which images are available [on Github](https://github.com/elk-audio/elk-pi).
 
 The specific licenses for the Elk components are detailed in each Github repository:
 
@@ -25,7 +25,7 @@ The open-source version of Elk Audio OS comes with a best effort community suppo
 
 ## Commercial license
 
-If you do not want to release your own source code, or if you want to run Elk on other architectures other than the Raspberry Pi, commercial licenses are available.
+If you do not want to release your own source code, or if you want to run Elk on architectures other than the Raspberry Pi, commercial licenses are available.
 
 The benefits of a commercial license are:
   * Possibility to distribute closed-source proprietary audio products

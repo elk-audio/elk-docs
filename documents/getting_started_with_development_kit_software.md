@@ -1,4 +1,4 @@
-# Development Kit Software
+# Running Elk on your computer
 In this guide you will quickly see which the first steps are, to run a plugin from within Elk's Sushi host, to get sound playing out of it, and to control its parameters using an Open Sound Control (OSC) GUI.
 
 **IMPORTANT:** All the below instructions and example files, are written for the context of running on a macOS or Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments will differ. Refer instead to our [instructions for running on the boards](run_elk_on_boards.md).

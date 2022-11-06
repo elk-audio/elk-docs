@@ -9,13 +9,13 @@ to see how they can be used in a real product.
 
 Making embedded audio devices is hard. Sure, there are plenty of easy-to-use frameworks targeted at makers using simple
 custom boards, and you can make very nice simple DYI projects with them. But then, scaling to an industrial product that
-you can safely put in the hands of a random user, is a totally different story.
+you can safely put in the hands of a generic user, is a totally different story.
 
-Elk is an **embedded Linux distribution**, *highly* *optimized for low-latency audio* and that comes with *several components to streamline the development of professional audio and music devices*. The supported hardware are either one of our **Elk development boards**, or a simple Raspberry Pi with a audio hat, or custom hardware designed for products powered by Elk. We take care of abstracting the hardware for you, so the code that you end up writing for a product is **highly reusable across different hardware platforms**. This is especially important these days with all the uncertainties of component sourcing, giving you the flexibility to quickly transition from one platform to another if needed.
+Elk is an **embedded Linux distribution**, *highly* *optimized for low-latency audio*, that comes with *several components to streamline the development of professional audio and music devices*. The supported hardware are either one of our **Elk development boards**, or a simple Raspberry Pi with a audio hat, or custom hardware designed for products powered by Elk. We take care of abstracting the hardware for you, so the code that you end up writing for a product is **highly reusable across different hardware platforms**. This is especially important these days with all the uncertainties of component sourcing, giving you the flexibility to quickly transition from one platform to another if needed.
 
 In the design of Elk we have tried to follow a UNIX-like philosophy of having several focused components that “*do one thing and do it well*”. All of these can be reused for devices of different kinds such as digital FX units, synthesizers, mixers, etc. The only custom work required for each device is then just a matter of writing a small *glue application* that connects together Elk’s components for the particular use case.
 
-The last ingredients needed for the product recipe are **audio processing plugins**. Luckily, Elk supports standard formats such as **VST** (both 2.x and 3.x), **LV2** and an internal plugin format. If you have access to the plugins’ source code is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.
+The last ingredients needed for the product recipe are **audio processing plugins**. Luckily, Elk supports standard formats such as **VST** (both 2.x and 3.x), **LV2** and an internal plugin format. If you have access to the plugins’ source code it is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.
 
 ## What Can You Do With Elk?
 
@@ -107,25 +107,17 @@ All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:
 
 The only part that’s missing is a custom **Main Application** that leverages this distributed infrastructure to connect all the components together for a specific device. For example, this will contain the logic for operations like “choose a different sound and change the display when the user press a button”, or “use the LEDs on the front panel to display a VU Meter”.
 
-Since gRPC is supported by a large number of languages, it is possible to write this component in Python, or Javascript, or Lua, etc. in addition to the conventional choice of C/C++. A cool example workflow might be to quickly prototype the main application in Python and then port it to C++17 for production, without making any changes in the other parts. In the specific case of Python and C++, we made things even easier by providing two modules, [elkpy](https://github.com/elk-audio/elkpy) and [elkcpp](https://github.com/elk-audio/elkcpp) that do not require you to learn gRPC to be used.
+Since gRPC is supported by a large number of languages, it is possible to write this component in Python, or Javascript, or Lua, etc. in addition to the conventional choice of C/C++. A cool example workflow might be to quickly prototype the main application in Python and then port it to C++17 for production, without making any changes in the other parts. In the specific case of Python and C++, we made things even easier by providing two modules, [elkpy](https://github.com/elk-audio/elkpy) and [elkcpp](https://github.com/elk-audio/elkcpp) using which does not require that you first learn gRPC.
 
 ## Try it yourself
 
 It is very simple to get a taste of the experience in developing a hardware product using Elk just using your computer!
 
-Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the
-logic that can then be deployed straight away on a custom hardware. Check the [getting started
-guide](https://elk-audio.github.io/elk-docs/html/documents/getting_started_with_development_kit_software.html) to see
-how to do that.
+Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the [getting started guide](https://elk-audio.github.io/elk-docs/html/documents/getting_started_with_development_kit_software.html) to see how to do that.
 
-From there, the easiest way to test Elk running at low-latency on an embedded hardware is to use a Raspberry Pi4
-together with a HiFiBerry audio shield. In the [hardware getting started
-guide](https://elk-audio.github.io/elk-docs/html/documents/run_elk_on_boards.html) you will find all the information
-needed to get your hands dirty with this simple hardware configuration.
+From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the [hardware getting started guide](https://elk-audio.github.io/elk-docs/html/documents/run_elk_on_boards.html) you will find all the information needed to get your hands dirty with this simple hardware configuration.
 
-You can find all of Elk's source code on our main [Github organization](https://github.com/elk-audio). We also provide a
-[collection of pre-built open-source plugins](https://github.com/elk-community) that you can use to quickly prototype
-various type of audio systems without writing dedicated C++ code.
+You can find all of Elk's source code on our main [Github organization](https://github.com/elk-audio). We also provide a [collection of pre-built open-source plugins](https://github.com/elk-community) that you can use to quickly prototype various types of audio systems without writing dedicated C++ code.
 
 If you had any questions, feel free to join our [forum community](https://forum.elk.audio/) and ask them there.
 
