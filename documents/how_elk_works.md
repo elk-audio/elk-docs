@@ -62,8 +62,7 @@ Here’s a very quick description of each block in the diagram. Details about th
 
 ## Hardware Components (white)
 
-- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs.
-#TODO: link to new page with license & supported platforms
+- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the [list of supported architectures](https://elk-audio.github.io/elk-docs/html/documents/supported_hw.html).
 - **Microcontroller (MCU)** : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the **Audio Codec(s)** and to interface with **General Purpose Input Output (GPIOs)** pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4/M7 or tiny CPLDs for this purpose.
 
 ## Standard Linux Components (pink)
