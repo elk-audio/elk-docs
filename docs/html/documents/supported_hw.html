@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Supported Hardware architectures &#8212; Elk DevKit  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running Elk on your computer" href="getting_started_with_development_kit_software.html" />
+    <link rel="prev" title="Elk Audio OS software licenses" href="license.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="getting_started_with_development_kit_software.html" title="Running Elk on your computer"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="Elk Audio OS software licenses"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Supported Hardware architectures</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="supported-hardware-architectures">
+<h1>Supported Hardware architectures<a class="headerlink" href="#supported-hardware-architectures" title="Permalink to this headline">¶</a></h1>
+<section id="open-source-version">
+<h2>Open-source version<a class="headerlink" href="#open-source-version" title="Permalink to this headline">¶</a></h2>
+<p>The open-source version is supported only for the Raspberry Pi 4 Single Board Computer. Up to version 0.10, we used to support the RPi3 as well but that is not maintained anymore. It is still possible to build images for RPi3 with some effort, though.</p>
+</section>
+<section id="commercial-version">
+<h2>Commercial version<a class="headerlink" href="#commercial-version" title="Permalink to this headline">¶</a></h2>
+<p>The full Elk Audio OS, including the Xenomai low-latency kernel, audio drivers and RASPA userspace library, is available under a commercial license for these embedded SOCs (listed roughly in order of CPU power):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32mp1-series.html">STM32MP1</a></p></li>
+<li><p><a class="reference external" href="https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-applications-processors/i-mx-8m-family-armcortex-a53-cortex-m4-audio-voice-video:i.MX8M">NXP i.MX8M</a> (Mini &amp; Nano)</p></li>
+<li><p><a class="reference external" href="https://www.raspberrypi.com/products/compute-module-4/?variant=raspberry-pi-cm4001000">Raspberry Pi Compute Module 4</a></p></li>
+<li><p>Any Intel x86 SOC</p></li>
+</ul>
+<p>The i.MX8M SOCs are well supported and are typically a very good choice in terms of price vs performance &amp; features, plus they come with very long-term support from the manufacturer. They include a Cortex-M4/M7 core integrated in the SOC for which we have developed an extensive custom firmware that includes:</p>
+<ul class="simple">
+<li><p>Low-latency DMA based audio engine</p></li>
+<li><p>USB device audio class 2.0 driver</p></li>
+<li><p>ADAT support (via a small external FPGA)</p></li>
+</ul>
+<p>Apart from the mentioned architectures, we also have experience with other traditional Linux audio embedded systems, using ALSA and PREEMPT_RT.</p>
+<p>We can assist you in setting up a system without a Xenomai kernel, which can run Sushi and the other major Elk components on pretty much any SOC that can run Linux, albeit at a higher latency than when Xenomai is used.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Supported Hardware architectures</a><ul>
+<li><a class="reference internal" href="#open-source-version">Open-source version</a></li>
+<li><a class="reference internal" href="#commercial-version">Commercial version</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="license.html"
+                        title="previous chapter">Elk Audio OS software licenses</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="getting_started_with_development_kit_software.html"
+                        title="next chapter">Running Elk on your computer</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documents/supported_hw.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="getting_started_with_development_kit_software.html" title="Running Elk on your computer"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="Elk Audio OS software licenses"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Supported Hardware architectures</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Elk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

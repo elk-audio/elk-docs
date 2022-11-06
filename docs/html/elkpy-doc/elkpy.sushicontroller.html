@@ -53,7 +53,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiController">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiController" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A class to control sushi via gRPC.
 This class creates one instance of each different controller type and makes
 these sub-controllers available as member variables. See the documentation
@@ -92,42 +92,42 @@ i.e.: NotificationController has an infinite event loop running in its own threa
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiInternalError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiInternalError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiInternalError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiInternalError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown if sushi encountered an internal error</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiInvalidArgumentError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiInvalidArgumentError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiInvalidArgumentError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiInvalidArgumentError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown if one or more of the passed arguments are invalid</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiNotFoundError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiNotFoundError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiNotFoundError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown if the requested entity is not found in sushi</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiOutOfRangeError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiOutOfRangeError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiOutOfRangeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiOutOfRangeError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown if one or more of the passed arguments are out of their allowed range</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiUnkownError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiUnkownError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiUnkownError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiUnkownError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown when the source of the error can’t be determined</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushicontroller.SushiUnsupportedOperationError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushicontroller.</span></span><span class="sig-name descname"><span class="pre">SushiUnsupportedOperationError</span></span><a class="reference internal" href="../_modules/elkpy/sushicontroller.html#SushiUnsupportedOperationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushicontroller.SushiUnsupportedOperationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Error thrown when the operation attempted is not currently supported in sushi</p>
 </dd></dl>
 

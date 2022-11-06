@@ -15,7 +15,7 @@ You just need to source the environment setup script to activate the toolchain. 
 $ source [path-to-extracted-sdk]/environment-setup-[aarch-name]-elk-linux
 ```
 
-Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures rather than the UpCore, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
+Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
 
 If you had previously changed your  *LD_LIBRARY_PATH*, you would need to first issue the *#$ unset LD_LIBRARY_PATH* command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in */home/minddev/.zshrc*.
 
