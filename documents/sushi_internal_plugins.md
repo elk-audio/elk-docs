@@ -189,3 +189,24 @@ This plugin passes through audio without altering it, while writing it to a wav 
 
 * **Properties**:
 + "destination_file" : The path and name of the file to write to. ".wav" is appended to the end of the property value internally.
+
+### Wav Streamer
+
+Plugin for streaming large audio files from disk.
+
+* **uid** : "sushi.testing.wav_streamer"
+* **Parameters**:
+  + "volume" : Audio playback gain, in dB. Default: 0.79. (Normalized from [-90, 24], Default: 0.0).
+  + "playback_speed" : The speed at which the audio file is played back. Range: [0.5, 2.0], Default: 1.0.
+  + "fade_time" : The speed at which to fade in or out the audio when starting or stopping in seconds. Range: [0, 100.0], Default: 0.0.
+  + "seek" : Sets the playback position relative to the start and end of the file. Range : [0, 1.0], Default: 0.0.
+  + "playing" : Enables or disables audio playback. Range: [0.0, 1.0], Default : 0 for off.
+  + "loop" : Enables or disables looped playback. Range: [0.0, 1.0], Default : 0 for off.
+  + "playing" : Enables or disables exponential volume fades when starting or stopping. If disabled, volume fades linearily. Range: [0.0, 1.0], Default : 0 for off.
+
+* **Parameters (output only)**:
+  + "position" : Displays the current playback position relative to the start and end of the file. Range: [0, 1.0], Default: 0.0.
+  + "length" : Displays the total length of the file in seconds. (Normalized from [0, 86400], Default: 0.0).
+
+* **Properties**:
+  + "file" : The path and name of the file to playback. If file loading fails, this property is updated with an error message.
