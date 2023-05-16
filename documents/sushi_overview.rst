@@ -263,6 +263,29 @@ all relevant run-time information. Logging level and log destination can
 be specified with the command line flag *-l* or *--log-level* and
 *-l* or *-L* *-log-file=filename* respectively.
 
+Configuring Sentry
+------------------
+
+Sushi can be built with sentry for crash handling by setting the `SUSHI_WITH_SENTRY`
+CMake variable to ON.
+
+The default DSN to which sentry will upload the minidumps and crash
+reports, can be set with the `SUSHI_SENTRY_DSN` CMake variable, or overriden at
+runtime with the `--sentry-dsn=<dsn.address>` flag when starting sushi.
+
+To catch crashes sushi needs to know the location of the `crashpad_handler`
+binary that is compiled along with sentry-native. The default location is
+`./crashpad_handler` but this can be overriden with the
+`--sentry-crash-handler=<path/to/crashpad_handler>` flag when starting sushi.
+
+For sentry to symbolicate the crash logs, symbol files must be `uploaded to sentry`_.
+
+More info on symbol files can be found `here`_.
+
+
+.. _uploaded to sentry: https://docs.sentry.io/platforms/native/data-management/debug-files/upload/
+.. _here: https://docs.sentry.io/platforms/native/data-management/debug-files/file-formats/
+
 Running Sushi with a Different Buffer Size
 ------------------------------------------
 
