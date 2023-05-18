@@ -9,8 +9,8 @@ Elk Development Kit Documentation
 This collection of documents is our introduction and manual for the Elk
 Development Kit.
 
-The Development Kit consists of a software prototyping component, and
-the Elk Add-On board for the Raspberry Pi, which will be
+The Development Kit consists of a software prototyping component, one
+Raspberry Pi 4 with audio hat, which will be
 documented here in that order.
 
 You will be able to run the software component natively on a Debian
@@ -23,6 +23,7 @@ are differences we will explicitly point them out.
    :caption: Elk Introduction and Overview:
 
    documents/how_elk_works.md
+   documents/elk_audio_os_1_0.md
    documents/license.md
    documents/supported_hw.md
 
@@ -31,7 +32,7 @@ are differences we will explicitly point them out.
    :caption: Getting Started:
 
    documents/getting_started_with_development_kit_software.md
-   documents/getting_started_with_development_kit_elk_pi_hardware.md
+   documents/getting_started_with_hifiberry.md
    documents/run_elk_on_boards.md
 
 .. toctree::
@@ -45,7 +46,6 @@ are differences we will explicitly point them out.
    documents/sushi_control_osc.rst
    documents/sushi_internal_plugins.md
    documents/working_with_elk_board.md
-   documents/sensei_configuration_format.md
    documents/building_plugins_for_elk.md
    elkpy-doc/modules.rst
 
@@ -92,6 +92,19 @@ Development Kit:
 
    `Elk Development Boards
    Overview <https://elk.audio/elk-development-boards-overview-3/>`__
+
+
+Legacy documentation
+---------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   documents/getting_started_with_development_kit_elk_pi_hardware.md
+   documents/sensei_configuration_format.md
+   documents/elk_examples_overview_legacy.md
+
+
 
 
 Search Page

@@ -22,23 +22,26 @@ For setting up SSH connections follow these tips:
 3. On Windows, you can use [Putty](https://www.putty.org/) for SSH.
 4. Once you have a terminal window, just log in: username *mind*, password *elk*.
 
-## 2. (If you have an HiFiBerry audio hat)
+## 2. Check audio hat
 
-Elk supports audio hats from HiFiBerry, such as the ***DAC+ ADC*** and the ***DAC+ ADC Pro***.
-
-If you are not using these, you can skip to step 3, and run Sushi.
-
-If however you *are* using one of these, set the audio hat as follows:
+Elk Audio OS automatically detects the audio hat during boot by probing the Codecs. The detected hat name can be shown by running
 
 ```bash
-# To use HiFiBerry DAC+ ADC audio hat
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
-
-# To use HiFiBerry DAC+ ADC Pro Hat.
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+$ cat /tmp/audio_hat
 ```
 
-After this, restart the system for these changes to take effect. Now you can run Sushi as described in step 3. More information on reconfiguring what hat to use is available in the [Working with your Elk Board](working_with_elk_board.md) section.
+In case your hat is not recognized or is not supported you will have a warning message during login like this one
+
+```
+Sorry, elk-pi hat is not currently supported.
+
+Audio driver load failed.
+
+```
+
+If this message appears then the core audio components (driver, RASPA and Sushi) of ELK Audio OS will not be functional.
+
+For Elk Pi users please read related comments on [Elk Audio OS v1.0 notes](elk_audio_os_1_0.md).
 
 ## 3. And run Sushi
 
@@ -49,7 +52,7 @@ Unlike when running on a regular Linux machine, Sushi doesn't use JACK for audio
  run Sushi using the *-r* switch for selecting our RASPA low-latency front-end:
 
 ```bash
-$ sushi -r --multicore-processing=2 -c ~/config_files/mda-vst3-configs/config_mda_synth.json &
+$ sushi -r --multicore-processing=2 -c ~/config_files/play_vst3.json &
 ```
 
 Note the *&* at the end - this means the process starts in the background. When you later need to stop it, you type
@@ -75,8 +78,6 @@ Since this is a development board, you will need to start Sushi manually - but u
 In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.
 
 Instead, type *$ sudo poweroff* to safely shutdown the system.
-
-Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under [Working with Elk](working_with_elk_board.md).
 
 ## 5. Further steps
 
