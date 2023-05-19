@@ -29,7 +29,7 @@ If you do not want to release your own source code, or if you want to run Elk on
 
 The benefits of a commercial license are:
   * Possibility to distribute closed-source proprietary audio products
-  * [More hardware architectures available](https://elk-audio.github.io/elk-docs/html/documents/supported_hw.html), with dedicated firmware stack running on microcontrollers for extra features & performance
+  * [More hardware architectures available](supported_hw.md), with dedicated firmware stack running on microcontrollers for extra features & performance
   * Priority support for bug fixes
   * Dedicated support for customizations
   * Early access to new Elk Audio OS features

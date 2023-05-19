@@ -62,7 +62,7 @@ Here’s a very quick description of each block in the diagram. Details about th
 
 ## Hardware Components (white)
 
-- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the [list of supported architectures](https://elk-audio.github.io/elk-docs/html/documents/supported_hw.html).
+- **Main SOC**: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the [list of supported architectures](supported_hw.md).
 - **Microcontroller (MCU)** : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the **Audio Codec(s)** and to interface with **General Purpose Input Output (GPIOs)** pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4/M7 or tiny CPLDs for this purpose.
 
 ## Standard Linux Components (pink)
@@ -95,7 +95,7 @@ We have seen many components so far but still the questions remain unanswered: *
 
 The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:
 
-- **Audio Plugins** : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide [several tools to aid this process](https://elk-audio.github.io/elk-docs/html/documents/building_plugins_for_elk.html).
+- **Audio Plugins** : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide [several tools to aid this process](building_plugins_for_elk.md).
 - **Display UI** : this is a dedicated process to handle e.g. a *Touchscreen Display*. Elk does not provide a specific GUI framework but you are free to use any of the popular and well-maintained solutions for this purpose. For example, [Qt](https://www.qt.io/) is a popular choice in many embedded devices.
 
 All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:
@@ -112,9 +112,9 @@ Since gRPC is supported by a large number of languages, it is possible to write 
 
 It is very simple to get a taste of the experience in developing a hardware product using Elk just using your computer!
 
-Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the [getting started guide](https://elk-audio.github.io/elk-docs/html/documents/getting_started_with_development_kit_software.html) to see how to do that.
+Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the [getting started guide](getting_started_with_development_kit_software.md) to see how to do that.
 
-From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the [hardware getting started guide](https://elk-audio.github.io/elk-docs/html/documents/run_elk_on_boards.html) you will find all the information needed to get your hands dirty with this simple hardware configuration.
+From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the [hardware getting started guide](run_elk_on_boards.md) you will find all the information needed to get your hands dirty with this simple hardware configuration.
 
 You can find all of Elk's source code on our main [Github organization](https://github.com/elk-audio). We also provide a [collection of pre-built open-source plugins](https://github.com/elk-community) that you can use to quickly prototype various types of audio systems without writing dedicated C++ code.
 
