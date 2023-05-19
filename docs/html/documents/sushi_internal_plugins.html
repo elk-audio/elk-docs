@@ -49,7 +49,7 @@
   <section id="sushi-internal-plugins">
 <h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
 <p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
-<p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
+<p>Initially, the plugins under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.testing.</span></code> have been developed mostly for internal purpose, but as of Sushi 1.1 and later there are a few that could be useful in some situations.</p>
 <p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
 <section id="audio-in-audio-out-plugins">
 <h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
@@ -151,6 +151,24 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.return”</p></li>
 <li><p><strong>Parameters</strong> :</p></li>
+</ul>
+</section>
+<section id="reverb-freeverb">
+<h3>Reverb (freeverb)<a class="headerlink" href="#reverb-freeverb" title="Permalink to this headline">¶</a></h3>
+<p>Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb &amp; allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.</p>
+<p>The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combinatio (check <code class="docutils literal notranslate"><span class="pre">misc/config_files/freeverb_aux.json</span></code> for an example).</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.freeverb”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“freeze” : Boolean switch - if set, the reverb contents are “frozen”, useful to create drone effects. [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“dry” : Relative level of the direct output. [0.0, 1.0], Default : 1.0</p></li>
+<li><p>“dry” : Relative level of the wet output. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“room_size” : Model room size. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“width” : Model width. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“width” : Model high-frequency damping. [0.0, 1.0], Default : 0.5</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
@@ -313,6 +331,35 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><p>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</p></li>
 </ul>
 </section>
+<section id="wav-streamer">
+<h3>Wav Streamer<a class="headerlink" href="#wav-streamer" title="Permalink to this headline">¶</a></h3>
+<p>Plugin for streaming large audio files from disk.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.wav_streamer”</p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>“volume” : Audio playback gain, in dB. Default: 0.79. (Normalized from [-90, 24], Default: 0.0).</p></li>
+<li><p>“playback_speed” : The speed at which the audio file is played back. Range: [0.5, 2.0], Default: 1.0.</p></li>
+<li><p>“fade_time” : The speed at which to fade in or out the audio when starting or stopping in seconds. Range: [0, 100.0], Default: 0.0.</p></li>
+<li><p>“seek” : Sets the playback position relative to the start and end of the file. Range : [0, 1.0], Default: 0.0.</p></li>
+<li><p>“playing” : Enables or disables audio playback. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“loop” : Enables or disables looped playback. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“playing” : Enables or disables exponential volume fades when starting or stopping. If disabled, volume fades linearily. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+</ul>
+</li>
+<li><p><strong>Parameters (output only)</strong>:</p>
+<ul>
+<li><p>“position” : Displays the current playback position relative to the start and end of the file. Range: [0, 1.0], Default: 0.0.</p></li>
+<li><p>“length” : Displays the total length of the file in seconds. (Normalized from [0, 86400], Default: 0.0).</p></li>
+</ul>
+</li>
+<li><p><strong>Properties</strong>:</p>
+<ul>
+<li><p>“file” : The path and name of the file to playback. If file loading fails, this property is updated with an error message.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -335,6 +382,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><a class="reference internal" href="#stereo-mixer">Stereo Mixer</a></li>
 <li><a class="reference internal" href="#send">Send</a></li>
 <li><a class="reference internal" href="#return">Return</a></li>
+<li><a class="reference internal" href="#reverb-freeverb">Reverb (freeverb)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul>
@@ -358,6 +406,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </li>
 <li><a class="reference internal" href="#utility-plugins">Utility plugins</a><ul>
 <li><a class="reference internal" href="#wav-writer">Wav writer</a></li>
+<li><a class="reference internal" href="#wav-streamer">Wav Streamer</a></li>
 </ul>
 </li>
 </ul>

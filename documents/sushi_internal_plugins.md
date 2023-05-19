@@ -2,7 +2,7 @@
 
 These are simple integrated plugins that can be instantiated in a JSON config using the type "internal" and choosing one of the available options for the "uid" field.
 
-They have been developed mostly for internal testing purpose but you could find a use for them in some situations.
+Initially, the plugins under the namespace `sushi.testing.` have been developed mostly for internal purpose, but as of Sushi 1.1 and later there are a few that could be useful in some situations.
 
 All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.
 
@@ -82,6 +82,21 @@ Return bus plugin. Receives audio from 1 or several Send plugins. The audio outp
 
   * **uid** : "sushi.testing.return"
   * **Parameters** :
+
+### Reverb (freeverb)
+
+Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb & allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.
+
+The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combinatio (check `misc/config_files/freeverb_aux.json` for an example).
+
+  * **uid** : "sushi.testing.freeverb"
+  * **Parameters** :
+    + "freeze" : Boolean switch - if set, the reverb contents are "frozen", useful to create drone effects. [0.0, 1.0], Default : 0 for off.
+    + "dry" : Relative level of the direct output. [0.0, 1.0], Default : 1.0
+    + "wet" : Relative level of the wet output. [0.0, 1.0], Default : 0.5
+    + "room_size" : Model room size. [0.0, 1.0], Default : 0.5
+    + "width" : Model width. [0.0, 1.0], Default : 0.5
+    + "width" : Model high-frequency damping. [0.0, 1.0], Default : 0.5
 
 ## Midi In / Audio Out Plugins
 

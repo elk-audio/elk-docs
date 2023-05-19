@@ -275,6 +275,20 @@ all relevant run-time information. Logging level and log destination can
 be specified with the command line flag <em>-l</em> or <em>–log-level</em> and
 <em>-l</em> or <em>-L</em> <em>-log-file=filename</em> respectively.</p>
 </section>
+<section id="configuring-sentry">
+<h2>Configuring Sentry<a class="headerlink" href="#configuring-sentry" title="Permalink to this headline">¶</a></h2>
+<p>Sushi can be built with sentry for crash handling by setting the <cite>SUSHI_WITH_SENTRY</cite>
+CMake variable to ON.</p>
+<p>The default DSN to which sentry will upload the minidumps and crash
+reports, can be set with the <cite>SUSHI_SENTRY_DSN</cite> CMake variable, or overriden at
+runtime with the <cite>–sentry-dsn=&lt;dsn.address&gt;</cite> flag when starting sushi.</p>
+<p>To catch crashes sushi needs to know the location of the <cite>crashpad_handler</cite>
+binary that is compiled along with sentry-native. The default location is
+<cite>./crashpad_handler</cite> but this can be overriden with the
+<cite>–sentry-crash-handler=&lt;path/to/crashpad_handler&gt;</cite> flag when starting sushi.</p>
+<p>For sentry to symbolicate the crash logs, symbol files must be <a class="reference external" href="https://docs.sentry.io/platforms/native/data-management/debug-files/upload/">uploaded to sentry</a>.</p>
+<p>More info on symbol files can be found <a class="reference external" href="https://docs.sentry.io/platforms/native/data-management/debug-files/file-formats/">here</a>.</p>
+</section>
 <section id="running-sushi-with-a-different-buffer-size">
 <h2>Running Sushi with a Different Buffer Size<a class="headerlink" href="#running-sushi-with-a-different-buffer-size" title="Permalink to this headline">¶</a></h2>
 <p>Audio buffer-size is a compile-time option in Sushi, since on embedded
@@ -316,6 +330,7 @@ restart the audio driver by removing and reinserting the module
 <li><a class="reference internal" href="#threading">Threading</a></li>
 <li><a class="reference internal" href="#twine">Twine</a></li>
 <li><a class="reference internal" href="#logging">Logging</a></li>
+<li><a class="reference internal" href="#configuring-sentry">Configuring Sentry</a></li>
 <li><a class="reference internal" href="#running-sushi-with-a-different-buffer-size">Running Sushi with a Different Buffer Size</a></li>
 </ul>
 </li>
