@@ -96,7 +96,7 @@ The implementation does not have any smoothing of parameter values, so if those 
     + "wet" : Relative level of the wet output. [0.0, 1.0], Default : 0.5
     + "room_size" : Model room size. [0.0, 1.0], Default : 0.5
     + "width" : Model width. [0.0, 1.0], Default : 0.5
-    + "width" : Model high-frequency damping. [0.0, 1.0], Default : 0.5
+    + "damp" : Model high-frequency damping. [0.0, 1.0], Default : 0.5
 
 ## Midi In / Audio Out Plugins
 
