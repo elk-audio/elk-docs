@@ -49,7 +49,8 @@
   <section id="sushi-internal-plugins">
 <h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
 <p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
-<p>Initially, the plugins under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.testing.*</span></code> have been developed mostly for internal purpose, but as of Sushi 1.1 and later there are a few that could be useful in some situations. A more complete suite of production-level plugins is included through the <a class="reference external" href="https://www.orastron.com/brickworks">Brickworks library</a> under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.brickworks.*</span></code>.</p>
+<p>The plugins under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.testing.*</span></code> were initially only for internal use, but as of Sushi 1.1, plugins have been added which may be useful also to 3rd parties.</p>
+<p>A more complete suite of production-level plugins is included through the <a class="reference external" href="Brickworks">Brickworks library</a> under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.brickworks.*</span></code>.</p>
 <p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
 <section id="audio-in-audio-out-plugins">
 <h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
@@ -156,7 +157,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <section id="reverb-freeverb">
 <h3>Reverb (freeverb)<a class="headerlink" href="#reverb-freeverb" title="Permalink to this headline">¶</a></h3>
 <p>Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb &amp; allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.</p>
-<p>The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combinatio (check <code class="docutils literal notranslate"><span class="pre">misc/config_files/freeverb_aux.json</span></code> for an example).</p>
+<p>The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combination (check <code class="docutils literal notranslate"><span class="pre">misc/config_files/freeverb_aux.json</span></code> for an example).</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.freeverb”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -365,12 +366,12 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <h2>Brickwork plugins<a class="headerlink" href="#brickwork-plugins" title="Permalink to this headline">¶</a></h2>
 <p>From version 1.1, Sushi includes a suite of high-quality FX plugins written using the <a class="reference external" href="https://www.orastron.com/brickworks">Brickworks library</a> by Orastron. They are mostly high-quality implementation of staple FXs (Chorus, distortions, etc.), with some lower-level plugins (e.g. multimode filter) that could be useful in some situations.</p>
 <p>The implementation is especially good for parameter smoothing and coefficient interpolation, so they should all sound good even when the parameters are modulated at a high control frequency.</p>
-<p>You can play around with all the FX plugins using the example configuration file <code class="docutils literal notranslate"><span class="pre">misc/config_files/play_brickworks_fx.json</span></code>, which sets all of them (bypassed by default) in a single track.</p>
-<p>Brickworks is dual-licensed GPL3 / commercial; a commercial license of Sushi includes the rights to keep these plugins implementation inside it, but it does not give you the rights to extrapolate Brickworks and use it in another project unless you use the GPL3-licensed version of Brickworks.</p>
+<p>You can play around with all the FX plugins using the example configuration file <code class="docutils literal notranslate"><span class="pre">misc/config_files/play_brickworks_fx.json</span></code>, which includes all of them (bypassed by default) in a single track.</p>
+<p>Brickworks is dual-licensed GPL3 / commercial; a commercial license of Sushi includes the rights to keep these plugin implementations inside it, but it does not give you the rights to extrapolate Brickworks and use it in another project unless you use the GPL3-licensed version of Brickworks.</p>
 <p>Part of the following documentation is taken from the official Brickworks API.</p>
 <section id="bitcrusher">
 <h3>Bitcrusher<a class="headerlink" href="#bitcrusher" title="Permalink to this headline">¶</a></h3>
-<p>Bitcrusher through a combination of sample rate and bit-depth reduction</p>
+<p>Bitcrusher through a combination of sample rate and bit-depth reduction.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickworks.bitcrusher”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -425,7 +426,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="compressor">
 <h3>Compressor<a class="headerlink" href="#compressor" title="Permalink to this headline">¶</a></h3>
-<p>Feedfoward compressor/limiter. In a multichannel track, the control signal is obtained with a -3dB sum of all the input channels.</p>
+<p>Feedforward compressor/limiter. In a multichannel track, the control signal is a -3dB sum of all the input channels.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.compressor”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -441,7 +442,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="distortion">
 <h3>Distortion<a class="headerlink" href="#distortion" title="Permalink to this headline">¶</a></h3>
-<p>Distortion effect, loosely inspired to the “rodent” distortion pedal.</p>
+<p>Distortion effect, loosely inspired by the “rodent” distortion pedal.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.dist”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -455,7 +456,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="drive">
 <h3>Drive<a class="headerlink" href="#drive" title="Permalink to this headline">¶</a></h3>
-<p>Overdrive effect, loosely inspired to the green “screaming” overdrive pedal.</p>
+<p>Overdrive effect, loosely inspired by the green “screaming” overdrive pedal.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.drive”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -502,7 +503,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="fuzz">
 <h3>Fuzz<a class="headerlink" href="#fuzz" title="Permalink to this headline">¶</a></h3>
-<p>Fuzz effect, loosely inspired to the “smiling” fuzz pedal.</p>
+<p>Fuzz effect, loosely inspired by the “smiling” fuzz pedal.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.fuzz”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -544,7 +545,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="noise-gate">
 <h3>Noise gate<a class="headerlink" href="#noise-gate" title="Permalink to this headline">¶</a></h3>
-<p>Noise gate; in case of multichannel setup, each channel is used independently for the control signal of that channel’s gate.</p>
+<p>Noise gate; in case of multichannel setup, each channel is gated independently.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.noise_gate”</p></li>
 <li><p><strong>Parameters</strong> :</p>
@@ -559,7 +560,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 <section id="notch">
 <h3>Notch<a class="headerlink" href="#notch" title="Permalink to this headline">¶</a></h3>
-<p>Second-order notch filter with unitary gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.</p>
+<p>Second-order notch filter with unity gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.brickwork.notch”</p></li>
 <li><p><strong>Parameters</strong> :</p>

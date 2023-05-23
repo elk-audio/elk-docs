@@ -2,7 +2,9 @@
 
 These are simple integrated plugins that can be instantiated in a JSON config using the type "internal" and choosing one of the available options for the "uid" field.
 
-Initially, the plugins under the namespace `sushi.testing.*` have been developed mostly for internal purpose, but as of Sushi 1.1 and later there are a few that could be useful in some situations. A more complete suite of production-level plugins is included through the [Brickworks library](https://www.orastron.com/brickworks) under the namespace `sushi.brickworks.*`.
+The plugins under the namespace `sushi.testing.*` were initially only for internal use, but as of Sushi 1.1, plugins have been added which may be useful also to 3rd parties.
+
+A more complete suite of production-level plugins is included through the [Brickworks library](Brickworks ) under the namespace `sushi.brickworks.*`.
 
 All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.
 
@@ -87,7 +89,7 @@ Return bus plugin. Receives audio from 1 or several Send plugins. The audio outp
 
 Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb & allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.
 
-The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combinatio (check `misc/config_files/freeverb_aux.json` for an example).
+The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combination (check `misc/config_files/freeverb_aux.json` for an example).
 
   * **uid** : "sushi.testing.freeverb"
   * **Parameters** :
@@ -232,15 +234,15 @@ From version 1.1, Sushi includes a suite of high-quality FX plugins written usin
 
 The implementation is especially good for parameter smoothing and coefficient interpolation, so they should all sound good even when the parameters are modulated at a high control frequency.
 
-You can play around with all the FX plugins using the example configuration file `misc/config_files/play_brickworks_fx.json`, which sets all of them (bypassed by default) in a single track.
+You can play around with all the FX plugins using the example configuration file `misc/config_files/play_brickworks_fx.json`, which includes all of them (bypassed by default) in a single track.
 
-Brickworks is dual-licensed GPL3 / commercial; a commercial license of Sushi includes the rights to keep these plugins implementation inside it, but it does not give you the rights to extrapolate Brickworks and use it in another project unless you use the GPL3-licensed version of Brickworks.
+Brickworks is dual-licensed GPL3 / commercial; a commercial license of Sushi includes the rights to keep these plugin implementations inside it, but it does not give you the rights to extrapolate Brickworks and use it in another project unless you use the GPL3-licensed version of Brickworks.
 
 Part of the following documentation is taken from the official Brickworks API.
 
 ### Bitcrusher
 
-Bitcrusher through a combination of sample rate and bit-depth reduction
+Bitcrusher through a combination of sample rate and bit-depth reduction.
 
   * **uid** : "sushi.brickworks.bitcrusher"
   * **Parameters** :
@@ -279,7 +281,7 @@ Comb filter / delay effect with feedforward and feedback paths.
 
 ### Compressor
 
-Feedfoward compressor/limiter. In a multichannel track, the control signal is obtained with a -3dB sum of all the input channels.
+Feedforward compressor/limiter. In a multichannel track, the control signal is a -3dB sum of all the input channels.
 
   * **uid** : "sushi.brickwork.compressor"
   * **Parameters** :
@@ -291,7 +293,7 @@ Feedfoward compressor/limiter. In a multichannel track, the control signal is ob
     
 ### Distortion
 
-Distortion effect, loosely inspired to the "rodent" distortion pedal.
+Distortion effect, loosely inspired by the "rodent" distortion pedal.
 
   * **uid** : "sushi.brickwork.dist"
   * **Parameters** :
@@ -301,7 +303,7 @@ Distortion effect, loosely inspired to the "rodent" distortion pedal.
 
 ### Drive
 
-Overdrive effect, loosely inspired to the green "screaming" overdrive pedal.
+Overdrive effect, loosely inspired by the green "screaming" overdrive pedal.
 
   * **uid** : "sushi.brickwork.drive"
   * **Parameters** :
@@ -336,7 +338,7 @@ Flanger with variable rate and amount.
 
 ### Fuzz
 
-Fuzz effect, loosely inspired to the "smiling" fuzz pedal.
+Fuzz effect, loosely inspired by the "smiling" fuzz pedal.
 
   * **uid** : "sushi.brickwork.fuzz"
   * **Parameters** :
@@ -366,7 +368,7 @@ Second-order multimode filter, the various modes are blended together with a set
 
 ### Noise gate
 
-Noise gate; in case of multichannel setup, each channel is used independently for the control signal of that channel's gate.
+Noise gate; in case of multichannel setup, each channel is gated independently.
 
   * **uid** : "sushi.brickwork.noise_gate"
   * **Parameters** :
@@ -377,7 +379,7 @@ Noise gate; in case of multichannel setup, each channel is used independently fo
 
 ### Notch
 
-Second-order notch filter with unitary gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.
+Second-order notch filter with unity gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.
 
   * **uid** : "sushi.brickwork.notch"
   * **Parameters** :
