@@ -1,15 +1,14 @@
 # Raspberry Pi 4 + Hifiberry Hardware
 
-This document contains basic information on how to set up a development system based on Raspberry Pi 4 and Hifiberry hat.
+This document contains basic information on how to set up a development system, based on a Raspberry Pi 4 and a Hifiberry hat.
 
-Supported Hifiberry boards are the HiFiBerry DAC+ ADC and HiFiBerry DAC+ ADC Pro, however other hats may work
-if they are based on compatible Codecs.
+Elk Audio OS supports the HiFiBerry DAC+ ADC and HiFiBerry DAC+ ADC Pro boards, however other hats may work too,
+if they are based on compatible converters (PCM1863 ADC / PCM5122 DAC).
 
 ## 1. Hardware setup
 
-You can follow [official Hifiberry documentation] https://www.hifiberry.com/ to setup the development board, however no
-intervention to the software or SD card images is needed during this step since all the software layer and drivers will
-be handled by the Elk Audio OS.
+To setup your hardware you can follow [official Hifiberry documentation](https://www.hifiberry.com/).
+You don't need to tweak software (device tree, ALSA settings, etc.) since the hifiberry is natively supported by the Elk Audio OS.
 
 ## 2. Flashing the Elk operating system image to the SD card
 

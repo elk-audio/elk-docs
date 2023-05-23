@@ -24,13 +24,13 @@ For setting up SSH connections follow these tips:
 
 ## 2. Check audio hat
 
-Elk Audio OS automatically detects the audio hat during boot by probing the Codecs. The detected hat name can be shown by running
+Elk Audio OS automatically detects the audio hat during boot by probing the Codecs. The detected hat name can be shown running
 
 ```bash
 $ cat /tmp/audio_hat
 ```
 
-In case your hat is not recognized or is not supported you will have a warning message during login like this one
+If your hat is not recognized, or is not supported, you will get a warning message during login similar to the following:
 
 ```
 Sorry, elk-pi hat is not currently supported.
