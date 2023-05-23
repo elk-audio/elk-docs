@@ -222,7 +222,14 @@ We provide the Twine library as a replacement for common use cases in audio plug
 
 Whenever you do an operation that is not RT-safe, Xenomai will perform a _mode switch_, i.e. it will give back control to the Linux Kernel to perform the needed system call and then will switch back to the Cobalt Kernel to continue its activity. The performance penalty for such operations is huge and you will very likely encounter audio dropouts if any mode switch will occur.
 
-The output of */proc/xenomai/sched/stat* will show you how many mode switches the Sushi process has encountered. It should stay stable on 1 and it's especially important that it never grows at run-time after plugin initialization.
+To see how many mode switches the Sushi process has encountered, run
+
+```bash
+$ evl ps -s 
+```
+
+The number of mode switches is indicated by the `ISW` counter.
+This number should stay stable and it's especially important that it never grows at run-time after plugin initialization.
 
 In order to spot code paths that are responsible for mode switches, you can launch Sushi under gdb and use a special command-line flag to activate the throw of SIGXCPU signal whenever a mode switch happens.
 
