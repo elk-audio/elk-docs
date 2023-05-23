@@ -18,7 +18,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Elk Audio OS software licenses" href="license.html" />
+    <link rel="next" title="ELK Audio OS v1.0 notes" href="elk_audio_os_1_0.html" />
     <link rel="prev" title="Elk Development Kit Documentation" href="../index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -31,7 +31,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="license.html" title="Elk Audio OS software licenses"
+          <a href="elk_audio_os_1_0.html" title="ELK Audio OS v1.0 notes"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../index.html" title="Elk Development Kit Documentation"
@@ -98,7 +98,7 @@ you can safely put in the hands of a generic user, is a totally different story.
 <section id="hardware-components-white">
 <h2>Hardware Components (white)<a class="headerlink" href="#hardware-components-white" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Main SOC</strong>: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/supported_hw.html">list of supported architectures</a>.</p></li>
+<li><p><strong>Main SOC</strong>: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the <a class="reference internal" href="supported_hw.html"><span class="doc">list of supported architectures</span></a>.</p></li>
 <li><p><strong>Microcontroller (MCU)</strong> : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the <strong>Audio Codec(s)</strong> and to interface with <strong>General Purpose Input Output (GPIOs)</strong> pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4/M7 or tiny CPLDs for this purpose.</p></li>
 </ul>
 </section>
@@ -130,7 +130,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <p>We have seen many components so far but still the questions remain unanswered: <em>“how can we build The Box using Elk”</em>?</p>
 <p>The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:</p>
 <ul class="simple">
-<li><p><strong>Audio Plugins</strong> : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/building_plugins_for_elk.html">several tools to aid this process</a>.</p></li>
+<li><p><strong>Audio Plugins</strong> : as already stated, Elk hosts normal VST2, VST3 and LV2, recompiled for the target architecture. It is usually trivial to get a plugin that already runs in Linux to run fine under Elk and we provide <a class="reference internal" href="building_plugins_for_elk.html"><span class="doc">several tools to aid this process</span></a>.</p></li>
 <li><p><strong>Display UI</strong> : this is a dedicated process to handle e.g. a <em>Touchscreen Display</em>. Elk does not provide a specific GUI framework but you are free to use any of the popular and well-maintained solutions for this purpose. For example, <a class="reference external" href="https://www.qt.io/">Qt</a> is a popular choice in many embedded devices.</p></li>
 </ul>
 <p>All of Elk’s core processes (SUSHI, SENSEI, etc.) share these common features:</p>
@@ -145,8 +145,8 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <section id="try-it-yourself">
 <h2>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">¶</a></h2>
 <p>It is very simple to get a taste of the experience in developing a hardware product using Elk just using your computer!</p>
-<p>Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/getting_started_with_development_kit_software.html">getting started guide</a> to see how to do that.</p>
-<p>From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the <a class="reference external" href="https://elk-audio.github.io/elk-docs/html/documents/run_elk_on_boards.html">hardware getting started guide</a> you will find all the information needed to get your hands dirty with this simple hardware configuration.</p>
+<p>Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">getting started guide</span></a> to see how to do that.</p>
+<p>From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">hardware getting started guide</span></a> you will find all the information needed to get your hands dirty with this simple hardware configuration.</p>
 <p>You can find all of Elk’s source code on our main <a class="reference external" href="https://github.com/elk-audio">Github organization</a>. We also provide a <a class="reference external" href="https://github.com/elk-community">collection of pre-built open-source plugins</a> that you can use to quickly prototype various types of audio systems without writing dedicated C++ code.</p>
 <p>If you had any questions, feel free to join our <a class="reference external" href="https://forum.elk.audio/">forum community</a> and ask them there.</p>
 </section>
@@ -178,8 +178,8 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
   <p class="topless"><a href="../index.html"
                         title="previous chapter">Elk Development Kit Documentation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="license.html"
-                        title="next chapter">Elk Audio OS software licenses</a></p>
+  <p class="topless"><a href="elk_audio_os_1_0.html"
+                        title="next chapter">ELK Audio OS v1.0 notes</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -211,7 +211,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="license.html" title="Elk Audio OS software licenses"
+          <a href="elk_audio_os_1_0.html" title="ELK Audio OS v1.0 notes"
              >next</a> |</li>
         <li class="right" >
           <a href="../index.html" title="Elk Development Kit Documentation"

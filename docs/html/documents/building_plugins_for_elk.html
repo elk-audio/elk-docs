@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="gRPC helper libraries" href="../elkpy-doc/modules.html" />
-    <link rel="prev" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" /> 
+    <link rel="prev" title="Working with Elk Board" href="working_with_elk_board.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -34,7 +34,7 @@
           <a href="../elkpy-doc/modules.html" title="gRPC helper libraries"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
+          <a href="working_with_elk_board.html" title="Working with Elk Board"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Build Plugins for Elk</a></li> 
@@ -243,7 +243,12 @@ $ make install
 </ul>
 <p>We provide the Twine library as a replacement for common use cases in audio plugins, e.g. querying timers and synchronizing worker threads in a real-time safe way.</p>
 <p>Whenever you do an operation that is not RT-safe, Xenomai will perform a <em>mode switch</em>, i.e. it will give back control to the Linux Kernel to perform the needed system call and then will switch back to the Cobalt Kernel to continue its activity. The performance penalty for such operations is huge and you will very likely encounter audio dropouts if any mode switch will occur.</p>
-<p>The output of <em>/proc/xenomai/sched/stat</em> will show you how many mode switches the Sushi process has encountered. It should stay stable on 1 and it’s especially important that it never grows at run-time after plugin initialization.</p>
+<p>To see how many mode switches the Sushi process has encountered, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ evl ps -s 
+</pre></div>
+</div>
+<p>The number of mode switches is indicated by the <code class="docutils literal notranslate"><span class="pre">ISW</span></code> counter.
+This number should stay stable and it’s especially important that it never grows at run-time after plugin initialization.</p>
 <p>In order to spot code paths that are responsible for mode switches, you can launch Sushi under gdb and use a special command-line flag to activate the throw of SIGXCPU signal whenever a mode switch happens.</p>
 <p>From a terminal in an Elk board, you need to:</p>
 <ol>
@@ -295,8 +300,8 @@ $ make install
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="sensei_configuration_format.html"
-                        title="previous chapter">Sensei Overview and Configuration Format</a></p>
+  <p class="topless"><a href="working_with_elk_board.html"
+                        title="previous chapter">Working with Elk Board</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../elkpy-doc/modules.html"
                         title="next chapter">gRPC helper libraries</a></p>
@@ -334,7 +339,7 @@ $ make install
           <a href="../elkpy-doc/modules.html" title="gRPC helper libraries"
              >next</a> |</li>
         <li class="right" >
-          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
+          <a href="working_with_elk_board.html" title="Working with Elk Board"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Build Plugins for Elk</a></li> 

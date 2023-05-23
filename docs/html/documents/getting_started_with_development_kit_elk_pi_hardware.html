@@ -18,8 +18,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Run Elk on Boards" href="run_elk_on_boards.html" />
-    <link rel="prev" title="Running Elk on your computer" href="getting_started_with_development_kit_software.html" /> 
+    <link rel="next" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" />
+    <link rel="prev" title="Blackboard Page" href="blackboard.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -31,10 +31,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="run_elk_on_boards.html" title="Run Elk on Boards"
+          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_software.html" title="Running Elk on your computer"
+          <a href="blackboard.html" title="Blackboard Page"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Elk Pi Hardware</a></li> 
@@ -52,7 +52,7 @@
 <p>This document contains basic information on how to set up Elk Pi development boards.</p>
 <p>Each board ships with 4 short spacers, 4 long spacers, the optional bottom plate and screws.</p>
 <section id="assembly">
-<h2>1. Assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h2>
+<h2>Assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h2>
 <p>We have created a brief time-lapse video of the assembly process <a class="reference external" href="https://www.youtube.com/watch?v=euB_fGGumZg&amp;feature=youtu.be">you may want to refer to</a>, illustrating the steps below.</p>
 <ol>
 <li><p>While we do not provide a heat sink for your RPi, we do recommend that you use one, at the very least for the CPU. Attach heat sink(s) first, by peeling off the blue protective film from the bottom  and applying it on top of the Raspberry Pi CPU, along with eventual additional heat sinks for network and Bluetooth chips.</p>
@@ -72,56 +72,6 @@
 </li>
 </ol>
 </section>
-<section id="flashing-the-elk-operating-system-image-to-the-sd-card">
-<h2>2. Flashing the Elk operating system image to the SD card<a class="headerlink" href="#flashing-the-elk-operating-system-image-to-the-sd-card" title="Permalink to this headline">¶</a></h2>
-<p>To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. The minimum required SD card size is 8GB.</p>
-<ol class="simple">
-<li><p>Download the compressed image from the provided link. It will have a filename such as: <em>elk-sika-image-dev-raspberrypi3-64.wic.bz2</em>.</p></li>
-<li><p>Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.</p></li>
-</ol>
-<section id="windows">
-<h3>Windows:<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Extract the <em>.wic</em> file from the <em>.bz2</em> archive using <a class="reference external" href="https://www.7-zip.org/download.html">7Zip</a> or another compression utility.</p></li>
-<li><p>Download and install <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or <a class="reference external" href="https://www.raspberrypi.org/downloads/">Win32DiskImager</a>.</p></li>
-<li><p>Flash the extracted <em>*.wic</em> file to the SD card.</p></li>
-</ol>
-</section>
-<section id="linux">
-<h3>Linux:<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>At your convenience, you can either use <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, or use plain <em>dd</em> with these instructions:</p>
-<ol class="simple">
-<li><p>Find out under what name your SD card is listed on your computer, using e.g. <em>lsblk -f</em>. On modern Linux distributions it usually is <em>/dev/sdb</em>, <em>/dev/sdc</em>, or subsequent letters, or sometimes <em>/dev/mmcblk0</em>. We will from now on refer to it as <em>/dev/sdX</em>.</p></li>
-<li><p>Unmount the SD card if it was already mounted:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  $ sudo umount /dev/sdX*
-</pre></div>
-</div>
-<ol class="simple">
-<li><p><strong>VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!</strong> To uncompress and flash onto the SD card run:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   $ bzcat elk-sika-image-dev-raspberrypi3-64.wic.bz2 <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">status</span><span class="o">=</span>progress <span class="o">&amp;&amp;</span> sync
-</pre></div>
-</div>
-<ol>
-<li><p>The process can take a few minutes, so this is a good time to stretch your legs.</p>
-<p>If for any reason the process fails, just reduce the <em>bs=4M</em> speed to <em>bs=1M</em> for example, and it should work great.</p>
-</li>
-</ol>
-</section>
-<section id="macos">
-<h3>macOS:<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
-<p>Also here you can flash the image using <a class="reference external" href="https://www.balena.io/etcher/">balenaEtcher</a>, using Unarchiver to extract the <em>.bz2</em> file first.</p>
-</section>
-</section>
-<section id="power-up-and-next-steps">
-<h2>3. Power up, and next steps<a class="headerlink" href="#power-up-and-next-steps" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Put the SD card in the corresponding slot on the Raspberry Pi.</p></li>
-<li><p>Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.</p></li>
-</ol>
-<p>From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">Run Elk on Boards</span></a>.</p>
-</section>
 </section>
 
 
@@ -134,24 +84,17 @@
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Elk Pi Hardware</a><ul>
-<li><a class="reference internal" href="#assembly">1. Assembly</a></li>
-<li><a class="reference internal" href="#flashing-the-elk-operating-system-image-to-the-sd-card">2. Flashing the Elk operating system image to the SD card</a><ul>
-<li><a class="reference internal" href="#windows">Windows:</a></li>
-<li><a class="reference internal" href="#linux">Linux:</a></li>
-<li><a class="reference internal" href="#macos">macOS:</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#power-up-and-next-steps">3. Power up, and next steps</a></li>
+<li><a class="reference internal" href="#assembly">Assembly</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="getting_started_with_development_kit_software.html"
-                        title="previous chapter">Running Elk on your computer</a></p>
+  <p class="topless"><a href="blackboard.html"
+                        title="previous chapter">Blackboard Page</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="run_elk_on_boards.html"
-                        title="next chapter">Run Elk on Boards</a></p>
+  <p class="topless"><a href="sensei_configuration_format.html"
+                        title="next chapter">Sensei Overview and Configuration Format</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -183,10 +126,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="run_elk_on_boards.html" title="Run Elk on Boards"
+          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
              >next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_software.html" title="Running Elk on your computer"
+          <a href="blackboard.html" title="Blackboard Page"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Elk Pi Hardware</a></li> 

@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sushi: The DAW Inside Elk" href="sushi_overview.html" />
-    <link rel="prev" title="Elk Pi Hardware" href="getting_started_with_development_kit_elk_pi_hardware.html" /> 
+    <link rel="prev" title="Raspberry Pi 4 + Hifiberry Hardware" href="getting_started_with_hifiberry.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -34,7 +34,7 @@
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_elk_pi_hardware.html" title="Elk Pi Hardware"
+          <a href="getting_started_with_hifiberry.html" title="Raspberry Pi 4 + Hifiberry Hardware"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
@@ -71,19 +71,20 @@ of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect
 <li><p>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</p></li>
 </ol>
 </section>
-<section id="if-you-have-an-hifiberry-audio-hat">
-<h2>2. (If you have an HiFiBerry audio hat)<a class="headerlink" href="#if-you-have-an-hifiberry-audio-hat" title="Permalink to this headline">¶</a></h2>
-<p>Elk supports audio hats from HiFiBerry, such as the <em><strong>DAC+ ADC</strong></em> and the <em><strong>DAC+ ADC Pro</strong></em>.</p>
-<p>If you are not using these, you can skip to step 3, and run Sushi.</p>
-<p>If however you <em>are</em> using one of these, set the audio hat as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To use HiFiBerry DAC+ ADC audio hat</span>
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
-
-<span class="c1"># To use HiFiBerry DAC+ ADC Pro Hat.</span>
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
+<section id="check-audio-hat">
+<h2>2. Check audio hat<a class="headerlink" href="#check-audio-hat" title="Permalink to this headline">¶</a></h2>
+<p>Elk Audio OS automatically detects the audio hat during boot by probing the Codecs. The detected hat name can be shown by running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat /tmp/audio_hat
 </pre></div>
 </div>
-<p>After this, restart the system for these changes to take effect. Now you can run Sushi as described in step 3. More information on reconfiguring what hat to use is available in the <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a> section.</p>
+<p>In case your hat is not recognized or is not supported you will have a warning message during login like this one</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sorry</span><span class="p">,</span> <span class="n">elk</span><span class="o">-</span><span class="n">pi</span> <span class="n">hat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">currently</span> <span class="n">supported</span><span class="o">.</span>
+
+<span class="n">Audio</span> <span class="n">driver</span> <span class="n">load</span> <span class="n">failed</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If this message appears then the core audio components (driver, RASPA and Sushi) of ELK Audio OS will not be functional.</p>
+<p>For Elk Pi users please read related comments on <a class="reference internal" href="elk_audio_os_1_0.html"><span class="doc">Elk Audio OS v1.0 notes</span></a>.</p>
 </section>
 <section id="and-run-sushi">
 <h2>3. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this headline">¶</a></h2>
@@ -91,7 +92,7 @@ $ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
 <em>~/plugins</em> in the user folder.</p>
 <p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should
 run Sushi using the <em>-r</em> switch for selecting our RASPA low-latency front-end:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/mda-vst3-configs/config_mda_synth.json <span class="p">&amp;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sushi -r --multicore-processing<span class="o">=</span><span class="m">2</span> -c ~/config_files/play_vst3.json <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>Note the <em>&amp;</em> at the end - this means the process starts in the background. When you later need to stop it, you type
@@ -112,7 +113,6 @@ $ aconnect X Y
 <h2>4. Powering down<a class="headerlink" href="#powering-down" title="Permalink to this headline">¶</a></h2>
 <p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
 <p>Instead, type <em>$ sudo poweroff</em> to safely shutdown the system.</p>
-<p>Elk releases for deployment are separate images, configured with a read-only filesystem, as detailed under <a class="reference internal" href="working_with_elk_board.html"><span class="doc">Working with Elk</span></a>.</p>
 </section>
 <section id="further-steps">
 <h2>5. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this headline">¶</a></h2>
@@ -132,7 +132,7 @@ $ aconnect X Y
   <ul>
 <li><a class="reference internal" href="#">Run Elk on Boards</a><ul>
 <li><a class="reference internal" href="#power-it-up-connect">1. Power it up, connect…</a></li>
-<li><a class="reference internal" href="#if-you-have-an-hifiberry-audio-hat">2. (If you have an HiFiBerry audio hat)</a></li>
+<li><a class="reference internal" href="#check-audio-hat">2. Check audio hat</a></li>
 <li><a class="reference internal" href="#and-run-sushi">3. And run Sushi</a></li>
 <li><a class="reference internal" href="#powering-down">4. Powering down</a></li>
 <li><a class="reference internal" href="#further-steps">5. Further steps</a></li>
@@ -141,8 +141,8 @@ $ aconnect X Y
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="getting_started_with_development_kit_elk_pi_hardware.html"
-                        title="previous chapter">Elk Pi Hardware</a></p>
+  <p class="topless"><a href="getting_started_with_hifiberry.html"
+                        title="previous chapter">Raspberry Pi 4 + Hifiberry Hardware</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="sushi_overview.html"
                         title="next chapter">Sushi: The DAW Inside Elk</a></p>
@@ -180,7 +180,7 @@ $ aconnect X Y
           <a href="sushi_overview.html" title="Sushi: The DAW Inside Elk"
              >next</a> |</li>
         <li class="right" >
-          <a href="getting_started_with_development_kit_elk_pi_hardware.html" title="Elk Pi Hardware"
+          <a href="getting_started_with_hifiberry.html" title="Raspberry Pi 4 + Hifiberry Hardware"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Run Elk on Boards</a></li> 
