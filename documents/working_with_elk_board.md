@@ -228,9 +228,8 @@ They can also be started temporarily with *$ systemctl start sushi* as any norma
 
 ## Setting CPU Speed
 
-The default CPU speed for the Raspberry Pi is set to it's highest possible setting by the Elk Pi OS. It may be not the
-highest CPU speed available but we set it to a reasonable value on the Raspberry Pi to avoid over temperature when working with
-an audio hat.
+The default CPU speed for the Raspberry Pi is set to it's highest possible setting by the Elk Audio OS.
+This may not be the highest CPU speed the hardware is capable of, since we may choose to set it to a lower value to prevent overheating when working with an audio hat.
 
 When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.
 
