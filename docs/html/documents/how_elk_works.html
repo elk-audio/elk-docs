@@ -1,58 +1,610 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>What is Elk Audio OS? &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/how_elk_works';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ELK Audio OS v1.0 notes" href="elk_audio_os_1_0.html" />
-    <link rel="prev" title="Elk Development Kit Documentation" href="../index.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elk_audio_os_1_0.html" title="ELK Audio OS v1.0 notes"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Elk Development Kit Documentation"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">What is Elk Audio OS?</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Elk Development Kit Documentation" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">What is Elk Audio OS?</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="what-is-elk-audio-os">
-<h1>What is Elk Audio OS?<a class="headerlink" href="#what-is-elk-audio-os" title="Permalink to this headline">¶</a></h1>
+<h1>What is Elk Audio OS?<a class="headerlink" href="#what-is-elk-audio-os" title="Permalink to this headline">#</a></h1>
 <p>This section provides a look under the hood of a device made with Elk Audio OS, i.e. “Powered by Elk”.</p>
 <p>This article will give you a quick and informal overview of Elk Audio OS and its components, using a practical example
 to see how they can be used in a real product.</p>
 <section id="why-would-you-need-elk-audio-os">
-<h2>Why would you need Elk Audio OS?<a class="headerlink" href="#why-would-you-need-elk-audio-os" title="Permalink to this headline">¶</a></h2>
+<h2>Why would you need Elk Audio OS?<a class="headerlink" href="#why-would-you-need-elk-audio-os" title="Permalink to this headline">#</a></h2>
 <p>Making embedded audio devices is hard. Sure, there are plenty of easy-to-use frameworks targeted at makers using simple
 custom boards, and you can make very nice simple DYI projects with them. But then, scaling to an industrial product that
 you can safely put in the hands of a generic user, is a totally different story.</p>
@@ -61,7 +613,7 @@ you can safely put in the hands of a generic user, is a totally different story.
 <p>The last ingredients needed for the product recipe are <strong>audio processing plugins</strong>. Luckily, Elk supports standard formats such as <strong>VST</strong> (both 2.x and 3.x), <strong>LV2</strong> and an internal plugin format. If you have access to the plugins’ source code it is usually trivial to rebuild them for Elk. Or, you could take advantage of the library of plugins that have already been built for Elk by various developers.</p>
 </section>
 <section id="what-can-you-do-with-elk">
-<h2>What Can You Do With Elk?<a class="headerlink" href="#what-can-you-do-with-elk" title="Permalink to this headline">¶</a></h2>
+<h2>What Can You Do With Elk?<a class="headerlink" href="#what-can-you-do-with-elk" title="Permalink to this headline">#</a></h2>
 <p>Rather than dryly go into deep details of the Elk’s software architecture and components, it might be easier to describe how they would actually be used in an example product.</p>
 <p>So, using a hypothetical <em>Powered by Elk</em> device, which we’ll refer to as <em>“The Box”</em>, to illustrate what a device like this could do and what its software architecture would like.</p>
 <p><strong>DISCLAIMER</strong>: <em>Again, this is not a real product nor anything that is under development</em>, so don’t look around for where you can buy it or get more information about it. It’s true however that it will be easily possible to make a product like this with Elk.</p>
@@ -89,21 +641,21 @@ you can safely put in the hands of a generic user, is a totally different story.
 <p>You’re free to use your imagination to give a more interesting shape and/or controls to the device but, for our illustration purposes, we’re pretty ok in just having this feature list.</p>
 </section>
 <section id="software-components-inside-an-elk-product">
-<h2>Software Components Inside an Elk Product<a class="headerlink" href="#software-components-inside-an-elk-product" title="Permalink to this headline">¶</a></h2>
+<h2>Software Components Inside an Elk Product<a class="headerlink" href="#software-components-inside-an-elk-product" title="Permalink to this headline">#</a></h2>
 <p>Let’s take a look inside <em>The Box</em> or, better, inside the main SOC that runs Elk and see how all the various software components are connected to obtain the desired features.</p>
 <p>The following diagram gives you a bird’s-eye on the most relevant pieces and the interconnections between them:</p>
 <p><img alt="img" src="../_images/elk_main_diagram.png" /></p>
 <p>Here’s a very quick description of each block in the diagram. Details about the core Elk components (i.e. those in orange/red) will be given in following posts of this series.</p>
 </section>
 <section id="hardware-components-white">
-<h2>Hardware Components (white)<a class="headerlink" href="#hardware-components-white" title="Permalink to this headline">¶</a></h2>
+<h2>Hardware Components (white)<a class="headerlink" href="#hardware-components-white" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>Main SOC</strong>: this is the main IC on the board that contains the CPU and lots of other peripherals (e.g. USB and serial controllers, GPUs). Elk boards use common SOCs that can run Linux and are also found in other embedded or mobile devices. Examples of supported platforms are RaspberryPi 4, NXP i.MX8M Mini/Nano and pretty much any Intel SOCs. For more information, check the <a class="reference internal" href="supported_hw.html"><span class="doc">list of supported architectures</span></a>.</p></li>
 <li><p><strong>Microcontroller (MCU)</strong> : this is custom for the various Elk boards and can vary depending on requirements on I/O and price. Its purpose is to ease the communication with the <strong>Audio Codec(s)</strong> and to interface with <strong>General Purpose Input Output (GPIOs)</strong> pins or ADC used for sensing potentiometers etc. On different boards we have used XMOS MCUs, Cortex-M4/M7 or tiny CPLDs for this purpose.</p></li>
 </ul>
 </section>
 <section id="standard-linux-components-pink">
-<h2>Standard Linux Components (pink)<a class="headerlink" href="#standard-linux-components-pink" title="Permalink to this headline">¶</a></h2>
+<h2>Standard Linux Components (pink)<a class="headerlink" href="#standard-linux-components-pink" title="Permalink to this headline">#</a></h2>
 <p>These are open-source software components that are common to most Embedded Linux devices. We tend to adopt the latest stable version of each one of them, usually without significant modifications to their code.</p>
 <p>Most of the work in bringing up these parts into Elk is in their integration and configuration. For this purpose we use tools from the <a class="reference external" href="https://www.yoctoproject.org/">Yocto Project</a>, which is an industry-standard tool to create custom embedded Linux distros.</p>
 <ul class="simple">
@@ -115,7 +667,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <p>On top of that, Elk packages a small set of common tools often needed in embedded Linux systems, such as BusyBox, a minimal Python installation, hostapd and dhcpd for WiFi hotspot configuration, and several others. Other tools are included in the development-only image, like the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common tools instead of BusyBox. Packages that are available as recipes in <a class="reference external" href="https://layers.openembedded.org/layerindex/branch/master/recipes/">OpenEmbedded Core</a> can usually be easily added to the image on request.</p>
 </section>
 <section id="elk-core-components-blue-orange">
-<h2>Elk Core Components (blue/orange)<a class="headerlink" href="#elk-core-components-blue-orange" title="Permalink to this headline">¶</a></h2>
+<h2>Elk Core Components (blue/orange)<a class="headerlink" href="#elk-core-components-blue-orange" title="Permalink to this headline">#</a></h2>
 <p>The list here includes all the custom software written specifically for Elk. There are some variations between Elk boards for some parts (for example, each SOC family usually requires a dedicated driver for the specific peripherals used for audio IO) but the interface towards product-specific components will still be the same.</p>
 <ul class="simple">
 <li><p><strong>Audio and Sensors Drivers</strong>: these interface directly with hardware components (codecs, MCUs, etc.) included in the custom boards for Elk. They are designed with the goal of achieving the lowest possible latency so very often we are not using standard Linux infrastructures directly  (like ALSA for the audio driver).</p></li>
@@ -126,7 +678,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <p>As with all the other Elk core components, SUSHI is a command line process that is fully configurable with its remote API (more on this on the next section), so it doesn’t ship with any GUI. SUSHI has been developed with the strict requirements of real-time programming in mind in all cases, especially when a <em>Xenomai Real-Time Kernel</em> is employed. The integration with the lower-level drivers &amp; subsystems happens with dedicated libraries: <strong>RASPA</strong> for interfacing with the custom audio driver, and <strong>TWINE</strong> to offer a high-level API into common real-time functions such as managing <em>multiple real-time threads</em> for <strong>multicore processing</strong> and <em>accurate timers</em>. TWINE can also be used by third-party’s plugins.</p>
 </section>
 <section id="custom-components-for-your-product-green">
-<h2>Custom components for your product (green)<a class="headerlink" href="#custom-components-for-your-product-green" title="Permalink to this headline">¶</a></h2>
+<h2>Custom components for your product (green)<a class="headerlink" href="#custom-components-for-your-product-green" title="Permalink to this headline">#</a></h2>
 <p>We have seen many components so far but still the questions remain unanswered: <em>“how can we build The Box using Elk”</em>?</p>
 <p>The answer is in the remaining green-colored blocks in the diagram that are specific to each device. The good news is that writing these parts is very similar to writing an application for a normal desktop computer, thanks to all the abstractions provided by the underlying layers. Examples are:</p>
 <ul class="simple">
@@ -143,7 +695,7 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 <p>Since gRPC is supported by a large number of languages, it is possible to write this component in Python, or Javascript, or Lua, etc. in addition to the conventional choice of C/C++. A cool example workflow might be to quickly prototype the main application in Python and then port it to C++17 for production, without making any changes in the other parts. In the specific case of Python and C++, we made things even easier by providing two modules, <a class="reference external" href="https://github.com/elk-audio/elkpy">elkpy</a> and <a class="reference external" href="https://github.com/elk-audio/elkcpp">elkcpp</a> using which does not require that you first learn gRPC.</p>
 </section>
 <section id="try-it-yourself">
-<h2>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">¶</a></h2>
+<h2>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">#</a></h2>
 <p>It is very simple to get a taste of the experience in developing a hardware product using Elk just using your computer!</p>
 <p>Sushi and the related tools can run on your normal macOS or Linux setup, and with those you can implement most of the logic that can then be deployed straight away on custom hardware. Check the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">getting started guide</span></a> to see how to do that.</p>
 <p>From there, the easiest way to test Elk running at low-latency on an embedded hardware device is to use a Raspberry Pi4 together with a HiFiBerry audio shield. In the <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">hardware getting started guide</span></a> you will find all the information needed to get your hands dirty with this simple hardware configuration.</p>
@@ -153,76 +705,121 @@ However, the rest of Elk does not depend strictly on Xenomai features and we hav
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Elk Development Kit Documentation</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">What is Elk Audio OS?</a><ul>
-<li><a class="reference internal" href="#why-would-you-need-elk-audio-os">Why would you need Elk Audio OS?</a></li>
-<li><a class="reference internal" href="#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
-<li><a class="reference internal" href="#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
-<li><a class="reference internal" href="#hardware-components-white">Hardware Components (white)</a></li>
-<li><a class="reference internal" href="#standard-linux-components-pink">Standard Linux Components (pink)</a></li>
-<li><a class="reference internal" href="#elk-core-components-blue-orange">Elk Core Components (blue/orange)</a></li>
-<li><a class="reference internal" href="#custom-components-for-your-product-green">Custom components for your product (green)</a></li>
-<li><a class="reference internal" href="#try-it-yourself">Try it yourself</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../index.html"
-                        title="previous chapter">Elk Development Kit Documentation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="elk_audio_os_1_0.html"
-                        title="next chapter">ELK Audio OS v1.0 notes</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/how_elk_works.md.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
+    <a class="right-next"
+       href="elk_audio_os_1_0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ELK Audio OS v1.0 notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-would-you-need-elk-audio-os">Why would you need Elk Audio OS?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-components-white">Hardware Components (white)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-linux-components-pink">Standard Linux Components (pink)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elk-core-components-blue-orange">Elk Core Components (blue/orange)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-components-for-your-product-green">Custom components for your product (green)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/how_elk_works.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elk_audio_os_1_0.html" title="ELK Audio OS v1.0 notes"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Elk Development Kit Documentation"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">What is Elk Audio OS?</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

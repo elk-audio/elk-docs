@@ -1,60 +1,615 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Legacy Examples Overview &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/elk_examples_overview_legacy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Legacy Examples Overview</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Sensei Overview and Configuration Format" href="sensei_configuration_format.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Legacy Examples Overview</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="legacy-examples-overview">
-<h1>Legacy Examples Overview<a class="headerlink" href="#legacy-examples-overview" title="Permalink to this headline">¶</a></h1>
+<h1>Legacy Examples Overview<a class="headerlink" href="#legacy-examples-overview" title="Permalink to this headline">#</a></h1>
 <p>All Elk example files can be downloaded from our <a class="reference external" href="https://github.com/elk-audio/elk-examples/">elk-examples repository</a>, with the binary files they depend on available in the <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases">Releases section</a>.</p>
 <p>The examples include first some basic plugin hosting examples, with GUI templates demonstrating how they can be remote controlled over Open Sound Control.</p>
 <p>Then we present a set of complete instrument examples, which also involve the Blackboard, Sensei, and Python glue programs for integrating these into a complete instrument.</p>
 </section>
 <section id="basic-plugin-hosting">
-<h1>Basic Plugin Hosting<a class="headerlink" href="#basic-plugin-hosting" title="Permalink to this headline">¶</a></h1>
+<h1>Basic Plugin Hosting<a class="headerlink" href="#basic-plugin-hosting" title="Permalink to this headline">#</a></h1>
 <p>For the first three examples, on hosting and controlling a plugin, we have chosen to use the same instrument, the <a class="reference external" href="https://sourceforge.net/projects/mda-vst/">MDA JX10 synthesizer</a>, using ports of it for all three different plugin formats. This allows us to better illustrate the slight differences between the formats, than if we had used a different plugin for each.</p>
 <p>Note that the linked files below, are all built for running natively on Linux x86-64. Plugin binaries built to run natively on the ARM-based Elk Pi are included in the development image for those boards.</p>
 <p><strong>Note:</strong> In our Open Stage Control template, the address for the JX10 synth is easily changed: enable editing, click on the “JX-10 ELK CONTROLLER”-title, and then, in the ‘osc’-section of the editor, set the ‘address’ field to “/parameter/your_synth_name”, instead of the current “/parameter/jx10”.</p>
 <section id="mda-jx10-vst3">
-<h2>MDA JX10 VST3<a class="headerlink" href="#mda-jx10-vst3" title="Permalink to this headline">¶</a></h2>
+<h2>MDA JX10 VST3<a class="headerlink" href="#mda-jx10-vst3" title="Permalink to this headline">#</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li><p>config_play_vst3.json - the Sushi configuration file.</p></li>
@@ -67,7 +622,7 @@
 <p>This is the example referred to also in our guide for getting started with the <a class="reference internal" href="getting_started_with_development_kit_software.html"><span class="doc">Elk Development Kit Software</span></a>.</p>
 </section>
 <section id="mda-jx10-vst2">
-<h2>MDA JX10 VST2<a class="headerlink" href="#mda-jx10-vst2" title="Permalink to this headline">¶</a></h2>
+<h2>MDA JX10 VST2<a class="headerlink" href="#mda-jx10-vst2" title="Permalink to this headline">#</a></h2>
 <p>Control of plugin parameters is to certain extent different between VST 2 and VST 3, which we illustrate by including two examples involving the same synth plugin, JX 10, both for VST 2 and VST 3.</p>
 <p>This example requires the following files:</p>
 <ol class="simple">
@@ -81,7 +636,7 @@
 <p><strong>IMPORTANT NOTE:</strong> The MDA JX10 VST 2 plugin will not work on the Raspberry Pi Elk, purely due to a bug in the plugin. We nonetheless leave this example, to best illustrate the differences between using VST 2 and VST 3.  Also, the MDA JX10 VST 2 will run fine on desktop Linux, as the bug does not affect that platform.</p>
 </section>
 <section id="lv2vst-wrapper-with-mda-jx10-lv2">
-<h2>LV2VST Wrapper, with MDA JX10 LV2<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2" title="Permalink to this headline">¶</a></h2>
+<h2>LV2VST Wrapper, with MDA JX10 LV2<a class="headerlink" href="#lv2vst-wrapper-with-mda-jx10-lv2" title="Permalink to this headline">#</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li><p>config_play_lv2vst.json - the Sushi configuration file.</p></li>
@@ -94,7 +649,7 @@
 <p>Since the Sushi configuration file does not refer to absolute plugin paths for LV2, the .json file can be the same for both desktop Linux, and the RPi.</p>
 </section>
 <section id="multi-fx">
-<h2>Multi FX<a class="headerlink" href="#multi-fx" title="Permalink to this headline">¶</a></h2>
+<h2>Multi FX<a class="headerlink" href="#multi-fx" title="Permalink to this headline">#</a></h2>
 <p>This example requires the following files:</p>
 <ol class="simple">
 <li><p>elk_multi_fx_desktop.json - the Sushi configuration file.</p></li>
@@ -107,12 +662,12 @@
 </section>
 </section>
 <section id="juce-example-c-source-code">
-<h1>JUCE Example C++ Source Code<a class="headerlink" href="#juce-example-c-source-code" title="Permalink to this headline">¶</a></h1>
+<h1>JUCE Example C++ Source Code<a class="headerlink" href="#juce-example-c-source-code" title="Permalink to this headline">#</a></h1>
 <p>The source code, CMake, and JUCE <em>.jucer</em> file, for building our Elk JUCE example VST 3 plugin.</p>
 <p>For a configuration file, and Python glue program, please refer to the folder <em>bloackboard/elk-juce-example</em>, of the elk-examples repository.</p>
 </section>
 <section id="complete-blackboard-examples">
-<h1>Complete Blackboard Examples<a class="headerlink" href="#complete-blackboard-examples" title="Permalink to this headline">¶</a></h1>
+<h1>Complete Blackboard Examples<a class="headerlink" href="#complete-blackboard-examples" title="Permalink to this headline">#</a></h1>
 <p>The examples under the <em>blackboard</em> folder, are specifically made to run on the Elk Pi, using the  Blackboard controller board. They are compatible both with the Raspberry Pi 3 and Pi 4, but you will need to separately download the plugin binaries specific to each platform, from the examples repository’s releases section: <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi3-plugins.tar.gz">Pi3</a>, &amp; <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/pi4-plugins.tar.gz">Pi4</a>.</p>
 <p>Running these is not possible on the desktop, since they depend on the Blackboard, and the Sensei app to interface with it, which can only run on a RPi with an Elk Pi board.</p>
 <p>All examples depend on the same Sensei configuration file, which is available globally on your RPi starting from image version 0.7.2.</p>
@@ -120,7 +675,7 @@
 <p>All examples are created with Sushi configuration files that expect the plugin binaries for your RPi to be available in <em>/udata/elk-examples/plugins</em>.  If you placed the example binaries in a different folder you will need to modify each configuration, e.g.  <em>/blackboard/controller-examples/sushi-configs/obxd_step.json</em>, to point to that new location.</p>
 <p>Even if you only want to run one of the examples, copy the entire elk-examples repository to your RPi’s <em>/udata</em> folder, as many of the examples use files located throughout the repository so as to minimize unnecessary duplication.</p>
 <section id="minimal">
-<h2>Minimal<a class="headerlink" href="#minimal" title="Permalink to this headline">¶</a></h2>
+<h2>Minimal<a class="headerlink" href="#minimal" title="Permalink to this headline">#</a></h2>
 <p>The example is purposefully minimal, comprising of under 75 lines of Python code, comments included. It demonstrates the smallest amount of programming that still can produce a usable self-contained instrument.</p>
 <p>It consists of the <a class="reference external" href="https://www.discodsp.com/obxd/">OB-Xd</a> synthesizer, and our internal step-sequencer.</p>
 <p>The glue app <em>main_app_minimal</em> exposes the Cutoff, Resonance, Attack and Release parameters of the OB-Xd, each controllable with one of the four Blackboard faders. The current parameter and value are displayed on the screen.</p>
@@ -130,7 +685,7 @@
 <p>These scripts are provided as a convenience, and to demonstrate the commands needed to start and stop the example.</p>
 </section>
 <section id="general-controller">
-<h2>General Controller<a class="headerlink" href="#general-controller" title="Permalink to this headline">¶</a></h2>
+<h2>General Controller<a class="headerlink" href="#general-controller" title="Permalink to this headline">#</a></h2>
 <p>This example uses the same Sushi configuration file as the previous minimal example, of OB-Xd, and step sequencer.</p>
 <p>The Python glue app it uses however is much more extensive, and general purpose: no matter the Sushi configuration, the glue app will use the Blackboard controls to fully expose all plugins’ parameters for modification using the Blackboard’s physical controls.</p>
 <p>Pressing the encoder cycles through the available devices, exposing their parameters on the screen:</p>
@@ -146,14 +701,14 @@
 <p>In the same folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 </section>
 <section id="multi-fx-for-blackboard">
-<h2>Multi-FX, for Blackboard<a class="headerlink" href="#multi-fx-for-blackboard" title="Permalink to this headline">¶</a></h2>
+<h2>Multi-FX, for Blackboard<a class="headerlink" href="#multi-fx-for-blackboard" title="Permalink to this headline">#</a></h2>
 <p>This example invokes the same Sushi configuration file as the multi-fx example for Desktop Linux / general Elk Pi described above. In this case however the example also instantiates the general controller, allowing the control of the parameters of all four loaded effects, switching between them using the push-encoder.</p>
 <p>To run the example, execute the batch script <em>$ ./run_multi_fx</em>, in the folder <em>/udata/elk-examples/blackboard/controller-examples</em>.</p>
 <p><strong>Important: To use the blackboard’s rightmost 2 jack audio inputs, you need to plug a 3.5mm stereo mini-jack adapted/cable into the elk-pi input as well, leaving cable’s/adapter’s other end unconnected. That bridges the connection to the Blackboards inputs - if you don’t the inputs will not reach the elk-pi.</strong> Or, just use the minijack input on the elk-pi right away, if that is more convenient to you.</p>
 <p>In the sample folder, you can then call the <em>$ ./stop</em> script to terminate all the processes.</p>
 </section>
 <section id="juce-example-for-blackboard">
-<h2>JUCE Example, for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">¶</a></h2>
+<h2>JUCE Example, for Blackboard<a class="headerlink" href="#juce-example-for-blackboard" title="Permalink to this headline">#</a></h2>
 <p>The Elk JUCE example plugin is accompanied by a Python glue program for integrating it with the Blackboard controls, and with an instance of the plugin running on a desktop computer, synchronizing the two plugin instance’s (Elk Pi and desktop) state over OSC.</p>
 <p>Again, we provide batch scripts to start and stop, in the folder <em>/udata/elk-examples/blackboard/elk-juce-example</em>.</p>
 <p>In this repository’s releases section we provide downloads for the plugin built for <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_linux_bin_15-11-19.zip">Ubuntu Linux</a>, <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_win_bin_15-11-19.zip">Windows</a> and <a class="reference external" href="https://github.com/elk-audio/elk-examples/releases/download/examples_01/elk_juce_example_osx_bin_15-11-19.zip">OS X</a> - executable as standalone, or as VST 2 (previously), and now also a new VST 3, given the added JUCE VST 3 Linux support.</p>
@@ -163,90 +718,136 @@
 <p>Now, if you move a slider on the desktop GUI, the same parameter will be affected on the Elk Pi, with the display showing the new value received.</p>
 </section>
 <section id="ob-xd-sequencer">
-<h2>OB-Xd Sequencer<a class="headerlink" href="#ob-xd-sequencer" title="Permalink to this headline">¶</a></h2>
+<h2>OB-Xd Sequencer<a class="headerlink" href="#ob-xd-sequencer" title="Permalink to this headline">#</a></h2>
 <p>This example is an adaptation of the example we used when introducing the Elk Pi board at the 2019 ADC conference. Since it was very well received, we want to provide a version of it also for the Blackboard.</p>
 <p>It also comes with a fully-featured Open Stage Control GUI for remote-controlling over OSC.</p>
 <p><img alt="obxd_open_stage_control" src="../_images/obxd_open_stage_control.png" /></p>
 </section>
 </section>
 <section id="benchmark-synth">
-<h1>Benchmark Synth<a class="headerlink" href="#benchmark-synth" title="Permalink to this headline">¶</a></h1>
+<h1>Benchmark Synth<a class="headerlink" href="#benchmark-synth" title="Permalink to this headline">#</a></h1>
 <p>This is a simple tool that uses Sushi’s internal timing mechanism and its gRPC API to accurate measure the CPU load of a synthesizer at NoteON events.</p>
 <p>See the <a class="reference external" href="https://github.com/elk-audio/elk-examples/blob/master/benchmark-synth/">README.md in the benchmark-synth subfolder</a> for more details.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sensei_configuration_format.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sensei Overview and Configuration Format</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Legacy Examples Overview</a></li>
-<li><a class="reference internal" href="#basic-plugin-hosting">Basic Plugin Hosting</a><ul>
-<li><a class="reference internal" href="#mda-jx10-vst3">MDA JX10 VST3</a></li>
-<li><a class="reference internal" href="#mda-jx10-vst2">MDA JX10 VST2</a></li>
-<li><a class="reference internal" href="#lv2vst-wrapper-with-mda-jx10-lv2">LV2VST Wrapper, with MDA JX10 LV2</a></li>
-<li><a class="reference internal" href="#multi-fx">Multi FX</a></li>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Legacy Examples Overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-plugin-hosting">Basic Plugin Hosting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mda-jx10-vst3">MDA JX10 VST3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mda-jx10-vst2">MDA JX10 VST2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lv2vst-wrapper-with-mda-jx10-lv2">LV2VST Wrapper, with MDA JX10 LV2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-fx">Multi FX</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#juce-example-c-source-code">JUCE Example C++ Source Code</a></li>
-<li><a class="reference internal" href="#complete-blackboard-examples">Complete Blackboard Examples</a><ul>
-<li><a class="reference internal" href="#minimal">Minimal</a></li>
-<li><a class="reference internal" href="#general-controller">General Controller</a></li>
-<li><a class="reference internal" href="#multi-fx-for-blackboard">Multi-FX, for Blackboard</a></li>
-<li><a class="reference internal" href="#juce-example-for-blackboard">JUCE Example, for Blackboard</a></li>
-<li><a class="reference internal" href="#ob-xd-sequencer">OB-Xd Sequencer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#juce-example-c-source-code">JUCE Example C++ Source Code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-blackboard-examples">Complete Blackboard Examples</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal">Minimal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-controller">General Controller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-fx-for-blackboard">Multi-FX, for Blackboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#juce-example-for-blackboard">JUCE Example, for Blackboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ob-xd-sequencer">OB-Xd Sequencer</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#benchmark-synth">Benchmark Synth</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-synth">Benchmark Synth</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="sensei_configuration_format.html"
-                        title="previous chapter">Sensei Overview and Configuration Format</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/elk_examples_overview_legacy.md.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/elk_examples_overview_legacy.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="sensei_configuration_format.html" title="Sensei Overview and Configuration Format"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Legacy Examples Overview</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

@@ -84,35 +84,7 @@ pygments_style = 'none'
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'classic'
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-html_theme_options = {"bgcolor": "black",
-"textcolor": "white",
-"bodyfont": "Helvetica",
-"headfont": "Helvetica",
-"linkcolor": "#FFED47",
-"visitedlinkcolor": "#ccbe39",
-"footerbgcolor": "#202020",
-"footertextcolor": "white",
-"sidebarbgcolor": "#202020",
-"sidebartextcolor": "white",
-"sidebarlinkcolor": "#FFED47",
-"headbgcolor": "black",
-"headtextcolor": "#0EED82",
-"relbarbgcolor": "#202020",
-"relbartextcolor": "white",
-"relbarlinkcolor": "#FFED47",
-"codebgcolor": "black",
-"codetextcolor": "white",
-"stickysidebar": "true"}
-
+html_theme = "pydata_sphinx_theme"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -239,3 +211,4 @@ def setup(app):
             'auto_toc_maxdepth': '3',
             }, True)
     app.add_transform(AutoStructify)
+

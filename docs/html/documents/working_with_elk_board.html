@@ -1,58 +1,610 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Working with Elk Board &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/working_with_elk_board';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Build Plugins for Elk" href="building_plugins_for_elk.html" />
-    <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="building_plugins_for_elk.html" title="Build Plugins for Elk"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Sushi Internal Plugins" href="sushi_internal_plugins.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Working with Elk Board</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="working-with-elk-board">
-<h1>Working with Elk Board<a class="headerlink" href="#working-with-elk-board" title="Permalink to this headline">¶</a></h1>
+<h1>Working with Elk Board<a class="headerlink" href="#working-with-elk-board" title="Permalink to this headline">#</a></h1>
 <p>There are several specific ways of working that you need to be aware of when developing with the Elk Linux platform, compared to when you are using another Linux device. These topics are collectively covered here.</p>
 <section id="filesystem">
-<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
+<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">#</a></h2>
 <section id="partition-layout">
-<h3>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">¶</a></h3>
+<h3>Partition Layout<a class="headerlink" href="#partition-layout" title="Permalink to this headline">#</a></h3>
 <p>Elk uses a redundant partition layout to guarantee that the device will always boot in a working condition regardless of corruptions or incomplete updates due to e.g. power failures.</p>
 <p>Therefore, it is important to remember to <em><strong>never put any files that you want to keep on the mounted root partition
 !</strong></em> There is a separate partition mounted under <em>/udata</em> for files that you want to preserve between system updates.</p>
@@ -70,7 +622,7 @@ will put its contents on the root filesystem copy that is not currently mounted,
 <p>Developer images can mount all partitions as read-write, but on production images the root filesystem is mounted as read-only to prevent corruptions and prevent NAND wearing.</p>
 </section>
 <section id="user-data-separation">
-<h3>User Data Separation<a class="headerlink" href="#user-data-separation" title="Permalink to this headline">¶</a></h3>
+<h3>User Data Separation<a class="headerlink" href="#user-data-separation" title="Permalink to this headline">#</a></h3>
 <p>Files in the user data partition under <em>/udata</em>, remain untouched after running a software update, so keep any
 temporary files used for development there.</p>
 <p>Also use  <em>/udata</em> for the storage of settings &amp; user patches.</p>
@@ -79,7 +631,7 @@ symbolic links to the <em>/udata</em> partition from there.</p>
 </section>
 </section>
 <section id="elk-images">
-<h2>Elk Images<a class="headerlink" href="#elk-images" title="Permalink to this headline">¶</a></h2>
+<h2>Elk Images<a class="headerlink" href="#elk-images" title="Permalink to this headline">#</a></h2>
 <p>Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:</p>
 <ul class="simple">
 <li><p>Development image</p></li>
@@ -87,23 +639,23 @@ symbolic links to the <em>/udata</em> partition from there.</p>
 </ul>
 <p>For the Raspberry Pi community version we only provide the development image.</p>
 <section id="development-image">
-<h3>Development Image<a class="headerlink" href="#development-image" title="Permalink to this headline">¶</a></h3>
+<h3>Development Image<a class="headerlink" href="#development-image" title="Permalink to this headline">#</a></h3>
 <p>The development image contains the gcc toolchain, gdb &amp; gdbserver, valgrind, tmux, full bash and common Linux tools. It is also not set up to auto-load an instrument configuration, and is easily switched between Read-Write and Read-Only modes.</p>
 </section>
 <section id="release-image">
-<h3>Release Image<a class="headerlink" href="#release-image" title="Permalink to this headline">¶</a></h3>
+<h3>Release Image<a class="headerlink" href="#release-image" title="Permalink to this headline">#</a></h3>
 <p>The deployment/release image on the other hand is very streamlined, to minimise boot time and optimise stability. It
 is setup to auto-load, contains no development tools, replaces full-fat common Linux tools with their lightweight
 BusyBox alternatives. It is also setup to be read-only, with exception for <em>/udata</em> if needed.</p>
 </section>
 </section>
 <section id="elk-system-utilities">
-<h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">¶</a></h2>
+<h2>Elk System Utilities<a class="headerlink" href="#elk-system-utilities" title="Permalink to this headline">#</a></h2>
 <p>For important, common tasks with Elk, we provide the <em>elk_system_utils</em> script, which has commands for performing
 these common tasks straightforwardly. Type <em>elk_system_utils -h</em> to get a description of the various commands and
 their respective arguments.</p>
 <section id="changing-audio-buffer-size">
-<h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">¶</a></h3>
+<h3>Changing audio buffer size<a class="headerlink" href="#changing-audio-buffer-size" title="Permalink to this headline">#</a></h3>
 <p>The audio buffer size of the system can be changed by typing <em>sudo elk_system_utils –set-buffer-size [size]</em>. The
 buffer size should be a power of 2. For example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># set audio buffer size to 32</span>
@@ -113,25 +665,25 @@ $ sudo elk_system_utils --set-buffer-size <span class="m">32</span>
 <p>The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.</p>
 </section>
 <section id="enabling-disabling-write-access-to-root-partition">
-<h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">¶</a></h3>
+<h3>Enabling/Disabling Write Access to Root Partition<a class="headerlink" href="#enabling-disabling-write-access-to-root-partition" title="Permalink to this headline">#</a></h3>
 <p>The default state on a newly flashed image is that the root partition is has both read and write permissions. However
 , to have better reliability with SD Cards, you can set this to a read only filesystem. This is the default
 preference for Elk release images. You can change such permissions with <em>elk_system_utils</em>, temporarily or permanently:</p>
 <section id="temporarily-change-write-access">
-<h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">¶</a></h4>
+<h4>Temporarily Change Write Access<a class="headerlink" href="#temporarily-change-write-access" title="Permalink to this headline">#</a></h4>
 <p>Type <em>$ sudo elk_system_utils –remount-as-rw</em> to mount your current rootfs partition as read-write.</p>
 <p>The command <em>$ sudo elk_system_utils –remount-as-ro</em>  to set read-only status.</p>
 <p>Neither of these changes persist across boot cycles.</p>
 </section>
 <section id="permanently-change-write-access">
-<h4>Permanently Change Write Access<a class="headerlink" href="#permanently-change-write-access" title="Permalink to this headline">¶</a></h4>
+<h4>Permanently Change Write Access<a class="headerlink" href="#permanently-change-write-access" title="Permalink to this headline">#</a></h4>
 <p>Use <em>$ sudo elk_system_utils –ro-rootfs enable</em> to enable read-only access to current rootfs partition.</p>
 <p><em>$ sudo elk_system_utils –ro-rootfs disable</em>, permanently gives read-write access.</p>
 <p>You need to perform a power cycle for either change to take effect.</p>
 </section>
 </section>
 <section id="manually-controlling-default-fallback-root-partition">
-<h3>Manually Controlling Default/Fallback Root Partition<a class="headerlink" href="#manually-controlling-default-fallback-root-partition" title="Permalink to this headline">¶</a></h3>
+<h3>Manually Controlling Default/Fallback Root Partition<a class="headerlink" href="#manually-controlling-default-fallback-root-partition" title="Permalink to this headline">#</a></h3>
 <p>As described in the sections on the Elk filesystem and software update system, Elk has two root filesystem partitions
 , <em>rootfs1</em> and <em>rootfs2</em>. It maintains a counter internally, for the number of failed boot attempts. Once that
 counter reaches 10, the two filesystems are automatically swapped, so that if a partition is corrupted, the device is still usable.</p>
@@ -142,9 +694,9 @@ may be useful if you have for example yourself frequently disconnected power bef
 </section>
 </section>
 <section id="connecting-to-your-board">
-<h2>Connecting to Your Board<a class="headerlink" href="#connecting-to-your-board" title="Permalink to this headline">¶</a></h2>
+<h2>Connecting to Your Board<a class="headerlink" href="#connecting-to-your-board" title="Permalink to this headline">#</a></h2>
 <section id="over-wifi">
-<h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">¶</a></h3>
+<h3>Over WiFi<a class="headerlink" href="#over-wifi" title="Permalink to this headline">#</a></h3>
 <p>Log-in to the board using Ethernet, HDMI monitor and USB keyboard, or a serial cable, as per in our <a class="reference internal" href="run_elk_on_boards.html"><span class="doc">getting started guide</span></a>.</p>
 <p>The easiest way to setup WiFi access is through <em>connman</em>, which is enabled by default in dev images:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo connmanctl
@@ -172,7 +724,7 @@ userspace applications.</p>
 <p>Otherwise, you will need to complete the steps above every time you power on the board.</p>
 </section>
 <section id="over-a-serial-connection">
-<h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">¶</a></h3>
+<h3>Over a Serial Connection<a class="headerlink" href="#over-a-serial-connection" title="Permalink to this headline">#</a></h3>
 <p>You can also connect through the serial tty using a UART-to-USB converter with an FTDI chip. Follow the instructions on the relevant development board hardware datasheet to see how to connect the pins, and then use a serial communication program such as PuTTY, minicom or picocom.</p>
 <p>For example, on a host Linux / macOS machine:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the TTL converter usually shows up under /dev/ with a name starting with tty</span>
@@ -186,7 +738,7 @@ a terminal multiplexer when working in this way.</p>
 </section>
 </section>
 <section id="monitoring-sushi-performance">
-<h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">¶</a></h2>
+<h2>Monitoring Sushi Performance<a class="headerlink" href="#monitoring-sushi-performance" title="Permalink to this headline">#</a></h2>
 <p>Given Sushi is running, to get a rough view of CPU performance, <em>top</em>, <em>htop</em> and similar Linux tools will only show
 you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">0</span>.5 evl ps -t
@@ -197,12 +749,12 @@ you the amount of CPU used in non-RT tasks and not the real time audio processin
 <p>TODO: which file?</p>
 </section>
 <section id="software-update-system">
-<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">¶</a></h2>
+<h2>Software Update System<a class="headerlink" href="#software-update-system" title="Permalink to this headline">#</a></h2>
 <p>Elk uses a modified version of <a class="reference external" href="https://sbabic.github.io/swupdate/">swupdate</a> for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.</p>
 <p><em>Important note</em>: as written in the <a class="reference external" href="#partition-layout">Partition Layout section</a>, your data in the mounted root
 partition will be lost after an update! Keep anything that you want to save under <em>/udata</em>.</p>
 <section id="updating-over-network-wifi-ethernet">
-<h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">¶</a></h3>
+<h3>Updating over Network (WiFi / Ethernet)<a class="headerlink" href="#updating-over-network-wifi-ethernet" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the <a class="reference external" href="#connecting-to-your-board">relevant section</a>.</p></li>
 <li><p>Open a web browser and go to <em><strong>http://&lt;your Elk Pi board ip address&gt;:8080</strong></em></p></li>
@@ -214,7 +766,7 @@ to power off the board manually from the board’s terminal (e.g. <em>sudo power
 </ol>
 </section>
 <section id="updating-with-an-usb-drive">
-<h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">¶</a></h3>
+<h3>Updating with an USB drive<a class="headerlink" href="#updating-with-an-usb-drive" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Elk updates are shipped in form of <em>.swu</em> files that can be put on a FAT32 formatted USB pendrive and inserted at any time.</p></li>
 <li><p>The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.</p></li>
@@ -225,7 +777,7 @@ to power off the board manually from the board’s terminal (e.g. <em>sudo power
 </section>
 </section>
 <section id="configuring-automatic-startup">
-<h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">¶</a></h2>
+<h2>Configuring Automatic Startup<a class="headerlink" href="#configuring-automatic-startup" title="Permalink to this headline">#</a></h2>
 <p>TODO: update [sensei deprecated!]</p>
 <p>If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.</p>
 <ol>
@@ -248,7 +800,7 @@ because you have put some debug printfs in your plugin, you can run <em>journalc
 <p>They can also be started temporarily with <em>$ systemctl start sushi</em> as any normal SystemD service.</p>
 </section>
 <section id="setting-cpu-speed">
-<h2>Setting CPU Speed<a class="headerlink" href="#setting-cpu-speed" title="Permalink to this headline">¶</a></h2>
+<h2>Setting CPU Speed<a class="headerlink" href="#setting-cpu-speed" title="Permalink to this headline">#</a></h2>
 <p>The default CPU speed for the Raspberry Pi is set to it’s highest possible setting by the Elk Pi OS. It may be not the
 highest CPU speed available but we set it to a reasonable value on the Raspberry Pi to avoid over temperature when working with
 an audio hat.</p>
@@ -267,101 +819,146 @@ an audio hat.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sushi_internal_plugins.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sushi Internal Plugins</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Working with Elk Board</a><ul>
-<li><a class="reference internal" href="#filesystem">Filesystem</a><ul>
-<li><a class="reference internal" href="#partition-layout">Partition Layout</a></li>
-<li><a class="reference internal" href="#user-data-separation">User Data Separation</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#elk-images">Elk Images</a><ul>
-<li><a class="reference internal" href="#development-image">Development Image</a></li>
-<li><a class="reference internal" href="#release-image">Release Image</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#elk-system-utilities">Elk System Utilities</a><ul>
-<li><a class="reference internal" href="#changing-audio-buffer-size">Changing audio buffer size</a></li>
-<li><a class="reference internal" href="#enabling-disabling-write-access-to-root-partition">Enabling/Disabling Write Access to Root Partition</a><ul>
-<li><a class="reference internal" href="#temporarily-change-write-access">Temporarily Change Write Access</a></li>
-<li><a class="reference internal" href="#permanently-change-write-access">Permanently Change Write Access</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#manually-controlling-default-fallback-root-partition">Manually Controlling Default/Fallback Root Partition</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#connecting-to-your-board">Connecting to Your Board</a><ul>
-<li><a class="reference internal" href="#over-wifi">Over WiFi</a></li>
-<li><a class="reference internal" href="#over-a-serial-connection">Over a Serial Connection</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
-<li><a class="reference internal" href="#software-update-system">Software Update System</a><ul>
-<li><a class="reference internal" href="#updating-over-network-wifi-ethernet">Updating over Network (WiFi / Ethernet)</a></li>
-<li><a class="reference internal" href="#updating-with-an-usb-drive">Updating with an USB drive</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuring-automatic-startup">Configuring Automatic Startup</a></li>
-<li><a class="reference internal" href="#setting-cpu-speed">Setting CPU Speed</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="sushi_internal_plugins.html"
-                        title="previous chapter">Sushi Internal Plugins</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="building_plugins_for_elk.html"
-                        title="next chapter">Build Plugins for Elk</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/working_with_elk_board.md.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
+    <a class="right-next"
+       href="building_plugins_for_elk.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Build Plugins for Elk</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filesystem">Filesystem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partition-layout">Partition Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-data-separation">User Data Separation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elk-images">Elk Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-image">Development Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-image">Release Image</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elk-system-utilities">Elk System Utilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-audio-buffer-size">Changing audio buffer size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-disabling-write-access-to-root-partition">Enabling/Disabling Write Access to Root Partition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temporarily-change-write-access">Temporarily Change Write Access</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permanently-change-write-access">Permanently Change Write Access</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manually-controlling-default-fallback-root-partition">Manually Controlling Default/Fallback Root Partition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-your-board">Connecting to Your Board</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-wifi">Over WiFi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-a-serial-connection">Over a Serial Connection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-update-system">Software Update System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-over-network-wifi-ethernet">Updating over Network (WiFi / Ethernet)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-with-an-usb-drive">Updating with an USB drive</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-automatic-startup">Configuring Automatic Startup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-cpu-speed">Setting CPU Speed</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/working_with_elk_board.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="building_plugins_for_elk.html" title="Build Plugins for Elk"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="sushi_internal_plugins.html" title="Sushi Internal Plugins"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Working with Elk Board</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>
