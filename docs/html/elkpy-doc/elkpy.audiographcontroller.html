@@ -1,59 +1,436 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>elkpy.AudioGraphController &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'elkpy-doc/elkpy.audiographcontroller';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.AudioRoutingController" href="elkpy.audioroutingcontroller.html" />
-    <link rel="prev" title="elkpy python API" href="elkpy.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elkpy.audioroutingcontroller.html" title="elkpy.AudioRoutingController"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="elkpy.html" title="elkpy python API"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" accesskey="U">elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.AudioGraphController</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="elkpy python API" href="elkpy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/elk_examples_overview.html">Examples Overview</a></li>
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_overview.html">Sushi: The DAW Inside Elk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_internal_plugins.html">Sushi Internal Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_configuration_format.html">Sushi Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_public_api_model.html">Sushi Public API Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_grpc.html">Controlling Sushi using gRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_osc.html">Controlling Sushi using Open Sound Control</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">gRPC helper libraries</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="elkpy.html">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">elkpy.AudioGraphController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../sushi/index.html" class="nav-link">Sushi</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="elkpy.html" class="nav-link">elkpy python API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">elkpy.AudioGraphController</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="module-elkpy.audiographcontroller">
-<span id="elkpy-audiographcontroller"></span><h1>elkpy.AudioGraphController<a class="headerlink" href="#module-elkpy.audiographcontroller" title="Permalink to this headline">¶</a></h1>
+<span id="elkpy-audiographcontroller"></span><h1>elkpy.AudioGraphController<a class="headerlink" href="#module-elkpy.audiographcontroller" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.audiographcontroller.</span></span><span class="sig-name descname"><span class="pre">AudioGraphController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.audiographcontroller.</span></span><span class="sig-name descname"><span class="pre">AudioGraphController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A class to control the audio graph in sushi via gRPC. It has functions to create, move, delete and get info
 about audio graph object like tracks and processors.</p>
 <dl class="simple">
@@ -61,19 +438,8 @@ about audio graph object like tracks and processors.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost:51051'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sushi_proto_def</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/usr/share/sushi/sushi_rpc.proto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>The constructor for the AudioGraphController class setting up the gRPC connection with sushi.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>address (str): ‘ip-addres:port’ The ip-addres and port at which to connect to sushi.
-sushi_proto_def (str): path to .proto file with SUSHI’s gRPC services definition</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_multibus_track">
-<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_multibus_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buses</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_multibus_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a new multibus track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.
@@ -84,7 +450,7 @@ buses (int): The number of audio buses in the new track.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_post_track">
-<span class="sig-name descname"><span class="pre">create_post_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_post_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_post_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_post_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_post_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_post_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a new post track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
@@ -94,7 +460,7 @@ buses (int): The number of audio buses in the new track.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_pre_track">
-<span class="sig-name descname"><span class="pre">create_pre_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_pre_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_pre_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_pre_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_pre_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_pre_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a new pre track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.</p>
@@ -104,7 +470,7 @@ buses (int): The number of audio buses in the new track.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_processor_on_track">
-<span class="sig-name descname"><span class="pre">create_processor_on_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">uid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType" title="elkpy.sushi_info_types.PluginType"><span class="pre">elkpy.sushi_info_types.PluginType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_to_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_processor_on_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_processor_on_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType" title="elkpy.sushi_info_types.PluginType"><span class="pre">PluginType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_to_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_processor_on_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a new processor on an existing track.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name to assign the processor. Must be unique.
@@ -120,7 +486,7 @@ add_to_back (bool): Set to true to add the processor to the back of the processi
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.create_track">
-<span class="sig-name descname"><span class="pre">create_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.create_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.create_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a new track in sushi.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>name (str): The name of the new track.
@@ -131,7 +497,7 @@ channels (int): The number of channels to assign the new track.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track">
-<span class="sig-name descname"><span class="pre">delete_processor_from_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.delete_processor_from_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_processor_from_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.delete_processor_from_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Delete an existing processor from a track.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor (int): The id of the processor to delete.
@@ -142,7 +508,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.delete_track">
-<span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.delete_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.delete_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.delete_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.delete_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Delet a track.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>track_id (int): The id of the track to delete.</p>
@@ -152,7 +518,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_all_processors">
-<span class="sig-name descname"><span class="pre">get_all_processors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">elkpy.sushi_info_types.ProcessorInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_all_processors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_all_processors" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_all_processors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">ProcessorInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_all_processors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_all_processors" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets a list of all available processors.</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>List[info_types.ProcessorInfo]: A list with the info of all the available processors.</p>
@@ -162,7 +528,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_all_tracks">
-<span class="sig-name descname"><span class="pre">get_all_tracks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo" title="elkpy.sushi_info_types.TrackInfo"><span class="pre">elkpy.sushi_info_types.TrackInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_all_tracks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_all_tracks" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_all_tracks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo" title="elkpy.sushi_info_types.TrackInfo"><span class="pre">TrackInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_all_tracks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_all_tracks" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets a list of all available tracks.</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>List[info_types.TrackInfo]: A list with the info of all the available tracks.</p>
@@ -172,7 +538,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state">
-<span class="sig-name descname"><span class="pre">get_processor_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_processor_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the bypass state of the specified processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor_identifier (int): The id of processor to get the bypass state from.</p>
@@ -184,7 +550,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_processor_id">
-<span class="sig-name descname"><span class="pre">get_processor_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_id" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_processor_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_id" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the id of a processor from its name.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor_name (str): The name of the processor to get the id from.</p>
@@ -196,7 +562,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_processor_info">
-<span class="sig-name descname"><span class="pre">get_processor_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">elkpy.sushi_info_types.ProcessorInfo</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_processor_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">ProcessorInfo</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the info of a processor from its id.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>track_identifier (int): The id of the processor to get the info from.</p>
@@ -208,7 +574,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_processor_state">
-<span class="sig-name descname"><span class="pre">get_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">elkpy.sushi_info_types.ProcessorState</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_state" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">ProcessorState</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the full state of the specified processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor_identifier (int): The id of processor to get the full state from.</p>
@@ -220,7 +586,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_track_id">
-<span class="sig-name descname"><span class="pre">get_track_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_id" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_track_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_id" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the id of a track from its name.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>track_name (str): The name of the track.</p>
@@ -232,7 +598,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_track_info">
-<span class="sig-name descname"><span class="pre">get_track_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo" title="elkpy.sushi_info_types.TrackInfo"><span class="pre">elkpy.sushi_info_types.TrackInfo</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_track_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo" title="elkpy.sushi_info_types.TrackInfo"><span class="pre">TrackInfo</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_info" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the info of a track from its id.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track to get the info from.</p>
@@ -244,7 +610,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.get_track_processors">
-<span class="sig-name descname"><span class="pre">get_track_processors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">elkpy.sushi_info_types.ProcessorInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_processors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_processors" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_track_processors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo" title="elkpy.sushi_info_types.ProcessorInfo"><span class="pre">ProcessorInfo</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.get_track_processors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.get_track_processors" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a list of processors assigned on the specified track.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>track_identifier (int): The id of the track to get the processor list from.</p>
@@ -256,7 +622,7 @@ track (int): The id of the track that contains the processor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.move_processor_on_track">
-<span class="sig-name descname"><span class="pre">move_processor_on_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_to_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.move_processor_on_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.move_processor_on_track" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">move_processor_on_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_to_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.move_processor_on_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.move_processor_on_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Move an existing processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor (int): The id of the processor to move.
@@ -270,7 +636,7 @@ add_to_back (bool): Set to true to add the processor to the back of the processi
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state">
-<span class="sig-name descname"><span class="pre">set_processor_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bypass_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.set_processor_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_processor_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bypass_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.set_processor_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the bypass state of the specified processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>processor_identifier (int): The id of the processor to set the bypass state of.
@@ -281,7 +647,7 @@ bypass_sate (bool): The bypass state of the processor matching the id.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.audiographcontroller.AudioGraphController.set_processor_state">
-<span class="sig-name descname"><span class="pre">set_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">elkpy.sushi_info_types.ProcessorState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.set_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_state" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_processor_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState" title="elkpy.sushi_info_types.ProcessorState"><span class="pre">ProcessorState</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/audiographcontroller.html#AudioGraphController.set_processor_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the full or partial state of the specified processor from an existing state object.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>state (info_types.ProcessorState): a state object either populated manually or received from a call to get_processor_state.</p>
@@ -294,63 +660,135 @@ bypass_sate (bool): The bypass state of the processor matching the id.</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="elkpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">elkpy python API</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="elkpy.html"
-                        title="previous chapter">elkpy python API</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="elkpy.audioroutingcontroller.html"
-                        title="next chapter">elkpy.AudioRoutingController</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/elkpy-doc/elkpy.audiographcontroller.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
+    <a class="right-next"
+       href="elkpy.audioroutingcontroller.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">elkpy.AudioRoutingController</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController"><code class="docutils literal notranslate"><span class="pre">AudioGraphController</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.create_multibus_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_multibus_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.create_post_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_post_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.create_pre_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_pre_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_processor_on_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.create_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.delete_processor_from_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.delete_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.delete_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_all_processors"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_all_processors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_all_tracks"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_all_tracks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_bypass_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_id"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_info"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_processor_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_track_id"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_track_info"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.get_track_processors"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_processors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.move_processor_on_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.move_processor_on_track()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.set_processor_bypass_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.audiographcontroller.AudioGraphController.set_processor_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.set_processor_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/elkpy-doc/elkpy.audiographcontroller.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elkpy.audioroutingcontroller.html" title="elkpy.AudioRoutingController"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="elkpy.html" title="elkpy python API"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="elkpy.html" >elkpy python API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy.AudioGraphController</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

@@ -15,14 +15,12 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('./deps/elkpy'))
-import recommonmark
-from recommonmark.transform import AutoStructify
 
 
 # -- Project information -----------------------------------------------------
 
 project = u'Elk DevKit'
-copyright = u'2019, Elk'
+copyright = u'2023, Elk'
 author = u'Elk'
 
 # The short X.Y version
@@ -35,7 +33,7 @@ release = u''
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
-# needs_sphinx = '1.0'
+needs_sphinx = '4.3'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -43,7 +41,6 @@ release = u''
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.imgmath',
@@ -51,6 +48,8 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.autosummary',
+    'sphinx_design',
     'recommonmark',
 ]
 
@@ -71,7 +70,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -84,34 +83,18 @@ pygments_style = 'none'
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'classic'
+html_theme = "pydata_sphinx_theme"
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-html_theme_options = {"bgcolor": "black",
-"textcolor": "white",
-"bodyfont": "Helvetica",
-"headfont": "Helvetica",
-"linkcolor": "#FFED47",
-"visitedlinkcolor": "#ccbe39",
-"footerbgcolor": "#202020",
-"footertextcolor": "white",
-"sidebarbgcolor": "#202020",
-"sidebartextcolor": "white",
-"sidebarlinkcolor": "#FFED47",
-"headbgcolor": "black",
-"headtextcolor": "#0EED82",
-"relbarbgcolor": "#202020",
-"relbartextcolor": "white",
-"relbarlinkcolor": "#FFED47",
-"codebgcolor": "black",
-"codetextcolor": "white",
-"stickysidebar": "true"}
+html_favicon = '_static/favicon/favicon.ico'
+
+html_theme_options = {
+  "logo": {
+      "image_light": "elk_logo_dark.png",
+      "image_dark": "elk_logo_light.png",
+  },
+  "github_url": "https://github.com/elk-audio",
+  "collapse_navigation": True,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -214,9 +197,6 @@ epub_exclude_files = ['search.html']
 
 # -- Options for intersphinx extension ---------------------------------------
 
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
-
 # -- Options for todo extension ----------------------------------------------
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
@@ -231,11 +211,7 @@ def skip(app, what, name, obj, would_skip, options):
 
 # At the bottom of conf.py
 def setup(app):
-    app.connect("autodoc-skip-member", skip)
     app.add_config_value('recommonmark_config', {
             'url_resolver': lambda url: github_doc_root + url,
-            'auto_toc_tree_section': 'Contents',
-            'enable_auto_toc_tree': 'true',
-            'auto_toc_maxdepth': '3',
             }, True)
-    app.add_transform(AutoStructify)
+

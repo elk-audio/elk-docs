@@ -1,56 +1,608 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Sushi Configuration &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/sushi_configuration_format';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Controlling Sushi using gRPC" href="sushi_control_grpc.html" />
-    <link rel="prev" title="Sushi Public API Model" href="sushi_public_api_model.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="sushi_public_api_model.html" title="Sushi Public API Model"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Configuration</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Sushi Public API Model" href="sushi_public_api_model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Sushi Configuration</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="sushi-configuration">
-<h1>Sushi Configuration<a class="headerlink" href="#sushi-configuration" title="Permalink to this headline">¶</a></h1>
+<h1>Sushi Configuration<a class="headerlink" href="#sushi-configuration" title="Permalink to this headline">#</a></h1>
 <p>Following is a reference for the Sushi .json configuration file.</p>
 <section id="main-host-configuration">
-<h2>Main Host Configuration<a class="headerlink" href="#main-host-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Main Host Configuration<a class="headerlink" href="#main-host-configuration" title="Permalink to this headline">#</a></h2>
 <p><strong>“host_config”</strong></p>
 <ul class="simple">
 <li><p><strong>“samplerate”</strong> - The sample rate at which to run Sushi. This could change depending on the audio frontend, if the requested sample rate in not supported for instance.</p></li>
@@ -91,7 +643,7 @@
 </ul>
 </section>
 <section id="tracks">
-<h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">¶</a></h2>
+<h2>Tracks<a class="headerlink" href="#tracks" title="Permalink to this headline">#</a></h2>
 <p><strong>“tracks”</strong> : A list of track objects with the following members:</p>
 <ul class="simple">
 <li><p><strong>“name”</strong> - Name of the track, must be unique.</p></li>
@@ -128,7 +680,7 @@
 </ul>
 </section>
 <section id="pre-post-tracks">
-<h2>Pre/Post Tracks<a class="headerlink" href="#pre-post-tracks" title="Permalink to this headline">¶</a></h2>
+<h2>Pre/Post Tracks<a class="headerlink" href="#pre-post-tracks" title="Permalink to this headline">#</a></h2>
 <p><strong>“pre_track”</strong> - A track added at the beginning of the audio processing chain and processes audio inputs before being routed to regular tracks (optional)
 * <strong>“name”</strong> - Name of the track, must be unique.
 * <strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.</p>
@@ -137,7 +689,7 @@
 * <strong>“plugins”</strong> - A list of plugin objects that will be added to the track in the order specified here. See the Tracks section above for a more detailed description.</p>
 </section>
 <section id="midi">
-<h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">¶</a></h2>
+<h2>MIDI<a class="headerlink" href="#midi" title="Permalink to this headline">#</a></h2>
 <p><strong>“midi”</strong> - MIDI connections to and from tracks and plugins.</p>
 <ul class="simple">
 <li><p><strong>“track_connections”</strong> - A list of routing objects that route midi keyboard data to a track. MIDI keyboard data is routed to the first plugin on the track, that plugin then either consumes the MIDI data or passes it on to the next plugin on the track.</p>
@@ -183,7 +735,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </section>
 <section id="open-sound-control-connections">
-<h2>Open Sound Control Connections<a class="headerlink" href="#open-sound-control-connections" title="Permalink to this headline">¶</a></h2>
+<h2>Open Sound Control Connections<a class="headerlink" href="#open-sound-control-connections" title="Permalink to this headline">#</a></h2>
 <p><strong>“osc”</strong> -  Open Sound Control (OSC) notifications from processors.</p>
 <p>Here you can enable OSC messages to be transmitted from Sushi, whenever a processor’s internal parameter is changed - for example, the level parameters of the internal Peak Meter plugin.</p>
 <p>This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:</p>
@@ -205,7 +757,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </section>
 <section id="control-voltage-and-gate-connections">
-<h2>Control voltage and Gate connections<a class="headerlink" href="#control-voltage-and-gate-connections" title="Permalink to this headline">¶</a></h2>
+<h2>Control voltage and Gate connections<a class="headerlink" href="#control-voltage-and-gate-connections" title="Permalink to this headline">#</a></h2>
 <p><strong>“cv_control”</strong> - Control Voltage (CV) and Gate connections to and from tracks and plugins.</p>
 <ul class="simple">
 <li><p><strong>“cv_inputs”</strong> - Connect a CV input to parameter changes. Values from the selected CV input will be converted to parameter changes on the selected parameter. A list of routing objects with the following members:</p>
@@ -243,7 +795,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </section>
 <section id="events">
-<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">#</a></h2>
 <p><strong>“events”</strong> - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.</p>
 <ul class="simple">
 <li><p><strong>“type”</strong> - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.</p></li>
@@ -261,7 +813,7 @@ or processing. If enabled, plugins will need to handle things like program chang
 </ul>
 </section>
 <section id="initial-state">
-<h2>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this headline">¶</a></h2>
+<h2>Initial State<a class="headerlink" href="#initial-state" title="Permalink to this headline">#</a></h2>
 <p><strong>“initial_state</strong> - A list of initial settings (parameters, propeties, programs) that will be applied to processors before audio starts playing.</p>
 <ul class="simple">
 <li><p><strong>“processor”</strong> -  The name of the processor to apply the settings to.</p></li>
@@ -274,76 +826,121 @@ or processing. If enabled, plugins will need to handle things like program chang
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sushi_public_api_model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sushi Public API Model</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Sushi Configuration</a><ul>
-<li><a class="reference internal" href="#main-host-configuration">Main Host Configuration</a></li>
-<li><a class="reference internal" href="#tracks">Tracks</a></li>
-<li><a class="reference internal" href="#pre-post-tracks">Pre/Post Tracks</a></li>
-<li><a class="reference internal" href="#midi">MIDI</a></li>
-<li><a class="reference internal" href="#open-sound-control-connections">Open Sound Control Connections</a></li>
-<li><a class="reference internal" href="#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
-<li><a class="reference internal" href="#events">Events</a></li>
-<li><a class="reference internal" href="#initial-state">Initial State</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="sushi_public_api_model.html"
-                        title="previous chapter">Sushi Public API Model</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="sushi_control_grpc.html"
-                        title="next chapter">Controlling Sushi using gRPC</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/sushi_configuration_format.md.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
+    <a class="right-next"
+       href="sushi_control_grpc.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Controlling Sushi using gRPC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-host-configuration">Main Host Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracks">Tracks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-post-tracks">Pre/Post Tracks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#midi">MIDI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-sound-control-connections">Open Sound Control Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-state">Initial State</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/sushi_configuration_format.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="sushi_control_grpc.html" title="Controlling Sushi using gRPC"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="sushi_public_api_model.html" title="Sushi Public API Model"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Configuration</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

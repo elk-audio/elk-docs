@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running Elk on your computer &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/getting_started_with_development_kit_software';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting started on Raspberry Pi 4" href="getting_started_with_raspberry.html" />
+    <link rel="prev" title="Supported Hardware architectures" href="supported_hw.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how_elk_works.html">What is Elk Audio OS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Elk Audio OS software licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_hw.html">Supported Hardware architectures</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running Elk on your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_raspberry.html">Getting started on Raspberry Pi 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_elk_on_boards.html">Run Elk on Boards</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Introduction</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Running Elk on your computer</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="running-elk-on-your-computer">
+<h1>Running Elk on your computer<a class="headerlink" href="#running-elk-on-your-computer" title="Permalink to this heading">#</a></h1>
+<p>In this guide you will quickly see which the first steps are, to run a plugin from within Elk’s Sushi host, to get sound playing out of it, and to control its parameters using external control GUIs, such as the Python QT example GUI or Open Sound Control.</p>
+<p><strong>IMPORTANT:</strong> All the below instructions and example files, are written for the context of running on a macOS or Linux desktop environment, not our development boards, for which the paths, binary files and command line arguments will differ. Refer instead to the <a class="reference internal" href="getting_started_with_raspberry.html"><span class="doc">getting started guide for Raspberry Pi</span></a>.</p>
+<section id="running-a-plugin-within-the-sushi-host">
+<h2>Running a plugin within the Sushi host<a class="headerlink" href="#running-a-plugin-within-the-sushi-host" title="Permalink to this heading">#</a></h2>
+<p>You can run Sushi natively on your own macOS or Linux computer, or on a Linux virtual machine.</p>
+<p>We provide binary releases that pack prebuilt Sushi binaries, the MDA plugins suite in VST3 format and some example JSON configurations.</p>
+<ol class="simple">
+<li><p>Download the binary package for your system (Linux-x86_64, macOS-arm64 or macOS-x86_64) from the <a class="reference external" href="https://github.com/elk-audio/sushi/releases/tag/1.0.0">Sushi’s Github releases page</a>.</p></li>
+<li><p>Unzip the archive wherever you prefer</p></li>
+</ol>
+<section id="running-sushi-on-macos">
+<h3>Running Sushi on macOS<a class="headerlink" href="#running-sushi-on-macos" title="Permalink to this heading">#</a></h3>
+<p>If you downloaded the release .zip file from a browser, you’d need to clear the quarantine bit by doing this on the extracted <code class="docutils literal notranslate"><span class="pre">sushi</span></code> folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>xattr<span class="w"> </span>-rc<span class="w"> </span>sushi
+</pre></div>
+</div>
+<p>To output sound to your soundcard, you can use the Coreaudio frontend, which will internally use the system’s devices. Simply run Sushi with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./sushi<span class="w"> </span>--coreaudio<span class="w"> </span>-c<span class="w"> </span>config_files/play_brickworks_synth.json
+</pre></div>
+</div>
+<p>This example is self-contained and should play the bundled simple synthesizer using a short
+sequence. By default, this will use the system’s default sound device. If you want to specify a different one, you can do that with the <code class="docutils literal notranslate"><span class="pre">--audio-output-device-uid</span></code> flag. You can get a list of devices UID by running <code class="docutils literal notranslate"><span class="pre">./sushi</span> <span class="pre">--coreaudio</span> <span class="pre">--dump-audio-devices</span></code>.</p>
+<p>If you want to test MIDI I/O connection, this example will run another VST3 synthesizer plugin while
+listening to MIDI events:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./sushi<span class="w"> </span>--coreaudio<span class="w"> </span>-c<span class="w"> </span>config_files/play_vst3.json
+</pre></div>
+</div>
+<p>Sushi will connect by default to the first available MIDI input device on the system, if present. If you want to use a different MIDI device, you need to change the <code class="docutils literal notranslate"><span class="pre">rt_midi_device</span></code> field in the Sushi’s JSON config file, as explained in the <a class="reference internal" href="../sushi/sushi_configuration_format.html"><span class="doc">Sushi’s configuration format document</span></a>.</p>
+</section>
+<section id="running-sushi-on-linux">
+<h3>Running Sushi on Linux<a class="headerlink" href="#running-sushi-on-linux" title="Permalink to this heading">#</a></h3>
+<p>The preferred way to connect to your soundcard on a Linux computer is through the JACK audio system. You need to have Jack audio configured on your computer, which is beyond the scope of this guide - but if you have trouble getting it working <a class="reference external" href="https://forum.elk.audio">definitely ask us on the forum</a> and we’ll do our best to get you going! We here show how use <a class="reference external" href="https://kx.studio/Repositories#Ubuntu">Cadence and Catia for managing Jack</a>, but you can use any other tools you prefer in their place.</p>
+<p>Simply run the bundled AppImage with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./Sushi-x86_64.AppImage<span class="w"> </span>-j<span class="w"> </span>--connect-ports<span class="w"> </span>-c<span class="w"> </span>config_files/play_vst3.json
+</pre></div>
+</div>
+<p>You should see the following status message if everything is fine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SUSHI<span class="w"> </span>-<span class="w"> </span>Sensus<span class="w"> </span>Universal<span class="w"> </span>Sound<span class="w"> </span>Host<span class="w"> </span>Interface
+Copyright<span class="w"> </span><span class="m">2016</span>-2022<span class="w"> </span>Elk,<span class="w"> </span>Stockholm
+</pre></div>
+</div>
+<p>Sushi should also appear as an audio device in your Jack configuration software - see the Catia screenshot below for an example:</p>
+<p><img alt="CATIA with SUSHI" src="../_images/CATIA_with_SUSHI.png" />
+​
+Note that its outputs are already connected.</p>
+<p>That is because the <em>–connect-ports</em> command-line option used, attempts to connect the Sushi outputs. If they are
+not connected after running Sushi, you need to make these connections yourself, or you will not be able to hear any sound.</p>
+<section id="connecting-midi-to-sushi-on-linux">
+<h4>Connecting MIDI to Sushi on Linux<a class="headerlink" href="#connecting-midi-to-sushi-on-linux" title="Permalink to this heading">#</a></h4>
+<p>Now, although Sushi is successfully running and hosting the MDA jx10 vst3 synthesizer plugin, you will need to
+connect it to a MIDI device to be able to play sound. For this, connect them with the <em>aconnect</em> tool:</p>
+<ol class="simple">
+<li><p>Start a new terminal window than the one where Sushi is running.</p></li>
+<li><p>Type <em>‘aconnect -l’</em> to list all available MIDI devices and ports for connections:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>client<span class="w"> </span><span class="m">0</span>:<span class="w"> </span><span class="s1">&#39;System&#39;</span><span class="w"> </span><span class="o">[</span><span class="nv">type</span><span class="o">=</span>kernel<span class="o">]</span>
+<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="s1">&#39;Timer           &#39;</span>
+<span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;Announce        &#39;</span>
+client<span class="w"> </span><span class="m">14</span>:<span class="w"> </span><span class="s1">&#39;Midi Through&#39;</span><span class="w"> </span><span class="o">[</span><span class="nv">type</span><span class="o">=</span>kernel<span class="o">]</span>
+<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="s1">&#39;Midi Through Port-0&#39;</span>
+<span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;Midi Through Port-1&#39;</span>
+<span class="w">    </span><span class="m">2</span><span class="w"> </span><span class="s1">&#39;Midi Through Port-2&#39;</span>
+<span class="w">    </span><span class="m">3</span><span class="w"> </span><span class="s1">&#39;Midi Through Port-3&#39;</span>
+client<span class="w"> </span><span class="m">24</span>:<span class="w"> </span><span class="s1">&#39;UA-22&#39;</span><span class="w"> </span><span class="o">[</span><span class="nv">type</span><span class="o">=</span>kernel,card<span class="o">=</span><span class="m">2</span><span class="o">]</span>
+<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="s1">&#39;UA-22 MIDI 1    &#39;</span>
+client<span class="w"> </span><span class="m">28</span>:<span class="w"> </span><span class="s1">&#39;Launchkey MK2 25&#39;</span><span class="w"> </span><span class="o">[</span><span class="nv">type</span><span class="o">=</span>kernel,card<span class="o">=</span><span class="m">3</span><span class="o">]</span>
+<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="s1">&#39;Launchkey MK2 25 MIDI 1&#39;</span>
+<span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;Launchkey MK2 25 MIDI 2&#39;</span>
+client<span class="w"> </span><span class="m">128</span>:<span class="w"> </span><span class="s1">&#39;Sushi&#39;</span><span class="w"> </span><span class="o">[</span><span class="nv">type</span><span class="o">=</span>user,pid<span class="o">=</span><span class="m">20167</span><span class="o">]</span>
+<span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="s1">&#39;listen:in       &#39;</span>
+<span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;write:out       &#39;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>The output you see will vary depending on your configuration, you should take note of the port number X for your MIDI controller (e.g. 28) and the one Y assigned to Sushi, here 128.</p></li>
+<li><p>By typing <em>aconnect X Y</em>, or in this example <em>aconnect 28 128</em>, you should now hear sound when playing on your
+keyboard.</p></li>
+</ol>
+<p>Tip: If you do not have a physical keyboard available, you can use the <em><strong>Virtual MIDI Piano Keyboard</strong></em> software (VMPK).</p>
+</section>
+</section>
+</section>
+<section id="where-to-go-from-here">
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading">#</a></h2>
+<p>If you have now a running Sushi instance on your computer, you’re ready to do more complex
+operations through the many control options available. We recommend you to check out the following
+articles to lear more about it:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../sushi/elk_examples_overview.html"><span class="doc">Sushi examples overview</span></a> : see some JSON configuration examples, how to control with the Python
+GUI and through Open Sound Control</p></li>
+<li><p><a class="reference internal" href="../sushi/sushi_overview.html"><span class="doc">Sushi overview</span></a> : learn more about Sushi’s internal architecture</p></li>
+<li><p><a class="reference internal" href="../sushi/sushi_control_grpc.html"><span class="doc">Control Sushi with gRPC</span></a> : if you want to make an application
+that access Sushi’s engine in its full power, the best way would be to master its gRPC API</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="supported_hw.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Supported Hardware architectures</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="getting_started_with_raspberry.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting started on Raspberry Pi 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-plugin-within-the-sushi-host">Running a plugin within the Sushi host</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-sushi-on-macos">Running Sushi on macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-sushi-on-linux">Running Sushi on Linux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-midi-to-sushi-on-linux">Connecting MIDI to Sushi on Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-go-from-here">Where to go from here</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/intro/getting_started_with_development_kit_software.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

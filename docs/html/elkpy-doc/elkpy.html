@@ -1,145 +1,852 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>elkpy python API &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'elkpy-doc/elkpy';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.AudioGraphController" href="elkpy.audiographcontroller.html" />
-    <link rel="prev" title="gRPC helper libraries" href="modules.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elkpy.audiographcontroller.html" title="elkpy.AudioGraphController"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="modules.html" title="gRPC helper libraries"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">gRPC helper libraries</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy python API</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="gRPC helper libraries" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-elkpy">
-<span id="elkpy-python-api"></span><h1>elkpy python API<a class="headerlink" href="#module-elkpy" title="Permalink to this headline">¶</a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
-</ul>
-</div>
-</section>
-</section>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
 
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
 
-            <div class="clearer"></div>
-          </div>
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
         </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">elkpy python API</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/elk_examples_overview.html">Examples Overview</a></li>
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_overview.html">Sushi: The DAW Inside Elk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_internal_plugins.html">Sushi Internal Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_configuration_format.html">Sushi Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_public_api_model.html">Sushi Public API Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_grpc.html">Controlling Sushi using gRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_osc.html">Controlling Sushi using Open Sound Control</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">gRPC helper libraries</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
 </ul>
 </li>
 </ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="modules.html"
-                        title="previous chapter">gRPC helper libraries</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="elkpy.audiographcontroller.html"
-                        title="next chapter">elkpy.AudioGraphController</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/elkpy-doc/elkpy.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+</li>
+</ul>
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-      <div class="clearer"></div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../sushi/index.html" class="nav-link">Sushi</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">gRPC helper libraries</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">elkpy python API</li>
+  </ul>
+</nav>
+</div>
+      
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="elkpy.audiographcontroller.html" title="elkpy.AudioGraphController"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="modules.html" title="gRPC helper libraries"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >gRPC helper libraries</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">elkpy python API</a></li> 
-      </ul>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-elkpy">
+<span id="elkpy-python-api"></span><h1>elkpy python API<a class="headerlink" href="#module-elkpy" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController"><code class="docutils literal notranslate"><span class="pre">AudioGraphController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_multibus_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_multibus_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_post_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_post_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_pre_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_pre_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_processor_on_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.create_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.delete_processor_from_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.delete_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.delete_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_all_processors"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_all_processors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_all_tracks"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_all_tracks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_bypass_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_id"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_info"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_processor_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_id"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_info"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_processors"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.get_track_processors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.move_processor_on_track"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.move_processor_on_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.set_processor_bypass_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_state"><code class="docutils literal notranslate"><span class="pre">AudioGraphController.set_processor_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_input_channel_to_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.connect_input_channel_to_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_output_channel_from_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.connect_output_channel_from_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_all_inputs_from_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.disconnect_all_inputs_from_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_all_outputs_from_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.disconnect_all_outputs_from_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_input"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.disconnect_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_output"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.disconnect_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_all_input_connections"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.get_all_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_all_output_connections"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.get_all_output_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_input_connections_for_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.get_input_connections_for_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_output_connections_for_track"><code class="docutils literal notranslate"><span class="pre">AudioRoutingController.get_output_connections_for_track()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController"><code class="docutils literal notranslate"><span class="pre">CvGateController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter"><code class="docutils literal notranslate"><span class="pre">CvGateController.connect_cv_input_to_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter"><code class="docutils literal notranslate"><span class="pre">CvGateController.connect_cv_output_from_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.connect_gate_input_to_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.connect_gate_output_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_all_cv_inputs_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_all_cv_outputs_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_all_gate_inputs_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_all_gate_outputs_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_cv_input"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_cv_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_cv_output"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_cv_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_gate_input"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_gate_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_gate_output"><code class="docutils literal notranslate"><span class="pre">CvGateController.disconnect_gate_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_all_cv_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_all_cv_output_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_all_gate_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_all_gate_output_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_cv_input_channel_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_cv_input_connections_for_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_cv_output_channel_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_cv_output_connections_for_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_gate_input_connections_for_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">CvGateController.get_gate_output_connections_for_processor()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.grpc_gen.html#elkpy.grpc_gen.modules_from_proto"><code class="docutils literal notranslate"><span class="pre">modules_from_proto()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController"><code class="docutils literal notranslate"><span class="pre">KeyboardController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_aftertouch"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_aftertouch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_modulation"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_modulation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_aftertouch"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_note_aftertouch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_off"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_note_off()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_on"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_note_on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_pitch_bend"><code class="docutils literal notranslate"><span class="pre">KeyboardController.send_pitch_bend()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController"><code class="docutils literal notranslate"><span class="pre">MidiController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_cc_to_parameter"><code class="docutils literal notranslate"><span class="pre">MidiController.connect_cc_to_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_input_to_track"><code class="docutils literal notranslate"><span class="pre">MidiController.connect_kbd_input_to_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_output_from_track"><code class="docutils literal notranslate"><span class="pre">MidiController.connect_kbd_output_from_track()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_pc_to_processor"><code class="docutils literal notranslate"><span class="pre">MidiController.connect_pc_to_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_cc_from_processor"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_all_cc_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_pc_from_processor"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_all_pc_from_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_cc"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_cc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_input"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_kbd_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_output"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_kbd_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_pc"><code class="docutils literal notranslate"><span class="pre">MidiController.disconnect_pc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_cc_input_connections"><code class="docutils literal notranslate"><span class="pre">MidiController.get_all_cc_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_kbd_input_connections"><code class="docutils literal notranslate"><span class="pre">MidiController.get_all_kbd_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_kbd_output_connections"><code class="docutils literal notranslate"><span class="pre">MidiController.get_all_kbd_output_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_pc_input_connections"><code class="docutils literal notranslate"><span class="pre">MidiController.get_all_pc_input_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_cc_input_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">MidiController.get_cc_input_connections_for_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_input_ports"><code class="docutils literal notranslate"><span class="pre">MidiController.get_input_ports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_midi_clock_output_enabled"><code class="docutils literal notranslate"><span class="pre">MidiController.get_midi_clock_output_enabled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_output_ports"><code class="docutils literal notranslate"><span class="pre">MidiController.get_output_ports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_pc_input_connections_for_processor"><code class="docutils literal notranslate"><span class="pre">MidiController.get_pc_input_connections_for_processor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html#elkpy.midicontroller.MidiController.set_midi_clock_output_enabled"><code class="docutils literal notranslate"><span class="pre">MidiController.set_midi_clock_output_enabled()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController"><code class="docutils literal notranslate"><span class="pre">NotificationController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.close"><code class="docutils literal notranslate"><span class="pre">NotificationController.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_parameter_update_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_processor_change_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_property_update_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_property_update_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_timing_update_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_track_change_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_track_change_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_transport_change_notifications"><code class="docutils literal notranslate"><span class="pre">NotificationController.process_transport_change_notifications()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_parameter_updates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_processor_changes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_property_updates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_timing_updates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_track_changes"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_track_changes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_transport_changes"><code class="docutils literal notranslate"><span class="pre">NotificationController.subscribe_to_transport_changes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController"><code class="docutils literal notranslate"><span class="pre">OscController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.disable_all_output"><code class="docutils literal notranslate"><span class="pre">OscController.disable_all_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.disable_output_for_parameter"><code class="docutils literal notranslate"><span class="pre">OscController.disable_output_for_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.enable_all_output"><code class="docutils literal notranslate"><span class="pre">OscController.enable_all_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.enable_output_for_parameter"><code class="docutils literal notranslate"><span class="pre">OscController.enable_output_for_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_enabled_parameter_outputs"><code class="docutils literal notranslate"><span class="pre">OscController.get_enabled_parameter_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_receive_port"><code class="docutils literal notranslate"><span class="pre">OscController.get_receive_port()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_send_port"><code class="docutils literal notranslate"><span class="pre">OscController.get_send_port()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController"><code class="docutils literal notranslate"><span class="pre">ParameterController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_id"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_parameter_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_info"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_parameter_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_parameter_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value_as_string"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_parameter_value_as_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value_in_domain"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_parameter_value_in_domain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_processor_parameters"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_processor_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_processor_properties"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_processor_properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_id"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_property_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_info"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_property_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_value"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_property_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_track_parameters"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_track_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_track_properties"><code class="docutils literal notranslate"><span class="pre">ParameterController.get_track_properties()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.set_parameter_value"><code class="docutils literal notranslate"><span class="pre">ParameterController.set_parameter_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.set_property_value"><code class="docutils literal notranslate"><span class="pre">ParameterController.set_property_value()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController"><code class="docutils literal notranslate"><span class="pre">ProgramController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program"><code class="docutils literal notranslate"><span class="pre">ProgramController.get_processor_current_program()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program_name"><code class="docutils literal notranslate"><span class="pre">ProgramController.get_processor_current_program_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_program_name"><code class="docutils literal notranslate"><span class="pre">ProgramController.get_processor_program_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_programs"><code class="docutils literal notranslate"><span class="pre">ProgramController.get_processor_programs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.set_processor_program"><code class="docutils literal notranslate"><span class="pre">ProgramController.set_processor_program()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection"><code class="docutils literal notranslate"><span class="pre">AudioConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection"><code class="docutils literal notranslate"><span class="pre">CvConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection"><code class="docutils literal notranslate"><span class="pre">GateConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection"><code class="docutils literal notranslate"><span class="pre">MidiCCConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection"><code class="docutils literal notranslate"><span class="pre">MidiKbdConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection"><code class="docutils literal notranslate"><span class="pre">MidiPCConnection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterInfo"><code class="docutils literal notranslate"><span class="pre">ParameterInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType"><code class="docutils literal notranslate"><span class="pre">ParameterType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.BOOL"><code class="docutils literal notranslate"><span class="pre">ParameterType.BOOL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.DATA_PROPERTY"><code class="docutils literal notranslate"><span class="pre">ParameterType.DATA_PROPERTY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.FLOAT"><code class="docutils literal notranslate"><span class="pre">ParameterType.FLOAT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.INT"><code class="docutils literal notranslate"><span class="pre">ParameterType.INT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.STRING_PROPERTY"><code class="docutils literal notranslate"><span class="pre">ParameterType.STRING_PROPERTY</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode"><code class="docutils literal notranslate"><span class="pre">PlayingMode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.PLAYING"><code class="docutils literal notranslate"><span class="pre">PlayingMode.PLAYING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.RECORDING"><code class="docutils literal notranslate"><span class="pre">PlayingMode.RECORDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.STOPPED"><code class="docutils literal notranslate"><span class="pre">PlayingMode.STOPPED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType"><code class="docutils literal notranslate"><span class="pre">PluginType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.INTERNAL"><code class="docutils literal notranslate"><span class="pre">PluginType.INTERNAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.LV2"><code class="docutils literal notranslate"><span class="pre">PluginType.LV2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.VST2X"><code class="docutils literal notranslate"><span class="pre">PluginType.VST2X</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.VST3X"><code class="docutils literal notranslate"><span class="pre">PluginType.VST3X</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo"><code class="docutils literal notranslate"><span class="pre">ProcessorInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState"><code class="docutils literal notranslate"><span class="pre">ProcessorState</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProgramInfo"><code class="docutils literal notranslate"><span class="pre">ProgramInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.PropertyInfo"><code class="docutils literal notranslate"><span class="pre">PropertyInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.SushiBuildInfo"><code class="docutils literal notranslate"><span class="pre">SushiBuildInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode"><code class="docutils literal notranslate"><span class="pre">SyncMode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.INTERNAL"><code class="docutils literal notranslate"><span class="pre">SyncMode.INTERNAL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.LINK"><code class="docutils literal notranslate"><span class="pre">SyncMode.LINK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.MIDI"><code class="docutils literal notranslate"><span class="pre">SyncMode.MIDI</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo"><code class="docutils literal notranslate"><span class="pre">TrackInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType"><code class="docutils literal notranslate"><span class="pre">TrackType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.POST"><code class="docutils literal notranslate"><span class="pre">TrackType.POST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.PRE"><code class="docutils literal notranslate"><span class="pre">TrackType.PRE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.REGULAR"><code class="docutils literal notranslate"><span class="pre">TrackType.REGULAR</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController"><code class="docutils literal notranslate"><span class="pre">SushiController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController.close"><code class="docutils literal notranslate"><span class="pre">SushiController.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInternalError"><code class="docutils literal notranslate"><span class="pre">SushiInternalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">SushiInvalidArgumentError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiNotFoundError"><code class="docutils literal notranslate"><span class="pre">SushiNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">SushiOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnkownError"><code class="docutils literal notranslate"><span class="pre">SushiUnkownError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnsupportedOperationError"><code class="docutils literal notranslate"><span class="pre">SushiUnsupportedOperationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.grpc_error_handling"><code class="docutils literal notranslate"><span class="pre">grpc_error_handling()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiInternalError"><code class="docutils literal notranslate"><span class="pre">SushiInternalError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiInvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">SushiInvalidArgumentError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiNotFoundError"><code class="docutils literal notranslate"><span class="pre">SushiNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">SushiOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiUnkownError"><code class="docutils literal notranslate"><span class="pre">SushiUnkownError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.SushiUnsupportedOperationError"><code class="docutils literal notranslate"><span class="pre">SushiUnsupportedOperationError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html#elkpy.sushierrors.grpc_error_handling"><code class="docutils literal notranslate"><span class="pre">grpc_error_handling()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor"><code class="docutils literal notranslate"><span class="pre">SushiProcessor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_bypass_state"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_bypass_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_value"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameter_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_values"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameter_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameters"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_program"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_program()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_programs"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_programs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_aftertouch"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_aftertouch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_modulation"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_modulation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_aftertouch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_off"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_off()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_on"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_pitch_bend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_bypass_state"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_bypass_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_parameter_value"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_parameter_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_next"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_previous"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program_previous()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController"><code class="docutils literal notranslate"><span class="pre">TimingController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_engine_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.get_engine_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_processor_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.get_processor_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_timings_enabled"><code class="docutils literal notranslate"><span class="pre">TimingController.get_timings_enabled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_track_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.get_track_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_all_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.reset_all_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_processor_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.reset_processor_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_track_timings"><code class="docutils literal notranslate"><span class="pre">TimingController.reset_track_timings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.set_timings_enabled"><code class="docutils literal notranslate"><span class="pre">TimingController.set_timings_enabled()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController"><code class="docutils literal notranslate"><span class="pre">SessionController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController.restore_binary_session"><code class="docutils literal notranslate"><span class="pre">SessionController.restore_binary_session()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController.save_binary_session"><code class="docutils literal notranslate"><span class="pre">SessionController.save_binary_session()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController"><code class="docutils literal notranslate"><span class="pre">TransportController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_playing_mode"><code class="docutils literal notranslate"><span class="pre">TransportController.get_playing_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_samplerate"><code class="docutils literal notranslate"><span class="pre">TransportController.get_samplerate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_sync_mode"><code class="docutils literal notranslate"><span class="pre">TransportController.get_sync_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_tempo"><code class="docutils literal notranslate"><span class="pre">TransportController.get_tempo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_time_signature"><code class="docutils literal notranslate"><span class="pre">TransportController.get_time_signature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_playing_mode"><code class="docutils literal notranslate"><span class="pre">TransportController.set_playing_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_sync_mode"><code class="docutils literal notranslate"><span class="pre">TransportController.set_sync_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_tempo"><code class="docutils literal notranslate"><span class="pre">TransportController.set_tempo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_time_signature"><code class="docutils literal notranslate"><span class="pre">TransportController.set_time_signature()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">gRPC helper libraries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="elkpy.audiographcontroller.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">elkpy.AudioGraphController</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/elkpy-doc/elkpy.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
     </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

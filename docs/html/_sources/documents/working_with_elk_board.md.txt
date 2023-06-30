@@ -39,6 +39,10 @@ If your plugin or other process needs to store data e.g. in the user home direct
 ## Elk Images
 
 Very different configurations are needed on images for development, versus images deployed on released instruments. For that reason, we deploy and maintain two images:
+* Development image
+* Release image
+
+For the Raspberry Pi community version we only provide the development image.
 
 ### Development Image
 
@@ -66,25 +70,6 @@ $ sudo elk_system_utils --set-buffer-size 32
 ```
 
 The buffer size cannot be changed while a SUSHI session is running. Note that this setting is reset when a software update is performed.
-
-### Changing Audio Hats
-Currently Elk Audio OS supports the following audio hats:
-  1. Elk Pi (default)
-  2. HiFiBerry DAC+ ADC
-  3. HiFiBerry DAC+ ADC Pro
-
-The Elk Pi audio hat is the system default. If you wish to use another hat, you can do so as follows. Changes take place after a power cycle and persist across boots. The setting is however reset after any software update.
-
-```bash
-# Use Elk Pi audio hat
-$ sudo elk_system_utils --set-audio-hat elk-pi
-
-# Use HiFiBerry DAC+ ADC audio hat
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc
-
-# Use HiFiBerry DAC+ ADC Pro hat.
-$ sudo elk_system_utils --set-audio-hat hifiberry-dac-plus-adc-pro
-```
 
 ### Enabling/Disabling Write Access to Root Partition
 
@@ -120,32 +105,13 @@ You can manually trigger this swap with the command *$ sudo elk_system_utils --d
 To reset the boot count environment variable to 0, enter the command  *$ elk_system_utils --reset-boot-count*. This
  may be useful if you have for example yourself frequently disconnected power before booting completes.
 
-### Set USB Speed
-
-Because of the way the Raspberry Pi 3B/B+ USB support is physically implemented, with the default setting of USB at high speeds enabled, some users experience that MIDI notes can sometimes be dropped when using USB MIDI controllers. ***This problem seems to solved with the Raspberry Pi 4.***
-
-We have therefore added the option, of setting the USB controller to run at a lower speed, thus ensuring that no messages are lost. This only applies for Raspberry Pi 3B/B+ models:
-
-```bash
-$ sudo elk_system_utils --usb-speed 1
-```
-
-There is an important caveat though: ***with the speed reduced using the above command, transfer speeds will be slow, and many common USB devices, such as QUERTY keyboards, will no longer work***.
-
-For a musical instrument that may not be a problem, but during development, you may want to switch back and forth between low and high speeds - setting the speed back to high is achieved as follows:
-
-```bash
-$ sudo elk_system_utils --usb-speed 2
-```
-
 ## Connecting to Your Board
 
 ### Over WiFi
 
-Log-in to the board as ***root*** (empty password in the dev image) using Ethernet, HDMI monitor and USB keyboard, or  a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
+Log-in to the board using Ethernet, HDMI monitor and USB keyboard, or a serial cable, as per in our [getting started guide](run_elk_on_boards.md).
 
-The easiest way to setup WiFi access is through *connman*, which is enabled by default in dev
-images:
+The easiest way to setup WiFi access is through *connman*, which is enabled by default in dev images:
 
 ```bash
 $ sudo connmanctl
@@ -199,11 +165,13 @@ Given Sushi is running, to get a rough view of CPU performance, *top*, *htop* an
  you the amount of CPU used in non-RT tasks and not the real time audio processing. To see the CPU usage of RT tasks, use:
 
 ```bash
-$ watch -n 0.5 cat /proc/xenomai/sched/stat
+$ watch -n 0.5 evl ps -t
 ```
 
 For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin
 , or you can run Sushi with the *--timing-statistics* flag to get the results on a file.
+
+TODO: which file?
 
 ## Software Update System
 
@@ -224,8 +192,7 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 
 ### Updating with an USB drive
 
-  1. Elk updates are shipped in form of *.swu* files that can be put on a FAT32 formatted USB pendrive and inserted
-   at any time.
+  1. Elk updates are shipped in form of *.swu* files that can be put on a FAT32 formatted USB pendrive and inserted at any time.
   2. The update starts automatically once the USB drive is inserted in any of the RPi slots and the red and green LEDs present on the ElkPi hat will blink at the same time.
   3. Once the SWupdate is completed successfully, only the Green LED will be turned on.
   4. If the SWupdate failed for any reason, then only the Red LED will be turned on.
@@ -233,6 +200,8 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 
 
 ## Configuring Automatic Startup
+
+TODO: update [sensei deprecated!]
 
 If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.
 
@@ -245,12 +214,11 @@ If you wish to have the board starting as an instrument automatically at startup
    If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number
    /name in the script */usr/bin/connect-midi-apps*, which is started by the systemD service defined in */lib/systemd
    /system/midi-connections.service*.
-2. Enable both Sushi, Sensei and the MIDI connection service typing (as root):
+2. Enable both Sushi and the MIDI connection service typing (as root):
 
 ```bash
 $ systemctl enable sushi
 $ systemctl enable midi-connections
-$ systemctl enable sensei
 ```
 
 Sushi will still output its log file in */tmp/sushi.log*. If you want to see the standard output as well, for example
@@ -260,7 +228,9 @@ They can also be started temporarily with *$ systemctl start sushi* as any norma
 
 ## Setting CPU Speed
 
-The default CPU speed for the Raspberry Pi is set to it's highest possible setting in the Elk Pi OS.
+The default CPU speed for the Raspberry Pi is set to it's highest possible setting by the Elk Pi OS. It may be not the
+highest CPU speed available but we set it to a reasonable value on the Raspberry Pi to avoid over temperature when working with
+an audio hat.
 
 When running at that speed, there may be slightly more noise in the audio output, as well as more power drawn, and more heat produced.
 
@@ -270,7 +240,7 @@ If any of these are a problem for your particular application, we have included 
 $ sudo elk_system_utils --set-cpu-speed min
 ```
 
-The speeds supported are 600 and 1400 for the RPi 3, and 600 / 1500 for the Pi4.
+The speeds supported are 800 and 1200 for the Pi4.
 
 By simply typing:
 

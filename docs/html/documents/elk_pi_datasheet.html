@@ -1,51 +1,603 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Overview &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/elk_pi_datasheet';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Blackboard Page" href="blackboard.html" />
-    <link rel="prev" title="Examples Overview" href="elk_examples_overview.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="blackboard.html" title="Blackboard Page"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="elk_examples_overview.html" title="Examples Overview"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Examples Overview" href="elk_examples_overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_internal_plugins.html">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Overview</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><img alt="image0" src="../_images/image27.jpg" /></p>
 <p><strong>Author:</strong> Elk</p>
 <p><strong>Contact:</strong> <a class="reference external" href="mailto:tech&#37;&#52;&#48;elk&#46;audio">tech<span>&#64;</span>elk<span>&#46;</span>audio</a></p>
@@ -65,9 +617,9 @@ critical applications where the failure or may cause damage to property,
 injury or death. Products are not authorized for use in such
 applications.</p>
 <section id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Texas instrument PCM3168 audio codec, 24 Bit, 48 / 96 / 192 kHz</p></li>
 <li><p>4 fixed analog audio inputs (2.54 mm pitch pin-header)</p></li>
@@ -87,8 +639,8 @@ applications.</p>
 </ul>
 </section>
 <section id="assembly-content-and-accessories">
-<h2>Assembly content and accessories<a class="headerlink" href="#assembly-content-and-accessories" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<h2>Assembly content and accessories<a class="headerlink" href="#assembly-content-and-accessories" title="Permalink to this headline">#</a></h2>
+<table class="table">
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 4%" />
@@ -156,7 +708,7 @@ applications.</p>
 <p>For assembling the board, follow the steps in our guide for <a class="reference external" href="getting_started_with_development_kit_elk_pi_hardware.html">getting started with Elk Pi Hardware.</a></p>
 </section>
 <section id="raspberry-pi-guidelines">
-<h2>Raspberry Pi guidelines<a class="headerlink" href="#raspberry-pi-guidelines" title="Permalink to this headline">¶</a></h2>
+<h2>Raspberry Pi guidelines<a class="headerlink" href="#raspberry-pi-guidelines" title="Permalink to this headline">#</a></h2>
 <p>The following guidelines must be followed when using the Raspberry Pi
 with the <em>Elk Pi</em> board. We are not responsible for possible damages
 caused to your Raspberry Pi computer.</p>
@@ -176,18 +728,18 @@ J12 (Figure 5).</p></li>
 </ul>
 </section>
 <section id="connectors-and-pinout">
-<h2>Connectors and pinout<a class="headerlink" href="#connectors-and-pinout" title="Permalink to this headline">¶</a></h2>
+<h2>Connectors and pinout<a class="headerlink" href="#connectors-and-pinout" title="Permalink to this headline">#</a></h2>
 <p><em>Figure 5:</em></p>
 <p><img alt="image5" src="../_images/image16.jpg" /></p>
 <p><em>Figure 6:</em></p>
 <p><img alt="image6" src="../_images/image13.jpg" /></p>
 </section>
 <section id="status-leds">
-<h2>Status LEDs<a class="headerlink" href="#status-leds" title="Permalink to this headline">¶</a></h2>
+<h2>Status LEDs<a class="headerlink" href="#status-leds" title="Permalink to this headline">#</a></h2>
 <p>Two of the Raspberry Pi GPIOS are directly wired to two general purpose
 LEDs, labeled on the board as “STATUS”.</p>
 <p><a class="reference internal" href="../_images/image28.jpg"><img alt="image7" src="../_images/image28.jpg" style="width: 500px;" /></a></p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 32%" />
 <col style="width: 23%" />
@@ -211,7 +763,7 @@ LEDs, labeled on the board as “STATUS”.</p>
 </section>
 </section>
 <section id="power-requirements">
-<h1>Power requirements<a class="headerlink" href="#power-requirements" title="Permalink to this headline">¶</a></h1>
+<h1>Power requirements<a class="headerlink" href="#power-requirements" title="Permalink to this headline">#</a></h1>
 <p>Elk Pi is fully powered from the 5V pin header exposed on the Raspberry
 Pi, so <em>no additional power supply is needed other than the Raspberry
 Pi’ one</em>. Just plug the Elk Pi board on top of the Raspberry Pi, power
@@ -222,7 +774,7 @@ Raspberry Pi before plugging the Elk Pi onto it, there is no functional
 requirement related to this sequence, just make sure that the pins
 correctly line up to avoid possible short circuits.</p>
 <section id="recommended-power-supply">
-<h2>Recommended Power Supply<a class="headerlink" href="#recommended-power-supply" title="Permalink to this headline">¶</a></h2>
+<h2>Recommended Power Supply<a class="headerlink" href="#recommended-power-supply" title="Permalink to this headline">#</a></h2>
 <p>The power supply that you will use to power the Rpi, has to have the
 following specifications:</p>
 <ul class="simple">
@@ -241,7 +793,7 @@ using third-party power sources to minimize possible poor supply
 conditions</strong>.</p>
 </section>
 <section id="power-consumption">
-<h2>Power Consumption<a class="headerlink" href="#power-consumption" title="Permalink to this headline">¶</a></h2>
+<h2>Power Consumption<a class="headerlink" href="#power-consumption" title="Permalink to this headline">#</a></h2>
 <p>The power consumption of the Elk Pi board highly depends on the usage of
 the board or, in other words, what you connect to it.</p>
 <p>Since the Elk Pi and the raspberry Pi share the same 5V source, the
@@ -256,7 +808,7 @@ function, and this will be enough current in most use cases.</p>
 <p>Idle Power consumption on 5V pin (Elk Pi+Rpi) = 800 - 950 mA</p>
 </section>
 <section id="alternative-power-supply">
-<h2>Alternative Power Supply<a class="headerlink" href="#alternative-power-supply" title="Permalink to this headline">¶</a></h2>
+<h2>Alternative Power Supply<a class="headerlink" href="#alternative-power-supply" title="Permalink to this headline">#</a></h2>
 <p>In the standard configuration, the Elk Pi is taking the power from the
 5V pin of the raspberry Pi, which is directly coming from the micro USB
 power supply. However, it is also possible to have a different power
@@ -272,7 +824,7 @@ requirement is, clearly the same stated previously: 5V, 2.5A.</p>
 </section>
 </section>
 <section id="audio-cv-configurations">
-<h1>Audio/CV configurations<a class="headerlink" href="#audio-cv-configurations" title="Permalink to this headline">¶</a></h1>
+<h1>Audio/CV configurations<a class="headerlink" href="#audio-cv-configurations" title="Permalink to this headline">#</a></h1>
 <p>One of the Elk Pi main features is its audio/cv configurability. The
 board has a total of 6 inputs and 8 output channels. A total of 4
 channels, two for the Inputs and two for the outputs, are individually
@@ -295,7 +847,7 @@ will not work at all, you must keep the dual jumper either to select
 is oriented with the connections parallel to the long side of the header
 (Figure 8).</p>
 <p><em>Figure 8:</em></p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -322,13 +874,13 @@ is oriented with the connections parallel to the long side of the header
 </table>
 </section>
 <section id="audio-i-o">
-<h1>Audio I/O<a class="headerlink" href="#audio-i-o" title="Permalink to this headline">¶</a></h1>
+<h1>Audio I/O<a class="headerlink" href="#audio-i-o" title="Permalink to this headline">#</a></h1>
 <p>The board presents a maximum of 6 audio inputs (if J7 and J8 are on
 “audio” configuration) and 6 audio outputs (if J10 and J11 are on
 “audio” configuration). The first two input channels are high impedance
 and fed into a +10 dB preamp for guitar/bass inputs. (check the chapter
 “Stereo preamp” for further information)</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 84%" />
 <col style="width: 16%" />
@@ -385,7 +937,7 @@ neither of the two options is applied, the channel/s will be muted.</p>
 </dd>
 </dl>
 <section id="eurorack-compatibility">
-<h2>Eurorack Compatibility<a class="headerlink" href="#eurorack-compatibility" title="Permalink to this headline">¶</a></h2>
+<h2>Eurorack Compatibility<a class="headerlink" href="#eurorack-compatibility" title="Permalink to this headline">#</a></h2>
 <p>The Elk pi board is designed to be interfaceable with the Eurorack world
 thanks to its CV and Gate capabilities. However, the audio levels are
 not directly compatible with the Eurorack standards. Audio signals
@@ -401,7 +953,7 @@ system, but this is less concerning since it is likely to find source of
 gain in your signal path (in the worst case, from your output module).</p>
 </section>
 <section id="mini-jack-input">
-<h2>Mini-jack input<a class="headerlink" href="#mini-jack-input" title="Permalink to this headline">¶</a></h2>
+<h2>Mini-jack input<a class="headerlink" href="#mini-jack-input" title="Permalink to this headline">#</a></h2>
 <p>A 3.5 mm stereo jack input (J13) is present on the board. This is
 directly connected to input channels 1 (RING) and 2 (TIP). The same two
 inputs are also reported on the pin headers like the rest of the
@@ -413,7 +965,7 @@ instrument-level signal into it, using a mini-jack to mono jack
 splitter.</p>
 </section>
 <section id="stereo-preamp">
-<h2>Stereo Preamp<a class="headerlink" href="#stereo-preamp" title="Permalink to this headline">¶</a></h2>
+<h2>Stereo Preamp<a class="headerlink" href="#stereo-preamp" title="Permalink to this headline">#</a></h2>
 <p>The board has a two-channel preamp with a fixed gain of +10dB (3.16
 times). <strong>The preamp is only available on channels 1 and 2 and it can be
 activated or deactivated through the mode switch J14,</strong> in the same
@@ -423,7 +975,7 @@ left open (without dual jumper plugged) the preamp is activated. Also in
 this case a bad connection is established when the dual jumper is not
 properly oriented, refer to Figure 10 for good connections examples.</p>
 <p><em>Figure 10:</em></p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -459,7 +1011,7 @@ approximately 0.3dB higher with respect audio channel 3, 4, 5 and 6, due
 to its high impedance.</p>
 </section>
 <section id="headphones-output">
-<h2>Headphones output<a class="headerlink" href="#headphones-output" title="Permalink to this headline">¶</a></h2>
+<h2>Headphones output<a class="headerlink" href="#headphones-output" title="Permalink to this headline">#</a></h2>
 <p>The output channel 1 and 2 of the Codec are also available on the
 headphone jack J5 (L = Ch 1, R = Ch2).</p>
 <p>Max output power to each channel:</p>
@@ -478,9 +1030,9 @@ potentiometer R50. The volume is increased with a clockwise rotation.</p>
 </section>
 </section>
 <section id="analog-and-digital-gpios">
-<h1>Analog and Digital GPIOs<a class="headerlink" href="#analog-and-digital-gpios" title="Permalink to this headline">¶</a></h1>
+<h1>Analog and Digital GPIOs<a class="headerlink" href="#analog-and-digital-gpios" title="Permalink to this headline">#</a></h1>
 <section id="digital-io">
-<h2>Digital IO<a class="headerlink" href="#digital-io" title="Permalink to this headline">¶</a></h2>
+<h2>Digital IO<a class="headerlink" href="#digital-io" title="Permalink to this headline">#</a></h2>
 <p>Digital IO is based on shift registers. Namely 74HC165 for input and
 74HC595 for output. Logic level for both is 3.3V and exceeding it will
 damage the whole GPIO subsystem permanently since the shift registers
@@ -489,7 +1041,7 @@ resistors! All inputs are captured simultaneously by toggling the
 parallel load input of all input shift registers. Similarly all outputs
 are written concurrently on the rising edge of the storage register
 clock input.</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -521,14 +1073,14 @@ used to connect buttons, switches, rotary encoders, rotary switches,
 LEDs, LED rings, etc..</p>
 </section>
 <section id="analog-inputs">
-<h2>Analog Inputs<a class="headerlink" href="#analog-inputs" title="Permalink to this headline">¶</a></h2>
+<h2>Analog Inputs<a class="headerlink" href="#analog-inputs" title="Permalink to this headline">#</a></h2>
 <p>The analog inputs are based on one single channel 10-bit analog to
 digital converter ADS70411 and an analog multiplexer 74HC4067. The
 multiplexer is controlled by a single shift register that shares the
 same SPI bus as digital GPIO but has dedicated storage register input
 from the MCU. Only one channel can be read simultaneously by enabling
 certain multiplexer and selecting desired channel.</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 48%" />
 <col style="width: 52%" />
@@ -550,7 +1102,7 @@ certain multiplexer and selecting desired channel.</p>
 and sensors.</p>
 </section>
 <section id="connection-guidelines-for-gpio-peripherals">
-<h2>Connection guidelines for GPIO peripherals<a class="headerlink" href="#connection-guidelines-for-gpio-peripherals" title="Permalink to this headline">¶</a></h2>
+<h2>Connection guidelines for GPIO peripherals<a class="headerlink" href="#connection-guidelines-for-gpio-peripherals" title="Permalink to this headline">#</a></h2>
 <p>Inputs and outputs of multi-pin peripheral device must be sequential
 for the ease of software development. A perfect example would be
 individual bits of an LED-ring situated around a rotary encoder.
@@ -570,9 +1122,9 @@ respectively, <strong>analog</strong> inputs and <strong>digital</strong> I/O.</
 </section>
 </section>
 <section id="cv-gate-i-o">
-<h1>CV &amp; GATE I/O<a class="headerlink" href="#cv-gate-i-o" title="Permalink to this headline">¶</a></h1>
+<h1>CV &amp; GATE I/O<a class="headerlink" href="#cv-gate-i-o" title="Permalink to this headline">#</a></h1>
 <section id="cv-i-o">
-<h2>CV I/O<a class="headerlink" href="#cv-i-o" title="Permalink to this headline">¶</a></h2>
+<h2>CV I/O<a class="headerlink" href="#cv-i-o" title="Permalink to this headline">#</a></h2>
 <p>Up to two CV inputs and four CV outputs are available on the board
 (refer to <em>Figure 4</em> to understand the possible configurations). The CV
 signals are processed using the same codec used for the audio. Note that
@@ -581,7 +1133,7 @@ deactivated by default to make the CV processing possible. The CV inputs
 signals are sampled at the same frequency of the audio (48kHz), but they
 are downsampled in software, so the effective sampling rate depends on
 the buffer size. CV inputs that exceed the input range are clipped.</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 34%" />
 <col style="width: 66%" />
@@ -618,14 +1170,14 @@ to be non inverting.</p>
 </dl>
 </section>
 <section id="gate-i-o">
-<h2>GATE I/O<a class="headerlink" href="#gate-i-o" title="Permalink to this headline">¶</a></h2>
+<h2>GATE I/O<a class="headerlink" href="#gate-i-o" title="Permalink to this headline">#</a></h2>
 <p>Two gate inputs and four gate outputs are available on the board. The
 input stage is inverting and is based on a transistor high-side switch
 linked directly to a Raspberry Pi GPIO. The outputs are not inverting
 and generated from four different Raspberry Pi GPIO and a series CMOS
 buffer. Note that the gate IO pins can be also used as a trigger or
 clock IOs, depending on the software configuration.</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 53%" />
 <col style="width: 47%" />
@@ -666,7 +1218,7 @@ to be non inverting.</p>
 </section>
 </section>
 <section id="uart-interface">
-<h1>UART interface<a class="headerlink" href="#uart-interface" title="Permalink to this headline">¶</a></h1>
+<h1>UART interface<a class="headerlink" href="#uart-interface" title="Permalink to this headline">#</a></h1>
 <p>The UART interface can be accessed using the pins 32, 34, 36, 38, 39 of
 J4 (Figure 11), that are labeled as “MIDI” since they are the same pins
 that can be used to connect the MIDI 5 Poles DIN connectors. For this
@@ -682,14 +1234,14 @@ Elk Pi to your computer with a TTL to USB connector (FTDI).</p>
 <p><img alt="image100" src="../_images/image100.jpg" /></p>
 </section>
 <section id="midi-din-i-o">
-<h1>MIDI DIN I/O<a class="headerlink" href="#midi-din-i-o" title="Permalink to this headline">¶</a></h1>
+<h1>MIDI DIN I/O<a class="headerlink" href="#midi-din-i-o" title="Permalink to this headline">#</a></h1>
 <p>Elk Pi has Optocoupled MIDI IN and MIDI OUT built in, so it is possible
 to interface it with 5 pins DIN connectors. You might want to do this
 when you will build your own User interface to plug on top of the Elk
 Pi. The MIDI signal can be found on the connector J9 (refer to Figure 12
 and Figure 5). On the following table you can see some guidelines on how
 to make the connections:</p>
-<table class="docutils align-default">
+<table class="table">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 20%" />
@@ -737,106 +1289,155 @@ to make the connections:</p>
 <p><a class="reference internal" href="../_images/image12.png"><img alt="image16" src="../_images/image12.png" style="width: 200px;" /></a></p>
 </section>
 <section id="board-dimensions">
-<h1>Board dimensions<a class="headerlink" href="#board-dimensions" title="Permalink to this headline">¶</a></h1>
+<h1>Board dimensions<a class="headerlink" href="#board-dimensions" title="Permalink to this headline">#</a></h1>
 <p><img alt="image17" src="../_images/image11.jpg" /></p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="elk_examples_overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Examples Overview</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Overview</a><ul>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#assembly-content-and-accessories">Assembly content and accessories</a></li>
-<li><a class="reference internal" href="#raspberry-pi-guidelines">Raspberry Pi guidelines</a></li>
-<li><a class="reference internal" href="#connectors-and-pinout">Connectors and pinout</a></li>
-<li><a class="reference internal" href="#status-leds">Status LEDs</a></li>
+    </a>
+    <a class="right-next"
+       href="blackboard.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Blackboard Page</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Overview</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-content-and-accessories">Assembly content and accessories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raspberry-pi-guidelines">Raspberry Pi guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectors-and-pinout">Connectors and pinout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status-leds">Status LEDs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#power-requirements">Power requirements</a><ul>
-<li><a class="reference internal" href="#recommended-power-supply">Recommended Power Supply</a></li>
-<li><a class="reference internal" href="#power-consumption">Power Consumption</a></li>
-<li><a class="reference internal" href="#alternative-power-supply">Alternative Power Supply</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#power-requirements">Power requirements</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-power-supply">Recommended Power Supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-consumption">Power Consumption</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-power-supply">Alternative Power Supply</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#audio-cv-configurations">Audio/CV configurations</a></li>
-<li><a class="reference internal" href="#audio-i-o">Audio I/O</a><ul>
-<li><a class="reference internal" href="#eurorack-compatibility">Eurorack Compatibility</a></li>
-<li><a class="reference internal" href="#mini-jack-input">Mini-jack input</a></li>
-<li><a class="reference internal" href="#stereo-preamp">Stereo Preamp</a></li>
-<li><a class="reference internal" href="#headphones-output">Headphones output</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-cv-configurations">Audio/CV configurations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-i-o">Audio I/O</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eurorack-compatibility">Eurorack Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-jack-input">Mini-jack input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stereo-preamp">Stereo Preamp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headphones-output">Headphones output</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#analog-and-digital-gpios">Analog and Digital GPIOs</a><ul>
-<li><a class="reference internal" href="#digital-io">Digital IO</a></li>
-<li><a class="reference internal" href="#analog-inputs">Analog Inputs</a></li>
-<li><a class="reference internal" href="#connection-guidelines-for-gpio-peripherals">Connection guidelines for GPIO peripherals</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-and-digital-gpios">Analog and Digital GPIOs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-io">Digital IO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-inputs">Analog Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-guidelines-for-gpio-peripherals">Connection guidelines for GPIO peripherals</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cv-gate-i-o">CV &amp; GATE I/O</a><ul>
-<li><a class="reference internal" href="#cv-i-o">CV I/O</a></li>
-<li><a class="reference internal" href="#gate-i-o">GATE I/O</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-gate-i-o">CV &amp; GATE I/O</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-i-o">CV I/O</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gate-i-o">GATE I/O</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#uart-interface">UART interface</a></li>
-<li><a class="reference internal" href="#midi-din-i-o">MIDI DIN I/O</a></li>
-<li><a class="reference internal" href="#board-dimensions">Board dimensions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-interface">UART interface</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#midi-din-i-o">MIDI DIN I/O</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#board-dimensions">Board dimensions</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="elk_examples_overview.html"
-                        title="previous chapter">Examples Overview</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="blackboard.html"
-                        title="next chapter">Blackboard Page</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/elk_pi_datasheet.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/elk_pi_datasheet.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="blackboard.html" title="Blackboard Page"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="elk_examples_overview.html" title="Examples Overview"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>

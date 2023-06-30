@@ -1,60 +1,613 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Sushi Internal Plugins &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
-    
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documents/sushi_internal_plugins';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Elk Board" href="working_with_elk_board.html" />
-    <link rel="prev" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="working_with_elk_board.html" title="Working with Elk Board"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
-      </ul>
-    </div>  
+    <link rel="prev" title="Controlling Sushi using Open Sound Control" href="sushi_control_osc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elk DevKit  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
             
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="how_elk_works.html">
+                        What is Elk Audio OS?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_audio_os_1_0.html">
+                        ELK Audio OS v1.0 notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="license.html">
+                        Elk Audio OS software licenses
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="supported_hw.html">
+                        Supported Hardware architectures
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_software.html">
+                        Running Elk on your computer
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_hifiberry.html">
+                        Raspberry Pi 4 + Hifiberry Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="run_elk_on_boards.html">
+                        Run Elk on Boards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_overview.html">
+                        Sushi: The DAW Inside Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_public_api_model.html">
+                        Sushi Public API Model
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_configuration_format.html">
+                        Sushi Configuration
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_grpc.html">
+                        Controlling Sushi using gRPC
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sushi_control_osc.html">
+                        Controlling Sushi using Open Sound Control
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Sushi Internal Plugins
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="working_with_elk_board.html">
+                        Working with Elk Board
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="building_plugins_for_elk.html">
+                        Build Plugins for Elk
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../elkpy-doc/modules.html">
+                        gRPC helper libraries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview.html">
+                        Examples Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_pi_datasheet.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="blackboard.html">
+                        Blackboard Page
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="getting_started_with_development_kit_elk_pi_hardware.html">
+                        Elk Pi Hardware
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="sensei_configuration_format.html">
+                        Sensei Overview and Configuration Format
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="elk_examples_overview_legacy.html">
+                        Legacy Examples Overview
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Sushi Internal Plugins</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="sushi-internal-plugins">
-<h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">¶</a></h1>
+<h1>Sushi Internal Plugins<a class="headerlink" href="#sushi-internal-plugins" title="Permalink to this headline">#</a></h1>
 <p>These are simple integrated plugins that can be instantiated in a JSON config using the type “internal” and choosing one of the available options for the “uid” field.</p>
-<p>They have been developed mostly for internal testing purpose but you could find a use for them in some situations.</p>
+<p>The plugins under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.testing.*</span></code> were initially only for internal use, but as of Sushi 1.1, plugins have been added which may be useful also to 3rd parties.</p>
+<p>A more complete suite of production-level plugins is included through the <a class="reference external" href="Brickworks">Brickworks library</a> under the namespace <code class="docutils literal notranslate"><span class="pre">sushi.brickworks.*</span></code>.</p>
 <p>All parameters send-receive values normalized to the range 0.0-1.0. Their internal ranges and defaults are listed in parenthesis.</p>
 <section id="audio-in-audio-out-plugins">
-<h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Audio In / Audio Out Plugins<a class="headerlink" href="#audio-in-audio-out-plugins" title="Permalink to this headline">#</a></h2>
 <section id="passthrough">
-<h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">¶</a></h3>
+<h3>Passthrough<a class="headerlink" href="#passthrough" title="Permalink to this headline">#</a></h3>
 <p>Simply a bypass.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.passthrough”</p></li>
@@ -62,7 +615,7 @@
 </ul>
 </section>
 <section id="gain">
-<h3>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">¶</a></h3>
+<h3>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">#</a></h3>
 <p>Simple gain plugin. Note that the input controls are not smoothed, so it is not suitable to be used in a real-time context where the gain is adjusted by the user.
 For those use cases, prefer using the internal gain parameter of the tracks.</p>
 <ul class="simple">
@@ -75,7 +628,7 @@ For those use cases, prefer using the internal gain parameter of the tracks.</p>
 </ul>
 </section>
 <section id="equalizer">
-<h3>Equalizer<a class="headerlink" href="#equalizer" title="Permalink to this headline">¶</a></h3>
+<h3>Equalizer<a class="headerlink" href="#equalizer" title="Permalink to this headline">#</a></h3>
 <p>Parametric peak equalizer (single band). The implementation is based on the warped bilinear transform following RBJ Audio Cookbook’s formulas.
 Parameters are smoothed and can be modulated at run-time.</p>
 <ul class="simple">
@@ -90,14 +643,14 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="mono-summing">
-<h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">¶</a></h3>
+<h3>Mono Summing<a class="headerlink" href="#mono-summing" title="Permalink to this headline">#</a></h3>
 <p>Simple plugin that sums all input channels to mono, and outputs the same mono audio to all channels.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.mono_summing”</p></li>
 </ul>
 </section>
 <section id="sample-delay">
-<h3>Sample Delay<a class="headerlink" href="#sample-delay" title="Permalink to this headline">¶</a></h3>
+<h3>Sample Delay<a class="headerlink" href="#sample-delay" title="Permalink to this headline">#</a></h3>
 <p>Simple delay plugin. Delays a track by unit of samples up to 48000 samples (one second at 48 kHz)</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.sample_delay”</p></li>
@@ -109,7 +662,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="stereo-mixer">
-<h3>Stereo Mixer<a class="headerlink" href="#stereo-mixer" title="Permalink to this headline">¶</a></h3>
+<h3>Stereo Mixer<a class="headerlink" href="#stereo-mixer" title="Permalink to this headline">#</a></h3>
 <p>Utility plugin for mixing the two channels of a stereo signal independently.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.stereo_mixer”</p></li>
@@ -126,7 +679,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="send">
-<h3>Send<a class="headerlink" href="#send" title="Permalink to this headline">¶</a></h3>
+<h3>Send<a class="headerlink" href="#send" title="Permalink to this headline">#</a></h3>
 <p>Sends audio to a return bus plugin. Can be used for creating effect sends, parallel processing, or more complex audio routings. With the default parameters all channels of the track are sent to the return instance but it can also be configured to send a range of channels using the “channel_count” and “start_channel” parameters.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.send”</p></li>
@@ -146,18 +699,36 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="return">
-<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">#</a></h3>
 <p>Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.return”</p></li>
 <li><p><strong>Parameters</strong> :</p></li>
 </ul>
 </section>
+<section id="reverb-freeverb">
+<h3>Reverb (freeverb)<a class="headerlink" href="#reverb-freeverb" title="Permalink to this headline">#</a></h3>
+<p>Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb &amp; allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.</p>
+<p>The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combination (check <code class="docutils literal notranslate"><span class="pre">misc/config_files/freeverb_aux.json</span></code> for an example).</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.freeverb”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“freeze” : Boolean switch - if set, the reverb contents are “frozen”, useful to create drone effects. [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“dry” : Relative level of the direct output. [0.0, 1.0], Default : 1.0</p></li>
+<li><p>“wet” : Relative level of the wet output. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“room_size” : Model room size. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“width” : Model width. [0.0, 1.0], Default : 0.5</p></li>
+<li><p>“damp” : Model high-frequency damping. [0.0, 1.0], Default : 0.5</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <section id="midi-in-audio-out-plugins">
-<h2>Midi In / Audio Out Plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Midi In / Audio Out Plugins<a class="headerlink" href="#midi-in-audio-out-plugins" title="Permalink to this headline">#</a></h2>
 <section id="sample-player">
-<h3>Sample Player<a class="headerlink" href="#sample-player" title="Permalink to this headline">¶</a></h3>
+<h3>Sample Player<a class="headerlink" href="#sample-player" title="Permalink to this headline">#</a></h3>
 <p>Simple polyphonic sample-based player. Only one sample can be loaded and played with pitch tracking and ADSR envelope.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.sampleplayer”</p></li>
@@ -179,9 +750,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 </section>
 <section id="midi-in-midi-out-plugins">
-<h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Midi In / Midi Out plugins<a class="headerlink" href="#midi-in-midi-out-plugins" title="Permalink to this headline">#</a></h2>
 <section id="arpeggiator">
-<h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">¶</a></h3>
+<h3>Arpeggiator<a class="headerlink" href="#arpeggiator" title="Permalink to this headline">#</a></h3>
 <p>Simple Arpeggiator that repeats in “UP” movement the held MIDI notes on the track, using Sushi’s tempo configuration.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.arpeggiator”</p></li>
@@ -193,7 +764,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="transposer">
-<h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">¶</a></h3>
+<h3>Transposer<a class="headerlink" href="#transposer" title="Permalink to this headline">#</a></h3>
 <p>Transposes incoming MIDI Note ON &amp; OFF events by a fixed amount of semitones.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.transposer”</p></li>
@@ -205,7 +776,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="step-sequencer">
-<h3>Step Sequencer<a class="headerlink" href="#step-sequencer" title="Permalink to this headline">¶</a></h3>
+<h3>Step Sequencer<a class="headerlink" href="#step-sequencer" title="Permalink to this headline">#</a></h3>
 <p>A simple 8-step sequencer.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.step_sequencer”</p></li>
@@ -224,9 +795,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 </section>
 <section id="audio-in-parameter-out-plugins">
-<h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Audio In / Parameter Out plugins<a class="headerlink" href="#audio-in-parameter-out-plugins" title="Permalink to this headline">#</a></h2>
 <section id="peak-meter">
-<h3>Peak Meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">¶</a></h3>
+<h3>Peak Meter<a class="headerlink" href="#peak-meter" title="Permalink to this headline">#</a></h3>
 <p>Utility plugin that analyzes the level of the incoming audio signal and outputs peak signal levels and clip indications if the maximum value exceeds 1 (or -1 on the negative cycle) at a configurable rate. Supports metering of up to 16 channels on a track.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.peakmeter”</p></li>
@@ -247,9 +818,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 </section>
 <section id="cv-in-out-plugins">
-<h2>CV In / Out plugins<a class="headerlink" href="#cv-in-out-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>CV In / Out plugins<a class="headerlink" href="#cv-in-out-plugins" title="Permalink to this headline">#</a></h2>
 <section id="cv-to-control">
-<h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">¶</a></h3>
+<h3>CV to Control<a class="headerlink" href="#cv-to-control" title="Permalink to this headline">#</a></h3>
 <p>Adapter plugin which converts CV/gate information to note on and note off messages, thus enabling CV/gate control of synthesizer plugins.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.cv_to_control”</p></li>
@@ -269,7 +840,7 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </ul>
 </section>
 <section id="control-to-cv">
-<h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">¶</a></h3>
+<h3>Control to CV<a class="headerlink" href="#control-to-cv" title="Permalink to this headline">#</a></h3>
 <p>Adapter plugin to convert from note on and note off messages, to CV/gate information, enabling CV/gate control from MIDI plugins.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.control_to_cv”</p></li>
@@ -294,9 +865,9 @@ Parameters are smoothed and can be modulated at run-time.</p>
 </section>
 </section>
 <section id="utility-plugins">
-<h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Utility plugins<a class="headerlink" href="#utility-plugins" title="Permalink to this headline">#</a></h2>
 <section id="wav-writer">
-<h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">¶</a></h3>
+<h3>Wav writer<a class="headerlink" href="#wav-writer" title="Permalink to this headline">#</a></h3>
 <p>This plugin passes through audio without altering it, while writing it to a wav file.</p>
 <ul class="simple">
 <li><p><strong>uid</strong> : “sushi.testing.wav_writer”</p></li>
@@ -313,106 +884,500 @@ Parameters are smoothed and can be modulated at run-time.</p>
 <li><p>“destination_file” : The path and name of the file to write to. “.wav” is appended to the end of the property value internally.</p></li>
 </ul>
 </section>
+<section id="wav-streamer">
+<h3>Wav Streamer<a class="headerlink" href="#wav-streamer" title="Permalink to this headline">#</a></h3>
+<p>Plugin for streaming large audio files from disk.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.testing.wav_streamer”</p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p>“volume” : Audio playback gain, in dB. Default: 0.79. (Normalized from [-90, 24], Default: 0.0).</p></li>
+<li><p>“playback_speed” : The speed at which the audio file is played back. Range: [0.5, 2.0], Default: 1.0.</p></li>
+<li><p>“fade_time” : The speed at which to fade in or out the audio when starting or stopping in seconds. Range: [0, 100.0], Default: 0.0.</p></li>
+<li><p>“seek” : Sets the playback position relative to the start and end of the file. Range : [0, 1.0], Default: 0.0.</p></li>
+<li><p>“playing” : Enables or disables audio playback. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“loop” : Enables or disables looped playback. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+<li><p>“playing” : Enables or disables exponential volume fades when starting or stopping. If disabled, volume fades linearily. Range: [0.0, 1.0], Default : 0 for off.</p></li>
+</ul>
+</li>
+<li><p><strong>Parameters (output only)</strong>:</p>
+<ul>
+<li><p>“position” : Displays the current playback position relative to the start and end of the file. Range: [0, 1.0], Default: 0.0.</p></li>
+<li><p>“length” : Displays the total length of the file in seconds. (Normalized from [0, 86400], Default: 0.0).</p></li>
+</ul>
+</li>
+<li><p><strong>Properties</strong>:</p>
+<ul>
+<li><p>“file” : The path and name of the file to playback. If file loading fails, this property is updated with an error message.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="brickwork-plugins">
+<h2>Brickwork plugins<a class="headerlink" href="#brickwork-plugins" title="Permalink to this headline">#</a></h2>
+<p>From version 1.1, Sushi includes a suite of high-quality FX plugins written using the <a class="reference external" href="https://www.orastron.com/brickworks">Brickworks library</a> by Orastron. They are mostly high-quality implementation of staple FXs (Chorus, distortions, etc.), with some lower-level plugins (e.g. multimode filter) that could be useful in some situations.</p>
+<p>The implementation is especially good for parameter smoothing and coefficient interpolation, so they should all sound good even when the parameters are modulated at a high control frequency.</p>
+<p>You can play around with all the FX plugins using the example configuration file <code class="docutils literal notranslate"><span class="pre">misc/config_files/play_brickworks_fx.json</span></code>, which includes all of them (bypassed by default) in a single track.</p>
+<p>Brickworks is dual-licensed GPL3 / commercial; a commercial license of Sushi includes the rights to keep these plugin implementations inside it, but it does not give you the rights to extrapolate Brickworks and use it in another project unless you use the GPL3-licensed version of Brickworks.</p>
+<p>Part of the following documentation is taken from the official Brickworks API.</p>
+<section id="bitcrusher">
+<h3>Bitcrusher<a class="headerlink" href="#bitcrusher" title="Permalink to this headline">#</a></h3>
+<p>Bitcrusher through a combination of sample rate and bit-depth reduction.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.bitcrusher”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“sr_ratio” : Sample rate reduction ratio. [0.0, 1.0], Default : 1.0</p></li>
+<li><p>“bit_depth” : Relative level of the wet output. (Normalized from [1, 16], default : 16)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="chorus">
+<h3>Chorus<a class="headerlink" href="#chorus" title="Permalink to this headline">#</a></h3>
+<p>Chorus with variable rate and amount.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.chorus”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“rate” : Rate in Hz. (Normalized from [0.01, 2.0], default : 1.0)</p></li>
+<li><p>“amount” : FX amount (0=none, 1=full). ([0.0, 1.0], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="clip">
+<h3>Clip<a class="headerlink" href="#clip" title="Permalink to this headline">#</a></h3>
+<p>Antialiased hard clipper with parametric bias and gain (compensation) and output bias removal.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.clip”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“bias” : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)</p></li>
+<li><p>“gain” : Linear compensation output gain (Normalized from [0.1, 10.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="comb-delay">
+<h3>Comb Delay<a class="headerlink" href="#comb-delay" title="Permalink to this headline">#</a></h3>
+<p>Comb filter / delay effect with feedforward and feedback paths.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.comb_delay”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“ff_delay” : Feedforward delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)</p></li>
+<li><p>“fb_delay” : Feedback delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)</p></li>
+<li><p>“blend” : Blend coefficient ([0.1, 10.0], default : 1.0)</p></li>
+<li><p>“ff_coeff” : Feedfoward coefficient (Normalized from [-1.0, 1.0], default : 0.0)</p></li>
+<li><p>“fb_coeff” : Feedback coefficient (Normalized from [-0.995, 0.995], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="compressor">
+<h3>Compressor<a class="headerlink" href="#compressor" title="Permalink to this headline">#</a></h3>
+<p>Feedforward compressor/limiter. In a multichannel track, the control signal is a -3dB sum of all the input channels.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.compressor”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“threshold” : Compression threshold in dB. (Normalized from [-60, 12], default : 0.0)</p></li>
+<li><p>“ratio” : Compression ratio; the value is actually the slope of the gain curve above the threshold, hence <code class="docutils literal notranslate"><span class="pre">1.0</span></code> means no compression and <code class="docutils literal notranslate"><span class="pre">0.0</span></code> is a hard limit. ([0.0, 1.0], default: 1.0)</p></li>
+<li><p>“attack” : Attack time constant in seconds. ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“release” : Release time constant in seconds. ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“gain” : Output makeup gain in dB. (Normalized from [-60, 60], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="distortion">
+<h3>Distortion<a class="headerlink" href="#distortion" title="Permalink to this headline">#</a></h3>
+<p>Distortion effect, loosely inspired by the “rodent” distortion pedal.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.dist”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“dist” : Distortion (input gain, approximately). ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“tone” : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)</p></li>
+<li><p>“volume” : Volume (output gain) ([0.0, 1.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="drive">
+<h3>Drive<a class="headerlink" href="#drive" title="Permalink to this headline">#</a></h3>
+<p>Overdrive effect, loosely inspired by the green “screaming” overdrive pedal.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.drive”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“drive” : Overdrive (input gain, approximately). ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“tone” : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)</p></li>
+<li><p>“volume” : Volume (output gain) ([0.0, 1.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="band-equalizer">
+<h3>3-band Equalizer<a class="headerlink" href="#band-equalizer" title="Permalink to this headline">#</a></h3>
+<p>Equalizer with 2nd-order (12 dB/oct) low shelf, peak and high shelf filters, similar to the one found in most channel strips.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.eq3band”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“lowshelf_freq” : Low shelf cutoff frequency in Hz. (Normalized from [25.0, 1’000.0], default : 125.0)</p></li>
+<li><p>“lowshelf_gain” : Low shelf gain in dB. (Normalized from [-24, 24.0], default : 0.0)</p></li>
+<li><p>“lowshelf_q” : Low shelf Q factor. (Normalized from [0.5, 5.0], default : 1.0)</p></li>
+<li><p>“peak_freq” : Peak cutoff frequency in Hz. (Normalized from [25.0, 20’000.0], default : 1’000.0)</p></li>
+<li><p>“peak_gain” : Peak gain in dB. (Normalized from [-24, 24.0], default : 0.0)</p></li>
+<li><p>“peak_q” : Peak Q factor. (Normalized from [0.5, 5.0], default : 1.0)</p></li>
+<li><p>“highshelf_freq” : High shelf cutoff frequency in Hz. (Normalized from [1’000.0, 20’000.0], default : 4’000.0)</p></li>
+<li><p>“highshelf_gain” : High shelf gain in dB. (Normalized from [-24, 24.0], default : 0.0)</p></li>
+<li><p>“highshelf_q” : High shelf Q factor. (Normalized from [0.5, 5.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="flanger">
+<h3>Flanger<a class="headerlink" href="#flanger" title="Permalink to this headline">#</a></h3>
+<p>Flanger with variable rate and amount.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.flanger”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“rate” : Rate in Hz. (Normalized from [0.01, 2.0], default : 1.0)</p></li>
+<li><p>“amount” : FX amount (0=none, 1=full). ([0.0, 1.0], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="fuzz">
+<h3>Fuzz<a class="headerlink" href="#fuzz" title="Permalink to this headline">#</a></h3>
+<p>Fuzz effect, loosely inspired by the “smiling” fuzz pedal.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.fuzz”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“fuzz” : Fuzz (input gain, approximately). ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“volume” : Volume (output gain) ([0.0, 1.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="highpass">
+<h3>Highpass<a class="headerlink" href="#highpass" title="Permalink to this headline">#</a></h3>
+<p>First-order highpass filter (6 dB/oct) with gain asymptotically approaching unity as frequency increases.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.highpass”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“frequency” : Cutoff frequency in Hz. (Normalized from [20.0, 20’000.0], default : 50.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="multifilter">
+<h3>Multifilter<a class="headerlink" href="#multifilter" title="Permalink to this headline">#</a></h3>
+<p>Second-order multimode filter, the various modes are blended together with a set of coefficient parameters.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.multi_filter”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“frequency” : Cutoff frequency in Hz. (Normalized from [20.0, 20’000.0], default : 1’000.0)</p></li>
+<li><p>“Q” : Q factor. (Normalized from [0.5, 10.0], default : 1.0)</p></li>
+<li><p>“input_coeff” : Input mode coefficient. (Normalized from [-1.0, 1.0], default : 1.0)</p></li>
+<li><p>“lowpass_coeff” : Lowpass mode coefficient. (Normalized from [-1.0, 1.0], default : 0.0)</p></li>
+<li><p>“bandpass_coeff” : Bandpass mode coefficient. (Normalized from [-1.0, 1.0], default : 0.0)</p></li>
+<li><p>“highpass_coeff” : Highpass mode coefficient. (Normalized from [-1.0, 1.0], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="noise-gate">
+<h3>Noise gate<a class="headerlink" href="#noise-gate" title="Permalink to this headline">#</a></h3>
+<p>Noise gate; in case of multichannel setup, each channel is gated independently.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.noise_gate”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“threshold” : Threshold in dB. (Normalized from [-60.0, 60.0], default : 0.0)</p></li>
+<li><p>“ratio” : Compression ratio (0 = no gating, 1 = hard gate). ([0.0, 1.0], default: 0.0)</p></li>
+<li><p>“attack” : Attack time constant in seconds. ([0.0, 1.0], default : 0.0)</p></li>
+<li><p>“release” : Release time constant in seconds. ([0.0, 1.0], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="notch">
+<h3>Notch<a class="headerlink" href="#notch" title="Permalink to this headline">#</a></h3>
+<p>Second-order notch filter with unity gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.notch”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“frequency” : Center frequency in Hz. (Normalized from [20.0, 20’000.0], default : 1’000.0)</p></li>
+<li><p>“Q” : Q factor. (Normalized from [0.5, 10.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="phaser">
+<h3>Phaser<a class="headerlink" href="#phaser" title="Permalink to this headline">#</a></h3>
+<p>Phaser containing 4 1st-order allpass filters modulated by a sinusoidal LFO.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.phaser”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“rate” : Modulation rate in Hz. (Normalized from [0.5, 5.0], default : 1.0)</p></li>
+<li><p>“center” : Center frequency in Hz. (Normalized from [100, 10’000.0], default : 1’000.0)</p></li>
+<li><p>“amount” : Modulation amount in octaves. (Normalized from [0.0, 4.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="saturation">
+<h3>Saturation<a class="headerlink" href="#saturation" title="Permalink to this headline">#</a></h3>
+<p>Antialiased tanh-based saturation with parametric bias and gain (compensation) and output bias removal.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickwork.saturation”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“bias” : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)</p></li>
+<li><p>“gain” : Input gain (Normalized from [0.1, 10.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tremolo">
+<h3>Tremolo<a class="headerlink" href="#tremolo" title="Permalink to this headline">#</a></h3>
+<p>Tremolo with variable speed and amount.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.tremolo”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“rate” : Modulation rate in Hz. (Normalized from [1.0, 20.0], default : 1.0)</p></li>
+<li><p>“amount” : Modulation amount (0 = no tremolo, 1 = full tremolo). ([0.0, 1.0], default : 1.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="vibrato">
+<h3>Vibrato<a class="headerlink" href="#vibrato" title="Permalink to this headline">#</a></h3>
+<p>Tremolo with variable speed and amount.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.vibrato”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“rate” : Rate in Hz. (Normalized from [2.0, 10.0], default : 4.0)</p></li>
+<li><p>“amount” : FX amount (0=none, 1=full). ([0.0, 1.0], default : 0.0)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="wah">
+<h3>Wah<a class="headerlink" href="#wah" title="Permalink to this headline">#</a></h3>
+<p>Simple wah digital effect.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.vibrato”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“wah” : Wah pedal position (0 = low cutoff, 1 = high cutoff) ([0.0, 1.0], default : 0.5)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="simple-synthesizer">
+<h3>Simple synthesizer<a class="headerlink" href="#simple-synthesizer" title="Permalink to this headline">#</a></h3>
+<p>Very simple monophonic synthesizer consisting of a single PWM oscillator, a state variable lowpass filter and ADSR envelope.</p>
+<ul class="simple">
+<li><p><strong>uid</strong> : “sushi.brickworks.simple_synth”</p></li>
+<li><p><strong>Parameters</strong> :</p>
+<ul>
+<li><p>“volume” : Output volume in dB (Normalized from [-60.0, 12.0], default : 0.0)</p></li>
+<li><p>“portamento” : Portamento time in seconds. ([0.0, 1.0], default : 0.01)</p></li>
+<li><p>“pulse_width” : Pulse width ([0.0, 1.0], default : 0.5)</p></li>
+<li><p>“filter_cutoff” : Filter cutoff in Hz (Normalized from [20.0, 20’000.0], default : 4’000.0)</p></li>
+<li><p>“filter_Q” :  Filter Q factor / resonance. (Normalized from [0.5, 10.0], default : 1.0)</p></li>
+<li><p>“attack” : Attack time constant in seconds. ([0.0, 1.0], default : 0.01)</p></li>
+<li><p>“decay” : Decay time constant in seconds. ([0.0, 1.0], default : 0.01)</p></li>
+<li><p>“sustain” : Sustain level. ([0.0, 1.0], default : 1.0)</p></li>
+<li><p>“release” : Release time constant in seconds. ([0.0, 1.0], default : 0.01)</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sushi_control_osc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Controlling Sushi using Open Sound Control</p>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Sushi Internal Plugins</a><ul>
-<li><a class="reference internal" href="#audio-in-audio-out-plugins">Audio In / Audio Out Plugins</a><ul>
-<li><a class="reference internal" href="#passthrough">Passthrough</a></li>
-<li><a class="reference internal" href="#gain">Gain</a></li>
-<li><a class="reference internal" href="#equalizer">Equalizer</a></li>
-<li><a class="reference internal" href="#mono-summing">Mono Summing</a></li>
-<li><a class="reference internal" href="#sample-delay">Sample Delay</a></li>
-<li><a class="reference internal" href="#stereo-mixer">Stereo Mixer</a></li>
-<li><a class="reference internal" href="#send">Send</a></li>
-<li><a class="reference internal" href="#return">Return</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul>
-<li><a class="reference internal" href="#sample-player">Sample Player</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
-<li><a class="reference internal" href="#arpeggiator">Arpeggiator</a></li>
-<li><a class="reference internal" href="#transposer">Transposer</a></li>
-<li><a class="reference internal" href="#step-sequencer">Step Sequencer</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
-<li><a class="reference internal" href="#peak-meter">Peak Meter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#cv-in-out-plugins">CV In / Out plugins</a><ul>
-<li><a class="reference internal" href="#cv-to-control">CV to Control</a></li>
-<li><a class="reference internal" href="#control-to-cv">Control to CV</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#utility-plugins">Utility plugins</a><ul>
-<li><a class="reference internal" href="#wav-writer">Wav writer</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="sushi_control_osc.html"
-                        title="previous chapter">Controlling Sushi using Open Sound Control</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="working_with_elk_board.html"
-                        title="next chapter">Working with Elk Board</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/documents/sushi_internal_plugins.md.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
+    </a>
+    <a class="right-next"
+       href="working_with_elk_board.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with Elk Board</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-in-audio-out-plugins">Audio In / Audio Out Plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passthrough">Passthrough</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gain">Gain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equalizer">Equalizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mono-summing">Mono Summing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-delay">Sample Delay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stereo-mixer">Stereo Mixer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send">Send</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return">Return</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverb-freeverb">Reverb (freeverb)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-player">Sample Player</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arpeggiator">Arpeggiator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transposer">Transposer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-sequencer">Step Sequencer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-meter">Peak Meter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-in-out-plugins">CV In / Out plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-to-control">CV to Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-to-cv">Control to CV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-plugins">Utility plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wav-writer">Wav writer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wav-streamer">Wav Streamer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brickwork-plugins">Brickwork plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bitcrusher">Bitcrusher</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chorus">Chorus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clip">Clip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comb-delay">Comb Delay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compressor">Compressor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distortion">Distortion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drive">Drive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#band-equalizer">3-band Equalizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flanger">Flanger</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzz">Fuzz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highpass">Highpass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multifilter">Multifilter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-gate">Noise gate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notch">Notch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phaser">Phaser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saturation">Saturation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tremolo">Tremolo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrato">Vibrato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wah">Wah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-synthesizer">Simple synthesizer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/documents/sushi_internal_plugins.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="working_with_elk_board.html" title="Working with Elk Board"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="sushi_control_osc.html" title="Controlling Sushi using Open Sound Control"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Elk DevKit  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sushi Internal Plugins</a></li> 
-      </ul>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2019, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Elk.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
     </div>
+  
+</div>
+
+  </footer>
   </body>
 </html>
