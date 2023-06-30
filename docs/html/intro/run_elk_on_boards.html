@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Run Elk on Boards &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/run_elk_on_boards';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sushi" href="../sushi/index.html" />
+    <link rel="prev" title="Getting started on Raspberry Pi 4" href="getting_started_with_raspberry.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how_elk_works.html">What is Elk Audio OS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Elk Audio OS software licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_hw.html">Supported Hardware architectures</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_development_kit_software.html">Running Elk on your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_raspberry.html">Getting started on Raspberry Pi 4</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Run Elk on Boards</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Introduction</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Run Elk on Boards</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="run-elk-on-boards">
+<h1>Run Elk on Boards<a class="headerlink" href="#run-elk-on-boards" title="Permalink to this heading">#</a></h1>
+<p>This guide expects that you have followed the previous Getting Started guide for your specific board to be ready to power up.</p>
+<p>The following steps are the same for all our development kit boards, covering the software, and how you get your first sound to play from the board.</p>
+<section id="power-it-up-connect">
+<h2>1. Power it up, connect…<a class="headerlink" href="#power-it-up-connect" title="Permalink to this heading">#</a></h2>
+<p>For getting access to the board terminal you have several options:</p>
+<ol class="simple">
+<li><p>Connect a monitor over HDMI, and a keyboard directly to the USB slot.</p></li>
+<li><p>Connect over SSH using Ethernet.</p></li>
+<li><p>If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - <a class="reference internal" href="../embedded/working_with_elk_board.html"><span class="doc">read more here</span></a>.</p></li>
+</ol>
+<p>For setting up SSH connections follow these tips:</p>
+<ol class="simple">
+<li><p>If your host board has an Ethernet port and you connected it directly to your computer, set up a shared internet connection for your computers Ethernet port - for example <a class="reference external" href="https://www.cesariogarcia.com/?p=611">following these instructions in the case of Linux</a>.</p></li>
+<li><p>Assuming Linux/macOS, you can connect to your board with the command <em>$ ssh mind&#64;elk-pi.local</em>.</p>
+<ol class="simple">
+<li><p>If this fails, or if you want to connect to more than one board at the same time, you will need the IP address
+of your board(s). to see the IP address(es) run <em>$ arp -a</em> - then connect over SSH to the IP you find.</p></li>
+</ol>
+</li>
+<li><p>On Windows, you can use <a class="reference external" href="https://www.putty.org/">Putty</a> for SSH.</p></li>
+<li><p>Once you have a terminal window, just log in: username <em>mind</em>, password <em>elk</em>.</p></li>
+</ol>
+</section>
+<section id="check-audio-hat">
+<h2>2. Check audio hat<a class="headerlink" href="#check-audio-hat" title="Permalink to this heading">#</a></h2>
+<p>Elk Audio OS automatically detects the audio hat during boot by probing the Codecs. The detected hat name can be shown running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/tmp/audio_hat
+</pre></div>
+</div>
+<p>If your hat is not recognized, or is not supported, you will get a warning message during login similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sorry</span><span class="p">,</span> <span class="n">elk</span><span class="o">-</span><span class="n">pi</span> <span class="n">hat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">currently</span> <span class="n">supported</span><span class="o">.</span>
+
+<span class="n">Audio</span> <span class="n">driver</span> <span class="n">load</span> <span class="n">failed</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If this message appears then the core audio components (driver, RASPA and Sushi) of ELK Audio OS will not be functional.</p>
+</section>
+<section id="and-run-sushi">
+<h2>3. And run Sushi<a class="headerlink" href="#and-run-sushi" title="Permalink to this heading">#</a></h2>
+<p>You will find several configurations and plugins ready to test on the image, under the folders <em>~/config_files</em> and
+<em>~/plugins</em> in the user folder.</p>
+<p>Unlike when running on a regular Linux machine, Sushi doesn’t use JACK for audio on the Raspberry Pi, so you should
+run Sushi using the <em>-r</em> switch for selecting our RASPA low-latency front-end:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sushi<span class="w"> </span>-r<span class="w"> </span>--multicore-processing<span class="o">=</span><span class="m">2</span><span class="w"> </span>-c<span class="w"> </span>~/config_files/play_vst3.json<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>Note the <em>&amp;</em> at the end - this means the process starts in the background. When you later need to stop it, you type
+<em>$ pkill sushi</em>.</p>
+<p>To connect USB Midi devices, just plug them and connect them with the <em>aconnect</em> tool:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available port for connections</span>
+$<span class="w"> </span>aconnect<span class="w"> </span>-l
+<span class="c1"># Take note of the port number X for your MIDI controller (e.g. 16) and the one Y assigned to Sushi</span>
+<span class="c1"># (e.g. 128)</span>
+$<span class="w"> </span>aconnect<span class="w"> </span>X<span class="w"> </span>Y
+<span class="c1"># As an alternative to port numbers, it is possible to use the names reported by aconnect -l</span>
+</pre></div>
+</div>
+<p>If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!</p>
+<p>Since this is a development board, you will need to start Sushi manually - but under <a class="reference internal" href="../embedded/working_with_elk_board.html"><span class="doc">Working with Elk</span></a>. we show how the device can be configured to load a setup automatically on power-on.</p>
+</section>
+<section id="powering-down">
+<h2>4. Powering down<a class="headerlink" href="#powering-down" title="Permalink to this heading">#</a></h2>
+<p>In development releases of Elk, the storage is mounted for both reading and writing, so do not just pull the power cord on the board when you want to turn it off, or you risk corrupting the file-system.</p>
+<p>Instead, type <em>$ sudo poweroff</em> to safely shutdown the system.</p>
+</section>
+<section id="further-steps">
+<h2>5. Further steps<a class="headerlink" href="#further-steps" title="Permalink to this heading">#</a></h2>
+<p>Congratulations, you have now learned all the necessary first steps for working with the Elk development kit hardware and software!</p>
+<p>There is however much further functionality, which you can learn about in the subsequent reference manual sections - most importantly for the development kit board, absolutely do read our documentation on <a class="reference internal" href="../embedded/working_with_elk_board.html"><span class="doc">Working with your Elk Board</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="getting_started_with_raspberry.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting started on Raspberry Pi 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../sushi/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sushi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-it-up-connect">1. Power it up, connect…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-audio-hat">2. Check audio hat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-run-sushi">3. And run Sushi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#powering-down">4. Powering down</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-steps">5. Further steps</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/intro/run_elk_on_boards.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

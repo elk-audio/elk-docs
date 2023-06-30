@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>elkpy.SushiErrors &#8212; Elk DevKit  documentation</title>
   
@@ -30,6 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -37,16 +37,17 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'elkpy-doc/elkpy.sushierrors';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.SushiProcessor" href="elkpy.sushiprocessor.html" />
     <link rel="prev" title="elkpy.SushiController" href="elkpy.sushicontroller.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -105,8 +106,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Elk DevKit  documentation</p>
   
 </a></div>
     
@@ -127,166 +134,32 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/how_elk_works.html">
-                        What is Elk Audio OS?
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/license.html">
-                        Elk Audio OS software licenses
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/supported_hw.html">
-                        Supported Hardware architectures
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        gRPC helper libraries
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview.html">
-                        Examples Overview
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_pi_datasheet.html">
-                        Overview
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -317,6 +190,22 @@ document.write(`
   </button>
 `);
 </script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -365,166 +254,32 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/how_elk_works.html">
-                        What is Elk Audio OS?
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/license.html">
-                        Elk Audio OS software licenses
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/supported_hw.html">
-                        Supported Hardware architectures
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        gRPC helper libraries
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview.html">
-                        Examples Overview
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_pi_datasheet.html">
-                        Overview
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -545,6 +300,22 @@ document.write(`
 `);
 </script></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
@@ -553,25 +324,40 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="elkpy.html">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">elkpy.SushiErrors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/elk_examples_overview.html">Examples Overview</a></li>
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_overview.html">Sushi: The DAW Inside Elk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_internal_plugins.html">Sushi Internal Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_configuration_format.html">Sushi Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_public_api_model.html">Sushi Public API Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_grpc.html">Controlling Sushi using gRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_osc.html">Controlling Sushi using Open Sound Control</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">gRPC helper libraries</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="elkpy.html">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">elkpy.SushiErrors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushiprocessor.html">elkpy.SushiProcessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -603,6 +389,8 @@ document.write(`
 
 
 
+
+
 <nav aria-label="Breadcrumbs">
   <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
@@ -612,7 +400,10 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">gRPC helper libraries</a></li>
+    <li class="breadcrumb-item"><a href="../sushi/index.html" class="nav-link">Sushi</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
     
     
     <li class="breadcrumb-item"><a href="elkpy.html" class="nav-link">elkpy python API</a></li>
@@ -635,41 +426,41 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="module-elkpy.sushierrors">
-<span id="elkpy-sushierrors"></span><h1>elkpy.SushiErrors<a class="headerlink" href="#module-elkpy.sushierrors" title="Permalink to this headline">#</a></h1>
+<span id="elkpy-sushierrors"></span><h1>elkpy.SushiErrors<a class="headerlink" href="#module-elkpy.sushierrors" title="Permalink to this heading">#</a></h1>
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiInternalError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiInternalError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiInternalError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiInternalError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiInvalidArgumentError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiInvalidArgumentError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiInvalidArgumentError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiInvalidArgumentError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiNotFoundError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiNotFoundError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiNotFoundError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiOutOfRangeError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiOutOfRangeError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiOutOfRangeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiOutOfRangeError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiUnkownError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiUnkownError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiUnkownError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiUnkownError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="elkpy.sushierrors.SushiUnsupportedOperationError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushierrors.</span></span><span class="sig-name descname"><span class="pre">SushiUnsupportedOperationError</span></span><a class="reference internal" href="../_modules/elkpy/sushierrors.html#SushiUnsupportedOperationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushierrors.SushiUnsupportedOperationError" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
 <dl class="py function">
@@ -721,6 +512,22 @@ document.write(`
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiInternalError"><code class="docutils literal notranslate"><span class="pre">SushiInternalError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiInvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">SushiInvalidArgumentError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiNotFoundError"><code class="docutils literal notranslate"><span class="pre">SushiNotFoundError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">SushiOutOfRangeError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiUnkownError"><code class="docutils literal notranslate"><span class="pre">SushiUnkownError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.SushiUnsupportedOperationError"><code class="docutils literal notranslate"><span class="pre">SushiUnsupportedOperationError</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushierrors.grpc_error_handling"><code class="docutils literal notranslate"><span class="pre">grpc_error_handling()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
     <a href="../_sources/elkpy-doc/elkpy.sushierrors.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
@@ -752,7 +559,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2019, Elk.
+      © Copyright 2023, Elk.
       <br/>
     
   </p>
@@ -760,7 +567,7 @@ document.write(`
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
     <br/>
   </p>
 </div>

@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Elk Development Kit Documentation &#8212; Elk DevKit  documentation</title>
+    <title>Elk Audio OS documentation &#8212; Elk DevKit  documentation</title>
   
   
   
@@ -30,6 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -37,15 +37,16 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What is Elk Audio OS?" href="documents/how_elk_works.html" />
+    <link rel="next" title="Introduction" href="intro/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -104,8 +105,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Elk DevKit  documentation</p>
   
 </a></div>
     
@@ -126,166 +133,32 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/how_elk_works.html">
-                        What is Elk Audio OS?
+                      <a class="nav-link nav-internal" href="intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
+                      <a class="nav-link nav-internal" href="sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/license.html">
-                        Elk Audio OS software licenses
+                      <a class="nav-link nav-internal" href="embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/supported_hw.html">
-                        Supported Hardware architectures
+                      <a class="nav-link nav-internal" href="legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="elkpy-doc/modules.html">
-                        gRPC helper libraries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_examples_overview.html">
-                        Examples Overview
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_pi_datasheet.html">
-                        Overview
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -316,6 +189,22 @@ document.write(`
   </button>
 `);
 </script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -364,166 +253,32 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/how_elk_works.html">
-                        What is Elk Audio OS?
+                      <a class="nav-link nav-internal" href="intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
+                      <a class="nav-link nav-internal" href="sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/license.html">
-                        Elk Audio OS software licenses
+                      <a class="nav-link nav-internal" href="embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/supported_hw.html">
-                        Supported Hardware architectures
+                      <a class="nav-link nav-internal" href="legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="elkpy-doc/modules.html">
-                        gRPC helper libraries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_examples_overview.html">
-                        Examples Overview
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_pi_datasheet.html">
-                        Overview
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -543,6 +298,22 @@ document.write(`
   </button>
 `);
 </script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -571,381 +342,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="elk-development-kit-documentation">
-<h1>Elk Development Kit Documentation<a class="headerlink" href="#elk-development-kit-documentation" title="Permalink to this headline">#</a></h1>
-<p>This collection of documents is our introduction and manual for the Elk
-Development Kit.</p>
-<p>The Development Kit consists of a software prototyping component, one
-Raspberry Pi 4 with audio hat, which will be
-documented here in that order.</p>
-<p>You will be able to run the software component natively on a Debian
-Linux, on a Virtual Machine, as well as on the Elk development board.
-Mostly you interact with all three in a very similar way, but when there
-are differences we will explicitly point them out.</p>
+  <section id="elk-audio-os-documentation">
+<h1>Elk Audio OS documentation<a class="headerlink" href="#elk-audio-os-documentation" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Elk Introduction and Overview:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/how_elk_works.html">What is Elk Audio OS?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#why-would-you-need-elk-audio-os">Why would you need Elk Audio OS?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#what-can-you-do-with-elk">What Can You Do With Elk?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#software-components-inside-an-elk-product">Software Components Inside an Elk Product</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#hardware-components-white">Hardware Components (white)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#standard-linux-components-pink">Standard Linux Components (pink)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#elk-core-components-blue-orange">Elk Core Components (blue/orange)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#custom-components-for-your-product-green">Custom components for your product (green)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/how_elk_works.html#try-it-yourself">Try it yourself</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_audio_os_1_0.html">ELK Audio OS v1.0 notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/license.html">Elk Audio OS software licenses</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/license.html#open-source-license">Open-source license</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/license.html#commercial-license">Commercial license</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/supported_hw.html">Supported Hardware architectures</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/supported_hw.html#open-source-version">Open-source version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/supported_hw.html#commercial-version">Commercial version</a></li>
-</ul>
-</li>
-</ul>
 </div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html">Running Elk on your computer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#running-a-plugin-within-the-sushi-host">Running a plugin within the Sushi host</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_software.html#control-mda-jx10-vst3-plugin-parameters">Control MDA JX10 VST3 plugin parameters</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_hifiberry.html">Raspberry Pi 4 + Hifiberry Hardware</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_hifiberry.html#hardware-setup">1. Hardware setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_hifiberry.html#flashing-the-elk-operating-system-image-to-the-sd-card">2. Flashing the Elk operating system image to the SD card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_hifiberry.html#power-up-and-next-steps">3. Power up, and next steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/run_elk_on_boards.html">Run Elk on Boards</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/run_elk_on_boards.html#power-it-up-connect">1. Power it up, connect…</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/run_elk_on_boards.html#check-audio-hat">2. Check audio hat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/run_elk_on_boards.html#and-run-sushi">3. And run Sushi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/run_elk_on_boards.html#powering-down">4. Powering down</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/run_elk_on_boards.html#further-steps">5. Further steps</a></li>
-</ul>
-</li>
-</ul>
+<p><strong>Useful links</strong>:
+<a class="reference external" href="https://elk.audio/start">Main website</a> |
+<a class="reference external" href="https://github.com/elk-audio">Github Repositories</a> |
+<a class="reference external" href="https://forum.elk.audio">Forum</a></p>
+<p>Elk Audio OS is a fully-featured embedded Linux distribution optimized for low-latency audio applications. It is currently used by companies making professional audio products, audio enthusiasts building their own devices, and serves as the core of Elk’s own <a class="reference external" href="https://elk.live">Elk Live</a> online music collaboration tool.</p>
+<p>The core audio plugin host, Sushi, is also available as an independent application for macOS and Linux, and can be used as a flexible programming environment for building other kind of audio applications for those platforms.</p>
+<p>Since the release of Elk Audio OS 1.0, we are focusing on giving open support only for Sushi and for the image running on Raspberry Pi 4 with HiFiBerry and the RPi audio hats. The previous documentation on other development kits and features (e.g. the Elk Pi board) is now available under the “Legacy Documentation” section in this page.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">About Elk Audio OS</p>
 </div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Elk Reference Manual:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_overview.html">Sushi: The DAW Inside Elk</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#main-features">Main Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#architecture">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#audio-frontends">Audio Frontends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#configuration-and-control">Configuration and Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#sushi-s-public-api-model">Sushi’s Public API Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_overview.html#json-configuration-file">JSON Configuration File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_overview.html#run-time-control">Run-Time Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_overview.html#end-user-control">End-User Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_overview.html#examples-on-configuration-and-control">Examples on Configuration and Control</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#discovering-initial-sushi-configuration-s-available-parameters">Discovering Initial Sushi Configuration’s Available Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#plugin-format-support">Plugin Format Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#threading">Threading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#twine">Twine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#logging">Logging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#configuring-sentry">Configuring Sentry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_overview.html#running-sushi-with-a-different-buffer-size">Running Sushi with a Different Buffer Size</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_public_api_model.html">Sushi Public API Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_public_api_model.html#processors-tracks-plugins-and-parameters">Processors, Tracks, Plugins and Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_public_api_model.html#global-sushi-settings">Global Sushi Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_public_api_model.html#accessing-the-sushi-model">Accessing the Sushi Model</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_configuration_format.html">Sushi Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#main-host-configuration">Main Host Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#tracks">Tracks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#pre-post-tracks">Pre/Post Tracks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#midi">MIDI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#open-sound-control-connections">Open Sound Control Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#control-voltage-and-gate-connections">Control voltage and Gate connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#events">Events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_configuration_format.html#initial-state">Initial State</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_control_grpc.html">Controlling Sushi using gRPC</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_control_grpc.html#high-level-overview-of-sushi-s-grpc-api">High-level Overview of Sushi’s gRPC API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#audiographcontroller">AudioGraphController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#parametercontroller">ParameterController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#audioroutingcontroller">AudioRoutingController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#midicontroller">MidiController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#cvgatecontroller">CvGateController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#keyboardcontroller">KeyboardController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#programcontroller">ProgramController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#osccontroller">OscController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#transportcontroller">TransportController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#systemcontroller">SystemController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#timingcontroller">TimingController</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_control_grpc.html#sessioncontroller">SessionController</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_control_grpc.html#sushi-grpc-notifications">Sushi gRPC Notifications</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_control_osc.html">Controlling Sushi using Open Sound Control</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_control_osc.html#osc-messages-sushi-reacts-to">OSC Messages Sushi Reacts To</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_control_osc.html#osc-messages-sushi-transmits">OSC Messages Sushi Transmits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_control_osc.html#changing-the-ports-and-ip-address-for-sending-and-receiving-osc">Changing the ports and IP address for sending and receiving OSC</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sushi_internal_plugins.html">Sushi Internal Plugins</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-audio-out-plugins">Audio In / Audio Out Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#passthrough">Passthrough</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#gain">Gain</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#equalizer">Equalizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#mono-summing">Mono Summing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#sample-delay">Sample Delay</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#stereo-mixer">Stereo Mixer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#send">Send</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#return">Return</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#reverb-freeverb">Reverb (freeverb)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-audio-out-plugins">Midi In / Audio Out Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#sample-player">Sample Player</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#midi-in-midi-out-plugins">Midi In / Midi Out plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#arpeggiator">Arpeggiator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#transposer">Transposer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#step-sequencer">Step Sequencer</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#audio-in-parameter-out-plugins">Audio In / Parameter Out plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#peak-meter">Peak Meter</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#cv-in-out-plugins">CV In / Out plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#cv-to-control">CV to Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#control-to-cv">Control to CV</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#utility-plugins">Utility plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#wav-writer">Wav writer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#wav-streamer">Wav Streamer</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sushi_internal_plugins.html#brickwork-plugins">Brickwork plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#bitcrusher">Bitcrusher</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#chorus">Chorus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#clip">Clip</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#comb-delay">Comb Delay</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#compressor">Compressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#distortion">Distortion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#drive">Drive</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#band-equalizer">3-band Equalizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#flanger">Flanger</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#fuzz">Fuzz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#highpass">Highpass</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#multifilter">Multifilter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#noise-gate">Noise gate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#notch">Notch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#phaser">Phaser</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#saturation">Saturation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#tremolo">Tremolo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#vibrato">Vibrato</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#wah">Wah</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/sushi_internal_plugins.html#simple-synthesizer">Simple synthesizer</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/working_with_elk_board.html">Working with Elk Board</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#filesystem">Filesystem</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#partition-layout">Partition Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#user-data-separation">User Data Separation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#elk-images">Elk Images</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#development-image">Development Image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#release-image">Release Image</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#elk-system-utilities">Elk System Utilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#changing-audio-buffer-size">Changing audio buffer size</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#enabling-disabling-write-access-to-root-partition">Enabling/Disabling Write Access to Root Partition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#manually-controlling-default-fallback-root-partition">Manually Controlling Default/Fallback Root Partition</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#connecting-to-your-board">Connecting to Your Board</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#over-wifi">Over WiFi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#over-a-serial-connection">Over a Serial Connection</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#monitoring-sushi-performance">Monitoring Sushi Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#software-update-system">Software Update System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#updating-over-network-wifi-ethernet">Updating over Network (WiFi / Ethernet)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/working_with_elk_board.html#updating-with-an-usb-drive">Updating with an USB drive</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#configuring-automatic-startup">Configuring Automatic Startup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/working_with_elk_board.html#setting-cpu-speed">Setting CPU Speed</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/building_plugins_for_elk.html">Build Plugins for Elk</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#cross-compiling-toolchain">Cross-Compiling Toolchain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#vst-2-x-plugins-using-steinberg-sdk">VST 2.x Plugins Using Steinberg SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#vst-3-x-plugins-using-steinberg-sdk">VST 3.x Plugins Using Steinberg SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#vst-plugins-using-juce">VST Plugins Using JUCE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/building_plugins_for_elk.html#plugins-using-juce-version-6">Plugins using JUCE Version 6</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/building_plugins_for_elk.html#plugins-using-juce-version-5-x">Plugins using JUCE Version 5.x</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/building_plugins_for_elk.html#cross-compiling-juce-plugin">Cross-compiling JUCE Plugin</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#lv2-plugins">LV2 Plugins</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="documents/building_plugins_for_elk.html#generate-ttl-files">Generate ttl files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documents/building_plugins_for_elk.html#cross-compile-the-plugins">Cross Compile the plugins</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#running-compiled-plugins-with-sushi-on-a-virtual-machine">Running Compiled Plugins with Sushi on a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#running-compiled-plugins-with-sushi-on-elk-boards">Running Compiled Plugins with Sushi on Elk Boards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/building_plugins_for_elk.html#analyzing-and-resolving-xenomai-mode-switches">Analyzing and Resolving Xenomai Mode Switches</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="elkpy-doc/modules.html">gRPC helper libraries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="elkpy-doc/elkpy.html">elkpy python API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="elkpy-doc/elkpy.html#submodules">Submodules</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Do you want to find out more about Elk Audio OS? Check out why it could be useful for you, and what are the supported hardware platforms and the licensing options for both open-source and commercial applications.</p>
 </div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview.html">Examples Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview.html#gui-control-app">GUI control app</a></li>
-</ul>
-</li>
-</ul>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-secondary sd-stretched-link reference internal" href="intro/how_elk_works.html"><span class="doc">How Elk works</span></a></span></p>
 </div>
-<section id="elk-online-forum">
-<h2>Elk Online Forum<a class="headerlink" href="#elk-online-forum" title="Permalink to this headline">#</a></h2>
-<p>For any questions or discussion on the Elk Development Kit,
-please refer to the <a class="reference external" href="https://forum.elk.audio">Elk Online Forum</a>.</p>
-</section>
-<section id="elk-pi-datasheet">
-<h2>Elk Pi Datasheet<a class="headerlink" href="#elk-pi-datasheet" title="Permalink to this headline">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#assembly-content-and-accessories">Assembly content and accessories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#raspberry-pi-guidelines">Raspberry Pi guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#connectors-and-pinout">Connectors and pinout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#status-leds">Status LEDs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#power-requirements">Power requirements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#recommended-power-supply">Recommended Power Supply</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#power-consumption">Power Consumption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#alternative-power-supply">Alternative Power Supply</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#audio-cv-configurations">Audio/CV configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#audio-i-o">Audio I/O</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#eurorack-compatibility">Eurorack Compatibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#mini-jack-input">Mini-jack input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#stereo-preamp">Stereo Preamp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#headphones-output">Headphones output</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#analog-and-digital-gpios">Analog and Digital GPIOs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#digital-io">Digital IO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#analog-inputs">Analog Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#connection-guidelines-for-gpio-peripherals">Connection guidelines for GPIO peripherals</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#cv-gate-i-o">CV &amp; GATE I/O</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#cv-i-o">CV I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_pi_datasheet.html#gate-i-o">GATE I/O</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#uart-interface">UART interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#midi-din-i-o">MIDI DIN I/O</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_pi_datasheet.html#board-dimensions">Board dimensions</a></li>
-</ul>
 </div>
-</section>
-<section id="blackboard-for-elk-pi">
-<h2>Blackboard for Elk Pi<a class="headerlink" href="#blackboard-for-elk-pi" title="Permalink to this headline">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/blackboard.html">Blackboard Page</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/blackboard.html#open-source-hardware">Open-Source Hardware</a></li>
-</ul>
 </div>
-</section>
-<section id="tech-articles">
-<h2>Tech Articles<a class="headerlink" href="#tech-articles" title="Permalink to this headline">#</a></h2>
-<p>On the Elk website, there are a number of Tech articles that cover
-important topics directly relevant for learning to work with our
-Development Kit:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-i/">Controlling Plug-Ins in Elk, Part1: Open Sound
-Control</a></p>
-<p><a class="reference external" href="https://elk.audio/controlling-plug-ins-in-elk-part-ii/">Controlling Plug-Ins in Elk, Part2: Google Remote Procedure
-Call</a></p>
-<p><a class="reference external" href="https://elk.audio/elk-development-boards-overview-3/">Elk Development Boards
-Overview</a></p>
-</div></blockquote>
-</section>
-<section id="legacy-documentation">
-<h2>Legacy documentation<a class="headerlink" href="#legacy-documentation" title="Permalink to this headline">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html">Elk Pi Hardware</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/getting_started_with_development_kit_elk_pi_hardware.html#assembly">Assembly</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/sensei_configuration_format.html">Sensei Overview and Configuration Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#example-configuration">Example Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#backends">Backends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#hardware-frontend">Hardware Frontend</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#sensors-controllers">Sensors/Controllers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#supported-sensor-controller-hardware">Supported Sensor/Controller Hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/sensei_configuration_format.html#multiplexer">Multiplexer</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview_legacy.html">Legacy Examples Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#basic-plugin-hosting">Basic Plugin Hosting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#mda-jx10-vst3">MDA JX10 VST3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#mda-jx10-vst2">MDA JX10 VST2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#lv2vst-wrapper-with-mda-jx10-lv2">LV2VST Wrapper, with MDA JX10 LV2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#multi-fx">Multi FX</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#juce-example-c-source-code">JUCE Example C++ Source Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#complete-blackboard-examples">Complete Blackboard Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#minimal">Minimal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#general-controller">General Controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#multi-fx-for-blackboard">Multi-FX, for Blackboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#juce-example-for-blackboard">JUCE Example, for Blackboard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#ob-xd-sequencer">OB-Xd Sequencer</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="documents/elk_examples_overview_legacy.html#benchmark-synth">Benchmark Synth</a></li>
-</ul>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">Getting Started on your computer</p>
 </div>
-</section>
-<section id="search-page">
-<h2>Search Page<a class="headerlink" href="#search-page" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
-</section>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">You only need a macOS or Linux computer to try out Elk’s most important part, its audio engine Sushi, and get an idea of how making products for Elk feels like.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-secondary sd-stretched-link reference internal" href="intro/getting_started_with_development_kit_software.html"><span class="doc">Get Sushi for your computer</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">Getting Started on Raspberry Pi 4</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">If you want to try out the low-latency performance of Elk on embedded hardware, the easiest is to start with one of the prebuilt images that we provide for the Raspberry Pi 4 Single board computers.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-secondary sd-stretched-link reference internal" href="intro/getting_started_with_raspberry.html"><span class="doc">Run Elk on RPi4</span></a></span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">Sushi reference</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Want to dig more into Sushi’s processing capabilities and how to control them? Check out the detailed reference on Elk’s audio engine.</p>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-secondary sd-stretched-link reference internal" href="sushi/index.html"><span class="doc">Sushi reference documentation</span></a></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 
@@ -960,11 +423,11 @@ Overview</a></p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="documents/how_elk_works.html"
+       href="intro/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What is Elk Audio OS?</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -979,21 +442,6 @@ Overview</a></p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elk-online-forum">Elk Online Forum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elk-pi-datasheet">Elk Pi Datasheet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blackboard-for-elk-pi">Blackboard for Elk Pi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tech-articles">Tech Articles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legacy-documentation">Legacy documentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-page">Search Page</a></li>
-</ul>
-  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
@@ -1027,7 +475,7 @@ Overview</a></p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2019, Elk.
+      © Copyright 2023, Elk.
       <br/>
     
   </p>
@@ -1035,7 +483,7 @@ Overview</a></p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
     <br/>
   </p>
 </div>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>elkpy.SushiProcessor &#8212; Elk DevKit  documentation</title>
   
@@ -30,6 +29,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -37,16 +37,17 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'elkpy-doc/elkpy.sushiprocessor';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="elkpy.TimingController" href="elkpy.timingcontroller.html" />
     <link rel="prev" title="elkpy.SushiErrors" href="elkpy.sushierrors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -105,8 +106,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Elk DevKit  documentation</p>
   
 </a></div>
     
@@ -127,166 +134,32 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/how_elk_works.html">
-                        What is Elk Audio OS?
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/license.html">
-                        Elk Audio OS software licenses
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/supported_hw.html">
-                        Supported Hardware architectures
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        gRPC helper libraries
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview.html">
-                        Examples Overview
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_pi_datasheet.html">
-                        Overview
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
       
@@ -317,6 +190,22 @@ document.write(`
   </button>
 `);
 </script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -365,166 +254,32 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/how_elk_works.html">
-                        What is Elk Audio OS?
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_audio_os_1_0.html">
-                        ELK Audio OS v1.0 notes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/license.html">
-                        Elk Audio OS software licenses
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/supported_hw.html">
-                        Supported Hardware architectures
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_software.html">
-                        Running Elk on your computer
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_hifiberry.html">
-                        Raspberry Pi 4 + Hifiberry Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/run_elk_on_boards.html">
-                        Run Elk on Boards
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_overview.html">
-                        Sushi: The DAW Inside Elk
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_public_api_model.html">
-                        Sushi Public API Model
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_configuration_format.html">
-                        Sushi Configuration
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_grpc.html">
-                        Controlling Sushi using gRPC
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_control_osc.html">
-                        Controlling Sushi using Open Sound Control
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sushi_internal_plugins.html">
-                        Sushi Internal Plugins
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/working_with_elk_board.html">
-                        Working with Elk Board
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/building_plugins_for_elk.html">
-                        Build Plugins for Elk
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
                       </a>
                     </li>
                 
 
                     <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        gRPC helper libraries
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview.html">
-                        Examples Overview
+                      <a class="nav-link nav-internal" href="../embedded/index.html">
+                        Embedded OS reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_pi_datasheet.html">
-                        Overview
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
                       </a>
                     </li>
                 
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/blackboard.html">
-                        Blackboard Page
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/getting_started_with_development_kit_elk_pi_hardware.html">
-                        Elk Pi Hardware
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/sensei_configuration_format.html">
-                        Sensei Overview and Configuration Format
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../documents/elk_examples_overview_legacy.html">
-                        Legacy Examples Overview
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
   </ul>
 </nav></div>
         
@@ -545,6 +300,22 @@ document.write(`
 `);
 </script></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
@@ -553,25 +324,40 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="elkpy.html">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">elkpy.SushiProcessor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
-<li class="toctree-l2"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/elk_examples_overview.html">Examples Overview</a></li>
+
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_overview.html">Sushi: The DAW Inside Elk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_internal_plugins.html">Sushi Internal Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_configuration_format.html">Sushi Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_public_api_model.html">Sushi Public API Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_grpc.html">Controlling Sushi using gRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sushi/sushi_control_osc.html">Controlling Sushi using Open Sound Control</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">gRPC helper libraries</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="elkpy.html">elkpy python API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audiographcontroller.html">elkpy.AudioGraphController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.audioroutingcontroller.html">elkpy.AudioRoutingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.cvgatecontroller.html">elkpy.CvGateController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.grpc_gen.html">elkpy.gRPCGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.keyboardcontroller.html">elkpy.KeyboadController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.midicontroller.html">elkpy.MidiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.notificationcontroller.html">elkpy.NotificationController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.osccontroller.html">elkpy.OSCController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.parametercontroller.html">elkpy.ParameterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.programcontroller.html">elkpy.ProgramController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushi_info_types.html">elkpy.SushiInfoTypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushicontroller.html">elkpy.SushiController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sushierrors.html">elkpy.SushiErrors</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">elkpy.SushiProcessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.timingcontroller.html">elkpy.TimingController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.sessioncontroller.html">elkpy.SessionController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="elkpy.transportcontroller.html">elkpy.TransportControlller</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -603,6 +389,8 @@ document.write(`
 
 
 
+
+
 <nav aria-label="Breadcrumbs">
   <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
     
@@ -612,7 +400,10 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">gRPC helper libraries</a></li>
+    <li class="breadcrumb-item"><a href="../sushi/index.html" class="nav-link">Sushi</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
     
     
     <li class="breadcrumb-item"><a href="elkpy.html" class="nav-link">elkpy python API</a></li>
@@ -635,11 +426,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="module-elkpy.sushiprocessor">
-<span id="elkpy-sushiprocessor"></span><h1>elkpy.SushiProcessor<a class="headerlink" href="#module-elkpy.sushiprocessor" title="Permalink to this headline">#</a></h1>
+<span id="elkpy-sushiprocessor"></span><h1>elkpy.SushiProcessor<a class="headerlink" href="#module-elkpy.sushiprocessor" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushiprocessor.</span></span><span class="sig-name descname"><span class="pre">SushiProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController" title="elkpy.sushicontroller.SushiController"><span class="pre">elkpy.sushicontroller.SushiController</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">elkpy.sushiprocessor.</span></span><span class="sig-name descname"><span class="pre">SushiProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController" title="elkpy.sushicontroller.SushiController"><span class="pre">SushiController</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A Class to provide control of a specific processor in sushi.</p>
 <dl class="simple">
 <dt>Attributes:</dt><dd><p>_name (str): The name of the processor.
@@ -651,19 +442,8 @@ _programs (dict): A mapping from program name to program id.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processor_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController" title="elkpy.sushicontroller.SushiController"><span class="pre">elkpy.sushicontroller.SushiController</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Constructor for the sushi processor. Takes the name and the controller used to control sushi.</p>
-<dl class="simple">
-<dt>Parameters:</dt><dd><p>processor_name (str): The name of the processor to control.
-controller (SushiController): The controller to use for controlling the processor.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_bypass_state">
-<span class="sig-name descname"><span class="pre">get_bypass_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_bypass_state" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_bypass_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_bypass_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the bypass state of the processor.</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>bool: The bypass state of the processor.</p>
@@ -673,7 +453,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_parameter_value">
-<span class="sig-name descname"><span class="pre">get_parameter_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameter_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_value" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_parameter_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameter_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_value" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the value of a parameter by name.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>parameter_name (str): The name of the parameter to get the value from.</p>
@@ -685,7 +465,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_parameter_values">
-<span class="sig-name descname"><span class="pre">get_parameter_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameter_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_values" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_parameter_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameter_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_values" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the current value of the parameters with their name as the key.</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>dict: Dictionary with key as parameter names and value as the current parameter value.</p>
@@ -695,7 +475,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_parameters">
-<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameters" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_parameters" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a list of the names of the parameters available to the processor.</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>List[str]: List of parameter names.</p>
@@ -705,7 +485,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_program">
-<span class="sig-name descname"><span class="pre">get_program</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_program" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_program</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_program" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the name of the current program.</p>
 <blockquote>
 <div><p>Returns (str): The name of the current program.</p>
@@ -714,7 +494,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.get_programs">
-<span class="sig-name descname"><span class="pre">get_programs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_programs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_programs" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_programs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.get_programs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.get_programs" title="Permalink to this definition">#</a></dt>
 <dd><p>Get a list of the names of the available programs.</p>
 <blockquote>
 <div><dl class="simple">
@@ -726,7 +506,7 @@ controller (SushiController): The controller to use for controlling the processo
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_aftertouch">
-<span class="sig-name descname"><span class="pre">send_aftertouch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_aftertouch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_aftertouch" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_aftertouch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_aftertouch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_aftertouch" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a aftertouch message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -737,7 +517,7 @@ value (float): The aftertouch value of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_modulation">
-<span class="sig-name descname"><span class="pre">send_modulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_modulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_modulation" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_modulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_modulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_modulation" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a modulation message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -748,7 +528,7 @@ value (float): The modulation value of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch">
-<span class="sig-name descname"><span class="pre">send_note_aftertouch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_aftertouch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_note_aftertouch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_aftertouch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a note aftertouch message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -760,7 +540,7 @@ value (float): The aftertouch value of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_note_off">
-<span class="sig-name descname"><span class="pre">send_note_off</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_off" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_note_off</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_off" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a note off message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -772,7 +552,7 @@ velocity (float): The velocity of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_note_on">
-<span class="sig-name descname"><span class="pre">send_note_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_on" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_note_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_note_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_note_on" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a note on message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -784,7 +564,7 @@ velocity (float): The velocity of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.send_pitch_bend">
-<span class="sig-name descname"><span class="pre">send_pitch_bend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_pitch_bend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">send_pitch_bend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.send_pitch_bend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend" title="Permalink to this definition">#</a></dt>
 <dd><p>Send a pitch bend message to the track containing the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>channel (int): The channel to send the message on.
@@ -795,7 +575,7 @@ value (float): The pitch bend value of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.set_bypass_state">
-<span class="sig-name descname"><span class="pre">set_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bypass_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_bypass_state" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_bypass_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bypass_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_bypass_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_bypass_state" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the bypass state of the processor.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>bypass_state (bool): The bypass state to set the processor to.</p>
@@ -805,7 +585,7 @@ value (float): The pitch bend value of the note as a float between 0-1.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.set_parameter_value">
-<span class="sig-name descname"><span class="pre">set_parameter_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_parameter_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_parameter_value" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_parameter_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_parameter_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_parameter_value" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the value of parameter by name.</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>parameter_name (str): The name of the parameter to set the value of.
@@ -816,7 +596,7 @@ value (float): The value to set the parameter to.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="elkpy.sushiprocessor.SushiProcessor.set_program">
-<span class="sig-name descname"><span class="pre">set_program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_program" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">program_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/elkpy/sushiprocessor.html#SushiProcessor.set_program"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#elkpy.sushiprocessor.SushiProcessor.set_program" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the current program of the processor with the program name</p>
 <dl class="simple">
 <dt>Parameters:</dt><dd><p>program_name (str): The name of the program to set the processor to.</p>
@@ -882,6 +662,35 @@ value (float): The value to set the parameter to.</p>
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
   <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor"><code class="docutils literal notranslate"><span class="pre">SushiProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_bypass_state"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_bypass_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_value"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameter_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_parameter_values"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameter_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_parameters"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_parameters()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_program"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_program()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.get_programs"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.get_programs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_aftertouch"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_aftertouch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_modulation"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_modulation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_aftertouch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_note_off"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_off()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_note_on"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_note_on()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.send_pitch_bend()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.set_bypass_state"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_bypass_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.set_parameter_value"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_parameter_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.set_program"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.set_program_next"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program_next()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elkpy.sushiprocessor.SushiProcessor.set_program_previous"><code class="docutils literal notranslate"><span class="pre">SushiProcessor.set_program_previous()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
     <a href="../_sources/elkpy-doc/elkpy.sushiprocessor.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
@@ -913,7 +722,7 @@ value (float): The value to set the parameter to.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2019, Elk.
+      © Copyright 2023, Elk.
       <br/>
     
   </p>
@@ -921,7 +730,7 @@ value (float): The value to set the parameter to.</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
     <br/>
   </p>
 </div>

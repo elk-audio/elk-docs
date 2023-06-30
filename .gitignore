@@ -1,0 +1,60 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+
+# Hidden files
+.*
+!.clang-format
+!*/.gitkeep
+!.gitignore
+
+# Build and scratch directories
+scratch/
+*/scratch
+build*/
+generated/
+cmake-build-*
+third-party/install/
+third-party/rehost/
+
+# Windows folders
+*.ini
+
+# Python pyc
+*.pyc
+
+# CMake's compile_commnads used by clang-tools
+compile_commands.json
+
+# Log files created by running sushi from somewhere in the repository
+log.txt
+/vcpkg_installed/

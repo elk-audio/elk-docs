@@ -1,113 +1,90 @@
-.. Elk Audio OS documentation master file, created by
-   sphinx-quickstart on Tue Nov 26 10:12:12 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Elk Development Kit Documentation
-=================================
-
-This collection of documents is our introduction and manual for the Elk
-Development Kit.
-
-The Development Kit consists of a software prototyping component, one
-Raspberry Pi 4 with audio hat, which will be
-documented here in that order.
-
-You will be able to run the software component natively on a Debian
-Linux, on a Virtual Machine, as well as on the Elk development board.
-Mostly you interact with all three in a very similar way, but when there
-are differences we will explicitly point them out.
+##########################
+Elk Audio OS documentation
+##########################
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Elk Introduction and Overview:
+   :maxdepth: 1
+   :hidden:
 
-   documents/how_elk_works.md
-   documents/elk_audio_os_1_0.md
-   documents/license.md
-   documents/supported_hw.md
+   Getting started <intro/index>
+   Sushi reference <sushi/index>
+   Embedded OS reference <embedded/index>
+   Legacy documentation <legacy/index>
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Getting Started:
+**Useful links**:
+`Main website <https://elk.audio/start>`_ |
+`Github Repositories <https://github.com/elk-audio>`_ |
+`Forum <https://forum.elk.audio>`_
 
-   documents/getting_started_with_development_kit_software.md
-   documents/getting_started_with_hifiberry.md
-   documents/run_elk_on_boards.md
+Elk Audio OS is a fully-featured embedded Linux distribution optimized for low-latency audio applications. It is currently used by companies making professional audio products, audio enthusiasts building their own devices, and serves as the core of Elk's own `Elk Live <https://elk.live>`_ online music collaboration tool.
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Elk Reference Manual:
+The core audio plugin host, Sushi, is also available as an independent application for macOS and Linux, and can be used as a flexible programming environment for building other kind of audio applications for those platforms.
 
-   documents/sushi_overview.rst
-   documents/sushi_public_api_model.rst
-   documents/sushi_configuration_format.md
-   documents/sushi_control_grpc.rst
-   documents/sushi_control_osc.rst
-   documents/sushi_internal_plugins.md
-   documents/working_with_elk_board.md
-   documents/building_plugins_for_elk.md
-   elkpy-doc/modules.rst
+Since the release of Elk Audio OS 1.0, we are focusing on giving open support only for Sushi and for the image running on Raspberry Pi 4 with HiFiBerry and the RPi audio hats. The previous documentation on other development kits and features (e.g. the Elk Pi board) is now available under the "Legacy Documentation" section in this page.
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Examples:
+.. grid:: 2
 
-   documents/elk_examples_overview.md
+    .. grid-item-card::
 
-Elk Online Forum
-----------------
+        About Elk Audio OS
+        ^^^^^^^^^^^^^^^^^^
+        
+        Do you want to find out more about Elk Audio OS? Check out why it could be useful for you, and what are the supported hardware platforms and the licensing options for both open-source and commercial applications.
 
-For any questions or discussion on the Elk Development Kit,
-please refer to the `Elk Online Forum <https://forum.elk.audio>`__.
+        +++
 
-Elk Pi Datasheet
-----------------
+        .. button-ref:: intro/how_elk_works
+            :expand:
+            :color: secondary
+            :click-parent:
 
-.. toctree::
-   :maxdepth: 2
+            How Elk works
 
-   documents/elk_pi_datasheet.rst
+    .. grid-item-card::
 
-Blackboard for Elk Pi
----------------------
+        Getting Started on your computer
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        
+        You only need a macOS or Linux computer to try out Elk's most important part, its audio engine Sushi, and get an idea of how making products for Elk feels like.
 
-.. toctree::
-   :maxdepth: 2
+        +++
 
-   documents/blackboard.md
+        .. button-ref:: intro/getting_started_with_development_kit_software
+            :expand:
+            :color: secondary
+            :click-parent:
 
-Tech Articles
---------------
+            Get Sushi for your computer
 
-On the Elk website, there are a number of Tech articles that cover
-important topics directly relevant for learning to work with our
-Development Kit:
+    .. grid-item-card::
 
-   `Controlling Plug-Ins in Elk, Part1: Open Sound
-   Control <https://elk.audio/controlling-plug-ins-in-elk-part-i/>`__
+        Getting Started on Raspberry Pi 4
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   `Controlling Plug-Ins in Elk, Part2: Google Remote Procedure
-   Call <https://elk.audio/controlling-plug-ins-in-elk-part-ii/>`__
+        If you want to try out the low-latency performance of Elk on embedded hardware, the easiest is to start with one of the prebuilt images that we provide for the Raspberry Pi 4 Single board computers.
 
-   `Elk Development Boards
-   Overview <https://elk.audio/elk-development-boards-overview-3/>`__
+        +++
 
+        .. button-ref:: intro/getting_started_with_raspberry
+            :expand:
+            :color: secondary
+            :click-parent:
 
-Legacy documentation
----------------------
+            Run Elk on RPi4
 
-.. toctree::
-   :maxdepth: 2
+    .. grid-item-card::
 
-   documents/getting_started_with_development_kit_elk_pi_hardware.md
-   documents/sensei_configuration_format.md
-   documents/elk_examples_overview_legacy.md
+        Sushi reference
+        ^^^^^^^^^^^^^^^
+        
+        Want to dig more into Sushi's processing capabilities and how to control them? Check out the detailed reference on Elk's audio engine.
 
+        +++
 
+        .. button-ref:: sushi/index
+            :expand:
+            :color: secondary
+            :click-parent:
 
+            Sushi reference documentation
 
-Search Page
------------
-
-* :ref:`search`

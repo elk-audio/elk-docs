@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build Plugins for Elk &#8212; Elk DevKit  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'embedded/building_plugins_for_elk';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Building an Elk Audio OS image using Yocto" href="yocto_build.html" />
+    <link rel="prev" title="Working with Elk Board" href="working_with_elk_board.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../intro/index.html">
+                        Getting started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sushi/index.html">
+                        Sushi reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Embedded OS reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../legacy/index.html">
+                        Legacy documentation
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="working_with_elk_board.html">Working with Elk Board</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Build Plugins for Elk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yocto_build.html">Building an Elk Audio OS image using Yocto</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Embedded OS reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Build Plugins for Elk</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="build-plugins-for-elk">
+<h1>Build Plugins for Elk<a class="headerlink" href="#build-plugins-for-elk" title="Permalink to this heading">#</a></h1>
+<p>Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg’s APIs. It also supports LV2 plugins natively. So there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.</p>
+<p>Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk’s provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.</p>
+<p>As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.</p>
+<section id="cross-compiling-toolchain">
+<h2>Cross-Compiling Toolchain<a class="headerlink" href="#cross-compiling-toolchain" title="Permalink to this heading">#</a></h2>
+<p>For each targeted platform, we release a cross-compiling toolchain based on gcc (clang available on request) that replaces all the commands of the standard toolchain, including make, CMake, system libraries, etc.</p>
+<p>You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source [path-to-extracted-sdk]/environment-setup-[aarch-name]-elk-linux
+</pre></div>
+</div>
+<p>Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.</p>
+<p>If you had previously changed your  <em>LD_LIBRARY_PATH</em>, you would need to first issue the <em>#$ unset LD_LIBRARY_PATH</em> command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in <em>/home/minddev/.zshrc</em>.</p>
+</section>
+<section id="vst-2-x-plugins-using-steinberg-sdk">
+<h2>VST 2.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-2-x-plugins-using-steinberg-sdk" title="Permalink to this heading">#</a></h2>
+<p>This use case is for those that don’t rely on a cross platform framework like JUCE to generate VST 2.x plugins but rather want to use the original Steinberg SDK directly.</p>
+<p>Please notice that Steinberg has discontinued the VST 2.4 SDK, so it is no longer available for download since October 2018. You are still allowed to use the SDK and release VST 2.4 plugins if you have obtained a signed agreement with Steinberg prior to that date.</p>
+<p>The process in this case should be trivial if your plugin doesn’t have dependencies on any graphical libraries - this includes the VST GUI framework.</p>
+</section>
+<section id="vst-3-x-plugins-using-steinberg-sdk">
+<h2>VST 3.x Plugins Using Steinberg SDK<a class="headerlink" href="#vst-3-x-plugins-using-steinberg-sdk" title="Permalink to this heading">#</a></h2>
+<p>This should also be straightforward by using standard build systems. Since release 3.6.6, Steinberg also uses CMake as its primary build system and since 3.6.10, there have been several improvements for making it easier to use in a cross-compiling setup.</p>
+<p>There is an example plugin that can be compiled with the provided toolchain under <em>work/vst3-template</em>, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.</p>
+<p>After cross-compilation, ensure that the folder under <em>“plugin.vst3/Contents”</em> is named <strong>aarch64-linux</strong>, not <em>arm64-linux</em>, or the plugin will not work on the Elk-Pi - rename it yourself if needed.</p>
+</section>
+<section id="vst-plugins-using-juce">
+<h2>VST Plugins Using JUCE<a class="headerlink" href="#vst-plugins-using-juce" title="Permalink to this heading">#</a></h2>
+<p>Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.</p>
+<p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk.</p>
+<p>Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.</p>
+<p>Moreover, there are a couple of important issues to consider:</p>
+<section id="plugins-using-juce-version-6">
+<h3>Plugins using JUCE Version 6<a class="headerlink" href="#plugins-using-juce-version-6" title="Permalink to this heading">#</a></h3>
+<p>JUCE 6 can be used directly for building VST plugins for Elk, due to its new “headless” features.</p>
+<p>Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.</p>
+<p>The following steps are involved to cross-compile using JUCE’s new CMake support - demonstrated using the <code class="docutils literal notranslate"><span class="pre">JUCE/examples/CMake/AudioPlugin</span></code> plugin.</p>
+<p>(The below example assumes a RPi4 build with our v0.11.0 SDK installed in the default location).</p>
+<ol class="simple">
+<li><p>Begin by copying the AudioPlugin folder out of the JUCE folder.</p></li>
+<li><p>Clone a fresh copy of JUCE as a subfolder of AudioPlugin</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/juce-framework/JUCE.git</span></code>.</p></li>
+<li><p>We need to un-set $CC $CXX - one practical way we have found, is to edit <code class="docutils literal notranslate"><span class="pre">/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt</span></code>, removing the following 3 lines (56-58):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">ASM</span><span class="p">})</span>
+<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">CC</span><span class="p">})</span>
+<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">CXX</span><span class="p">})</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Edit <code class="docutils literal notranslate"><span class="pre">AudioPlugin/CMakeLists.txt</span></code> as follows:</p>
+<ol class="simple">
+<li><p>Un-comment line 27: <code class="docutils literal notranslate"><span class="pre">add_subdirectory(JUCE)</span></code>.</p></li>
+<li><p>Alter line 55 to only include the target format(s) to produce, for example: <code class="docutils literal notranslate"><span class="pre">FORMATS</span> <span class="pre">VST3</span></code></p></li>
+<li><p>Remove line 111: <code class="docutils literal notranslate"><span class="pre">juce::juce_recommended_lto_flags</span></code> - the LTO setting breaks x-compiling Release builds.</p></li>
+</ol>
+</li>
+<li><p>In your <code class="docutils literal notranslate"><span class="pre">AudioPlugin</span></code> folder, type:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">x-build</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">x-build</span></code> (Very handy to keep your x-build in a separate folder from your native one).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></p></li>
+</ol>
+</li>
+</ol>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">AudioPluginExample_artefacts/Debug/VST3/Audio</span> <span class="pre">Plugin</span> <span class="pre">Example.vst3</span></code>is ready to use on your Elk-Pi device.</p>
+</section>
+<section id="plugins-using-juce-version-5-x">
+<h3>Plugins using JUCE Version 5.x<a class="headerlink" href="#plugins-using-juce-version-5-x" title="Permalink to this heading">#</a></h3>
+<p>If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.</p>
+<ul class="simple">
+<li><p>JUCE release 5.4.x only generates VST 2.4 plugins for Linux.</p></li>
+<li><p>Generated plugins have a dependency on the X11 libraries.</p></li>
+</ul>
+<p>To overcome the second problem, we created a <a class="reference external" href="https://github.com/elk-audio/JUCE">JUCE fork</a> that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin’s editor functions. As a consequence, you don’t need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.</p>
+<p>If you use JUCE 5.4 you need to:</p>
+<ol class="simple">
+<li><p>Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.</p></li>
+<li><p>Inside Projucer:</p>
+<ul class="simple">
+<li><p>Ensure that the File -&gt; Global Paths… are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.</p></li>
+<li><p>Choose only “VST Legacy” as audio plugin type under project properties.</p></li>
+</ul>
+</li>
+<li><p>Follow the instructions in the next section to export a makefile.</p></li>
+<li><p>If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the <em>JUCE_CPPFLAGS</em> variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.</p></li>
+</ol>
+</section>
+<section id="cross-compiling-juce-plugin">
+<h3>Cross-compiling JUCE Plugin<a class="headerlink" href="#cross-compiling-juce-plugin" title="Permalink to this heading">#</a></h3>
+<p>Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.</p>
+<p>Inside Projucer:</p>
+<ul class="simple">
+<li><p>Create a new exporter of type “Linux Makefile”.</p></li>
+<li><p>Remove modules like <em>juce_video</em> or <em>juce_opengl</em> if present.</p></li>
+<li><p>Disable the option for JUCE Browser under the module <em>juce_gui_extra</em>.</p></li>
+<li><p>For every module, make sure to use the option “use global search path”.</p></li>
+<li><p>Save the project to export a new Makefile.</p></li>
+</ul>
+<p>For a build to test natively on Linux, just run make normally, using the <em>-DJUCE_HEADLESS_PLUGIN_CLIENT=1</em> argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.</p>
+<p>To cross-compile for <em>Elk Pi RPi4 64 bit</em>, first source the SDK script in your shell environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>LD_LIBRARY_PATH
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/path/to/environment-setup-aarch64-elk-linux
+</pre></div>
+</div>
+<p>And then build your plugin using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ AR=aarch64-elk-linux-ar make -j`nproc` CONFIG=Release CFLAGS=&quot;-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi&quot; TARGET_ARCH=&quot;-mcpu=cortex-a72 -mtune=cortex-a72&quot;
+</pre></div>
+</div>
+<p>By default, the toolchain only sets “-O2” and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="lv2-plugins">
+<h2>LV2 Plugins<a class="headerlink" href="#lv2-plugins" title="Permalink to this heading">#</a></h2>
+<p>Due to the LV2 plugin format’s architecture, it is often very straightforward to build LV2 plugins for Elk. <a class="reference external" href="https://lv2plug.in/book/#_simple_oscilloscope">LV2 strongly encourages the complete separation of GUI and plugin core</a>, meaning building a headless plugin can be as simple as specifying an argument to not include the GUI, when generating the build project.</p>
+<p>To cross compile, the following steps are specific for cross-compiling the <a class="reference external" href="https://github.com/elk-community/calf">Calf plugin collection</a>, but should generalize well across the majority of LV2 plugins:</p>
+<section id="generate-ttl-files">
+<h3>Generate ttl files<a class="headerlink" href="#generate-ttl-files" title="Permalink to this heading">#</a></h3>
+<p>This is done first since the script to generate the <em>.ttl</em> files won’t run with the cross compilation toolchain.</p>
+<ol>
+<li><p>Make a folder to put the native build in <em>mkdir native</em>.</p></li>
+<li><p>Generate project files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./autogen.sh --prefix=/absoute/path/to/calf/native
+</pre></div>
+</div>
+</li>
+<li><p><em>make</em> and <em>make install</em> to generate the ttl files.</p></li>
+<li><p><em>make clean</em> to prepare for cross compilation.</p></li>
+</ol>
+</section>
+<section id="cross-compile-the-plugins">
+<h3>Cross Compile the plugins<a class="headerlink" href="#cross-compile-the-plugins" title="Permalink to this heading">#</a></h3>
+<ol>
+<li><p>Set up the cross-compilation toolchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset LD_LIBRARY_PATH
+$ source /path/to/environment-setup-cortexa7t2hf-neon-vfpv4-elk-linux-gnueabi
+</pre></div>
+</div>
+</li>
+<li><p>Create a directory to build and install the cross compilation files to <em>$ mkdir build</em>.</p></li>
+<li><p>Generate the makefiles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./configure --host=arm-elk-linux-gnu --prefix=/absolute/path/to/calf/build
+</pre></div>
+</div>
+</li>
+<li><p>Compile the plugin library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make
+$ make install
+</pre></div>
+</div>
+</li>
+<li><p>move the .ttl files to the cross-compiled build.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp native/lib/lv2/calf.lv2/*.ttl build/lib/lv2/calf.lv2/
+</pre></div>
+</div>
+</li>
+<li><p>move the folder <em>build/lib/calf.lv2</em> to the desired location on the Elk Pi. Make sure the path to the parent folder is in the <em>LV2_PATH</em> variable.</p></li>
+</ol>
+</section>
+</section>
+<section id="running-compiled-plugins-with-sushi-on-a-virtual-machine">
+<h2>Running Compiled Plugins with Sushi on a Virtual Machine<a class="headerlink" href="#running-compiled-plugins-with-sushi-on-a-virtual-machine" title="Permalink to this heading">#</a></h2>
+<ol class="simple">
+<li><p>Start JACK Server.</p></li>
+<li><p>Launch Sushi with a proper JSON file that has the path to your plugins. You can use one of the provided examples to start, e.g.:
+<em>sushi -j -c ~/work/sushi/example_configs/config_fx.json</em></p></li>
+<li><p>Connect Sushi’s input and output ports to the system.</p></li>
+</ol>
+<p>On most hosts, VirtualBox offers a virtual audio interface with output only. If you need to test an effect plugin, a quick way is to load an audio file in Audacity, select the JACK audio engine and connect it to Sushi.</p>
+<p>If you need to test MIDI, you can either use a Virtual MIDI Keyboard (like <em>vmpk</em>) or redirect a USB MIDI device to the virtual machine. In both cases, you can use <em>aconnect</em> to connect the MIDI port of your control device to Sushi’s ALSA input ports, just as on a native machine.</p>
+</section>
+<section id="running-compiled-plugins-with-sushi-on-elk-boards">
+<h2>Running Compiled Plugins with Sushi on Elk Boards<a class="headerlink" href="#running-compiled-plugins-with-sushi-on-elk-boards" title="Permalink to this heading">#</a></h2>
+<p>Simply run sushi using the <em>-r</em> switch instead of the <em>-j</em> one used on a non Elk machine, e.g.:</p>
+<p><em>sushi -r -c /path/to/your/config.json</em></p>
+<p>If you need to connect USB MIDI devices, just plug them and connect them with the <em>aconnect</em> tool.</p>
+<p>To get a rough view of CPU performance, <em>top</em> and similar Linux tools will only show you the amount of CPU used in non-RT tasks. To see CPU usage of Real Time tasks, use:</p>
+<p><em>watch -n 0.5 cat /proc/xenomai/sched/stat</em></p>
+<p>For a more fine-grained analysis, you can use Sushi’s gRPC API to query timing statistics of each track and plugin.</p>
+</section>
+<section id="analyzing-and-resolving-xenomai-mode-switches">
+<h2>Analyzing and Resolving Xenomai Mode Switches<a class="headerlink" href="#analyzing-and-resolving-xenomai-mode-switches" title="Permalink to this heading">#</a></h2>
+<p>As in any real-time system, you are not allowed to call any operating system functions from your real-time processing callback. This includes among the others:</p>
+<ul class="simple">
+<li><p>Any memory allocation, directly or by using e.g. standard library containers that can allocate on their own.</p></li>
+<li><p>Any thread synchronization primitives, like mutexes, semaphores, etc.</p></li>
+<li><p>Some operations that are usually RT-safe on desktop systems but are not on Xenomai, for example querying system timers with e.g. <em>clock_gettime</em>.</p></li>
+</ul>
+<p>We provide the Twine library as a replacement for common use cases in audio plugins, e.g. querying timers and synchronizing worker threads in a real-time safe way.</p>
+<p>Whenever you do an operation that is not RT-safe, Xenomai will perform a <em>mode switch</em>, i.e. it will give back control to the Linux Kernel to perform the needed system call and then will switch back to the Cobalt Kernel to continue its activity. The performance penalty for such operations is huge and you will very likely encounter audio dropouts if any mode switch will occur.</p>
+<p>To see how many mode switches the Sushi process has encountered, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>evl<span class="w"> </span>ps<span class="w"> </span>-s<span class="w"> </span>
+</pre></div>
+</div>
+<p>The number of mode switches is indicated by the <code class="docutils literal notranslate"><span class="pre">ISW</span></code> counter.
+This number should stay stable and it’s especially important that it never grows at run-time after plugin initialization.</p>
+<p>In order to spot code paths that are responsible for mode switches, you can launch Sushi under gdb and use a special command-line flag to activate the throw of SIGXCPU signal whenever a mode switch happens.</p>
+<p>From a terminal in an Elk board, you need to:</p>
+<ol>
+<li><p>Launch Sushi inside gdb:
+<em>gdb sushi</em></p></li>
+<li><p>Set gdb to break on SIGXCPU signal:
+<em>catch signal SIGXCPU</em></p>
+<p>It is possible to use the <em>ignore</em> command in gdb to ignore the first N occurrences, in case you have some non-problematic mode switches at plugin initialization.</p>
+</li>
+<li><p>Run by passing the <em>–debug-mode-sw</em> flag, plus any other argument in your case, e.g.:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">-</span><span class="n">r</span> <span class="o">--</span><span class="n">debug</span><span class="o">-</span><span class="n">mode</span><span class="o">-</span><span class="n">sw</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>When a mode switch occurs, you should now have control over the gdb shell, and be able to analyze the backtrace, local variables, etc. to find its cause.</p>
+<p>As a separate tool that you can use in a virtual machine or your Linux development environment, Sushi also has a <em>dummy</em> frontend that spawns a separate thread to mock the real-time process and never does any real-time calls. You can therefore use tools like <em>strace</em> or similar to spot OS calls on that thread. This is useful, for example, to spot timer related calls which can cause Xenomai lockups and are otherwise impossible to localize using the JACK frontend since the JACK audio server use the same calls on its own.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="working_with_elk_board.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working with Elk Board</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="yocto_build.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Building an Elk Audio OS image using Yocto</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiling-toolchain">Cross-Compiling Toolchain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-2-x-plugins-using-steinberg-sdk">VST 2.x Plugins Using Steinberg SDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-3-x-plugins-using-steinberg-sdk">VST 3.x Plugins Using Steinberg SDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-plugins-using-juce">VST Plugins Using JUCE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins-using-juce-version-6">Plugins using JUCE Version 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins-using-juce-version-5-x">Plugins using JUCE Version 5.x</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiling-juce-plugin">Cross-compiling JUCE Plugin</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lv2-plugins">LV2 Plugins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-ttl-files">Generate ttl files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compile-the-plugins">Cross Compile the plugins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-compiled-plugins-with-sushi-on-a-virtual-machine">Running Compiled Plugins with Sushi on a Virtual Machine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-compiled-plugins-with-sushi-on-elk-boards">Running Compiled Plugins with Sushi on Elk Boards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-and-resolving-xenomai-mode-switches">Analyzing and Resolving Xenomai Mode Switches</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/embedded/building_plugins_for_elk.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Elk.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
