@@ -32,8 +32,8 @@ If you are under macOS, just grab the latest binary from the Releases section, o
 instructions in the [main README](https://github.com/elk-audio/sushi-gui/README.md) on how to run
 from source if you're running under Linux.
 
-.. figure:: ./illustrations/sushigui.png
-   :alt: img
+![Sushi Python QT GUI](illustrations/sushigui.png)
+​
 
 The usage of the GUI should be pretty straightforward: if you have a local instance of Sushi running
 and listening on the default port 51051 for gRPC, the application will simply autoconnect to the

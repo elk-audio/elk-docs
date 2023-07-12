@@ -418,21 +418,24 @@ document.write(`
 <p>JUCE actively supports Linux as a build target, so if you don’t use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk.</p>
 <p>Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.</p>
 <p>Moreover, there are a couple of important issues to consider:</p>
-<section id="plugins-using-juce-version-6">
-<h3>Plugins using JUCE Version 6<a class="headerlink" href="#plugins-using-juce-version-6" title="Permalink to this heading">#</a></h3>
-<p>JUCE 6 can be used directly for building VST plugins for Elk, due to its new “headless” features.</p>
+<section id="plugins-using-juce-version-6-or-above">
+<h3>Plugins using JUCE Version 6 or above<a class="headerlink" href="#plugins-using-juce-version-6-or-above" title="Permalink to this heading">#</a></h3>
+<p>JUCE can be used directly for building VST plugins for Elk, due to its new “headless” features.</p>
 <p>Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.</p>
 <p>The following steps are involved to cross-compile using JUCE’s new CMake support - demonstrated using the <code class="docutils literal notranslate"><span class="pre">JUCE/examples/CMake/AudioPlugin</span></code> plugin.</p>
-<p>(The below example assumes a RPi4 build with our v0.11.0 SDK installed in the default location).</p>
+<p>(The below example assumes a RPi4 build with our v1.0.0 SDK installed in the default location).</p>
 <ol class="simple">
 <li><p>Begin by copying the AudioPlugin folder out of the JUCE folder.</p></li>
 <li><p>Clone a fresh copy of JUCE as a subfolder of AudioPlugin</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/juce-framework/JUCE.git</span></code>.</p></li>
-<li><p>We need to un-set $CC $CXX - one practical way we have found, is to edit <code class="docutils literal notranslate"><span class="pre">/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt</span></code>, removing the following 3 lines (56-58):</p></li>
+<li><p>We need to un-set $CC $CXX - one practical way we have found, is to edit <code class="docutils literal notranslate"><span class="pre">/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt</span></code>, removing the lines that unset the environment variables. For example starting from line 61 (or line 58 in Juce ver 6) remove all the unset(ENV{}) calls. For example in JUCE 7:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">ASM</span><span class="p">})</span>
-<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">CC</span><span class="p">})</span>
-<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">CXX</span><span class="p">})</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">ADDR2LINE</span><span class="p">})</span>
+<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">AR</span><span class="p">})</span>
+<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">ASM</span><span class="p">})</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">-</span> <span class="n">unset</span><span class="p">(</span><span class="n">ENV</span><span class="p">{</span><span class="n">WINDRES</span><span class="p">})</span>
 </pre></div>
 </div>
 <ol class="simple">
@@ -447,10 +450,10 @@ document.write(`
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">x-build</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">x-build</span></code> (Very handy to keep your x-build in a separate folder from your native one).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">unset</span> <span class="pre">LD_LIBRARY_PATH</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/0.11.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">/opt/elk/1.0.0/environment-setup-cortexa72-elk-linux</span> </code> <em>(path to the extracted SDK)</em></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">export</span> <span class="pre">CXXFLAGS=&quot;-O3</span> <span class="pre">-pipe</span> <span class="pre">-ffast-math</span> <span class="pre">-feliminate-unused-debug-types</span> <span class="pre">-funroll-loops&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cmake</span> <span class="pre">../</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">AR=aarch64-elk-linux-ar</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">-j</span> <span class="pre">(enter</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores)</span> <span class="pre">CONFIG=Release</span> <span class="pre">CFLAGS=&quot;-Wno-psabi&quot;</span> <span class="pre">TARGET_ARCH=&quot;-mcpu=cortex-a72</span> <span class="pre">-mtune=cortex-a72&quot;</span></code> <em>(Assuming a RPi4 build)</em></p></li>
 </ol>
 </li>
 </ol>
@@ -658,7 +661,7 @@ This number should stay stable and it’s especially important that it never gro
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-2-x-plugins-using-steinberg-sdk">VST 2.x Plugins Using Steinberg SDK</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-3-x-plugins-using-steinberg-sdk">VST 3.x Plugins Using Steinberg SDK</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vst-plugins-using-juce">VST Plugins Using JUCE</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins-using-juce-version-6">Plugins using JUCE Version 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins-using-juce-version-6-or-above">Plugins using JUCE Version 6 or above</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugins-using-juce-version-5-x">Plugins using JUCE Version 5.x</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiling-juce-plugin">Cross-compiling JUCE Plugin</a></li>
 </ul>

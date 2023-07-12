@@ -53,7 +53,7 @@ Observe that the build process still requires X11 headers to be available (and w
 
 The following steps are involved to cross-compile using JUCE's new CMake support - demonstrated using the `JUCE/examples/CMake/AudioPlugin` plugin. 
 
-(The below example assumes a RPi4 build with our v0.11.0 SDK installed in the default location).
+(The below example assumes a RPi4 build with our v1.0.0 SDK installed in the default location).
 
 1. Begin by copying the AudioPlugin folder out of the JUCE folder.
 2. Clone a fresh copy of JUCE as a subfolder of AudioPlugin 
@@ -77,7 +77,7 @@ The following steps are involved to cross-compile using JUCE's new CMake support
 6. In your `AudioPlugin` folder, type:
    1. `$ mkdir x-build && cd x-build` (Very handy to keep your x-build in a separate folder from your native one).
    2. `$ unset LD_LIBRARY_PATH`
-   3. `$ source /opt/elk/0.11.0/environment-setup-cortexa72-elk-linux ` *(path to the extracted SDK)*
+   3. `$ source /opt/elk/1.0.0/environment-setup-cortexa72-elk-linux ` *(path to the extracted SDK)*
    4. `$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"`
    5. `$ cmake ../ -DCMAKE_BUILD_TYPE=Release`
    6. `$ make -j (enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"` *(Assuming a RPi4 build)*

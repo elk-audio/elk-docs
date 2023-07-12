@@ -1,7 +1,7 @@
 Embedded OS reference
 =====================
 
-The embedded distribution of Elk Audio OS is a custom Linux distribution that uses the [Xenomai project low-latency kernel](https://evlproject.org/) and a set of optimized audio drivers on top of that.
+The embedded distribution of Elk Audio OS is a custom Linux distribution that uses the `Xenomai project low-latency kernel <https://evlproject.org/>`_ and a set of optimized audio drivers on top of that.
 
 This section covers information on how to use the embedded system, how to build audio plugins to run on it and, for the more advanced, how to directly customize the embedded distribution to your needs.
 
