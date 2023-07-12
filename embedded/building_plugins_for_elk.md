@@ -45,9 +45,9 @@ Note that any caveats and issues applying to each specific plugin format (i.e. V
 
 Moreover, there are a couple of important issues to consider:
 
-### Plugins using JUCE Version 6 
+### Plugins using JUCE Version 6 or above 
 
-JUCE 6 can be used directly for building VST plugins for Elk, due to its new "headless" features.
+JUCE can be used directly for building VST plugins for Elk, due to its new "headless" features.
 
 Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.
 
@@ -58,12 +58,15 @@ The following steps are involved to cross-compile using JUCE's new CMake support
 1. Begin by copying the AudioPlugin folder out of the JUCE folder.
 2. Clone a fresh copy of JUCE as a subfolder of AudioPlugin 
 3. `$ git clone https://github.com/juce-framework/JUCE.git`.
-4. We need to un-set $CC $CXX - one practical way we have found, is to edit `/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt`, removing the following 3 lines (56-58):
+4. We need to un-set $CC $CXX - one practical way we have found, is to edit `/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt`, removing the lines that unset the environment variables. For example starting from line 61 (or line 58 in Juce ver 6) remove all the unset(ENV{}) calls. For example in JUCE 7:
 
 ```
+- unset(ENV{ADDR2LINE})
+- unset(ENV{AR})
 - unset(ENV{ASM})
-- unset(ENV{CC})
-- unset(ENV{CXX})
+...
+...
+- unset(ENV{WINDRES})
 ```
 
 5. Edit `AudioPlugin/CMakeLists.txt` as follows:
@@ -77,7 +80,7 @@ The following steps are involved to cross-compile using JUCE's new CMake support
    3. `$ source /opt/elk/0.11.0/environment-setup-cortexa72-elk-linux ` *(path to the extracted SDK)*
    4. `$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"`
    5. `$ cmake ../ -DCMAKE_BUILD_TYPE=Release`
-   6. `$ AR=aarch64-elk-linux-ar make -j (enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"` *(Assuming a RPi4 build)*
+   6. `$ make -j (enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"` *(Assuming a RPi4 build)*
 
 The resulting `AudioPluginExample_artefacts/Debug/VST3/Audio Plugin Example.vst3`is ready to use on your Elk-Pi device.
 
