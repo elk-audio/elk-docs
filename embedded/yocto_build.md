@@ -14,6 +14,6 @@ In order to simplify the whole image build starting from source code we also pro
 
 1. [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image.
 
-2. Ready to use [KAS configurations](https://github.com/elk-audio/kas-configs) for the supported boards.
+2. Ready to use [KAS configurations](https://github.com/elk-audio/elk-audio-kas-configs) for the supported boards.
 
 
