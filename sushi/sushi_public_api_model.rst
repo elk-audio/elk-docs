@@ -54,6 +54,7 @@ Tracks have the following parameters that can be controlled in realtime:
 - "pan" : The left - right panning of the main bus. Default: 0.5. (Normalized from [-1, 1], Default: 0.0).
 - "mute" : Mute the output of the track. Default: 0.0. (Normalized from [0, 1], Default: 0.0).
 
+Note that regular tracks with more than 2 channels and pre and post master tracks don't have pan controls.
 Multi-bus tracks have additional parameters to set the pan and gain of additional output busses:
 
 - "gain_sub_n" : The volume of the n:th output bus, in dB. Default: 0.83 (0dB). (Normalized from [-120, 24], Default: 0.0).
