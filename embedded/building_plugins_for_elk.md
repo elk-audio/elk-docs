@@ -102,7 +102,7 @@ If you use JUCE 5.4 you need to:
 3. Follow the instructions in the next section to export a makefile. 
 4. If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the *JUCE_CPPFLAGS* variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
    
- ### Cross-compiling JUCE Plugin
+### Cross-compiling JUCE Plugin
 
 Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.
 
@@ -133,6 +133,13 @@ By default, the toolchain only sets "-O2" and few other conservative options for
   ```bash
   $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"
   ```
+
+### Build plugins with JUCE 8 using a docker container
+
+The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and JUCE 8 installation.
+
+You can follow the instructions on the repository on how to install the docker image, run the container and build the AudioPlugin example.
+
 
 ## LV2 Plugins
 
