@@ -169,9 +169,7 @@ $ watch -n 0.5 evl ps -t
 ```
 
 For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin
-, or you can run Sushi with the *--timing-statistics* flag to get the results on a file.
-
-TODO: which file?
+, or you can run Sushi with the *--timing-statistics* flag to get the results on `timings.txt` file.
 
 ## Software Update System
 
