@@ -201,15 +201,10 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 
 ## Configuring Automatic Startup
 
-TODO: update [sensei deprecated!]
-
 If you wish to have the board starting as an instrument automatically at startup, the suggested way is to use the systemD services that we provide.
 
 1. Modify the file */lib/systemd/system/sushi.service* to provide the path to your JSON configuration
    and, in case, additional environment variables or Sushi command line flags.
-
-   Similarly, you can modify */lib/systemd/system/sensei.service* to provide the path for your SENSEI Json
-    configuration.
 
    If you want automatic connection to a MIDI controller, the easiest way is just to modify the controller number
    /name in the script */usr/bin/connect-midi-apps*, which is started by the systemD service defined in */lib/systemd
@@ -225,6 +220,28 @@ Sushi will still output its log file in */tmp/sushi.log*. If you want to see the
  because you have put some debug printfs in your plugin, you can run *journalctl -fu sushi* (as root).
 
 They can also be started temporarily with *$ systemctl start sushi* as any normal SystemD service.
+
+### Automatic startup using user-autostart service
+
+As an alternate way to start your application, especially if it requires more than running sushi, you can use the *user-autostart* systemD service.
+This service is enabled by default and it looks for an executable script on */udata/autostart.sh*. If the script is found then the service will run it.
+
+You can write the script to setup environment variables, run required processes and start sushi with a selected configuration.
+
+Please keep in mind that the contents of */udata* is left unchanged by software upgrades, so the script needs to be updated manually.
+This means that probably this method is not suitable for production but can be an easy way to get you started.
+
+Please also be sure to disable the sushi systemD service if your autostart script runs sushi to avoid running multiple instances.
+To disable sushi service run (as root):
+
+```bash
+$ systemctl disable sushi
+```
+
+To monitor the user-autostart service status you can run
+```bash
+systemctl status user-autostart
+```
 
 ## Setting CPU Speed
 
