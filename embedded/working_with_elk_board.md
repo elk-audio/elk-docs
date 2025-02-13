@@ -169,7 +169,8 @@ $ watch -n 0.5 evl ps -t
 ```
 
 For a more fine-grained analysis, you can use Sushi's gRPC api to query timing statistics of each track and plugin
-, or you can run Sushi with the *--timing-statistics* flag to get the results on `timings.txt` file.
+, or you can run Sushi with the *--timing-statistics* flag to get the results in `timings.txt` written to the current path.
+If timing statistics are enabled, they will also periodically be written to the sushi log file.
 
 ## Software Update System
 
@@ -222,7 +223,7 @@ They can also be started temporarily with *$ systemctl start sushi* as any norma
 ### Automatic startup using user-autostart service
 
 As an alternate way to start your application, especially if it requires more than running sushi, you can use the *user-autostart* systemD service.
-This service is enabled by default and it looks for an executable script on */udata/autostart.sh*. If the script is found then the service will run it.
+This service is enabled by default and it looks for an executable script in */udata/autostart.sh*. If the script is found then the service will run it.
 
 You can write the script to setup environment variables, run required processes and start sushi with a selected configuration.
 

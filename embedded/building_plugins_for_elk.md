@@ -138,7 +138,7 @@ By default, the toolchain only sets "-O2" and few other conservative options for
 
 The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and JUCE 8 installation.
 
-You can follow the instructions on the repository on how to install the docker image, run the container and build the AudioPlugin example.
+You can follow the instructions in the repository on how to install the docker image, run the container and build the AudioPlugin example.
 
 
 ## LV2 Plugins

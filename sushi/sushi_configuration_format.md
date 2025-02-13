@@ -134,7 +134,7 @@ This works in two ways, either all, or only specific processors, are enabled. Th
 
 ## Events
 **“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.
-While events can be used to set values of plugin parameters and properties when startin sushi, the recommended way to set the startup values is through the **Initial State** section.
+While events can be used to set values of plugin parameters and properties when starting sushi, the recommended way to set the startup values is through the **Initial State** section.
 
 * **“type”** - Type of event, valid values are “parameter_change”, “property_change”, “note_on” and “note_off”.
 * **“time”** - Time, in seconds from the start of Sushi, when event should be executed.
