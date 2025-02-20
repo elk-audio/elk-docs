@@ -80,7 +80,7 @@ Sends audio to a return bus plugin. Can be used for creating effect sends, paral
 
 ### Return
 
-Return bus plugin. Receives audio from 1 or several Send plugins. The audio output from a Return plugin is delayed by 1 processing buffer.
+Return bus plugin. Receives audio from 1 or several Send plugins. If the sending plugin is on a track using the same audio processing thread as the track the Return plugin is on, and the sending track has a lower track id than the returning track, then there is no audio delay. Likewise if the Send and Return plugins are on the same track and the Send plugin comes before the Return. Otherwise the audio output from a Return plugin is delayed by 1 processing buffer.
 
   * **uid** : "sushi.testing.return"
   * **Parameters** :

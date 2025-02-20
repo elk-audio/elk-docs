@@ -33,9 +33,10 @@ Following is a reference for the Sushi .json configuration file.
 **“tracks”** : A list of track objects with the following members:
 
 * **“name”** - Name of the track, must be unique.
-* **"channels"** - The number of audio channels in the track, 2 for a stereo track.
+* **"channels"** - The number of audio channels in the track, 2 for a stereo track- Only valid if "multibus" is set to False.
 * **"multibus"** If true, enables multibus mode for the track where every pair of audio channels have their own pan and gain control. The track must have an even number of channels.
-* **buses”** - The number of buses to use for a multibus track, where each bus is a stereo pair. Only valid if “multibus” is set to True.
+* **"buses”** - The number of buses to use for a multibus track, where each bus is a stereo pair. Only valid if “multibus” is set to True.
+* **"thread"** - The audio processing thread to use for processing the track. If not present or higher than the number of audio processing threads sushi is set to run with, the track will be allocated to threads according to a round robin scheme.
 * **“inputs”** - Audio inputs to the track. A list objects with the following members:
     * **“engine_bus”** - The id of the engine bus to route from, where each bus is a stereo pair: bus 0 represents channels 0 and 1, bus 1 channels 2 and 3, and so forth.
     * **“track_bus”** - The id of the track bus to route audio to.
