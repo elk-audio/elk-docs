@@ -22,7 +22,7 @@ The core audio plugin host, Sushi, is also available as an independent applicati
 
 Since the release of Elk Audio OS 1.0, we are focusing on giving open support only for Sushi and for the image running on Raspberry Pi 4 with HiFiBerry and the RPi audio hats. The previous documentation on other development kits and features (e.g. the Elk Pi board) is now available under the "Legacy Documentation" section in this page.
 
-Elk Audio OS also support another variety of ARM and x86 System on Chips. For more detailed on other supported platforms, and for information on proprietary commercial licenses, check the [official website](https://elk.audio).
+Elk Audio OS also support another variety of ARM and x86 System on Chips. For more detailed on other supported platforms, and for information on proprietary commercial licenses, check the `official website <https://elk.audio>`_.
 
 .. grid:: 2
 
