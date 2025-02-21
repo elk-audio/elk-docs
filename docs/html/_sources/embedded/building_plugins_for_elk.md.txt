@@ -6,6 +6,8 @@ Depending on your current codebase, though, you might need some code changes to 
 
 As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.
 
+We provide a pre-configured Docker environment to help running all the cross-compilation tasks under both native Docker and Docker Desktop (for Windows and macOS), available at [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder).
+
 ## Cross-Compiling Toolchain
 
 For each targeted platform, we release a cross-compiling toolchain based on gcc (clang available on request) that replaces all the commands of the standard toolchain, including make, CMake, system libraries, etc.
@@ -51,88 +53,18 @@ JUCE can be used directly for building VST plugins for Elk, due to its new "head
 
 Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.
 
-The following steps are involved to cross-compile using JUCE's new CMake support - demonstrated using the `JUCE/examples/CMake/AudioPlugin` plugin. 
+The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and JUCE 8 installation.
 
-(The below example assumes a RPi4 build with our v1.0.0 SDK installed in the default location).
+You can follow the instructions in the repository on how to install the docker image, run the container and build the AudioPlugin example.
 
-1. Begin by copying the AudioPlugin folder out of the JUCE folder.
-2. Clone a fresh copy of JUCE as a subfolder of AudioPlugin 
-3. `$ git clone https://github.com/juce-framework/JUCE.git`.
-4. We need to un-set $CC $CXX - one practical way we have found, is to edit `/path/to/your/copied/AudioPlugin/JUCE/extras/Build/juceaide/CMakeLists.txt`, removing the lines that unset the environment variables. For example starting from line 61 (or line 58 in Juce ver 6) remove all the unset(ENV{}) calls. For example in JUCE 7:
+For other JUCE-based projects, the process should be pretty straightfoward:
 
-```
-- unset(ENV{ADDR2LINE})
-- unset(ENV{AR})
-- unset(ENV{ASM})
-...
-...
-- unset(ENV{WINDRES})
-```
+1. Make sure your JUCE project is using CMake and not Projucer for its build system
 
-5. Edit `AudioPlugin/CMakeLists.txt` as follows:
-   1. Un-comment line 27: `add_subdirectory(JUCE)`.
-   2. Alter line 55 to only include the target format(s) to produce, for example: `FORMATS VST3`
-   3. Remove line 111: `juce::juce_recommended_lto_flags` - the LTO setting breaks x-compiling Release builds.
+2. Set the output formats to `VST3`
 
-6. In your `AudioPlugin` folder, type:
-   1. `$ mkdir x-build && cd x-build` (Very handy to keep your x-build in a separate folder from your native one).
-   2. `$ unset LD_LIBRARY_PATH`
-   3. `$ source /opt/elk/1.0.0/environment-setup-cortexa72-elk-linux ` *(path to the extracted SDK)*
-   4. `$ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"`
-   5. `$ cmake ../ -DCMAKE_BUILD_TYPE=Release`
-   6. `$ make -j (enter number of cores) CONFIG=Release CFLAGS="-Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"` *(Assuming a RPi4 build)*
+3. Set this option in the JUCE Cmake command: ` VST3_AUTO_MANIFEST FALSE `
 
-The resulting `AudioPluginExample_artefacts/Debug/VST3/Audio Plugin Example.vst3`is ready to use on your Elk-Pi device.
-
-### Plugins using JUCE Version 5.x
-
-If you cannot use the latest version of JUCE, it is possibly to also build using versions 5.4.x, though there are more steps involved, and limitations to consider.
-
-  * JUCE release 5.4.x only generates VST 2.4 plugins for Linux.
-  * Generated plugins have a dependency on the X11 libraries.
-
-To overcome the second problem, we created a [JUCE fork](https://github.com/elk-audio/JUCE) that allows headless plugin builds for Linux so that they can run easily in Sushi on Elk boards. The fork mocks up all the calls to the graphical backend and, moreover, Sushi never invokes the plugin's editor functions. As a consequence, you don't need to remove the GUI parts from your code, as long as you only used JUCE for the GUI, as they will have no performance overhead, and it will be easier to maintain a single codebase for your product. You might consider optimizing away loading of graphics resources to save memory and plugin loading time, though.
-
-If you use JUCE 5.4 you need to:
-
-1. Build Projucer from the Elk JUCE fork, and import the .jucer file for your project.
-2. Inside Projucer:
-     * Ensure that the File -> Global Paths... are set so that paths to JUCE and JUCE Modules are those of the JUCE Elk fork.
-     * Choose only "VST Legacy" as audio plugin type under project properties.  
-3. Follow the instructions in the next section to export a makefile. 
-4. If you use Projucer release 5.4.1, due to a bug you need to manually modify the exported Makefile and put the correct path to the VST SDK into the *JUCE_CPPFLAGS* variable (defined twice, for both Debug and Release). The bug is fixed in the 5.4.4 branch.
-   
- ### Cross-compiling JUCE Plugin
-
-Here are the instructions to build a JUCE plugin with the cross-compiling toolchain.
-
-Inside Projucer:     
-* Create a new exporter of type "Linux Makefile".
-* Remove modules like *juce_video* or *juce_opengl* if present.
-* Disable the option for JUCE Browser under the module *juce_gui_extra*.
-* For every module, make sure to use the option "use global search path".
-* Save the project to export a new Makefile.
-  
-
-For a build to test natively on Linux, just run make normally, using the *-DJUCE_HEADLESS_PLUGIN_CLIENT=1* argument, or the build will fail since you are using our headless fork. Then follow the instructions at the end of this guide, on how to test your plugin with the integrated Sushi host.
-
-To cross-compile for *Elk Pi RPi4 64 bit*, first source the SDK script in your shell environment:
-
-```bash
-$ unset LD_LIBRARY_PATH
-$ source /path/to/environment-setup-aarch64-elk-linux
-```
-
-And then build your plugin using:
-
-```
-$ AR=aarch64-elk-linux-ar make -j`nproc` CONFIG=Release CFLAGS="-DJUCE_HEADLESS_PLUGIN_CLIENT=1 -Wno-psabi" TARGET_ARCH="-mcpu=cortex-a72 -mtune=cortex-a72"
-```
-
-By default, the toolchain only sets "-O2" and few other conservative options for release build flags. You might want to set them to more aggressive values in either the environment or Projucer itself. If you are setting them through the environment, an example could be to run:
-  ```bash
-  $ export CXXFLAGS="-O3 -pipe -ffast-math -feliminate-unused-debug-types -funroll-loops"
-  ```
 
 ## LV2 Plugins
 

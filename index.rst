@@ -16,11 +16,13 @@ Elk Audio OS documentation
 `Github Repositories <https://github.com/elk-audio>`_ |
 `Forum <https://forum.elk.audio>`_
 
-Elk Audio OS is a fully-featured embedded Linux distribution optimized for low-latency audio applications. It is currently used by companies making professional audio products, audio enthusiasts building their own devices, and serves as the core of Elk's own `Elk Live <https://elk.live>`_ online music collaboration tool.
+Elk Audio OS is a fully-featured embedded Linux distribution optimized for low-latency audio applications. It is currently used by companies making professional audio products and audio enthusiasts building their own devices.
 
-The core audio plugin host, Sushi, is also available as an independent application for macOS and Linux, and can be used as a flexible programming environment for building other kind of audio applications for those platforms.
+The core audio plugin host, Sushi, is also available as an independent application for macOS, Windows and Linux, and can be used as a flexible programming environment for building other kind of audio applications for those platforms.
 
 Since the release of Elk Audio OS 1.0, we are focusing on giving open support only for Sushi and for the image running on Raspberry Pi 4 with HiFiBerry and the RPi audio hats. The previous documentation on other development kits and features (e.g. the Elk Pi board) is now available under the "Legacy Documentation" section in this page.
+
+Elk Audio OS also support another variety of ARM and x86 System on Chips. For more detailed on other supported platforms, and for information on proprietary commercial licenses, check the [official website](https://elk.audio).
 
 .. grid:: 2
 

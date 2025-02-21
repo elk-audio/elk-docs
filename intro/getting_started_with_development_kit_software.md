@@ -9,7 +9,7 @@ You can run Sushi natively on your own macOS or Linux computer, or on a Linux vi
 
 We provide binary releases that pack prebuilt Sushi binaries, the MDA plugins suite in VST3 format and some example JSON configurations.
 
-1. Download the binary package for your system (Linux-x86_64, macOS-arm64 or macOS-x86_64) from the [Sushi's Github releases page](https://github.com/elk-audio/sushi/releases/tag/1.0.0).
+1. Download the binary package for your system (Linux-x86_64, macOS-arm64 or macOS-x86_64) from the [Sushi's Github releases page](https://github.com/elk-audio/sushi/releases/tag/1.2.0).
 2. Unzip the archive wherever you prefer
 
 ### Running Sushi on macOS

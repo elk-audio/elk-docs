@@ -1,489 +1,164 @@
-
 <!DOCTYPE html>
 
-
-<html lang="en" >
-
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index &#8212; Elk DevKit  documentation</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-  
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+    
+      
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css?v=c4c5097c" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=4a788ece" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-<div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-    <span class="fa-solid fa-bars"></span>
-  </label>
-  
-  <div class="navbar-header-items__start">
     
-      <div class="navbar-item">
-  
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
-<a class="navbar-brand logo" href="index.html">
-  
-  
-  
-  
+  <div id="navbar-start">
     
     
-      
-    
-    
-    <img src="_static/elk_logo_dark.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/elk_logo_light.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
+<a class="navbar-brand" href="index.html">
+<p class="title">Elk DevKit</p>
+</a>
+
     
   </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
   
-  
-  <div class="col-lg-9 navbar-header-items">
-    
-    <div class="me-auto navbar-header-items__center">
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
       
-        <div class="navbar-item"><nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
-  <ul class="bd-navbar-elements navbar-nav">
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="intro/index.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="sushi/index.html">
+  Sushi
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="embedded/index.html">
+  Embedded OS reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="legacy/index.html">
+  Legacy documentation
+ </a>
+</li>
+
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="intro/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="sushi/index.html">
-                        Sushi reference
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="embedded/index.html">
-                        Embedded OS reference
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="legacy/index.html">
-                        Legacy documentation
-                      </a>
-                    </li>
-                
-  </ul>
-</nav></div>
+</ul>
+      </div>
       
     </div>
-    
-    
-    <div class="navbar-header-items__end">
+
+    <div id="navbar-end">
       
-        <div class="navbar-item navbar-persistent--container">
-          
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-        </div>
-      
-      
-        <div class="navbar-item">
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script></div>
-      
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
-    aria-label="Icon Links">
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a class="nav-link" href="https://github.com/elk-audio" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
         </li>
-</ul></div>
+      </ul>
+      </div>
       
     </div>
-    
   </div>
-  
-  
-    <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-    </div>
-  
-
-  
 </div>
-
     </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
-        
+    
 
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-      <div class="sidebar-header-items__center">
-        
-          <div class="navbar-item"><nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
-  <ul class="bd-navbar-elements navbar-nav">
-    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="intro/index.html">
-                        Getting started
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="sushi/index.html">
-                        Sushi reference
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="embedded/index.html">
-                        Embedded OS reference
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="legacy/index.html">
-                        Legacy documentation
-                      </a>
-                    </li>
-                
-  </ul>
-</nav></div>
-        
-      </div>
-    
-    
-    
-      <div class="sidebar-header-items__end">
-        
-          <div class="navbar-item">
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script></div>
-        
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
-    aria-label="Icon Links">
-        <li class="nav-item">
+    <div class="container-xl">
+      <div class="row">
           
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://github.com/elk-audio" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
-        </li>
-</ul></div>
-        
-      </div>
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
     
   </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</nav>
+            </div>
+            
+          
 
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-          <div class="bd-content">
-            <div class="bd-article-container">
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
-              <div class="bd-header-article"></div>
-              
-              
-              
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
 
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
- | <a href="#B"><strong>B</strong></a>
- | <a href="#C"><strong>C</strong></a>
- | <a href="#D"><strong>D</strong></a>
- | <a href="#E"><strong>E</strong></a>
- | <a href="#F"><strong>F</strong></a>
+ <a href="#E"><strong>E</strong></a>
  | <a href="#G"><strong>G</strong></a>
- | <a href="#I"><strong>I</strong></a>
- | <a href="#K"><strong>K</strong></a>
- | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
- | <a href="#N"><strong>N</strong></a>
- | <a href="#O"><strong>O</strong></a>
- | <a href="#P"><strong>P</strong></a>
- | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
- | <a href="#T"><strong>T</strong></a>
- | <a href="#V"><strong>V</strong></a>
  
 </div>
-<h2 id="A">A</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.AudioConnection">AudioConnection (class in elkpy.sushi_info_types)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController">AudioGraphController (class in elkpy.audiographcontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController">AudioRoutingController (class in elkpy.audioroutingcontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="B">B</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.BOOL">BOOL (elkpy.sushi_info_types.ParameterType attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="C">C</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.close">close() (elkpy.notificationcontroller.NotificationController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController.close">(elkpy.sushicontroller.SushiController method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_cc_to_parameter">connect_cc_to_parameter() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_cv_input_to_parameter">connect_cv_input_to_parameter() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_cv_output_from_parameter">connect_cv_output_from_parameter() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_gate_input_to_processor">connect_gate_input_to_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.connect_gate_output_from_processor">connect_gate_output_from_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_input_channel_to_track">connect_input_channel_to_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_input_to_track">connect_kbd_input_to_track() (elkpy.midicontroller.MidiController method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_kbd_output_from_track">connect_kbd_output_from_track() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.connect_output_channel_from_track">connect_output_channel_from_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.connect_pc_to_processor">connect_pc_to_processor() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_multibus_track">create_multibus_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_post_track">create_post_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_pre_track">create_pre_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_processor_on_track">create_processor_on_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.create_track">create_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.CvConnection">CvConnection (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController">CvGateController (class in elkpy.cvgatecontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="D">D</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.DATA_PROPERTY">DATA_PROPERTY (elkpy.sushi_info_types.ParameterType attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.delete_processor_from_track">delete_processor_from_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.delete_track">delete_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.disable_all_output">disable_all_output() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.disable_output_for_parameter">disable_output_for_parameter() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_cc_from_processor">disconnect_all_cc_from_processor() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_inputs_from_processor">disconnect_all_cv_inputs_from_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_cv_outputs_from_processor">disconnect_all_cv_outputs_from_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_inputs_from_processor">disconnect_all_gate_inputs_from_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_all_gate_outputs_from_processor">disconnect_all_gate_outputs_from_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_all_inputs_from_track">disconnect_all_inputs_from_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_all_outputs_from_track">disconnect_all_outputs_from_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_all_pc_from_processor">disconnect_all_pc_from_processor() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_cc">disconnect_cc() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_cv_input">disconnect_cv_input() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_cv_output">disconnect_cv_output() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_gate_input">disconnect_gate_input() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.disconnect_gate_output">disconnect_gate_output() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_input">disconnect_input() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_input">disconnect_kbd_input() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_kbd_output">disconnect_kbd_output() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.disconnect_output">disconnect_output() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.disconnect_pc">disconnect_pc() (elkpy.midicontroller.MidiController method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -494,99 +169,8 @@ document.write(`
         <li><a href="elkpy-doc/elkpy.html#module-elkpy">module</a>
 </li>
       </ul></li>
-      <li>
-    elkpy.audiographcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.audiographcontroller.html#module-elkpy.audiographcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.audioroutingcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#module-elkpy.audioroutingcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.cvgatecontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#module-elkpy.cvgatecontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.grpc_gen
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.grpc_gen.html#module-elkpy.grpc_gen">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.keyboardcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#module-elkpy.keyboardcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.midicontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.midicontroller.html#module-elkpy.midicontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.notificationcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.notificationcontroller.html#module-elkpy.notificationcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.osccontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.osccontroller.html#module-elkpy.osccontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.parametercontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.parametercontroller.html#module-elkpy.parametercontroller">module</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    elkpy.programcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.programcontroller.html#module-elkpy.programcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.sessioncontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sessioncontroller.html#module-elkpy.sessioncontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.sushi_info_types
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushi_info_types.html#module-elkpy.sushi_info_types">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.sushicontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushicontroller.html#module-elkpy.sushicontroller">module</a>
-</li>
-      </ul></li>
       <li>
     elkpy.sushierrors
 
@@ -594,224 +178,13 @@ document.write(`
         <li><a href="elkpy-doc/elkpy.sushierrors.html#module-elkpy.sushierrors">module</a>
 </li>
       </ul></li>
-      <li>
-    elkpy.sushiprocessor
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#module-elkpy.sushiprocessor">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.timingcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.timingcontroller.html#module-elkpy.timingcontroller">module</a>
-</li>
-      </ul></li>
-      <li>
-    elkpy.transportcontroller
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.transportcontroller.html#module-elkpy.transportcontroller">module</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.enable_all_output">enable_all_output() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.enable_output_for_parameter">enable_output_for_parameter() (elkpy.osccontroller.OscController method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="F">F</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.FLOAT">FLOAT (elkpy.sushi_info_types.ParameterType attribute)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.GateConnection">GateConnection (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_cc_input_connections">get_all_cc_input_connections() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_cv_input_connections">get_all_cv_input_connections() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_cv_output_connections">get_all_cv_output_connections() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_gate_input_connections">get_all_gate_input_connections() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_all_gate_output_connections">get_all_gate_output_connections() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_all_input_connections">get_all_input_connections() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_kbd_input_connections">get_all_kbd_input_connections() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_kbd_output_connections">get_all_kbd_output_connections() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_all_output_connections">get_all_output_connections() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_all_pc_input_connections">get_all_pc_input_connections() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_all_processors">get_all_processors() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_all_tracks">get_all_tracks() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_bypass_state">get_bypass_state() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_cc_input_connections_for_processor">get_cc_input_connections_for_processor() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_input_channel_count">get_cv_input_channel_count() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_input_connections_for_processor">get_cv_input_connections_for_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_output_channel_count">get_cv_output_channel_count() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_cv_output_connections_for_processor">get_cv_output_connections_for_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_enabled_parameter_outputs">get_enabled_parameter_outputs() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_engine_timings">get_engine_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_gate_input_connections_for_processor">get_gate_input_connections_for_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#elkpy.cvgatecontroller.CvGateController.get_gate_output_connections_for_processor">get_gate_output_connections_for_processor() (elkpy.cvgatecontroller.CvGateController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_input_connections_for_track">get_input_connections_for_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_input_ports">get_input_ports() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_midi_clock_output_enabled">get_midi_clock_output_enabled() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#elkpy.audioroutingcontroller.AudioRoutingController.get_output_connections_for_track">get_output_connections_for_track() (elkpy.audioroutingcontroller.AudioRoutingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_output_ports">get_output_ports() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_id">get_parameter_id() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_info">get_parameter_info() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value">get_parameter_value() (elkpy.parametercontroller.ParameterController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_value">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value_as_string">get_parameter_value_as_string() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_parameter_value_in_domain">get_parameter_value_in_domain() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameter_values">get_parameter_values() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_parameters">get_parameters() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.get_pc_input_connections_for_processor">get_pc_input_connections_for_processor() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_playing_mode">get_playing_mode() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_bypass_state">get_processor_bypass_state() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program">get_processor_current_program() (elkpy.programcontroller.ProgramController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_current_program_name">get_processor_current_program_name() (elkpy.programcontroller.ProgramController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_id">get_processor_id() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_info">get_processor_info() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_processor_parameters">get_processor_parameters() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_program_name">get_processor_program_name() (elkpy.programcontroller.ProgramController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.get_processor_programs">get_processor_programs() (elkpy.programcontroller.ProgramController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_processor_properties">get_processor_properties() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_processor_state">get_processor_state() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_processor_timings">get_processor_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_program">get_program() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.get_programs">get_programs() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_id">get_property_id() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_info">get_property_info() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_property_value">get_property_value() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_receive_port">get_receive_port() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_samplerate">get_samplerate() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController.get_send_port">get_send_port() (elkpy.osccontroller.OscController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_sync_mode">get_sync_mode() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_tempo">get_tempo() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.get_time_signature">get_time_signature() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_timings_enabled">get_timings_enabled() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_id">get_track_id() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_info">get_track_info() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_track_parameters">get_track_parameters() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.get_track_processors">get_track_processors() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.get_track_properties">get_track_properties() (elkpy.parametercontroller.ParameterController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.get_track_timings">get_track_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.grpc_error_handling">grpc_error_handling() (in module elkpy.sushicontroller)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.grpc_error_handling">(in module elkpy.sushierrors)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="I">I</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.INT">INT (elkpy.sushi_info_types.ParameterType attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.INTERNAL">INTERNAL (elkpy.sushi_info_types.PluginType attribute)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.INTERNAL">(elkpy.sushi_info_types.SyncMode attribute)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="K">K</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController">KeyboardController (class in elkpy.keyboardcontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="L">L</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.LINK">LINK (elkpy.sushi_info_types.SyncMode attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.LV2">LV2 (elkpy.sushi_info_types.PluginType attribute)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.grpc_error_handling">grpc_error_handling() (in module elkpy.sushierrors)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -819,364 +192,70 @@ document.write(`
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode.MIDI">MIDI (elkpy.sushi_info_types.SyncMode attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiCCConnection">MidiCCConnection (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController">MidiController (class in elkpy.midicontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiKbdConnection">MidiKbdConnection (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.MidiPCConnection">MidiPCConnection (class in elkpy.sushi_info_types)</a>
-</li>
       <li>
     module
 
       <ul>
         <li><a href="elkpy-doc/elkpy.html#module-elkpy">elkpy</a>
 </li>
-        <li><a href="elkpy-doc/elkpy.audiographcontroller.html#module-elkpy.audiographcontroller">elkpy.audiographcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.audioroutingcontroller.html#module-elkpy.audioroutingcontroller">elkpy.audioroutingcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.cvgatecontroller.html#module-elkpy.cvgatecontroller">elkpy.cvgatecontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.grpc_gen.html#module-elkpy.grpc_gen">elkpy.grpc_gen</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#module-elkpy.keyboardcontroller">elkpy.keyboardcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.midicontroller.html#module-elkpy.midicontroller">elkpy.midicontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.notificationcontroller.html#module-elkpy.notificationcontroller">elkpy.notificationcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.osccontroller.html#module-elkpy.osccontroller">elkpy.osccontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.parametercontroller.html#module-elkpy.parametercontroller">elkpy.parametercontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.programcontroller.html#module-elkpy.programcontroller">elkpy.programcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.sessioncontroller.html#module-elkpy.sessioncontroller">elkpy.sessioncontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.sushi_info_types.html#module-elkpy.sushi_info_types">elkpy.sushi_info_types</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.sushicontroller.html#module-elkpy.sushicontroller">elkpy.sushicontroller</a>
-</li>
         <li><a href="elkpy-doc/elkpy.sushierrors.html#module-elkpy.sushierrors">elkpy.sushierrors</a>
 </li>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#module-elkpy.sushiprocessor">elkpy.sushiprocessor</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.timingcontroller.html#module-elkpy.timingcontroller">elkpy.timingcontroller</a>
-</li>
-        <li><a href="elkpy-doc/elkpy.transportcontroller.html#module-elkpy.transportcontroller">elkpy.transportcontroller</a>
-</li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.grpc_gen.html#elkpy.grpc_gen.modules_from_proto">modules_from_proto() (in module elkpy.grpc_gen)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.move_processor_on_track">move_processor_on_track() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="N">N</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController">NotificationController (class in elkpy.notificationcontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="O">O</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.osccontroller.html#elkpy.osccontroller.OscController">OscController (class in elkpy.osccontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="P">P</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController">ParameterController (class in elkpy.parametercontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterInfo">ParameterInfo (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType">ParameterType (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.PLAYING">PLAYING (elkpy.sushi_info_types.PlayingMode attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode">PlayingMode (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType">PluginType (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.POST">POST (elkpy.sushi_info_types.TrackType attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.PRE">PRE (elkpy.sushi_info_types.TrackType attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_parameter_update_notifications">process_parameter_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_processor_change_notifications">process_processor_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_property_update_notifications">process_property_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_timing_update_notifications">process_timing_update_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_track_change_notifications">process_track_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.process_transport_change_notifications">process_transport_change_notifications() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorInfo">ProcessorInfo (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProcessorState">ProcessorState (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController">ProgramController (class in elkpy.programcontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ProgramInfo">ProgramInfo (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PropertyInfo">PropertyInfo (class in elkpy.sushi_info_types)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="R">R</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.RECORDING">RECORDING (elkpy.sushi_info_types.PlayingMode attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType.REGULAR">REGULAR (elkpy.sushi_info_types.TrackType attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_all_timings">reset_all_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_processor_timings">reset_processor_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.reset_track_timings">reset_track_timings() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController.restore_binary_session">restore_binary_session() (elkpy.sessioncontroller.SessionController method)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController.save_binary_session">save_binary_session() (elkpy.sessioncontroller.SessionController method)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiInternalError">SushiInternalError</a>
 </li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_aftertouch">send_aftertouch() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_aftertouch">(elkpy.sushiprocessor.SushiProcessor method)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiInvalidArgumentError">SushiInvalidArgumentError</a>
 </li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_modulation">send_modulation() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_modulation">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_aftertouch">send_note_aftertouch() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_aftertouch">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_off">send_note_off() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_off">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_note_on">send_note_on() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_note_on">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.keyboardcontroller.html#elkpy.keyboardcontroller.KeyboardController.send_pitch_bend">send_pitch_bend() (elkpy.keyboardcontroller.KeyboardController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.send_pitch_bend">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.sessioncontroller.html#elkpy.sessioncontroller.SessionController">SessionController (class in elkpy.sessioncontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_bypass_state">set_bypass_state() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.midicontroller.html#elkpy.midicontroller.MidiController.set_midi_clock_output_enabled">set_midi_clock_output_enabled() (elkpy.midicontroller.MidiController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.set_parameter_value">set_parameter_value() (elkpy.parametercontroller.ParameterController method)</a>
-
-      <ul>
-        <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_parameter_value">(elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      </ul></li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_playing_mode">set_playing_mode() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_bypass_state">set_processor_bypass_state() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.programcontroller.html#elkpy.programcontroller.ProgramController.set_processor_program">set_processor_program() (elkpy.programcontroller.ProgramController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.audiographcontroller.html#elkpy.audiographcontroller.AudioGraphController.set_processor_state">set_processor_state() (elkpy.audiographcontroller.AudioGraphController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program">set_program() (elkpy.sushiprocessor.SushiProcessor method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_next">set_program_next() (elkpy.sushiprocessor.SushiProcessor method)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiNotFoundError">SushiNotFoundError</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor.set_program_previous">set_program_previous() (elkpy.sushiprocessor.SushiProcessor method)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiOutOfRangeError">SushiOutOfRangeError</a>
 </li>
-      <li><a href="elkpy-doc/elkpy.parametercontroller.html#elkpy.parametercontroller.ParameterController.set_property_value">set_property_value() (elkpy.parametercontroller.ParameterController method)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiUnkownError">SushiUnkownError</a>
 </li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_sync_mode">set_sync_mode() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_tempo">set_tempo() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController.set_time_signature">set_time_signature() (elkpy.transportcontroller.TransportController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController.set_timings_enabled">set_timings_enabled() (elkpy.timingcontroller.TimingController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PlayingMode.STOPPED">STOPPED (elkpy.sushi_info_types.PlayingMode attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.ParameterType.STRING_PROPERTY">STRING_PROPERTY (elkpy.sushi_info_types.ParameterType attribute)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_parameter_updates">subscribe_to_parameter_updates() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_processor_changes">subscribe_to_processor_changes() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_property_updates">subscribe_to_property_updates() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_timing_updates">subscribe_to_timing_updates() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_track_changes">subscribe_to_track_changes() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.notificationcontroller.html#elkpy.notificationcontroller.NotificationController.subscribe_to_transport_changes">subscribe_to_transport_changes() (elkpy.notificationcontroller.NotificationController method)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SushiBuildInfo">SushiBuildInfo (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiController">SushiController (class in elkpy.sushicontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInternalError">SushiInternalError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiInternalError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiInvalidArgumentError">SushiInvalidArgumentError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiInvalidArgumentError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiNotFoundError">SushiNotFoundError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiNotFoundError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiOutOfRangeError">SushiOutOfRangeError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiOutOfRangeError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushiprocessor.html#elkpy.sushiprocessor.SushiProcessor">SushiProcessor (class in elkpy.sushiprocessor)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnkownError">SushiUnkownError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiUnkownError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushicontroller.html#elkpy.sushicontroller.SushiUnsupportedOperationError">SushiUnsupportedOperationError</a>, <a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiUnsupportedOperationError">[1]</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.SyncMode">SyncMode (class in elkpy.sushi_info_types)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="T">T</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.timingcontroller.html#elkpy.timingcontroller.TimingController">TimingController (class in elkpy.timingcontroller)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackInfo">TrackInfo (class in elkpy.sushi_info_types)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.TrackType">TrackType (class in elkpy.sushi_info_types)</a>
-</li>
-      <li><a href="elkpy-doc/elkpy.transportcontroller.html#elkpy.transportcontroller.TransportController">TransportController (class in elkpy.transportcontroller)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="V">V</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.VST2X">VST2X (elkpy.sushi_info_types.PluginType attribute)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="elkpy-doc/elkpy.sushi_info_types.html#elkpy.sushi_info_types.PluginType.VST3X">VST3X (elkpy.sushi_info_types.PluginType attribute)</a>
+      <li><a href="elkpy-doc/elkpy.sushierrors.html#elkpy.sushierrors.SushiUnsupportedOperationError">SushiUnsupportedOperationError</a>
 </li>
   </ul></td>
 </tr></table>
 
 
 
-                </article>
+              </div>
               
               
-              
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
-<div class="prev-next-area">
-</div></div>
-  
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
 </div>
+              
+          </main>
+          
 
-                </footer>
-              
-            </div>
-            
-            
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-          </footer>
-        
-      </main>
+      </div>
     </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2023, Elk.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br>
+</p>
+    </div>
+    
   </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
-
-  <footer class="bd-footer">
-<div class="bd-footer__inner bd-page-width">
-  
-    <div class="footer-items__start">
-      
-        <div class="footer-item">
-  <p class="copyright">
-    
-      © Copyright 2023, Elk.
-      <br/>
-    
-  </p>
-</div>
-      
-        <div class="footer-item">
-  <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
-    <br/>
-  </p>
-</div>
-      
-    </div>
-  
-  
-    <div class="footer-items__end">
-      
-        <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
-</p></div>
-      
-    </div>
-  
-</div>
-
-  </footer>
+</footer>
   </body>
 </html>

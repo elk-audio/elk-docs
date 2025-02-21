@@ -27,14 +27,5 @@ The open-source version of Elk Audio OS comes with a best effort community suppo
 
 If you do not want to release your own source code, or if you want to run Elk on architectures other than the Raspberry Pi, commercial licenses are available.
 
-The benefits of a commercial license are:
-  * Possibility to distribute closed-source proprietary audio products
-  * [More hardware architectures available](supported_hw.md), with dedicated firmware stack running on microcontrollers for extra features & performance
-  * Priority support for bug fixes
-  * Dedicated support for customizations
-  * Early access to new Elk Audio OS features
-  * Possibility to integrate [Elk Live](https://elk.live) technology for IP audio streaming over the Internet
-  * Cloud-based solutions for software deployment & users management
-
-For pricing & more details on commercial licenses, please [fill the form on our website](https://elkaudio.webflow.io/licensing-options) or contact us at [tech@elk.audio](mailto:tech@elk.audio).
+For pricing and more details on commercial licenses, please contact us at info@elk.audio
 

@@ -8,7 +8,6 @@ These pages will tell you more about Elk Audio OS and its licensing model.
 
    how_elk_works.md
    license.md
-   supported_hw.md
 
 Getting started
 ===============
