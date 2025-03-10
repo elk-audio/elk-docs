@@ -262,7 +262,7 @@ Chorus with variable rate and amount.
 
 Antialiased hard clipper with parametric bias and gain (compensation) and output bias removal.
 
-  * **uid** : "sushi.brickwork.clip"
+  * **uid** : "sushi.brickworks.clip"
   * **Parameters** :
     + "bias" : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)
     + "gain" : Linear compensation output gain (Normalized from [0.1, 10.0], default : 1.0)
@@ -271,7 +271,7 @@ Antialiased hard clipper with parametric bias and gain (compensation) and output
 
 Comb filter / delay effect with feedforward and feedback paths.
 
-  * **uid** : "sushi.brickwork.comb_delay"
+  * **uid** : "sushi.brickworks.comb_delay"
   * **Parameters** :
     + "ff_delay" : Feedforward delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)
     + "fb_delay" : Feedback delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)
@@ -283,7 +283,7 @@ Comb filter / delay effect with feedforward and feedback paths.
 
 Feedforward compressor/limiter. In a multichannel track, the control signal is a -3dB sum of all the input channels.
 
-  * **uid** : "sushi.brickwork.compressor"
+  * **uid** : "sushi.brickworks.compressor"
   * **Parameters** :
     + "threshold" : Compression threshold in dB. (Normalized from [-60, 12], default : 0.0)
     + "ratio" : Compression ratio; the value is actually the slope of the gain curve above the threshold, hence `1.0` means no compression and `0.0` is a hard limit. ([0.0, 1.0], default: 1.0)
@@ -295,7 +295,7 @@ Feedforward compressor/limiter. In a multichannel track, the control signal is a
 
 Distortion effect, loosely inspired by the "rodent" distortion pedal.
 
-  * **uid** : "sushi.brickwork.dist"
+  * **uid** : "sushi.brickworks.dist"
   * **Parameters** :
     + "dist" : Distortion (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "tone" : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)
@@ -305,7 +305,7 @@ Distortion effect, loosely inspired by the "rodent" distortion pedal.
 
 Overdrive effect, loosely inspired by the green "screaming" overdrive pedal.
 
-  * **uid** : "sushi.brickwork.drive"
+  * **uid** : "sushi.brickworks.drive"
   * **Parameters** :
     + "drive" : Overdrive (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "tone" : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)
@@ -315,7 +315,7 @@ Overdrive effect, loosely inspired by the green "screaming" overdrive pedal.
 
 Equalizer with 2nd-order (12 dB/oct) low shelf, peak and high shelf filters, similar to the one found in most channel strips.
 
-  * **uid** : "sushi.brickwork.eq3band"
+  * **uid** : "sushi.brickworks.eq3band"
   * **Parameters** :
     + "lowshelf_freq" : Low shelf cutoff frequency in Hz. (Normalized from [25.0, 1'000.0], default : 125.0)
     + "lowshelf_gain" : Low shelf gain in dB. (Normalized from [-24, 24.0], default : 0.0)
@@ -340,7 +340,7 @@ Flanger with variable rate and amount.
 
 Fuzz effect, loosely inspired by the "smiling" fuzz pedal.
 
-  * **uid** : "sushi.brickwork.fuzz"
+  * **uid** : "sushi.brickworks.fuzz"
   * **Parameters** :
     + "fuzz" : Fuzz (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "volume" : Volume (output gain) ([0.0, 1.0], default : 1.0)
@@ -349,7 +349,7 @@ Fuzz effect, loosely inspired by the "smiling" fuzz pedal.
 
 First-order highpass filter (6 dB/oct) with gain asymptotically approaching unity as frequency increases.
 
-  * **uid** : "sushi.brickwork.highpass"
+  * **uid** : "sushi.brickworks.highpass"
   * **Parameters** :
     + "frequency" : Cutoff frequency in Hz. (Normalized from [20.0, 20'000.0], default : 50.0)
 
@@ -357,7 +357,7 @@ First-order highpass filter (6 dB/oct) with gain asymptotically approaching unit
 
 Second-order multimode filter, the various modes are blended together with a set of coefficient parameters.
 
-  * **uid** : "sushi.brickwork.multi_filter"
+  * **uid** : "sushi.brickworks.multi_filter"
   * **Parameters** :
     + "frequency" : Cutoff frequency in Hz. (Normalized from [20.0, 20'000.0], default : 1'000.0)
     + "Q" : Q factor. (Normalized from [0.5, 10.0], default : 1.0)
@@ -370,7 +370,7 @@ Second-order multimode filter, the various modes are blended together with a set
 
 Noise gate; in case of multichannel setup, each channel is gated independently.
 
-  * **uid** : "sushi.brickwork.noise_gate"
+  * **uid** : "sushi.brickworks.noise_gate"
   * **Parameters** :
     + "threshold" : Threshold in dB. (Normalized from [-60.0, 60.0], default : 0.0)
     + "ratio" : Compression ratio (0 = no gating, 1 = hard gate). ([0.0, 1.0], default: 0.0) 
@@ -381,7 +381,7 @@ Noise gate; in case of multichannel setup, each channel is gated independently.
 
 Second-order notch filter with unity gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.
 
-  * **uid** : "sushi.brickwork.notch"
+  * **uid** : "sushi.brickworks.notch"
   * **Parameters** :
     + "frequency" : Center frequency in Hz. (Normalized from [20.0, 20'000.0], default : 1'000.0)
     + "Q" : Q factor. (Normalized from [0.5, 10.0], default : 1.0)
@@ -400,7 +400,7 @@ Phaser containing 4 1st-order allpass filters modulated by a sinusoidal LFO.
 
 Antialiased tanh-based saturation with parametric bias and gain (compensation) and output bias removal.
 
-  * **uid** : "sushi.brickwork.saturation"
+  * **uid** : "sushi.brickworks.saturation"
   * **Parameters** :
     + "bias" : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)
     + "gain" : Input gain (Normalized from [0.1, 10.0], default : 1.0)
