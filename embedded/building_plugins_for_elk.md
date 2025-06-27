@@ -61,9 +61,14 @@ For other JUCE-based projects, the process should be pretty straightfoward:
 
 1. Make sure your JUCE project is using CMake and not Projucer for its build system
 
-2. Set the output formats to `VST3`
+2. Make sure you are using the system-provided JUCE by using this line:
+```
+find_package(JUCE CONFIG REQUIRED)        # If you've installed JUCE to your system
+```
 
-3. Set this option in the JUCE Cmake command: ` VST3_AUTO_MANIFEST FALSE `
+3. Set the output formats to `VST3`
+
+4. Set this option in the JUCE Cmake command: ` VST3_AUTO_MANIFEST FALSE `
 
 
 ## LV2 Plugins
