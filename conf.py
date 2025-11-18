@@ -213,5 +213,5 @@ def skip(app, what, name, obj, would_skip, options):
 def setup(app):
     app.add_config_value('recommonmark_config', {
             'url_resolver': lambda url: github_doc_root + url,
-            }, True)
+            }, False)
 
