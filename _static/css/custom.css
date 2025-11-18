@@ -1,11 +1,39 @@
 code {
-    background-color: #000000;
-    padding: 0 1px 0 1px;
-    font-size: 0.95em;
+  background-color: #000000;
+  padding: 0 1px 0 1px;
+  font-size: 0.95em;
 }
 
 
-dt:target, span.highlighted {
-    background-color: #FF5CBE;
+dt:target,
+span.highlighted {
+  background-color: #FFD700;
 }
 
+/* Override theme accent colors to yellow */
+:root,
+html[data-theme=light] {
+  --pst-color-primary: #DAA520;
+  --pst-color-secondary: #DAA520;
+  --pst-color-secondary-highlight: #E6C947;
+  --pst-color-secondary-text: #000;
+  --pst-color-success-highlight-text: #000;
+  --pst-color-secondary-highlight-text: #000;
+  --pst-color-link: #B8860B;
+  --pst-color-link-hover: #DAA520;
+
+  --pst-color-accent: #FFD700;
+}
+
+html[data-theme=dark] {
+  --pst-color-primary: #DAA520;
+  --pst-color-secondary: #DAA520;
+  --pst-color-secondary-highlight: #E6C947;
+  --pst-color-secondary-text: #000;
+  --pst-color-success-highlight-text: #000;
+  --pst-color-secondary-highlight-text: #000;
+  --pst-color-link: #DAA520;
+  --pst-color-link-hover: #FFD700;
+
+  --pst-color-accent: #FFD700;
+}
