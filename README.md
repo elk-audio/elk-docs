@@ -14,15 +14,11 @@ If you have made any changes to an .MD documentation file, you also need to take
 
 Install [Sphinx](http://www.sphinx-doc.org/en/stable/):
 
+	pip install -r requirements.txt
+
+Alternatively, via apt (discouraged)
+
 	apt-get install python3-sphinx
-
-Alternatively install through pip:
-
-	python3 -m pip install sphinx
-
-Install [recommonmark](https://github.com/rtfd/recommonmark):
-
-	python3 -m pip install recommonmark
 
 Build with:
 
