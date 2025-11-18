@@ -235,15 +235,24 @@ Threading
 
 Sushi can run its audio processing single threaded but also has **built
 in multithreading support** to spread the audio processing over multiple
-cores, depending on the type of system it is running on. To enable multicore audio processing, start sushi with the *-m/--multicore* option. 
+cores, depending on the type of system it is running on. To enable multicore
+audio processing, start sushi with the *-m/--multicore* option. 
 
-When creating tracks it's possible to set the audio processing thread for that track using the *thread* argument. If the *thread* argument is not set, tracks will be allocated to threads according to a round-robin scheme. 
+When creating tracks it's possible to set the audio processing thread for that
+track using the *thread* argument. If the *thread* argument is not set, tracks
+will be allocated to threads according to a round-robin scheme. 
 
-Note that thread is an abstract concept and does not directly map to physical CPU cores. If sushi is started with the *-m2" option, the audio processing with be split over 2 thread and the possible values for the thread argument is hence 0 and 1.
+Note that thread is an abstract concept and does not directly map to physical
+CPU cores. If sushi is started with the `*-m2"` option, the audio processing with
+be split over 2 thread and the possible values for the thread argument is hence
+0 and 1.
 
-For Elk Audio OS systems it's possible to directly control which CPU cores sushi use for audio processing. See the Elk Audio OS documentation.
+For Elk Audio OS systems it's possible to directly control which CPU cores
+sushi use for audio processing. See the Elk Audio OS documentation.
 
-For developers that wish to utilize multithreading within a plugin, we have developed a small threading utility library that works with Elk and Sushi, called Twine.
+For developers that wish to utilize multithreading within a plugin, we have
+developed a small threading utility library that works with Elk and Sushi,
+called Twine.
 
 Twine
 -----
