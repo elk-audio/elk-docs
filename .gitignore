@@ -36,6 +36,7 @@
 !.clang-format
 !*/.gitkeep
 !.gitignore
+!.github
 
 # Build and scratch directories
 scratch/
@@ -58,3 +59,7 @@ compile_commands.json
 # Log files created by running sushi from somewhere in the repository
 log.txt
 /vcpkg_installed/
+
+# Sphinx generated documentation
+docs/html/
+docs/doctrees/
