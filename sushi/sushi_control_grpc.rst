@@ -11,7 +11,7 @@ We provide `up-to-date examples <elk_examples_overview.html>`__ of programs whic
 All these examples are written in Python, and use our `elkpy Python library <https://github.com/elk-audio/elkpy>`__,
 which greatly simplifies controlling Sushi over gRPC. The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__.
 
-For controlling Sushi from a C++ application we also provide a similiar wrapper library built in C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
+For controlling Sushi from a C++ application we also provide a corresponding wrapper library for C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
 
 The heart of the gRPC integration, is the API definition in 
 `sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/protos/sushi_rpc.proto>`__.
@@ -20,7 +20,7 @@ One way to quickly interact directly with the gRPC API during development is to 
 example [Postman](https://www.postman.com/). You can find more on how to load Sushi's .proto definition into Postman
 [here](https://learning.postman.com/docs/sending-requests/grpc/grpc-request-interface/).
 
-Though we recommend you to start with one of out wrapper libraries, elkpy or elkcpp, depending on your choice of programming language. This way you do not need to use gRPC directly, and can just read the documentation for the respective library.
+Though we recommend you to start with one of our wrapper libraries: elkpy or elkcpp, depending on your choice of programming language. This way you do not need to use gRPC directly, and can just read the documentation for the respective library.
 
 High-level Overview of Sushi's gRPC API
 ---------------------------------------
