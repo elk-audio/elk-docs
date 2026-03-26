@@ -6,7 +6,6 @@ Sushi Public API Model
 .. figure:: ./illustrations/sushi_architecture.png
    :alt: img
 
-   *(Note that in the current 0.11 version of Sushi, return tracks are not yet implemented).*
 
 Processors, Tracks, Plugins and Parameters
 ------------------------------------------
@@ -23,16 +22,14 @@ Each processor has:
 -  A set of numerical parameters for realtime control
 -  A set of properties containing string data
 -  A set of input and output audio channels.
--  A set of input and output keyboard channels.
+-  A set of input and output MIDI channels.
 -  A set of programs (presets) which can be stored and recalled.
 
-The audio and MIDI channels of a track need to be explicitly connected to the
-inputs and outputs of Sushi.
+The audio and MIDI channels of a track need to be explicitly connected to the inputs and outputs of Sushi.
 
 The processors contained in tracks all have the same audio and keyboard connection counts, chained within the track.
 
-Each audio track can be set to use one of three modes for the audio channel configuration:
-“mono”, “stereo” and “multibus”. The multibus option is for tracks with several stereo output busses routable to different output.
+Each audio track can be either a regular track with 1 or more channels or a "multibus" track. If the multibus option is enabled each set of 2 channels i the track is considered a stereo pair with its own individual pan and gain controls. 
 
 Individually, the parameters of each processor can be controlled by various means:
 

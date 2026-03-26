@@ -89,7 +89,7 @@ Return bus plugin. Receives audio from 1 or several Send plugins. If the sending
 
 Wrapper around the famous freeverb public-domain implementation. Mono/stereo reverb based on a Schroeder/Moorer model with comb & allpass filters. The internal parameters sound best at 44.1 kHz and are usable also for 48 kHz, but not for higher sampling rates.
 
-The implementation does not have any smoothing of parameter values, so if those are varied continuously some glitches could be heard. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combination (check `misc/config_files/freeverb_aux.json` for an example).
+The implementation does not have any smoothing of parameter values, so if those are varied continuously audio may glitch sometimes. A workaround for a common situation consists in putting the reverb 100% wet in an auxiliary track with a send/return plugin combination (check `misc/config_files/freeverb_aux.json` for an example).
 
   * **uid** : "sushi.testing.freeverb"
   * **Parameters** :
@@ -209,7 +209,7 @@ This plugin passes through audio without altering it, while writing it to a wav 
 
 ### Wav Streamer
 
-Plugin for streaming large audio files from disk.
+Plugin for streaming large audio files from disk without loading the full file in memory.
 
 * **uid** : "sushi.testing.wav_streamer"
 * **Parameters**:
@@ -248,6 +248,16 @@ Bitcrusher through a combination of sample rate and bit-depth reduction.
   * **Parameters** :
     + "sr_ratio" : Sample rate reduction ratio. [0.0, 1.0], Default : 1.0
     + "bit_depth" : Relative level of the wet output. (Normalized from [1, 16], default : 16)
+
+### Cab Sim
+
+Cabinet simulator
+
+  * **uid** : "sushi.brickworks.cab_sim"
+  * **Parameters** :
+    + "cutoff_low" : Lowpass filter cutoff [0.0, 1.0], default : 0.5
+    + "cutoff_high" : Highpass filter cutoff [0.0, 1.0], default : 0.5
+    + "tone" : General tone of the speaker cabinet ([0.0, 1.0], default : 0.5
 
 ### Chorus
 
@@ -395,6 +405,16 @@ Phaser containing 4 1st-order allpass filters modulated by a sinusoidal LFO.
     + "rate" : Modulation rate in Hz. (Normalized from [0.5, 5.0], default : 1.0)
     + "center" : Center frequency in Hz. (Normalized from [100, 10'000.0], default : 1'000.0)
     + "amount" : Modulation amount in octaves. (Normalized from [0.0, 4.0], default : 1.0)
+
+### Ring Mod
+
+Ring modulator 
+
+  * **uid** : "sushi.brickworks.ring_mod"
+  * **Parameters** :
+    + "frequency" : Modulator frequency in Hz. (Normalized from [20, 10'000.0], default : 1'000.0)
+    + "amount" : Modulation amount (-1 = full modulation with opposite phase, 0 = no modulation, 1 = full modulation). (Normalized from [-1.0, 1.0], default : 1.0)
+
 
 ### Saturation
 

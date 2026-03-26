@@ -25,21 +25,21 @@ Here is a commented list of some of the notable examples:
 
 ## GUI control app
 
-The simplest way to interact at runtime with Sushi, e.g. for changing some parameters of a running
+The simplest way to interact at runtime with Sushi, e.g. to change some parameters of a running
 plugin, is to use the [example Python QT GUI application](https://github.com/elk-audio/sushi-gui).
 
-If you are under macOS, just grab the latest binary from the Releases section, otherwise follow the
-instructions in the [main README](https://github.com/elk-audio/sushi-gui/README.md) on how to run
-from source if you're running under Linux.
+If you are on macOS or Windows, just grab the latest binary from the Releases section, otherwise follow the
+instructions in the [main README](https://github.com/elk-audio/sushi-gui/README.md) on how to build and run
+from source if you're using Linux.
 
 ![Sushi Python QT GUI](illustrations/sushigui.png)
 ​
 
 The usage of the GUI should be pretty straightforward: if you have a local instance of Sushi running
-and listening on the default port 51051 for gRPC, the application will simply autoconnect to the
+and listening on the default port 51051 for gRPC (510 on Windows), the application will simply autoconnect to the
 engine and populate the GUI with a widget for every track / plugin currently running.
 
-If you want instead to control a remote instance of Sushi, you can change the IP address from the
+If you want to control a remote instance of Sushi, you can change the IP address from the
 top-level bar and connect to it.
 
 It is possible to add new plugins and tracks while the engine is running, or remove existing ones.

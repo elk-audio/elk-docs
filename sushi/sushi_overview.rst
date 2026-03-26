@@ -7,7 +7,7 @@ the DAW that is at the core of audio and midi processing in the Elk MusicOS.
 Main Features
 -------------
 
-Sushi is a track-based, headless Digital Audio Workstation. It works as
+Sushi is a track-based, headless Digital Audio Workstation. It functions as
 a plugin host, supporting multiple plugin standards. It features advanced
 audio and midi routing, simple scripting setup, and is written to ensure
 high performance and stability under low latency conditions. It can be
@@ -38,7 +38,7 @@ There is also a multibus track mode with which a multichannel track can
 have multiple stereo outputs, **each with their own individual gain and
 panning controls**, which in turn can be routed to any audio output.
 Useful for multi bus plugins. Sushi also features aux sends and
-corresponding return tracks for effects processing.
+corresponding return plugins for effects processing.
 
 In addition, Sushi allows adding pre and post tracks, each with as many
 channels as there are audio inputs and outputs in sushi. They can be used
@@ -182,15 +182,14 @@ other programming language of choice. **The dual kernel architecture of
 Elk will guarantee that the graphics rendering will never interfere with
 the audio dsp processing.**
 
-Meanwhile, end-users can integrate your device with their other media devices,
-using MIDI, Ableton Link, and OSC.
+Meanwhile, end-users can integrate an Elk device with their other media devices using MIDI, Ableton Link, and OSC.
 
 Discovering Initial Sushi Configuration's Available Parameters
 --------------------------------------------------------------
 
 These can be discovered in several ways.
 
-The name, label, ID and OSC paths for the hosted plugins' parameters, is
+The name, label, ID and OSC paths for the hosted plugins' parameters, can be
 dumped to stdout in JSON format when running Sushi with the flag
 *--dump-plugins*. For example, to pipe the parameters for the LV2 JX10
 example configuration into a .json file, type the following:
@@ -230,6 +229,29 @@ recompiling the plugins using our SDK.
 
 Paths to plugin binaries can either be absolute or relative to the path set by the *--base-plugin-path* commmand line argument.
 
+Elk plugin extensions
+---------------------
+
+Sushi implements a `custom extension API for VST 3 plugins <https://github.com/elk-audio/Elk-Plugin-Extensions>`__  that provides access to Sushi functionality that is not supported by the VST API. Vst3 extensions can be implemented direcly from the VST 3 SDK or with JUCE through the `VST3ClientExtension <https://docs.juce.com/master/structVST3ClientExtensions.html>`_ interface.
+
+The Elk extension currently exposes 2 main features:
+
+String Properties
+^^^^^^^^^^^^^^^^^
+This enables a plugin to expose any number of string type parameters that can be set or retrieved from the gRPC interface or set to initial values in a json config file.
+Note that string properties are accessed from non-realtime threads. There is an option to also enable Sushi to call a function in the audio thread, before calling process(), when properties are changed. 
+
+The strings do not need to be null terminated so they can be used to pass arbitrary data between a gRPC client and the plugin.
+
+Asynchronous work requests
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+This enables a plugin to request non-realtime functions calls from an audio thread without having to manually start a thread and manage the realtime to non-realtime thread communication. This is very useful for delegating any work not suitable for doing in the audio thread, like sample loading or interacting with the OS, to a background thread.
+
+Plugins supply a callback that will be called in a background thread by Sushi and the return value from this callback will be passed back to Sushi in the audio thread in a later audio block. A unique id is generated for each request
+
+See the inline documentation in the `repository <https://github.com/elk-audio/Elk-Plugin-Extensions>`_ for more details.
+
+
 Threading
 ---------
 
@@ -242,13 +264,9 @@ When creating tracks it's possible to set the audio processing thread for that
 track using the *thread* argument. If the *thread* argument is not set, tracks
 will be allocated to threads according to a round-robin scheme. 
 
-Note that thread is an abstract concept and does not directly map to physical
-CPU cores. If sushi is started with the `*-m2"` option, the audio processing with
-be split over 2 thread and the possible values for the thread argument is hence
-0 and 1.
+Note that thread id in this case does not refer directly to a CPU core, but to an index starting from 0 into the number of parallel threads sushi’s audio processing is configured to run with. I.e. if sushi is started with the `*-m2"` option valid values for the thread parameter are 0 and 1. If the thread member is omited, sushi will revert to round-robin assignment of track to CPU cores.
 
-For Elk Audio OS systems it's possible to directly control which CPU cores
-sushi use for audio processing. See the Elk Audio OS documentation.
+For Elk Audio OS systems it's possible to directly control which CPU cores are used by sushi for audio processing. See the Elk Audio OS documentation for details.
 
 For developers that wish to utilize multithreading within a plugin, we have
 developed a small threading utility library that works with Elk and Sushi,
