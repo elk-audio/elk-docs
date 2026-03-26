@@ -9,30 +9,23 @@ is a very good start.
 We provide `up-to-date examples <elk_examples_overview.html>`__ of programs which use gRPC to communicate with Sushi.
 
 All these examples are written in Python, and use our `elkpy Python library <https://github.com/elk-audio/elkpy>`__,
-which greatly simplifies controlling Sushi over gRPC.
+which greatly simplifies controlling Sushi over gRPC. The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__.
 
-The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__.
+For controlling Sushi from a C++ application we also provide a similiar wrapper library built in C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
 
-The heart of the gRPC integration, is the API definition in the
-`sushi_rpc.proto file <https://github.com/elk-audio/sushi/blob/master/rpc_interface/protos/sushi_rpc.proto>`__, which you will find in the Sushi repository.
+The heart of the gRPC integration, is the API definition in 
+`sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/protos/sushi_rpc.proto>`__.
 
-One way to quickly interact with the gRPC API is to use an API tool that has support for gRPC, for
-example [Postman](https://www.postman.com/). You can find more on how to load Sushi's .proto
-definition into Postman
+One way to quickly interact directly with the gRPC API during development is to use an API tool that has support for gRPC, for
+example [Postman](https://www.postman.com/). You can find more on how to load Sushi's .proto definition into Postman
 [here](https://learning.postman.com/docs/sending-requests/grpc/grpc-request-interface/).
 
-If you plan to work in Python we recommend using our elkpy library,
-in which case you do not need to use gRPC directly, and can just read the documentation for elkpy.
-
-But if you are programming a controller using a different language than Python,
-referring to the above .proto file will be needed.
-Even in that case, it will be very useful for you to read the comments for the elkpy methods,
-and how the elkpy library invokes the Sushi gRPC API.
+Though we recommend you to start with one of out wrapper libraries, elkpy or elkcpp, depending on your choice of programming language. This way you do not need to use gRPC directly, and can just read the documentation for the respective library.
 
 High-level Overview of Sushi's gRPC API
 ---------------------------------------
 
-Given Sushi's complexity, we have split up the gRPC API to specific controllers, using each of which you can control one
+Given Sushi's complexity, the gRPC API has been split into specific controllers, each of which controls one
 subsystem of Sushi.
 
 These are:
@@ -51,8 +44,7 @@ These are:
 -  SessionController
 -  NotificationController
 
-All except NotificationController, define methods which the GUI can invoke to query Sushi on its state,
-and to issue commands to modify that state.
+All except NotificationController, define methods the GUI can invoke to query Sushi on its state, and issue commands to modify that state.
 
 For the details on the methods that can be invoked from each controller, please refer to the .proto file, and `elkpy library
 documentation <../elkpy-doc/elkpy.html>`__.
@@ -61,27 +53,23 @@ Here we'll only present a high-level overview of what each is for, without too m
 AudioGraphController
 ^^^^^^^^^^^^^^^^^^^^
 
-With the AudioGraphController you can add/move/remove tracks and processors (plugins) at runtime,
-and query the current tracks and plugins in the engine.
+Allows adding/moving/removeing tracks and processors (plugins) at runtime and querying the current tracks and plugins in the engine.
 
 ParameterController
 ^^^^^^^^^^^^^^^^^^^
 
-Allows the querying of all Track and Processor (plugin) parameters and properties, and setting them to new values.
+Allows the querying of all Track and Processor (plugin) parameters and properties and setting them to new values.
 
 AudioRoutingController
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Allows connecting audio input and output to and from tracks, and query the current connections.
-When a track is added, no routings are automatically created, meaning you need to create them for it to process and output sound
-to/from Sushi's inputs and outputs.
+Allows connecting audio input and output to and from tracks, and query the current connections. When a track is added, routings are not automatically created, but have to be explicitly connected in order to process and output sound to/from Sushi's inputs and outputs.
 
 MidiController
 ^^^^^^^^^^^^^^
 
-Similarly, with the MidiController you connect MIDI input and output to and from tracks, and query the current connections.
-When a track is added, no MIDI connections are automatically created, meaning you need to create them for it to
-process and output MIDI to/from Sushi's inputs and outputs.
+MidiController allows connecting MIDI input and output to and from tracks, mapping CC messages to parameter and querying the current connections.
+When a track is added, MIDI connections are not automatically created, but have to be explicity added in order to process and output MIDI to/from Sushi's inputs and outputs.
 
 CvGateController
 ^^^^^^^^^^^^^^^^
@@ -95,7 +83,7 @@ it is not yet functional.
 KeyboardController
 ^^^^^^^^^^^^^^^^^^
 
-KeyboardController allows you to send keyboard events to tracks - e.g. Note On/Off messages, pitch bend, modulation, etc.
+KeyboardController allows sending keyboard events to tracks - e.g. Note On/Off messages, pitch bend, modulation, etc.
 
 ProgramController
 ^^^^^^^^^^^^^^^^^
@@ -105,8 +93,8 @@ For querying, loading and storing programs (pre-sets) for processors (plugins).
 OscController
 ^^^^^^^^^^^^^
 
-With the OscController you can query the state of the Open Sound Control broadcasting from Sushi, and selectively
-enable/disable which parameters will broadcast their state. You can also fetch the IP and ports which Sushi uses for OSC.
+OscController allows querying the state of the Open Sound Control broadcasting from Sushi, and selectively
+enable/disable which parameters will broadcast their state. Also used to fetch the IP and ports which Sushi uses for OSC.
 
 TransportController
 ^^^^^^^^^^^^^^^^^^^
