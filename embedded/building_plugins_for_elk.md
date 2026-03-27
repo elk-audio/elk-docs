@@ -2,7 +2,7 @@
 
 Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg's APIs. It also supports LV2 plugins natively. So there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.
 
-Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk's provided gcc-based cross-compiling toolchain. This document is a short guide to help you through the needed steps.
+Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk's provided cross-compiling toolchain. This document is a short guide to help you through the needed steps. The cross compiling toolchain can be run on a native linux machine, in a virtual linux machine or in a Docker image. 
 
 As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.
 
@@ -12,7 +12,7 @@ We provide a pre-configured Docker environment to help running all the cross-com
 
 For each targeted platform, we release a cross-compiling toolchain based on gcc (clang available on request) that replaces all the commands of the standard toolchain, including make, CMake, system libraries, etc.
 
-You just need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:
+You need to source the environment setup script to activate the toolchain. From a terminal shell, enter the LinuxBuild directory with the Makefile in it and type:
 ```
 $ source [path-to-extracted-sdk]/environment-setup-[aarch-name]-elk-linux
 ```
@@ -27,7 +27,7 @@ This use case is for those that don't rely on a cross platform framework like JU
 
 Please notice that Steinberg has discontinued the VST 2.4 SDK, so it is no longer available for download since October 2018. You are still allowed to use the SDK and release VST 2.4 plugins if you have obtained a signed agreement with Steinberg prior to that date.
 
-The process in this case should be trivial if your plugin doesn't have dependencies on any graphical libraries - this includes the VST GUI framework.
+The process in this case should be trivial if your plugin doesn't depend on any graphical libraries - this includes the VST GUI framework.
 
 ## VST 3.x Plugins Using Steinberg SDK
 
@@ -35,11 +35,11 @@ This should also be straightforward by using standard build systems. Since relea
 
 There is an example plugin that can be compiled with the provided toolchain under *work/vst3-template*, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.
 
-After cross-compilation, ensure that the folder under *"plugin.vst3/Contents"* is named **aarch64-linux**, not *arm64-linux*, or the plugin will not work on the Elk-Pi - rename it yourself if needed.
+After cross-compilation, ensure that the folder under *"plugin.vst3/Contents"* is named correctly, it should be named according your target Elk device architecture and not a general **arm64-linux**. For the Raspberri Pi 4 image the correct architecture should be **aarch64-linux**, not *arm64-linux*, or the plugin will not work on the Elk-Pi - rename it yourself if needed.
 
 ## VST Plugins Using JUCE
 
-Most developers use a cross-platform framework like JUCE for generating multiple versions of their plugins for various OSes / formats.
+Most developers use a cross-platform framework for generating multiple versions of their plugins for various OSes / formats. JUCE being the most popular one by a large margin.
 
 JUCE actively supports Linux as a build target, so if you don't use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. 
 
@@ -51,15 +51,15 @@ Moreover, there are a couple of important issues to consider:
 
 JUCE can be used directly for building VST plugins for Elk, due to its new "headless" features.
 
-Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not.
+Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not. Though it may still be useful to have an option in your plugin code to exclude the graphic editor and any large bitmap assets from the compilation to reduce bloat and binary size.
 
-The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and JUCE 8 installation.
+The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and a JUCE 8 installation.
 
 You can follow the instructions in the repository on how to install the docker image, run the container and build the AudioPlugin example.
 
-For other JUCE-based projects, the process should be pretty straightfoward:
+For other JUCE-based projects, the process should be pretty straightfoward following these steps:
 
-1. Make sure your JUCE project is using CMake and not Projucer for its build system
+1. Make sure your JUCE project is using CMake and not Projucer as its build system
 
 2. Make sure you are using the system-provided JUCE by using this line:
 ```
@@ -158,7 +158,7 @@ As in any real-time system, you are not allowed to call any operating system fun
   * Any thread synchronization primitives, like mutexes, semaphores, etc.
   * Some operations that are usually RT-safe on desktop systems but are not on Xenomai, for example querying system timers with e.g. *clock_gettime*.
 
-We provide the Twine library as a replacement for common use cases in audio plugins, e.g. querying timers and synchronizing worker threads in a real-time safe way.
+We provide the [Twine library](https://github.com/elk-audio/twine) as a replacement for common use cases in audio plugins, e.g. querying timers and synchronizing worker threads in a real-time safe way.
 
 Whenever you do an operation that is not RT-safe, Xenomai will perform a _mode switch_, i.e. it will give back control to the Linux Kernel to perform the needed system call and then will switch back to the Cobalt Kernel to continue its activity. The performance penalty for such operations is huge and you will very likely encounter audio dropouts if any mode switch will occur.
 

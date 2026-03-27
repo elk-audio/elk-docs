@@ -3,18 +3,13 @@
 Controlling Sushi using gRPC
 ============================
 
-If you are unfamiliar with gRPC, reading our `article introducing gRPC in the context of Elk Audio OS <https://elk.audio/controlling-plug-ins-in-elk-part-ii/>`__
-is a very good start.
-
-We provide `up-to-date examples <elk_examples_overview.html>`__ of programs which use gRPC to communicate with Sushi.
+gRPC is a remote proceduce call framework that enables processes to communicate, either over the network or locally, on the same machine. It supports most common programming languages and can even be used from a web browser. As such it's an ideal framework for controlling Sushi from a remote application, either on the same Elk device or over the network. Sushi exposes a rich API over gRPC. We also provide `up-to-date examples <elk_examples_overview.html>`__ of programs which use gRPC to communicate with Sushi.
 
 All these examples are written in Python, and use our `elkpy Python library <https://github.com/elk-audio/elkpy>`__,
-which greatly simplifies controlling Sushi over gRPC. The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__.
-
-For controlling Sushi from a C++ application we also provide a corresponding wrapper library for C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
+which greatly simplifies controlling Sushi over gRPC. The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__. For controlling Sushi from a C++ application we also provide a corresponding wrapper library for C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
 
 The heart of the gRPC integration, is the API definition in 
-`sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/protos/sushi_rpc.proto>`__.
+`sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/protos/sushi_rpc.proto>`__. Which defines all endpoints and their respective types.
 
 One way to quickly interact directly with the gRPC API during development is to use an API tool that has support for gRPC, for
 example [Postman](https://www.postman.com/). You can find more on how to load Sushi's .proto definition into Postman
