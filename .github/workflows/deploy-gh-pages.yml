@@ -35,6 +35,23 @@ jobs:
       - name: Build documentation with Sphinx
         run: make html
 
+      - name: Create redirect from root to html
+        run: |
+          cat > docs/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Redirecting...</title>
+            <meta http-equiv="refresh" content="0; url=html/index.html">
+            <link rel="canonical" href="html/index.html">
+          </head>
+          <body>
+            <p>Redirecting to <a href="html/index.html">documentation</a>...</p>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
