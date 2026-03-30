@@ -28,9 +28,18 @@ Alternatively, if you've pip-installed Sphinx:w
 
 	python3 -m sphinx -M html ./ ./docs/
 
-The output will be generated in `docs`, the folder expected by GitHub Pages for the HTML files it serves. 
+The output will be generated in `docs`.
 
-Do commit and push both your changed .MD, and generated HTML files, for your changes to be reflected on the online HTML version of the documentation.
+## Releasing 
 
-In the  `docs` folder, there are two files added manually, needed for GitHub Pages: `.nojekyll`, and `index.html`. If you every type `make clean`, these two will be deleted - ensure you then reinstate them before committing.
+The [Elk Audio Docs](https://elk-audio.github.io/elk-docs/) are hosted on GitHub
+pages. The Github CI is configured to automatically build and publish the
+website from a build artifact **whenever a tag is pushed**. Therefore, pushing
+the generated HTML files manually is no longer necessary.
+
+To not break old links from other projects, the site is served under the prefix
+`/html/`. Navigating to
+[https://elk-audio.github.io/elk-docs/index.html](https://elk-audio.github.io/elk-docs/index.html)
+will redirect to
+[https://elk-audio.github.io/elk-docs/html/index.html](https://elk-audio.github.io/elk-docs/html/index.html).
 
