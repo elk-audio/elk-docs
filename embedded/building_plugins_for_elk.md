@@ -146,7 +146,7 @@ If you need to connect USB MIDI devices, just plug them and connect them with th
 
 To get a rough view of CPU performance, *top* and similar Linux tools will only show you the amount of CPU used in non-RT tasks. To see CPU usage of Real Time tasks, use:
 
-   *watch -n 0.5 cat /proc/xenomai/sched/stat*
+   *watch -n 0.5 evl ps -ls*
 
 For a more fine-grained analysis, you can use Sushi's gRPC API to query timing statistics of each track and plugin.
 
