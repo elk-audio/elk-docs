@@ -10,7 +10,8 @@ For getting access to the board terminal you have several options:
 
 1. Connect a monitor over HDMI, and a keyboard directly to the USB slot.
 2. Connect over SSH using Ethernet.
-3. If the above two recommended options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - [read more here](../embedded/working_with_elk_board).
+3. If WiFi is available, you can configure it wirelessly using the [Elk WiFi Configurator](https://github.com/elk-audio/elk-wifi-configurator) web page. Open it in a Bluetooth-capable browser, click **Connect to BLE device** and select your board, then **Scan Networks**, choose your WiFi network, enter the password, and note the IP address shown — you can then connect over SSH as described above.
+4. If the above options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - [read more here](../embedded/working_with_elk_board).
 
 For setting up SSH connections follow these tips:
 

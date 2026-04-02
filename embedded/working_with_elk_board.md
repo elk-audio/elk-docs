@@ -159,6 +159,26 @@ With a serial connection you can login and have full shell access to the board, 
  the network or using a USB storage device. It might be useful to use *tmux* (installed in the development images) as
   a terminal multiplexer when working in this way.
 
+## Bluetooth Audio Streaming
+
+Elk Audio OS supports Bluetooth audio streaming by exposing two extra virtual RASPA audio channels, making the device appear as a Bluetooth A2DP source and sink. This allows audio to be routed to and from a paired phone, tablet, or computer directly through Sushi.
+
+To enable the feature, run on the board (as root):
+
+```bash
+$ systemctl enable elk-bluetooth-agent
+$ systemctl start elk-bluetooth-agent
+```
+
+Once the service is running, the device is discoverable and will auto-accept pairing requests. The Bluetooth audio streams are mapped to **RASPA channels 2 and 3** (0-indexed), which correspond to **Sushi audio bus index 1**. You can connect these to any track in your Sushi configuration as you would any other hardware input/output.
+
+To disable Bluetooth audio streaming:
+
+```bash
+$ systemctl stop elk-bluetooth-agent
+$ systemctl disable elk-bluetooth-agent
+```
+
 ## Monitoring Sushi Performance
 
 Given Sushi is running, to get a rough view of CPU performance, *top*, *htop* and similar Linux tools will only show
