@@ -14,7 +14,7 @@ imagesize==1.4.1
 Jinja2==3.1.6
 MarkupSafe==3.0.3
 packaging==25.0
-protobuf==6.33.1
+protobuf==6.33.5
 pydata-sphinx-theme==0.16.1
 Pygments==2.19.2
 recommonmark==0.7.1
