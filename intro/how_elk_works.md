@@ -2,8 +2,6 @@
 
 This section provides a look under the hood of a device made with Elk Audio OS, i.e. "Powered by Elk".
 
-For a shorter overview, check [Elk's architecture page](https://www.elk.audio/the-architecture) on our website.
-
 This article will give you a quick and informal overview of Elk Audio OS and its components, using a practical example
 to see how they can be used in a real product.
 
