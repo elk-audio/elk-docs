@@ -1,12 +1,12 @@
-# Build Plugins for Elk
+# Building Plugins for Elk
 
-Sushi is a headless Linux host that supports VST 2.x and 3.x plugins using an unmodified versions of Steinberg's APIs. It also supports LV2 plugins natively. So there is no need to do custom porting of your code, if it runs on a normal Linux system without dependencies on graphics libraries such as X11.
+Sushi is a headless Linux host that natively runs standard VST 2.x and 3.x plugins as well as LV2 plugins. This allows you to easily build hardware devices sharing DSP code with desktop audio plugins. Though plugins running on an Elk system must be recompiled using Elk's provided cross-compiling toolchain.
 
-Depending on your current codebase, though, you might need some code changes to meet the above  mentioned requirements, and you will need to recompile your plugin using Elk's provided cross-compiling toolchain. This document is a short guide to help you through the needed steps. The cross compiling toolchain can be run on a native linux machine, in a virtual linux machine or in a Docker image. 
+As Sushi is a headless (aka. no GUI) application, any plugins running inside it should not depend on graphics libraries such as X11, and sushi will not display the plugin's editor. We recommended that plugins for Elk implement an option to build without a plugin editor and graphical dependencies.
 
-As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.
+Apart from that, plugins built with standard tools such as Steinbergs VST SDKs or JUCE should be as straightforward to build and run as on a standard Linux system. This document is a short guide to help you through the neccesary steps in compling a plugin. The cross compiling toolchain can be run on a native Linux machine, a virtual Linux machine or a Docker image. As a recommended first step, make sure that your plugin builds and runs under a normal Linux distribution, with a Linux plugin host such as Carla, MrsWatson or Sushi itself.
 
-We provide a pre-configured Docker environment to help running all the cross-compilation tasks under both native Docker and Docker Desktop (for Windows and macOS), available at [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder).
+We provide a pre-configured Docker environment to help running all the cross-compilation tasks under both native Docker and Docker Desktop (for Windows and macOS), available at [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder). The public Docker image contains the SDK for the public Raspberry Pi 4 based Elk version (ElkPi). If you are developing for another Elk architecture you should have received a download link to the SDK for that platform. The instructions below apply to SDKs for all Elk platforms.
 
 ## Cross-Compiling Toolchain
 
@@ -16,16 +16,15 @@ You need to source the environment setup script to activate the toolchain. From 
 ```
 $ source [path-to-extracted-sdk]/environment-setup-[aarch-name]-elk-linux
 ```
+In the Elk Audio OS Builder Docker image the SDK is installed in */SDKs/*. If you're installing the SDK manually it defaults to */opt/elk/*. After sourcing the environment, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
 
-Then, proceed to build your plugin using e.g. make or CMake depending on your configuration. In case you need to build for other architectures, just replace the path to the environment script with the correct one depending on the installed cross-compiling toolchain.
-
-If you had previously changed your  *LD_LIBRARY_PATH*, you would need to first issue the *#$ unset LD_LIBRARY_PATH* command, before activating the toolchain following the preceding instructions.  In case it is more convenient in your case, you can just remove the relevant line in */home/minddev/.zshrc*.
+If you had previously changed your  *LD_LIBRARY_PATH*, you first need to issue the *#$ unset LD_LIBRARY_PATH* command, before activating the toolchain using source. In case it is more convenient in your case, you can also remove the relevant line in */home/minddev/.zshrc*.
 
 ## VST 2.x Plugins Using Steinberg SDK
 
-This use case is for those that don't rely on a cross platform framework like JUCE to generate VST 2.x plugins but rather want to use the original Steinberg SDK directly.
+This use case is for developers that don't rely on a cross platform framework like JUCE to generate VST 2.x plugins but prefer to use the original Steinberg SDK directly.
 
-Please notice that Steinberg has discontinued the VST 2.4 SDK, so it is no longer available for download since October 2018. You are still allowed to use the SDK and release VST 2.4 plugins if you have obtained a signed agreement with Steinberg prior to that date.
+Please note that Steinberg has discontinued the VST 2.4 SDK, and since as of October 2018 it is no longer available for download. You are still allowed to use the SDK and release VST 2.4 plugins if you have obtained a signed agreement with Steinberg prior to that date.
 
 The process in this case should be trivial if your plugin doesn't depend on any graphical libraries - this includes the VST GUI framework.
 
@@ -35,23 +34,19 @@ This should also be straightforward by using standard build systems. Since relea
 
 There is an example plugin that can be compiled with the provided toolchain under *work/vst3-template*, that also includes examples for communication between RT and non-RT threads using atomic-based lockless FIFOs.
 
-After cross-compilation, ensure that the folder under *"plugin.vst3/Contents"* is named correctly, it should be named according your target Elk device architecture and not a general **arm64-linux**. For the Raspberri Pi 4 image the correct architecture should be **aarch64-linux**, not *arm64-linux*, or the plugin will not work on the Elk-Pi - rename it yourself if needed.
+After cross-compilation, ensure that the folder under *"plugin.vst3/Contents"* is named correctly, it should be named according your target Elk device architecture and not a general **arm64-linux**. For the Raspberri Pi 4 image the correct architecture should be **aarch64-linux**, not *arm64-linux*, or the plugin will not work on the Elk-Pi - rename it yourself if neccesary.
 
 ## VST Plugins Using JUCE
 
-Most developers use a cross-platform framework for generating multiple versions of their plugins for various OSes / formats. JUCE being the most popular one by a large margin.
+Most developers use a cross-platform framework for generating multiple versions of their plugins for various OSes / formats. JUCE being the most popular by a large margin. JUCE actively supports Linux as a build target, so plugins that don't use third-party libraries incompatible with Linux should be straightforward to compile for Elk.
 
-JUCE actively supports Linux as a build target, so if you don't use any other third-party libraries incompatible with Linux, it should be straightforward to compile your plugins for Elk. 
-
-Note that any caveats and issues applying to each specific plugin format (i.e. VST 2, 3 detailed above) apply also when these are exported using JUCE.
-
-Moreover, there are a couple of important issues to consider:
+Note that any caveats and issues applying to specific plugin formats (i.e. VST 2, 3 detailed above) also apply when these are exported using JUCE.
 
 ### Plugins using JUCE Version 6 or above 
 
-JUCE can be used directly for building VST plugins for Elk, due to its new "headless" features.
+JUCE can be used directly for building VST plugins for Elk, due to its new "headless" features. We recommend developers to use JUCE 6 a minimum version.
 
-Observe that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not. Though it may still be useful to have an option in your plugin code to exclude the graphic editor and any large bitmap assets from the compilation to reduce bloat and binary size.
+Note that the build process still requires X11 headers to be available (and we have included these to our X-compilation SDK). The produced binary will then detect whether a display is available on the platform, and run as a headless plugin if not. Though it may still be useful to have an option in your plugin code to exclude the graphic editor and any large bitmap assets from the compilation to reduce bloat and binary size.
 
 The [ELK Audio OS builder](https://github.com/elk-audio/elk-audio-os-builder) docker image contains a preinstalled SDK for Raspberry Pi 4 and a JUCE 8 installation.
 
@@ -73,7 +68,7 @@ find_package(JUCE CONFIG REQUIRED)        # If you've installed JUCE to your sys
 
 ## LV2 Plugins
 
-Due to the LV2 plugin format's architecture, it is often very straightforward to build LV2 plugins for Elk. [LV2 strongly encourages the complete separation of GUI and plugin core](https://lv2plug.in/book/#_simple_oscilloscope), meaning building a headless plugin can be as simple as specifying an argument to not include the GUI, when generating the build project.
+Due to the LV2 plugin format's architecture, it is often very simple to build LV2 plugins for Elk. [LV2 strongly encourages the complete separation of GUI and plugin core](https://lv2plug.in/book/#_simple_oscilloscope), meaning building a headless plugin can be as simple as specifying an argument to not include the GUI, when generating the build project.
 
 To cross compile, the following steps are specific for cross-compiling the [Calf plugin collection](https://github.com/elk-community/calf), but should generalize well across the majority of LV2 plugins:
 
