@@ -111,7 +111,9 @@ To reset the boot count environment variable to 0, enter the command  *$ elk_sys
 
 Log-in to the board using Ethernet, HDMI monitor and USB keyboard, or a serial cable, as per in our [getting started guide](../intro/run_elk_on_boards.md).
 
-The easiest way to setup WiFi access is through *connman*, which is enabled by default in dev images:
+The easiest way to setup WiFi access is the [Elk WiFi Configurator](https://elk-audio.github.io/elk-wifi-configurator/) web page, which connects to the board over Bluetooth and doesn't need any other connection to it. Open the page in a Bluetooth-capable browser (e.g. Chrome), click **Connect to Device** and select your board, then **Scan for Networks**, choose your WiFi network and enter the password. The page then shows the IP address assigned to the board.
+
+You can also setup WiFi from the board terminal through *connman*, which is enabled by default in dev images:
 
 ```bash
 $ sudo connmanctl
@@ -163,7 +165,7 @@ With a serial connection you can login and have full shell access to the board, 
 
 Elk Audio OS supports Bluetooth audio streaming by exposing two extra virtual RASPA audio channels, making the device appear as a Bluetooth A2DP source and sink. This allows audio to be routed to and from a paired phone, tablet, or computer directly through Sushi.
 
-To enable the feature, run on the board (as root):
+Since Elk Audio OS 1.4.0, the *elk-bluetooth-agent* service that handles the feature is enabled by default. If you have disabled it, you can enable it again by running on the board (as root):
 
 ```bash
 $ systemctl enable elk-bluetooth-agent
@@ -192,6 +194,8 @@ For a more fine-grained analysis, you can use Sushi's gRPC api to query timing s
 , or you can run Sushi with the *--timing-statistics* flag to get the results in `timings.txt` written to the current path.
 If timing statistics are enabled, they will also periodically be written to the sushi log file.
 
+For debugging, the *--detailed-timings=\<processor names\>* flag records the timings of every audio callback for the given processors, separated by semicolons. This records a lot of data, so use it only for short sessions.
+
 ## Software Update System
 
 Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) for its update system, which has double responsibility of restoring the system after filesystem corruption, and of securely updating it.
@@ -202,7 +206,7 @@ Elk uses a modified version of [swupdate](https://sbabic.github.io/swupdate/) fo
 ### Updating over Network (WiFi / Ethernet)
 
   1. Make sure your board is connected to the same local network as your computer. If you need to setup a network, check the [relevant section](#connecting-to-your-board).
-  2. Open a web browser and go to ***http://\<your Elk Pi board ip address\>:8080***
+  2. Open a web browser and go to ***http://\<your board ip address\>:8080***
   3. You should see an Elk Audio OS update page. Just drag and drop the update file (*.swu*) or click in the middle
    to upload the file to start the update.
   4. When the update is completed successfully, the page prompts a message that the board is restarting, but you need
@@ -260,6 +264,34 @@ $ systemctl disable sushi
 To monitor the user-autostart service status you can run
 ```bash
 systemctl status user-autostart
+```
+
+## Sushi Web UI
+
+Elk Audio OS 1.4.0 includes [Sushi Web UI](https://github.com/elk-audio/sushi-webui), a control surface for Sushi that runs in a web browser on your computer, tablet or phone. It shows Sushi's tracks as a mixer with live meters, and lets you add plugins to tracks, edit their parameters, and set up buses and sends. Sessions are saved as projects on the board.
+
+The Web UI is disabled by default. The easiest way to enable it is from the [Elk WiFi Configurator](https://elk-audio.github.io/elk-wifi-configurator/) page: once the board is connected to WiFi, a **Sushi Web UI** section appears, with an **Enable Sushi WebUI services** button. The services then start immediately and at every boot, and the page shows the link to the Web UI.
+
+You can also enable it from the board terminal (as root):
+
+```bash
+$ systemctl enable --now sushi-webui-engine sushi-webui sushi-midi-autoconnect
+```
+
+The Web UI is then available at ***http://\<your board ip address\>:8081***, or *http://elk-pi.local:8081*. Port 8080 is used by the [software update page](#updating-over-network-wifi-ethernet).
+
+The three services are:
+
+  * *sushi-webui-engine*: runs Sushi with the RASPA frontend and an empty session. It can't run together with the *sushi* service, since both would use the audio driver.
+  * *sushi-webui*: the Web UI server, which controls Sushi over its ZeroMQ API. Projects and settings are stored under */udata/sushi-webui*, so they are kept after a software update.
+  * *sushi-midi-autoconnect*: connects the MIDI input devices plugged into the board, e.g. USB MIDI keyboards, to Sushi. Devices plugged in later are connected as well.
+
+The plugin browser lists the plugins installed on the image. To get a larger selection, use the *elkpi-audio-os-plugins-image*, which includes several open-source plugins under */opt/plugins*.
+
+To disable the Web UI, use the same button in the WiFi Configurator, or run (as root):
+
+```bash
+$ systemctl disable --now sushi-webui-engine sushi-webui sushi-midi-autoconnect
 ```
 
 ## Setting CPU Speed

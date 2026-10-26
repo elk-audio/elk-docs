@@ -29,7 +29,7 @@ The simplest way to interact at runtime with Sushi, e.g. to change some paramete
 plugin, is to use the [example Python QT GUI application](https://github.com/elk-audio/sushi-gui).
 
 If you are on macOS or Windows, just grab the latest binary from the Releases section, otherwise follow the
-instructions in the [main README](https://github.com/elk-audio/sushi-gui/README.md) on how to build and run
+instructions in the [main README](https://github.com/elk-audio/sushi-gui/blob/master/README.md) on how to build and run
 from source if you're using Linux.
 
 ![Sushi Python QT GUI](illustrations/sushigui.png)
@@ -50,13 +50,13 @@ You can even save the current state in binary format and later recall it through
 
 If you want to do more on your synthesizer instance, e.g. changing some run-time parameters, SUSHI exposes everything that you need using both OSC or gRPC APIs.
 
-Using the gRPC API gives you the greater flexibility and performance but as that is it's a more of advanced topic, it’s covered in a [dedicated section](sushi_control_grpc.md).
+Using the gRPC API gives you the greater flexibility and performance but as that is it's a more of advanced topic, it’s covered in a [dedicated section](sushi_control_grpc).
 
 For OSC, we've prepared some configuration files that can be used with popular applications in our [elk-examples repository](https://github.com/elk-audio/elk-examples/tree/master/mda-jx10-vst3).
 
 ### Control MDA JX10 VST3 plugin with Open Stage Control
 
-If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read the article on the Elk Tech blog, dedicated to the topic](https://elk.audio/controlling-plug-ins-in-elk-part-i/).
+If you do not know what Open Sound Control (OSC) is, it is helpful (but not mandatory) [if you first read an introduction to it](https://opensoundcontrol.stanford.edu/).
 
 1. Download and install the free [Open Stage Control](https://openstagecontrol.ammd.net/) application to your computer.
 

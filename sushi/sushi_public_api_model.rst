@@ -31,19 +31,21 @@ The processors contained in tracks all have the same audio and keyboard connecti
 
 Each audio track can be either a regular track with 1 or more channels or a "multibus" track. If the multibus option is enabled each set of 2 channels i the track is considered a stereo pair with its own individual pan and gain controls. 
 
+When Sushi runs with multicore processing, each track is processed by one of the audio threads. A track can be assigned to a specific thread when it is created, from the JSON configuration file or over gRPC, otherwise Sushi assigns tracks to threads in round-robin order.
+
 Individually, the parameters of each processor can be controlled by various means:
 
 -  Over MIDI Control Change.
 -  Over Open Sound Control (OSC) messages.
 -  Using CV connections.
--  Set directly over gRPC.
+-  Set directly over gRPC, or over ZeroMQ from applications running on the same machine.
 -  Set in the JSON configuration file to specific values on startup, or even played back over time during off-line processing.
 
 Also, mappings can be created to each processor, to echo/notify of the change of state of its internal parameters:
 
 -  Over OSC messages.
 -  Using CV / Gate connections.
--  Using Notifications over gRPC.
+-  Using Notifications over gRPC or ZeroMQ.
 
 Tracks have the following parameters that can be controlled in realtime:
 
@@ -79,7 +81,7 @@ For others, it may only be possible over one of the above.
 Generally the complexity of what can be achieved with each is as follows:
 
 -  `Configuration over JSON <sushi_configuration_format.html>`__: Everything that can be defined statically is possible to set in the configuration file.
--  The `gRPC API <sushi_control_grpc.html>`__: covers the vast majority of all that can be accessed, adding also run-time access for dynamic alterations and monitoring.
+-  The `gRPC API <sushi_control_grpc.html>`__: covers the vast majority of all that can be accessed, adding also run-time access for dynamic alterations and monitoring. The same API is also available over ZeroMQ, for applications running on the same machine as Sushi.
 -  The `Open Sound Control API <sushi_control_osc.html>`__ defines a streamlined sub-set of operations, selected to make sense for the common contexts of use for OSC: Efficient messages notifying of parameter changes; and enabling End-Users to create their own custom GUI's and mappings to other media tools.
 -  MIDI, CC and CV/Gate are also primarily defined to be accessible by end-users, for their integration of the audio device with their other technologies.
 

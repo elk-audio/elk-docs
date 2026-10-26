@@ -61,7 +61,7 @@ Utility plugin for mixing the two channels of a stereo signal independently.
     + "ch1_pan" : The pan of channel 1 (left channel) (Normalized from [-1.0, 1.0], Default: -1.0)
     + "ch1_invert_phase : Invert the phase of channel 1 (left channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
     + "ch2_gain" : The gain of channel 2 (right channel) in dB (Normalized from [-120, 24], Default: 0.0)
-    + "ch2_pan" : The pan of channel 2 (right channel) (Normalized from [-1.0, 1.0], Default: -1.0)
+    + "ch2_pan" : The pan of channel 2 (right channel) (Normalized from [-1.0, 1.0], Default: 1.0)
     + "ch2_invert_phase : Invert the phase of channel 2 (right channel) ([0.0, 1.0], Default: 0.0, set to > 0.5 to invert phase)
 
 ### Send
@@ -193,6 +193,15 @@ Adapter plugin to convert from note on and note off messages, to CV/gate informa
       + "pitch_1"..."pitch_4": Pitch in semitones. Default: 0.0.
       + "velocity_1"..."velocity_4": Note On velocity. Default: 0.5.
 
+### LFO
+
+Low frequency oscillator with a sine waveform. Its output parameter can be routed to a CV output, or used to modulate other parameters. See `misc/config_files/cv_lfo.json` for an example.
+
+  * **uid** : "sushi.testing.lfo"
+  * **Parameters** :
+    + "freq": Oscillator frequency in Hz. (Normalized from [0.001, 10.0], Default: 1.0).
+    + "out": Oscillator output, updated once per audio buffer. Range: [0.0, 1.0], Default: 0.5.
+
 ## Utility plugins
 
 ### Wav writer
@@ -219,7 +228,7 @@ Plugin for streaming large audio files from disk without loading the full file i
   + "seek" : Sets the playback position relative to the start and end of the file. Range : [0, 1.0], Default: 0.0.
   + "playing" : Enables or disables audio playback. Range: [0.0, 1.0], Default : 0 for off.
   + "loop" : Enables or disables looped playback. Range: [0.0, 1.0], Default : 0 for off.
-  + "playing" : Enables or disables exponential volume fades when starting or stopping. If disabled, volume fades linearily. Range: [0.0, 1.0], Default : 0 for off.
+  + "exp_fade" : Enables or disables exponential volume fades when starting or stopping. If disabled, volume fades linearily. Range: [0.0, 1.0], Default : 0 for off.
 
 * **Parameters (output only)**:
   + "position" : Displays the current playback position relative to the start and end of the file. Range: [0, 1.0], Default: 0.0.
@@ -272,7 +281,7 @@ Chorus with variable rate and amount.
 
 Antialiased hard clipper with parametric bias and gain (compensation) and output bias removal.
 
-  * **uid** : "sushi.brickwork.clip"
+  * **uid** : "sushi.brickworks.clip"
   * **Parameters** :
     + "bias" : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)
     + "gain" : Linear compensation output gain (Normalized from [0.1, 10.0], default : 1.0)
@@ -281,7 +290,7 @@ Antialiased hard clipper with parametric bias and gain (compensation) and output
 
 Comb filter / delay effect with feedforward and feedback paths.
 
-  * **uid** : "sushi.brickwork.comb_delay"
+  * **uid** : "sushi.brickworks.comb_delay"
   * **Parameters** :
     + "ff_delay" : Feedforward delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)
     + "fb_delay" : Feedback delay time in seconds. (Normalized from [0.0, 1.0], default : 0.05)
@@ -293,7 +302,7 @@ Comb filter / delay effect with feedforward and feedback paths.
 
 Feedforward compressor/limiter. In a multichannel track, the control signal is a -3dB sum of all the input channels.
 
-  * **uid** : "sushi.brickwork.compressor"
+  * **uid** : "sushi.brickworks.compressor"
   * **Parameters** :
     + "threshold" : Compression threshold in dB. (Normalized from [-60, 12], default : 0.0)
     + "ratio" : Compression ratio; the value is actually the slope of the gain curve above the threshold, hence `1.0` means no compression and `0.0` is a hard limit. ([0.0, 1.0], default: 1.0)
@@ -305,7 +314,7 @@ Feedforward compressor/limiter. In a multichannel track, the control signal is a
 
 Distortion effect, loosely inspired by the "rodent" distortion pedal.
 
-  * **uid** : "sushi.brickwork.dist"
+  * **uid** : "sushi.brickworks.dist"
   * **Parameters** :
     + "dist" : Distortion (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "tone" : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)
@@ -315,7 +324,7 @@ Distortion effect, loosely inspired by the "rodent" distortion pedal.
 
 Overdrive effect, loosely inspired by the green "screaming" overdrive pedal.
 
-  * **uid** : "sushi.brickwork.drive"
+  * **uid** : "sushi.brickworks.drive"
   * **Parameters** :
     + "drive" : Overdrive (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "tone" : Tone (filter) parameter. ([0.0, 1.0], default : 0.5)
@@ -325,7 +334,7 @@ Overdrive effect, loosely inspired by the green "screaming" overdrive pedal.
 
 Equalizer with 2nd-order (12 dB/oct) low shelf, peak and high shelf filters, similar to the one found in most channel strips.
 
-  * **uid** : "sushi.brickwork.eq3band"
+  * **uid** : "sushi.brickworks.eq3band"
   * **Parameters** :
     + "lowshelf_freq" : Low shelf cutoff frequency in Hz. (Normalized from [25.0, 1'000.0], default : 125.0)
     + "lowshelf_gain" : Low shelf gain in dB. (Normalized from [-24, 24.0], default : 0.0)
@@ -350,7 +359,7 @@ Flanger with variable rate and amount.
 
 Fuzz effect, loosely inspired by the "smiling" fuzz pedal.
 
-  * **uid** : "sushi.brickwork.fuzz"
+  * **uid** : "sushi.brickworks.fuzz"
   * **Parameters** :
     + "fuzz" : Fuzz (input gain, approximately). ([0.0, 1.0], default : 0.0)
     + "volume" : Volume (output gain) ([0.0, 1.0], default : 1.0)
@@ -359,7 +368,7 @@ Fuzz effect, loosely inspired by the "smiling" fuzz pedal.
 
 First-order highpass filter (6 dB/oct) with gain asymptotically approaching unity as frequency increases.
 
-  * **uid** : "sushi.brickwork.highpass"
+  * **uid** : "sushi.brickworks.highpass"
   * **Parameters** :
     + "frequency" : Cutoff frequency in Hz. (Normalized from [20.0, 20'000.0], default : 50.0)
 
@@ -367,7 +376,7 @@ First-order highpass filter (6 dB/oct) with gain asymptotically approaching unit
 
 Second-order multimode filter, the various modes are blended together with a set of coefficient parameters.
 
-  * **uid** : "sushi.brickwork.multi_filter"
+  * **uid** : "sushi.brickworks.multi_filter"
   * **Parameters** :
     + "frequency" : Cutoff frequency in Hz. (Normalized from [20.0, 20'000.0], default : 1'000.0)
     + "Q" : Q factor. (Normalized from [0.5, 10.0], default : 1.0)
@@ -380,7 +389,7 @@ Second-order multimode filter, the various modes are blended together with a set
 
 Noise gate; in case of multichannel setup, each channel is gated independently.
 
-  * **uid** : "sushi.brickwork.noise_gate"
+  * **uid** : "sushi.brickworks.noise_gate"
   * **Parameters** :
     + "threshold" : Threshold in dB. (Normalized from [-60.0, 60.0], default : 0.0)
     + "ratio" : Compression ratio (0 = no gating, 1 = hard gate). ([0.0, 1.0], default: 0.0) 
@@ -391,7 +400,7 @@ Noise gate; in case of multichannel setup, each channel is gated independently.
 
 Second-order notch filter with unity gain at DC and asymptotically as frequency increases, and null gain at cutoff frequency.
 
-  * **uid** : "sushi.brickwork.notch"
+  * **uid** : "sushi.brickworks.notch"
   * **Parameters** :
     + "frequency" : Center frequency in Hz. (Normalized from [20.0, 20'000.0], default : 1'000.0)
     + "Q" : Q factor. (Normalized from [0.5, 10.0], default : 1.0)
@@ -412,15 +421,15 @@ Ring modulator
 
   * **uid** : "sushi.brickworks.ring_mod"
   * **Parameters** :
-    + "frequency" : Modulator frequency in Hz. (Normalized from [20, 10'000.0], default : 1'000.0)
-    + "amount" : Modulation amount (-1 = full modulation with opposite phase, 0 = no modulation, 1 = full modulation). (Normalized from [-1.0, 1.0], default : 1.0)
+    + "frequency" : Modulator frequency in Hz. (Normalized from [20, 20'000.0], default : 1'000.0)
+    + "amount" : Modulation amount (-1 = full modulation with opposite phase, 0 = no modulation, 1 = full modulation). (Normalized from [-1.0, 1.0], default : 0.0)
 
 
 ### Saturation
 
 Antialiased tanh-based saturation with parametric bias and gain (compensation) and output bias removal.
 
-  * **uid** : "sushi.brickwork.saturation"
+  * **uid** : "sushi.brickworks.saturation"
   * **Parameters** :
     + "bias" : Input bias. (Normalized from [-2.5, 2.5], default : 0.0)
     + "gain" : Input gain (Normalized from [0.1, 10.0], default : 1.0)
@@ -447,7 +456,7 @@ Tremolo with variable speed and amount.
 
 Simple wah digital effect.
 
-  * **uid** : "sushi.brickworks.vibrato"
+  * **uid** : "sushi.brickworks.wah"
   * **Parameters** :
     + "wah" : Wah pedal position (0 = low cutoff, 1 = high cutoff) ([0.0, 1.0], default : 0.5)
 
@@ -458,12 +467,12 @@ Very simple monophonic synthesizer consisting of a single PWM oscillator, a stat
   * **uid** : "sushi.brickworks.simple_synth"
   * **Parameters** :
     + "volume" : Output volume in dB (Normalized from [-60.0, 12.0], default : 0.0)
-    + "portamento" : Portamento time in seconds. ([0.0, 1.0], default : 0.01)
+    + "portamento" : Portamento time in seconds. ([0.0, 0.434], default : 0.0)
     + "pulse_width" : Pulse width ([0.0, 1.0], default : 0.5)
     + "filter_cutoff" : Filter cutoff in Hz (Normalized from [20.0, 20'000.0], default : 4'000.0)
     + "filter_Q" :  Filter Q factor / resonance. (Normalized from [0.5, 10.0], default : 1.0)
-    + "attack" : Attack time constant in seconds. ([0.0, 1.0], default : 0.01)
-    + "decay" : Decay time constant in seconds. ([0.0, 1.0], default : 0.01)
+    + "attack" : Attack time constant in seconds. ([0.002, 1.0], default : 0.002)
+    + "decay" : Decay time constant in seconds. ([0.002, 1.0], default : 0.002)
     + "sustain" : Sustain level. ([0.0, 1.0], default : 1.0)
-    + "release" : Release time constant in seconds. ([0.0, 1.0], default : 0.01)
+    + "release" : Release time constant in seconds. ([0.002, 1.0], default : 0.002)
 

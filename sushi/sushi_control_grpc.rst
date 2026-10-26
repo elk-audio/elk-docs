@@ -9,7 +9,12 @@ All these examples are written in Python, and use our `elkpy Python library <htt
 which greatly simplifies controlling Sushi over gRPC. The elkpy library has comprehensive comments, and is also `documented here <../_modules/index.html>`__. For controlling Sushi from a C++ application we also provide a corresponding wrapper library for C++  `elkcpp library <https://github.com/elk-audio/elkcpp>`__
 
 The heart of the gRPC integration, is the API definition in 
-`sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/protos/sushi_rpc.proto>`__. Which defines all endpoints and their respective types.
+`sushi_rpc.proto file <https://github.com/elk-audio/sushi-grpc-api/blob/master/sushi_rpc.proto>`__. Which defines all endpoints and their respective types.
+
+Since Sushi 1.3, the API is versioned. The expected version is defined in
+`api_version.proto <https://github.com/elk-audio/sushi-grpc-api/blob/master/api_version.proto>`__,
+and a client can compare it with the value returned by ``SystemController.GetSushiApiVersion``
+to check that it matches the Sushi instance it is controlling.
 
 One way to quickly interact directly with the gRPC API during development is to use an API tool that has support for gRPC, for
 example [Postman](https://www.postman.com/). You can find more on how to load Sushi's .proto definition into Postman
@@ -40,6 +45,10 @@ These are:
 -  NotificationController
 
 All except NotificationController, define methods the GUI can invoke to query Sushi on its state, and issue commands to modify that state.
+
+Methods that modify Sushi's state return a ``CommandResponse``, with a status and a command id.
+Some commands are completed asynchronously by Sushi. In that case the status is
+``ASYNC_RESPONSE``, and the final result is sent later through the NotificationController, with the same id.
 
 For the details on the methods that can be invoked from each controller, please refer to the .proto file, and `elkpy library
 documentation <../elkpy-doc/elkpy.html>`__.
@@ -99,12 +108,12 @@ Enables querying and setting the state of the global Sushi transport - start/sto
 SystemController
 ^^^^^^^^^^^^^^^^
 
-Allows querying static information about the current Sushi version.
+Allows querying static information about the running Sushi instance: the Sushi version, the gRPC API version, build information (build options, audio buffer size, commit hash and date) and the number of audio input and output channels.
 
 TimingController
 ^^^^^^^^^^^^^^^^
 
-Allows the generation and querying of CPU timing information for the engine, individual tracks or processors.
+Allows the generation and querying of CPU timing information for the engine, individual tracks or processors. When Sushi runs with multicore processing, the engine timings also include the timings of each audio thread.
 
 SessionController
 ^^^^^^^^^^^^^^^^^
@@ -118,4 +127,17 @@ Sushi gRPC Notifications
 NotificationController is different in that using it the GUI can subscribe to notifications of events happening in Sushi:
 for example if a plugin is added/removed, a track is added/removed,
 the transport state is changed, or a plugin's internal parameter has changed value.
+
+Since Sushi 1.3, clients can also subscribe to ``SubscribeToAsyncCommandUpdates`` to receive the result of
+commands that are completed asynchronously.
+
+Controlling Sushi using ZeroMQ
+------------------------------
+
+Since version 1.4, Sushi exposes the same controllers and methods through `ZeroMQ <https://zeromq.org/>`__,
+over the local IPC sockets *ipc:///tmp/sushi_ipc.sock* (commands) and *ipc:///tmp/sushi_pub.sock* (notifications).
+The messages are the same ones defined in *sushi_rpc.proto*.
+
+The ZeroMQ API is only available to applications running on the same machine as Sushi. The Sushi web UI included in Elk Audio OS 1.4.0 uses it by default.
+The ZeroMQ server is enabled by default, and you can disable it by starting Sushi with the *--no-zmq* flag.
 

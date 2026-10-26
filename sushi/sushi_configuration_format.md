@@ -49,7 +49,7 @@ Following is a reference for the Sushi .json configuration file.
     *   Alternatively:
     * **“engine_channel”** - The id of the engine output channel to route audio to.
     * **“track_channel”** - The id of the track channel to route audio from.
-* **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3.6 plugins or LV2 plugins (natively, or using the LV2VST wrapper).
+* **“plugins”** - A list of plugin objects that will be added to the track in the order specified here. Plugins can be either internal processors, VST 2.4 plugins, VST 3 plugins or LV2 plugins (natively, or using the LV2VST wrapper).
     * **“name”** - The name of the plugin - must be unique.
     * **“type”** - The plugin format, valid values are: “internal”, “vst2x”, “vst3x”, or "lv2" for native LV2 hosting.
     * **“path”** - The path to an external plugin. For VST 2, this is the path to the dynamic library, for VST 3 it is the path to the plugin directory. Not valid for internal plugins, or for natively hosting LV2.
@@ -92,7 +92,7 @@ Following is a reference for the Sushi .json configuration file.
     * **“channel”** - Only route MIDI data with this particular channel. Valid options are integers 0-15 and “all”, which passes all channels.
     * **“plugin”** - Name of the plugin to route program changes to.
 * **"clock_output"** - Control output of MIDI clock messages.
-    * **"enabled_outputs"** A list of MIDI port ids from which output midi clock messages and midi start/stop messages will be emitted.
+    * **"enabled_ports"** A list of MIDI port ids from which output midi clock messages and midi start/stop messages will be emitted.
 
 ## Open Sound Control Connections
 
@@ -103,7 +103,7 @@ Here you can enable OSC messages to be transmitted from Sushi, whenever a proces
 This works in two ways, either all, or only specific processors, are enabled. The below two all/processor entries are thus mutually exclusive, and cannot coexist in a configuration:
 
 - **"enable_all_processor_outputs"** - Set this to true, for all possible OSC notifications, from all processors, to be transmitter.
-- **"enable_processor_outputs"** - Enable the OSC notifications for the specific processors. This is a list of entries with fields:
+- **"enabled_processor_outputs"** - Enable the OSC notifications for the specific processors. This is a list of entries with fields:
   - **"processor"** - The name of the track or plugin to connect from.
     - **"parameter_blocklist"** - A list of parameters of the processor, which should not trigger notifications.
       - **"parameter"** - The name of the parameter to block the OSC output from.
@@ -121,17 +121,19 @@ This works in two ways, either all, or only specific processors, are enabled. Th
     * **"processor"** - The name of the track or plugin to connect from.
     * **"parameter"** - The name of the parameter to connect from.
 * **"gate\_inputs"** - Connect gate inputs to plugins. A list of routing objects with the following members:
-    * **"mode"** - The mode to use for the selected gate input, currently "note_event" is the only supported mode. In this mode gate events will be converted to note events and passed on to the plugin with the selected channel and note number (note on for positive gate and note off for negative).
+    * **"mode"** - The mode to use for the selected gate input, either "note_event" or "sync". In "note_event" mode gate events will be converted to note events and passed on to the plugin with the selected channel and note number (note on for positive gate and note off for negative). In "sync" mode the gate input is used as a clock source for Sushi's tempo sync, and only "gate" and "ppq_ticks" are required.
     * **"processor"** - The name of the plugin or track to connect to.
     * **"gate"** - The id of the Gate input.
     * **"note\_no"** - The note number to use for gate events from this gate input (0-127)
     * **"channel"** - The note number to use for gate events from this gate input (0-15)
+    * **"ppq\_ticks"** - Only for "sync" mode. The number of clock pulses per quarter note (1-48).
 * **"gate\_outputs"** - Connect gate inputs to plugins. A list of routing objects with the following members:
-    * **"mode"** - The mode to use for the selected gate output, currently "note_event" is the only supported mode. In this mode note events sent from the plugin with the selected note numbers and channel will be converted to gate events (note on to positive gate and note on) and sent to the selected Gate output.
+    * **"mode"** - The mode to use for the selected gate output, either "note_event" or "sync". In "sync" mode Sushi outputs clock pulses on the selected Gate output, and only "gate" and "ppq_ticks" are required. In "note_event" mode note events sent from the plugin with the selected note numbers and channel will be converted to gate events (note on to positive gate and note on) and sent to the selected Gate output.
     * **"processor"** - The name of the plugin to connect from.
     * **"gate"** - The id of the Gate output.
     * **"note\_no"** - The note number to use for gate events from this gate output (0-127)
     * **"channel"** - The note number to use for gate events from this gate output (0-15)
+    * **"ppq\_ticks"** - Only for "sync" mode. The number of clock pulses per quarter note (1-48).
 
 ## Events
 **“events”** - A list of events to play back during processing. For the offline and dummy frontends, these events will be played back at the time set in the event object. For Raspa and Jack frontends, the time member is ignored and all events are sent immediately when starting Sushi.

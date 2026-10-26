@@ -15,7 +15,9 @@ You don't need to tweak software (device tree, ALSA settings, etc.) since the hi
 
 To get the system running, you need to flash an Elk operating system image onto an SD card and plug it into the Raspberry Pi. The minimum required SD card size is 8GB.
 
-1. Download the compressed image from the provided link. It will have a filename such as: *elkpi-audio-os-image-basic-raspberrypi4-64-vX.Y.Z.wic.bz2*.
+1. Download the compressed image from the [elk-pi releases page](https://github.com/elk-audio/elk-pi/releases). Each release provides two images:
+   * *elkpi-audio-os-image-raspberrypi4-64-vX.Y.Z.wic.bz2*: the development image.
+   * *elkpi-audio-os-plugins-image-raspberrypi4-64-vX.Y.Z.wic.bz2*: the same image, with a selection of open-source audio plugins installed under */opt/plugins*.
 
 2. Connect the empty SD card to a computer. If you do not have a computer with an SD/Micro-SD card reader, you will need a USB adapter.
 
@@ -23,12 +25,12 @@ To get the system running, you need to flash an Elk operating system image onto 
 
    1. Extract the *.wic* file from the *.bz2* archive using [7Zip](https://www.7-zip.org/download.html) or another compression utility.
 
-   2. Download and install [balenaEtcher](https://www.balena.io/etcher/), or [Win32DiskImager](https://www.raspberrypi.org/downloads/).
+   2. Download and install [balenaEtcher](https://etcher.balena.io/), or [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/).
    
    3. Flash the extracted *\*.wic* file to the SD card.
 
 ### Linux:
-At your convenience, you can either use [balenaEtcher](https://www.balena.io/etcher/), or use plain *dd* with these instructions:
+At your convenience, you can either use [balenaEtcher](https://etcher.balena.io/), or use plain *dd* with these instructions:
 
    1. Find out under what name your SD card is listed on your computer, using e.g. *lsblk -f*. On modern Linux distributions it usually is */dev/sdb*, */dev/sdc*, or subsequent letters, or sometimes */dev/mmcblk0*. We will from now on refer to it as */dev/sdX*.
    
@@ -41,7 +43,7 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
    3. **VERY IMPORTANT: double-check that you are using the correct device with dd! Otherwise you could risk wiping out another disk on your machine!** To uncompress and flash onto the SD card run:
       
    ```bash
-      $ bzcat elkpi-audio-os-image-basic-raspberrypi4-64-vX.Y.Z.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync
+      $ bzcat elkpi-audio-os-image-raspberrypi4-64-vX.Y.Z.wic.bz2 | sudo dd of=/dev/sdX bs=4M status=progress && sync
    ```
 
 
@@ -51,12 +53,12 @@ At your convenience, you can either use [balenaEtcher](https://www.balena.io/etc
 
 ### macOS:
 
-   Also here you can flash the image using [balenaEtcher](https://www.balena.io/etcher/), using Unarchiver to extract the *.bz2* file first.
+   Also here you can flash the image using [balenaEtcher](https://etcher.balena.io/), using Unarchiver to extract the *.bz2* file first.
 
 ## 3. Power up, and next steps
 
 1. Put the SD card in the corresponding slot on the Raspberry Pi.
-2. Connect the power supply Micro-USB cable to the Raspberry Pi - it will boot into Linux.
+2. Connect the power supply USB-C cable to the Raspberry Pi - it will boot into Linux.
 
 From here on, the steps for connecting, and getting sound output, are the same for all our boards. These are detailed in [Run Elk on Boards](run_elk_on_boards.md).
 

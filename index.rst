@@ -12,7 +12,7 @@ Elk Audio OS documentation
    Legacy documentation <legacy/index>
 
 **Useful links**:
-`Main website <https://elk.audio/start>`_ |
+`Main website <https://elk.audio>`_ |
 `Github Repositories <https://github.com/elk-audio>`_ |
 `Forum <https://forum.elk.audio>`_
 
@@ -47,7 +47,7 @@ Elk Audio OS also support another variety of ARM and x86 System on Chips. For mo
         Getting Started on your computer
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         
-        You only need a macOS or Linux computer to try out Elk's most important part, its audio engine Sushi, and get an idea of how making products for Elk feels like.
+        You only need a macOS, Windows or Linux computer to try out Elk's most important part, its audio engine Sushi, and get an idea of how making products for Elk feels like.
 
         +++
 
