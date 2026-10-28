@@ -10,7 +10,7 @@ For getting access to the board terminal you have several options:
 
 1. Connect a monitor over HDMI, and a keyboard directly to the USB slot.
 2. Connect over SSH using Ethernet.
-3. If WiFi is available, you can configure it wirelessly using the [Elk WiFi Configurator](https://github.com/elk-audio/elk-wifi-configurator) web page. Open it in a Bluetooth-capable browser, click **Connect to BLE device** and select your board, then **Scan Networks**, choose your WiFi network, enter the password, and note the IP address shown — you can then connect over SSH as described above.
+3. If WiFi is available, you can configure it wirelessly using the [Elk WiFi Configurator](https://elk-audio.github.io/elk-wifi-configurator/) web page. Open it in a Bluetooth-capable browser, click **Connect to Device** and select your board, then **Scan for Networks**, choose your WiFi network, enter the password, and note the IP address shown. You can then connect over SSH as described above.
 4. If the above options are not available to you, you can also connect through serial tty using a UART-to-USB converter with an FTDI chip - [read more here](../embedded/working_with_elk_board).
 
 For setting up SSH connections follow these tips:
@@ -57,6 +57,12 @@ $ sushi -r --multicore-processing=2 -c ~/config_files/play_vst3.json &
 Note the *&* at the end - this means the process starts in the background. When you later need to stop it, you type
  *$ pkill sushi*.
 
+Only one Sushi instance at a time can use the audio driver. If you have enabled the [Sushi Web UI](../embedded/working_with_elk_board.html#sushi-web-ui) services, stop its Sushi instance before starting Sushi manually:
+
+```bash
+$ sudo systemctl stop sushi-webui-engine
+```
+
 To connect USB Midi devices, just plug them and connect them with the *aconnect* tool:
 
 ```bash
@@ -71,6 +77,8 @@ $ aconnect X Y
 If you connect a USB Midi keyboard and a pair of headphones to the Elk Pi, you will now be able to play the MDA JX10 synthesizer running on the board!
 
 Since this is a development board, you will need to start Sushi manually - but under [Working with Elk](../embedded/working_with_elk_board.md). we show how the device can be configured to load a setup automatically on power-on.
+
+If you prefer to control Sushi from a browser, Elk Audio OS 1.4.0 also includes the [Sushi Web UI](../embedded/working_with_elk_board.html#sushi-web-ui), which you can enable from the WiFi Configurator page.
 
 ## 4. Powering down
 

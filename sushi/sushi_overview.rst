@@ -11,11 +11,11 @@ Sushi is a track-based, headless Digital Audio Workstation. It functions as
 a plugin host, supporting multiple plugin standards. It features advanced
 audio and midi routing, simple scripting setup, and is written to ensure
 high performance and stability under low latency conditions. It can be
-controlled through MIDI, OSC, and a gRPC interface.
+controlled through MIDI, OSC, gRPC and a local ZeroMQ interface.
 
 **In a nutshell:**
 
--  Headless host with full run-time control over MIDI, gRPC and OSC interfaces.
+-  Headless host with full run-time control over MIDI, gRPC, ZeroMQ and OSC interfaces.
 -  Hosts VST 2.4, VST 3.7 and LV2  plugins.
 -  Highly optimized for low latency performance.
 -  Multithreaded audio processing support.
@@ -87,7 +87,7 @@ Configuration and Control
 -------------------------
 
 Sushi supports a number of protocols and technologies for controlling
-and syncing with external sources and devices: MIDI, gRPC, Open Sound Control (OSC), Ableton Link.
+and syncing with external sources and devices: MIDI, gRPC, ZeroMQ, Open Sound Control (OSC), Ableton Link.
 
 As Sushi is a headless host, and intended for use in an embedded device,
 it does not feature a graphical user interface. Instead, we have implemented several means of control,
@@ -95,6 +95,7 @@ which can be used together or separately to set Sushi up, and control it during 
 
 -  The initial setup is done through a `JSON <https://en.wikipedia.org/wiki/JSON>`__ configuration file.
 -  At run-time, Sushi can be controlled via two API's available over the network: gRPC, and OSC.
+-  Applications running on the same machine can also use the ZeroMQ IPC API, which exposes the same services as gRPC.
 -  End-users can additionally control Sushi and hosted plugins directly, using MIDI and Ableton Link, with the added flexibility of OSC for more advanced users.
 
 .. figure:: ./illustrations/sushi_architecture.png
@@ -103,7 +104,7 @@ which can be used together or separately to set Sushi up, and control it during 
 Sushi's Public API Model
 ------------------------
 
-While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC and OSC,
+While Sushi is accessible and configurable over several means, i.e. a json configuration file, gRPC, ZeroMQ and OSC,
 the model they all control is the same.
 
 It is thus best to describe this common model once below, and then address individual peculiarities for the
@@ -140,10 +141,15 @@ a complete GUI for Sushi in more or less any GUI framework of choice and account
 Please see the dedicated subheading :ref:`sushi-control-grpc`,
 for comprehensive information on Sushi's gRPC features.
 
-An additional API based on `Open Sound Control <http://opensoundcontrol.org/>`__ (OSC) is available,
+An additional API based on `Open Sound Control <https://opensoundcontrol.stanford.edu/>`__ (OSC) is available,
 which covers a smaller subset of control for Sushi, than gRPC.
 Sushi can both send OSC updates and receive notes and parameter changes through OSC.
 Please see the dedicated subheading :ref:`sushi-control-osc` for more details on Sushi's OSC features.
+
+Since version 1.4, Sushi also exposes the same services as the gRPC API through `ZeroMQ <https://zeromq.org/>`__,
+over the local IPC sockets *ipc:///tmp/sushi_ipc.sock* (commands) and *ipc:///tmp/sushi_pub.sock* (notifications).
+This API is only reachable from processes on the same machine. It is enabled by default and
+can be disabled with the *--no-zmq* flag.
 
 End-User Control
 ^^^^^^^^^^^^^^^^
@@ -258,13 +264,13 @@ Threading
 Sushi can run its audio processing single threaded but also has **built
 in multithreading support** to spread the audio processing over multiple
 cores, depending on the type of system it is running on. To enable multicore
-audio processing, start sushi with the *-m/--multicore* option. 
+audio processing, start sushi with the *-m <n>* / *--multicore-processing=<n>* option. 
 
 When creating tracks it's possible to set the audio processing thread for that
 track using the *thread* argument. If the *thread* argument is not set, tracks
 will be allocated to threads according to a round-robin scheme. 
 
-Note that thread id in this case does not refer directly to a CPU core, but to an index starting from 0 into the number of parallel threads sushi’s audio processing is configured to run with. I.e. if sushi is started with the `*-m2"` option valid values for the thread parameter are 0 and 1. If the thread member is omited, sushi will revert to round-robin assignment of track to CPU cores.
+Note that thread id in this case does not refer directly to a CPU core, but to an index starting from 0 into the number of parallel threads sushi’s audio processing is configured to run with. I.e. if sushi is started with the *-m 2* option valid values for the thread parameter are 0 and 1. If the thread member is omited, sushi will revert to round-robin assignment of track to CPU cores.
 
 For Elk Audio OS systems it's possible to directly control which CPU cores are used by sushi for audio processing. See the Elk Audio OS documentation for details.
 
@@ -283,7 +289,7 @@ The library has a fall-back implementation for POSIX systems (tested on
 standard Linux distros and macOS), which makes it convenient for
 inclusion in an existing codebase. Twine also has limited functionality on Windows
 
-Full source code is included in *work/twine* with Doxygen
+Full source code is available in the `Twine repository <https://github.com/elk-audio/twine>`__, included in Sushi as a submodule, with Doxygen
 documentation, unit tests and example code.
 
 Logging
@@ -291,8 +297,11 @@ Logging
 
 On start, Sushi creates a log file in */tmp/sushi.log* where it logs
 all relevant run-time information. Logging level and log destination can
-be specified with the command line flag *-l* or *--log-level* and
-*-l* or *-L* *-log-file=filename* respectively.
+be specified with the command line flags *-l <level>* / *--log-level=<level>* and
+*-L <filename>* / *--log-file=<filename>* respectively.
+
+The log file is limited to 10 MB by default. Since version 1.4, you can change this limit with
+*--log-file-size=<kilobytes>*. With *--log-flush-interval=<seconds>* Sushi flushes the log to disk periodically.
 
 Configuring Sentry
 ------------------
@@ -327,8 +336,6 @@ and in this way, the compiler has more room for optimizations.
 However, Elk distributions are shipped with Sushi compiled at different
 buffer sizes, usually [16, 32, 64, 128].
 
-In case you want to use a different buffer size, you will also need to
-change the audio driver parameter *audio_buffer_size* in the script
-placed by default in */usr/bin/load-drivers* and reboot the board (or
-restart the audio driver by removing and reinserting the module
-*audio_rtdm*).
+On the Raspberry Pi 4 image, the supported buffer sizes are 32, 64 and 128. To switch
+between them, use *elk_system_utils --set-buffer-size* as described in
+:ref:`Changing audio buffer size`.

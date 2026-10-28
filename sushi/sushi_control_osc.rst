@@ -4,10 +4,10 @@ Controlling Sushi using Open Sound Control
 ==========================================
 
 Sushi supports `Open Sound Control
-(OSC) <http://opensoundcontrol.org/introduction-osc>`__. And can both
+(OSC) <https://opensoundcontrol.stanford.edu/>`__. And can both
 send OSC updates and receive notes and parameter changes through OSC.
 
-If you are unfamiliar with OSC, reading our `article introducing OSC in the context of Elk Audio OS <https://elk.audio/controlling-plug-ins-in-elk-part-i/>`__ is a very good start.
+If you are unfamiliar with OSC, the `introduction on the OSC website <https://opensoundcontrol.stanford.edu/>`__ is a good start.
 
 OSC Messages Sushi Reacts To
 ----------------------------
@@ -20,8 +20,8 @@ By default, Sushi listens on port 24024 for the following OSC commands:
 | /parameter/plugin\_name/p | f         | parameter value                          |
 | arameter\_name            |           |                                          |
 +---------------------------+-----------+------------------------------------------+
-| /parameter/plugin\_name/p | s         | property value                           |
-| roperty\_name             |           |                                          |
+| /property/plugin\_name/pr | s         | property value                           |
+| operty\_name              |           |                                          |
 +---------------------------+-----------+------------------------------------------+
 | /bypass/plugin\_name      | i         | bypass state (1 = bypassed, 0 = enabled) |
 +---------------------------+-----------+------------------------------------------+
@@ -65,6 +65,16 @@ the level parameters of the internal Peak Meter plugin.
 
 This works in two ways, either all, or only specific processors, are enabled. See the relevant section
 in the documentation of the Sushi json configuration file for more details.
+
+Sushi also transmits a message when an audio input or output channel clips, with the channel index as an integer argument:
+
++------------------------------------+-----------+------------------------------------------+
+| **Path**                           |**TypeTag**| **Arguments**                            |
++------------------------------------+-----------+------------------------------------------+
+| /engine/input\_clip\_notification  | i         | input channel                            |
++------------------------------------+-----------+------------------------------------------+
+| /engine/output\_clip\_notification | i         | output channel                           |
++------------------------------------+-----------+------------------------------------------+
 
 Changing the ports and IP address for sending and receiving OSC
 ---------------------------------------------------------------

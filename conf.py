@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('./deps/elkpy'))
 # -- Project information -----------------------------------------------------
 
 project = u'Elk DevKit'
-copyright = u'2023, Elk'
+copyright = u'2026, Elk'
 author = u'Elk'
 
 # The short X.Y version

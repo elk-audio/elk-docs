@@ -16,4 +16,6 @@ In order to simplify the whole image build starting from source code we also pro
 
 2. Ready to use [KAS configurations](https://github.com/elk-audio/elk-audio-kas-configs) for the supported boards.
 
+Elk Audio OS 1.4.0 is based on the Yocto Project 6.0 LTS release (wrynose). To build it for the Raspberry Pi 4, use the KAS configuration *raspberrypi4/raspberrypi4-elk-audio-os-v1.4.0.yml*. The main image target is *elkpi-audio-os-image*, and *elkpi-audio-os-plugins-image* adds a selection of open-source audio plugins on top of it.
+
 
